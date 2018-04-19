@@ -20,7 +20,7 @@
                <meta property="og:image" content="/bundles/mediakron/img/mklogo-black-padding.jpg"/>
                <meta name="viewport" content="width=device-width, initial-scale=1">
                <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-               <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+               <link href="{{ mix('css/app.css') }}" rel="stylesheet">
                
           
             </head>
@@ -104,7 +104,7 @@
 
                </div>  
 
-               <script  type='text/javascript' src="{{ elixir('js/app.js') }}"></script>
+               <script  type='text/javascript' src="{{ mix('js/app.js') }}"></script>
                
                 <script>
                   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

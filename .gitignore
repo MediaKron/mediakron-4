@@ -11,3 +11,4 @@ vendor/*
 npm-debug.log
 yarn-error.log
 /api/.env
+docker/data
