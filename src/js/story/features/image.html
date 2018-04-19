@@ -1,0 +1,37 @@
+ <div class="add">
+    <label for="image" class="sr-only">Image</label>
+
+    <div class="form-instructions">
+        Allowed formats: jpg, png, gif.
+    </div>
+    
+    <input type="text" class="story-add-field title-field" name="title" placeholder="Title" /> 
+    
+    <div class="edit-image clearfix">
+        <div class="thumbnail-container">
+            <div class="edit-thumbnail"></div><button id="remove-image" type="submit" class="btn submit btn-no-style"> <span class="sr-only">Remove Image</span> <span class="mk-icon mk-remove"> </span> </button>
+        </div>
+
+        <div class="upload-container">
+            <button id="upload-image" type="submit" class="btn submit btn-primary"><span class="mk-icon mk-upload"></span> Upload Image</button> <input id="image-file" type="file" placeholder="Image" model-attr="image">
+
+            <div class="add-dropzone">
+                <br>
+                Drop your image here
+            </div>
+
+            <div id="file-progress-bar">
+                <div id="file-progress-text">
+                    Uploading...
+                </div>
+
+                <div class="progress progress-striped active">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="save-bar">
+      <button type="submit" class="btn btn-sm btn-primary save-add" data-type="image"><span class="mk-icon mk-save"></span>Save New Image</button>
+    </div>
+</div>

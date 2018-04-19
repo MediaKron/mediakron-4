@@ -1,0 +1,295 @@
+/* 
+#mediakron
+	#wrapper-main
+		#content .container-fluid .content-area
+			#row
+				#breadrumbs
+				#main
+					.main-content .page
+						.template
+
+ */
+
+/* @group CONTAINERS */
+
+#mediakron{
+  height: 100%;
+}
+
+#main-container {
+  @include transition(all 0.2s ease-in-out);
+  left: 0;
+  height: 100%;
+  overflow:scroll;
+}
+
+.container { /* Bootstrap override  */
+	width: 100%;
+}
+
+#content.container-fluid {
+    padding-left: 0;
+    padding-right: 0 !important;
+}
+
+.row{
+    height: 100%;
+}
+
+#main{
+	height: 100%;
+}
+
+.main-content{
+    height: 100%;
+    width: 100%;
+/*    animation-name: fadeIn;
+    animation-duration: .2s;*/
+}
+
+.template {
+	height:100%;
+	position: relative;
+	width: 100%;
+	transition: .2s ease;
+}
+
+.view{
+	height:100%;
+}
+
+.main-item-content{
+	height:100%;
+}
+
+.content-primary .container-fluid {
+	height: 100%;
+	padding: 0;
+}
+
+
+/* @end */
+
+/* @group CONTENT PRIMARY */
+
+.content-primary {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.caption-active .content-primary {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+/* @group HEIGHTS
+ */
+
+/* @group IMAGE HEIGHT */
+
+.image-template .content-primary {
+    height: auto; 
+  	@include breakpoint(md){ 
+  	height: 100%;
+  	height: calc(95vh - 100px);
+  	}
+}
+
+.caption-active > .image-template .content-primary {
+	@include breakpoint(md){ 
+	/*height: 91vh;*/
+	height: 100%;
+	height: calc(95vh - 100px);
+	}
+	}
+
+.item-overlay.opened .image-template .content-primary {
+    height: auto; 
+  	@include breakpoint(md){ 
+  	height: 100%;
+  	height: calc(90vh - 100px);
+  	}
+}
+
+	.caption-active > .image-template .content-primary {
+		@include breakpoint(md){ 
+		/*height: 91vh;*/
+		height: 100%;
+		height: calc(90vh - 120px);
+		}
+		}
+		
+
+	
+/* @end */
+
+/* @group AUDIO HEIGHT */
+
+.audio-template .content-primary{ 
+	height: 100%;
+}
+
+.audio-template .details-button { /* Hide details button if no vh */
+  display: none;
+}
+
+.audio-template--full .content-primary.background-image-active {
+	padding-bottom: 0;
+	min-height: calc(100vh - 50px);
+}
+
+.audio-template--full .content-primary.background-image-active .details-button {
+  display: block; /* show details button if no vh */
+}
+
+
+/* @group VIDEO HEIGHT */
+
+.video-template .content-primary { 
+	height: 100%;
+	height: calc(87vh - 50px);
+	@include rem-fallback(min-height, 550);
+}
+
+.caption-active > .video-template .content-primary { 
+	height: 100%;
+	height: calc(87vh - 100px);
+	@include rem-fallback(min-height, 650);
+}
+
+/* @end */
+
+
+/* @group FOLDER HEIGHT */
+
+/*.folder-template .folder-template--list__intro > .content-primary {
+	min-height: 100vh;
+}*/
+
+/* @group COMPARISON HEIGHT */
+
+.comparison-template .content-primary {
+	max-height: 85vh;
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.homepage .comparison-template .content-primary {
+	max-height: auto;
+}
+
+
+/* @group Story HEIGHT */
+
+.story-template .story-content {
+	min-height: 100vh;
+}
+
+/* @end */
+
+
+/* @group SLIDESHOW HEIGHT */
+
+.slideshow-template--full .slideshow-template__intro > .content-primary {
+  height: 100%;
+  height: 100vh;
+}
+
+
+/* @end */
+
+
+/* @group NARRATIVE HEIGHT */
+
+.narrative-template--full .narrative-template__intro.background-image-active {
+	@extend .background-image;
+	height: 100vh;
+}
+
+/* @end */
+
+
+/* @group TIMELINE HEIGHT */
+
+#item-content .timeline {
+  min-height: 300px;
+	/*height: 84vh;*/
+	/*height: 100%;
+	height: calc(100vh - 170px);*/
+}
+
+.timeline-template.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 180px);
+}
+
+.timeline-template.caption-active.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 225px);
+}
+
+.item-overlay.opened #item-content .timeline {
+	height: 100%;
+	height: calc(100vh - 80px);
+}
+
+.item-overlay.opened .timeline-template.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 90px);
+}
+
+.item-overlay.opened .timeline-template.caption-active.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 135px);
+}
+
+
+/* @end */
+
+/* @group MAP HEIGHT */
+
+.map-template .map{
+	/*height:85vh !important;*/
+  height: 100%;
+  height: calc(100vh - 185px) !important;
+  margin-bottom: 2em;
+  z-index: 1;
+}
+
+/* Map in folder - needs more space at the bottom */
+.folder-template .map-template .map {
+	height: calc(100vh - 240px) !important;
+}
+
+	.caption-active.map-template .map{
+		/*height:80vh !important;*/
+		height: 100%;
+		height: calc(100vh - 225px) !important;
+	}
+
+	/* Map in folder - needs more space at the bottom */
+	.folder-template .caption-active.map-template .map {
+		height: calc(100vh - 300px) !important;
+	}
+
+	
+.item-overlay.opened .map-template .map{
+  height: 100%;
+  height: calc(100vh - 125px) !important;
+  margin-bottom: 2em;
+}
+
+	.item-overlay.opened .caption-active.map-template .map{
+		height: 100%;
+		height: calc(100vh - 170px) !important;
+	}
+	
+
+/* @end */
+
+/* @end */
+
+

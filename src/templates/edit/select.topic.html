@@ -1,0 +1,10 @@
+<% var currentTopic = Drupal.Mediakron.Controller.CurrentTopic; %>
+<select name="select-topic" class="select-topic input-sm">
+	<% Drupal.Mediakron.topics.each(function(topic){ 
+	   var id= topic.get("id"); var name = topic.get("title"); 
+	   var selected = ""; 
+	   if(id == currentTopic){ selected = "selected"; }  %> 
+	<option <%= selected %> value="<%= id %>" > <%= name %>
+</option>
+<% }); %>
+</select>

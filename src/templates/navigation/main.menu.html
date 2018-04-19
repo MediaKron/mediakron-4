@@ -1,0 +1,41 @@
+<% var basepath = Mediakron.Settings.baseurl,childItem; %>
+    <ul class="main-menu" role="navigation" aria-label="Main menu">
+        <li>
+            <% if(items.length > 0){   %>
+                  <button type="button" id="menu-toggle" class="js-menu-trigger btn-no-style"><span class="mk-icon mk-menu"></span> Menu</button>
+            <% }else{ %>
+                  <% if(Mediakron.Access.check('can change site settings')){ %>
+                  <li class="add-menu-navbar no-menus">
+                      <a href="#settings/navigation"> Add Menus </a>
+                  </li><% } %>
+            <% } %>
+            
+             <ul class="js-menu main-menu-sidebar">
+            	<li class="home-link menu-item">
+            	    <a href="/" class="contrast-tint">Home</a>
+            	</li>
+            	<% if(items.length > 0){   %>
+            	<% _.each(items, function(menu){  %>
+            		<% if(menu){   %>
+            			<% if(menu.type && menu.type == 'external'){ var title; if(menu.title){ title = menu.title; }else{ title = menu.uri; } %>
+            				<li class="menu-item">
+            					<a href="<%= menu.uri %>"><%= menu.title %></a>
+            				</li>
+            			<% }else{ %>
+            				<li class="menu-item">
+            					<a href="<%= menu.getURL() %>" ><%= menu.get('title') %></a>
+            				</li>
+            			<% } %> 
+                    <% }}); %>
+           
+                     <% if(Mediakron.Access.check('can change site settings')){ %>
+                     <li class="add-menu-navbar menu-item">
+                         <a href="#settings/navigation" ><span class="mk-icon mk-edit"></span> Edit Menus </a>
+                     </li><% } %>
+                <% } %>
+                <li class="close-button"><button><span class="mk-icon mk-close"></span></button></li>
+             </ul>
+             
+        </li>   
+      </ul>
+<div class="js-menu-screen sliding-menu-fade-screen"></div>

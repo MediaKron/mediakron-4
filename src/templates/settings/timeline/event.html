@@ -1,0 +1,156 @@
+<!-- ===== Organize Pane - Map  ===== -->
+
+<% var record; %>
+
+<div class="organize-pane organize-marker collection overlay overlay-sidebar">
+
+  <header>
+    <div class="header-inner">
+      <h2><span class="toggles mk-icon mk-edit"></span> Edit Timeline Event</h2>
+      <nav>
+        <ul class="page-options"> 
+          	<li class="option-close">	  	
+          		<button class="btn btn-sm btn-default close-button" aria-label="Close">
+            		<span class="mk-icon mk-close"></span>
+            		<span class="button-text"> Close</span> 
+            	</button>
+          	</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div id="edit-map-marker" class="organize">
+  
+  <fieldset class="marker-content">   
+
+    <h3 class="title">Event Content </h3>
+    <div class="form-instructions">Choose what will show up when you hover over a map marker, either site content add a label </div>
+  
+    
+    <% if(item){ %>
+    <div id = "selected-map" class="nav-item">
+    	<span class="nav-item-main">
+    	
+    	<%= item.getSquareImage('small',50,50,true)  %>	<span class="title"><%= item.get('title') %><span class="type">(<%= item.get('type') %>)</span></span>
+    		
+    	</span>
+
+    	<span class="remove-item">
+    		<span class="mk-icon mk-remove" title="Remove Item"></span><span class="sr-only">Remove Item</span>
+    	</span>
+    </div>
+    <% } %>
+    
+       <div id = "map-label" class="nav-item <% if(!label){ %> hide <% } %>">
+    	
+      	<div class="field simple-label">
+      		<label for="simple-layer"class="sr-only">Add/edit Label:</label>
+      		<input id="simple-label" class="model-field" value="<%= label %>" placeholder="Add/edit a marker label">
+      	</div>
+
+      	<span class="remove-label">
+      		<span class="mk-icon mk-remove" title="Remove Label"></span><span class="sr-only">Remove Label</span>
+      	</span>
+    </div>
+
+    
+  <div class="marker-content-options <% if(item || label){ %>hide<% } %>" >
+     <button id="attach-existing" class="btn btn-sm btn-primary" aria-label="Attach Existing Content">
+   		<span class="button-text"> Attach Existing <span class="sr-only">Content</span></span> 
+   	</button>
+   	<button id="add-label" class="btn btn-sm btn-primary" aria-label="Add Label" >
+   		<span class="button-text">Add Label</span> 
+   	</button>	  
+  </div>	
+    	
+    </fieldset>
+
+
+  
+
+	<fieldset class="location-fields">
+    <div class="timelineSelectWidget">
+    	<% var ranges = Mediakron.Timeline.ranges, months = ["January","February","March","April","May","June","July","August","September","October","November","December"]; %>
+    	
+    	<div class="form-group year">
+    	    <input class="form-control" type="text" date="year" placeholder="Year"> /
+    	</div>
+    	<div class="form-group month">
+    	        <% if(type == 'generic'){ %>
+    	            <input class="form-control" type="text" date="month" placeholder="Month">/ 
+    	        <% }else{ %>
+    		        <select name="months" class="month-select" type="text" date="month" data-placeholder="Month">
+    		            <option value=""></option>
+    			        <% _.each(months, function(month,key){ %>  
+    				        <option value="<%= key %>"><%= month %> </option>
+    	                <% }); %>
+    	            </select> /
+    	        <% } %> 
+    	</div>
+    	<div class="form-group day">
+    	    <input class="form-control" type="text" date="day" placeholder="Day"> 
+    	</div>
+    	<div class="form-group hour">
+    	    <input class="form-control" type="text" date="hour" placeholder="Hour">
+    	</div>
+    	<div class="form-group minute">
+    	    : <input class="form-control" type="text" date="Minute" placeholder="Min">
+    	</div>
+    	<div class="form-group second">
+    	    : <input class="form-control" type="text" date="second" placeholder="Sec">
+    	</div>
+    
+    </div>
+  	
+  </fieldset>
+ 
+
+  	<fieldset class="manage-layer">   
+      <h3 class="title">Group Style <a class="help-link" href="<%= Mediakron.Settings.basepath %>help/layer"><span class="mk-icon mk-help get-help hide"><span class="sr-only">Help with Groups</span></span></a></h3>
+      <div class="form-instructions">Customize the marker color and icon type and create a filterable layer of similar markers.</div>
+      <% if(layer){ %>
+      <div id = "selected-layer" class="nav-item">
+      	<span class="nav-item-main">
+      	  <% var icon = 'mki mki-timeline', color = '#000', opts = layer.get('options'); if(opts.color){ color = opts.color } %>
+      		<span class="title"><span style="color:<%- color %>"><span class="<%- icon %>"></span> <%- layer.get('title') %></span></span>	</span>
+      	
+      	<button class="layer-options-edit tooltip--n btn btn-sm btn-no-style" type="button" href="<%= layer.editURL() %>" data-tooltip="Edit Layer"><span class="mk-icon mk-edit"></span><span class="sr-only"> Edit Group</span></button>  
+      	    		
+      	<span class="remove-layer">
+      		<span class="mk-icon mk-remove" title="Remove Item"></span><span class="sr-only">Remove Group</span>
+      	</span>
+      </div>
+      <% } %>
+      
+      <div class="layer-options <% if(layer){ %>hide<% } %>" >
+        <button id="attach-existing-layer" class="btn btn-sm btn-primary" aria-label="Attach Existing Content">
+      		<span class="button-text"> Select Existing <span class="sr-only">Layer Style</span></span> 
+      	</button>
+      	<button id="attach-new-layer" class="btn btn-sm btn-primary" aria-label="Attach New Content">
+      		<span class="button-text"> Create New <span class="sr-only">Layer Style</span></span> 
+      	</button>
+      	
+      	<button class="layer-edit-button btn btn-sm btn-primary <% if(!layer){ %> hide	 <% } %>" type="button" href="#" data-tooltip="Edit Layer"><span> Edit this Layer</span></button> 
+
+    	</div>  	
+    </fieldset>
+    
+
+  	
+  	<div class="save-bar">
+  	  <div class="save-bar-inner">
+  			<button id="done-editing" type="submit" class="btn btn-success submit btn-sm"><span class="mk-icon mk-save"> </span> Save</button>
+  			<button id="cancel-editing" class="btn btn-default btn-sm close-settings"><span class="mk-icon mk-close"> </span> Close</button>
+        </div>
+    </div>
+    
+  </div>
+
+</div>
+
+<div class="add-layer hide"></div>
+
+</div>
+
+<div class="overlay-bg"></div>

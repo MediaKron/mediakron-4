@@ -1,0 +1,274 @@
+// INDEX OF ANIMATIONS
+// This is a port of Den Eden's Animate.css, converted for SASS.
+// Source: https://daneden.me/animate/
+//
+// @import this index into your project.
+// Comment out categories below to remove them from your project.
+// Or, @import specific partials (e.g. @import "_attention/_bounce.scss";
+//
+//-----------------------------------------------------------------------
+
+// Always required
+@import
+  "_properties";
+
+// Import the animations
+/*@import*/
+/*  "_attention-seekers/attention-seekers.scss",
+  "_bouncing-entrances/bouncing-entrances.scss",
+  "_bouncing-exits/bouncing-exits.scss",
+  "_fading-entrances/fading-entrances.scss",
+  "_fading-exits/fading-exits.scss",
+/*  "_flippers/flippers.scss",*!/
+/*  "_lightspeed/lightspeed.scss",
+  "_rotating-entrances/rotating-entrances.scss",
+  "_rotating-exits/rotating-exits.scss",*!/
+  "_sliding-entrances/sliding-entrances.scss",
+  "_sliding-exits/sliding-exits.scss",
+  "_specials/specials.scss",
+  "_zooming-entrances/zooming-entrances.scss",
+  "_zooming-exits/zooming-exits.scss";
+  */
+  
+  @import "_zooming-entrances/zooming-entrances.scss";
+  
+  
+  // ================================================
+  
+  /* Adding a little shake action to the login when rejected */
+  #login {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+  }
+  @keyframes loginincorrect {
+      8%, 41% {
+          transform: translate(-53%,-50%);
+      }
+      25%, 58% {
+          transform: translate(-47%,-50%);
+      }
+      75% {
+          transform: translate(-51%,-50%);
+      }
+      92% {
+          transform: translate(-49%,-50%);
+      }
+      0%, 100% {
+          transform: translate(-50%,-50%);
+      }
+  }
+  
+  
+  @keyframes FadeIn {
+      0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  
+  @keyframes FadeOut {
+      0% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+  
+  @keyframes messageFadeInOut {
+    0% {opacity: 0;}
+  25%  {opacity: 1;}
+  75%  {opacity: 1;}
+  100% {opacity: 0;}
+  }
+  
+  
+  @keyframes messageslideUp {
+  	0% {
+  		transform: translateY(100%);
+  	}
+  	15%{
+  		transform: translateY(0%);
+  	}
+  	90%{
+  		transform: translateY(0%);
+  	}
+  	100% {
+  		transform: translateY(100%);
+  	}	
+  }
+  
+  @keyframes slideUpStay {
+  	0% {
+  		transform: translateY(100%);
+  	}
+  	80%{
+  		transform: translateY(10%);
+  	}
+  	100%{
+  		transform: translateY(0%);
+  	}
+  }
+  
+@keyframes slideDownStay {
+  	0% {
+  		transform: translateY(-100%);
+  		opacity: 0;
+  	}
+  	80%{
+  		transform: translateY(10%);
+  	}
+  	100%{
+  		transform: translateY(0%);
+  		opacity: 1;
+  	}
+  }
+  
+  @keyframes slideDownSmooth {
+    	0% {
+    		transform: translateY(-100%);
+    		opacity: 0;
+    	}
+    	100%{
+    		transform: translateY(0%);
+    		opacity: 1;
+    	}
+    }
+  
+
+
+@include keyframes(slideInRight) {
+	0% {
+  	opacity: 0;
+  	@include transform(translateX(2000px));
+  }
+	60% {
+  	@include transform(translateX(-10px));
+  }
+  100% {
+  	@include transform(translateX(0));
+  }
+}
+
+@include keyframes(slideOutRight) {
+	0% {
+  	@include transform(translateX(0));
+  }
+	100% {
+  	opacity: 0;
+  	@include transform(translateX(2000px));
+  }
+}
+
+
+@include keyframes(slideInUp) {
+	0% {
+  	opacity: 0;
+  	@include transform(translateY(2000px));
+  }
+	100% {
+  	@include transform(translateY(0));
+  }
+}
+
+/* Formatting bar in WYSIWYG  */
+@keyframes showWysiwyg {
+    from { opacity: 0; margin-top:10px; }
+    to   { opacity: 1; margin-top:0;}
+}
+
+@include keyframes(highlight) {
+    0% {
+        background-color: $highlight;
+        opacity:1;
+    }
+    100% {
+        background-color: #fff;
+    }
+}
+
+@include keyframes(commentHighlightFade) {
+  0% {
+      opacity:1;
+      border: 1px solid #616161;
+      font-weight: 300;
+  }
+  100% {
+      border: 1px solid transparent;
+      cursor: default;
+      margin-bottom: 0;
+      background: none;
+      font-weight: normal;
+  }
+}
+
+@include keyframes(highlight-yellow) {
+    0% {
+        background-color: yellow;
+        opacity:1;
+    }
+    75% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: $highlight-light;
+    }
+}
+
+/* Formatting bar in WYSIWYG  */
+@keyframes showWysiwyg {
+    from { opacity: 0; margin-top:10px; }
+    to   { opacity: 1; margin-top:0;}
+}
+
+
+@include keyframes(expandDown) {
+	0% {
+  	opacity: 0;
+  	height: 0;
+  	animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  }
+	100% {
+  	height: auto;
+  	opacity: 1;
+  	animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  }
+}
+
+
+@include keyframes(fadeInUp) {
+  0% {
+    opacity: 0;
+    @include transform(translateY(20px));}
+  100% {
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(fadeInDown) {
+  0% {
+    opacity: 0;
+    @include transform(translateY(-20px));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(fadeInRight) {
+  0% {
+    opacity: 0;
+    @include transform(translateX(20px));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateX(0));
+  }
+}
+
+@include keyframes(fadeInLeft) {
+  0% {
+    opacity: 0;
+    @include transform(translateX(-20px));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateX(0));
+  }
+}

@@ -1,0 +1,15 @@
+<span class="helptext">
+    <div class="tools">
+      <div class="tools-inner">
+        <% console.log(type); _.each(Mediakron.Story.wysiwyg[type], function(option, label){ %>
+            <button class="btn btn-defult figure-button" data-tag="setClass" class-tag="<%= option.class %>"><span class="mk-icon mk-<%= option.class %>"> </span><%= label %></button>
+        <% }); %>
+       <button class="btn btn-defult figure-button figure-botton-edit" class-tag="edit" title="Edit Item"><span class="mk-icon mk-edit"> </span><span class="sr-only">Edit</span></button>
+        <button class="btn btn-defult figure-button figure-botton-remove" class-tag="delete" title="Remove Item"><span class="mk-icon mk-remove"> </span> <span class="sr-only">Remove</span></button>
+      </div>
+    </div>
+    <div class="instructions">
+        Click and drag to move
+    </div>
+    <input class="inline-caption-edit caption-edit" type="text" placeholder="Enter a caption." value="<%= caption %>" />
+</span>

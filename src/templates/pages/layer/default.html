@@ -1,0 +1,30 @@
+<% var item, themedImage, children = relationships.children, count = children.length, i = 0;  %>
+
+<div class="layer layer-template <% if(caption.length){ %>caption-active<% } %>">
+  <div id="fl-<%= uri %>" class="" >
+    <div class="content-primary panel-layout">	
+     <header class="item-header">
+     
+     	  <h2>Marker Style: <%= title %></h2>
+     	   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+     	<% if(caption.length){ %><div class="caption"><%= caption %></div><% } %>
+     </header>
+     
+    </div>
+    <div class="container-fluid">	
+      <div class="item-content main-item-content">
+      	<div class="item-content-inner">
+	        <div class="tag-list">
+      			<ul class="tag-list--items">
+              		<% _.each(relationships.children,function(child){ if(child){ childItem = Mediakron.getItemFromURI(child); %>
+              		    <% if(childItem){ %>
+              			    <li class="tag-list--items-<%= childItem.get('uri') %>"><%= childItem.getLink() %></li>
+              			<% } %>
+              		<% } }); %>
+              	</ul>	
+      		</div>
+		    </div>
+      </div>
+     </div>
+   </div> 
+</div>

@@ -1,0 +1,104 @@
+<% var search = Mediakron.ContentBrowser.filter.search, filter = Mediakron.ContentBrowser.filter.filter, sort = Mediakron.ContentBrowser.filter.sort, filterAuthor = Mediakron.ContentBrowser.filter.user, isSelected = function(type, filter){ if(filter){ if(filter.indexOf(type) > -1){ return 'selected'; } } return ''; }, isChecked = function(){ if(filterAuthor == Mediakron.user.get("id")){ return 'checked'; } else{ return ''; } }; %>
+<div id="content-browser" class="browser-page">
+  <header>
+	<h2><span class="mk-icon mk-grid"></span> Browse All Content</h2> 
+  <ul class="browser-nav" role="navigation" aria-label="Other Browse Pages">
+    <li class="browser-page-links"> <a class="updates-link" href="<%= basepath %>mycontent"><span class="mk-icon mk-user"></span> My Content</a></li>
+    <li class="browser-page-links"><a class="all-content-link" href="<%= basepath %>updates"><span class="mk-icon mk-updates"></span> Recent Changes </a></li> 
+    <li class="browser-page-links"><a class="all-content-link" href="<%= basepath %>tags"><span class="mk-icon mk-tag"></span> Tags </a></li> 
+  </ul>
+  </header>
+  
+	<div id="content-manage" class="clearfix">
+		<div id="content-filters" class="clearfix">
+		    <h3 class="toggle-filters"><span class="mk-icon mk-filter"></span>Filters and Options</h3>
+		    <div class="content-filters-inner">
+    			<div id="content-search" class="content-action clearfix">
+    				<span class="mk-icon mk-search"></span><label for="search-rows" class="sr-only">Search</label>
+    				<input id="search-rows" class="search" placeholder="Search" type="text" name="search-rows" value="<% if(search){ %><%= search %><% } %>" /><span class="mk-icon mk-close empty-search"></span>
+    			</div>
+    			<div id="content-filter" class="content-action clearfix">
+    				<span class="mk-icon mk-filter"></span><label for="filter" class="sr-only">Filter by Type</label>
+    				<div class="select">
+    					<select id="filter" multiple="" name="filter" data-placeholder="Filter by Type" >
+    						<option value="image" <%= isSelected("image", filter) %>>Images</option>
+    						<option value="file" <%= isSelected("file", filter) %>>Files</option>
+    						<option value="story" <%= isSelected("story", filter) %>>Stories</option>
+    						<option value="audio" <%= isSelected("audio", filter) %>>Audio</option>
+    						<option value="video" <%= isSelected("video", filter) %>>Videos</option>
+    						<option value="folder" <%= isSelected("folder", filter) %>>Folders</option>
+    						<option value="slideshow" <%= isSelected("slideshow", filter) %>>Slideshows</option>
+    						<option value="map" <%= isSelected("map", filter) %>>Maps</option>
+    						<option value="timeline" <%= isSelected("timeline", filter) %>>Timelines</option>
+    						<option value="comparison" <%= isSelected("comparison", filter) %>>Comparisons</option>
+    						<option value="progression" <%= isSelected("progression", filter) %>>Progressions</option>
+    						<option value="narrative" <%= isSelected("narrative", filter) %>>Narratives(deprecated)</option>
+    						<option value="text" <%= isSelected("text", filter) %>>Text(deprecated)</option>
+    					</select>
+    				</div>
+    			</div>
+    			
+    			<% var authors = [];  if(Mediakron.authors){ authors = Mediakron.authors; }else{ authors = Mediakron.authors = _.object(Mediakron.items.map(function(item){ var user = item.get('user'); return [user.id,user.name]; })); }; %>
+    			<div id="content-user" class="content-action clearfix">
+    				<span class="mk-icon mk-user"></span><label for="user" class="sr-only">Author</label>
+    				<div class="select">
+    					<select id="user" name="user" data-placeholder="Filter by Author" >
+    						   <option value=""></option>
+    						<% _.each(authors,function(author,id){ %>
+    						  <option value="<%= id %>" <% if(id == filterAuthor){ %>selected<% } %>><%= author %></option>
+    						<% }); %>
+    					</select>
+    				</div>
+    			</div>
+    			<div id="content-sort" class="content-action clearfix">
+    				<span class="mk-icon mk-sort"></span><label for="search" class="sr-only">Sort</label>
+    				<div class="select">
+    					<select id="sort" name="sort">
+    						<option value="changed_desc" <%= isSelected("changed_desc", sort) %>>Updated: New-Old</option>
+    						<option value="changed_asc" <%= isSelected("changed_asc", sort) %>>Updated: Old-New</option>
+    						<option value="title_asc" <%= isSelected("title_asc", sort) %>>Title: A-Z</option>
+    						<option value="title_desc" <%= isSelected("title_desc", sort) %>>Title: Z-A</option>
+    						<option value="created_asc" <%= isSelected("created_asc", sort) %>>Created: New-Old</option>
+    						<option value="created_desc" <%= isSelected("created_desc", sort) %>>Created: Old-New</option>
+    					</select>
+    				</div>
+    			</div>
+    			
+    			<% if(Mediakron.Access.check('can administer site')){ %>
+    			<div id="content-bulk" class="content-action clearfix">
+    				<span class="mk-icon mk-settings"></span><label for="bulk" class="sr-only">Bulk Actions</label>
+    				<div class="select">
+    					<select id="bulk" name="bulk">			
+    						<option>Bulk Actions</option>
+    						<option value="publish">Publish</option>
+    						<option value="unpublish">Unpublish</option>
+    						<option value="delete">Delete</option>
+    					</select>
+    				</div>		
+    			</div>
+    			<% } %>
+
+    		</div>
+		</div>
+	
+	
+	</div>
+	<h3 class="sr-only">Content List</h3>
+	<input type="checkbox" class="select-all" name="select all" value="select all"/> Select All
+	<span class="count-info"><span class="count-view"></span> item(s)</span>
+	
+	<% if(Mediakron.Access.check('can archive content')){ %> 
+	  <span class="view-archived-content"><span class="mk-icon mk-archive"></span> <%= Mediakron.Theme.link('Archived Content','browse/archived') %></span>
+	<% } %>
+	
+	
+  <%    if(Mediakron.Access.check('can edit own content')){ %>
+  <span class="view-trashcan"><a href="<%= Mediakron.Settings.baseurl %>settings/trash"><span class="mk-icon mk-delete"></span> Restore <%    if(!Mediakron.Access.check('can edit any content')){ %> My <% } %>Deleted Content</a></span>
+		<% } %>
+		
+  <div id="admin-content-body" class="item-cards item-card-medium">
+  	<!-- Empty Will Be replaced by body content -->
+  </div>
+
+
+</div>

@@ -1,0 +1,12 @@
+<div class="marker-edit">
+	<div id="popup-header">
+		<%= item.getSquareImage('small',50,50) %>
+		<h3><%= item.get('title') %></h3>
+		<p><%= item.get('caption') %></p>
+	</div>
+	<div id="popup-body">
+		<% var latlng =  marker.getLatLng(); %>
+		<label>Longitude</label><input name="longitude" id="longitude" placeholder="Longitude" value="<%= latlng.lng %>"/><br />
+		<label>Latitude</label><input name="latitude" id="latitude" placeholder="Latitude"  value="<%= latlng.lat %>" />
+	</div>
+</div>

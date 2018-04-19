@@ -1,0 +1,15 @@
+<div id="item-list">
+	<ul>
+		<% basepath = Mediakron.Settings.baseurl; %>
+		<% if(items.length){ %>
+			<% for (var index = 0; index < items.length; index++){ %>
+			  <li class="item-list-item">
+				<% var item = items[index]; %>
+				<% var title = item.get("title") %>
+				<% var id = item.get("id") %>
+				<%= item.getLink() %>
+				</li>
+			<% } %>
+		<% } %>
+	</ul>
+</div>

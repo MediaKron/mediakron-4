@@ -1,0 +1,9 @@
+<% if(image){ %>
+    <div class="progression-item-info">
+        <div class="prog-itm-title"><%= title %></div>
+        <% if(caption != ''){ %> <div class="prog-itm-caption"><%= caption %></div> <% } %>
+    </div>
+	<% var themedImage = model.getImage('full',"img-responsive "); %>
+	<%= themedImage %>
+	<% if(caption.length > 0){ %><div class="caption"><%= caption %></div><% } %>
+<% } %>

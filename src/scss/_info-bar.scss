@@ -1,0 +1,557 @@
+/* @group ==== INFOBAR TEMPLATE / _slideshow.scss ====  */
+
+/* @group ITEM HEADER */
+
+.item-header {
+  padding: 1em 1em 1em 1em;
+  width: 100%;
+  clear: left;
+  position: static;
+  margin: auto;
+  max-width: 700px;
+  margin-bottom: 1.5em;
+  @include breakpoint(sm){ 
+  padding: 1em 0em 1em 0em;
+  transition:visibility 1s, opacity 1s; visibility:visible; opacity:1
+  	}
+}
+
+.header-visibility{                 
+ /* hide header but keep it in place to keep page from jumping when sticky header appears*/
+  transition:visibility 1s, opacity 1s; visibility:hidden; opacity:0
+}
+
+.image-template .item-header {
+  border-bottom: 1px solid #ddd;
+}
+
+.item-header .item-nav {
+  margin-bottom:.5em;
+}
+
+.item-header h2 {
+  margin: 0;
+  display: inline-block;
+}
+
+.item-header .widgets-menu  {
+  top: 0;
+}
+
+.item-header .widget-links {
+  display: none;
+}
+
+.item-header .mk-breadcrumb {
+  display: inline-block;
+  float: none;
+  padding:0;
+}
+
+.item-header .mk-breadcrumb ol.breadcrumb-list{
+  padding: 0 1em 0em 0em;
+  display: inline-block;
+}
+
+.item-header .caption {
+  clear: none;
+  float: none;
+}
+
+.item-header .page-options {
+  float: none;
+  font-size: 2em;
+  margin-right: .2em;
+  position: absolute;
+  right: 0;
+  margin-top: .2em;
+}
+
+.item-header .download {
+  padding: 0;
+}
+
+.item-header .edit-options  {
+  display: block;
+}
+
+.item-header .edit-options a {  
+  text-align: left;
+  width: 100%;
+  padding: .2em .4em;
+  border: 1px solid #ddd;
+}
+
+.item-header .page-options li,
+.sticky-header .page-options li {
+  list-style: none;
+  display: inline-block;
+}
+
+.map-template .item-header .page-options li,
+.timeline-template .item-header .page-options li {
+  display: inline-block;
+}
+
+.item-header .details-button {
+    bottom: 0;
+    position: fixed;
+    z-index: 1000;
+    display: block;
+    cursor: pointer;
+    padding: .1em .4em .1em .4em;
+    border-radius: 5px;
+    color: #000;
+    @include rem-fallback(font-size, 18);
+    right: 0;
+    border-radius: 0;
+    width: auto;
+    background: transparent;
+    border: none;
+    text-align: right;
+    @include breakpoint(xs){ 
+        right: 0;
+        @include rem-fallback(font-size, 18);
+    	}
+    
+    @include breakpoint(md){ 
+        right: 0;
+    	}
+}
+
+.item-header .details-button:hover {
+    background: #eee;
+    opacity: 1;
+    border-top: 1px solid #ccc;
+}
+
+.item-header .details-button .mk-arrow-down {
+    @include rem-fallback(font-size, 22);
+    position: relative;
+    top: 4px;
+}
+
+.details-list {
+  display: inline;
+  padding-left: 0;
+}
+
+.details-list li {
+  display: inline;
+  list-style: none;
+}
+
+.details-list li:after {
+content: ", ";
+}
+ 
+.details-list li:last-child:after {
+content: "";
+}
+
+/* @end */
+
+
+/* @group STICKY HEADER */
+
+.sticky-header {
+    background: transparent;
+    z-index: 999;
+    width: 100%;
+    max-width: none !important;
+    padding: .2em .5em .2em 1.5em !important;
+    position:fixed;
+    top:0;
+    left:0;
+    background:#fafafa;
+    opacity:1;    
+    animation-name: messageFade;
+    animation-duration: 3s;
+    box-shadow: 0 0 5px rgba(0,0,0,.4);
+    @include breakpoint(sm){
+    	padding-right: 1.2em;
+    	}
+}
+
+.sticky-header .item-nav,
+.sticky-header .caption {
+    display: none;
+}
+
+.sticky-header  h2{
+   @include rem-fallback(font-size, 20);
+   font-weight: normal;
+   margin: .5em 0 .5em;
+   float: left;
+}
+
+.sticky-header .page-options{
+    position: static;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+.sticky-header .item-header .edit-options a {
+    padding: .1em .3em;
+}
+
+
+/* @end */
+
+/* @group CAPTION */
+
+.caption {
+	clear:both;
+	padding: .5em 0 0 0;
+	float:left;
+	@include rem-fallback(font-size, 16);
+	color: #565656;
+	@include rem-fallback(max-width, 960);
+}
+
+.background-image-active .caption {
+	color: #fff;
+}
+
+/* @end */
+
+/* @group BREADCRUMB TRAIL */
+
+.mk-breadcrumb {
+   color:#222;
+   display: block;
+   padding: 0px 1em .3em 0;
+   float: left;
+}
+
+.mk-breadcrumb .breadcrumb-in {
+	display: none;
+}
+
+.breadcrumb-list > li.active-crumb {
+	display: none;
+}
+
+.info-bar.fixed-bar .breadcrumb-list > li.active-crumb {
+	display: inline;
+}
+
+ol.breadcrumb-list  {
+	margin: 0;	
+	padding: .2em 0 0 0;
+	list-style: none;
+	display: inline;
+}
+
+.info-bar.fixed-bar ol.breadcrumb-list  {
+	font-style: normal;
+}
+
+.breadcrumb-list li:last-child a, .info-bar.fixed-bar .breadcrumb-list li:last-child a  {
+    color:#222;
+    cursor:default;
+    text-decoration:none;
+    padding-left:5px;
+    font-weight: bold;
+}   
+
+.breadcrumb-list li:first-child a:before {
+	content: "In ";
+	color: #222;
+	font-weight: normal;
+}
+
+.info-bar.fixed-bar .breadcrumb-list li:first-child a:before {
+	display: none;
+}
+
+.breadcrumb-list li:first-child a:before:hover {
+    text-decoration: none;
+}
+
+.info-bar.fixed-bar .breadcrumb-list li.active-crumb:first-child a:before {
+	display: none;
+}
+
+.breadcrumb-list #home-link a {
+	color:#666;	
+	display:inline;
+}
+
+.breadcrumb-list  a {
+  font-weight: bold;
+}
+
+.breadcrumb-list> li {
+	display:inline;
+}
+
+.breadcrumb-list   > li + li:before {
+	content: "> ";
+	color:#666;
+	padding-left:3px
+}
+
+.breadcrumb-list   > li + li:before:hover {
+    text-decoration: none;
+}
+
+.breadcrumb-active .title-box {
+	padding: .5em 2.2em 2em 1.5em;
+	width: 100%;
+}
+
+
+/* @end */
+
+/* @group VIEW IN */
+
+.page-options button.collections-link {
+	padding: 0;
+	margin: -2px .5em 0 0em;
+	border: none;
+	border: none;
+	font-weight: 300;
+	background: none;
+}
+
+.info-bar .page-options button.collections-link, .info-bar .collections-list {
+    display: none;
+}
+
+.narrative-template--full .info-bar .page-options button.collections-link, .slideshow-template--full .info-bar .page-options button.collections-link{ /* template without regular title-box location */
+    display: inline;
+}
+
+
+.info-bar.fixed-bar .page-options button.collections-link{
+    display: none; /* hide on mobile */
+    @include breakpoint(sm){
+    display: inline;
+    }
+}
+
+.collections-link:hover {
+	background:none;
+	color: #222;
+}
+
+.collections-link .caret {
+	display: none;
+}
+
+.collections-list {
+    z-index: 1000;
+    display: none;
+	opacity: 0;
+}
+.collections-list li button{
+	text-align: left;
+}
+
+.collections-list ul {
+	padding-left: 0;
+}
+
+
+.collections-list li {
+	list-style: none;
+	line-height: 1.8em;
+}
+
+.collections-list.opened{
+    opacity:1;
+    transition:.3s;
+    display: block;
+    min-width: 300px;
+    padding: 15px 10px 10px 20px;
+    margin: 2px 0 0;
+    position:absolute;
+    background:#fff;
+    border: 1px solid #999;
+    font-size:.9em;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+    left:20px;
+    text-align: left;
+}
+
+
+
+/* @end */
+
+/* @group WIDGET LINKS */
+
+.page-options  {
+	position:relative;
+	top:1px;
+	float: left;
+}
+
+.info-bar .page-options  {
+	display: none;
+}
+
+.info-bar.fixed-bar .page-options  {
+    display: none; /* hide on mobile */
+	@include breakpoint(sm){
+	display: inline;
+	}
+}
+
+.page-options button {
+    margin: 0 1em 0 0em;
+}
+
+.page-options button:hover {
+	text-decoration: underline;
+}
+
+.widgets-menu{
+	float: none;
+	position: relative;
+	line-height: 1.3;
+	display: inline;
+	top: .7em;
+}
+
+.info-bar .widget-links {
+    display: none;
+}
+
+.info-bar.fixed-bar .widgets-menu{
+	top: -1px;
+	padding-left: 0;
+}
+
+.narrative-template--full .info-bar .widget-links, .slideshow-template--full .info-bar .widget-links{ /* template without regular title-box location */
+    display: inline;
+}
+
+.info-bar.fixed-bar .widget-links {
+    display: inline;
+}
+
+.fixed-bar .title-box .widget-links {
+    display: none;
+}
+
+.full .page-options .close-button{
+    display: inline;
+}
+
+.leftnav-button-infobar {
+	display: none;
+}
+
+/* @end */
+
+
+/* @group EDIT BUTTONs */
+
+.info-bar .edit-menu {
+	float: left;
+	margin-left: .5em;
+	margin-right: 1em;
+	position: relative;
+	top: -2px;
+}
+
+.title-box .edit-menu {
+	float: left;
+	margin-left: 0em;
+	position: relative;
+	top: 9px;
+	margin-right: 1.5em;
+}
+
+.title-box .edit-menu {
+    display: inline;
+}
+
+.info-bar .edit-menu {
+    display: none;
+}
+
+.narrative-template--full .info-bar .edit-menu, .slideshow-template--full .info-bar .edit-menu{ /* template without regular title-box location */
+    display: inline;
+}
+
+.info-bar.fixed-bar .edit-menu {
+    display: inline;
+}
+
+.edit-menu a {
+    color: #333;
+}
+
+.page-options .mk-icon {
+	@include rem-fallback(font-size, 22);
+}
+
+#change-homepage {
+    display: none;
+}
+
+.homepage #change-homepage {
+    display: inline;
+}
+
+.homepage .template #change-homepage {
+    display: inline;
+    position: static !important;
+    border: none;
+}
+
+.homepage .template .background-image-active #change-homepage {
+    color: #fff;
+}
+
+.download {
+	padding-left: .5em;
+}
+
+.mk-icon.mk-download {
+	@include rem-fallback(font-size, 20);
+}
+
+
+/* @end */
+
+/* @group WITH BACKGROUND IMAGE */
+
+.background-image-active .page-options button {
+	color: #fff;	
+}
+
+.background-image-active .breadcrumb-list > li.active-crumb {
+	color: #fff;
+}
+
+.background-image-active  .breadcrumb-list li:last-child a {
+	color: #fff;
+}
+
+.background-image-active  .info-bar.fixed-bar .breadcrumb-list > li + li:before {
+	color:#555;
+}
+
+.breadcrumb-list > li + li:before
+
+.background-image-active .breadcrumb-list li:first-child a:before {
+	color: #ddd;
+}
+
+.background-image-active .info-bar.fixed-bar .breadcrumb-list li:first-child a:before {
+	color: #222;
+}
+
+/* @end */
+
+
+/* @end INFOBAR TEMPLATE */
+ 

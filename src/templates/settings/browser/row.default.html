@@ -1,0 +1,184 @@
+<% var parents = ['topics','tags','maps','timelines','comparisons'], test = false; %>
+
+<div class="item-card">
+
+	<div class="item-card--thumbnail medium" >
+	   <%=item.getSquareImage('medium','80','80',true) %>
+	
+	  <% if(Mediakron.Access.check('can administer site')){ %>
+		<div class="bulk-check"><input class="bulk-action" type="checkbox" name="bulk-action" value="<%= item.get('uri') %>" /><label class="bulk-actions-select sr-only" for="bulk-action">Select</label></div>
+	  <% } %>
+	  
+	  <div class="item-type" >
+	  	<span class="sr-only">Type:</span> <%= item.getNormalType() %>	
+	  </div>
+	</div>
+	
+	<div class="item-card--content">
+		
+  	<header class="item-card--title" >
+      <h4><%= item.getLink() %></h4>
+      	
+    	<div class="item-card--changes"> 	
+    		<div class="created-by"><strong>Created: </strong><%= item.getCreated() %> by <%= item.get("user").name %> </div>
+    		<div class="last-changed"><strong>Updated:</strong> <%= item.getChanged() %> 
+    		<% if(item.editor()){ %> by <%= item.editor() %><% } %> </div>	
+    	</div>
+  	</header>
+  		
+  	<div class="item-card--actions">
+    	<% if(item.canEdit(false)){ %>
+    	<div class="item-card--options">
+    	  <button type="button" class="open-modal actions-button btn btn-default btn-xs"><span class="mk-icon mk-ellipsis"></span><span class="button-inner-text">Options</span></button>	
+    		<ul class="modal-content modal-up" data-visually-hidden="true"> 
+      		<li class="modal-title">
+      		  <span class="mk-icon mk-ellipsis"></span> Options
+      		</li> 
+      		<li class="close-modal">
+      		  <button class="btn btn-sm btn-default" aria-label="Close">
+      				<span class="mk-icon mk-close"></span>
+      				<span class="button-text sr-only"> Close</span> 
+      			</button>
+      		</li>
+          
+          <li class="modal-item horizontal"><%= item.editLink() %></li>
+          
+          <% if(item.canDestroy(false)){ %>
+          <li class="modal-item horizontal"><%= item.deleteLink() %> </li>
+          <% } %>	
+          
+          <% if(item.canUnpublish(false)){ %>
+          <li class="modal-item horizontal"><% if(item.get('published') == 1){ %><%= item.unpublishLink() %><% }else{ %><%= item.publishLink() %><% } %></li>
+          <% } %>	
+          
+          <% if(item.canDuplicate(false)){ %>
+          <li class="modal-item horizontal"><%= item.duplicateLink() %> </li>
+          <% } %>
+          
+           <% if(item.canArchive(false)){ %>
+        	<li class="modal-item horizontal"><% if(item.get('archived') == 1){ %><%= item.restoreLink() %><% }else{ %><%= item.archiveLink() %><% } %></li>
+        	<% } %>	
+        	<% if(item.canLock(false)){ %>
+        	<li class="modal-item horizontal"><% if(item.get('locked') == 1){ %><%= item.unlockLink() %><% }else{ %><%= item.lockLink() %><% } %></li>
+        	<% } %>	
+        	
+        	<% if(item.canTransmit(false)){ %>
+        	<li class="modal-item horizontal"><%= item.transmitLink() %></li>  
+        	<% } %>	
+        </ul>
+      </div>
+      <% } %>
+  
+  	
+    	<% if(hasCollection){ %>
+    	<div class="view-in-collection">
+    		<button type="button" class="open-modal btn btn-default btn-xs"><span class="button-inner-text"><span class="mk-icon mk-view"></span>View in</span></button>
+  			<ul class="modal-content modal-up" data-visually-hidden="true">  	
+  			<li class="modal-title">
+  			  <span class="mk-icon mk-view"></span> View In
+  			</li> 
+  			<li class="close-modal">
+  			  <button class="btn btn-sm btn-default" aria-label="Close">
+        		<span class="mk-icon mk-close"></span>
+        		<span class="button-text sr-only"> Close</span> 
+        	</button>
+  			</li>
+  	  	<% if(collections.slideshow){ countTopic = collections.slideshow.length; %>
+  				<% if(countTopic > 0){ i = 0; %>
+  	                <% for(i;i<countTopic;i++){ slideshow = Mediakron.getItemFromURI(collections.slideshow[i].uri); if(!slideshow) continue; %>
+  	        			<li class="modal-item horizontal"><span class="mk-icon mk-slideshow"></span> <%= item.getContextLinkTo(slideshow) %></li>
+  	                 <% } %>
+  				<% } %>
+  			<% } %>
+  			
+  			<% if(collections.folder){ countTopic = collections.folder.length; %>
+  				<% if(countTopic > 0){ i = 0; %>
+  	                <% for(i;i<countTopic;i++){ folder = Mediakron.getItemFromURI(collections.folder[i].uri); if(!folder) continue; %>
+  	        			<li class="modal-item horizontal"><span class="mk-icon mk-folder"></span> <%= item.getContextLinkTo(folder) %></li>
+  	                 <% } %>
+  				<% } %>
+  			<% } %>
+  			
+  			<% if(collections.story){ countTopic = collections.story.length; %>
+  						<% if(countTopic > 0){ i = 0; %>
+  						                <% for(i;i<countTopic;i++){ story = Mediakron.getItemFromURI(collections.story[i].uri); if(!story) continue; %>
+  			        			<li class="modal-item horizontal"><span class="mk-icon mk-story"></span> <%= item.getContextLinkTo(story) %></li>
+  			                 <% } %>
+  			
+  						<% } %>
+  					<% } %>  
+  	        		
+  			<% if(collections.narrative){ countTopic = collections.narrative.length; %>
+  				<% if(countTopic > 0){ i = 0; %>
+  				                <% for(i;i<countTopic;i++){ narrative = Mediakron.getItemFromURI(collections.narrative[i].uri); if(!narrative) continue; %>
+  	        			<li class="modal-item horizontal"><span class="mk-icon mk-narrative"></span> <%= item.getContextLinkTo(narrative) %></li>
+  	                 <% } %>
+  	
+  				<% } %>
+  			<% } %>
+  			
+  					<% if(collections.comparison){ countTopic = collections.comparison.length; %>
+  				<% if(countTopic > 0){ i = 0; %>
+  				
+  	                <% for(i;i<countTopic;i++){ comparison = Mediakron.getItemFromURI(collections.comparison[i].uri);  if(!comparison) continue; %>
+  	        			<li class="modal-item horizontal"><span class="mk-icon mk-comparison"></span> <%= item.getContextLinkTo(comparison) %></li>
+  	                 <% } %>
+  	
+  				<% } %>
+  			<% } %>
+  			
+  				<% if(collections.progression){ countTopic = collections.progression.length; %>
+  				<% if(countTopic > 0){ i = 0; %>
+  				
+  	                <% for(i;i<countTopic;i++){ progression = Mediakron.getItemFromURI(collections.progression[i].uri); if(!progression) continue; %>
+  	        			<li class="modal-item horizontal"><span class="mk-icon mk-progression"></span> <%= item.getContextLinkTo(progression) %></li>
+  	                 <% } %>
+  	
+  				<% } %>
+  			<% } %>
+  			
+  				<% if(relationships.maps){ var countMaps = relationships.maps.length; %>
+  				<% if(countMaps > 0){ i = 0; %>
+  				
+  	                <% i = 0;  for(i;i<countMaps;i++){ map = Mediakron.getItemFromURI(relationships.maps[i].uri); if(!map) continue; %>
+  	        		<li class="modal-item horizontal"><span class="mki mki-marker"></span> <%= item.getContextLinkTo(map) %></li>		
+  	                 <% } %>
+  	
+  				<% } %>
+  			<% } %>
+  			<% if(relationships.citations){ var countCitations = relationships.citations.length; %>
+  				<% if(countCitations > 0){ i = 0; %>
+  				
+  	                <% i = 0;  for(i;i<countCitations;i++){ citation = Mediakron.getItemFromURI(relationships.citations[i].uri); if(!citation) continue; %>
+  	        		<li class="modal-item horizontal"><span class="mk-icon mk-asterisk"></span> Note in <%= item.getContextLinkTo(citation) %></li>		
+  	                 <% } %>
+  	
+  				<% } %>
+  			<% } %>
+  			
+  					<% if(relationships.timelines){ var countTimelines = relationships.timelines.length; %>
+  				<% if(countTimelines > 0){ i = 0; %>			
+  	                <% for(i;i<countTimelines;i++){ timeline = Mediakron.getItemFromURI(relationships.timelines[i].uri); if(!timeline) continue; %>
+  	        			<li class="modal-item horizontal"><span class="mk-icon mk-timeline"></span> <%= item.getContextLinkTo(timeline) %></li>        			
+  	                 <% } %>
+  	
+  				<% } %>
+  			<% } %>
+  			</ul>
+  			</div>
+  			<% } %>
+    </div>
+    
+    <div class="item-card--status">
+      <ul>
+        <% if(item.get('published') == 1){ %><% }else{ %><li><span class="unpublished"><span class="mk-icon mk-unpublish"></span> Unpublished</span></li> <% }  %>
+        
+        <% if(item.get('locked') == 1 && item.canEdit(false)){ %><li><span class="locked"><span class="mk-icon mk-lock"></span> Locked</span></li><% }else{ %> <% }  %>
+        
+        <% if (item.isCreated()){ %> <li><span class="updates-new"><span class="mk-icon mk-updates"></span> New</span> </li><% }  %>
+        
+         <% if (item.isUpdated() && !item.isCreated()){ %> <li><span class="updates-changed"><span class="mk-icon mk-updates"></span> Updated</span> </li><% }  %>
+      </ul>
+    </div>
+    </div>
+  </div>

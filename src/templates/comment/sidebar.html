@@ -1,0 +1,57 @@
+
+<header>
+    <h2>
+    <span class="mk-icon mk-comment"></span> Comments <% if(comments.length > 0){ %> <span class="comment-count">(<%= comments.length %>)</span> <% } %></span>
+    </h2>
+    <button class="toggle-archive btn btn-no-style">
+        <span class="tool">Show Archived</span>
+    </button>
+</header>
+<div id="comments">
+    <% if(comments.length > 0){ %>
+        <% comments.each(function(comment){ %>
+            <% if(comment.canAccess() && !comment.archived()){ %>
+                <div class="comment-item comment-item-<%= comment.get('id') %>" comment-id="<%= comment.get('id') %>">
+                    <div class="comment-item-inner">
+                        <div class="comment-item-text">
+                            
+                            <p><%= comment.get('comment') %>
+                            <div class="comment-details"><span class="<%= comment.get('private') %> comment-label"><%= comment.get('private') %><span class="sr-only">comment</span></span>  By <%= comment.getUsername() %> <%= Mediakron.formatUnixDateStamp(comment.get('created'), 'small') %></div>
+                            </p>
+                        </div>
+                        <div id="comment-bind-<%= comment.get('id') %>" class="comment-item-content comment-model comment-bind-<%= comment.get('id') %>"></div>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+    <% } else { %>
+        <div class="instructions">There are no comments yet. <br> Select some text to add one.
+        <img src="/mediakron/images/help-addcomment.gif" />
+        </div>
+    <% } %>
+
+</div>
+<div id="archived" class="hide">
+    <% if(comments.length > 0){ %>
+        <% comments.each(function(comment){ %>
+            <% if(comment.canAccess() && comment.archived()){ %>
+                <div class="comment-item comment-item-<%= comment.get('id') %>" comment-id="<%= comment.get('id') %>">
+                    <div class="comment-item-inner">
+                        <div class="comment-item-text">
+                            <p><%= comment.get('comment') %>
+                            <div class="comment-details"><span class="archived comment-label">archived<span class="sr-only">comment</span></span></span>  By
+                                <%= comment.getUsername() %> <%= Mediakron.formatUnixDateStamp(comment.get('created'), 'small') %>
+                            </div>
+                            </p>
+                        </div>
+                        <div id="comment-bind-<%= comment.get('id') %>" class="comment-item-content comment-model comment-bind-<%= comment.get('id') %>"></div>
+                    </div>
+                </div>
+                <% } %>
+            <% }) %>
+        <% } %>
+</div>
+<button class="btn btn-sm btn-default close-button close-comment-sidebar" aria-label="Close">
+    <span class="close-icon"></span>
+    <span class="button-text sr-only"> Close</span>
+</button>

@@ -1,0 +1,35 @@
+<% console.log(renderedVideo); %>
+
+<article class="comparison-item--video">
+  
+  <header class="title-box">
+		<h2 class="go-to-item"> <a href="<%= uri %>"> <%= title %></a></h2>
+	        <div class="compare-actions">
+            <div class="show-description act">
+			     <button class="btn btn-default comparison-description-button tooltip--n" data-tooltip="More item 		information"><span class="mk-icon mk-info"></span><span class="sr-only">Item Information</span></button>
+			 </div>
+        </div>
+        <div class="comparison-description hidden">
+        	<% if(caption.length > 0){ %><div class="caption"><%= caption %></div><% } %>
+        
+        <aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+  	   
+  	    <div class="widgets widgets--below widgets--below-<%= uri %>">
+  	    	<div class="widgets__description widget-box"></div>
+  	    	<div class="widgets__transcript widget-box"></div>
+  	    	<div class="widgets__details widget-box"></div>
+  	    </div>		
+       
+        </div>
+    </header>
+    
+		<div class="container-fluid">
+			<div class="item-content main-item-content no-sidebar">
+				<div class="video-container">
+					<%= renderedVideo %>
+				</div>		
+			</div>	
+		</div>
+	</div>
+
+</article>

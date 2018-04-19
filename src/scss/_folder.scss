@@ -1,0 +1,890 @@
+/* --- .folder.scss ---  */
+
+.folder-template {
+	height: 100%;
+	position: relative;
+}
+
+/*.folder-template .folder-template__intro > .content-primary {
+	min-height: 90vh;
+}*/
+	
+.folder-item.folder-template__intro{
+    display:block;
+    height: 100%;
+}
+
+.folder-template .item-header.bottom-border {
+  border-bottom: 1px solid #565656;
+}
+
+.folder-template__intro.closed{
+    display:none;
+}
+
+.folder-current-item{
+    display:none;
+    height: 100%;
+}
+
+.folder-current-item .slideshow{
+	margin-top:1em;
+	margin-bottom: 1em;	
+	margin-left: 1em;
+	margin-right: 1em;
+	border:1px solid #999;
+	@extend .box-shadow-subtle;
+    height:94%;
+}
+
+.folder-current-item.opened{
+    display:block;
+}
+
+.folder-template .background-image-active .widgets--sidebar {
+	color: #222;
+}
+
+
+#folder-styles {
+  margin-bottom: -.3em; /* reduce margin below folder color fieldset  */
+}
+
+/* @group Next-Previous */
+
+
+.folder-navigation {
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid #616161;
+    width: 100%;
+    z-index: 101; /* high enough to be over map tour  */
+}
+
+.folder-navigation a {
+    display:none;
+    position:relative;
+    background:#fff;
+    height: 50px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 200ms cubic-bezier(0.0,0.0,0.2,1);
+    -webkit-user-select: none;
+    padding: .3em .75em 0 .75em;
+    @include breakpoint(xs){
+      bottom:-3px;
+      top: auto;
+      z-index: 1000;
+    }
+}
+
+.folder-navigation .folder-next {
+  color: #565656; 
+  float: right;
+  border: none;
+  padding-right: .3em;
+}
+
+.folder-navigation .folder-previous {
+  color: #565656;  
+  width: 30px;
+  float: left;
+  border: none;
+  padding-left:.3em;
+}
+
+.folder-navigation a:hover {
+    text-decoration: none;
+    background: #333;
+    color: #fff;
+    width: auto;
+    position:relative;
+    z-index: 103; /* to appear over other things */
+}
+
+.folder-previous:hover{
+  border-right:1px solid #616161
+}
+
+.folder-next:hover{
+  border-left:1px solid #616161
+}
+
+.folder-previous .mk-icon, 
+.folder-next .mk-icon {
+   @include rem-fallback(font-size, 28);
+   @include rem-fallback(top, 7);
+   color: #fff;
+   background: #000;
+   border-radius: 3px;
+   padding: .2em 0;
+   border:1px solid #616161;
+}
+
+.folder-previous:hover .mk-icon, 
+.folder-next:hover .mk-icon {
+   color:#000;
+   background: #fff
+}
+
+.folder-next .mk-arrow-right {
+  @include rem-fallback(margin-left, 8);
+}
+
+.folder-previous .mk-arrow-left {
+  @include rem-fallback(margin-right, 8);
+}
+
+.folder-previous:hover .navigation-title,
+.folder-next:hover .navigation-title  {
+/*   display: block;
+    @include rem-fallback(font-size, 16);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    clip:auto;
+    position: static;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;*/
+}
+
+/*.folder-previous:hover .navigation-title {
+    @include rem-fallback(width, 225);
+    margin-left: 1em;
+}
+
+.folder-next:hover .navigation-title {
+   @include rem-fallback(width, 225);
+   padding-right: 1em;
+}*/
+
+.folder-previous .navigation-folder {
+  display: none;
+}
+
+.folder-next .navigation-folder {
+/*   @include rem-fallback(max-width, 225);
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   position: relative;
+   top: 7px;
+   display: inline-block;*/
+   @include breakpoint(xs){
+      display: none;
+   }
+   
+}
+
+.folder-previous:hover .navigation-folder,
+.folder-next:hover .navigation-folder {
+  display: inline-block;
+}
+
+.folder-next:hover .navigation-title.navigation-last {
+  font-weight: normal;
+}
+
+/*.folder-navigation a.folder-next-long {
+  display: none;
+  bottom: 0;
+  top: auto;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+  height: auto;
+  padding: .7em .5em .7em .5em;
+  color: #444;
+  @include rem-fallback(font-size, 18);
+  background: #fff;
+  border-top: 1px solid #999;
+  transition: none;
+}
+
+.folder-navigation a.folder-next-long .navigation-title{
+  background: rgba(250, 250, 250, 0.85);
+  padding: .2em .3em .2em .7em;
+}
+
+.folder-navigation a.folder-next-long .mk-arrow-right {
+  @include rem-fallback(font-size, 20);
+  top: 3px;
+}
+
+.folder-navigation a.folder-next-long:hover {
+  background:#333;
+  color: #fff;
+  transition: none;
+  opacity: .85;
+}
+
+.folder-navigation a.folder-next-long:hover .navigation-title {
+  background:transparent;
+  color: #fff;
+}
+
+.folder-next-long .navigation-folder {
+  @include rem-fallback(font-size, 18);
+  font-weight: normal;
+}*/
+
+/* @end */
+
+/* @group Shared */
+
+.folder-template > .folder-template__intro .main-item-content {
+	height:100%;
+	@include breakpoint(sm){
+		margin: auto;
+		}
+}
+
+.folder-template > .folder-template__intro .folder-list{
+	float:none;
+	margin-left: 2em;
+	}
+
+.folder-template__intro .container-fluid > .col-md-4, .folder-template__intro  .container-fluid > .col-md-8{
+    @include breakpoint(md){
+	    width: 50%;
+	}
+}
+
+.folder-template__intro .background-image-active .widgets--sidebar {
+	color: #222;
+	padding-bottom: 2em;
+}
+	
+.folder-template .narrative-description {    
+	width: 100%;
+	background:#eee;
+}
+
+.folder-template .narrative-description-inner {    
+	width: 100%;
+	max-width: 800px;
+	margin: auto;
+	padding:1em 2em 2em 2em;
+	font-size:1.2em;
+	line-height:1.6em;
+}
+
+.folder-caption.caption,
+.folder-caption.background-image-active.caption {
+  @include rem-fallback(font-size, 18);
+  margin:.5em auto 1em auto;
+  width: 100%;
+  @include rem-fallback(max-width, 700);
+  float: none;
+  padding-top: 0;
+  text-align: left;
+  color: #565656;
+  @include breakpoint(xs){ 
+    padding: 1em 1em 0 1em;
+	}
+}	
+
+.folder-caption.caption-centered {
+  text-align: center;
+}
+
+.folder-template > .folder-template__intro .col-md-4{
+	width: 100%;
+	@include rem-fallback(max-width, 700);
+	margin: auto;
+	float: none;
+	@include rem-fallback(font-size, 18);
+	padding: 0;
+}
+
+/* @end */
+
+/* @group BACKGROUND IMAGE HALF */
+
+
+.folder-image--half .container-fluid {
+	max-width:none;
+	width: 100%	;
+	margin: auto;
+}
+
+.folder-image--half .folder-item {
+	height: 100%;
+	min-height: 85vh;
+}
+
+.folder-image--half .folder-info.folder-info--image-half {
+  margin: auto;
+  @include rem-fallback(max-width, 700);
+  border-bottom: 1px solid #565656;
+  margin-bottom: .5em;
+}
+
+.folder-image--half  > .background-image-active .folder-info {
+  max-width: none;
+  border-bottom: 0;
+}
+
+.folder-image--half .folder-info > .item-header {
+  margin-bottom: 0;
+}
+
+.folder-image--half > .background-image-active .item-header {
+  @extend .background-image;
+  height: 42vh;
+  margin-bottom: 1em;
+}
+
+.folder-image--half > .background-image-active .item-header:before {
+	@extend .background-image-darkened;
+}
+
+.folder-image--half > .background-image-active .folder-info .item-header {
+   max-width: none;
+   padding-left: 1.5em;
+   margin-top: 0;
+ }
+
+.folder-image--half > .background-image-active .item-header h2{
+	@include scut-center-transform;	
+  width: 100%;
+  max-width: 80%;
+  text-align: center;
+  color:#fff;
+  margin:0;
+  padding:0;
+  color:#fff; 
+  @include rem-fallback(font-size, 52);
+  letter-spacing: 2px;
+  @extend .text-shadow;
+  float:none;
+  display: block;
+}
+
+.folder-image--half .grid-items a:hover {
+   text-decoration: none;
+   color: #666;
+}
+
+.folder-image--half .folder-template__intro > .content-primary {
+  padding: 0;
+}
+
+/* @end */
+
+
+/* @group BACKGROUND IMAGE FULL */
+
+.folder-image--full .folder-template__intro > .content-primary {
+  padding: 0;
+}
+
+.folder-image--full .container-fluid {
+	max-width:none;
+	width: 100%	;
+	margin: auto;
+}
+
+.folder-image--full .folder-item {
+	height: 100%;
+	min-height: 85vh;
+}
+
+.folder-image--full .folder-info.folder-info--image-full {
+  margin: auto;
+  @include rem-fallback(max-width, 700);
+  border-bottom: 1px solid #565656;
+  margin-bottom: .5em;
+}
+
+.folder-image--full > .background-image-active .folder-info {
+  max-width: none;
+  border-bottom: 0;
+}
+
+.folder-image--full .folder-info > .item-header {
+  margin-bottom: 0;
+}
+
+.folder-image--full > .background-image-active .item-header {
+  @extend .background-image;
+  height: 90vh;
+  margin-bottom: 1em;
+}
+
+.folder-image--full > .background-image-active .item-header:before {
+	@extend .background-image-darkened;
+	height: 90vh;
+}
+
+.folder-image--full > .background-image-active .folder-info .item-header {
+   max-width: none;
+   padding-left: 1.5em;
+   margin-top: 0;
+ }
+
+.folder-image--full > .background-image-active .item-header h2{
+	@include scut-center-transform;	
+  width: 100%;
+  max-width: 80%;
+  text-align: center;
+  color:#fff;
+  margin:0;
+  padding:0;
+  color:#fff; 
+  @include rem-fallback(font-size, 52);
+  letter-spacing: 2px;
+  @extend .text-shadow;
+  float:none;
+  display: block;
+}
+
+.folder-image--full .caption.folder-intro.background-image-active {
+	padding-left: 0;
+	@include rem-fallback(max-width, 700);
+}
+
+.folder-image--full .grid-items a:hover {
+   text-decoration: none;
+   color: #666;
+}
+
+.folder-template--list .folder-list--items.folder-image--full {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 1em;
+}
+
+/* @end */
+
+/* @group FOLDER List */
+
+.folder-template--list .folder-template--list__intro > .content-primary {
+	margin: auto;
+	width: 100%;
+	max-width: 700px;
+	float: none;
+	@include breakpoint(md){
+	padding: 0;
+	}
+}
+
+.folder-template--list .folder-template--list__intro .info-bar {
+	padding-left: 0;
+}
+
+.folder-template--list .folder-template--list__intro .folder-image {
+   text-align: center;
+    @include breakpoint(md){
+        width: 100%
+    }
+}
+
+.folder-template--list .folder-template--list__intro .img-responsive {
+	width:100%;
+	margin: 0 auto 1em auto;
+	@extend .box-shadow-subtle;
+	@include breakpoint(md){
+		width: 100%;
+		margin: 1.5em auto 2em auto;
+	}
+}
+
+.folder-template--list .folder-template--list__intro .container-fluid > .item-content {
+    margin-bottom: 1.5em;
+    @include breakpoint(md){
+    	margin: 1em 0 1em 0;
+    }
+}
+
+.folder-template--list .folder-template--list__intro .title-box {
+    padding: 1em 0;
+}
+
+.folder-template--list .widgets-below-folder-list .widget-box > div{
+    @include breakpoint(xs){
+        padding:.5em 0em 0 0em;
+    }
+}
+
+.folder-template--list .folder-list--items {
+	padding: 1.5em 1.5em 1em 0em;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+
+.folder-template--list .widgets--sidebar.col-md-4.widgets-folder-list{
+    @include breakpoint(md){
+    width: 100%;
+    float:none;
+    padding: 0;
+    clear: both;
+    letter-spacing: .01rem;
+    @include rem-fallback(font-size, 22);
+    line-height: 1.5;
+    margin-bottom: 1.5em;
+    }
+}
+
+.folder-template--list .widgets--sidebar.col-md-4.widgets-folder-list > div {
+    @include breakpoint(md){
+    width: 100%;
+    float:none;
+    padding: 0;
+    clear: both;
+    @include rem-fallback(font-size, 20);
+    @include rem-fallback(line-height, 30);
+    }
+}
+
+.folder-template--list  > folder-template--list__intro .widgets--sidebar {
+	padding: 0;
+}
+
+.folder-item{
+    height:100%;
+}
+
+.folder-list--items li {
+	list-style:none;
+	@include rem-fallback(font-size, 26);
+	padding-bottom: .5em;
+	line-height:1.3;
+}
+.folder-nav-root{
+    background:#666;
+    font-size:1.2em;
+    padding:7px;
+}
+.folder-list--items li .mk-icon{
+    display:none;
+}
+.folder-nav-root a{
+    color:#fff;
+}
+.folder-list--items li.active {
+    font-weight:bold;
+    background: #333;
+}
+.folder-list--items li.active a{
+    color:#fff;
+}
+
+/* @end */
+
+/* @group FOLDER LIST HALF */
+
+.folder-template--list.folder-image--half .folder-list{
+	margin: auto;
+	width: 100%;
+	max-width: 700px;
+	float: none;
+	@include breakpoint(md){
+	padding: 0;
+	}
+}
+
+.folder-template--list.folder-image--half .folder-template__intro > .content-primary {
+  padding: 0;
+}
+
+/* @end */
+
+/* @group FOLDER LIST FULL */
+
+.folder-template--list.folder-image--full .folder-list{
+	margin: auto;
+	width: 100%;
+	max-width: 700px;
+	float: none;
+	@include breakpoint(md){
+	padding: 0;
+	}
+}
+
+
+
+/* @end */
+
+/* @group FOLDER-TEMPLATE--TABLE */
+
+.folder-template--table .container-fluid {
+	max-width:none;
+	width: 100%	;
+	margin: auto;
+}
+
+.folder-template--table .folder-item {
+	height: 100%;
+	min-height: 85vh;
+}
+
+.folder-template--table .folder-info.folder-table {
+  margin: auto;
+  @include rem-fallback(max-width, 700);
+  border-bottom: 1px solid #565656;
+  margin-bottom: .5em;
+}
+
+.folder-template--table > .background-image-active .folder-info {
+  max-width: none;
+  border-bottom: 0;
+}
+
+
+.folder-template--table .folder-info > .item-header {
+  margin-bottom: 0;
+  max-width: none;
+  padding-left: 1.5em;
+  margin-top: 0;
+  border-bottom: none;
+}
+
+.folder-template--table > .background-image-active .item-header {
+  @extend .background-image;
+  height: 15vh;
+  margin-bottom: 1em;
+}
+
+.folder-template--table > .background-image-active .item-header:before {
+	@extend .background-image-darkened;
+}
+
+
+.folder-template--table > .background-image-active .item-header h2{
+	@include scut-center-transform;	
+  width: 100%;
+  max-width: 80%;
+  text-align: center;
+  color:#fff;
+  margin:0;
+  padding:0;
+  color:#fff; 
+  @include rem-fallback(font-size, 52);
+  letter-spacing: 2px;
+  @extend .text-shadow;
+  float:none;
+  display: block;
+}
+
+.folder-template--table .folder-download {
+	font-size: 1.1em;
+	color: #444;
+}
+
+.folder-template--table tr {
+    @include breakpoint(xs){
+    border-bottom: 1px solid #ddd;
+    padding-bottom: .5em;
+    }
+}
+
+.folder-template--table tbody > tr > td     {
+    @include breakpoint(xs){
+    display: block;
+    float: left;
+    width: 100%;
+    border: none;
+    }
+}
+
+.folder-template--table thead {
+    @include breakpoint(xs){
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+    }
+}
+
+.folder-template--table .folder-list.folder-table{
+	float:none;
+	margin: 0;
+	padding-left: 0;
+	@include breakpoint(sm){
+		margin-left:1em;
+		margin-right:2.5em;
+		}
+}
+
+.folder-template--table .folder-list .topic-title{
+	font-weight:500;
+	@include rem-fallback(font-size, 20);
+	margin-top: .5em;
+}
+
+.folder-template--table .folder-list .folder-download{
+	text-align:center;
+	color:#666;
+}
+
+.folder-template--table .col-md-4{
+	width: 25%;
+}
+
+.folder-template--table .col-md-8{
+	width: 75%;
+}
+
+
+/* @end */
+
+/* @group GRID SIMPLE */
+
+/* @end */
+
+/* @group FOLDER-TEMPLATE--GRID */
+
+/*
+ .folder-template--grid .folder-template__intro.background-image-active .title-box .page-options	 {
+	float: none;
+	display: inline;
+}
+
+ .folder-template--grid .folder-template__intro.background-image-active .title-box .page-options .widgets-menu	 {
+	float: none;
+}
+
+ .folder-template--grid .folder-template__intro.background-image-active .title-box .edit-menu	 {
+	float: none;
+}*/
+
+/*.folder-template--grid .grid-items {
+	@include rem-fallback(max-width, 960);
+	margin: 1.5em auto 1em auto;
+	width: 100%;
+}
+
+ .folder-template--grid .grid-items li {
+	list-style:none;
+	float:left;
+	padding: 0 10px;
+	max-width:175px;
+	position:relative;
+	height: 235px;
+}*/
+
+/* @group Flexbox Grid */
+
+.folder-template--grid .grid-items {
+  ///////////////////////////////////////////////////////////////////////////////////
+  
+    $flex-box-gutter: 0.4em;
+    padding: 1em;
+    @include outer-container(992px);
+    @include clearfix;
+    @include display(flex);
+    @include justify-content(center);
+    @include align-items(stretch);
+    @include flex-wrap(wrap);
+    clear: both;
+    text-align: center;
+
+  .grid-item {
+    @include transition (all 0.2s ease-in-out);
+    @include flex(1 1 150px);
+    @include align-self(flex-start);
+    display: block;
+    margin: $flex-box-gutter;
+    list-style:none;
+    max-width: 175px;
+    }
+    
+    .grid-item:hover {
+      opacity: .7;
+    }
+    
+   .grid-item img {
+     width: 100%;
+     height: auto;
+   }
+     
+}
+
+/* @end */
+
+ .folder-template--grid .grid-items li .square-thumbnail {
+	@extend .box-shadow-subtle;
+}
+
+ .folder-template--grid .grid-items li .item-square-icon{
+	font-size:120px !important;
+	color:#565656;
+	background:#ddd;
+	border:#ddd;
+	@extend .box-shadow-subtle;
+	@include align-self(center);
+}
+
+ .folder-template--grid .grid-items li .item-square-icon .mk-icon{
+    top: -5px;
+}
+
+ .folder-template--grid .grid-items li .item-square-icon .mk-icon.mk-text{
+
+}
+
+ .folder-template--grid .grid-items li .item-square-icon .mk-icon.mk-narrative{
+
+}
+
+
+ .folder-template--grid .grid-items li .slide-type {
+	position:absolute;
+	top:135px;
+	background: #333;
+	color:#fff;
+	opacity: 0.8;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+    width:150px;
+    font-size:.8em;
+    text-align:center;
+}
+
+.folder-template--grid .grid-items li .slide-title {
+	padding-top:.5em;
+	padding-right:2em;
+}
+
+ .folder-template--grid .grid-items li .slide-title .tooltip-wrapper {
+ 	top: -4px;
+ 	text-transform: capitalize;
+ }
+
+.folder-template--grid > .folder-template__intro .col-md-8{
+	width:66%;
+}
+
+
+
+/* @end */
+
+/* @group FOLDER - MOSAIC */
+
+
+.folder-template--foldermosaic .grid-items {
+   @include outer-container(970px);
+}
+
+.folder-template--foldermosaic .grid-items img{
+  border: 3px solid #fff;
+}
+
+.justified-gallery > a:hover {
+   opacity: .7; 
+}
+
+
+/* @end */

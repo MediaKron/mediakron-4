@@ -1,0 +1,99 @@
+<div class="admin admin-general overlay overlay-half">
+
+    <header class="overlay-header">
+        <div class="header-inner">
+            <h2><span class="mk-icon mk-settings"></span> Settings</h2>
+            <nav>
+                <ul class="page-options">
+                    <li class="option-close">
+                        <button class="btn btn-sm btn-default close-button" aria-label="Close">
+          		<span class="mk-icon mk-close"></span>
+          		<span class="button-text"> Close</span> 
+          	</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="admin-site-settings" class="site-settings">
+        <div id="item-content">
+          <h3 class="title">Item Options</h3>
+          <form>
+          <fieldset class="">
+                <legend class="sr-only">Item Options Form</legend>
+              <div class="form-instructions">Show or hide page elements site-wide.</div>
+
+              <div class="toggle-author-date">
+                <span class="toggle-label" aria-hidden="true">Author/Date</span>
+                <div class='toggle'>
+                  <input name="author-date" type="hidden" value="0" />
+                  <input id="author-date-visibility" class="toggle-field" settings-attr  ="showauthor" name="author-date" type="checkbox" <% if(Mediakron.Settings.showauthor){ %>checked
+                    <% } %> value="show" />
+                    <div class='btn'>
+                      <label for='author-date-visibility'>
+      				         <div class='toggle-on btn btn-success btn-sm'> <i class='mk-icon mk-save'></i><span class="sr-only">Author/Date information is </span> Visible</div>
+      				         <div class='toggle-handle btn btn-default'></div>
+      				         <div class='toggle-off btn btn-warning active'><i class='mk-icon mk-close'></i> 
+      				         </div>
+      				       </label>
+                    </div>
+                    <a href="#help/author-date"><span class="mk-icon mk-help get-help"><span class="sr-only">Help: Description of showing/hiding author-date information </span></span></a>
+                </div>
+              </div>
+
+              <div class="toggle-view-in">
+                  <span class="toggle-label" aria-hidden="true"> View In </span>
+                  <div class='toggle'>
+                      <input name="view-in" type="hidden" value="0" />
+                      <input id="view-in-visibility" class="toggle-field" settings-attr="showview" name="view-in" type="checkbox" <% if(Mediakron.Settings.showview){ %>checked
+                      <% } %> value="show" />
+                          <div class='btn'>
+                              <label for='view-in-visibility'>
+	         <div class='toggle-on btn btn-success btn-sm'> <i class='mk-icon mk-save'></i><span class="sr-only">View In link is </span> Visible</div>
+	         <div class='toggle-handle btn btn-default'></div>
+	         <div class='toggle-off btn btn-warning active'><i class='mk-icon mk-close'></i> 
+	         </div>
+	       </label>
+                          </div>
+                          <a href="#help/view-in"><span class="mk-icon mk-help get-help"><span class="sr-only">Help: Information on "View In" links</span></span></a>
+                  </div>
+              </div>
+
+              <div>
+                  <span class="toggle-label" aria-hidden="true"><span class="mk-icon mk-download"></span> Download</span>
+                  <div class='toggle'>
+                      <input name="download" type="hidden" value="0" />
+                      <input id="download-visibility" class="toggle-field" name="download" settings-attr="download" type="checkbox" <% if(Mediakron.Settings.download){ %>checked
+                      <% } %> value="show" />
+                          <div class='btn'>
+                              <label for='download-visibility'>
+	         <div class='toggle-on btn btn-success btn-sm'> <i class='mk-icon mk-save'></i><span class="sr-only">Download option is </span> Visible</div>
+	         <div class='toggle-handle btn btn-default'></div>
+	         <div class='toggle-off btn btn-warning active'><i class='mk-icon mk-close'></i> 
+	         </div>
+	       </label>
+                          </div>
+                          <a href="#help/download"><span class="mk-icon mk-help get-help"><span class="sr-only">Help: Information on the download option </span></span></a>
+                  </div>
+              </div>
+          </fieldset>
+          </form>
+        </div>
+    <!-- End #item -->
+
+    <div class="save-bar">
+        <div class="save-bar-inner">
+            <button id="done-editing" type="submit" class="btn btn-success submit btn-sm"><span class="mk-icon mk-save"> </span> Save</button>
+            <button id="close-settings-context" class="btn btn-default btn-sm close-settings"><span class="mk-icon mk-close"> </span> Cancel</button>
+        </div>
+    </div>
+
+</div>
+<!-- End sidebar-->
+</div>
+
+</div>
+
+
+<div class="overlay-bg"></div>

@@ -1,0 +1,17 @@
+<tr class="item-row">
+<% if(thumbnails){ %>
+   	<td class="row-thumb" >
+   		<%= item.getSquareImage('small',thumbnails,thumbnails,false) %>
+   	</td>
+   <% } %>
+    <td class="icon actions title">
+    <div class="add-to-map-title">
+	    <h4><%- item.get('title') %></h4>
+		 <span class="type"><%= item.getNormalType() %></span>
+		 </div>
+		 <div class="add-to-map-actions">
+		   <span class="drag-to-map" title="Drag to map to add">  <span class="mki mki-marker"></span> <span class="drag-label"> Drag to Map </span> </span><% if(Mediakron.Status.Managing.get('type') !== 'image-map'){ %> or <label class="address-label sr-only">Add by address or place name</label>
+		  <input class="geocode" name="geocode" placeholder="Add by Address" /><button class="gogogeocode btn-primary">Add</button> <% } %>
+		 </div>
+	</td>
+</tr>

@@ -1,0 +1,53 @@
+<article class="template text-template in-template  text-template--basic <% if(caption.length){ %> caption-active<% } %> <% if(text.type == 'pdf'){ %>text-template--pdf<% } %><% if(text.type == 'image'){ %>text-template--image<% } %>">
+    
+    <div class="template content-primary clearfix">
+			
+		<header class="title-box">
+			<h3><a href="<%= uri %>" data-tooltip="View outside of narrative" class="tooltip--n"><%= title %></a></h3>	<span class="edit-menu edit-menu-<%= uri %>"></span>
+		  <% if(caption.length){ %><div class="caption"><%= caption %></div><% } %>
+		</header>  
+		
+		<div class="container-fluid">  	
+			<div class="item-content main-item-content">
+	    		<% if(text.type == 'pdf'){ %>
+		    		<div class="pdf-controls-top">
+		    		    <span class="pdfPrev"><span class="mk-icon mk-arrow-left"></span> Previous Page</span>
+		    		    <span class="pages"></span>
+		    		    <span class="pdfNext">Next Page <span class="mk-icon mk-arrow-right"></span></span>
+		    		</div>
+	    			<canvas id="viewer" style="border:1px solid black;"/>
+	    			<div class="pdf-controls-bottom">
+	    			    <span class="pdfPrev">Previous Page <span class="mk-icon mk-arrow-left"></span></span>
+                        <span class="pages"></span>
+	    			    <span class="pdfNext">Next Page <span class="mk-icon mk-arrow-right"></span></span>
+	    			</div>
+	            <% }else if(text.type == 'image'){ %>
+	                <div class="manuscript-image">
+	    				<% var themedImage = model.getImage('full',"img-responsive annotate-this"); %>
+	    				<div class="annotate"><%= themedImage %></div>
+	    			</div>
+		    		<% }else { %>
+	    			<div class="text-body body">
+	    			    
+	    			     <% if(text){ if(text.url){ %>
+    	    			     <% var themedImage = model.getImage('medium',"img-responsive"); %>
+    	    			     <div class="basic-text-image">
+    	    			        <%= themedImage %>
+    	    			     </div>
+	    			     <% }} %>
+
+	    				<%= body %>
+	    			</div>
+	    		<% } %>
+	    	</div>
+	    	<aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+	    </div>
+    </div>
+    
+  	<div class="widgets widgets--below widgets--below-<%= uri %>">
+  		<div class="widgets__description widget-box"></div>
+  		<div class="widgets__transcript widget-box"></div>
+  		<div class="widgets__details widget-box"></div>
+  	</div>	
+    
+</article>

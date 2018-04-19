@@ -1,0 +1,5 @@
+<div class="audio-container">
+<%= model.getAudio() %>
+</div>
+<div class="figure-caption"><% if(caption != '') { %><%= caption %><% } %></div>
+<span class="view-full-audio" uri="<%= model.get('uri') %>"><span class="mk-icon mk-info"></span> Item Details</span>

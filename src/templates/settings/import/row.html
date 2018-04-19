@@ -1,0 +1,55 @@
+<tr id="row-<%= id %>">
+<td class="save-remove"><div class="save-bar">
+	<button class="done-editing btn btn-success submit btn-sm" type="submit"><span class="mk-icon mk-save"> </span> Save</button></div></td>
+    <td class="item-thumbnail"><div class="bulk-thumbnail"></div></td>
+    <td>
+        <input name="title" class="title" placeholder="Title" />
+        <div class="file-progress-bar">
+			<div class="file-progress-text">Uploading</div>
+			<div class="progress progress-striped active">
+				<div class="progress-bar" style="width: 0%"></div>
+			</div>
+		</div>  
+        <div class="file-upload"></div>
+    </td>
+    <td class="choose-type">
+        <select class="item-type" name="item-type">
+            <option value="image">Image</option>
+            <option value="text">Text</option>
+        </select>
+    </td>
+    <td class="types hide">
+        <div class="audio hide type-specific field">
+            <label for="audio-type" class="audio-type-label">Audio Type</label>
+				<select class="audio-type" name="audio-type">
+				<option> Select an audio type </option>
+				<% _.each(Mediakron.Settings.AudioTypes,function(data,type){ %>
+					<option value="<%= type %>"><%= data.name %></option>
+				<% }); %>
+			</select>
+            <input name="audio" class="audio" placeholder="Audio Url" />
+        </div>
+        <div class="video hide type-specific field">
+            <label for="video-type" class="video-type-label">Video Type</label>
+				<select class="video-type" name="video-type">
+				<option> Select a video type </option>
+				<% _.each(Mediakron.Settings.VideoTypes,function(data,type){ %>
+					<option value="<%= type %>"><%= data.name %></option>
+				<% }); %>
+			</select>
+            <input name="video" class="video" placeholder="Video Url" />
+        </div>
+        <div class="text hide type-specific field">
+            <label for="text-type" class="text-type-label">Text Type</label>
+				<select class="text-type" name="text-type">
+				<option> Select a text type </option>
+				<% _.each(Mediakron.Settings.TextTypes,function(data,type){ %>
+					<option value="<%= type %>"><%= data.name %></option>
+				<% }); %>
+			</select>
+        </div>
+    </td>
+     <td class="save-remove"><div class="save-bar">
+		<button class="cancel-editing btn-no-style cancel tooltip--n" data-tooltip="Remove Item"><span class="mk-icon mk-remove"> </span><span class="sr-only"> Remove</span></button>
+    </div></td>
+</td> 

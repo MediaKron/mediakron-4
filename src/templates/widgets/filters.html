@@ -1,0 +1,95 @@
+<% if(!options.layersHidden){ if(options.layersHidden != 'hidden'){ %>
+    <div class="filter-layers <% if(!options.filtersHidden){ if(!options.filtersEnabled != 'hidden'){ %>general-filters-on<% } } %>">
+        <h3 class="sr-only">Layers</h3>
+        <ul class="filter-by-layers">
+            <% var layer, icon, color, opts; for(var l = 0; l < layers.length; l++ ){ layer = layers[l]; color = "#000"; icon = ""; opts = layer.get("options"); if(opts.color){ color = opts.color; } if(opts.icon){ icon = opts.icon; } layeruri = layer.get("uri"); %>
+                <li class="layerfilter" filter-attr="<%= layeruri %>" style="color:<%= color %>">
+                    <span class="<%= icon %>"></span>
+                    <%= layer.get("title") %>
+                </li>
+                <% } %>
+        </ul>
+    </div>
+    <% }} %>
+
+        <% if(overlay.type){ if(!options.layersHidden && (overlay.type == 'tilemap')){ if(options.layersHidden != 'hidden'){ %>
+            <div class="filter-overlays <% if(!options.filtersHidden){ if(!options.filtersEnabled != 'hidden'){ %>general-filters-on<% } } %>">
+                <h3 class="sr-only">Overlays</h3>
+                <ul class="filter-by-layers">
+                    <li class="overlay-filter">
+                        <div class="overlay-title">Map Transparency</div>
+                        <span class="overlay-0">0%</span>
+                        <div id="overlay-slider"></div><span class="overlay-100">100%</span>
+                    </li>
+                </ul>
+            </div>
+            <% }}} %>
+
+                <% if(!options.filtersHidden){ if(options.filtersHidden != 'hidden'){%>
+                    <div id="content-search" class="content-action clearfix">
+                        <span class="mk-icon mk-search"></span><label for="search-rows" class="sr-only">Search Titles</label>
+                        <input id="search-rows" class="search" placeholder="Search by Title" type="text" name="search-rows" /><span class="mk-icon mk-close empty-search"></span><span class="empty-map-search mk-icon mk-close hide"></span>
+                    </div>
+
+                    <div class="general-filters">
+                        <h3><span class="mk-icon mk-filter"></span> Filters</h3>
+                        <div class="general-filters-inner">
+                            <div id="folder-filter" class="content-action clearfix">
+                                <span class="mk-icon mk-folder"></span><label for="filter" class="sr-only">Filter by Folder</label>
+                                <div class="select">
+                                    <select id="filter-folder" multiple="" name="filter" data-placeholder="Filter by Folder">
+  				<% var folder; for(var f = 0; f < folders.length; f++ ){ if(folders[f]){ folder = folders[f]; %>
+					<option value="<%= folder.get("uri") %>"><%= folder.get("title") %></option>
+					<% } } %>
+				</select>
+                                </div>
+                            </div>
+                            <div id="tag-filter" class="content-action clearfix">
+                                <span class="mk-icon mk-tag"></span><label for="filter" class="sr-only">Filter by Tag</label>
+                                <div class="select">
+                                    <select id="filter-tag" multiple="" name="filter" data-placeholder="Filter by Tag">
+  				<% var tag; for(var f = 0; f < tags.length; f++ ){ tag = tags[f]; %>
+					<option value="<%= tag.get("uri") %>"><%= tag.get("title") %></option>
+					<% } %>
+				</select>
+                                </div>
+                            </div>
+                            <div id="type-filter" class="content-action clearfix">
+                                <span class="mk-icon mk-filter"></span><label for="filter" class="sr-only">Filter by Type</label>
+                                <div class="select">
+                                    <select id="filter-type" multiple="" name="filter" data-placeholder="Filter by Type">
+					<option value="image">Images</option>
+					<option value="file">Files</option>
+					<option value="story">Stories</option>
+					<option value="audio">Audio</option>
+					<option value="video">Videos</option>
+					<option value="folder">Folders</option>
+					<option value="slideshow">Slideshows</option>
+					<option value="map">Maps</option>
+					<option value="timeline">Timelines</option>
+					<option value="comparison">Comparisons</option>
+					<option value="progression">Progressions</option>
+					<option value="layers">Layers</option>
+					<option value="narrative">Narratives(deprecated)</option>
+					<option value="text">Text(deprecated)</option>
+				</select>
+                                </div>
+                            </div>
+
+                            <% var authors = [];  if(Mediakron.authors){ authors = Mediakron.authors; }else{ authors = Mediakron.authors = _.object(Mediakron.items.map(function(item){ var user = item.get("user"); return [user.id,user.name]; })); }; %>
+                                <div id="author-filter" class="content-action clearfix">
+                                    <span class="mk-icon mk-user"></span><label for="user" class="sr-only">Filter by Author</label>
+                                    <div class="select">
+                                        <select id="filter-user" name="user" class="filter" data-placeholder="Filter by Author">
+					   <option value=""></option>
+					<% _.each(authors,function(author,id){ %>
+					  <option value="<%= id %>"><%= author %></option>
+					<% }); %>
+				</select>
+                                    </div>
+                                </div>
+
+                        </div>
+
+                    </div>
+                    <% }} %>

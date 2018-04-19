@@ -1,0 +1,37 @@
+<% var type = item.getNormalType() %>
+<tr class="item-row narrative-row">
+	<td class="actions title post-title">
+		
+		<a class="btn-add" title="Add <%- item.get('title') %>">
+		
+		<div class="btn btn-primary">
+		   <span class="mk-icon mk-add"></span><span class="button-text">Add</span>  
+		</div>
+		<span class="sr-only"><%= item.getNormalType() %></span> <span class="title"><%= title %></span><span class="type">	<span title="<%=item.getNormalType() %>" class="type-icon mk-icon mk-<%= item.getNormalType() %>"></span> <%= item.getNormalType() %></span>
+		<div class="inner-row">	
+			
+			
+            <% if(Mediakron.Narrative.templates[type]){ %>
+			    <div class="narrative-options">
+				    <select name="narrative-type-<%= uri %>" class="narrative-template-select narrative-template-<%= uri %>">
+						<% _.each(Mediakron.Narrative.templates[type],function(template,id){ %>
+	                        <option value="<%= id %>"><%= template.name %></option>	                        
+						<% }); %>
+                    </select>
+                    
+                    <input class="hide-title hide-title-<%= uri %>" type="checkbox" name="<%= uri %>-title" value="hide"> 
+                    <label for="<%= uri %>-title" class="hide-title-label">Hide Title </label>
+                 
+					<input class="hide-sidebar hide-sidebar-<%= uri %>" type="checkbox" name="<%= uri %>-sidebar" value="hide">  
+					<label for="<%= uri %>-sidebar" class="hide-sidebar-label">Hide Widgets (below) </label>     
+				</div>                
+            <% } %>
+		</div>
+	</td>
+	<% if(thumbnails){ %>
+		<td class="row-thumb" >
+			<%= item.getSquareImage('small',thumbnails,thumbnails,false) %>
+		</td>
+	<% } %>
+	</a>
+</tr>

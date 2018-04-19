@@ -1,0 +1,275 @@
+<div class="story-add-bg"></div>
+<div class="story-add">
+    <div class="add-button btn btn-default"><span class="mk-icon mk-add"></span><span class="add-button-text"> Add </span></div>
+    <div class="add-items">
+        <div class="add-controls">
+        	<a class="story-add-image story-add-button mk-icon mk-image selected" data-type="image" title="Add Image"></a>
+        	<a class="story-add-file story-add-button mk-icon mk-file" data-type="file" title="Add File"></a>
+        	<a class="story-add-video story-add-button mk-icon mk-video" data-type="video" title="Add Video"></a>
+        	<a class="story-add-audio story-add-button mk-icon mk-audio" data-type="audio" title="Add Audio"></a>
+        	<a class="story-add-map story-add-button mki mki-marker" data-type="map" title="Add Map"></a>
+        	<a class="story-add-slideshow story-add-button mk-icon mk-slideshow" data-type="slideshow" title="Add Slideshow"></a>
+        	<a class="story-add-footnote story-add-button mk-icon mk-footnote" data-type="footnote"></a>
+        	<a class="close-story-button"><span class="mk-icon mk-close"></span></a>
+        	
+        </div>
+        <span class="story-add-arrow"></span>
+        
+        <div class="story-add-main">
+        
+          <div id="story-add-image" class="story-add-type">
+          <h3>Add Image</h3>
+          <ul class="accordion-tabs">   
+           <li class="tab-header-and-content">
+             <a href="javascript:void(0)" class="tab-link add-existing is-active" data-type="image">Select Existing Image</a>
+             <div class="tab-content add-existing-content">
+             <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="image" />
+               <div class="browse">
+                   <ul>
+                   </ul>
+               </div>
+             </div>
+          </li>
+          <li class="tab-header-and-content">
+            <a href="javascript:void(0)" class="add-new tab-link"  data-type="image">New Image </a>       
+            <div class="tab-content add-new-content hide">
+          	
+              <div class="add"> 
+              	<label for="image" class="sr-only">Image</label>
+              	<div class="form-instructions">
+              	Allowed formats: jpg, png, gif.
+              	</div>
+                <input type="text" class="story-add-field title-field" name="title" placeholder="Title" />
+              
+              <div class="edit-image clearfix">
+               
+                 <div class="thumbnail-container">
+                    <div class="edit-thumbnail">
+                    </div>
+                    <button id="remove-image" type="submit" class="btn submit btn-no-style">
+                      <span class="mk-icon mk-remove"> </span> 
+                      <span class="sr-only">Remove Image</span>
+                    </button>
+                  </div>
+                  
+                  <div class="upload-container">
+                    <button id="upload-image" type="submit" class="btn submit btn-primary"><span class="mk-icon mk-upload"> </span> Upload Image</button>
+                    <input id="image-file" type="file" placeholder="Image"  model-attr="image" />
+                    <div class="add-dropzone"><span class="mk-icon mk-add"> </span><br />Drop your image here</div>
+                    <div id="file-progress-bar">
+                      <div id="file-progress-text">Uploading...</div>
+                          <div class="progress progress-striped active">
+                          <div class="progress-bar" style="width: 0%"></div>
+                      </div>
+                    </div>               
+                  </div>
+                
+              </div>
+              
+              <button type="submit" class="btn btn-sm btn-primary save-add" data-type="image"><span class="mk-icon mk-save"> </span> Save New Image </button>
+          
+              </div>
+          </div>
+          </li>
+          </ul>
+       </div>
+             
+      <div id="story-add-video" class="story-add-type hide">
+        <h3>Add Video</h3>
+        <ul class="accordion-tabs">
+          
+          <li class="tab-header-and-content">
+            <a href="javascript:void(0)" class="tab-link add-existing is-active"  data-type="video">Select Existing Video</a>
+            <div class="tab-content add-existing-content">
+            <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="image" />
+            
+              <div class="browse">
+                  <ul>
+                  </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tab-header-and-content">
+            <a href="javascript:void(0)" class="is-active add-new tab-link"  data-type="video">New Video </a>       
+            <div class="tab-content add-new-content" >
+              <div class="add">
+                <input type="text" class="story-add-field title-field" name="title" placeholder="Title" />
+                <label for="video-type" class="video-type-label">Video Type <a class="help-link" href="<%= Mediakron.Settings.basepath %>help/video-types"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Video Types</span></span></a></label> <select class="form-control select-video" id="video-type" model-attr="video">
+                  <option>
+                      Select a Video Type
+                  </option><% _.each(Mediakron.Settings.VideoTypes,function(info,type){ %>
+    
+                  <option value="<%= info.id %>" <%= Mediakron.Selected(false,info.id) %>>
+                      <%= info.name %>
+                  </option><% }); %>
+                </select>
+                <input type="text" class="story-add-field file-url-field" name="url" placeholder="Url to item" />
+                <button type="submit" class="btn btn-sm btn-primary save-add" data-type="video"><span class="mk-icon mk-edit"> </span> Save New Video </button>
+              </div>
+              <div class="video-timecodes-story">
+                <h4>Video Clips</h4>
+                  <div class="form-instructions">You can create a video clip by adding timecodes to start and stop the video particular times. To do this, you'll need to create the video first by saving this Story and then clicking the + button in the right corner of the menu bar.
+                  </div>
+               `</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+            
+      <div id="story-add-file" class="story-add-type hide">
+        <h3>Add File</h3>          
+          <ul class="accordion-tabs">
+            
+         <li class="tab-header-and-content">
+           <a href="javascript:void(0)" class="tab-link add-existing is-active " data-type="file">Select Existing File</a>
+           <div class="tab-content add-existing-content">
+           <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="image" />
+           
+             <div class="browse">
+                 <ul>
+                 </ul>
+             </div>
+           </div>
+         </li>
+         <li class="tab-header-and-content">
+            <a href="javascript:void(0)" class="add-new tab-link" data-type="file">New File </a>       
+            <div class="tab-content add-new-content" >
+              <div class="add">
+              <label for="image" class="sr-only">File</label>
+            	<div class="form-instructions">
+            	Allowed formats: pdf, jpg, png, gif.
+            	</div>
+              <input type="text" class="story-add-field title-field" name="title" placeholder="Title" />
+              <div class="edit-image clearfix">
+               
+                 <div class="thumbnail-container">
+                    <button id="remove-image" type="submit" class="btn submit btn-no-style">
+                      <span class="mk-icon mk-remove"> </span> 
+                      <span class="sr-only">Remove File</span>
+                    </button>
+                  </div>
+                  
+                  <div class="upload-container">
+                    <button id="upload-file" type="submit" class="btn submit btn-primary"><span class="mk-icon mk-upload"> </span> Upload file</button>
+                    <div class="add-dropzone"><span class="mk-icon mk-add" > </span><br />Drop your file here</div>
+                    <input id="file-file" class="file" type="file" placeholder="Image"  model-attr="image" />
+                    <div id="file-progress-bar">
+                      <div id="file-progress-text">Uploading...</div>
+                          <div class="progress progress-striped active">
+                          <div class="progress-bar" style="width: 0%"></div>
+                      </div>
+                    </div>               
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary save-add" data-type="file"><span class="mk-icon mk-edit"> </span> Save New File </button>
+            </div>
+            </div>
+         </li>        
+         </ul> 
+      </div>
+      
+      <div id="story-add-audio" class="story-add-type hide">
+        <h3>Add Audio</h3>
+         <ul class="accordion-tabs">
+            <li class="tab-header-and-content">
+             <a href="javascript:void(0)" class="tab-link add-existing is-active" data-type="audio">Select Existing Audio</a>
+             <div class="tab-content add-existing-content">
+             <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="image" />
+             
+               <div class="browse">
+                   <ul>
+                   </ul>
+               </div>
+             </div>
+           </li>   
+           <li class="tab-header-and-content">
+               <a href="javascript:void(0)" class="tab-link add-new" data-type="audio">New Audio </a>       
+               <div class="tab-content add-new-content" >
+           
+                <div class="add">
+                    <input type="text" class="story-add-field title-field" name="title" placeholder="Title" />
+                    <label for="audio-type" class="audio-type-label">Audio Type <a class="help-link" href="<%= Mediakron.Settings.basepath %>help/audio-types"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Audio Types</span></span></a>								
+                    </label>
+                    <select id="audio-type" name="audio-type" role="listbox" aria-labelledby="audio-type">
+           			<option> Select an audio type </option>
+           			<% _.each(Mediakron.Settings.AudioTypes,function(data,type){ %>
+           				<option value="<%= type %>" <%= Mediakron.Selected(false,type) %>><%= data.name %></option>
+           			<% }); %>
+           		</select>
+           		<input type="text" class="story-add-field file-url-field" name="url" placeholder="Url to item" />
+                    <button type="submit" class="btn btn-sm btn-primary save-add" data-type="audio"><span class="mk-icon mk-edit"> </span> Save New Audio </button>
+                </div>
+              </div>
+             </li>
+                
+         </ul> 
+      </div>
+            
+      
+      <div id="story-add-map" class="story-add-type hide">
+        <h3>Add Map</h3>
+          <div class="tab-content add-existing-content">
+          <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="map" />
+          
+            <div class="browse">
+                <ul>
+                </ul>
+            </div>
+          </div>
+      </div>
+      
+        <div id="story-add-slideshow" class="story-add-type hide">
+            <h3>Add Slideshow</h3>
+            <div class="tab-content add-existing-content">
+                <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="slideshow" />
+        
+                <div class="browse">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+      
+        </div>
+        <div id="story-add-comparison" class="story-add-type hide">
+            <h3>Add Comparison</h3>
+            <div class="tab-content add-existing-content">
+                <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="comparison" />
+        
+                <div class="browse">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+      
+        </div>
+        <div id="story-add-timeline" class="story-add-type hide">
+            <h3>Add Timeline</h3>
+            <div class="tab-content add-existing-content">
+                <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="timeline" />
+        
+                <div class="browse">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+      
+        </div>
+        <div id="story-add-progression" class="story-add-type hide">
+            <h3>Add Progression</h3>
+            <div class="tab-content add-existing-content">
+                <input type="text" placeholder="Filter by title" class="filter-browse"  data-type="progression" />
+        
+                <div class="browse">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+      
+        </div>
+    </div> 
+</div>

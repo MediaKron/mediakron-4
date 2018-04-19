@@ -1,0 +1,47 @@
+<% var item, themedImage, children = relationships.children, count = children.length, i = 0;  %>
+
+<div class="template tag-template tag-template--list <% if(caption.length){ %>caption-active<% } %>">
+    <div id="fl-<%= uri %>" class="tag-template__intro tag-item<% if(image){ %>background-image-active<% } %>" >
+      <div class="content-primary panel-layout">	
+      	<div class="tag-info" <% if(image){ %> style="background: url(<%= Mediakron.Image.style(image,"full") %>)" <% } %>>
+	       
+	     <header class="item-header">
+	       <div class="item-nav">
+	         <nav class="mk-breadcrumb" role="breadcrumbs"><a href="tags">Tags</a></nav>
+	      </div>
+	     	  <h2><%= title %></h2>
+	     	   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+	     	<% if(caption.length){ %><div class="caption"><%= caption %></div><% } %>
+	     </header>
+	     
+	    </div>
+	    <div class="container-fluid">	
+        	<div class="item-content main-item-content">
+        		<div class="item-content-inner">
+		        <div class="tag-list">
+        			<ul class="tag-list--items">
+                		<% _.each(relationships.children,function(child){ if(child){ childItem = Mediakron.getItemFromURI(child); %>
+                		    <% if(childItem){ %>
+                			    <li class="tag-list--items-<%= childItem.get('uri') %>"><%= childItem.getLink() %></li>
+                			<% } %>
+                		<% } }); %>
+                	</ul>	
+        		</div>
+			</div>
+        	</div>
+        	<aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+       </div>
+       </div> 
+       	
+        <div class="widgets widgets--below widgets--below-<%= uri %>">
+        	<div class="widgets__description widget-box"></div>
+        </div>	
+        	
+        </div>
+
+  <div class="tag-navigation">
+      <a class="tag-next" href="<%= uri %>"></a>
+      <a class="tag-previous" href="<%= uri %>"></a> 
+  </div>
+
+</div>

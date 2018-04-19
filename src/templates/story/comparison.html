@@ -1,0 +1,35 @@
+<% var children = model.getRelationship('children'); %>
+<div class="item-content container-fluid items-comparison-<%= model.get('uri') %>">
+    <div class="row">
+	    <% if(children.length > 0 && children[0].uri){ %> 
+	        <div class="comparison-item item-0 item col-sm-6  cmp-<%= children[0].uri %>">
+				<div class="contents">
+				</div>
+			</div>
+	    <% }else{ %>
+		    <div class="comparison-item item-0 item col-sm-6 add-comparison-item">
+    		    <div class="contents">
+    		        <a class="btn btn-primary" id="add-new-content"  href="settings/manage/select/<%- uri %>"><span class="mk-icon mk-add-bold"></span> Add Item </a>
+    		    </div>
+            </div>
+            <div class="comparison-item item-1 item col-sm-6 add-comparison-item">
+                <div class="contents">
+                    <a class="btn btn-primary disabled" id="add-new-content"  href="settings/manage/select/<%- uri %>"><span class="mk-icon mk-add-bold"></span> Add Item </a>
+    	        </div>
+		    </div>
+	    <% } %>
+		<% if(children.length > 1 && children[1].uri){ %>
+			<div class="comparison-item item-1 item col-sm-6 cmp-<%= children[1].uri %>">
+				<div class="contents">
+				</div>
+			</div>
+		<% }else if(children.length == 1) { %>
+			<div class="comparison-item item-1 item col-sm-6 add-comparison-item">
+			    <div class="contents">
+                    <a class="btn btn-primary" id="add-new-content"  href="settings/manage/select/<%- uri %>"><span class="mk-icon mk-add-bold"></span> Add Item </a>
+			    </div>
+			</div>
+		<% } %>
+	</div>
+</div>
+<div class="figure-caption"><% if(caption != '') { %><%= caption %><% } %></div>

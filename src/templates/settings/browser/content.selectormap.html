@@ -1,0 +1,105 @@
+<!-- ===== Add To Pane - Folders and Slideshows  ===== -->
+<% var search = Mediakron.ContentBrowser.filter.search, filter = Mediakron.ContentBrowser.filter.filter, sort = Mediakron.ContentBrowser.filter.sort, filterAuthor = Mediakron.ContentBrowser.filter.user, isSelected = function(type, filter){ if(filter){ if(filter.indexOf(type) > -1){ return 'selected'; } } return ''; }, isChecked = function(){ if(filterAuthor == Mediakron.user.get("id")){ return 'checked'; } else{ return ''; } }; %>
+<div class="add-to-pane add-to-map overlay overlay-sidebar">
+
+  <header>
+    <div class="header-inner">
+      <h2><span class="mk-icon mk-add"></span> Add to Map</h2>
+      <nav>
+        <ul class="page-options"> 
+          <li class="option-edit">
+          	<a class="edit-button btn btn-sm btn-default" type="button" href="/settings/manage/edit/<%= Mediakron.controller.getPath() %>" aria-label="Edit" title="Edit Timeline">
+          		<span class="toggles mk-icon mk-edit"></span><span class="button-text"> Edit</span>
+          	</a>
+            <li class="option-organize">	  	
+            	<a class="btn btn-sm btn-default" href="/settings/manage/organize/<%= Mediakron.controller.getPath() %>" aria-label="Organize %>" title="Organize %>">
+            		<span class="toggles mk-icon mk-organize"></span>
+            		<span class="button-text"> Organize</span>
+            	</a>
+            </li>
+          	<li class="option-close">	  	
+          		<button class="btn btn-sm btn-default close-button" aria-label="Close">
+            		<span class="mk-icon mk-close"></span>
+            		<span class="button-text"> Close</span> 
+            	</button>
+    
+          	</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div id="admin-content-map" class="browser-selector">
+    <h3 class="title"><%= item.get('title') %></h3>
+    
+    <% if(!Mediakron.user.isGuest() && !Mediakron.user.isMember()){ %> 
+    <label class="label-switch" aria-hidden=true >
+        <input id="mycontent" type="checkbox" name="mycontent" value="<%= Mediakron.user.get("id") %>" <%= isChecked() %> >
+      <div class="checkbox"></div>
+     </label>
+     <label class="mycontent-label" for="mycontent">My Content Only  </label>
+    <% } %>
+    
+    	<div id="content-manage">
+       	<div id="content-filters" class="clearfix">
+       		<div id="content-search" class="content-action clearfix">
+       			<span class="mk-icon mk-search"></span>
+       			<input id="search-rows" class="search" placeholder="Search" />
+       		</div>
+       		<div id="content-filter" class="content-action clearfix">
+       			<span class="mk-icon mk-filter"></span>
+       			<div class="select">
+       				<select id="filter" multiple="" name="filter" data-placeholder="Filter">
+       					<% if(Mediakron.typeCanSelect('image',item)){ %> <option value="image" <%= isSelected("image", filter) %>>Images</option> <% } %>
+       					<% if(Mediakron.typeCanSelect('story',item)){ %> <option value="story" <%= isSelected("story", filter) %>>Story</option><% } %>
+       					<% if(Mediakron.typeCanSelect('file',item)){ %> <option value="file" <%= isSelected("file", filter) %>>Files</option><% } %>
+       					<% if(Mediakron.typeCanSelect('audio',item)){ %> <option value="audio" <%= isSelected("audio", filter) %>>Audio</option><% } %>
+       					<% if(Mediakron.typeCanSelect('video',item)){ %> <option value="video" <%= isSelected("video", filter) %>>Videos</option><% } %>
+       					<% if(Mediakron.typeCanSelect('folder',item)){ %> <option value="folder" <%= isSelected("folder", filter) %>>Folders</option><% } %>
+       					<% if(Mediakron.typeCanSelect('slideshow',item)){ %> <option value="slideshow" <%= isSelected("slideshow", filter) %>>Slideshows</option><% } %>
+       					<% if(Mediakron.typeCanSelect('narrative',item)){ %> <option value="narrative" <%= isSelected("narrative", filter) %>>Narratives</option><% } %>
+       					<% if(Mediakron.typeCanSelect('map',item)){ %> <option value="map" <%= isSelected("map", filter) %>>Maps</option><% } %>
+       					<% if(Mediakron.typeCanSelect('timeline',item)){ %> <option value="timeline" <%= isSelected("timeline", filter) %>>Timelines</option><% } %>
+       					<% if(Mediakron.typeCanSelect('comparison',item)){ %> <option value="comparison" <%= isSelected("comparison", filter) %>>Comparisons</option><% } %>
+       					<% if(Mediakron.typeCanSelect('progression',item)){ %> <option value="progression" <%= isSelected("progression", filter) %>>Progressions</option><% } %>
+       				</select>
+       			</div>
+       		</div>
+       		
+       		<div id="content-sort" class="content-action clearfix">
+       			<span class="mk-icon mk-sort"></span>
+       			<div class="select">
+       				<select id="sort" name="sort">
+       					<option value="changed_desc" <%= isSelected("changed_desc", sort) %>>Updated: New-Old</option>
+						<option value="changed_asc" <%= isSelected("changed_asc", sort) %>>Updated: Old-New</option>
+						<option value="title_asc" <%= isSelected("title_asc", sort) %>>Title: A-Z</option>
+						<option value="title_desc" <%= isSelected("title_desc", sort) %>>Title: Z-A</option>
+						<option value="created_asc" <%= isSelected("created_asc", sort) %>>Created: New-Old</option>
+						<option value="created_desc" <%= isSelected("created_desc", sort) %>>Created: Old-New</option>
+       				</select>
+       			</div>
+       		</div>
+       	</div>
+       </div>
+    
+    	<table id="admin-content">
+    		<tbody id="admin-content-body">
+    			<!-- Empty Will Be replaced by body content -->
+    		</tbody>
+    	</table>  
+    </div>
+  
+  </div>
+  
+  <div class="save-bar">
+    <div class="save-bar-inner">
+    	<% if(item){ %>
+    		  <a href="<%= item.get('uri') %>" type="submit" class="btn btn-default btn-sm close-settings"><span class="mk-icon mk-close"> </span> Close</a>
+    		  
+    	   <% } %>
+    </div>
+  </div>
+
+</div>
+
+<div class="fade-screen-sidebar"></div>

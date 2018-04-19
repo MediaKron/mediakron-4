@@ -1,0 +1,13 @@
+<div id="mediakron-render-function-compare">
+	<div id = "mediakron-compare-link">Compare</div>
+	<div id="compare-body" class="clearfix">
+    	<div id="compare-content">
+		<% if(items.length){ %>
+        	<% items.forEach(function(item){ %>
+				<% var image = Drupal.Mediakron.compare.getImage(item); %>
+				<%= image %>
+			<% }); %>
+		<% } %>
+		</div> 
+	</div>
+</div>

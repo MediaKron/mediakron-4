@@ -1,0 +1,59 @@
+<div class="admin admin-general overlay overlay-half">
+
+    <header class="overlay-header">
+        <div class="header-inner">
+            <h2>
+                <span class="mk-icon mk-settings"></span> Settings</h2>
+            <nav>
+                <ul class="page-options">
+                    <li class="option-close">
+                        <button class="btn btn-sm btn-default close-button" aria-label="Close">
+                            <span class="mk-icon mk-close"></span>
+                            <span class="button-text"> Close</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="admin-site-settings" class="site-settings">
+        <div id="item-content">
+            <h3 class="title">Privacy</h3>
+            <form>
+                <fieldset class="access-options radio-options" role="radio-group">
+                    <legend class="sr-only">Privacy</legend>
+                    <div class="form-instructions">Settings for whether your site is visible to the public or requires a password to access.</div>
+                    <legend class="sr-only">Access Options</legend>
+                    <div class="field">
+                        <input type="radio" name="access" value="false" settings-attr="public" class="settings-radio settings-field" id="access-private"
+                        <% if(!Mediakron.Settings.public){ %>checked<% } %> >
+                        <label for="access-private"> Private (log-in required)</label>
+                    </div>
+                    <div class="field">
+                        <input type="radio" name="access" value="true" settings-attr="public" class="settings-radio settings-field" id="access-public"
+                            <% if(Mediakron.Settings.public){ %>checked<% } %>>
+                        <label for="access-public">Public (no log-in required to view site)</label>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <!-- End #item -->
+
+        <div class="save-bar">
+            <div class="save-bar-inner">
+                <button id="done-editing" type="submit" class="btn btn-success submit btn-sm">
+                    <span class="mk-icon mk-save"> </span> Save</button>
+                <button id="close-settings-context" class="btn btn-default btn-sm close-settings">
+                    <span class="mk-icon mk-close"> </span> Cancel</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- End sidebar-->
+</div>
+
+</div>
+
+
+<div class="overlay-bg"></div>

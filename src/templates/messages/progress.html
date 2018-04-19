@@ -1,0 +1,20 @@
+<div class="alert alert-<%= type %> alert-location-<%= layout %><% if(dismiss){ %> alert-dismissible<% } %>" role="alert">
+    <% if(dismiss){ %>
+        <button type="button" class="close" data-dismiss="alert">
+            <span class="mk-icon mk-close"></span><span class="button-text sr-only">Close</span>
+        </button>
+        <% } %>
+            <span class="mk-icon mk-<%= type %>"></span>
+
+            <span class="message-text"><%= text %></span>
+
+            <div id="message-progressbar"></div>
+
+            <% if(confirm === true){ %>
+                <div class="confirm-buttons">
+                    <button type="submit" class="confirm btn btn-primary">OK</button>
+                    <button type="submit" class="cancel btn btn-default">Cancel</button>
+                </div>
+                <% } %>
+</div>
+<div class="alert-overlay <%= type %>-overlay"></div>

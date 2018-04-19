@@ -1,0 +1,144 @@
+/* @group SCUTT STRIP UNIT */
+
+@function scut-strip-unit (
+  $num
+) {
+
+  @return $num / ($num * 0 + 1);
+
+}
+
+/* @end */
+
+/* @group SCUT REM */
+
+// Depends on `scut-strip-unit`.
+
+$scut-rem-base: 16 !default;
+
+@function scut-rem (
+  $pixels
+) {
+
+  $rem-vals: ();
+  @each $val in $pixels {
+    $val-in-rems: scut-strip-unit($val) / $scut-rem-base * 1rem;
+    $rem-vals: append($rem-vals, $val-in-rems);
+  }
+
+  @if length($rem-vals) == 1 {
+    // return a single value instead of a list,
+    // so it can be used in calculations
+    @return nth($rem-vals, 1);
+  }
+  @else {
+    @return $rem-vals;
+  }
+
+}
+
+/* @end */
+
+/* @group SCUT REM FALLBACK */
+
+// Depends on scut-rem and scut-strip-unit
+
+@mixin scut-rem-fallback (
+  $pixels,
+  $property: font-size
+) {
+
+  $px-vals: null;
+  @each $val in $pixels {
+    $val-in-px: scut-strip-unit($val) * 1px;
+    $px-vals: append($px-vals, $val-in-px);
+  }
+  $rem-vals: scut-rem($pixels);
+
+  #{$property}: $px-vals;
+  #{$property}: $rem-vals;
+
+}
+
+/* @group MAX-WIDTH REM FALLBACK */
+
+// Depends on scut-rem and scut-strip-unit
+
+@mixin scut-rem-fallback (
+  $pixels,
+  $property: font-size
+) {
+
+  $px-vals: null;
+  @each $val in $pixels {
+    $val-in-px: scut-strip-unit($val) * 1px;
+    $px-vals: append($px-vals, $val-in-px);
+  }
+  $rem-vals: scut-rem($pixels);
+
+  #{$property}: $px-vals;
+  #{$property}: $rem-vals;
+
+}
+
+/* @end */
+
+/* @group MAX-WIDTH REM FALLBACK */
+
+// Depends on scut-rem and scut-strip-unit
+
+@mixin rem-fallback (
+  $property, $pixels
+) {
+
+  $px-vals: null;
+  @each $val in $pixels {
+    $val-in-px: scut-strip-unit($val) * 1px;
+    $px-vals: append($px-vals, $val-in-px);
+  }
+  $rem-vals: scut-rem($pixels);
+
+  #{$property}: $px-vals;
+  #{$property}: $rem-vals;
+
+}
+
+/* @end */
+
+/* @group PX-RM */
+
+/* Rem fallback mixin by Karl Merkli */
+ 
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@mixin rem-fallback-plus($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+  $remValues: '';
+ 
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $pxValues: #{$pxValues + $value*16}px;
+ 
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+ 
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $remValues: #{$remValues + $value}rem;
+ 
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  }
+ 
+  #{$property}: $pxValues;
+  #{$property}: $remValues;
+}
+
+/* @end */
+

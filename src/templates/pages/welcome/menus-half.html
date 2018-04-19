@@ -1,0 +1,31 @@
+<div class="home-template home-template--menus-half home-menus home-image--half home-menus--grid <% if(Mediakron.Settings.HomePage.image){ %>image-active<% } %>">
+
+	<div class="home-template__inner">
+  
+  	<div class="home-template__info" style="background-image: url(<%= Mediakron.Image.style(Mediakron.Settings.HomePage.image,'double') %>); background-size: 100%;">
+  			
+  			<div class="title-box-home">
+  				<div class="homepage-title">
+  				    <h1><%= Mediakron.Settings.name%></h1>
+  				</div>	
+  				<div class="home-description">
+  					<h2 class="subtitle"><%= Mediakron.Settings.subtitle%></h2>
+  				</div>
+  			</div>
+  	</div> 
+  			
+ 	</div>
+ 	
+ 	<ul id="homepage-menu" class="item-card-large flex-grid">
+ 		<div class="loading"><img src="<%= Mediakron.Settings.cssURL %>/img/mk-loading6.gif" /> loading menus...</div>
+ 	</ul>
+ 	
+ 	<% if(description){ %>
+ 	<div class="description"><%= description %></div>
+ 	<% } %>
+ 	
+	<% if(Mediakron.Access.check('can change site settings')){ %><a id="change-homepage" class="btn btn-default tooltip--w"  href="<%= basepath %>settings/homepage" data-tooltip="Change Homepage Settings"><span class="mk-icon mk-edit"></span><span class="button-text"> Edit Homepage</span></a><% } %>
+	
+</div>
+<div id="homepage-content">
+</div>

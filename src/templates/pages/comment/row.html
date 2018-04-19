@@ -1,0 +1,17 @@
+<div class="comment-display">
+    <div class="comment-content">
+        <p>
+            <span class="mk-icon mk-comment"></span>
+            <% if(comment){ %>
+                <% var length = 300; var commentTrimmed = comment.substring(0,length);  %>
+                <%= commentTrimmed %>
+            <% } %>
+            <div class="comment-details">
+                By
+                <%= model.getUsername() %> on
+                    <%= Mediakron.formatUnixDateStamp(created, 'small') %>
+                <a href="<%= model.get('uri') %>">View in Context</a>
+            </div>
+        </p>
+    </div>
+</div>

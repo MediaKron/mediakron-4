@@ -1,0 +1,170 @@
+/* @group Accordion */
+
+.edit-form .js-accordion {
+  margin-top: 2em;
+}
+
+.accordion-container {
+  border-top: 2px solid #565656;
+  padding: .5em 0;
+  margin: 0;
+}
+
+h3.accordion-container-title {
+  width: auto;
+  padding-top: 0;
+  @include rem-fallback(font-size, 28);
+  width: 100%;
+  text-align: left;
+  display: flex;
+  &:after {
+     border-top: 2px solid #565656;
+     content: '';
+     display: flex;
+     flex: 1;
+     top:16px;
+     position: relative;
+     @include rem-fallback(margin-left, 10);
+   }
+  
+}
+
+h3.accordion-container-title .mk-icon {
+  @include rem-fallback(font-size, 24);
+  top: 1px;
+  margin-right: .3em;
+  display: none;
+}
+
+/* http://cssdeck.com/labs/pure-css3-expand-collapse */
+
+
+/* title closed */
+.mk_accordion__header[aria-expanded="false"]:before {
+ /* content: "+ ";*/
+  transform-origin:25% 50%;
+  border: 8px solid transparent;
+  border-width: 8px 8px;	
+  border-left-color: #565656;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  text-align: center;
+  content: '';
+  color: #AAAFAB;
+  transition:all .3s ease; 
+  position: relative;
+  @include rem-fallback(margin-top, 10);
+  @include rem-fallback(margin-left, 0);
+}
+
+/* title opened */
+.mk_accordion__header[aria-expanded="true"]:before {
+  /*content: "- ";*/
+  transform-origin:25% 50%;
+  border: 8px solid transparent;
+  border-width: 8px 8px;	
+  border-left-color: #000;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  text-align: center;
+  content: '';
+  color: #AAAFAB;
+  transition:all .1s ease; 
+  position: relative;
+  @include rem-fallback(margin-top, 10);
+  @include rem-fallback(margin-left, 0);
+  transform: rotate(90deg);
+}
+
+
+h3.accordion-container-title .mk-appearance {
+ right: -3px;
+}
+
+.mk_accordion__panel[aria-hidden=true] {
+  display: none;
+}
+
+.mk_accordion__panel[aria-hidden=false] {
+  border-top: none;
+  padding: .5em 0 .5em 1em;
+}
+
+.js-accordion__panel.last {
+  margin-bottom: 6em !important;
+}
+
+.js-accordion__header {
+  display: block;
+  background: none;
+  border: none;
+  @include rem-fallback(font-size, 24);
+  width: 100%;
+  text-align: left;
+  display: flex;
+  @include rem-fallback(margin-left, -5);
+  
+/*  &:after {
+     border-top: 2px solid #565656;
+     content: '';
+     display: flex;
+     flex: 1;
+     top:18px;
+     position: relative;
+     @include rem-fallback(margin-left, 10);
+   }*/
+}
+
+.js-accordion__header:focus {
+  outline: none;
+  font-weight: bold;
+}
+
+.js-accordion__header:focus:after {
+  border-top: 3px solid #565656;
+}
+
+.mk_accordion__title {
+  @extend .visuallyhidden;
+}
+
+.mk_accordion__panel.accordion-link {
+  cursor: pointer;
+  padding-top: 0;
+  display: inline-block;
+  width: auto;
+  @include rem-fallback(margin-left, -10);
+}
+
+.accordion-container .mk-accordion__panel .accordion-link /* nested in container  */ {
+    @include rem-fallback(font-size, 22);
+}
+
+.mk_accordion__panel {
+ display: block;
+ overflow: hidden;
+ opacity: 1;
+ transition: visibility 0s ease, max-height 1s ease, opacity 1s ease ;
+ max-height: 100em;
+ /* magic number for max-height = enough height */
+ visibility: visible;
+ transition-delay: 0s;
+ margin: 0;
+ padding: 0;
+}
+
+/* This is the hidden state */
+[aria-hidden=true].mk_accordion__panel {
+ display: block;
+ max-height: 0;
+ opacity: 0;
+ visibility: hidden;
+ transition-delay: 0, 0s, 0s;
+ transition: none  ;
+ margin: 0;
+ padding: 0;
+}
+
+/* @end */

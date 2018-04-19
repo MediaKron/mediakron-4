@@ -1,0 +1,22 @@
+<% var type = item.get("video_type"), url = item.get("video");; %>
+<div id="video-edit">
+	<div class="video-edit-fields">
+		<label> Video Type </label>
+		<select class="form-select required" name="field_video_type[und]" id="edit-field-video-type-und">
+			<option value="youtube" <% if(type == "youtube"){ %> selected <% } %>>YouTube</option>
+			<option value="vimeo" <% if(type == "vimeo"){ %> selected <% } %>>Vimeo</option>
+			<option value="real" <% if(type == "real"){ %> selected <% } %>>BC Real Media Server</option>
+			<option value="flash" <% if(type == "flash"){ %> selected <% } %>>BC Flash Streaming Server</option>
+			<option value="mp4" <% if(type == "mp4"){ %> selected <% } %>>MPEG 4 Video</option>
+			<option value="m4v" <% if(type == "m4v"){ %> selected <% } %>>M4V Video</option>
+			<option value="flv" <% if(type == "flv"){ %> selected <% } %>>Flash Video</option>
+		</select>
+		<label> Video URL </label>
+		<input type="textfield" name="video-url" id="edit-video-url-field"  value="<%= url %>" />
+	</div>
+
+	<div class="edit-actions clearfix">
+		<a id="video-save" class="inline-save inline-action clearfix"> Save </a>
+		<a id="video-cancel" class="inline-cancel inline-action clearfix"> Cancel </a>
+	</div>
+</div>

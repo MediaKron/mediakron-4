@@ -1,0 +1,23 @@
+<header>
+  <div class="tour-item-title"> 
+    <h3><%= title %> </h3> 
+    <span class="display-options">
+        <span class="tooltip--s" data-tooltip="View"><span class="mk-icon mk-view"></span><span class="sr-only">View in Text</span></span>
+        <a href="<%= Mediakron.controller.getContextPath() %><%= model.get('uri') %>" uri="<%= model.get('uri') %>" class="tooltip--s open-overlay btn-no-style" data-tooltip="Open"><span class="mk-icon mk-new-window"></span><span class="sr-only"> Open</span></a>
+    </span>    
+  </div>
+    <div class="caption"><% if(caption != '') { %><%= caption %><% } %></div>
+</header>
+
+  <% if(time){ %> 
+  <div class="item-date"><a href="<%= Mediakron.controller.getContextPath() %><%= model.get('uri') %>" uri="<%= model.get('uri') %>" class="open-overlay tooltip--s" data-tooltip="Open"><%= time %> <span class="mk-icon  mk-new-window"></span><span class="sr-only"> Open</span></a></div>
+  <% } %>
+
+<% if(description){ %>
+<aside class="description">
+	<div class="description__inner">
+		<h3 class="sr-only">Description</h3> 
+		<%= description %>
+	</div>
+</aside>
+<% } %>

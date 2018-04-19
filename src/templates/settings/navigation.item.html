@@ -1,0 +1,17 @@
+<% if(!title) var title = uri; %>
+<li <% if(type == 'external'){ %>uri="<%= uri %>" type="external"<% }else{ %>uri="<%= uri %>" type="internal"<% } %> title="<%- title %>" class="nav-item">
+	<span class="btn btn-primary"><span class="mk-icon mk-re-order"></span></span>
+	<span class="nav-item-main">
+	
+		<span class="title"><%= title %><span class="type"><%= type %></span></span>
+		
+	</span>
+	<span class="remove-menu">
+		<span class="mk-icon mk-remove" title="Remove Item"></span><span class="sr-only">Remove Item</span>
+	</span>
+	<% if(type == 'external'){ %>
+		<span class="edit-menu">
+			<span class="mk-icon mk-edit"></span>
+		</span>
+	<% } %>
+</li>

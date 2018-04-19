@@ -1,0 +1,196 @@
+
+    <div class="story-add-bg"></div>
+
+    <div class="story-add">
+        <div class="add-button btn btn-default">
+            <span class="mk-icon mk-add"></span>
+            <span class="add-button-text">Add</span>
+        </div>
+
+        <div class="add-items">
+            <div class="add-controls">
+                <a class="story-add-image story-add-button mk-icon mk-image selected" data-type="image" title="Add Image"></a> <a class="story-add-file story-add-button mk-icon mk-file" data-type="file" title="Add File"></a> <a class="story-add-video story-add-button mk-icon mk-video" data-type="video" title="Add Video"></a> <a class="story-add-audio story-add-button mk-icon mk-audio" data-type="audio" title="Add Audio"></a> <a class="story-add-map story-add-button mki mki-marker" data-type="map" title="Add Map"></a> <a class="story-add-slideshow story-add-button mk-icon mk-slideshow" data-type="slideshow" title="Add Slideshow"></a> <a class="story-add-footnote story-add-button mk-icon mk-footnote" data-type="footnote"></a> <a class="close-story-button"><span class="mk-icon mk-close"></span></a>
+            </div>
+
+            <div class="story-add-main">
+                <div id="story-add-image" class="story-add-type">
+                    <h3>Add Image</h3>
+
+                    <ul class="accordion-tabs">
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="tab-link add-existing is-active" data-type="image">Select Existing Image</a>
+
+                            <div class="tab-content add-existing-content">
+                                <input type="text" placeholder="Filter by title" class="filter-browse" data-type="image">
+
+                                <div class="browse"><ul></ul></div>
+                            </div>
+                        </li>
+
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="add-new tab-link" data-type="image">New Image</a>
+
+                            <div class="tab-content add-new-content hide">
+                               <!-- insert add view -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="story-add-video" class="story-add-type hide">
+                    <h3>Add Video</h3>
+
+                    <ul class="accordion-tabs">
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="tab-link add-existing is-active" data-type="video">Select Existing Video</a>
+
+                            <div class="tab-content add-existing-content">
+                                <input type="text" placeholder="Filter by title" class="filter-browse" data-type="image">
+
+                                <div class="browse"><ul></ul></div>
+                            </div>
+                        </li>
+
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="is-active add-new tab-link" data-type="video">New Video</a>
+
+                            <div class="tab-content add-new-content">
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="story-add-file" class="story-add-type hide">
+                    <h3>Add File</h3>
+
+                    <ul class="accordion-tabs">
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="tab-link add-existing is-active " data-type="file">Select Existing File</a>
+
+                            <div class="tab-content add-existing-content">
+                                <input type="text" placeholder="Filter by title" class="filter-browse" data-type="image">
+
+                                <div class="browse"><ul></ul></div>
+                            </div>
+                        </li>
+
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="add-new tab-link" data-type="file">New File</a>
+
+                            <div class="tab-content add-new-content">
+                                <!-- Insert File -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="story-add-audio" class="story-add-type hide">
+                    <h3>Add Audio</h3>
+
+                    <ul class="accordion-tabs">
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="tab-link add-existing is-active" data-type="audio">Select Existing Audio</a>
+
+                            <div class="tab-content add-existing-content">
+                                <input type="text" placeholder="Filter by title" class="filter-browse" data-type="image">
+
+                                <div class="browse"><ul></ul></div>
+                            </div>
+                        </li>
+
+                        <li class="tab-header-and-content">
+                            <a href="javascript:void(0)" class="tab-link add-new" data-type="audio">New Audio</a>
+
+                            <div class="tab-content add-new-content">
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="story-add-map" class="story-add-type hide">
+                    <h3>Add Map</h3>
+                    
+                  <ul class="accordion-tabs">
+                      <li class="tab-header-and-content">
+                          <a href="javascript:void(0)" class="tab-link add-existing is-active" data-type="audio">Select Existing Map</a>
+
+                          <div class="tab-content add-existing-content">
+                              <input type="text" placeholder="Filter by title" class="filter-browse" data-type="image">
+
+                              <div class="browse"><ul></ul></div>
+                          </div>
+                      </li>
+
+                      <li class="tab-header-and-content">
+                          <a href="javascript:void(0)" class="tab-link add-new" data-type="audio">New Map</a>
+
+                          <div class="tab-content  add-new-content">
+                          <p>If you want to add a new Map, you'll need to first create it outside the Story and then add it by selecting from the "Select Existing Map" list. </p>
+                          <p>To do this, click "Save and Exit" at the bottom of this Story and then click the add button (<span class="mk-icon mk-add"></span>) in the top right corner of the page). </p>                   
+                              
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+
+
+              <div id="story-add-slideshow" class="story-add-type hide">
+                  <h3>Add Slideshow</h3>
+                    
+                  <ul class="accordion-tabs">
+                      <li class="tab-header-and-content">
+                          <a href="javascript:void(0)" class="tab-link add-existing is-active" data-type="audio">Select Existing Slideshow</a>
+
+                          <div class="tab-content add-existing-content">
+                              <input type="text" placeholder="Filter by title" class="filter-browse" data-type="image">
+
+                              <div class="browse"><ul></ul></div>
+                          </div>
+                      </li>
+
+                      <li class="tab-header-and-content">
+                          <a href="javascript:void(0)" class="tab-link add-new" data-type="audio">New Slideshow</a>
+
+                          <div class="tab-content  add-new-content">
+                          <p>If you want to add new Slideshow, you'll need to first create it outside the Story and then add it by selecting from the "Select Existing Slideshow" list. </p>
+                          <p>To do this, click "Save and Exit" at the bottom of this Story and then click the add button (<span class="mk-icon mk-add"></span>) in the top right corner of the page). </p>                              
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+
+                <div id="story-add-comparison" class="story-add-type hide">
+                    <h3>Add Comparison</h3>
+
+                    <div class="tab-content add-existing-content">
+                        <input type="text" placeholder="Filter by title" class="filter-browse" data-type="comparison">
+
+                        <div class="browse"><ul></ul></div>
+                    </div>
+                </div>
+
+                <div id="story-add-timeline" class="story-add-type hide">
+                    <h3>Add Timeline</h3>
+
+                    <div class="tab-content add-existing-content">
+                        <input type="text" placeholder="Filter by title" class="filter-browse" data-type="timeline">
+
+                        <div class="browse"><ul></ul></div>
+                    </div>
+                </div>
+
+                <div id="story-add-progression" class="story-add-type hide">
+                    <h3>Add Progression</h3>
+
+                    <div class="tab-content add-existing-content">
+                        <input type="text" placeholder="Filter by title" class="filter-browse" data-type="progression">
+
+                        <div class="browse"><ul></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,69 @@
+    @import "_variables.scss";
+    @import "_extend.scss";
+    
+    /* Mixins */
+    @import "mixins/bourbon/app/assets/stylesheets/bourbon.scss";
+    @import "mixins/neat/app/assets/stylesheets/neat.scss";
+    @import "mixins/animate/animate.scss";
+    @import "mixins/_blur.scss";
+    @import "mixins/_breakpoints.scss";
+    @import "mixins/_center-transform.scss";
+    @import "mixins/_hovertip.scss";
+    @import "mixins/_rem.scss";
+    @import "mixins/_triangle.scss";
+    @import "mixins/_truncate.scss";
+    
+    /* Vendor */
+    @import "_chosen.scss";
+    
+    /* Base	  */
+    @import "_base.scss";
+    @import "_buttons.scss";
+    @import "_admin.scss";
+    @import "_import.scss";    
+    @import "_nav.scss";
+    @import "_branding.scss";
+    @import "_messages.scss";
+    @import "_layout.scss";
+    @import "_header-item.scss";
+    @import "_tags.scss";
+    @import "_tabs.scss";
+    @import "_accordion.scss";
+    @import "_wysiwyg.scss";
+    @import "_overlay.scss";
+    @import "_annotations-comments.scss";
+    @import "_fonts.scss";
+ 
+    /* Content */
+    @import "_file.scss";
+    @import "_image.scss";
+    @import "_video.scss";
+    @import "_audio.scss";
+    @import "_story.scss";
+    @import "_maps.scss";
+    @import "_leaflet.edit.scss";
+    @import "_slideshow.scss";
+    @import "_folder.scss";
+    @import "_timeline.scss";
+    @import "_comparison.scss";
+    @import "_progression.scss";
+    @import "_narrative.scss";
+    @import "_viewer.scss";
+    @import "_tourpane.scss";
+    @import "_text.scss"; /* deprecated */
+    
+    /* Misc */
+    @import "_tourist.scss";
+    @import "_contentbrowser.scss";
+    @import "_search.scss";
+    @import "_home.scss";
+    @import "_widgets.scss";
+    @import "_filters.scss";
+    @import "_edit.scss";
+    @import "_lti.scss";
+    @import "_icons.scss";
+    @import "_fullscreen.scss";
+    @import "_help.scss";
+    @import "_mobile.scss";
+    @import "_print.scss";
+    @import "_accessibleplugins.scss";

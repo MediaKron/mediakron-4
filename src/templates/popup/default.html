@@ -1,0 +1,9 @@
+<div class="popup">
+	<div class="popup-header">
+		<%= item.get('title') %>
+	</div>
+	<div class="popup-body clearfix">
+		<%= item.getSquareImage('small',50,50) %>
+		<p><%= item.get('description').replace(/(<([^>]+)>)/ig,"").substr(0,250) %></p>
+	</div>
+</div>

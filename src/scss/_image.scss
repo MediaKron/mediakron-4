@@ -1,0 +1,401 @@
+/* @group IMAGE CONTAINERS */
+
+.image-template {
+	position: relative;
+}
+
+	.image-template .content-primary {
+    	margin-bottom: 2em;
+    	@include breakpoint(md){
+/*    	margin-bottom: 0;*/
+    	}
+	}
+
+		.image-template .item-content {
+			height: 100%;
+/*			@include display(flex);
+			@include align-items(center);
+			@include justify-content(center);*/
+		}
+	
+			.annotate{
+			position: relative;
+			width:auto;
+			margin: 0 1.5em;
+			overflow: hidden;
+			@include breakpoint(md){ 
+				height:85%;
+				padding: .5em 0 0 0;
+			    }
+			}
+			
+			.item-overlay.opened .annotate{
+  		@include breakpoint(md){ 
+  			height:95%;
+		    }
+			}
+			
+			
+			.image-template.caption-active .annotate {
+				@include breakpoint(md){ 
+				height: 70%;
+				}
+			}
+			
+			.item-overlay.opened .image-template.caption-active .annotate {
+				@include breakpoint(md){ 
+				height: 85%;
+				}
+			}
+			
+		
+				.annotated-frame{
+					/*overflow:hidden;*/
+					position: relative;
+					margin:0 auto;
+				}
+				
+					.annotated{
+						position: absolute;
+						cursor: zoom-in;
+					}
+					
+.image-template .title-box {
+    border-bottom: 1px solid #ddd;
+}
+
+/* @end */
+
+
+.annotate img{
+    @include breakpoint(md){ 
+    height:  100%;
+    margin: 0 auto;
+    }
+}
+.comp .annotate{
+/*    height:100%;*/
+}
+.annotated-move{ 
+	position:absolute;
+	left: -999em;
+}
+
+.notes{
+	width:100%;
+	height:100%;
+	display:none;
+}
+.note-area{
+	width:100%;
+	height:100%;
+}
+.editing .note-area{
+	cursor:move;
+}
+.note{
+	border: 2px solid rgba(255, 255, 255, .9);
+	border-radius: 2px;
+	box-shadow: 0 0 4px rgba(0, 0, 0, .75), 0 0 3px rgba(0, 0, 0, .5) inset;
+	position:absolute;
+}
+.editing .note{
+	border:1px solid #255E8F;
+}
+.note-text{
+	background: #eee;
+	width: 100%;
+	padding:5px;
+	font-size:11px;
+    overflow: hidden;
+    word-wrap: break-word;
+    color: #000;
+    display: none;
+    max-width: 350px;
+    padding: 3px 7px;
+    position: absolute;
+    min-width: 150px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	border-left: 2px solid rgba(0, 0, 0, 0.3);
+	border-right: 2px solid rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+	margin-top: 3px;
+	border-radius: 2px;
+}
+.note-text[contentEditable="true"]{
+	background: #ffffd9;
+	width: 100%;
+	padding:5px;
+	font-size:11px;
+    overflow: hidden;
+    word-wrap: break-word;
+    color: #000;
+    display: none;
+    max-width: 350px;
+    padding: 3px 7px;
+    position: absolute;
+    min-width: 150px;
+}
+.editing .note-text {
+	display:true;
+	font-size:11px;
+	
+}
+.note-remove{
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-left: 1px solid #999;
+	border-bottom: 1px solid #999;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-bottom-left-radius: 4px;
+	background: #fff;
+	color: #000;
+	font-size: 10px;
+	padding: 4px;
+	display:none;
+}
+.editing .note-remove{
+	display:block;
+}
+
+#enable-annotation {
+	background: #fff;
+	background-color: #fff;
+	color: #444;
+	border: 1px solid #ccc;
+	@extend .box-shadow-subtle;
+	
+}
+
+.annotated #done-editing,
+.annotated #add-annotation,
+.annotated #cancel-editing,
+#enable-annotation{
+	position:absolute;
+	right:5px;
+	bottom:10px;
+	z-index: 998;
+}
+
+.annotated #done-editing{
+	right:202px;
+}
+
+.annotated #add-annotation{
+	right:115px;
+}
+
+#add-annotation .mk-add {
+    top: 3px;
+    right: -3px;
+}
+
+.annotated #cancel-editing.close {
+	padding: 6px 12px 6px 10px;	
+	opacity: 1;
+	font-weight: normal;
+	line-height: 1.4;
+	text-shadow: none;
+}
+
+.annotate .zoom{
+	background: rgba(150,150,150,.5);
+	border: 5px solid rgba(50,50,50,.5);
+	height: 130px;
+	width: 150px;
+	position: absolute;
+	display: none;
+	top: 0px;
+	right: 0px;
+	z-index:101;
+}
+
+.annotate .zoom-min{
+    padding:0;
+    z-index: 1000;
+    border:none;
+    background: none;
+    top:50px;
+}
+
+.annotate .zoom-bar{
+	position:absolute;
+	bottom:0;
+	width:100%;
+	background: rgba(30,30,30,.5);
+	height:20px;
+}
+.annotate .zoom-min .zoom-bar{
+    padding:0;
+    top:0;
+    height:100%;
+    background: none;
+}
+.annotate .zoomout{
+	left:0;
+	position: absolute;
+	background:#000;
+	color:#fff;
+	padding:0 5px;
+	cursor: pointer;
+}
+.annotate .zoom-min .zoomout{
+    right:auto;
+    left:0;
+    bottom:0;
+}
+.annotate .zoomin{
+	right:0;
+	position: absolute;
+	background:#000;
+	color:#fff;
+	padding:0 5px;
+	cursor: pointer;
+}
+.annotate .zoom-min .zoomin{
+    left:0;
+    top:0;
+    right:auto;
+}
+.annotate .zoom-wrapper{
+	position: absolute;
+	bottom:0;
+	height:20px;
+	width:90px;
+	margin-left:25px;
+	margin-right:20px;
+}
+
+.annotate .zoom-min  .zoom-wrapper{
+    display:none;
+}
+
+.annotate .zoom-control{
+	height:20px;
+	width:5px;
+	bottom:0;
+	left:0;
+	position:absolute;
+	cursor: pointer;
+	cursor: -webkit-grab; 
+	cursor: -moz-grab;
+	background: #fff;
+	background-image: url('../img/draghandle.png');
+	background-repeat: no-repeat;
+	background-position:50%;
+}
+
+.zoomover{
+    background: #000;
+    opacity: .6;
+    position: absolute;
+    display: block;
+}
+.zoomover-top{
+    top:0;
+    left:0;
+    width:100%;
+    height:0;
+}
+.zoomover-left{
+    top:0;
+    left:0;
+    width:0;
+    height:100%;
+}
+
+.zoomover-bottom{
+    bottom:0;
+    left:0;
+    width:100%;
+    height:0;
+}
+.zoomover-right{
+    top:0;
+    right:0;
+    width:0;
+    height:100%;
+}
+.zoomover-window{
+    background: transparent;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+/* @group IMAGE-TEMPLATE--SIDEBAR */
+
+.image-template--sidebar .content-primary{
+	height: 100%;
+}
+/* @end */
+
+/* @end */
+
+/* @group IMAGE IN NARRATIVE TEMPLATE - DEFAULT */
+
+.image-template.in-narrative .content-primary{
+		height: auto;
+}
+
+.image-template.in-narrative .annotate img {
+		height: auto;
+		max-height: none;
+		max-width: 1000px;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group IMAGE IN  NARRATIVE TEMPLATE - NARROW */
+
+.image-template.image-template--narrow .annotate img {
+	width: 100%;
+	height: auto;
+	max-height: none;
+	max-width: 700px;
+}
+
+
+/* @end */
+
+/* @group IMAGE IN  NARRATIVE TEMPLATE - FULL */
+
+.in-narrative.image-template--full .annotate{
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+.image-template.image-template--full .annotate img {
+	width: 100%;
+	height: auto;
+	max-height: none;
+	max-width: 100%;
+}
+
+
+.image-template.image-template--full .annotated-frame {
+	width: 100%;
+	padding: 0;
+}
+
+/* @group IMAGE IN COMPARISON */
+
+
+.comparison-item--image .annotate {
+	margin-left: 3%;	
+}
+
+
+/* @end */
+
+/* @end */

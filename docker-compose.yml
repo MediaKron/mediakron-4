@@ -1,0 +1,66 @@
+nginx:
+    build: ./docker/nginx/
+    ports:
+        - 80:80
+        - 443:443
+    links:
+        - php
+    volumes_from:
+        - app
+
+redis:
+  image: redis:alpine
+  expose:
+    - "6379"
+
+php:
+    build: ./docker/php/
+    expose:
+        - 9000
+    environment:
+        DB_HOST: db
+        DB_NAME: ${DB_DATABASE}
+        DB_USER: ${DB_USERNAME}
+        DB_PASS: ${DB_PASSWORD}
+        PHP_ENV: ${APP_ENV}
+    links:
+        - db
+    volumes_from:
+        - app
+
+app:
+    image: php:7.1-fpm
+    volumes:
+        - ./public:/var/www/public
+        - ./:/app
+    command: "true"
+
+db:
+    image: mysql:5.6
+    ports:
+        - 3306:3306
+    volumes:
+        - ./db:/docker-entrypoint-initdb.d
+        - ./db:/db-imports
+    volumes_from:
+        - data
+    environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+data:
+    image: mysql:5.6
+    volumes:
+        - ./docker/data:/var/lib/mysql
+    command: "true"
+
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - 8080:80
+    links:
+        - db
+    environment:
+        PMA_HOST: db

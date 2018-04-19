@@ -1,0 +1,301 @@
+/* @group HOMEPAGE INTRO */
+
+#main-help .popover-title {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.home-help .popover {
+	display: none;
+}
+
+.home-help #content-tasks {
+	width: 200px;
+	top: 30px;
+	left: 8px;
+}
+
+#content-tasks .arrow {
+	left: 26px;
+}
+
+#menu-tasks {
+	width: 200px;
+	top: 2px;
+	left: 266px;
+}
+
+#menu-tasks .arrow {
+	top: 18px;
+}
+
+#admin-tasks {
+	top: 1px;
+	right: 138px;
+	left: auto;
+}
+
+#admin-tasks .arrow{
+	top: 14px;
+}
+
+#edit-homepage {
+	top: 130px;
+	right: 20px;
+	left: auto;
+}
+
+#edit-homepage .arrow{
+	left: 216px;
+}
+
+#main-help .intro-text {
+	margin: auto;
+	text-align: center;
+	margin: auto;
+	width: 100%;
+	max-width: 700px;
+	font-size: 24px;
+	padding-top: 1.2em;
+}
+
+#main-help h3 {
+	padding-bottom: .1em;
+	margin-bottom:.5em;
+	clear: left;
+	margin-top: .2em;
+}
+
+.tryme {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#main-help .btn-primary {
+	background: #222;
+	font-size: 18px;
+	color: #fff;
+	text-decoration: none;
+	margin-top: 1em;
+	font-weight: normal;
+}
+
+#main-help .btn-primary:hover {
+	background: #666;
+	transition: background-color 0.4s ease;
+	color: #fff;
+}
+
+.intro-video {
+   background: #eee;
+   border-top: 1px solid #666;
+   width: 100%;
+   padding: 4em 0;
+}
+
+.intro-video-inner {
+    width: 992px;
+    border-radius: 3px;
+    margin: auto;
+    border: 1px solid #666;
+}
+
+
+
+/* @end */
+
+/* @group HOME-TEMPLATE--FULL */
+
+#main-help {
+    max-width: 993px;
+    margin: auto;
+}
+
+.sections {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+}
+
+
+.help-homepage-section {
+	padding: 1em 1.5em 1em 1.5em;
+    @include flex-basis(15em);
+    @include flex-grow(1);
+    background: #fafafa;
+    /*border: 1px solid #ccc;*/
+    border-radius: 3px;
+    margin: 0 .5em 1em .5em;
+}
+
+.help-homepage-section 
+
+.help-homepage-section a {
+	color: #222;
+	font-weight: bold;
+	text-decoration: underline;
+	width: 100%;
+	text-align: center;
+}
+
+
+.help-homepage-section h3 {
+    overflow: hidden;
+    text-align: left;
+}
+.help-homepage-section h3:before,
+.help-homepage-section h3:after {
+    background-color: #333;
+    content: "";
+    display: inline-block;
+    height: 4px;
+    position: relative;
+    vertical-align: middle;
+}
+
+#main-help  #change-homepage  {
+    top: 1em;
+    right: 2em;
+}
+
+#main-help-inner {
+	padding: 3em 2em 3em 2em;
+}
+
+.home-help--full {
+	position: relative;
+}
+
+.home-help--full .home-help__info {
+	width: 100%;
+	max-width: 100%;
+	text-align: center;
+	padding-top: 3em;
+	padding-bottom: 3em;
+}
+
+.home-help--full .home-help__image{
+	max-width: 700px;
+	padding: 1em;
+	width: 90%;
+	background: #fff;
+	margin: auto;
+		@include breakpoint(sm){
+		width: 100%;
+		}
+}
+
+.home-help--full .home-help__image img{
+	width: 100%;
+	height: auto;
+}
+
+.home-help--full .subtitle {
+	color: #fff;
+	margin:auto;
+	max-width: 800px;
+	width: 100%;
+	@include rem-fallback(font-size, 28);
+	line-height: 1.7;
+	letter-spacing: 1px;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+	@include breakpoint(md){
+	    @include rem-fallback(font-size, 48);
+	    }
+}
+
+.home-help--full .home-description  {
+    padding:1em 1em;
+    font-size:1.5em;
+    line-height: 1.6em;
+    color:#fff;
+  	padding: .75em 0;
+    max-width:90%;
+    margin:auto;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);	
+    @include rem-fallback(font-size, 20);
+    line-height: 1;
+    letter-spacing: 1px;
+    @include breakpoint(md){
+        @include rem-fallback(font-size, 24);
+        }
+}
+
+
+/* @end */
+
+/* @group HELP POPUP */
+
+.overlay header.help-title {
+  background: #666;
+}
+
+.help-caption {
+  font-weight: bold;
+  @include rem-fallback(font-size, 20);
+  font-style: italic;
+}
+
+#help-context h2 {
+  padding-left: 0;
+  @include rem-fallback(font-size, 24);
+}
+
+#help-context a {
+    text-decoration: underline;
+}
+
+#help-context #main-help {
+    margin: 0;
+    background: #fff;
+    width: 100%;
+    max-width: none;
+} 
+
+#help-context #main-help h3 {
+  border: none;
+}
+
+#help-context .help-title .mk-help {
+	@include rem-fallback(font-size, 22);
+	padding-left: .3em;
+}	
+
+#help-context .help-inner {
+    @include rem-fallback(font-size, 20);
+    margin: auto;
+    padding: 1em 1.5em 1.5em 1.5em;
+    @include breakpoint(md){
+        @include rem-fallback(max-width, 700);
+        }
+}
+
+#help-context img {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto;
+  @extend .box-shadow-subtle;
+  margin: 1em 0 1.5em 0;
+}
+
+
+.get-help{
+	cursor: pointer;
+	@include rem-fallback(font-size, 18);
+	color: #444;
+	top: 1px;
+}
+
+#add-content-pane .get-help {
+	@include rem-fallback(font-size, 15);
+}
+
+
+.close-help {
+	float:right;
+	cursor: pointer;
+}
+
+
+/* @end */

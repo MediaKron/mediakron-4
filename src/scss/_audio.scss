@@ -1,0 +1,215 @@
+/* Audio */
+
+.audio-template {
+	height: 100%;
+}
+
+	.audio-template .content-primary{
+		background-attachment: fixed;
+		padding-bottom: 2em;
+	}
+	
+		.audio-template .main-item-content{
+			height:auto;
+		}
+		
+.audio-template .item-header {
+  border-bottom: 1px solid #565656;
+}
+
+.audio-template .background-image-active .item-content--inner {
+	@include scut-center-transform(y);
+	top: 40%;
+	width: 100%;
+}
+
+.audio-template.vertical-layout .item-content--inner {
+    margin-top: 2em;
+}
+
+.audio-template .col-md-8 .item-content--inner { /* Sidebar Active */
+	width: 100%;
+	position: static;
+}
+
+.audio-template .item-content--inner {
+    margin: 0 1.5em;
+    @include breakpoint(md){ 
+    margin: 0;
+    }
+}
+
+.audio-template .audio-container, .comparison-item--audio .audio-container{
+    padding:.5em;
+    background:#ddd;
+    border:1px solid #565656;
+  	border-radius: 4px;
+  	/*box-shadow: 0 1px 7px rgba(0,0,0,0.2);*/
+  	position:relative;
+  	z-index:100;
+  	width:100%;
+  	@include breakpoint(md){ 
+	    margin: 1em auto 0 auto;
+	    @include rem-fallback(max-width, 712);
+	    }
+}
+
+.audio-template .mejs-container {
+  width: auto !important;
+}
+
+.annotation-sidebar .mejs-time-rail {
+  width:125px !important;
+}
+
+.audio-template .mejs-container, .comparison-item--audio .mejs-container {
+	background: #ccc;
+	border: 1px solid #000;
+	border-radius: 4px;
+	width:100% !important;
+}
+
+.audio-template .content-below {
+	padding-top: 0;
+}
+
+.external-audio-url a{
+	display: block;
+	padding: 0 .5em .5em;
+	background:#ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	width: 100%;
+	@include rem-fallback(max-width, 712);
+	margin: auto;
+	font-weight: bold;
+	@include rem-fallback(font-size, 24);
+}
+
+.external-audio-url a:hover {
+	background:#555;
+	color: #fff;
+	text-decoration: none;
+}
+
+.external-audio-url .mk-play {
+  @include rem-fallback(font-size, 42);
+  @include rem-fallback(top, 10);
+}
+
+.archiveorg-audio-container {
+  @include rem-fallback(height, 30);
+}
+
+/* @group AUDIO-TEMPLATE--FULL */
+
+.audio-template--full .content-primary.background-image-active{
+	@extend .background-image;
+}
+
+.audio-template--full .content-primary.background-image-active:before{
+	@extend .background-image-darkened;
+}
+
+.audio-template--full .content-primary {
+	position: relative;
+}
+
+.audio-template .content-primary.background-image-active .item-header {
+  border-bottom: none;
+}
+
+.item-overlay.opened .audio-template .content-primary.background-image-active .item-header {
+  display: none; /* Hide in overlays*/
+}
+
+.audio-template .content-primary.background-image-active .caption {
+	@include rem-fallback(font-size,20);
+	color: #fff;
+	position: relative; /* to keep from getting covered by background:before */
+}
+
+.audio-template .content-primary.background-image-active h2, {
+  color: #fff;
+  position: relative; /* to keep from getting covered by background:before */
+}
+
+/* Google Drive Audio  */
+
+
+.google-audio-container {
+  height: 55px;
+  background: #D1D1D1;
+}
+
+
+/* @end */
+
+/* @group AUDIO-TEMPLATE--SIMPLE */
+
+.audio-template--simple .audio-image{
+	margin: 0 auto 1.5em auto;
+	@include rem-fallback(max-width, 700);
+	width: 100%;
+}
+
+.audio-template--simple .audio-image img{
+    @extend .box-shadow-subtle;
+}
+
+.audio-template--simple .col-md-8, .audio-template--simple .col-md-4 {
+	width:100%;
+	margin:0 auto 0em auto;
+	float:none;
+	@include rem-fallback(max-width, 700);
+	padding-left:0;
+	padding-right:0;
+}
+
+ .audio-template--simple .widgets--sidebar.col-md-4{
+     padding: 1.5em 0 1.5em 0;
+ }
+
+/* @end */
+
+/* @group AUDIO IN COMPARISON */
+
+.comparison-item--audio {
+	min-height: 300px;
+}
+
+.comparison-item--audio .audio-container{
+	max-width: 90%;
+}
+
+.comparison-item--audio.background-image-active .audio-container{
+	@include scut-center-transform;
+	max-width: 90%;
+	top: 45%;
+}
+
+
+/* @end */
+
+/* @group AUDIO IN STORIES */
+
+.story-template .audio-container{
+    padding:1em;
+    background:#D1D1D1;
+    border:1px solid #565656;
+  	border-radius: 4px;
+  	/*box-shadow: 0 1px 7px rgba(0,0,0,0.2);*/
+  	position:relative;
+  	z-index:100;
+  	width:100%;
+  	@include breakpoint(md){ 
+	    margin: 1em auto 0 auto;
+	    @include rem-fallback(max-width, 712);
+	    }
+}
+
+
+/* @end */
+
+/* @end */

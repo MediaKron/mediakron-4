@@ -1,0 +1,17 @@
+<div class="popup empty">
+	<div class="popup-header">
+  	<% if(layer.data){ %>
+	    <span class="map-item-label"><%= layer.data.label %></span>
+	  <% } %>
+	  
+	  <% if(!parent.canEdit(false)){ %>
+	    <span class="map-no-content">~ no content ~</span>
+	  <% } %>	
+	</div>
+	<div class="popup-body clearfix">
+    <a href="<%= Mediakron.Settings.basepath+'settings/marker/'+mapUri+'/'+uri %>"><span class="mk-icon mk-edit"></span></a>
+	  <% if(parent.canRemoveFrom(false)){ %>
+	    <a href="<%= Mediakron.Settings.basepath+'settings/marker/'+mapUri+'/'+uri+'/remove' %>"><span class="mk-icon mk-remove"></span></a>
+    <% } %>	 
+  </div>
+</div>
