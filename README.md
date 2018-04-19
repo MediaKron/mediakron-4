@@ -14,10 +14,20 @@ You can start development immediately by booting the applicaiton locally with do
 * NPM
 
 ## Development
+To start the local dev environment run `docker-compose up`
+To Build JS and Css `npm run dev`
+To watch and build on changes run `npm run watch`
 
-To start run `docker-compose up`
+
+## Structure
+* api
+  * Contains the root larvel application for boot and api methods
+* docker
+  * Contains the root larvel application for boot and api methods
+* public
+  * The public web root with any servable files and the main executable
+* src
+  * This will contain all of the buildable code for the mediakron js application
 
 ### PHP MyAdmin 
 You can access phpmyadmin at `http://localhost:8080`
-=======
-
