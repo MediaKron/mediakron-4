@@ -14,13 +14,16 @@ You can start development immediately by booting the application locally with Do
 * [Node](https://nodejs.org) 6+
 * [NPM](https://www.npmjs.com/)
 
-## Development
+## Installation
 * Run `npm install` from the root directory to get all the npm modules you'll need
 * Run `npm run mediakron:install` to build the application dependencies
 * To start the local dev environment run `docker-compose up`
-* To Build JS and Css `npm run mediakron:build`
-* To watch and build on changes run `npm run mediakron:watch`
-* To build for production `npm run mediakron:build:prod`
+* Go to your mediakron site at `localhost`
+
+## How to build
+* **Development**: `npm run mediakron:build`
+* **Watch and Build**: `npm run mediakron:watch`
+* **Production** `npm run mediakron:build:prod`
 
 ## Structure
 * **api**: Contains the root larvel application for boot and api methods

@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/api/storage/
 /api/storage/*.key
 vendor
 vendor/*
@@ -12,3 +13,4 @@ npm-debug.log
 yarn-error.log
 /api/.env
 docker/data
+docker/composer/cache
