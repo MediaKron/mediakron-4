@@ -10,10 +10,13 @@ You can start development immediately by booting the applicaiton locally with do
 
 * Docker 17.12+ 
 * Docker Compose 1.18+
+* PHP Composer
 * Node 6+
 * NPM
 
 ## Development
+Run `npm install` from the root directory to get all the npm modules you'll need
+cd into the api directory and run `composer install` to build the api dependencies
 To start the local dev environment run `docker-compose up`
 To Build JS and Css `npm run dev`
 To watch and build on changes run `npm run watch`

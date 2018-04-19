@@ -29,5 +29,5 @@ mix.webpackConfig({
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('src/js/app.js', 'public/js')
+   .sass('src/sass/app.scss', 'public/css');
