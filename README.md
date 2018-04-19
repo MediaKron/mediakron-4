@@ -16,9 +16,9 @@ You can start development immediately by booting the application locally with Do
 * NPM
 
 ## Development
-To start the local dev environment run `docker-compose up`
-To Build JS and Css `npm run dev`
-To watch and build on changes run `npm run watch`
+* To start the local dev environment run `docker-compose up`
+* To Build JS and Css `npm run dev`
+* To watch and build on changes run `npm run watch`
 
 
 ## Structure
