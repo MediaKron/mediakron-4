@@ -1,0 +1,32 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "docker:run",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "build:mediakron",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "watch:mediakron",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "build:templates",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "watch:templates",
+            "problemMatcher": []
+        }
+    ]
+}

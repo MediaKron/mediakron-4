@@ -18,10 +18,11 @@ You can start development immediately by booting the application locally with Do
 
 ## Development
 * Run `npm install` from the root directory to get all the npm modules you'll need
-* cd into the api directory and run `composer install` to build the api dependencies
+* Run `npm run mediakron:install` to build the application dependencies
 * To start the local dev environment run `docker-compose up`
-* To Build JS and Css `npm run dev`
-* To watch and build on changes run `npm run watch`
+* To Build JS and Css `npm run mediakron:build`
+* To watch and build on changes run `npm run mediakron:watch`
+* To build for production `npm run mediakron:build:prod`
 
 
 ## Structure

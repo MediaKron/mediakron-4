@@ -2,10 +2,9 @@
 /public/hot
 /public/storage
 /api/storage/*.key
-/api/vendor
-/api/vendor/*
+vendor
+vendor/*
 /.idea
-/.vscode
 /.vagrant
 /api/Homestead.json
 /api/Homestead.yaml
