@@ -1,12 +1,14 @@
 ![MediaKron Banner](mkbanner.png)
 # Mediakron V4
 
+About: http://mediakron.bc.edu
+
 This repository contains the code as well as the build and deployment tooling to support both local builds and deployment to the EY environment
 for properly credentialed users.
 
-You can start development immediately by booting the applicaiton locally with docker.
+You can start development immediately by booting the application locally with Docker.
 
-### Local Build Requirements ###
+## Local Build Requirements
 
 * Docker 17.12+ 
 * Docker Compose 1.18+
@@ -29,5 +31,5 @@ To watch and build on changes run `npm run watch`
 * src
   * This will contain all of the buildable code for the mediakron js application
 
-### PHP MyAdmin 
+## PHP MyAdmin 
 You can access phpmyadmin at `http://localhost:8080`
