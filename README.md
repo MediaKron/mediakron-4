@@ -1,3 +1,4 @@
+![MediaKron Banner](mkbanner.png)
 # Mediakron V4
 
 This repository contains the code as well as the build and deployment tooling to support both local builds and deployment to the EY environment
@@ -18,3 +19,5 @@ To start run `docker-compose up`
 
 ### PHP MyAdmin 
 You can access phpmyadmin at `http://localhost:8080`
+=======
+
