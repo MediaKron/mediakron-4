@@ -6,6 +6,20 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+
+    /**
+     * Create a new HTTP kernel instance.
+     *
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @param  \Illuminate\Routing\Router  $router
+     * @return void
+     */
+    public function __construct(Application $app, Router $router)
+    {
+        $app->useEnvironmentPath(base_path() . '/../'); // here you can customize the path.
+        parent::__construct($app, $router);
+    }
+    
     /**
      * The application's global HTTP middleware stack.
      *

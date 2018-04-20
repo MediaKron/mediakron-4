@@ -11,6 +11,6 @@ vendor/*
 /api/Homestead.yaml
 npm-debug.log
 yarn-error.log
-/api/.env
+.env
 docker/data
 docker/composer/cache

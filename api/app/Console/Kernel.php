@@ -8,6 +8,18 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     /**
+     * Create a new console kernel instance.
+     *
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
+     * @return void
+     */
+    public function __construct(Application $app, Dispatcher $events)
+    {
+        $app->useEnvironmentPath(base_path() . '/../'); //here customize the path
+        parent::__construct($app, $events);
+    }
+    /**
      * The Artisan commands provided by your application.
      *
      * @var array
