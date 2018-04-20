@@ -17,6 +17,7 @@ You can start development immediately by booting the application locally with Do
 ## Installation
 * Run `npm install` from the root directory to get all the npm modules you'll need
 * Run `npm run mediakron:install` to build the application dependencies
+* Copy the .env.example file to .env and customize as needed
 * To start the local dev environment run `docker-compose up`
 * Go to your mediakron site at `localhost`
 
