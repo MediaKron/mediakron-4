@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Foundation\Application;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,7 +18,7 @@ class Kernel extends ConsoleKernel
      */
     public function __construct(Application $app, Dispatcher $events)
     {
-        $app->useEnvironmentPath(base_path() . '/../'); //here customize the path
+       // $app->useEnvironmentPath(base_path() . '/../'); //here customize the path
         parent::__construct($app, $events);
     }
     /**
