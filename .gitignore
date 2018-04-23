@@ -14,3 +14,4 @@ yarn-error.log
 .env
 docker/data
 docker/composer/cache
+/public/files

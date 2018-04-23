@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'PublicController@index');
+
+Route::get('/storage/{site}/styles/{style}/{image}', 'ImageController@style');
