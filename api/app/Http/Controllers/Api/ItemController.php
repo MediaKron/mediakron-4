@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Item;
+use App\Site;
 
 class ItemController extends Controller
 {
@@ -12,9 +14,10 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Site $site)
     {
         //
+        $items = Item::site($site)->where('site_id', '=', (int) $site->id)->orderBy('created', 'ASC')->paginate(10);
     }
 
     /**

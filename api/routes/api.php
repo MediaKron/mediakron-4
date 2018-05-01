@@ -17,7 +17,6 @@ use Illuminate\Http\Request;
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
-
 ], function ($router) {
 
     Route::post('login', 'AuthController@login');
@@ -27,17 +26,45 @@ Route::group([
 
 });
 
+Route::group([
+    'middleware' => [
+        'auth:api',
+        'site'
+    ],
+    'prefix' => '{site}'
+], function ($router) {
+    // Item api
+    Route::resource('/item', 'Api/ItemController');
+    // Relationship api
+    Route::resource('/relationship', 'Api/RelationshipController');
+    // Settings api
+    Route::resource('/setting', 'Api/SettingsController');
+    // User api
+    Route::resource('/user', 'Api/UserController');
+    // User api
+    Route::resource('/user', 'Api/GroupController');
+    // Comment api
+    Route::resource('/comment', 'Api/CommentController');
+    // Statistics api
+    Route::resource('/statistics', 'Api/StatisticsController');
+});
 
-// Item api
-Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
+Route::group([
+    'middleware' => [
+        'auth:api',
+        'site'
+    ],
+    'prefix' => 'admin'
+], function ($router) {
+    // Sites api
+    Route::resource('/site', 'Api/SiteController');
+    // Admin System Settings api
+    Route::resource('/settings', 'Api/AdminSettingsController');
+    // User api
+    Route::resource('/user', 'Api/AdminUserController');
+});
 
-// R api
-Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
 
-// Settings api
-Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
 
-// User api
-Route::middleware('auth:api')->resource('/user', 'Api/UserController');
 
 
