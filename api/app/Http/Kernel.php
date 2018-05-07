@@ -76,6 +76,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'site' => \App\Http\Middleware\Site::class,
         'api.auth' => \App\Http\Middleware\Site::class,
+        'admin' => \App\Http\Middleware\Admin::class,
+        'site' => \App\Http\Middleware\Site::class,
         'site.access' => \App\Http\Middleware\Site::class,
     ];
 }

@@ -15,56 +15,58 @@ use Illuminate\Http\Request;
 
 
 Route::group([
-    'middleware' => 'api',
+    //'middleware' => 'api',
     'prefix' => 'auth'
 ], function ($router) {
 
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('logout', 'Api\AuthController@logout');
+    Route::post('refresh', 'Api\AuthController@refresh');
+    Route::post('reset', 'Api\AuthController@reset');
+    Route::post('me', 'Api\AuthController@me');
 
 });
 
 Route::group([
     'middleware' => [
-        'auth:api',
+        //'auth:api',
+        'admin'
+    ],
+    'prefix' => 'admin'
+], function ($router) {
+
+    // Sites api
+    Route::resource('/site', 'Api\Admin\SiteController');
+
+    // Admin System Settings api
+    Route::resource('/settings', 'Api\Admin\SettingsController');
+
+    // User api
+    Route::resource('/user', 'Api\Admin\UserController');
+
+    // Group api
+    Route::resource('/group', 'Api\Admin\GroupController');
+});
+
+
+
+Route::group([
+    'middleware' => [
+        //'auth:api',
         'site'
     ],
     'prefix' => '{site}'
 ], function ($router) {
     // Item api
-    Route::resource('/item', 'Api/ItemController');
+    Route::resource('/item', 'Api\ItemController');
     // Relationship api
-    Route::resource('/relationship', 'Api/RelationshipController');
+    Route::resource('/relationship', 'Api\RelationshipController');
     // Settings api
-    Route::resource('/setting', 'Api/SettingsController');
-    // User api
-    Route::resource('/user', 'Api/UserController');
-    // User api
-    Route::resource('/user', 'Api/GroupController');
+    Route::resource('/setting', 'Api\SettingsController');
     // Comment api
-    Route::resource('/comment', 'Api/CommentController');
+    Route::resource('/comment', 'Api\CommentController');
     // Statistics api
-    Route::resource('/statistics', 'Api/StatisticsController');
+    Route::resource('/statistics', 'Api\StatisticsController');
 });
-
-Route::group([
-    'middleware' => [
-        'auth:api',
-        'site'
-    ],
-    'prefix' => 'admin'
-], function ($router) {
-    // Sites api
-    Route::resource('/site', 'Api/SiteController');
-    // Admin System Settings api
-    Route::resource('/settings', 'Api/AdminSettingsController');
-    // User api
-    Route::resource('/user', 'Api/AdminUserController');
-});
-
-
-
 
 

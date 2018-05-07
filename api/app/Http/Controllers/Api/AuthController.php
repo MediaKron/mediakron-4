@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\User;
+use Hash;
 
 class AuthController extends Controller
 {
@@ -27,9 +29,33 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            // If the authentication attempts fail, we will try
+            // to check the password with the old symfony encoding
+            if(isset($credentials['email'])){
+                $username = $credentials['email'];
+            } else {
+                return response()->json(['error' => 'Unauthorized.  No Email.'], 401);
+            }
+            $username = 
+            $user = User::where('email', $credentials['email'])
+                ->orWhere('username', $credentials['email'])->first();
+            // Can we find a user?
+            if ($user) {
+                $password = $credentials['password'];
+                $merged = $password . '{' . $user->salt . '}';
+                $digest = hash('sha512', $merged, true);
+                for ($i = 1; $i < 5000; ++$i) {
+                    $digest = hash('sha512', $digest . $merged, true);
+                }
+                $encoded = base64_encode($digest);
+                if($user->password !==  $encoded){
+                    return response()->json(['error' => 'Unauthorized.  Legacy Password.'], 401);
+                }
+                $user->password = $user->password = Hash::make($credentials['password']);
+                $user->save();
+                $token = auth()->attempt($credentials);
+            }
         }
-
         return $this->respondWithToken($token);
     }
 

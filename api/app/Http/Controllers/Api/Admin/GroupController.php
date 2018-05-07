@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Item;
-use App\Site;
-use App\User;
-use App\Http\Requests\Admin\ItemRequest; 
 
-class ItemController extends Controller
+class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($site_id)
+    public function index()
     {
         //
-        return Item::orderBy('created_at', 'ASC')->paginate(10);
     }
 
     /**

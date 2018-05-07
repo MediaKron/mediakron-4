@@ -3,12 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Site as SiteModel;
 
-class Site
+class Admin
 {
     /**
-     * Validate the inbound site and add it to the request
+     * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
@@ -16,9 +15,6 @@ class Site
      */
     public function handle($request, Closure $next)
     {
-        $site = $request->route()->parameter('site');
-        $site = SiteModel::where('uri', $site)->first();
-        app()->instance('App\Site', $site);
         return $next($request);
     }
 }

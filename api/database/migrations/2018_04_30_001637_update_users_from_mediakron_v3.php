@@ -14,6 +14,13 @@ class UpdateUsersFromMediakronV3 extends Migration
     public function up()
     {
         //
+        Schema::table('User', function ($table) {
+            $table->dropColumn('username_canonical');
+            $table->dropColumn('email_canonical');
+            $table->softDeletes();
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +31,11 @@ class UpdateUsersFromMediakronV3 extends Migration
     public function down()
     {
         //
+        Schema::table('User', function ($table) {
+            $table->dropColumn('deleted_at');
+            $table->dropColumn('remember_token');
+            $table->dropColumn('created_at');
+            $table->dropColumn('updated_at');
+        });
     }
 }
