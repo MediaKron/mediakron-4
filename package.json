@@ -36,7 +36,5 @@
         "vue": "^2.5.7",
         "child-process-promise": "^2.2.1"
     },
-    "dependencies": {
-        
-    }
+    "dependencies": {}
 }
