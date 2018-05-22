@@ -1,4 +1,3 @@
-
 Mediakron.HelpPage = Mediakron.Extensions.View.extend({
     template: JST['help.default'],
     type: false,

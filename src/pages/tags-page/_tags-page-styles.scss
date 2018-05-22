@@ -1,0 +1,50 @@
+/* @group Tag Template */
+
+.tag-template .item-content{
+  max-width: 700px;
+  margin: auto;
+  padding: 0 1em;
+  @include breakpoint(sm){
+  padding: 0;
+  }
+}
+
+.tag-template h2 {
+	text-transform: capitalize;
+}
+
+.tag-template .details-button {
+	display: none;
+}
+
+.tag-template h2 .mk-icon {
+	text-transform: capitalize;
+	padding-right: .4em;
+	@include rem-fallback(font-size, 25);
+}
+
+.tag-template .widgets__comments, .tag-template .comments-button {
+	display: none;
+}
+
+#settings-context #tag-field{
+  margin-bottom: 0;
+}
+
+#settings-context .all-tags{
+    clear:both;
+    padding-top: 1em;
+}
+
+.tags-breadcrumb{
+	font-style: italic;
+}
+
+.tags-breadcrumb:before {
+	content: "In ";
+	font-style: normal;
+}
+
+
+
+/* @end */

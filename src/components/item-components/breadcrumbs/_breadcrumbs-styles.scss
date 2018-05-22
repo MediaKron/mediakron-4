@@ -1,0 +1,76 @@
+/* @group BREADCRUMBS */
+
+.mk-breadcrumb {
+    color:#222;
+    padding:0;
+    display: inline;
+    position: relative;
+ }
+ 
+ .mk-breadcrumb .breadcrumb-in {
+     display: none;
+ }
+ 
+ .breadcrumb-list > li.active-crumb {
+     display: none;
+ }
+ 
+ .breadcrumb-list.no-collections {
+     display: none;
+ }
+ 
+ ol.breadcrumb-list  {
+     margin: 0;	
+     list-style: none;
+     display: inline;
+     padding: 0 1em 0em 0em;
+     display: inline-block;
+ }
+ 
+ .breadcrumb-list li:last-child a  {
+     color:#222;
+     cursor:default;
+     text-decoration:none;
+     padding-left:5px;
+     font-weight: bold;
+ }   
+ 
+ .breadcrumb-list li:first-child a:before {
+     content: "In ";
+     color: #222;
+     font-style: normal;
+ }
+ 
+ .breadcrumb-list li:first-child a:before:hover {
+     text-decoration: none;
+ }
+ 
+ .breadcrumb-list #home-link a {
+     color:#666;	
+     display:inline;
+ }
+ 
+ .breadcrumb-list a {
+   font-style: italic;
+ }
+ 
+ .breadcrumb-list> li {
+     display:inline;
+ }
+ 
+ .breadcrumb-list   > li + li:before {
+     content: "> ";
+     color:#666;
+     padding-left:3px
+ }
+ 
+ .breadcrumb-list   > li + li:before:hover {
+     text-decoration: none;
+ }
+ 
+ .breadcrumb-active .title-box {
+     padding: .5em 2.2em 2em 1.5em;
+     width: 100%;
+ }
+ 
+ /* @end */
