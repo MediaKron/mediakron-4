@@ -15,7 +15,7 @@
 @import "mixins/truncate.scss";
 
 @import "vendor/leaflet/dist/leaflet.css";
-@import "vendor/leaflet/leaflet.edit.scss";
+//@import "vendor/leaflet/leaflet.edit.scss";
 
 // Content;
 @import "../components/content/add-panes/add-styles.scss";
@@ -59,8 +59,8 @@
 @import "../components/content/organize-panes/organize-styles.scss";
 
 @import "../components/content/select-panes/select-panes-styles.scss"; 
-@import "../components/content/select-panes/selector-narrative-styles.scss"; 
-@import "../components/content/select-panes/selector-links-styles.scss"; 
+@import "../components/content/select-panes/selector-narrative/selector-narrative-styles.scss"; 
+@import "../components/content/select-panes/selector-links/selector-links-styles.scss"; 
 
 @import "../components/content/tags/tag-page/tag-page-styles.scss";
 @import "../components/content/tags/tags-form/tags-form-styles.scss";
