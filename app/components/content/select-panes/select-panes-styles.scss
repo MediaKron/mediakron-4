@@ -1,0 +1,132 @@
+/* #region -- ADD PANE - ADD ITEMS */
+
+.browser-selector table#admin-content tbody {
+    padding: 1em 0 1em 0;
+  }
+
+  table#admin-content .btn-add {
+    padding: 0px 10px 3px 0;
+    background: transparent;
+    font-size: 1.1em;
+    display: inline;
+  }
+
+  table#admin-content .btn-add:hover {
+    color: #999;
+  }
+
+  table#admin-content .btn-add .type-icon {
+    top: 1px;
+    color: #444;
+    padding-left: .3em;
+  }
+
+  .timeline-manage-row table#admin-content .title {
+    display: block;
+    clear: both;
+  }
+
+  .browser-selector table#admin-content .post-title {
+    float: none;
+    margin-left: 0;
+  }
+
+  .browser-selector table#admin-content tr.item-row {
+    border-bottom: none;
+  }
+
+  .browser-selector table#admin-content .btn-add {
+    border: 1px solid #565656;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-radius: 2px;
+    background: #fff;
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
+    @include rem-fallback(height,
+    60);
+    overflow: hidden;
+  }
+
+  .browser-selector table#admin-content .btn-add:hover {
+    background: #ffffd9;
+    text-decoration: none;
+    color: #222;
+    border: 1px solid #222;
+    transition: color .25s linear, background-color .25s ease-in-out;
+  }
+
+  .browser-selector table#admin-content .btn-add .btn-primary {
+    padding: .9em .4em 1.1em .4em;
+    border-radius: 0;
+    border-right: 1px solid #565656;
+    border-left: none;
+    border-bottom: none;
+    border-top: none;
+    margin-right: .5em;
+  }
+
+  .browser-selector table#admin-content .btn-add .btn-primary .button-text {
+    @extend .visuallyhidden;
+  }
+
+  .browser-selector table#admin-content .row-thumb .mk-icon {
+    color: #565656;
+    left: 5px;
+    top: 0px;
+    position: relative;
+  }
+
+  .browser-selector table#admin-content .row-thumb .mk-icon.mki {
+    @include rem-fallback(font-size,
+    65);
+  }
+
+  .browser-selector #admin-content .row-thumb,
+  .browser-selector #admin-content .add-thumb {
+    display: inline-block;
+  }
+
+  .browser-selector #admin-content .row-thumb {
+    height: 60px !important;
+    position: absolute;
+    right: 0;
+    top: 1px;
+  }
+
+  .browser-selector #admin-content .row-thumb>div {
+    height: 58px !important;
+    width: 60px !important;
+    display: inline-block;
+    font-size: 45px !important;
+  }
+
+  .browser-selector #admin-content .row-thumb .item-square-icon {
+    font-size: 45px !important;
+    background: #ddd;
+    color: #222;
+    border-left: 1px solid #565656;
+    border-right: 1px solid #565656;
+  }
+
+  .browser-selector #admin-content .row-thumb .square-thumbnail {
+    border-left: 1px solid #565656;
+    border-right: 1px solid #565656;
+  }
+
+  .browser-selector table#admin-content .item-title {
+    width: 300px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .browser-selector table#admin-content .type {
+    position: absolute;
+    top: 1.5em;
+    right: 5em;
+    @include rem-fallback(font-size,
+    14);
+  }
+
+  /* #endregion */

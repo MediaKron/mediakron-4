@@ -1,0 +1,31 @@
+/* #region -- ADD PANE - NARRATIVES */
+
+#settings-context .add-to-narrative table#admin-content.list-view tr.item-row .row-thumb {
+    display: block;
+    top: 20px;
+  }
+
+  #settings-context .add-to-narrative table#admin-content.list-view .row-thumb .mk-icon {
+    left: 9px;
+    top: 2px;
+  }
+
+  .narrative-template-select {
+    margin-right: 1em;
+  }
+
+  .narrative-options {
+    display: block;
+    float: left;
+    clear: both;
+    position: relative;
+    top: 15px;
+  }
+
+  .narrative-options .chosen-container-single .chosen-single {
+    @include rem-fallback(font-size,
+    14);
+    padding: .1em .3em;
+  }
+
+  /* #endregion */
