@@ -17,6 +17,8 @@
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
         "hoverintent": "^2.0.0",
+        "jquery-accessible-hide-show-aria": "^1.8.0",
+        "jquery-accessible-subnav-dropdown": "^1.2.1",
         "jquery": "^3.2",
         "jquery-ui-dist": "^1.12.1",
         "jquery-ui-touch-punch": "^0.2.3",
@@ -35,11 +37,5 @@
         "underscore": "^1.8.3",
         "vue": "^2.5.7",
         "child-process-promise": "^2.2.1"
-    },
-    "dependencies": {
-        "jquery-accessible-hide-show-aria": "^1.8.0",
-        "jquery-accessible-subnav-dropdown": "^1.2.1",
-        "chosen-js": "^1.8.5",
-        "leaflet-editable": "^1.1.0"
     }
 }
