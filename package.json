@@ -36,5 +36,8 @@
         "vue": "^2.5.7",
         "child-process-promise": "^2.2.1"
     },
-    "dependencies": {}
+    "dependencies": {
+        "jquery-accessible-hide-show-aria": "^1.8.0",
+        "jquery-accessible-subnav-dropdown": "^1.2.1"
+    }
 }
