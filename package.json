@@ -35,7 +35,6 @@
         "spectrum-colorpicker": "^1.8.0",
         "typeahead": "^0.2.2",
         "underscore": "^1.8.3",
-        "vue": "^2.5.7",
         "child-process-promise": "^2.2.1"
     }
 }
