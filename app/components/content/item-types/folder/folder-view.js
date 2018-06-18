@@ -1,13 +1,24 @@
-Mediakron.Pages.folder = Mediakron.Extensions.View.extend({
-    template: JST['pages.folder.default'],
-    className: 'pages pages-layout layout-pages',
-    $itemEl: false,
-    context: false,
-    item: false,
-    uri: false,
-    childrenURI: [],
-    primary: false,
-    initialize: function(model){
+import * as $ from 'jquery';
+import MediakronViews from '~/core-js/extensions/views';
+import * as _ from 'underscore';
+import * from 'text!templates';
+
+export FolderView extends MediakronViews 
+{
+    constructor() {
+        super({
+            template: template_default,
+            className: 'pages pages-layout layout-pages',
+            $itemEl: false,
+            context: false,
+            item: false,
+            uri: false,
+            childrenURI: [],
+            primary: false,
+        })
+    }
+
+    initialize(model){
         this.primary = false;
         this.context = model;
         this.model = model;
@@ -20,12 +31,12 @@ Mediakron.Pages.folder = Mediakron.Extensions.View.extend({
         });
 
         return this;
-    },
-    render: function(){
+    }
+    render(){
         if(this.layout){
-            this.template = JST['pages.folder.'+this.layout];
+            this.template = JST['pages.folder.' + this.layout];
         }else if(this.model.get('template')){
-            this.template = JST['pages.folder.'+this.model.get('template')];
+            this.template = JST['pages.folder.' + this.model.get('template')];
         }
         if(!this.template){
             this.template = JST['pages.folder.default'];
@@ -47,8 +58,9 @@ Mediakron.Pages.folder = Mediakron.Extensions.View.extend({
 
         this.$el.append(this.template(content));  
         return this;
-    },
-    afterRender: function(){
+    }
+
+    afterRender(){
         this.model.getSidebar(this.$el); 
         $(".annotate img",this.$el).annotateImage({
             editable: true,
@@ -76,19 +88,19 @@ Mediakron.Pages.folder = Mediakron.Extensions.View.extend({
         
         /* Load accessible dropdown menu plugin  */
         accessibleNav();
-    },
+    }
     events: {
         'click a':                         Mediakron.linkHandle,
         'mouseenter .organize-button-bind': 'showOrganizeButton',
         'mouseleave .organize-button-bind': 'removeOrganizeButton'
         
-    },
-    showOrganizeButton: function() {
+    }
+    showOrganizeButton() {
      $( ".sticky-header .option-organize" ).clone().appendTo( ".organize-button-bind" ).addClass("in-context");   
-    },
-    removeOrganizeButton: function() {
+    }
+    removeOrganizeButton() {
      $( ".organize-button-bind .option-organize").remove();  
-    },
+    }
     gotoItem:     function (item,otrace) { 
         var currentItem;
         if(item){
@@ -105,7 +117,7 @@ Mediakron.Pages.folder = Mediakron.Extensions.View.extend({
             $('#fl-'+this.model.get('uri')).show();
             $('.folder-current-item').hide();
         }
-    },
+    }
     renderNavigation:function(folder,item){
             
         this.childrenURI = _.map(folder.getRelationship('children'), function(look){

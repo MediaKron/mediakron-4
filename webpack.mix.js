@@ -5,6 +5,7 @@ mix.webpackConfig({
         alias: {
             // bind version of jquery-ui
             "jquery-ui": 'jquery-ui-dist/jquery-ui.js',
+            '~': path.resolve(__dirname + '/app'),
             // bind to modules;
             modules: path.join(__dirname, "node_modules"),
         }
@@ -29,5 +30,5 @@ mix.webpackConfig({
  |
  */
 
-mix.js('src/js/app.js', 'public/js')
-   .sass('src/sass/app.scss', 'public/css');
+mix.js('app/js/app.js', 'public/js')
+    .sass('app/core-css/app.scss', 'public/css');
