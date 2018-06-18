@@ -579,7 +579,7 @@ white-space: nowrap;
   $expander-toggle-margin: 1em;
 
   .expander-trigger {
-    @include user-select(none);
+    /*@include user-select(none);*/
 /*    border-bottom: 1px solid $light-gray;*/
     color: $action-color;
     cursor: pointer;
