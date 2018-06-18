@@ -5,13 +5,17 @@
 @import "mixins/bourbon/app/assets/stylesheets/bourbon.scss";
 @import "mixins/neat/app/assets/stylesheets/neat.scss";
 
-
 @import "mixins/animate/animate.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/center-transform.scss";
 @import "mixins/rem.scss";
 @import "mixins/triangle.scss";
 @import "mixins/truncate.scss";
+
+
+@import "mixins/position.scss";
+@import "mixins/clearfix.scss";
+@import "mixins/size.scss";
 
 @import "base-styles/base.scss";
 @import "base-styles/layout-styles.scss";

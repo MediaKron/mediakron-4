@@ -4,7 +4,6 @@
 }
 
 #import {
-  @include outer-container(100%);
   padding: 0em 1em 1em 1em;
 	@include breakpoint(sm){
 	padding: 0em 2em 1em 2em;

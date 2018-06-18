@@ -25,18 +25,22 @@ body.settings {
 .overlay-bg {
     opacity: 0;
     visibility: hidden;
-    @include transition(opacity .4s ease);
+    transition: opacity .4s ease;
 }
 
 .opened .overlay-bg {
     opacity: 1;
     visibility: visible;
-    @include position(fixed, 0px 0px 0px 0px);
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
     background: #000;
     opacity: .5;
     z-index: 1061;
     cursor: pointer;
-    @include transition(opacity .2s ease);
+    transition: opacity .2s ease;
 }
 
 /* Transition: slide in left */
@@ -196,7 +200,7 @@ body.settings {
     z-index: 1063;
     top: -100%;
     right: auto;
-    @include transition(0.35s ease);
+    transition: 0.35s ease;
 }
 
 
@@ -485,7 +489,7 @@ body.settings {
   height: calc(100% - 20px);
   width: calc(100% - 20px);
   margin: 10px 10px;
-  @include transition(0.35s ease);
+  transition: 0.35s ease;
   @include breakpoint(md){ 
     height: calc(100% - 100px);
     width: calc(100% - 200px);
@@ -497,7 +501,7 @@ body.settings {
 .item-overlay.opened .overlay-window{
   z-index: 1061; 
   background: #fff;
-  @include transition(.35s ease);
+  transition: .35s ease;
   bottom: 0;
   top: auto;
   right: 0;

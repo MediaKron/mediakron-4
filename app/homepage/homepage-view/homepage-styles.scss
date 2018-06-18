@@ -107,22 +107,22 @@
 .home-image--full .home-template__info {
 	background-color: #666;
 	@extend .background-image;
-	@include calc(height, "100vh - 50px");
+	height: calc("100vh - 50px");
 }
 
 .home-image--full.image-active .home-template__info:before {
 	@extend .background-image-darkened;
-	@include calc(height, "100vh - 50px");
+  height: calc("100vh - 50px");
 }
 
 .home-content-active.home-image--full .home-template__info,
 .description-active.home-image--full .home-template__info {
-   @include calc(height, "90vh - 50px");
+   height: calc("90vh - 50px");
 }
 
 .home-content-active.home-image--full .home-template__info:before,
 .description-active.home-image--full .home-template__info:before  {
-   @include calc(height, "90vh - 50px");
+   height: calc("90vh - 50px");
 }
 
 .home-image--full .title-box-home{
@@ -258,12 +258,12 @@
 .home-image--half .home-template__info {
 	background-color: #666;
 	@extend .background-image;
-	@include calc(height, "50vh - 50px");
+  height: calc("50vh - 50px");
 }
 
 .home-image--half.image-active .home-template__info:before {
 	@extend .background-image-darkened;
-	@include calc(height, "50vh - 50px");
+	height: calc("50vh - 50px");
 }
 
 .home-image--half .title-box-home{
@@ -384,17 +384,17 @@
     $flex-box-gutter: 0.4em;
     padding: 1em;
     @include clearfix;
-    @include display(flex);
-    @include justify-content(center);
-    @include align-items(stretch);
-    @include flex-wrap(wrap);
+    display:flex;;
+    justify-content: center;
+    align-items:stretch;
+    flex-wrap:wrap;
     clear: both;
     text-align: center;
 
   li {
-    @include transition (all 0.2s ease-in-out);
-    @include flex(1 1 175px);
-    @include align-self(stretch);
+    transition: all 0.2s ease-in-out;
+    flex:1 1 175px;
+    align-self:stretch;
     display: block;
     margin: $flex-box-gutter;
     list-style:none;
@@ -418,7 +418,7 @@
 	background:#ddd;
 	border:#ddd;
 	@extend .box-shadow-subtle;
-	@include align-self(center);
+	align-self:center;
 }
 
 .home-template .flex-grid li .item-square-icon .mk-icon{
