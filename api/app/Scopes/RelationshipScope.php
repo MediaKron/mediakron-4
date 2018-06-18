@@ -19,7 +19,9 @@ class RelationshipScope implements Scope
     {
         $site = site();
         if($site){
-
+            $builder->from($site->uri . '_Relationships');
+            $model->setTable($site->uri . '_Relationships');
+            $model->refresh();
         }
         
     }

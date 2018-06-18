@@ -19,7 +19,9 @@ class RevisionScope implements Scope
     {
         $site = site();
         if($site){
-
+            $builder->from($site->uri . '_Revisions');
+            $model->setTable($site->uri . '_Revisons');
+            $model->refresh();
         }
         
     }

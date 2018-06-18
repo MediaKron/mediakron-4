@@ -19,7 +19,7 @@ class ItemController extends Controller
     public function index($site_id)
     {
         //
-        return Item::orderBy('created_at', 'ASC')->paginate(10);
+        return Item::with(['parents', 'children'])->orderBy('created_at', 'ASC')->paginate(10);
     }
 
     /**
@@ -52,7 +52,9 @@ class ItemController extends Controller
     public function show($id)
     {
         //
+        return Item::where('id', $id)->orderBy('created_at', 'ASC')->paginate(10);
     }
+
 
     /**
      * Show the form for editing the specified resource.

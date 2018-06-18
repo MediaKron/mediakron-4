@@ -2,7 +2,6 @@ FROM php:7.1-fpm
 # install the PHP extensions we need
 # XDEBUG requires Docker 18.03+ because of the host IP resolution on mac
 RUN apt-get update && apt-get install -y \ 
-    libpng12-dev \ 
     libjpeg-dev \ 
     libfreetype6-dev \
     libjpeg62-turbo-dev \
