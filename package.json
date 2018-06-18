@@ -37,6 +37,7 @@
         "child-process-promise": "^2.2.1"
     },
     "dependencies": {
-        "chosen-js": "^1.8.5"
+        "chosen-js": "^1.8.5",
+        "leaflet-editable": "^1.1.0"
     }
 }
