@@ -1,82 +1,32 @@
-@import "_variables.scss"";
-@import "_extend.scss"";
+//Core Css
+@import "core-css/base-styles/variables.scss"
+@import "core-css/base-styles/extend.scss"
+@import "core-css/base-styles/app.scss"
+@import "core-css/base-styles/base.scss"
+@import "core-css/base-styles/layout-styles.scss"
 
-/* Mixins */
-@import "mixins/bourbon/app/assets/stylesheets/bourbon.scss"";
-@import "mixins/neat/app/assets/stylesheets/neat.scss"";
-@import "mixins/animate/animate.scss"";
-@import "mixins/_blur.scss"";
-@import "mixins/_breakpoints.scss"";
-@import "mixins/_center-transform.scss"";
-@import "mixins/_hovertip.scss"";
-@import "mixins/_rem.scss"";
-@import "mixins/_triangle.scss"";
-@import "mixins/_truncate.scss"";
+@import "core-css/base-styles/mixins/animate.scss"
+@import "core-css/base-styles/mixins/blur.scss"
+@import "core-css/base-styles/mixins/breakpoints.scss"
+@import "core-css/base-styles/mixins/center-transform.scss"
+@import "core-css/base-styles/mixins/hovertip.scss"
+@import "core-css/base-styles/mixins/rem.scss"
+@import "core-css/base-styles/mixins/triangle.scss"
+@import "core-css/base-styles/mixins/truncate.scss"
 
-/* Vendor */
-@import "_chosen.scss"";
-
-/* Base	  */
-@import "_base.scss"";
-@import "_buttons.scss"";
-@import "_admin.scss"";
-@import "_import.scss"";    
-@import "_nav.scss"";
-@import "_branding.scss"";
-@import "_messages.scss"";
-@import "_layout.scss"";
-@import "_header-item.scss"";
-@import "_tags.scss"";
-@import "_tabs.scss"";
-@import "_accordion.scss"";
-@import "_wysiwyg.scss"";
-@import "_overlay.scss"";
-@import "_annotations-comments.scss"";
-@import "_fonts.scss"";
-
-/* Content */
-@import "_file.scss"";
-@import "_image.scss"";
-@import "_video.scss"";
-@import "_audio.scss"";
-@import "_story.scss"";
-@import "_maps.scss"";
-@import "_leaflet.edit.scss"";
-@import "_slideshow.scss"";
-@import "_folder.scss"";
-@import "_timeline.scss"";
-@import "_comparison.scss"";
-@import "_progression.scss"";
-@import "_narrative.scss"";
-@import "_viewer.scss"";
-@import "_tourpane.scss"";
-@import "_text.scss""; /* deprecated */
-
-/* Misc */
-@import "_tourist.scss"";
-@import "_contentbrowser.scss"";
-@import "_search.scss"";
-@import "_home.scss"";
-@import "_widgets.scss"";
-@import "_filters.scss"";
-@import "_edit.scss"";
-@import "_lti.scss"";
-@import "_icons.scss"";
-@import "_fullscreen.scss"";
-@import "_help.scss"";
-@import "_mobile.scss"";
-@import "_print.scss"";
-@import "_accessibleplugins.scss"";
+@import "core-css/vendor/leaflet/leaflet.edit.scss"
+@import "core-css/vendor/tourist/tourist.scss"
 
 
-
-
-
+// Content
 @import "components/content/add-panes/add-styles.scss"
 @import "components/content/add-panes/addpane-general/addpane-general-styles.scss"
-@import "components/content/browsers/contentbrowser.scss"
+
+@import "components/content/browsers/browsers-styles.scss"
+
 @import "components/content/content-tools/import/import-styles.scss"
 @import "components/content/content-tools/search/search-page/search-page-styles.scss"
+
 @import "components/content/item-elements/annotations-comments/annotations-comments.scss"
 @import "components/content/item-elements/breadcrumbs/breadcrumbs-styles.scss"
 @import "components/content/item-elements/filters/filters-styles.scss"
@@ -89,6 +39,7 @@
 @import "components/content/item-elements/revisions/revisions-styles.scss"
 @import "components/content/item-elements/tourpane/tourpane-styles.scss"
 @import "components/content/item-elements/widgets/widgets-styles.scss"
+
 @import "components/content/item-types/audio/audio-styles.scss"
 @import "components/content/item-types/comparison/comparison-styles.scss"
 @import "components/content/item-types/file/file-styles.scss"
@@ -102,48 +53,50 @@
 @import "components/content/item-types/text/text-styles.scss"
 @import "components/content/item-types/timeline/timeline-styles.scss"
 @import "components/content/item-types/video/video-styles.scss"
+
 @import "components/content/organize-panes/organize-styles.scss"
+
 @import "components/content/tags/tag-page/tag-page-styles.scss"
 @import "components/content/tags/tags-form/tags-form-styles.scss"
 @import "components/content/tags/tags-page/tags-page-styles.scss"
+
+//Form
 @import "components/forms/chosen/chosen-custom-styles.scss"
 @import "components/forms/edit-styles.scss"
 @import "components/forms/form-expand-collapse/accessibleplugins-styles.scss"
 @import "components/forms/save-bar/save-bar-styles.scss"
+
+//Help
 @import "components/help/help-styles.scss"
+
+//Homepage
 @import "components/homepage/homepage-settings/homepage-settings.scss"
 @import "components/homepage/homepage-view/homepage-styles.scss"
+
+//Settings
 @import "components/settings/settings-page/settings-page-styles.scss"
 @import "components/settings/settings-styles.scss"
+
+//Theme
 @import "components/theme/banner/banner-styles.scss"
 @import "components/theme/navigation/menu-settings/menu-settings-styles.scss"
 @import "components/theme/navigation/navigation-styles.scss"
 @import "components/theme/site-appearance/site-appearance-styles.scss"
 @import "components/ui/buttons/buttons-styles.scss"
+
+//UI
 @import "components/ui/fullscreen/fullscreen-styles.scss"
 @import "components/ui/icons/icons-styles.scss"
 @import "components/ui/overlay/overlay-styles.scss"
 @import "components/ui/tabs-accordion/tabs-accordion-styles.scss"
 @import "components/ui/typography/typography-styles.scss"
+
+//Users
 @import "components/users/manage-users/manage-users-styles.scss"
+
+//Utilities
 @import "components/utilities/active-editors/active-editors-styles.scss"
 @import "components/utilities/canvas/canvas-lti/canvas-lti-styes.scss"
 @import "components/utilities/login/login-styles.scss"
 @import "components/utilities/messages/messages-styles.scss"
 @import "components/utilities/print/print-styles.scss"
-@import "core-css/base-styles/app.scss"
-@import "core-css/base-styles/base.scss"
-@import "core-css/base-styles/extend.scss"
-@import "core-css/base-styles/layout-styles.scss"
-@import "core-css/base-styles/mixins/animate.scss"
-@import "core-css/base-styles/mixins/blur.scss"
-@import "core-css/base-styles/mixins/breakpoints.scss"
-@import "core-css/base-styles/mixins/center-transform.scss"
-@import "core-css/base-styles/mixins/hovertip.scss"
-@import "core-css/base-styles/mixins/rem.scss"
-@import "core-css/base-styles/mixins/triangle.scss"
-@import "core-css/base-styles/mixins/truncate.scss"
-@import "core-css/base-styles/variables.scss"
-@import "core-css/compile.scss"
-@import "core-css/vendor/leaflet/leaflet.edit.scss"
-@import "core-css/vendor/tourist/tourist.scss"

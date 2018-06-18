@@ -483,7 +483,7 @@ Mediakron.ContentBrowser.Updates = Mediakron.Extensions.View.extend({
 });
 
 Mediakron.ContentBrowser.AddPage = Mediakron.Extensions.View.extend({
-  template: JST['settings.browser.content.addnew'],
+  template: JST['compontents.add-panes.content.addnew'],
   callback: false,
   initialize: function(data){
     if(data.callback) this.callback = data.callback;

@@ -1,5 +1,5 @@
 Mediakron.Admin.AddPage = Mediakron.Extensions.View.extend({
-    template: JST['settings.add'],
+    template: JST['components.add-panes.addpane-general'],
     initialize: function() {},
     render: function() {
         $(this.el).html(this.template());
