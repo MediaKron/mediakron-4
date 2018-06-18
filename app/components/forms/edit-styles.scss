@@ -50,9 +50,9 @@ fieldset.expandable-fieldset legend {
 }
 
 .field {
-    @include display(flex);
-    @include justify-content(flex-start);
-    @include align-content(flex-start);
+    display:flex;;
+    justify-content:flex-start;
+    align-content:flex-start;
     margin: 10px 0;
 }
 
@@ -68,7 +68,7 @@ label {
 }
 
 .radio-group {
-  @include display(flex);
+  display:flex;;
 }
 
 .radio-group label {
@@ -154,7 +154,7 @@ ul.sort-group, ul.sort-group li{
     @include rem-fallback(font-size, 21);
     padding: .2em .5em; 
     border: 1px solid #565656;
-    @include placeholder {
+    input::placeholder {
         color: #565656;
       } 
 }
@@ -266,7 +266,7 @@ ul.sort-group, ul.sort-group li{
     @include rem-fallback(font-size, 28);
     font-weight: bold;
     background: #f1f1f1;
-    @include placeholder {
+    input::placeholder {
         color: #565656;
         font-weight: bold;
         @include rem-fallback(font-size, 28);   

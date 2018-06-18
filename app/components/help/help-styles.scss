@@ -112,16 +112,16 @@
 }
 
 .sections {
-    @include display(flex);
-    @include flex-wrap(wrap);
-    @include justify-content(space-between);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
 }
 
 
 .help-homepage-section {
 	padding: 1em 1.5em 1em 1.5em;
-    @include flex-basis(15em);
-    @include flex-grow(1);
+    flex-basis:15em;
+    flex-grow:1;
     background: #fafafa;
     /*border: 1px solid #ccc;*/
     border-radius: 3px;

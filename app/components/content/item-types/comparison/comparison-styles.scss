@@ -263,11 +263,11 @@
   list-style: none;
   margin-top: 1.5em;
   padding-left: 0;
-  @include display(flex);
-  @include flex-direction(row);
-  @include flex-wrap (wrap);
-  @include justify-content(center);
-  @include align-items (flex-start);
+  display:flex;;
+  flex-direction:row;;
+ flex-wrap: wrap;;
+  justify-content: center;
+ align-items:flex-start
 }
 
 #sort-comparison .comparison-sortable{
@@ -283,8 +283,8 @@
     @extend .rounded;
     border: 1px solid #ddd;
     @extend .box-shadow-subtle;
-    @include flex-shrink (1);
-    @include flex-basis (48%);
+    flex-shrink:1;
+    flex-basis:48%;
 }
 
 #sort-comparison .comparison-sortable:hover{

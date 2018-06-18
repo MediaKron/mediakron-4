@@ -148,7 +148,6 @@ $info-color: #183c5c !default;
 
 #message-top {
     @include scut-center-transform(x);
-    @include transition;
     z-index: 1063;
     width: 100%;
     top: 0;
@@ -164,8 +163,6 @@ $info-color: #183c5c !default;
 }*/
 
 #message-bottom {
-  /*    @include scut-center-transform(x);*/
-    @include transition;
     z-index: 1063;
     @include rem-fallback(min-width, 225);  
     border-radius: none;

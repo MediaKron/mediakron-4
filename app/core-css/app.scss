@@ -3,7 +3,6 @@
 @import "base-styles/extend.scss";
 @import "base-styles/app.scss";
 
-
 @import "mixins/animate/animate.scss";
 @import "mixins/blur.scss";
 @import "mixins/breakpoints.scss";
@@ -12,6 +11,11 @@
 @import "mixins/rem.scss";
 @import "mixins/triangle.scss";
 @import "mixins/truncate.scss";
+
+
+@import "mixins/position.scss";
+@import "mixins/clearfix.scss";
+@import "mixins/size.scss";
 
 @import "base-styles/base.scss";
 @import "base-styles/layout-styles.scss";

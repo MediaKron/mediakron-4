@@ -58,7 +58,7 @@
 }
 
 .field-group-tags #tag-field {
-  @include placeholder {
+  input::placeholder {
       color: #565656;
       @include rem-fallback(font-size, 18);
     } 
