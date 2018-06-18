@@ -1,0 +1,85 @@
+/* 
+#mediakron
+	#wrapper-main
+		#content .container-fluid .content-area
+			#row
+				#breadrumbs
+				#main
+					.main-content .page
+						.template
+
+ */
+
+/* @group CONTAINERS */
+
+#mediakron{
+  height: 100%;
+}
+
+#main-container {
+  @include transition(all 0.2s ease-in-out);
+  left: 0;
+  height: 100%;
+  overflow:scroll;
+}
+
+.container { /* Bootstrap override  */
+	width: 100%;
+}
+
+#content.container-fluid {
+    padding-left: 0;
+    padding-right: 0 !important;
+}
+
+.row{
+    height: 100%;
+}
+
+#main{
+	height: 100%;
+}
+
+.main-content{
+    height: 100%;
+    width: 100%;
+/*    animation-name: fadeIn;
+    animation-duration: .2s;*/
+}
+
+.template {
+	height:100%;
+	position: relative;
+	width: 100%;
+	transition: .2s ease;
+}
+
+.view{
+	height:100%;
+}
+
+.main-item-content{
+	height:100%;
+}
+
+.content-primary .container-fluid {
+	height: 100%;
+	padding: 0;
+}
+
+
+/* @end */
+
+/* @group CONTENT PRIMARY */
+
+.content-primary {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.caption-active .content-primary {
+	float: left;
+	clear: both;
+	width: 100%;
+}

@@ -1,0 +1,1838 @@
+/* @group === TIMELINES (_timeline.scss) === */
+
+/* @group TIMELINE HEIGHT */
+
+#item-content .timeline {
+  min-height: 300px;
+	/*height: 84vh;*/
+	/*height: 100%;
+	height: calc(100vh - 170px);*/
+}
+
+.timeline-template.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 180px);
+}
+
+.timeline-template.caption-active.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 225px);
+}
+
+.item-overlay.opened #item-content .timeline {
+	height: 100%;
+	height: calc(100vh - 80px);
+}
+
+.item-overlay.opened .timeline-template.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 90px);
+}
+
+.item-overlay.opened .timeline-template.caption-active.breadcrumb-active #item-content .timeline {
+    	height: 100%;
+    	height: calc(100vh - 135px);
+}
+
+
+/* @end */
+
+#item-content .timeline{
+    margin: 0 auto;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: relative;
+    width: 98%;
+    border-top: 1px solid #ddd;
+}
+
+.timeline-tour-open #item-content .timeline {
+    @include rem-fallback(margin-bottom, 120);
+}
+
+.timeline-template .title-box{
+    display: block;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 1em;
+}
+
+.type-timeline .scroll-top {
+  display: none !important; /* hide scroll to top button on timeline pages */
+}
+
+
+/* @group SIDEBAR WIDGET */
+
+.timeline-template .widgets--sidebar.col-md-4 {
+	padding: 1em;
+	@include breakpoint(md){ 
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+    float: none;
+  }
+}
+
+/* @end */
+
+.timeline-template .col-md-8 {
+	width: 100%;
+	float: none;
+	border: none;
+	max-width: none;
+}
+
+
+.timeline .leaflet-bar {
+    left:  30px;
+    top: 10px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.dragHandle{
+    width:100%;
+    height: 100%;
+    position: relative;
+    margin-top: 20px;
+    animation-name: fadeIn;
+    animation-duration:.5s;
+    padding-top: 0;
+}
+
+.markerWrapper{
+    width:100%;
+    height:100%;
+    position: relative;
+    padding-top: 40px;
+}
+
+
+.ticBar{
+  background: #fff none repeat scroll 0 0;
+  height: 40px;
+  left: 0;
+  position: absolute;
+  height: 28px;
+  top: -26px;
+  border-top: 0;
+  display: table;
+  white-space: nowrap;
+  &:before, &:after {
+    border-top: 1px solid green;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 0.5em;
+    width: 45%;
+  }
+  &:before { right: 1.5%; }
+  &:after { left: 1.5%; }
+}
+
+
+
+.timelineTicSub{
+    position: absolute;
+    border-left: 1px solid black;
+}
+.timelineTic{
+    position: absolute;
+    border-left: 0;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    border-bottom: 2px solid #222;
+}
+
+.timelineMarker{
+    position: absolute;
+    display: block;
+    padding: 0 .2em;
+    border: 1px solid transparent;
+    overflow: hidden;
+}
+
+/* Span markers */
+
+.rangeMarker {
+  background: #000;
+  padding: 0 .4em;
+  @include rem-fallback(font-size, 14);
+  border-radius: 4px;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid #fff;
+}
+
+.rangeMarker a {
+  color: #fff;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Point Markers  */
+
+.timelinePoint{
+  width: 15px;
+  background: #000;
+  height: 15px;
+  border-radius: 15px;
+  position: absolute;
+  top: 2px;
+  border: 1px solid #fff;
+}
+
+.pointMarker {
+  @include rem-fallback(font-size, 14);
+  min-width: 20px;
+}
+
+.pointMarker .timelineMarkerText a,
+.pointMarker .timelineMarkerText span {
+  color: #000;
+  @include rem-fallback(padding-left,18);
+}
+
+.timelineMarkerText a,
+.timelineMarkerText span  {
+  @include rem-fallback(font-size, 12);
+  display: block;
+}
+
+.pointMarker .timelineMarkerText a {
+  @include text-truncate();
+  @include rem-fallback(max-width, 150);
+}
+
+.timelineMarkerText,
+.pointMarker .timelineMarkerText {
+  display: none;
+  @include breakpoint(sm){ 
+  display: block;
+  }
+}
+
+.timelineMarker:hover .timelineMarkerText a, 
+.timelineMarker:hover .timelineMarkerText span {
+  width: auto !important;
+  max-width: none !important;  
+  z-index:1;
+  text-decoration: underline;
+}
+
+.simpleMarker.timelineMarker:hover .timelineMarkerText a, 
+.simpleMarker.timelineMarker:hover .timelineMarkerText span {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Connecting line */
+
+.markerEdge{ 
+    border-left: 1px solid #565656;
+    height: 3000%;
+    left: 10px;
+    position: absolute;
+    top: -3000%;
+    z-index:-1;
+    display: none;
+}
+
+.timelineMarker:hover .markerEdge {
+    border-left: 2px dotted #333;
+    display: block;
+}
+
+.timeline-controls {
+  position: relative;
+  height: 45px;
+}  
+
+#chart-end,
+#chart-start{
+  position: absolute;
+}
+
+#chart-start{
+  left: -50px;
+}
+#chart-end{
+  right: -50px;
+}
+
+.left-handle,
+.right-handle {
+  display: block;
+  position: absolute;
+  top: 8px;
+  width: 16px;
+  z-index: 3;
+  background: #ddd;
+  padding: 2px 4px;
+}
+
+.left-handle {
+  left: 4px;
+}
+
+.right-handle {
+  right: 4px;
+}
+
+.current-view {
+  background: #ddd;
+  position: relative;
+  z-index: 2;
+  @include rem-fallback(font-size, 14);
+  top: -2px;
+  display: none;
+  opacity: 0;
+}
+
+.center-track:hover .current-view {
+  display: block;
+  opacity: 1;
+  transition: 1s;
+  display: none  ;
+}
+
+.timeline-chart-container {
+  width: calc(50% + 100px);
+  text-align: center;
+  position: relative;
+  display: none;
+  border: 1px solid #333;
+}
+
+#timeline-chart{
+  display: block;
+  height: 26px;
+  top: 4px;
+  position: relative;
+  width: 50%;
+  margin-left: 170px;
+  display: none;
+  margin-bottom: 16px;
+  border: 1px solid #565656;
+  border-radius: 2px;
+  animation-name: fadeIn;
+  animation-duration:.75s;
+}
+
+.timeline-dot{
+    width: 4px;
+    height:4px;
+    border: 1px solid #565656;
+    background: #565656;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    margin-left: 3px;
+}
+.timeline-spark{
+	height: 100%;
+	width: 100%;
+}
+.timeline-chunk{
+    width:1.9%;
+    background:#fff;
+    border:1px solid black;
+    position: absolute;
+    text-align: center;
+    font-size: 10px;
+}
+
+.timeline-page{ 
+	height: 100%;
+    position: relative;
+}
+
+.timeline-page .title-box {
+	padding: .5em 2.2em .5em 1.3em;
+	float:left;
+	width:100%;
+	position: absolute;
+	background: rgba(255,255,255,1);
+	z-index: 1000;
+	top:0;
+	margin:0;
+}
+
+#timeline,#timeline-scrub{
+	height:100%;
+	width:100%;
+	position: relative;
+}
+#timeline-drag{
+    position: absolute;
+    bottom: 100px;
+    height: 90%;
+}
+
+#timeline-blocks{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+#timeline-blocks label{
+	position: absolute;
+	bottom:0;	
+	z-index: 1000;
+	right:1px;
+}
+.timeline-block{
+	position:absolute;
+	background:transparent;
+	border-left:#ddd 1px solid;
+	height:120%;
+}
+#timeline-markers{
+	position:absolute;
+	height:100%;
+	width:100%;
+	z-index:100;
+}
+.timeline-marker{
+	position:absolute;
+	margin-bottom:50px;
+	color:#fff;
+}
+.marker-range{
+	background:#ccc;
+    color: #FFFFFF;
+    display: block;
+    height: 20px;
+    position: absolute;
+    top:12px;
+    left:0;
+    z-index: 0;
+}
+
+#narrative-items #timeline{
+	height:500px;
+}
+.start-block{
+	border:none;
+	background: none;
+	border-left:3px solid black;
+}
+#timeline-blocks .start-block label{
+	position: absolute;
+	bottom: -25px;
+	z-index: 1000;
+	left: -35px;
+	right: initial;
+	background: #030303;
+	color: #fff;
+	padding: 2px;
+	font-size:.9em;
+}
+
+.end-block{
+	border:none;
+	border-right:3px solid black;
+	background: none;
+}
+#timeline-blocks .end-block label{
+	position: absolute;
+	bottom:-25px;	
+	z-index: 1000;
+	right:-35px;
+	background: #030303;
+	color: #fff;
+	padding: 2px;
+}
+.timeline-page .leaflet-control {
+margin-top: 80px;
+margin-left:30px;
+}
+
+.left-track{
+	position:absolute;
+	left:0;
+	top:0;
+	height:100%;
+	width:0;
+	background:#fff;
+	border-right:3px solid black;
+}
+
+@include keyframes(highlightDragbar) {
+    0% {
+        background-color: $highlight;
+        opacity:1;
+    }
+    100% {
+        background-color: #ddd;
+    }
+}
+
+.center-track{
+	position:absolute;
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	cursor:pointer;
+	background: rgba(221, 221, 221, 0.8);
+  padding: .2em;
+  text-align: center;
+  border-left: 1px solid #565656;
+  border-right: 1px solid #565656;
+  overflow: hidden;
+  cursor: move;
+  animation-name: highlightDragbar;
+  animation-duration:1.2s;
+  z-index: 2;
+}
+
+.right-track{
+	position:absolute;
+	right:0;
+	top:0;
+	height:100%;
+	width:0;
+	background:#fff;
+	border-left: 3px solid #000;
+}
+
+.timeline-marker-text{
+  display: block;
+  position: relative;
+  z-index: 3;
+  background: #333;
+  padding:0 3px;
+    
+}
+.timeline-marker-text a{
+    color:#fff;
+}
+
+#timelinestart, #timelineend {
+  position: absolute;
+  background: #000;
+  color: #fff;
+  z-index: 1;
+  border-radius: 2px;
+  @include rem-fallback(font-size, 14);
+}
+
+#timelinestart {
+  top: -12px;
+  border-left: 4px solid #000 !important;
+  padding: .1em .4em 0em .1em;
+
+}
+
+#timelineend {
+  top: -12px;
+  right: -25px;
+  border-right: 4px solid #000;
+  padding: .1em .1em 0em .4em;
+}
+
+/*.zoomed #timelineend {
+  background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 80%, rgba(0,0,0,.5) 85%, rgba(0,0,0,.1) 100%);
+}
+
+.zoomed #timelineend{
+  background: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,.9) 80%, rgba(0,0,0,.5) 85%, rgba(0,0,0,.1) 100%);
+}*/
+
+
+/* @group SHARED */
+
+.start-date-container > label, 
+.end-date-container > label{
+    padding-right: .5em;
+    float: left;
+    width: 50px;
+    text-align: right;
+    @include rem-fallback(font-size, 16);
+}
+
+.end-date-container {
+	clear: left;
+}
+
+/* @end */
+
+/* @group TIMELINE ADD */
+
+#admin-content-timeline table#admin-content {
+	margin-left: 0;
+}
+
+table#admin-content .timeline-manage-row {	
+	clear: left;	
+	margin-bottom: 1em;
+	border: 1px solid #565656;
+	width: 100%;
+	background: #fff;
+	padding: 10px 0 25px 0;
+	font-size: 1.1em;
+	display: block;
+	border-radius: 2px;
+	position:relative
+}
+
+table#admin-content .timeline-manage-row td {
+    float: none;
+    margin-bottom: 1em;
+}
+
+table#admin-content .timeline-manage-row td.actions {
+    display: block;
+    border-bottom: 1px solid #565656;
+}
+
+table#admin-content .timeline-manage-row td.actions a.btn-primary{
+    margin-top: -.6em;
+    padding-top: 1.1em;
+    padding-bottom: 1.2em;
+    border: none;
+    border-radius: 0;
+    border-right: 1px solid #565656;
+}
+
+
+table#admin-content .timeline-manage-row td.actions .mk-add {
+    @include rem-fallback(font-size, 18);
+    top: 2px;
+}
+
+table#admin-content .timeline-manage-row td.title {
+    display: inline-block;
+    clear: left;
+    padding-left: .5em;
+    margin-bottom: .5em;
+    vertical-align: bottom;
+}
+
+table#admin-content .timeline-manage-row .post-title {
+  width: 310px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  margin-left: 0.5em !important;
+}
+
+table#admin-content .timeline-manage-row td.title h3{
+    display: inline;
+    border: none;
+    margin-left: 0;
+}
+
+.settings-manage-select #settings-context #admin-content-timeline.browser-selector {
+  padding: 1em;
+}
+
+.browser-selector #admin-content .timeline-manage-row .row-thumb .item-square-icon {
+  border-right: none;
+  border-botton: 1px solid #565656;
+}
+
+
+/* @end */
+
+.manage-timeline-list{
+    list-style: none;
+    margin-left:0;
+    padding-left:0;
+    margin-top: 1.5em;
+}
+
+.event-manage {
+	clear: left;	
+	margin-bottom: 1em;
+	border: 1px solid #565656;
+	width: 100%;
+	background: #fff;
+	padding: 4px 8px 10px 10px;
+	font-size: 1.1em;
+}
+
+.timeline-manage-item.active{
+    background:#fff;
+}
+
+.timeline-manage-item h4:hover{
+    color:red;
+}
+
+
+
+/* @group TIMELINE ORGANIZE */
+
+
+.timeline-manage-item {
+	position: relative;	
+} 
+
+.timelineSelectWidget .select-range{
+    float: left;
+    padding-right: 10px;
+}
+
+.timeline-widget-select{
+    width: 100%;
+    float:none;
+    margin-bottom: .5em;
+    margin-top: .2em;
+}
+
+.timeline-widget-select .btn {
+    background-color:#eee;
+}
+
+.timeline-widget-select .btn.active {
+    background-color:#255E8F;
+    color: #fff;
+}
+
+.timeline-widget-select .btn{
+    float:left;
+    clear:none;
+}
+.timelineSelectWidget .form-group{
+    display: inline-block;
+}
+
+.timeline-manage-item.active{
+    color:red;
+}
+
+#settings-context #manage-timeline .remove-item {
+  right: 0;
+  top: 1px;
+  bottom: auto;
+}
+
+#settings-context  #manage-timeline .organize-edit-button {
+  @include rem-fallback(right, 25);
+  top: 0;
+  bottom: auto;
+}
+
+#settings-context #manage-timeline h3{
+	border-bottom: none;
+	display: inline-block;
+	@include rem-fallback(font-size, 20);
+	margin: 0 0 .3em 0;
+}
+
+#manage-timeline .timeline-fields > label {
+    float: left;
+    margin-right: .5em;
+    width: 50px;
+    text-align: right;
+}
+
+.settings-manage-organize #settings-context #edit-timeline-marker {
+  padding-top: 4em;
+}
+
+#settings-context #edit-timeline-marker h3.title {
+  display: block;
+  @include rem-fallback(font-size, 30);
+}
+
+.category-existing .chosen-container {
+  width: auto !important;
+  min-width: 200px;
+}
+
+.category-existing .chosen-container-active.chosen-with-drop .chosen-single,
+.category-existing .chosen-container-single .chosen-single {
+   border: 1px solid #565656;
+}
+
+.timeline-category { /* Group by Folder form fieldset  */
+  @include rem-fallback(padding-bottom, 60);
+}
+
+.timeline-category .add-category {
+  background: #000;
+  color: #fff;
+  padding: .2em .5em;
+  border-radius: 3px; 
+  border: 1px solid #030303;
+}
+ 
+.category-type-label {
+  @include rem-fallback(font-size, 16);
+  display: inline;
+}
+
+.category-existing .field {
+  display: inline-block;
+}
+
+.folder-color-edit {
+  @include rem-fallback(padding-top, 15); 
+}
+
+.current-folder {
+ border-bottom: 1px solid #565656;
+ padding-bottom: 15px; 
+}
+
+.current-folder strong {
+  @include rem-fallback(font-size, 18);
+}
+
+.current-folder .current-folder-title{
+  color: #ffffff;
+  padding: .2em .5em;
+  border-radius: 1px;
+}
+
+.current-folder .timeline-folder-edit {
+   @include rem-fallback(padding-right, 15); 
+}
+
+.new-folder {
+  @include rem-fallback(padding-top, 7); 
+}
+
+.new-folder .title {
+  padding: 3px 7px;
+  @include rem-fallback(height, 30); 
+}
+
+.new-folder button {
+  padding: .1em .2em;
+  @include rem-fallback(height, 30); 
+}
+
+.new-folder button .mk-icon {
+  top: 1px;
+}
+
+/* @end */
+
+/* @group TIMELINE FIELDS */
+
+.timeline-manage-row td.time-fields {
+    display: block;
+    margin-left: .5em;
+    margin-top: 0.5em;
+}
+
+.timeline-manage-row .start-date-fields, .timeline-manage-row .end-date-fields {
+    float: left;
+    margin-bottom: .5em;
+}
+
+.timeline-information {
+  @include rem-fallback(padding-bottom, 10);
+  font-style:italic;
+}
+
+.start-end-label {
+  @include rem-fallback(width,50);
+  display: inline-block;
+  text-align: right;
+  padding-right: .5em;
+  font-weight: bold;
+}
+
+#settings-context .timelineSelectWidget .form-control {
+    display: inline;
+    height: auto;
+    padding: 0;
+    text-align: center;
+    line-height: 1.42857143;
+    min-height: 0;
+    @include rem-fallback(font-size, 16);
+    margin: 0;  
+    color: #030303;
+  	@extend .rounded;
+  	border: 1px solid #565656;
+  	font-weight: bold;
+  	box-shadow: none;
+  	border-radius: 3px;
+  	}
+
+#settings-context .timelineSelectWidget .form-control:focus {
+    color: #222;
+}
+
+
+#settings-context .timelineSelectWidget .form-group input::-webkit-input-placeholder {
+    border: none;
+    font-weight: normal;
+    color: #474747;
+}
+
+#settings-context .timelineSelectWidget .form-group input:-moz-placeholder { /* Firefox 18- */
+    border: none;
+    font-weight: normal;
+    color: #474747;
+     
+}
+
+#settings-context .timelineSelectWidget .form-group input::-moz-placeholder {  /* Firefox 19+ */
+    border: none;
+    font-weight: normal;
+    color: #474747;
+     
+}
+
+#settings-context .timelineSelectWidget .form-group input:-ms-input-placeholder {  
+    border: none;
+    font-weight: normal;
+    color: #474747;
+}
+
+#settings-context .timelineSelectWidget .form-group.year input {
+   width: 100px;
+}
+
+#settings-context .timelineSelectWidget .form-group.day input {
+   width: 35px;
+}
+
+#settings-context .timelineSelectWidget .form-group.hour input,
+#settings-context .timelineSelectWidget .form-group.minute input,
+#settings-context .timelineSelectWidget .form-group.second input {	
+	width: 35px;
+	font-size: 75%;
+}
+
+#settings-context .form-group.hour input,
+#settings-context #manage-timeline .form-group.hour input
+ {
+    margin-left: 1em;
+}
+
+.timelineSelectWidget .form-group.month {
+	margin-left: .3em;
+}
+
+.timelineSelectWidget select {
+   border: 1px solid #565656; 
+   border-radius: 3px;
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single .chosen-single {
+   line-height: 1.4;
+   float: none; 
+   padding: 0;
+   width:100%;
+   @include rem-fallback(font-size, 16);
+   @include rem-fallback(width, 55);
+   border: none;
+   font-weight: bold;
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-active .chosen-single,
+#settings-context .timelineSelectWidget .form-group.month .chosen-container .chosen-single  {
+   @include rem-fallback(width, 75);
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single .chosen-single div b {
+   display: none;
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single .chosen-drop {
+    @include rem-fallback(width, 125);
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single .chosen-single.chosen-default{
+   @include rem-fallback(width, 55);
+}
+
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single .chosen-single.chosen-default span{
+	color: #565656;	
+	font-weight: normal;
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-active,
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single {
+	width: auto !important;
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single .chosen-single-with-deselect span {
+    width: 65px;
+}
+
+#settings-context .timelineSelectWidget .form-group.month .chosen-container-single .chosen-single abbr {
+    right: -2px;
+    z-index: 1;
+}
+
+#settings-context .form-group.month input {
+	@include rem-fallback(width, 115);
+}
+
+.timeline-form #date-fields { /* hide date fields since they are same as the timeline range fields */
+  display: none;
+}
+
+/* @end */
+
+#timeline .goToView{
+    display:none;
+    height: 70%;
+    margin-top: 7%;
+    overflow: hidden;
+}
+.full #timeline .goToView{
+    display:block;
+}
+.full #timeline #timeline-drag{
+    bottom:auto;
+    top:-94%;
+    opacity: .8;
+}
+.full .leaflet-control-zoom{
+    display:none;
+}
+.full .timeline-page .title-box{
+    display: none;
+}
+.full .timeline-page .goToView .title-box{
+    display: block;
+    position: static;
+}
+.full #timeline-chart{
+    bottom:20%;
+}
+
+.timeline-page .title-box {
+	border-bottom:1px solid #ddd;
+}
+
+
+/* @group DETAIL POPOVERS */
+
+.popover-content {
+  margin-bottom: 1em;
+}
+
+.timeline-popup {
+  text-align: center;
+}
+
+.timeline-simple .popover{
+    color:#030303;
+    z-index: 1032;
+    background: green !important;
+}
+
+.timeline-simple .popover::after {
+    border-bottom-color:green !important;
+}
+
+.timeline-simple .popup-body {
+  max-width:350px;
+  white-space: normal;
+  padding: 0 .5em;
+  background:#ddd;
+  padding:0.2em;
+  margin: 0 .5em -.5em .5em;
+  border:1px solid #ccc;
+}
+
+.popover-title {
+  text-align: center;
+}
+
+.popover .popup-header{
+  margin: 0 auto;
+  display: inline-block;
+  padding: 0 .5em .5em 0;
+  @include rem-fallback(font-size,15);
+  font-weight: normal;
+}
+
+.timeline-simple .popup-header {
+  word-wrap: normal;
+  @include rem-fallback(font-size,16);
+  display: inline;
+}
+
+.popup-body .timeline-date{
+  font-weight: bold;
+  @include rem-fallback(font-size,18);
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.timeline-simple .popup-body .timeline-date{
+  @include rem-fallback(font-size,16);
+}
+
+
+.timeline-simple .popup-body .timeline-date{
+  width: auto;
+}
+
+.popup-timeline-caption {
+  padding: .5em 1em 0 1em;
+  @include rem-fallback(font-size,14);
+}
+
+.popup-timeline-nocaption {
+  padding: .5em .5em 0 .5em;
+}
+
+.popover-content .item-square-icon  {
+    margin:  -15px auto 0 auto;
+    color: #666;
+    width: 125px !important;
+    height: 115px !important;
+    font-size: 100px !important;
+    display: none;
+}
+
+.popover-content .square-thumbnail {
+    margin: auto;
+}
+
+.popup-timeline-caption .square-thumbnail {
+   float:left; 
+   margin: .5em .75em 0 .5em;
+   width: 100px !important;
+   height: 100px !important;
+}
+
+
+.timeline-popup .timeline-edit-buttons {
+  text-align:center;
+  padding:0;
+  margin:0
+}
+
+.timeline-popup .timeline-edit-buttons a {
+  font-size: 24px;
+  padding:0;
+  margin:0;
+}
+
+.timeline-popup .timeline-edit-buttons .mk-edit {
+    top:-1px;
+}
+
+
+/* @end */
+
+/* @group Revised Timeline */
+
+#item-content .timeline {
+    margin: 2em 0 0 1em;
+    overflow: hidden;
+    position: relative;
+    border-top: none;
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.timeline .leaflet-bar {
+    left: 0px;
+    top: 0px;
+    box-shadow: 0 0;
+}
+
+.center-line {
+    display: none;
+}
+
+.center-time {
+    visibility: hidden;
+}
+
+.timeline-template .leaflet-bar a, 
+.timeline-template .leaflet-bar a:hover {
+  display: inline-block;
+  border: 1px solid #030303;
+  color: #030303;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  line-height: 36px;
+}
+
+.leaflet-control-zoom-out {
+    @include rem-fallback(font-size, 18);
+    margin-left: .2em;
+}
+
+.timeline-template .leaflet-control-zoom-in .mk-icon, 
+.timeline-template .leaflet-control-zoom-out .mk-icon {
+  @include rem-fallback(font-size, 18);
+}
+
+.timeline-template .leaflet-bar .home-icon {
+  right: 1px;
+}
+
+.leaflet-bar a:last-child {
+  border-bottom: 1px solid #030303;
+}
+
+.timelineTic span {
+    @include rem-fallback(font-size, 14);
+    font-weight: bold;
+    position: relative;
+    @include rem-fallback(top, 5);
+    @include rem-fallback(padding-left, 5);
+    @include rem-fallback(padding-right, 5);
+    @include rem-fallback(margin-left, -5);
+}
+
+.timelineTicSub {
+    display: none;
+}
+
+
+
+/* @end TIMELINES == */
+
+/* @group REVISED 02-2017 */
+
+
+.right-track, .left-track {
+  border: none;
+}
+
+.timeline-chunk {
+    display: none;
+}
+
+
+
+.timelineTic span {
+    background: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* key */
+
+.timeline-key{
+      position: absolute;
+    width: 300px;
+    border: 1px solid;
+    right: 0;
+    padding:10px;
+    
+    ul{
+      list-style: none;
+      padding:0;
+      li{
+        width:60%;
+        display: block;
+        padding: 0 5px;
+      }
+    }
+}
+
+/* @end */
+
+/* @group TIMELINE FILTER BOX */
+
+.timeline-template .item-sidebar {
+  position: fixed;
+  top: 40vh;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  right: 16px;
+}
+
+.timeline-template.filters-closed .item-sidebar {
+  @include rem-fallback(width,36);
+}
+
+.timeline-template.filters-open .item-sidebar {
+  @include rem-fallback(width,225);
+}
+
+.timeline-template .filter-bind {
+  padding: .4em;  
+}
+
+.timeline-template.filters-open .filter-bind { 
+  padding: .75em 1em;
+}
+
+.timeline-template .filter-by-layers li {
+  margin-bottom: .5em;
+  padding: .1em .5em;
+  border-radius: 3px;
+  @include rem-fallback(min-height,28);
+  position: relative;
+  overflow: hidden;
+  @include rem-fallback(width,25);
+}
+
+.timeline-template .filter-by-layers li[uri="000-nocategory"] {
+  display: none; /* hide default category */
+}
+
+.timeline-template.filters-open .filter-by-layers li {
+  @include rem-fallback(width,190);
+  @include rem-fallback(font-size, 16);
+}
+
+.timeline-filters .filter-by-layers li.inactive {
+  background: #ccc !important;
+  color: #333 !important;
+  text-decoration: line-through;
+}
+
+.timeline-filters .filter-by-layers li .filter-help {
+  right: -100%;
+  bottom: 0;
+  position: absolute;
+  transition: .25s;
+  background: #565656;
+  color: #fff;
+  text-align: center;
+  @include rem-fallback(width, 60);
+  @include rem-fallback(font-size, 12);
+  line-height: 1;  
+  padding: .3em 0;
+} 
+
+.timeline-filters .filter-by-layers li:hover .filter-help-hide {
+  right: 0;
+} 
+
+.timeline-filters .filter-by-layers li.inactive:hover .filter-help-show {
+  right: 0;
+  z-index: 1;
+} 
+
+.timeline-template.filters-closed .timeline-filters .filter-by-layers span, 
+.timeline-template.filters-closed .timeline-filters #search-rows {
+  display: none;
+}
+
+.timeline-template .content-action#content-search .mk-search {
+  @include rem-fallback(font-size, 22);
+}
+
+ .timeline-template .general-filters {
+   display: none;
+ }
+ 
+ .timeline-template  .filter-layers.general-filters-on {
+   margin-bottom: 0;
+ }
+ 
+  .timeline-template  .filter-bind #content-search {
+    margin-bottom: 0;
+  }
+
+
+/* @end */
+
+/* @group DETAILS SIDEBAR */
+
+.widgets.widgets--timeline {
+  @include scut-center-transform(x);
+  position: fixed;
+  top: auto;
+  bottom: -2px;
+  background: #fff;
+  height: 30vh;
+  padding: 10px 30px 10px 10px;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  transition: all .5s;
+  z-index: 2;
+}
+
+.widgets.widgets--timeline .description__inner,
+.widgets.widgets--timeline .details__inner,
+.widgets.widgets--timeline .details-tags {
+  background: rgba(255,255,255,1);
+}
+
+.details-sidebar.details-closed .widgets.widgets--timeline{
+  bottom:-100%;
+  transition: all .5s;
+}
+
+.timeline-template .details-open .close-details-button {
+  display: block;
+  position: fixed;
+  border: none;
+  z-index: 3;
+  right: 1em;
+  bottom: calc(30vh - 66px);
+  @include breakpoint(md){ 
+    right: calc(50% - 400px);
+  }
+}
+
+.timeline-template .details-closed .close-details-button {
+  position: fixed;
+  bottom:-100%;
+}
+
+.timeline-template .details-closed .open-details-button {
+  position: fixed;
+  top: auto;
+  @include rem-fallback(bottom,1);
+  @include rem-fallback(right,45);
+  margin-bottom: 1.5em;
+  padding: .3em .5em .3em .5em;
+  animation-name: slideUpStay;
+  animation-duration:.6s;
+  background: #030303;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: -30px;
+  z-index: 1;
+  @include rem-fallback(font-size,14);
+}
+
+.timeline-template .details-closed.tour-open .open-details-button {
+  @include rem-fallback(bottom,1);
+  @include rem-fallback(right,45);
+}
+
+.timeline-template .details-open .open-details-button {
+  position: fixed;
+  top: auto;
+  bottom:-100%;
+}
+
+.timeline-template .open-details-button .mk-info{
+  @include rem-fallback(font-size,15);
+  top: 2px;
+}
+
+
+/* @end */
+
+/* @group TIMELINE Tour */
+
+.timeline-template .tour-container {
+  position:fixed;
+  bottom: 0;
+  left: 35px;
+  padding-left: 25px;
+  width: auto;
+  z-index: 3;
+  background: none;
+}
+
+.timeline-template.timeline-tour-open .tour-container {
+  position:fixed;
+  bottom: 0;
+  height: 334px;
+  background: transparent;
+}
+
+.timeline-template .timeline-tour {
+  position: fixed;
+  display: flex;
+  bottom:-100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 300px;
+  padding-top: 22px;  
+  background: linear-gradient(to bottom, rgba(255,255,255,.3) 0%, rgba(255,255,255,.4) 2%, rgba(255,255,255,1) 5%, rgba(255,255,255,1) 100%);
+  width: 100%;
+  transition: .3s;
+  margin-left: -35px;
+}
+
+.timeline-template.timeline-tour-open .tour-container .timeline-tour {
+  @include rem-fallback(bottom,8);
+  transition: .3s;
+}
+
+.timeline-template .tour-item .display-options,
+.timeline-template .tour-item:hover .display-options {
+  display: none; /* hide expand button since it's visible with item date */
+}
+
+.timeline-template .tour-container .tour-contents {
+  display: block;
+  margin-bottom: 1.5em;
+  padding: 0em .5em .3em .7em;
+  animation-name: slideUpStay;
+  animation-duration:.6s;
+  background: #030303;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: -30px;
+  @include rem-fallback(font-size,14);
+}
+
+.timeline-template .tour-container .tour-contents .mk-icon{
+  top: 4px;
+  right: 3px;
+  @include rem-fallback(font-size,19);
+}
+
+.timeline-template.timeline-tour-open .tour-container .tour-contents {
+  display: none;
+}
+
+.timeline-template .tour-container .close-timeline-tour-button {
+  padding: .2em .5em;
+  position: absolute;
+  left: -100%;
+  top: 31px;
+  z-index: 1;
+  background: #fff;
+  color: #000;
+  @include rem-fallback(margin-left, -20);
+  @include rem-fallback(font-size,14);
+  border: none;
+}
+
+.timeline-template.timeline-tour-open .tour-container .close-timeline-tour-button {
+  left: -3px;
+  top: 34px;
+  width: 22px;
+}
+
+.timeline-template.timeline-tour-open .tour-container .close-timeline-tour-button .close-icon::before, 
+.timeline-template.timeline-tour-open .tour-container .close-timeline-tour-button .close-icon::after {
+  background: #000;
+}
+
+.timeline-template.timeline-tour-open .tour-container .close-timeline-tour-button .close-icon{
+  width: 18px;
+  height: 18px;
+  margin-right: .2em;
+  top: 2px;
+  color: #fff;
+}
+
+.timeline-tour::-webkit-scrollbar {
+    background: #fff;
+    border-radius: 6px;
+    height: 10px;
+}
+
+.timeline-tour::-webkit-scrollbar-thumb {
+    background: #565656;
+    border-radius: 6px;
+}
+
+.timeline-template .tour-item {
+  width: 100%;
+  border-bottom: 0;
+  flex: 0 0 65%;
+  border: 1px solid #565656;
+  padding:1em;
+  margin-left: 10px;
+  border-radius: 3px;
+  height: 245px;
+  overflow-y: auto;
+  background: #fff;
+  transition: opacity .25s ease-in-out;
+  overflow-x: hidden;
+  position: relative;
+  padding-top: 1.75em;
+  @include breakpoint(sm){ 
+    flex: 0 0 20%;
+    min-width: 500px;
+  }
+}
+
+.timeline-template .tour-item.tour-item-story {
+   min-width: 600px;
+}
+
+.timeline-template .tour-item.tour-item-image {
+   min-width: 400px;
+}
+
+.timeline-template .tour-item.tour-item-progression #progression-content {
+  margin: 0 auto;
+}
+
+.timeline-template .tour-item.tour-item-progression .progression-frame {
+   @include rem-fallback(height, 160);
+   @include rem-fallback(width, 220);
+}
+
+.timeline-template .tour-item.tour-item-video .tour-item-content {
+   @include rem-fallback(width, 300);
+   /* text-align: center; */
+   margin: auto;
+}
+
+.timeline-template .tour-item.tour-item-comparison .timeline-template .title-box {
+  margin-bottom: 0;
+}
+
+.timeline-template .tour-item.tour-item-comparison .tour-item-content .comparison-item header {
+ padding-bottom: 0;
+}
+
+.timeline-template .tour-item.tour-item-comparison .tour-item-content .comparison-item header h2 {
+  margin-bottom: .5em;
+  margin-top: 0;
+}
+
+.timeline-template .tour-item .item-thumbnail-icon{
+  text-align:center;
+}
+
+.timeline-template .tour-item .item-thumbnail-icon .square-thumbnail{
+  margin: auto;
+}
+
+.timeline-template .tour-item .item-thumbnail-icon .mk-icon{
+   font-size: 60px;
+   display: block;
+}
+
+.timeline-template .tour-container div.tour-item:last-of-type {
+  border-bottom: 1px solid;
+}
+
+
+/*.timeline-template .tour-item.not-highlighted {
+  opacity: .8;
+}*/
+
+/*.timeline-template .tour-item .tour-item-inner {
+  display: flex;
+  flex-wrap: wrap;
+}*/
+
+.timeline-template .tour-item:hover {
+  
+}
+
+.timeline-template .tour-item.tour-highlight
+ {
+   display:block;
+   opacity: 1;
+   border: 4px solid #000;
+   box-shadow: none;
+}
+
+.timeline-template .tour-item header{
+/*  padding-right:1em;
+  flex-grow: 2;
+  flex-basis: 40%;*/
+  margin-top: .5em;
+  text-align: center;
+}
+
+.timeline-template .tour-item-title h3 {
+  @include rem-fallback(font-size, 18);
+  cursor: auto;
+}
+
+.timeline-template .tour-item-title h3:hover {
+  color: #000;
+}
+
+.timeline-template .item-date {
+  @include scut-center-transform(x);
+  @include rem-fallback(top,-1);
+  display: block;
+  background: #030303;
+  padding: .1em .5em;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-weight: bold;
+  border: 1px solid #565656;
+  white-space: nowrap;
+  @include rem-fallback(font-size,14);
+  z-index: 3; /* to keep it above story figures  */
+  color: #fff;
+  cursor: pointer;
+}
+
+.timeline-template .item-date:hover {
+  color: #565656;
+}
+
+.timeline-template .item-date a {
+  color: #fff;
+}
+
+.timeline-template .tour-item.tour-highlight .item-date,
+.timeline-template .tour-item:hover .item-date {
+  border: 1px solid #000;
+  background: $highlight;
+  color: #000;
+}
+
+.timeline-template .tour-item.tour-highlight a,
+.timeline-template .tour-item:hover .item-date a {
+  color: #000;
+}
+
+.timeline-template .tour-container .mk-new-window {
+  margin-left: .3em;
+  top: 2px;
+  font-size: 15px;
+}
+
+.timeline-template .tour-item-content {
+  padding-bottom:0;
+  padding-right: 1em;
+/*  order: -1;
+  flex-grow: 1;
+  flex-basis: 20%;
+  padding-top: 0;*/
+}
+
+.timeline-template .tour-container .description {
+  margin-top: .5em;
+  flex-grow: 1;
+}
+
+.timeline-template .tour-item-content > img {
+  max-width: 215px;
+  height: auto; 
+  max-height: 150px;
+  width: auto;
+  margin: auto;
+}
+
+.timeline-marker-active:not(.simpleMarker) {
+  background-color: $highlight !important;
+  border: 1px solid #000;
+}
+
+.timelineMarker.pointMarker:hover,
+.timeline-marker-active.pointMarker {
+   border-radius: 2px; 
+   z-index: 1;
+}
+
+.rangeMarker:hover a,
+.rangeMarker:hover span {
+  color: #fff;
+  text-decoration:underline;
+}
+
+.rangeMarker.simpleMarker:hover a,
+.rangeMarker.simpleMarker:hover span{
+  text-decoration:none;
+  font-weight: bold;
+}
+
+.rangeMarker.timeline-marker-active a,
+.rangeMarker.timeline-marker-active span   {
+  color:#000 !important;
+  padding: 0 .4em;
+}
+
+.rangeMarker.timeline-marker-active.simpleMarker a,
+.rangeMarker.timeline-marker-active.simpleMarker span   {
+  color:#fff !important;
+}
+
+.timelineMarker .timelineMarkerText span { /* simple label  */
+  cursor: default;
+}
+
+.timelineMarker span.click-to-view { /* show a "Click to view" text when hovering over item markers  */
+  display: none;
+  position: absolute;
+  top: -10px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.2;
+  /*background: $highlight;*/
+  color: #000;
+  cursor: pointer;
+}
+
+.pointMarker.timelineMarker:hover span.click-to-view {
+    display: inline-block;
+    display: none;
+    margin-left: 18px;
+    width: calc(100% - 24px);
+}
+
+.rangeMarker.timelineMarker:hover span.click-to-view {
+    display: inline-block;
+    display: none;
+    width: 98%;
+    left: 0;
+    margin-top: 3px;
+}
+
+.simpleMarker.pointMarker.timelineMarker:hover span.click-to-view,
+.simpleMarker.rangeMarker.timelineMarker:hover span.click-to-view { /* doon't show "Click to view" text when hovering over simple markers  */
+  display: none; 
+}
+
+
+/* @end */
+
+/* @group TIMELINE FOLDER GROUPS*/
+
+.group-title {
+  position: absolute;
+  left: 15px;
+  padding: 0em .3em;
+  border-radius: 3px;
+  font-size: 14px;
+  z-index: 1;
+  display:block; 
+  background: #fff;
+  color: #444;
+  margin-top: -12px;
+}
+
+/*.group-title:hover {
+  color: #565656;
+}
+
+.group-title:hover::after {
+  content: ' [click to view folder]';
+}*/
+
+.group-wrapper[uri="000-nocategory"] > .group-title {
+  display: none;
+}
+
+.group-wrapper{
+  position: relative;
+  margin-top: 10px;
+}
+
+.group-wrapper:hover > .group-title {
+  display: block;
+}
+
+.group-wrapper {
+  /*border-bottom: none !important;*/
+}
+
+.group-wrapper:hover {
+  /*border-top-style: solid !important;*/
+}
+
+.markerWrapper div.group-wrapper:last-child {
+/*  border-bottom: 1px solid; */
+}
+
+.group-wrapper[uri="000-nocategory"]:hover > .group-title {
+  display: none;
+}
+
+.group-wrapper[uri="000-nocategory"] {
+  border-top: none !important;
+}
+
+
+/* @end */
+

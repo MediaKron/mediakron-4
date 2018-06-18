@@ -1,0 +1,11 @@
+#header {
+	background-color: #030303;
+}
+
+#mediakron #header a, #mediakron #header .mk-icon, #mediakron #header button {
+	color: #ffffff;
+}
+
+a {
+	color: #4b4b4b;
+}

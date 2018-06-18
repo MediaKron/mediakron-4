@@ -1,0 +1,227 @@
+#branding {
+    background: #fff; 
+}
+
+h1.page-header #site-name a {
+	color: #222;
+}
+
+a {
+	color: #4b4b4b;
+}
+
+/* @group Navigation */
+
+.default-nav #mediakron {
+    padding-left: 0;
+    padding-top: 0;
+    transition: 0.5s;	
+}
+
+.default-nav #navbar {
+    z-index: 1002;
+    position: fixed;
+    height: 100%;
+    background: #303030;
+    transition: 0.3s;	
+    margin-bottom:0;
+    padding-left:0;
+    margin-left: 225px;
+    /*@include rem-fallback(margin-left, -225);*/
+    width: 0;
+    padding-top: 1em;
+}
+
+.default-nav #navbar .container {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.default-nav #navbar a, #navbar button {
+	color: #fff;
+	font-size:1em;
+	font-weight: 300;
+}
+
+.default-nav #navbar .mk-icon {
+	color: #fff;
+}
+
+.default-nav #navbar li {
+    list-style: none;
+    margin-bottom: 10px;
+    /*@include rem-fallback(margin-bottom, 10px);*/
+}
+
+.default-nav #navbar li a:hover {
+	text-decoration: none;
+	color: #999;
+}
+
+
+/* @group LEFT NAV TOGGLED */
+
+.default-nav .leftnav-button.fullscreen-nav-toggle{
+    display: none;
+}
+
+.default-nav #branding .leftnav-button.leftnav-button-branding {
+    float: left;
+    z-index: 1003;
+    background: #666;
+    background: rgba(000,000,000,.3);
+    border: none;
+    color: #fff;
+    font-size: 36px;
+    padding: 0 .1em;
+    margin: 0;
+}
+
+.default-nav .leftnav-toggled  #branding .leftnav-button.leftnav-button-branding {
+    display: none;
+}
+
+.default-nav .homepage #branding .leftnav-button.leftnav-button-branding {
+    padding: .3em .2em .2em .2em;
+    margin: 0;
+}
+
+.default-nav .full .map-template .title-box{
+    display: none;
+}
+
+.default-nav #navbar .leftnav-close{
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    /*@include rem-fallback(font-size, 22);*/
+}
+
+.default-nav .leftnav-toggled #mediakron {
+	padding-left: 225px;
+    /*@include rem-fallback(padding-left, 225);*/
+}
+
+.default-nav .leftnav-toggled #mediakron #navbar {
+	width: 225px;
+    /*@include rem-fallback(width, 225);*/
+}
+
+.default-nav .leftnav-toggled #mediakron #wrapper-main {
+    position: absolute;
+    margin-right: 225px;
+    /*@include rem-fallback(margin-right, -225);*/
+    width: 100%;
+}
+
+
+/* @end */
+
+/* @group GLOBAL LEFT NAV */
+
+.default-nav #mediakron {
+		padding-left: 225px;
+       /* @include breakpoint(sm){*/
+       /* @include rem-fallback(padding-left, 225);*/
+        padding-top:0;
+       /* }*/
+    }
+      
+.default-nav #mediakron #wrapper-main {
+        /* @include breakpoint(sm){*/
+            position: static;
+            margin-right: 0;
+            width: 100%;
+       /* }*/
+    }
+
+.default-nav #navbar {
+	width: 225px;
+	margin-right: 0;
+   /* @include rem-fallback(width, 225);
+    @include rem-fallback(margin-right, 0);*/
+    height: 100%;
+}
+
+.default-nav .leftnav-toggled #mediakron #navbar {
+	margin-left: -225px
+	width:0;
+	/* @include breakpoint(sm){
+		 @include rem-fallback(margin-left, -225);
+		 width: 0;
+	 	 }*/
+}
+
+.default-nav .leftnav-toggled #navbar {
+	 margin-left: 0;
+}
+
+.default-nav .leftnav-toggled #mediakron  {
+    padding-left: 0;
+}
+
+.default-nav #mediakron #wrapper-main {
+    width: 100%;
+}
+
+.default-nav #settings-context {
+	margin-top: 20px;
+    /*@include rem-fallback(padding-top, 20);*/
+}
+
+.default-nav #branding {
+    padding: 0;
+}
+
+.default-nav .info-bar.fixed-bar {
+  /*  @include breakpoint(sm){*/
+    	top:0;
+    	padding-left: 247px;
+    	left: 0;
+    	/*@include rem-fallback(left, 0);  
+    	}*/
+}
+
+.default-nav .leftnav-toggled  .info-bar.fixed-bar {
+    /*@include breakpoint(sm){
+    	top:0;    
+    	@include rem-fallback(left, 225);  
+    	}*/
+    	top: 0;
+}
+
+.default-nav #branding .leftnav-button.leftnav-button-branding {
+	/*@include breakpoint(sm){*/
+	display: none;
+	/*}*/
+}
+
+.default-nav .leftnav-toggled .leftnav-button-infobar {
+	display: inline;
+	float: left;
+	z-index: 1003;
+	background: #666;
+	background: rgba(000,000,000,.3);
+	border: none;
+	color: #fff;
+	font-size: 20px;
+	padding: 0 .1em;
+	margin: 0;
+}
+
+.default-nav #navbar .leftnav-close {
+	/*@include breakpoint(sm){*/
+		display: none;  
+			/*}*/
+}
+
+/*#navbar .leftnav-close {
+	display: none;
+}*/
+
+/* @end */

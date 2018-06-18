@@ -1,0 +1,185 @@
+#header {
+	background-color: #fff;	
+	white-space:nowrap;
+}
+
+a {
+	color: #43577E;
+}
+
+.collections-link, 
+#full-screen-menu,
+#mk-logo-menu {
+	display: none !important; /* Hidding all utility menu items */
+}
+
+h1.page-header {
+    padding-left: .3em; /* Lessing padding next to logo  */
+}
+
+
+.home-template--basic .subtitle { /* Hidding header logo and subtitle since we have this in images */
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip: rect(0, 0, 0, 0);
+	position: absolute;
+}
+
+.title-box h2,
+.narrative-template__items h3,
+.narrative-template__items h3 a, 
+.narrative-template--basic 
+.narrative-template__info h2 {
+    color: #284789;
+}
+
+.content-primary, .caption-active .content-primary { /* fixes issue with narrative items not having height */
+    float:none;   
+}
+
+.narrative-template--item {
+    margin-bottom:2em;   
+}
+
+.home-template--basic {
+    padding-top: 16em;
+    background: url("../img/guestbook/gb-logo.png") transparent 50% 2em no-repeat;    
+}
+
+.home-template--basic .home-image {
+    max-width: 92%;
+    margin-top: 1.5em;
+    box-shadow: none;
+}
+
+#homepage-content {
+    padding-top: 0;
+}
+
+#homepage-content .narrative-template__intro .title-box {
+    display: none;
+}
+
+.narrative-template--full .narrative-template__items .title-box {
+    padding-top: 0;
+}
+
+#homepage-content .caption {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    max-width: 500px;
+    margin: auto auto 4em auto;
+}
+
+#homepage-content .caption a {
+    font-size: 18px;
+    display: inline-block;
+    padding-top: 1em;
+}
+
+#homepage-content .narrative-template--item {
+    margin-bottom: 3em;
+}
+
+.home-template--basic .description {
+    display: none;
+}
+
+#homepage-content .image-template.in-narrative .annotate {
+    width: 100%;
+    margin: 0;
+}
+
+#homepage-content .image-template.in-narrative .annotate img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+}
+
+#homepage-content .image-template .annotated-move {
+    left: 0;
+    position: static;
+}
+
+#homepage-content .annotated-frame {
+    display: none;
+}
+
+#homepage-content .annotate {
+    margin: 0;
+    height: auto;
+}
+
+#homepage-content .narrative-template__items .video-container {
+	max-width: 960px;
+	padding-right: 0;
+}
+
+.home-template--nobanner .body-logo {
+    display: none;
+}
+
+.homepage .narrative-template--item .template {
+    padding-top:0
+}
+
+#homepage-content #nr-home-exchanging-stories.narrative-template--item, 
+#homepage-content #nr-home-exchanging-stories-initiative.narrative-template--item {
+    background: #93C83F;
+    padding-bottom: 5em;
+    margin-bottom:0;
+}
+
+#homepage-content #nr-home-exchanging-stories .content-primary,
+#homepage-content #nr-home-exchanging-stories-initiative .content-primary {
+    background:#fff;   
+}
+
+.narrative-template__items #nr-home-exchanging-stories .widgets--below,
+.narrative-template__items #nr-home-exchanging-stories-initiative .widgets--below {
+    background:#fff; 
+    max-width: 100%;  
+}
+
+#nr-home-exchanging-stories  .description, 
+#nr-home-exchanging-stories-initiative  .description {
+    padding-top:1.5em;
+    padding-bottom:.2em;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+/* @group HORIZONTAL MENU */
+
+#navbar .main-menu-sidebar {
+    padding: 0;
+    position: static;
+    width: auto;
+    transform: none;
+    transition: all 0.25s linear;
+    background: transparent;
+}
+
+#navbar .main-menu-sidebar li {
+    clear: none   
+;
+}
+
+#navbar #menu-toggle {
+    display: none;
+}
+
+#navbar .main-menu .menu-item.add-menu-navbar a {
+    background: none;
+}
+
+/* @end */
+

@@ -1,0 +1,232 @@
+/*  === SETTINGS PANE (_admin.scss) === */
+
+/* #region -- General */
+
+#settings-context #content-manage #search-rows {
+  width: 90%;
+}
+
+#settings-context h3.organize-title {
+  font-size: 1.2em;
+  padding-top: 1em;
+  border-bottom: none;
+  margin-top: -1em;
+}
+
+#settings-context #manage-map h3.organize-title {
+  padding-left: 10px;
+}
+
+#settings-context .browser-selector {
+  padding: 1.5em 1.5em 1em 1.5em;
+}
+
+#settings-context #manage {
+  padding: 0;
+}
+
+.admin .field {
+  margin: 10px 0;
+  display: block;
+}
+
+.settings-manage-select #settings-context.closed,
+.settings-manage-organize #settings-context.closed {
+  @include rem-fallback(right, -550);
+  animation-name: slideOutright;
+  animation-duration: .4s;
+}
+
+.settings-manage-organize.type-comparison .overlay-closed #settings-context {
+  /* Comparison panes are full width */
+  @include rem-fallback(right, 0);
+  transition: none;
+}
+
+.settings-manage-select #settings-context.opened,
+.settings-manage-organize #settings-context.opened {
+  width: 100%;
+  right: 0;
+  left: auto;
+  border-left: none;
+  border-left: 1px solid #666;
+  @include breakpoint(md) {
+    @include rem-fallback(width, 550);
+  }
+}
+
+
+
+.content-push-sidebar {
+  @include breakpoint(md) {
+    width: calc(100% - 550px) !important;
+    transition: width .35s ease;
+  }
+}
+
+.settings-manage-select .main-content>.slideshow-template--full,
+.settings-manage-organize .main-content>.slideshow-template--full {
+  @include breakpoint(md) {
+    padding-left: 0em
+  }
+}
+
+.settings-manage-select .main-content>.template .page-options,
+.settings-manage-organize .main-content>.template .page-options {
+  display: none;
+}
+
+.settings-manage-select #settings-context h3.title,
+.settings-manage-organize #settings-context h3.title {
+  display: none;
+  @include rem-fallback(font-size, 18);
+}
+
+.settings-manage-select .overlay h2,
+.settings-manage-organize .overlay h2 {
+  padding-left: .5em;
+}
+
+.settings-manage-organize.type-comparison #settings-context h3.title {
+  display: block;
+  @include rem-fallback(font-size, 32);
+  padding: 0;
+  margin-top: 1em;
+}
+
+
+.settings-manage-select #settings-context,
+.settings-manage-organize #settings-context {
+  /*box-shadow: 0 0 8px 0 #555;*/
+  border-left: 1px solid #999;
+}
+
+.settings-manage-select #settings-context .browser-selector {
+  padding: 5em 1.5em 0 1.5em;
+  height: 100%;
+}
+
+.settings-manage-organize #settings-context .organize {
+  padding: 5em 1.5em 0 1.5em;
+  height: 100%;
+}
+
+.settings-manage-select .item-header .option-add {
+  display: none;
+}
+
+.settings-manage-organize .item-header .option-organize {
+  display: none;
+}
+
+@keyframes fadeScreen {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: .15;
+  }
+}
+
+.fade-screen.is-visible-sidebar {
+  opacity: .15;
+  visibility: visible;
+  z-index: 1059;
+  animation-name: fadeScreen;
+  animation-duration: 1s;
+}
+
+.fade-screen-sidebar {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s 0s ease-in;
+}
+
+.fade-screen-sidebar.is-visible {
+  opacity: .15;
+  visibility: visible;
+  z-index: 1059;
+  transition: opacity .35s .3s ease-in;
+  width: calc(100% - 550px);
+  height: 100%;
+  position: fixed;
+  background-color: #000;
+  top: 0;
+  left: 0;
+}
+
+/* #endregion */
+
+
+/* #region -- SETTINGS: Privacy */
+
+.toggle-comments .toggle-label {
+  width:auto;
+}
+
+/* #endregion  */
+
+/* #region  STATISTICS */
+
+.admin-statistics input {
+  border: 1px solid #565656;
+}
+
+/* #endregion  */
+
+/* #region  ADD LINK IN WYSIWYG */
+
+#settings-context #admin-link-content .browser-selector h2 {
+  margin-bottom: 0;
+}
+
+/* #endregion  */
+
+
+
+/* #region  ARCHIVED */
+
+.archive-message {
+  font-weight: bold;
+}
+
+.archive-message-info {
+  display: block;
+  @include rem-fallback(font-size, 14);
+}
+
+#messages .alert-warning a.disable-archive {
+  text-decoration: none;
+  color: #fff;
+  background: #000;
+  padding: .1em .5em;
+  margin-left: .5em;
+  margin-bottom: .5em;
+}
+
+.view-archived-content {
+  margin-right: .75em;
+}
+
+.view-archived-content .icon {
+  top: 1px;
+}
+
+/* #endregion  */
+
+/* #region  AUTOSAVE */
+
+.autosave-details {
+  @include rem-fallback(font-size, 14);
+}
+
+/* #endregion  */
+
+/* #region  MOVE TO SITE */
+
+#transmit {
+  display: block;
+  margin-top: 1em;
+}
+
+/* #endregion  */

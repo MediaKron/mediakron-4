@@ -1,0 +1,97 @@
+/* @group Branding */
+
+#branding {
+	width: 100%;
+	padding: 0;
+	position: relative;
+	z-index: 100;
+	float: none	;
+	display: inline;
+	width: auto;
+	box-shadow: none;
+	padding-left: .5em;
+	animation-name: fadeIn;
+	animation-duration: 1s;
+	@include breakpoint(md){
+    position: absolute;
+	}
+}
+
+#branding .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+h1.page-header {
+	border: none;
+	margin: 0;
+	padding: .4em .5em .4em .5em;
+	@include rem-fallback(font-size, 20);
+ 	-webkit-font-smoothing:antialiased;  
+  text-rendering: optimizeLegibility;
+  border: none;  
+  display: inline-block;
+  float: none;
+  position: relative;
+  margin-top: .4em;
+  text-transform: uppercase;
+    
+    @include breakpoint(xs){ 
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 700px;
+        width: 70%;
+        font-size: 1rem;
+        padding-top: .7em;
+    }
+        
+    @include breakpoint(xxs){ 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 60%;
+       	@include rem-fallback(font-size, 15);
+        padding-top: .7em;
+    }
+      	
+    @include breakpoint(md){
+        white-space: normal;
+        padding: .2em 4em .2em .3em;
+        @include rem-fallback(font-size, 22);
+    }
+}
+
+h1.page-header a {
+   font-weight:500; 
+   letter-spacing: 1px;
+}
+
+#institution-logo{
+	float: right;
+	display: block;
+	margin-right: 0;
+	max-height:16px;
+}
+
+#site-logo {
+	display: inline;
+	float: none;
+}
+
+#site-logo img,
+#institution-logo img{
+   max-height: 32px;
+   max-width: 300px;
+   margin: .5em 0 0 0em;
+   float: left;
+}
+
+.homepage #institution-logo{
+	float: right;
+	display: block;
+	margin-top: .5em;
+	margin-right: 0;
+}
+
+/* @end */
+
