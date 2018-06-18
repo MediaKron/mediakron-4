@@ -13,14 +13,14 @@ Mediakron.ContentBrowser.filter = {
 
 
 Mediakron.ContentBrowser.View = Mediakron.Extensions.View.extend({
-    template: JST['settings.browser.content'],
+    template: JST['components.browsers.content'],
     sortDirection: 1,
     context: 'default',
     title: 'Browse Content',
     callback: false,
     cancelCallback: false,
     item: false,
-    noresult: 'settings.browser.no.results',
+    noresult: 'components.browser.no.results',
     query: {},
     row_count: 40,
     hideLoad: function() {
@@ -459,7 +459,7 @@ Mediakron.ContentBrowser.View = Mediakron.Extensions.View.extend({
 });
 
 Mediakron.ContentBrowser.Updates = Mediakron.Extensions.View.extend({
-  template: JST['settings.browser.content.updates'],
+  template: JST['compontents.browser.content.updates'],
   callback: false,
   initialize: function(data){
     var view = this;
@@ -524,40 +524,36 @@ Mediakron.ContentBrowser.AddPage = Mediakron.Extensions.View.extend({
     return false;
   }
 });
-Mediakron.ContentBrowser.LTI = Mediakron.ContentBrowser.View.extend({
-    className: 'lti-browser',
-    template: JST['settings.browser.content.lti'],
-    title: 'Add Mediakron Content',
-    context: 'lti',
-    help: ''
-});
+
 Mediakron.ContentBrowser.MyContent = Mediakron.ContentBrowser.View.extend({
     className: 'mycontent',
-    template: JST['settings.browser.content.mycontent'],
+    template: JST['components.browsers.content.mycontent'],
     title: 'My Content',
     context: 'default',
     help: ''
 });
 Mediakron.ContentBrowser.Archived = Mediakron.ContentBrowser.View.extend({
-    template: JST['settings.browser.content'],
+    template: JST['components.browsers.content'],
     title: 'Archived Content',
     context: 'default',
     help: ''
 });
 Mediakron.ContentBrowser.Public = Mediakron.ContentBrowser.View.extend({
     className: 'public-browser',
-    template: JST['settings.browser.content.public'],
+    template: JST['components.browsers.content.public'],
     title: 'Browse',
     context: 'public',
     help: ''
 });
+
+
 Mediakron.ContentBrowser.Selector = Mediakron.ContentBrowser.View.extend({
-    template: JST['settings.browser.content.selector'],
+    template: JST['components.browsers.content.selector'],
     el: false,
     context: 'selector'
 });
 Mediakron.ContentBrowser.Narrative = Mediakron.ContentBrowser.View.extend({
-    template: JST['settings.browser.content.narrative'],
+    template: JST['components.browsers.content.narrative'],
     el: false,
     context: 'narrative'
 });
@@ -605,11 +601,14 @@ Mediakron.ContentBrowser.SelectorMap = Mediakron.ContentBrowser.View.extend({
         return this;
     }
 });
+
 Mediakron.ContentBrowser.Timeline = Mediakron.ContentBrowser.View.extend({
     template: JST['settings.browser.content.timeline'],
     el: false,
     context: 'timeline'
 });
+
+
 Mediakron.ContentBrowser.Body = Backbone.View.extend({
     template: JST['settings.browser.content.tbody'],
     el: '#admin-content-body',
@@ -788,41 +787,7 @@ Mediakron.ContentBrowser.Row = Backbone.View.extend({
         this.$el.toggleClass('selected');
     }
 });
-Mediakron.ContentBrowser.rowLTI = Mediakron.ContentBrowser.Row.extend({
-    events: {
-        'click a.embed': 'embedLTI',
-        'click a.add-link': 'linkLTI',
-        'click .bulk-action': 'toggleSelect',
-        'click a': Mediakron.linkHandle
-    },
-    embedLTI: function(e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        var base = Mediakron.Status.ltiReturnUrl;
-        var target = $(e.currentTarget).attr('embed');
-        if (!target) target = $(e.currentTarget).attr('link');
-        if (Mediakron.Status.ltiIntendedUse != 'navigation') {
-            location.href = base + '?return_type=iframe&url=' + encodeURIComponent(target) + '&height=600&width=1000';
-        } else {
-            var title = $(e.currentTarget).attr('title');
-            location.href = base + '?return_type=lti_launch_url&url=' + encodeURIComponent(target) + '&target=_blank&text=' + title;
-        }
-        return false;
-    },
-    linkLTI: function(e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        var base = Mediakron.Status.ltiReturnUrl;
-        var target = $(e.currentTarget).attr('link'),
-            title = $(e.currentTarget).attr('title');
-        if (Mediakron.Status.ltiIntendedUse != 'navigation') {
-            location.href = base + '?return_type=url&url=' + encodeURIComponent(target) + '&target=_blank&text=' + title;
-        } else {
-            location.href = base + '?return_type=lti_launch_url&url=' + encodeURIComponent(target) + '&target=_blank&text=' + title;
-        }
-        return false;
-    }
-});
+
 Mediakron.ContentBrowser.rowSelector = Mediakron.ContentBrowser.Row.extend({
     events: {
         'click a.btn-add': 'linkCallback',
