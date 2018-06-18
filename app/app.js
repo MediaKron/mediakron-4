@@ -6,8 +6,5 @@
  */
 import * as $ from "jquery";
 
-(function ($) {
-    $(document).ready(function () {
+console.log('debug');
 
-    });
-});

@@ -4,72 +4,84 @@
  * I think we are going to drift away from demanding the layout object be called as a variable.  It makes the
  * routing table kind of unreadable, and I think I want to rethink the way we handle this a bit.
  */
-var router =  Backbone.Router.extend({
-    routes: {
-        "settings/organize(/:type)": "SettingsOrganize",
-        "settings/content/add(/:type)": "SettingsContentAdd",
-        "settings/content/edit/*path": "SettingsContentEdit",
-        "settings/convert/:type/:uri": "convertToType",
-        "settings/revisions/:uri": "getRevisions",
-        "settings/transmit/:uri": "transmitTo",
-        "settings/duplicate/:uri": "copyItem",
-        "settings/content/:action(/:uri)": "SettingsContentConfirm",
-        "settings/content(/:context)": "SettingsContent",
-        "settings/manage/:action/*path": "SettingsManageContext",
-        "settings/marker/:map/:marker": "SettingsMarkers",
-        "settings/marker/:map/:marker/remove": "SettingsRemoveMarker",
 
-        ":parent/manager/:child/remove": "SettingsManagerRemove",
+import $ from 'jquery';
+import Backbone from 'backbone';
+import _ from 'underscore';
 
-        ":parent/manager/:type(/:uri)": "SettingsManager",
+// Import modules
+
+class Router extends Backbone.Router {
+    get routes() {
+        return {
+            "settings/organize(/:type)": "SettingsOrganize",
+            "settings/content/add(/:type)": "SettingsContentAdd",
+            "settings/content/edit/*path": "SettingsContentEdit",
+            "settings/convert/:type/:uri": "convertToType",
+            "settings/revisions/:uri": "getRevisions",
+            "settings/transmit/:uri": "transmitTo",
+            "settings/duplicate/:uri": "copyItem",
+            "settings/content/:action(/:uri)": "SettingsContentConfirm",
+            "settings/content(/:context)": "SettingsContent",
+            "settings/manage/:action/*path": "SettingsManageContext",
+            "settings/marker/:map/:marker": "SettingsMarkers",
+            "settings/marker/:map/:marker/remove": "SettingsRemoveMarker",
+
+            ":parent/manager/:child/remove": "SettingsManagerRemove",
+
+            ":parent/manager/:type(/:uri)": "SettingsManager",
 
 
-        "settings/event/:timeline/:event": "SettingsEvent",
-        "settings/event/:timeline/:event/remove": "SettingsRemoveEvent",
+            "settings/event/:timeline/:event": "SettingsEvent",
+            "settings/event/:timeline/:event/remove": "SettingsRemoveEvent",
 
-        "settings/export": "SettingsExport",
-        "settings/statistics": "SettingsStatistics",
-        "settings/appearance": "SettingsAppearance",
-        "settings/homepage": "SettingsHomepage",
-        "settings/canvas": "SettingsCanvas",
-        "settings/search": "SettingsSearch",
-        "settings/performance": "SettingsPerformance",
-        "settings/navigation": "SettingsNavigation",
-        "settings/import": "SettingsImport",
-        "settings/trash": "Trashcan",
-        "settings/import/mediakron2": "SettingsImportMK2",
-        "settings/general": "SettingsGeneral",
-        "settings/users": "SettingsUsers",
-        "settings/comments": "SettingsComments",
-        "settings/privacy": "SettingsPrivacy",
-        "settings/googleanalytics": "SettingsGoogleAnalytics",
-        "settings/itemoptions": "SettingsItemOptions",
-        "settings": "Settings",
-        "help(/:help)": "Help",
-        // Authentication routes
-        "redirect/logout": "Logout",
-        "redirect/profile": "Profile",
-        "redirect/admin": "Admin",
-        "(/)browse/lti": "BrowseLTI",
-        "?token=:token/browse/lti(:context)": "BrowseLTIToken",
-        "(/)search/:search": "Search",
-        "(/)browse": "Browse",
-        "(/)browse/archived": "BrowseArchived",
-        "(/)browse/archived/clear": "BrowseArchivedClear",
-        "(/)browse/(:criteria)(/)(:query)": "Browse",
-        "(/)updates": "Updates",
-        "(/)mycontent": "MyContentBrowse",
-        "(/)tags": "Tags",
-        "(/)comments": "Comments",
-        "(/)login": "Login",
-        "(/)home": "Welcome",
-        "(/)home/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemsInWelcome",
+            "settings/export": "SettingsExport",
+            "settings/statistics": "SettingsStatistics",
+            "settings/appearance": "SettingsAppearance",
+            "settings/homepage": "SettingsHomepage",
+            "settings/canvas": "SettingsCanvas",
+            "settings/search": "SettingsSearch",
+            "settings/performance": "SettingsPerformance",
+            "settings/navigation": "SettingsNavigation",
+            "settings/import": "SettingsImport",
+            "settings/trash": "Trashcan",
+            "settings/import/mediakron2": "SettingsImportMK2",
+            "settings/general": "SettingsGeneral",
+            "settings/users": "SettingsUsers",
+            "settings/comments": "SettingsComments",
+            "settings/privacy": "SettingsPrivacy",
+            "settings/googleanalytics": "SettingsGoogleAnalytics",
+            "settings/itemoptions": "SettingsItemOptions",
+            "settings": "Settings",
+            "help(/:help)": "Help",
+            // Authentication routes
+            "redirect/logout": "Logout",
+            "redirect/profile": "Profile",
+            "redirect/admin": "Admin",
+            "(/)browse/lti": "BrowseLTI",
+            "?token=:token/browse/lti(:context)": "BrowseLTIToken",
+            "(/)search/:search": "Search",
+            "(/)browse": "Browse",
+            "(/)browse/archived": "BrowseArchived",
+            "(/)browse/archived/clear": "BrowseArchivedClear",
+            "(/)browse/(:criteria)(/)(:query)": "Browse",
+            "(/)updates": "Updates",
+            "(/)mycontent": "MyContentBrowse",
+            "(/)tags": "Tags",
+            "(/)comments": "Comments",
+            "(/)login": "Login",
+            "(/)home": "Welcome",
+            "(/)home/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemsInWelcome",
 
-        "(/)lti/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemInLTI",
-        "(/):first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "Primary",
-        "*actions": "Welcome"
-    },
-    MyContentBrowse: function () {
+            "(/)lti/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemInLTI",
+            "(/):first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "Primary",
+            "*actions": "Welcome"
+        }
+    }
+    /**
+     * Browse my owncontent
+     */
+    MyContentBrowse() {
         if (Mediakron.Access.isGuest()) {
             Mediakron.Access.denied();
             return false;
@@ -82,8 +94,11 @@ var router =  Backbone.Router.extend({
                 Mediakron.controller.gotoView(ContentPage);
             }
         });
-    },
-    Updates: function () {
+    }
+    /**
+     * List recent updates only
+     */
+    Updates() {
         if (Mediakron.Access.isGuest()) {
             Mediakron.Access.denied();
             return false;
@@ -94,8 +109,12 @@ var router =  Backbone.Router.extend({
                 Mediakron.controller.gotoView(ContentPage);
             }
         });
-    },
-    copyItem: function (uri) {
+    }
+    /**
+     * Copy an item
+     * @param {string} uri 
+     */
+    copyItem(uri) {
         if (!Mediakron.Access.check('can create content')) {
             Mediakron.Access.denied();
             return false;
@@ -103,8 +122,12 @@ var router =  Backbone.Router.extend({
         var item = Mediakron.getItemFromURI(uri);
         if (!item) return false;
         item.duplicate();
-    },
-    getRevisions: function (uri) {
+    }
+    /**
+     * Get a list of revisions
+     * @param {string} uri 
+     */
+    getRevisions(uri) {
         var item = Mediakron.getItemFromURI(uri);
         if (!item.canEdit()) {
             Mediakron.Access.denied();
@@ -116,8 +139,12 @@ var router =  Backbone.Router.extend({
         if (ContentPage) {
             Mediakron.controller.gotoAdmin(ContentPage);
         }
-    },
-    Trashcan: function (uri) {
+    }
+    /**
+     * Restore an item from the trash
+     * @param {string} uri 
+     */
+    Trashcan(uri) {
         var item = Mediakron.getItemFromURI(uri);
         if (!Mediakron.Access.check('can restore from trash')) {
             Mediakron.Access.denied();
@@ -136,8 +163,11 @@ var router =  Backbone.Router.extend({
                 Mediakron.controller.gotoAdmin(ContentPage);
             }
         });
-    },
-    transmitTo: function (uri) {
+    }/**
+     * 
+     * @param {*} uri 
+     */
+    transmitTo(uri) {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -150,16 +180,16 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(ContentPage);
         }
     },
-    Logout: function () {
+    Logout() {
         window.location = Mediakron.Data.logout;
     },
-    Profile: function () {
+    Profile() {
         window.location = Mediakron.Data.profile;
     },
-    Admin: function () {
+    Admin() {
         window.location = '/admin/sites/' + Mediakron.Settings.uri;
     },
-    Login: function () {
+    Login() {
         if ((Mediakron.Access.check('can access site') && !Mediakron.Settings.public) || (Mediakron.Settings.public && !Mediakron.Access.isGuest())) {
             return this.Welcome();
         }
@@ -168,7 +198,7 @@ var router =  Backbone.Router.extend({
         var login = new Mediakron.Login(query);
         Mediakron.controller.gotoView(login);
     },
-    getItem: function (id) {
+    getItem(id) {
         var item = Mediakron.getItemFromURI(id);
         if (!item) {
             Mediakron.Events.ThrowError();
@@ -180,7 +210,7 @@ var router =  Backbone.Router.extend({
         }
         return item;
     },
-    Primary: function (first, second, third, fourth, fifth, sixth, seventh) {
+    Primary(first, second, third, fourth, fifth, sixth, seventh) {
         if (typeof (first) == 'object') {
             var getter = first;
             if (getter[0]) first = getter[0];
@@ -240,7 +270,7 @@ var router =  Backbone.Router.extend({
         Mediakron.controller.lastRealPage = Mediakron.controller.breadcrumb;
         Mediakron.controller.gotoItem();
     },
-    ItemInLTI: function (id, access) {
+    ItemInLTI(id, access) {
         var item, url, itemView, itemcollection;
         Mediakron.classes.setStatic('lti-view snargle');
         Mediakron.Status.lti = true;
@@ -260,7 +290,7 @@ var router =  Backbone.Router.extend({
         Mediakron.controller.gotoView(item.getView());
     },
     // TODO: are we still using this?
-    ItemWithContextFull: function (context, id) {
+    ItemWithContextFull(context, id) {
         var item, itemView, contextItem, contextView;
         contextItem = Mediakron.getItemFromURI(context);
         item = Mediakron.getItemFromURI(id);
@@ -277,7 +307,7 @@ var router =  Backbone.Router.extend({
         Mediakron.controller.showFull(item);
     },
     // TODO: are we still using this?
-    ItemWithContext: function (context, id) {
+    ItemWithContext(context, id) {
         var item, itemView, contextItem, contextView;
         contextItem = Mediakron.getItemFromURI(context);
         item = Mediakron.getItemFromURI(id);
@@ -293,7 +323,7 @@ var router =  Backbone.Router.extend({
         Mediakron.controller.gotoView(item.getView());
     },
     // TODO: are we still using this?
-    ItemWithContextAndSidebar: function (context, id, sidebar) {
+    ItemWithContextAndSidebar(context, id, sidebar) {
         var item, itemView, contextItem, contextView;
         item = Mediakron.getItemFromURI(id);
         if (item === undefined) {
@@ -308,7 +338,7 @@ var router =  Backbone.Router.extend({
         Mediakron.Status.current = item.get('uri');
         Mediakron.controller.gotoView(item.getView());
     },
-    Help: function (help) {
+    Help(help) {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
             return false;
@@ -319,10 +349,10 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoHelp(new Mediakron.HelpPage(help));
         }
     },
-    BrowseLTIToken: function (token, context) {
+    BrowseLTIToken(token, context) {
         this.BrowseLTI(context);
     },
-    BrowseLTI: function (context) {
+    BrowseLTI(context) {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
             return false;
@@ -338,7 +368,7 @@ var router =  Backbone.Router.extend({
             }
         });
     },
-    Browse: function (criteria, query, context) {
+    Browse(criteria, query, context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
@@ -373,7 +403,7 @@ var router =  Backbone.Router.extend({
             }
         });
     },
-    BrowseArchived: function (criteria, query, context) {
+    BrowseArchived(criteria, query, context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can archive content')) {
             Mediakron.Access.denied();
@@ -395,7 +425,7 @@ var router =  Backbone.Router.extend({
                     timeout: 0,
                     dismiss: false,
                     layout: 'bottom',
-                    bindHelper: function (parent) {
+                    bindHelper(parent) {
                         $('.disable-archive').click(function (e) {
                             e.preventDefault();
                             var text = "Are you sure you want to exit archived mode?";
@@ -417,10 +447,10 @@ var router =  Backbone.Router.extend({
                                 timeout: 0,
                                 layout: 'center',
                                 confirm: true,
-                                callback: function () {
+                                callback() {
                                     accept();
                                 },
-                                cancel: function () {
+                                cancel() {
                                     reject();
                                 }
                             });
@@ -451,7 +481,7 @@ var router =  Backbone.Router.extend({
             }
         }
     },
-    Tags: function (context) {
+    Tags(context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
@@ -463,7 +493,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoView(Tags);
         }
     },
-    Comments: function (context) {
+    Comments(context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
@@ -475,7 +505,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoView(Comments);
         }
     },
-    Search: function (search) {
+    Search(search) {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
             return false;
@@ -485,7 +515,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoView(Search);
         });
     },
-    ItemsInWelcome: function (first, second, third, fourth, fifth, sixth, seventh) {
+    ItemsInWelcome(first, second, third, fourth, fifth, sixth, seventh) {
         if (typeof (first) == 'object') {
             var getter = first;
             if (getter[0]) first = getter[0];
@@ -550,7 +580,7 @@ var router =  Backbone.Router.extend({
         Mediakron.controller.lastRealPage = Mediakron.controller.breadcrumb;
         Mediakron.controller.gotoItem();
     },
-    Welcome: function () {
+    Welcome() {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
             return false;
@@ -578,7 +608,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoView(new Mediakron.HelpPage(false));
         }
     },
-    SettingsContent: function (context) {
+    SettingsContent(context) {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -591,7 +621,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(ContentPage);
         }
     },
-    SettingsStatistics: function () {
+    SettingsStatistics() {
         if (!Mediakron.Access.check('can access statistics')) {
             Mediakron.Access.denied();
             return false;
@@ -602,7 +632,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(StatisticsPage);
         }
     },
-    SettingsAppearance: function () {
+    SettingsAppearance() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -613,7 +643,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(AppearancePage);
         }
     },
-    SettingsHomepage: function () {
+    SettingsHomepage() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -624,7 +654,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(HomePage);
         }
     },
-    SettingsNavigation: function () {
+    SettingsNavigation() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -635,7 +665,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(NavigationPage);
         }
     },
-    SettingsComments: function () {
+    SettingsComments() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -647,7 +677,7 @@ var router =  Backbone.Router.extend({
         }
 
     },
-    SettingsPrivacy: function () {
+    SettingsPrivacy() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -658,7 +688,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(PrivacyPage);
         }
     },
-    SettingsGoogleAnalytics: function () {
+    SettingsGoogleAnalytics() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -669,7 +699,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(GoogleAnalyticsPage);
         }
     },
-    SettingsItemOptions: function () {
+    SettingsItemOptions() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -680,7 +710,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(ItemOptionsPage);
         }
     },
-    SettingsCanvas: function () {
+    SettingsCanvas() {
         if (!Mediakron.Access.check('can connect site to canvas')) {
             Mediakron.Access.denied();
             return false;
@@ -691,7 +721,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(NavigationPage);
         }
     },
-    SettingsSearch: function () {
+    SettingsSearch() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -702,7 +732,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(Search);
         }
     },
-    SettingsPerformance: function () {
+    SettingsPerformance() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -713,7 +743,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(Performance);
         }
     },
-    SettingsOrganize: function (type) {
+    SettingsOrganize(type) {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -726,7 +756,7 @@ var router =  Backbone.Router.extend({
             }
         }
     },
-    SettingsImport: function (type) {
+    SettingsImport(type) {
         if (!Mediakron.Access.check('can import')) {
             Mediakron.Access.denied();
             return false;
@@ -736,7 +766,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(ImportForm);
         }
     },
-    SettingsExport: function () {
+    SettingsExport() {
         if (!Mediakron.Access.check('can export')) {
             Mediakron.Access.denied();
             return false;
@@ -747,7 +777,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(ExportPage);
         }
     },
-    SettingsImportMK2: function (type) {
+    SettingsImportMK2(type) {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
             return false;
@@ -758,7 +788,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(ImportForm);
         }
     },
-    SettingsRemoveMarker: function (map, marker) {
+    SettingsRemoveMarker(map, marker) {
         var item = Mediakron.getItemFromURI(map);
         if (!item) return false;
         if (item.canEdit()) {
@@ -776,7 +806,7 @@ var router =  Backbone.Router.extend({
             }
             item.setRelationship('layers', layers);
             item.save({}, {
-                success: function (data) {
+                success(data) {
                     Mediakron.router.navigate(item.get('uri'), {
                         trigger: false
                     });
@@ -786,7 +816,7 @@ var router =  Backbone.Router.extend({
         }
     },
 
-    SettingsRemoveEvent: function (map, marker) {
+    SettingsRemoveEvent(map, marker) {
         var item = Mediakron.getItemFromURI(map);
         if (!item) return false;
         if (item.canEdit()) {
@@ -804,7 +834,7 @@ var router =  Backbone.Router.extend({
             }
             item.setRelationship('events', layers);
             item.save({}, {
-                success: function (data) {
+                success(data) {
                     Mediakron.router.navigate(item.get('uri'), {
                         trigger: false
                     });
@@ -814,7 +844,7 @@ var router =  Backbone.Router.extend({
         }
     },
 
-    SettingsMarkers: function (map, marker) {
+    SettingsMarkers(map, marker) {
 
         Mediakron.classes.queue('settings-manage-organize');
         var item = Mediakron.getItemFromURI(map);
@@ -832,7 +862,7 @@ var router =  Backbone.Router.extend({
         }
     },
 
-    SettingsManager: function (parent, child) {
+    SettingsManager(parent, child) {
 
         Mediakron.classes.queue('settings-manage-organize');
         var item = Mediakron.getItemFromURI(parent);
@@ -882,7 +912,7 @@ var router =  Backbone.Router.extend({
         if (Manager) Mediakron.controller.gotoAdmin(Manager);
     },
 
-    SettingsManagerRemove: function (parent, child) {
+    SettingsManagerRemove(parent, child) {
         Mediakron.classes.queue('settings-manage-organize');
         var item = Mediakron.getItemFromURI(parent);
         if (!item.canAddTo()) {
@@ -938,7 +968,7 @@ var router =  Backbone.Router.extend({
                 timeout: 4000,
                 layout: 'bottom',
                 confirm: false,
-                callback: function () {
+                callback() {
                     Mediakron.router.navigate(item.get('uri'), {
                         trigger: true
                     });
@@ -951,16 +981,16 @@ var router =  Backbone.Router.extend({
             timeout: 0,
             layout: 'center',
             confirm: true,
-            callback: function () {
+            callback() {
                 accept(item, child);
             },
-            cancel: function () {
+            cancel() {
                 reject(item, child);
             }
         });
     },
 
-    SettingsEvent: function (timeline, event) {
+    SettingsEvent(timeline, event) {
         Mediakron.classes.queue('settings-manage-organize');
         var item = Mediakron.getItemFromURI(timeline);
         if (!item.canAddTo()) {
@@ -989,7 +1019,7 @@ var router =  Backbone.Router.extend({
         }
 
     },
-    SettingsManageContext: function (action, path) {
+    SettingsManageContext(action, path) {
         Mediakron.classes.queue('settings-manage-' + action);
         var pathparts = path.split('/'),
             pathcount = pathparts.length,
@@ -1052,7 +1082,7 @@ var router =  Backbone.Router.extend({
             data: {
                 'poll': 'edit'
             },
-            success: function (item) {
+            success(item) {
                 if (current != item.get('version')) {
                     Mediakron.message({
                         'type': 'info',
@@ -1074,7 +1104,7 @@ var router =  Backbone.Router.extend({
             }
         });
     },
-    SettingsContentAdd: function (type, arg) {
+    SettingsContentAdd(type, arg) {
         var AddContent;
         if (!Mediakron.Access.check('can create content')) {
             Mediakron.Access.denied();
@@ -1101,7 +1131,7 @@ var router =  Backbone.Router.extend({
             }
         }
     },
-    convertToType: function (type, uri) {
+    convertToType(type, uri) {
         var item = Mediakron.getItemFromURI(uri);
         if (item === undefined || !item) {
             Mediakron.Events.ThrowError();
@@ -1131,15 +1161,15 @@ var router =  Backbone.Router.extend({
             timeout: 0,
             layout: 'center',
             confirm: true,
-            callback: function () {
+            callback() {
                 accept(item);
             },
-            cancel: function () {
+            cancel() {
                 reject(item);
             }
         });
     },
-    SettingsContentEdit: function (path) {
+    SettingsContentEdit(path) {
         var pathparts = path.split('/'),
             pathcount = pathparts.length,
             i = 0,
@@ -1173,7 +1203,7 @@ var router =  Backbone.Router.extend({
             data: {
                 'poll': 'edit'
             },
-            success: function (item) {
+            success(item) {
                 if (current != item.get('version')) {
                     Mediakron.message({
                         'type': 'warning',
@@ -1196,7 +1226,7 @@ var router =  Backbone.Router.extend({
             }
         });
     },
-    SettingsContentConfirm: function (action, uri) {
+    SettingsContentConfirm(action, uri) {
         var item = Mediakron.getItemFromURI(uri);
         if (item === undefined) {
             Mediakron.Events.ThrowError();
@@ -1238,10 +1268,10 @@ var router =  Backbone.Router.extend({
                     timeout: 0,
                     layout: 'center',
                     confirm: true,
-                    callback: function () {
+                    callback() {
                         accept(request);
                     },
-                    cancel: function () {
+                    cancel() {
                         reject(request);
                     }
                 });
@@ -1270,10 +1300,10 @@ var router =  Backbone.Router.extend({
                     timeout: 0,
                     layout: 'center',
                     confirm: true,
-                    callback: function () {
+                    callback() {
                         accept(request);
                     },
-                    cancel: function () {
+                    cancel() {
                         reject(request);
                     }
                 });
@@ -1308,10 +1338,10 @@ var router =  Backbone.Router.extend({
                     timeout: 0,
                     layout: 'center',
                     confirm: true,
-                    callback: function () {
+                    callback() {
                         accept(request);
                     },
-                    cancel: function () {
+                    cancel() {
                         reject(request);
                     }
                 });
@@ -1346,10 +1376,10 @@ var router =  Backbone.Router.extend({
                     timeout: 0,
                     layout: 'center',
                     confirm: true,
-                    callback: function () {
+                    callback() {
                         accept(request);
                     },
-                    cancel: function () {
+                    cancel() {
                         reject(request);
                     }
                 });
@@ -1387,10 +1417,10 @@ var router =  Backbone.Router.extend({
                     timeout: 0,
                     layout: 'center',
                     confirm: true,
-                    callback: function () {
+                    callback() {
                         accept(request);
                     },
-                    cancel: function () {
+                    cancel() {
                         reject(request);
                     }
                 });
@@ -1429,10 +1459,10 @@ var router =  Backbone.Router.extend({
                     timeout: 0,
                     layout: 'center',
                     confirm: true,
-                    callback: function () {
+                    callback() {
                         accept(request);
                     },
-                    cancel: function () {
+                    cancel() {
                         reject(request);
                     }
                 });
@@ -1467,17 +1497,17 @@ var router =  Backbone.Router.extend({
                     timeout: 300,
                     layout: 'center',
                     confirm: true,
-                    callback: function () {
+                    callback() {
                         accept(request);
                     },
-                    cancel: function () {
+                    cancel() {
                         reject(request);
                     }
                 });
                 break;
         }
     },
-    SettingsGeneral: function () {
+    SettingsGeneral() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Events.AccessDenied();
             return false;
@@ -1487,7 +1517,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(AdminPage);
         }
     },
-    SettingsUsers: function () {
+    SettingsUsers() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Events.AccessDenied();
             return false;
@@ -1497,7 +1527,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(AdminPage);
         }
     },
-    Settings: function () {
+    Settings() {
         if (Mediakron.Access.isGuest()) {
             Mediakron.Events.AccessDenied();
             return false;
@@ -1507,7 +1537,7 @@ var router =  Backbone.Router.extend({
             Mediakron.controller.gotoAdmin(AdminPage);
         }
     },
-    back: function () {
+    back() {
         if (this.routesHit > 1) {
             //more than one route hit -> user did not land to current page directly
             window.history.back();
@@ -1520,7 +1550,7 @@ var router =  Backbone.Router.extend({
             });
         }
     },
-    refresh: function () {
+    refresh() {
         var current = Backbone.history.fragment;
         Backbone.history.fragment = false;
         Mediakron.Status.context = false;
