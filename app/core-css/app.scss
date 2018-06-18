@@ -5,7 +5,7 @@
 @import "base-styles/base.scss";
 @import "base-styles/layout-styles.scss";
 
-@import "mixins/animate.scss";
+@import "mixins/animate/animate.scss";
 @import "mixins/blur.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/center-transform.scss";
@@ -14,8 +14,8 @@
 @import "mixins/triangle.scss";
 @import "mixins/truncate.scss";
 
+@import "vendor/leaflet/dist/leaflet.css";
 @import "vendor/leaflet/leaflet.edit.scss";
-@import "vendor/tourist/tourist.scss";
 
 
 // Content;

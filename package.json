@@ -38,6 +38,8 @@
     },
     "dependencies": {
         "jquery-accessible-hide-show-aria": "^1.8.0",
-        "jquery-accessible-subnav-dropdown": "^1.2.1"
+        "jquery-accessible-subnav-dropdown": "^1.2.1",
+        "chosen-js": "^1.8.5",
+        "leaflet-editable": "^1.1.0"
     }
 }
