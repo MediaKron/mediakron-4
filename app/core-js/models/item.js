@@ -1,100 +1,112 @@
-module.exports = Mediakron.Extensions.Model.extend({
-    id: null,
-    version: 0,
-    created: 0,
-    changed: 0,
-    published: true,
-    archived: false,
-    user: {},
-    template: 'default',
-    options: {},
-    uri: false,
-    type: '',
-    title: '',
-    description: '',
-    body: '',
-    caption: '',
-    transcript: '',
-    image: '',
-    time: false,
-    audio: { /* Not empty if audio.  Contains the actual audio data */
-        type: "",
-        /* type of file.  See settings for supported audio */
-        url: "" /* the url of the audio.  Could be local, in theory.  Could also be remote */
-    },
-    video: { /* Not empty if video.  Contains the actual video data */
-        type: "",
-        /* type of file.  See settings for supported video */
-        url: "" /* the url of the video.  Could be local, in theory.  Could also be remote */
+import Model from "~/core-js/extensions/models";
+class Item extends Model {
+    constructor() {
+        super({
+            id: null,
+            version: 0,
+            created: 0,
+            changed: 0,
+            published: true,
+            archived: false,
+            user: {},
+            template: 'default',
+            options: {},
+            uri: false,
+            type: '',
+            title: '',
+            description: '',
+            body: '',
+            caption: '',
+            transcript: '',
+            image: '',
+            time: false,
+            audio: { /* Not empty if audio.  Contains the actual audio data */
+                type: "",
+                /* type of file.  See settings for supported audio */
+                url: "" /* the url of the audio.  Could be local, in theory.  Could also be remote */
+            },
+            video: { /* Not empty if video.  Contains the actual video data */
+                type: "",
+                /* type of file.  See settings for supported video */
+                url: "" /* the url of the video.  Could be local, in theory.  Could also be remote */
 
-    },
-    text: { /* Not empty if text.  Contains the actual text data */
-        type: "",
-        /* type of file.  See settings for supported text */
-        url: "" /* the url of the text.  Could be local, in theory.  Could also be remote. Could also be empty if text is just in the body field. */
+            },
+            text: { /* Not empty if text.  Contains the actual text data */
+                type: "",
+                /* type of file.  See settings for supported text */
+                url: "" /* the url of the text.  Could be local, in theory.  Could also be remote. Could also be empty if text is just in the body field. */
 
-    },
-    overlay: {},
-    size: {},
-    height: 0,
-    width: 0,
-    center: [0, 0],
-    zoom: 2,
-    projection: 'EPSG:3857',
-    map: {
-        url: ''
-    },
-    timeline: {
-        scope: '',
-        granularity: '',
-        start: '',
-        end: '',
-    },
+            },
+            overlay: {},
+            size: {},
+            height: 0,
+            width: 0,
+            center: [0, 0],
+            zoom: 2,
+            projection: 'EPSG:3857',
+            map: {
+                url: ''
+            },
+            timeline: {
+                scope: '',
+                granularity: '',
+                start: '',
+                end: '',
+            },
 
-    date: {
-        start: false,
-        end: false,
-    },
+            date: {
+                start: false,
+                end: false,
+            },
 
-    relationships: {
-        topics: [],
-        tags: [],
-        maps: [],
-        timelines: [],
-        comparisons: [],
+            relationships: {
+                topics: [],
+                tags: [],
+                maps: [],
+                timelines: [],
+                comparisons: [],
 
 
-        children: [],
-        layers: [],
-        events: [],
-        comments: [],
-        annotations: [],
-        citations: [],
-    },
+                children: [],
+                layers: [],
+                events: [],
+                comments: [],
+                annotations: [],
+                citations: [],
+            },
 
-    metadata: {
-        source: "",
-        citation: "",
-        description: "",
-        published: "",
-        creator: "",
-        publisher: "",
-        contributor: "",
-        format: "",
-        identifier: "",
-        language: "",
-        relation: "",
-        coverage: "",
-        medium: "",
-        provenance: "",
-        SizeOrDuration: "",
-        subject: "",
-        location: "",
-        rights: ""
-    },
-    viewObject: false,
+            metadata: {
+                source: "",
+                citation: "",
+                description: "",
+                published: "",
+                creator: "",
+                publisher: "",
+                contributor: "",
+                format: "",
+                identifier: "",
+                language: "",
+                relation: "",
+                coverage: "",
+                medium: "",
+                provenance: "",
+                SizeOrDuration: "",
+                subject: "",
+                location: "",
+                rights: ""
+            },
+            viewObject: false,
+            // The fetch url for this model, dervived from the id
+            urlRoot: Mediakron.Data.models.items,
+            startSerial: false,
+            endSerial: false,
+            items: false,
+            sorted: false,
+            weight: 0
+        })
+    }
     /* Render the default version of this topic */
-    getView: function (template) {
+    getView(template) {
         var view;
         switch (this.get('type')) {
             case 'story':
@@ -158,43 +170,42 @@ module.exports = Mediakron.Extensions.Model.extend({
             view.full = false;
         }
         return view;
-    },
+    }
 
-    changedSince: function (time) {
+    changedSince(time) {
         // get changed
         var changed = this.get('changed');
         if (!time) time = Mediakron.user.lastVisit();
         if (time < changed) return true;
         return false;
-    },
+    }
 
-    newSince: function (time) {
+    newSince(time) {
         var created = this.get('created');
         if (!time) time = Mediakron.user.lastVisit();
         if (time < created) return true;
         return false;
-    },
+    }
 
-    isUpdated: function (time) {
+    isUpdated(time) {
         // get changed
         var changed = this.get('changed');
         if (Mediakron.user.lastVisit() < changed) return true;
         return false;
-    },
-    isCreated: function () {
+    }
+    isCreated() {
         var created = this.get('created');
         if (Mediakron.user.lastVisit() < created) return true;
         return false;
-    },
+    }
 
-    addToCollection: function () {
+    addToCollection() {
         Mediakron.items.add(this);
-    },
+    }
 
-    // The fetch url for this model, dervived from the id
-    urlRoot: Mediakron.Data.models.items,
+    
 
-    defaults: function () {
+    defaults() {
         return {
             id: null,
             created: 0,
@@ -274,18 +285,18 @@ module.exports = Mediakron.Extensions.Model.extend({
                 rights: ""
             }
         };
-    },
+    }
 
-    editor: function () {
+    editor() {
         var editor = this.get('editor');
         if (editor) {
             if (editor.name) return editor.name;
         }
         return '';
-    },
+    }
 
     // get the proper url to this item.  Either type/uri, item/uri, type/id, item/id in that order
-    getURL: function () {
+    getURL() {
         var url = '',
             type = this.get('type'),
             id = this.id,
@@ -293,12 +304,12 @@ module.exports = Mediakron.Extensions.Model.extend({
         if (uri) {
             return uri;
         }
-    },
-    goTo: function () {
+    }
+    goTo() {
         Mediakron.controller.gotoLast();
-    },
+    }
 
-    timeToSeconds: function (time) {
+    timeToSeconds(time) {
         if (time) {
             if (time !== '') {
                 if (time.indexOf(':') > -1) {
@@ -324,9 +335,9 @@ module.exports = Mediakron.Extensions.Model.extend({
             }
         }
         return false;
-    },
+    }
 
-    getVideo: function () {
+    getVideo() {
         if (this.get('type') != 'video') { return false; }
 
         var video = this.get('video'),
@@ -336,16 +347,16 @@ module.exports = Mediakron.Extensions.Model.extend({
         video.item = this;
         if (!template) { return ''; }
         return template(video);
-    },
+    }
 
-    icon: function () {
+    icon() {
         var icon = '',
             options = this.get('options');
         if (options.icon) icon = options.icon;
         return icon;
-    },
+    }
 
-    color: function (set) {
+    color(set) {
 
         var color = '',
             options = this.get('options');
@@ -356,9 +367,9 @@ module.exports = Mediakron.Extensions.Model.extend({
 
         if (color === '') color = '#000000';
         return color;
-    },
+    }
 
-    getYouTubeUrl: function () {
+    getYouTubeUrl() {
         var video = this.get('video'),
             url = video.url,
             youtube = '//www.youtube.com/embed/';
@@ -387,11 +398,11 @@ module.exports = Mediakron.Extensions.Model.extend({
             return '';
         }
 
-    },
+    }
     //https://drive.google.com/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/view?usp=sharing
     //https://drive.google.com/open?id=0B36LdKxiyL7fSW9FMkhNQ2JKQnc&authuser=0
     //https://drive.google.com/a/bc.edu/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/edit
-    getGoogleUrl: function () {
+    getGoogleUrl() {
         var video = this.get('video'),
             url = video.url,
             google = 'https://docs.google.com/';
@@ -423,8 +434,9 @@ module.exports = Mediakron.Extensions.Model.extend({
             return '';
         }
 
-    },
-    getVimeoUrl: function () {
+    }
+
+    getVimeoUrl() {
         var video = this.get('video'),
             url = video.url,
             vimeo = '//player.vimeo.com/video/';
@@ -437,9 +449,9 @@ module.exports = Mediakron.Extensions.Model.extend({
 
 
         return vimeo + url + '?title=0&byline=0&portrait=0';
-    },
+    }
 
-    getPanoptoUrl: function () {
+    getPanoptoUrl() {
         var video = this.get('video'),
             url = video.url;
         url = url.replace("http://", 'https://');
@@ -464,17 +476,17 @@ module.exports = Mediakron.Extensions.Model.extend({
         }
 
 
-    },
+    }
 
-    getKanopyUrl: function () {
+    getKanopyUrl() {
         var video = this.get('video'),
             url = video.url;
         url = url.replace("http://", 'https://');
         url = url.replace("bc-kanopystreaming-com.proxy.bc.edu/playlist/", 'bc.kanopystreaming.com/embed/');
         return url;
-    },
+    }
 
-    getPanoptoAudioUrl: function () {
+    getPanoptoAudioUrl() {
         var audio = this.get('audio'),
             url = audio.url;
         url = url.replace("http://", 'https://');
@@ -497,9 +509,9 @@ module.exports = Mediakron.Extensions.Model.extend({
 
             return '<div class="panopto-container"><iframe src="' + url + '" width="100%" height="100%" style="padding: 0px; border: 1px solid #464646;" frameborder="0"></iframe></div>';
         }
-    },
+    }
 
-    getGoogleUrlAudio: function () {
+    getGoogleUrlAudio() {
         var audio = this.get('audio'),
             url = audio.url,
             google = 'https://docs.google.com/';
@@ -521,9 +533,9 @@ module.exports = Mediakron.Extensions.Model.extend({
         } else {
             return '';
         }
-    },
+    }
 
-    getBCurl: function (scale) {
+    getBCurl(scale) {
         var video = this.get('video'),
             url = video.url,
             width = $('iframe').width(),
@@ -540,8 +552,9 @@ module.exports = Mediakron.Extensions.Model.extend({
             if (end !== false) url = url + '&stop=' + duration;
         }
         return url;
-    },
-    getArchiveorgVideo: function () {
+    }
+
+    getArchiveorgVideo() {
         var video = this.get('video'),
             url = video.url;
 
@@ -550,20 +563,21 @@ module.exports = Mediakron.Extensions.Model.extend({
         url = url.replace("/end/", '&end=');
 
         return url;
-    },
-    getBCAudioUrl: function () {
+    }
+
+    getBCAudioUrl() {
         var audio = this.get('audio'),
             url = audio.url;
         return url;
-    },
+    }
 
-    getAudioUrl: function () {
+    getAudioUrl() {
         var audio = this.get('audio'),
             url = audio.url;
         return url;
-    },
+    }
 
-    getArchiveorgAudio: function () {
+    getArchiveorgAudio() {
         var audio = this.get('audio'),
             url = audio.url;
 
@@ -572,15 +586,15 @@ module.exports = Mediakron.Extensions.Model.extend({
         url = url.replace("/end/", '&end=');
 
         return url;
-    },
+    }
 
-    getVideoUrl: function () {
+    getVideoUrl() {
         var audio = this.get('video'),
             url = audio.url;
         return url;
-    },
+    }
 
-    loadVideo: function () {
+    loadVideo() {
         var video = this.get('video'),
             type = video.type;
 
@@ -589,7 +603,7 @@ module.exports = Mediakron.Extensions.Model.extend({
                 $('audio,video').mediaelementplayer({
                     videoWidth: -1,
                     videoHeight: -1,
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
@@ -598,7 +612,7 @@ module.exports = Mediakron.Extensions.Model.extend({
                 $('audio,video').mediaelementplayer({
                     videoWidth: -1,
                     videoHeight: -1,
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
@@ -607,14 +621,14 @@ module.exports = Mediakron.Extensions.Model.extend({
                 $('audio,video').mediaelementplayer({
                     videoWidth: -1,
                     videoHeight: -1,
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
                 break;
             case 'rtmp':
                 $('audio,video').mediaelementplayer({
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
@@ -622,9 +636,9 @@ module.exports = Mediakron.Extensions.Model.extend({
             default:
                 break;
         }
-    },
+    }
 
-    getAudio: function () {
+    getAudio() {
         if (this.get('type') != 'audio') { return false; }
         var audio = this.get('audio'),
             template = JST['regions.item.audio.' + audio.type];
@@ -632,9 +646,9 @@ module.exports = Mediakron.Extensions.Model.extend({
         audio.item = this;
         if (!template) { return ''; }
         return template(audio);
-    },
+    }
 
-    loadAudio: function () {
+    loadAudio() {
         var audio = this.get('audio'),
             type = audio.type,
             player;
@@ -642,7 +656,7 @@ module.exports = Mediakron.Extensions.Model.extend({
         switch (type) {
             case 'mp3':
                 player = $('audio,video').mediaelementplayer({
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
@@ -650,7 +664,7 @@ module.exports = Mediakron.Extensions.Model.extend({
             case 'rtmp':
                 player = $('audio,video').mediaelementplayer({
                     mode: 'shim',
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
@@ -658,7 +672,7 @@ module.exports = Mediakron.Extensions.Model.extend({
             case 'm4a':
                 player = $('audio,video').mediaelementplayer({
                     mode: 'shim',
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
@@ -666,7 +680,7 @@ module.exports = Mediakron.Extensions.Model.extend({
             case 'mp4':
                 player = $('audio,video').mediaelementplayer({
                     mode: 'shim',
-                    success: function (player, node) {
+                    success(player, node) {
                         $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
                     }
                 });
@@ -675,15 +689,11 @@ module.exports = Mediakron.Extensions.Model.extend({
                 break;
         }
         return player;
-    },
+    }
 
-    startSerial: false,
-    endSerial: false,
-    items: false,
-    sorted: false,
-    weight: 0,
+    
     // Check to see if this item has a particular topic or tag
-    hasTopicOrTag: function (top, tag) {
+    hasTopicOrTag(top, tag) {
         var tid = this.get('tid'),
             tags = this.get('tags'),
             topicPassed = false,
@@ -708,4 +718,5 @@ module.exports = Mediakron.Extensions.Model.extend({
         }
         return false;
     }
-});
+}
+export default Item;
