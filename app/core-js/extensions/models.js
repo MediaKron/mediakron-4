@@ -1,16 +1,20 @@
 
-module.exports = function(){
-    /**
-     * 
-     */
-    return Backbone.Model.extend({
-        folders: {},
-        layers: {},
-        tags: {},
+import $ from 'jquery';
+import Backbone from 'backbone';
+import _ from 'lowdash';
 
-        initialize: function () { },
+class Model extends Backbone.Model{
+    constructor() {
+        super({
+            folders: {},
+            layers: {},
+            tags: {},
+        })
+    }
 
-        cacheFilters: function () {
+        initialize() { },
+
+        cacheFilters() {
             var model = this;
             this.folders = {};
             this.tags = {};
@@ -32,37 +36,36 @@ module.exports = function(){
             }
         },
 
-        published: true, // is the model published.  false indicates unpublished
-
-        publish: function () {
+        
+        publish() {
             if (this.canPublish()) {
                 this.publish = true;
             }
-        },
+        }
 
-        unpublish: function () {
+        unpublish() {
             if (this.canUnpublish()) {
                 this.publish = false;
             }
-        },
+        }
 
         archived: false, // is the model published.  false indicates unpublished
 
-        archive: function () {
+        archive() {
             if (this.canArchive()) {
                 this.archived = true;
             }
         },
 
-        restore: function () {
+        restore() {
             if (this.canArchive()) {
                 this.archived = false;
             }
-        },
+        }
 
         // what access does this user have
 
-        canView: function (hideAlert) {
+        canView(hideAlert) {
             var user = this.get('user');
             if (!this.get('published') && user.id == Mediakron.user.get('id') && Mediakron.Access.check('can view own unpublished content')) {
                 return true;
@@ -78,9 +81,9 @@ module.exports = function(){
             }
 
             return true;
-        },
+        }
 
-        canTransmit: function (alert) {
+        canTransmit(alert) {
             if (!Mediakron.Access.check('can administer site')) {
                 if (alert) Mediakron.Access.denied('Sorry, you must login to send content');
                 return false;
@@ -90,17 +93,17 @@ module.exports = function(){
                 return true;
             }
             return false;
-        },
+        }
 
-        canDuplicate: function (alert) {
+        canDuplicate(alert) {
             if (!Mediakron.Access.check('can create content')) {
                 if (alert) Mediakron.Access.denied('Sorry, you must login to duplicate');
                 return false;
             }
             return true;
-        },
+        }
 
-        canDownload: function (alert) {
+        canDownload(alert) {
             if (!Mediakron.Settings.download) {
                 if (alert) Mediakron.Access.denied('Sorry, files cannot be downloaded.');
                 return true;
@@ -115,9 +118,9 @@ module.exports = function(){
                 return false;
             }
             return true;
-        },
+        }
 
-        canEdit: function (alert) {
+        canEdit(alert) {
             if (!Mediakron.Access.check('can access site')) {
                 if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
                 return false;
@@ -142,17 +145,18 @@ module.exports = function(){
             }
             if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
             return false;
-        },
-        canLock: function (alert) {
+        }
+
+        canLock(alert) {
             var user = this.get('user');
             if (this.canEdit(alert)) {
                 if (user.id == Mediakron.user.get('id')) return true;
                 if (Mediakron.Access.check('can edit any locked content')) { return true; }
             }
             return false;
-        },
+        }
 
-        canManage: function (alert) {
+        canManage(alert) {
             var user = this.get('user');
             if (!Mediakron.Access.check('can access site')) {
                 if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
@@ -182,8 +186,9 @@ module.exports = function(){
             }
             if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
             return false;
-        },
-        canAddTo: function (alert) {
+        }
+
+        canAddTo(alert) {
             var user = this.get('user');
             if (!Mediakron.Access.check('can access site')) {
                 if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
@@ -217,9 +222,9 @@ module.exports = function(){
 
             if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
             return false;
-        },
+        }
 
-        canRemoveFrom: function (alert) {
+        canRemoveFrom(alert) {
             var user = this.get('user');
             if (!Mediakron.Access.check('can access site')) {
                 if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
@@ -254,25 +259,27 @@ module.exports = function(){
 
             if (alert) Mediakron.Access.denied('Sorry, you must login to view that page');
             return false;
-        },
+        }
 
-        canPublish: function (alert) {
+        canPublish(alert) {
             var user = this.get('user');
             if (Mediakron.Access.check('can publish content')) {
                 return true;
             }
             if (alert) Mediakron.Access.denied('Sorry, you are not allowed to publish content');
             return false;
-        },
-        canArchive: function (alert) {
+        }
+
+        canArchive(alert) {
             var user = this.get('user');
             if (Mediakron.Access.check('can archive content')) {
                 return true;
             }
             if (alert) Mediakron.Access.denied('Sorry, you are not allowed to archive content');
             return false;
-        },
-        canUnpublish: function (alert) {
+        }
+
+        canUnpublish(alert) {
             var user = this.get('user');
             if (this.get('locked') === true) {
                 if (Mediakron.Access.check('can edit any locked content')) {
@@ -289,8 +296,9 @@ module.exports = function(){
             }
             if (alert) Mediakron.Access.denied('Sorry, you are not allowed to unpublish content');
             return false;
-        },
-        canDestroy: function (alert) {
+        }
+
+        canDestroy(alert) {
             var user = this.get('user');
             if (this.get('locked') === true) {
                 if (Mediakron.Access.check('can edit any locked content')) {
@@ -307,9 +315,9 @@ module.exports = function(){
             }
             if (alert) Mediakron.Access.denied('Sorry, you are not allowed to delete content');
             return false;
-        },
+        }
 
-        downloadable: function () {
+        downloadable() {
             if (!Mediakron.Settings.download) { return false; }
             var type = this.getNormalType();
 
@@ -322,9 +330,9 @@ module.exports = function(){
                 default:
                     return false;
             }
-        },
+        }
 
-        canOrganize: function () {
+        canOrganize() {
             var type = this.getNormalType();
 
             switch (type) {
@@ -341,8 +349,8 @@ module.exports = function(){
                 default:
                     return false;
             }
-        },
-        cartoDB: function () {
+        }
+        cartoDB() {
             var map = this.get('map'),
                 type = this.get('type');
             if (type != 'cartodb') return '';
@@ -350,14 +358,14 @@ module.exports = function(){
                 return map.url;
             }
             return '';
-        },
-        duplicate: function () {
+        }
+        duplicate() {
             var data = this.toJSON();
             delete data.id;
             delete data.uri;
             var newitem = new Mediakron.Models.Item();
             newitem.save(data, {
-                success: function (model) {
+                success(model) {
                     model.addToCollection();
                     Mediakron.createUrlMap();
                     Mediakron.messages.message('Item Duplicated', 'success', 5000, 'bottom');
@@ -366,9 +374,9 @@ module.exports = function(){
                     });
                 }
             });
-        },
+        }
 
-        metadata: function (id) {
+        metadata(id) {
             var metadata = this.get('metadata');
             if (metadata[id]) {
                 return metadata[id];
@@ -376,7 +384,7 @@ module.exports = function(){
                 return "";
             }
         },
-        getClasses: function () {
+        getClasses() {
             var classes = '';
             if (this.get('published')) {
                 classes = classes + ' published';
@@ -389,7 +397,7 @@ module.exports = function(){
             return classes;
         },
 
-        getStatus: function () {
+        getStatus() {
             var status = '';
             if (!this.get('published')) {
                 status = status + ' <span class="unpublished-append"><span class="mk-icon mk-unpublish"></span><span class="status-text">Unpublished</span></span>';
@@ -404,7 +412,7 @@ module.exports = function(){
             return status;
         },
 
-        getStoryTeaser: function () {
+        getStoryTeaser() {
             teaser = '';
             if (this.get('type') == 'story') {
                 var body = this.get('body'),
@@ -425,7 +433,7 @@ module.exports = function(){
             return teaser.substring(0, 300);
         },
 
-        getPopup: function (template, options) {
+        getPopup(template, options) {
             if (!options) options = {};
             var jst = JST['popup.default'];
             if (template) {
@@ -437,7 +445,7 @@ module.exports = function(){
             return jst(options);
         },
 
-        getLTIEmbed: function () {
+        getLTIEmbed() {
             var url = '',
                 type = this.get('type'),
                 id = this.id,
@@ -445,7 +453,7 @@ module.exports = function(){
             return Mediakron.Settings.url + '/lti/' + uri;
         },
 
-        getFullUrl: function () {
+        getFullUrl() {
             var url = '',
                 type = this.get('type'),
                 id = this.id,
@@ -454,14 +462,14 @@ module.exports = function(){
         },
 
         /* Get a link to this topic */
-        getLink: function () {
+        getLink() {
             var url = this.getURL(),
                 title = this.get('title');
             return Mediakron.Theme.link(title, url);
         },
 
 
-        getContextPopover: function (context, go) {
+        getContextPopover(context, go) {
             var url = this.getURL(),
                 title = this.get('title');
             if (context) {
@@ -477,7 +485,7 @@ module.exports = function(){
             return '<a href="' + url + '" data-toggle="popover" title="' + title + '" >' + title + '</a><div class="popover-content">' + this.getPopup() + '</div>';
         },
 
-        getContextLink: function (context, go, urlOnly) {
+        getContextLink(context, go, urlOnly) {
             var url = this.getURL(),
                 title = this.get('title');
             if (context) {
@@ -508,46 +516,46 @@ module.exports = function(){
             if (urlOnly) return url;
             return Mediakron.Theme.link(title, url);
         },
-        overlayType: function (type) {
+        overlayType(type) {
             var overlay = this.getMapOverlay();
             if (overlay.type) {
                 return overlay.type;
             }
             return false;
         },
-        overlayTitle: function (title) {
+        overlayTitle(title) {
             var overlay = this.getMapOverlay();
             if (overlay.title) {
                 return overlay.title;
             }
             return '';
         },
-        overlayUrl: function (url) {
+        overlayUrl(url) {
             var overlay = this.getMapOverlay();
             if (overlay.url) {
                 return overlay.url;
             }
             return '';
         },
-        overlayFile: function (url) {
+        overlayFile(url) {
             var overlay = this.getMapOverlay();
             if (overlay.file) {
                 return Mediakron.Settings.filepath + overlay.file;
             }
             return false;
         },
-        overlayFileName: function (url) {
+        overlayFileName(url) {
             var overlay = this.getMapOverlay();
             if (overlay.name) {
                 return overlay.name;
             }
             return false;
         },
-        getMapOverlay: function () {
+        getMapOverlay() {
             var overlay = this.get('overlay');
             return overlay;
         },
-        getContextLinkTo: function (context) {
+        getContextLinkTo(context) {
             var url = this.getURL(),
                 title = this.get('title');
             if (typeof (context) == 'string') {
@@ -565,7 +573,7 @@ module.exports = function(){
             return Mediakron.Theme.link(title, url);
         },
 
-        getCrumbLink: function (t) {
+        getCrumbLink(t) {
             var length = Mediakron.controller.uri.length,
                 i = 0,
                 uri = this.get('uri'),
@@ -581,7 +589,7 @@ module.exports = function(){
             return Mediakron.Theme.link(title, url);
         },
 
-        getCurrentUrl: function () {
+        getCurrentUrl() {
             var i = 0,
                 uri = this.get('uri'),
                 length = Mediakron.controller.uri.indexOf(uri),
@@ -594,7 +602,7 @@ module.exports = function(){
             url = url.replace(/\/+$/, "");
             return url;
         },
-        editURL: function () {
+        editURL() {
             var type = this.getNormalType(),
                 uri = this.get('uri');
 
@@ -614,96 +622,96 @@ module.exports = function(){
             }
 
         },
-        editLink: function () {
+        editLink() {
             return Mediakron.Theme.link("<span title=\"Edit\" class=\"mk-icon mk-edit\"></span>&nbsp;<span class=\"button-text\">Edit</span>", this.editURL());
         },
-        downloadUrl: function () {
+        downloadUrl() {
             return Mediakron.Settings.basepath + "download/" + this.get('uri');
         },
 
-        revisionUrl: function () {
+        revisionUrl() {
             return "settings/revisions/" + this.get('uri');
         },
 
-        transmitUrl: function () {
+        transmitUrl() {
             return "settings/transmit/" + this.get('uri');
         },
 
-        transmitLink: function () {
+        transmitLink() {
             return Mediakron.Theme.link("<span class=\"mk-icon mk-export transmit\" title=\"Copy to Site\" ></span>&nbsp;<span class=\"button-text\">Copy to Site</span>", this.transmitUrl());
         },
 
-        duplicateUrl: function () {
+        duplicateUrl() {
             return "settings/duplicate/" + this.get('uri');
         },
 
-        duplicateLink: function () {
+        duplicateLink() {
             return Mediakron.Theme.link("<span class=\"mk-icon mk-duplicate duplicate\" title=\"Duplicate\" ></span>&nbsp;<span class=\"button-text\">Duplicate</span>", this.duplicateUrl());
         },
 
-        publishURL: function () {
+        publishURL() {
             return "settings/content/publish/" + this.get('uri');
         },
 
-        publishLink: function () {
+        publishLink() {
             if (this.canPublish(false)) return Mediakron.Theme.link("<span class=\"mk-icon mk-save publish\" title=\"Publish\" ></span>&nbsp;<span class=\"button-text\">Publish</span>", this.publishURL());
             return '';
         },
 
-        unpublishURL: function () {
+        unpublishURL() {
             return "settings/content/unpublish/" + this.get('uri');
         },
 
-        unpublishLink: function () {
+        unpublishLink() {
             if (this.canUnpublish(false)) return Mediakron.Theme.link("<span title=\"Unpublish\" class=\"mk-icon mk-unpublish unpublish\"></span>&nbsp;<span class=\"button-text\">Unpublish</span>", this.unpublishURL());
             return '';
         },
 
-        archiveUrl: function () {
+        archiveUrl() {
             return "settings/content/archive/" + this.get('uri');
         },
 
-        archiveLink: function () {
+        archiveLink() {
             if (this.canArchive(false)) return Mediakron.Theme.link("<span class=\"mk-icon mk-archive unpublish\" title=\"Archive\" ></span>&nbsp;<span class=\"button-text\">Archive</span>", this.archiveUrl());
             return '';
         },
-        restoreUrl: function () {
+        restoreUrl() {
             return "settings/content/restore/" + this.get('uri');
         },
 
-        restoreLink: function () {
+        restoreLink() {
             if (this.canArchive(false)) return Mediakron.Theme.link("<span title=\"Unarchive\" class=\"mk-icon mk-undo restore\"></span>&nbsp;<span class=\"button-text\">Unarchive</span>", this.restoreUrl());
             return '';
         },
 
-        lockUrl: function () {
+        lockUrl() {
             return "settings/content/lock/" + this.get('uri');
         },
 
-        lockLink: function () {
+        lockLink() {
             if (this.canLock(false)) return Mediakron.Theme.link("<span class=\"mk-icon mk-lock\" title=\"Lock\" ></span>&nbsp;<span class=\"button-text\">Lock</span>", this.lockUrl());
             return '';
         },
-        unlockUrl: function () {
+        unlockUrl() {
             return "settings/content/unlock/" + this.get('uri');
         },
 
-        unlockLink: function () {
+        unlockLink() {
             if (this.canLock(false)) return Mediakron.Theme.link("<span title=\"Unlock\" class=\"mk-icon mk-unlocked\"></span>&nbsp;<span class=\"button-text\">Unlock</span>", this.unlockUrl());
             return '';
         },
 
-        deleteURL: function () {
+        deleteURL() {
             return "settings/content/delete/" + this.get('uri');
         },
 
-        deleteLink: function () {
+        deleteLink() {
             return Mediakron.Theme.link("<span title=\"Delete\" class=\"mk-icon mk-delete\"></span>&nbsp;<span class=\"button-text\">Delete</span>", this.deleteURL());
         },
 
 
         // return this item as the url to its image styled with a certian theme
-        getStyledImage: function (style) {
+        getStyledImage(style) {
             var image = this.get('image'),
                 path = '';
             if (this.get('type') !== 'file' && this.get('type') !== 'text') {
@@ -735,7 +743,7 @@ module.exports = function(){
         },
 
         // get the themed image for this item, for a particular style
-        getImage: function (style, addClass) {
+        getImage(style, addClass) {
             var styled, image, alt;
             if (this.get('type') !== 'file' && this.get('type') !== 'text') {
                 image = this.get('image');
@@ -762,7 +770,7 @@ module.exports = function(){
             }
 
         },
-        inTopic: function (uri) {
+        inTopic(uri) {
             var relationships = this.get('relationships');
             var topics = relationships.topics,
                 t = 0,
@@ -776,7 +784,7 @@ module.exports = function(){
             return false;
         },
 
-        hasParent: function () {
+        hasParent() {
             var relationships = this.get('relationships');
             if (relationships.topics.length > 0 ||
                 relationships.tags.length > 0 ||
@@ -786,7 +794,7 @@ module.exports = function(){
             }
             return false;
         },
-        hasMetadata: function () { /* "Other Metadata" Fields */
+        hasMetadata() { /* "Other Metadata" Fields */
             var metadata = this.get('metadata');
             if (!metadata.description &&
                 !metadata.published &&
@@ -808,7 +816,7 @@ module.exports = function(){
             }
             return true;
         },
-        hasSource: function () { /* "Source" fields */
+        hasSource() { /* "Source" fields */
             var metadata = this.get('metadata');
             if (metadata.source !== "" ||
                 metadata.citation !== "") {
@@ -816,7 +824,7 @@ module.exports = function(){
             }
             return false;
         },
-        hasTags: function () {
+        hasTags() {
             var topics = this.getRelationship('topics'),
                 i = 0,
                 count = topics.length,
@@ -834,7 +842,7 @@ module.exports = function(){
 
             return false;
         },
-        getNormalType: function () {
+        getNormalType() {
             var type = this.get('type');
             switch (type) {
                 case 'map':
@@ -851,14 +859,14 @@ module.exports = function(){
                     return type;
             }
         },
-        getOption: function (opt) {
+        getOption(opt) {
             var options = this.get('options');
             if (options[opt]) {
                 return options[opt];
             }
             return false;
         },
-        getColor: function () {
+        getColor() {
             var type = this.getNormalType('type'),
                 val = false;
             if (type == 'layer') {
@@ -870,7 +878,7 @@ module.exports = function(){
             return val;
         },
         // get the themed image for this item, for a particular style
-        getSquareImage: function (style, width, height, link) {
+        getSquareImage(style, width, height, link) {
             if (!width) width = 200;
             if (!height) height = 200;
             var type = this.getNormalType('type'),
@@ -953,7 +961,7 @@ module.exports = function(){
             }
         },
         // get the themed image for this item, for a particular style
-        getMosaicImage: function (style, width, height, link) {
+        getMosaicImage(style, width, height, link) {
             if (!width) width = 200;
             if (!height) height = 200;
             var type = this.getNormalType('type'),
@@ -1036,12 +1044,12 @@ module.exports = function(){
             }
         },
 
-        getRelationship: function (relationship) {
+        getRelationship(relationship) {
             var relationships = this.get('relationships');
             if (!relationships[relationship]) return [];
             return relationships[relationship];
         },
-        getRelationshipByURI: function (uri, relationship) {
+        getRelationshipByURI(uri, relationship) {
             var children = this.getRelationship(relationship),
                 length = children.length,
                 i = 0;
@@ -1053,7 +1061,7 @@ module.exports = function(){
             }
             return false;
         },
-        fetchRelationship: function (uri, relationship) {
+        fetchRelationship(uri, relationship) {
             var children = this.getRelationship(relationship),
                 length = children.length,
                 i = 0;
@@ -1065,16 +1073,16 @@ module.exports = function(){
             }
             return false;
         },
-        setRelationship: function (relationship, data) {
+        setRelationship(relationship, data) {
             var relationships = this.get('relationships');
             relationships[relationship] = data;
             this.set('relationships', relationships);
         },
-        getMetadata: function (attribute) {
+        getMetadata(attribute) {
             var metadata = this.get('metadata');
             return metadata[attribute];
         },
-        getRelationalForm: function (relationship) {
+        getRelationalForm(relationship) {
             var rendered = '',
                 relationships = this.get('relationships'),
                 relate = relationships[relationship],
@@ -1087,7 +1095,7 @@ module.exports = function(){
             }
             return rendered;
         },
-        getSidebar: function (parent) {
+        getSidebar(parent) {
             this.parent = parent;
             var sidebar = new Mediakron.Sidebar.Init(this);
             sidebar.render();
@@ -1095,7 +1103,7 @@ module.exports = function(){
 
             return sidebar;
         },
-        renderMaps: function () {
+        renderMaps() {
 
             var m, map, maps = this.get('maps');
             for (m in maps) {
@@ -1103,7 +1111,7 @@ module.exports = function(){
                 Mediakron.Maps.Theme(map, 'map-sidebar-' + this.get('uri'));
             }
         },
-        metadataForm: function () {
+        metadataForm() {
             var metadata = this.get('metadata'),
                 template = JST['settings.section.metadata.form'],
                 html;
@@ -1139,12 +1147,12 @@ module.exports = function(){
             html = template(metadata);
             return html;
         },
-        wysiwygForm: function () {
+        wysiwygForm() {
             var template = JST['settings.section.wysiwyg'],
                 html = template();
             return html;
         },
-        defaultData: function () {
+        defaultData() {
             var type = this.get('type');
             switch (type) {
                 case 'folder':
@@ -1176,7 +1184,7 @@ module.exports = function(){
                     };
             }
         },
-        getTagsComma: function () {
+        getTagsComma() {
             var tags = this.getRelationship('tags'),
                 tag, number = tags.length,
                 i = 0,
@@ -1191,14 +1199,14 @@ module.exports = function(){
             }
             return output.substring(0, output.length - 2);
         },
-        formatEvent: function (uri, which) {
+        formatEvent(uri, which) {
             if (!which) which = 'start';
             var time = this.getRelationship('timeline');
             _.each(time, function (time) {
 
             });
         },
-        addComment: function (html) {
+        addComment(html) {
             var comments = this.getRelationship('comments'),
                 time = new Date().getTime(),
                 uri = 'comment:' + Mediakron.user.get('id') + ':' + time;
@@ -1215,11 +1223,11 @@ module.exports = function(){
             this.setRelationship('comments', comments);
 
         },
-        getFeature: function (addClass) {
+        getFeature(addClass) {
             if (!addClass) addClass = '';
             return '<figure id="feature-' + this.get('uri') + '-' + Date.now().toString(16) + '" uri="' + this.get('uri') + '" contenteditable="false" class="feature type-' + this.getNormalType() + ' ' + addClass + '" type="' + this.getNormalType() + '" />';
         },
-        getChild: function (uri, type) {
+        getChild(uri, type) {
             if (!type) type = 'children';
             var children = this.getRelationship(type),
                 count = children.length,
@@ -1231,7 +1239,7 @@ module.exports = function(){
             }
             return false;
         },
-        getChildByUri: function (uri) {
+        getChildByUri(uri) {
             var type = 'children';
             switch (this.getNormalType()) {
                 case 'folder':
@@ -1262,17 +1270,17 @@ module.exports = function(){
             }
             return this.getChild(uri, type);
         },
-        start: function () {
+        start() {
             if (!this.get('date')) return false;
             if (this.get('date').start) return this.get('date').start;
             return false;
         },
-        end: function () {
+        end() {
             if (!this.get('date')) return false;
             if (this.get('date').end) return this.get('date').end;
             return false;
         },
-        add: function (child, data, skipSave) {
+        add(child, data, skipSave) {
             var parent = this,
                 type = this.get('type'),
                 relationships,
@@ -1355,7 +1363,7 @@ module.exports = function(){
 
             return this;
         },
-        remove: function (child, callback) {
+        remove(child, callback) {
             var parent = this,
                 type = this.get('type'),
                 relateTo, relateFrom,
@@ -1408,7 +1416,7 @@ module.exports = function(){
                 }
                 this.setRelationship(relateTo, found);
                 this.save({}, {
-                    success: function (model) {
+                    success(model) {
                         if (callback) {
                             callback(model);
                         }
@@ -1436,7 +1444,7 @@ module.exports = function(){
 
             return this;
         },
-        skips: function () {
+        skips() {
             var skip = [],
                 children, items, length, i = 0;
             switch (this.get('type')) {
@@ -1474,7 +1482,7 @@ module.exports = function(){
             return skip;
         },
 
-        hasDate: function () {
+        hasDate() {
             var date = this.get('date');
             var validate = Mediakron.validateTimeline(date);
             if (!validate) {
@@ -1483,7 +1491,7 @@ module.exports = function(){
                 return false;
             }
         },
-        validateTimeline: function (changes) {
+        validateTimeline(changes) {
             var date = this.get('date');
             if (changes) {
                 date = changes;
@@ -1491,7 +1499,7 @@ module.exports = function(){
             return Mediakron.validateTimeline(date);
         },
 
-        updateAnnotationRelationship: function () {
+        updateAnnotationRelationship() {
             var saveAnnotations = [],
                 annotations = this.get('annotations'),
                 attachments = [];
@@ -1529,13 +1537,13 @@ module.exports = function(){
             }
             this.setRelationship('annotations', saveAnnotations);
         },
-        getCreated: function () {
+        getCreated() {
             return Mediakron.formatUnixDateStamp(this.get('created'), 'small');
         },
-        getChanged: function () {
+        getChanged() {
             return Mediakron.formatUnixDateStamp(this.get('changed'), 'small');
         },
-        getRow: function (context, callback, thumbnails, extra) {
+        getRow(context, callback, thumbnails, extra) {
             var view,
                 data = { 'item': this, 'context': context, 'callback': callback, 'thumbnails': thumbnails, 'data': extra };
             if (context == 'lti') {
