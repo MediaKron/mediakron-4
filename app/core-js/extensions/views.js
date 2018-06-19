@@ -28,7 +28,7 @@ import * as _ from 'underscore';
  * transitions.  If they don't bad things might happen.  It'll do its best to check to make sure you haven't done
  * stupid things with transition handlers, so ha!
  */
-class MediakronView extend Backbone.View{
+class MediakronView extends Backbone.View{
 
     constructor() {
         super({
@@ -97,4 +97,5 @@ class MediakronView extend Backbone.View{
         }
     }
 }
-export default TodoView;
+
+export default MediakronView;
