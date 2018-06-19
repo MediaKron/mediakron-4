@@ -1,0 +1,9 @@
+<li><span class="comment"><span class="mk-icon mk-comment"></span>
+    <p>
+        <%= comment.get('comment') %>
+            <div class="comment-details">By
+                <%= Mediakron.user.get('name') %>
+                <%= Mediakron.formatUnixDateStamp(comment.get('created')) %>
+            </div>
+    </p>
+<span></li>

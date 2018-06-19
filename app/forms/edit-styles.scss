@@ -1,0 +1,765 @@
+
+.glyp-reverse{
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+}
+
+/* @group FORM ELEMENTS */
+
+fieldset {
+  margin: 0em 0 1em 0;
+  padding-top: .5em;
+/*  border-left: 1px solid #565656;*/
+/*  padding-left: 1em;*/
+  padding-bottom: 0;
+}
+
+fieldset.expandable-fieldset {
+  margin-bottom: 0;
+}
+
+fieldset fieldset {
+    margin: 1em 0 2em;
+    border-top: none;
+    padding-bottom: 1em;
+    padding-top: .5em;
+}
+
+legend,
+h4.js-expandmore {
+  display: block;
+  width: 100%;    
+  padding: 1em .5em 0 0;
+  margin: 0;
+  font-weight:400;
+  color:#333;
+  @include rem-fallback(font-size, 26);
+  line-height: inherit;
+  color: #333333;
+  border: 0;
+}
+
+fieldset.expandable-fieldset legend {
+  padding-top: .5em;
+}
+
+.expandmore__button:focus {
+  outline: -webkit-focus-ring-color auto 0;
+  font-weight: bold;
+}
+
+.field {
+    @include display(flex);
+    @include justify-content(flex-start);
+    @include align-content(flex-start);
+    margin: 10px 0;
+}
+
+.field.edit-image {
+  display: block;
+}
+
+label {
+  display: block;
+	@include rem-fallback(font-size, 20);
+	padding: .2em .5em .2em 0;
+	font-weight:400;
+}
+
+.radio-group {
+  @include display(flex);
+}
+
+.radio-group label {
+  padding: 0 .5em;
+  font-weight: normal;
+}
+
+.radio-options label {
+    font-weight: normal;
+    display: inline;
+    @include rem-fallback(font-size, 18);
+}
+
+.form-instructions,
+.instructions {
+	margin-bottom: 1em;
+    font-style: italic;
+    color: #565656;
+}
+
+.form-instructions a,
+.instructions a {
+	text-decoration:underline
+}
+
+.has-error {
+    border: 2px solid #B94A48;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    background-color: #f2dede;
+}
+
+#settings-context .field.has-error {
+	background-color: #f2dede;
+	border: 2px solid #B94A48;
+	border-radius: 3px;
+	padding: .5em;
+}
+
+.add-content .save {
+	margin-right:.5em;
+}
+
+.add-content footer {
+	display:none;
+}
+
+.settings-field {
+	border: 1px solid #565656;
+	margin-bottom:5px;
+	padding:5px 7px;
+	width: 100%;
+}
+
+.settings-field.settings-radio {
+	width:auto;
+}
+
+.add-content .mk-re-order {
+	cursor: move;
+}
+
+ul.sort-group, ul.sort-group li{
+	list-style: none;
+}
+
+@keyframes highlightFocus {
+    0% {background-color:#ffffd9;
+    border: 1px solid #66afe9;	}
+    60% {background-color:#ffffd9;
+    border: 1px solid #66afe9;}
+    100% {background-color: #fff;
+    border: 1px solid #66afe9;}
+}
+
+%editable-field {
+    clear:both;
+    background: #fff;
+    color: #222;
+    display: block;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, padding 0.15s ease-in-out 0s;
+    vertical-align: middle;
+    width: 100%;
+    @include rem-fallback(font-size, 21);
+    padding: .2em .5em; 
+    border: 1px solid #565656;
+    @include placeholder {
+        color: #565656;
+      } 
+}
+
+%editable-field-empty {  
+    border: 1px solid #565656;
+    background: #f1f1f1;
+    padding: .2em .5em; 
+}
+
+%editable-field-focus {
+  /*
+	background-color:#ffffd9;	*/
+	border: 1px solid #66afe9;
+	outline: 0;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.7);
+    transition: border-color 0.3s ease-in-out 0s, background 0.3s ease-in-out 0s, padding 0.3s ease-in-out 0s;;
+	padding: .2em .5em; 
+/*	animation-name: highlightFocus;
+	animation-duration: 2s;*/
+	background-color: #fff !important;  
+}
+
+%editable-field-hover{
+	background-color:#ffffd9;
+  border: 1px solid #66afe9;
+  outline: 0;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.7);
+  transition: border-color 0.3s ease-in-out 0s, background 0.3s ease-in-out 0s, padding 0.3s ease-in-out 0s;
+  padding: .2em .5em; 
+}
+
+.model-field {
+    @extend %editable-field;
+    flex: 1;
+}
+
+.model-field:empty {
+    @extend %editable-field-empty;
+}
+
+.model-field:focus,
+#settings-context .form-control:focus, 
+#settings-context .chosen-container-single .chosen-single:focus,
+.chosen-container-single .chosen-search input[type="text"]:focus,
+ {
+  @extend %editable-field-focus;
+}
+
+.model-field:hover {
+  @extend %editable-field-hover;
+}
+
+
+#settings-context select.form-control {
+    width: auto;
+}
+
+@keyframes fadeInWysiwyg {
+    from {opacity:0}
+    to{opacity: 1;}
+}
+
+.enable-wysiwyg {
+  position: relative;
+}
+
+.enable-wysiwyg:hover:after {
+  content: "Select text to reveal formatting options.";
+  position: absolute;
+  top: -2em;
+  right: 0;
+  @include rem-fallback(font-size, 14);  
+  animation-name: fadeInWysiwyg;
+  animation-duration: .5s; 
+}
+
+
+.basic-information {
+  margin: 1em 0 0 0;
+  padding-top: .5em;
+  border-left: none;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+
+.basic-information legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#settings-context .title-field {
+  margin-top: -.5em;
+}
+
+.title-field label{
+    @include rem-fallback(font-size, 24);
+    font-weight: bold;
+}
+
+.title-field .model-field {
+    @include rem-fallback(font-size, 28);
+    font-weight: bold;
+    background: #f1f1f1;
+    @include placeholder {
+        color: #565656;
+        font-weight: bold;
+        @include rem-fallback(font-size, 28);   
+      } 
+}
+
+.title-field .model-field:focus,
+.title-field .model-field:hover{
+    border: 1px solid #66afe9;
+}
+
+.title-field .model-field:empty {
+    border: 1px solid #565656;
+    padding-left: .4em;
+    @include rem-fallback(min-height,56);   
+}
+
+
+h3.section-container-title{
+  width: auto;
+  padding-top: 0;
+  @include rem-fallback(font-size, 30);
+  width: 100%;
+  text-align: left;
+  display: flex;
+  font-weight: bold;
+  margin-top: 1.5em;
+  &:after {
+     border-top: 4px solid #222;
+     content: '';
+     display: flex;
+     flex: 1;
+     top:17px;
+     position: relative;
+     @include rem-fallback(margin-left, 10);
+   }
+  
+}
+
+/* keep bottom of admin panes from getting cut off by save bar */
+fieldset:last-of-type {
+    margin-bottom: 6em;
+}
+
+.edit-form fieldset:last-of-type { /* not needed on edit forms */
+  margin-bottom: 0;
+}
+
+/* @end */
+
+/* @group PLACEHOLDERS */
+
+
+[contentEditable=true]:empty:not(:focus):before{
+	content:attr(data-placeholder);
+    color: #565656;
+    @include rem-fallback(font-size, 17);
+    @include rem-fallback(line-height, 24);
+    font-style: italic;
+}
+
+.edit-story .story-title[contentEditable=true]:empty:not(:focus):before{
+	content:attr(data-placeholder);
+    color: #565656;
+    @include rem-fallback(font-size, 32);
+    @include rem-fallback(line-height, 40);
+    font-style: italic;
+}
+
+#title:empty:not(:focus):before{
+	content:attr(data-placeholder);
+    color: #565656;
+    @include rem-fallback(font-size, 24);
+    font-style: italic;
+}
+
+/* @end */
+
+
+/* @group IMAGE UPLOAD */
+
+.edit-thumbnail{
+	display: block;
+    float: left;
+    margin: 0 1em 0 0;
+    max-height: 150px;
+    width: 150px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+}
+.edit-thumbnail img{
+	width:100%;
+	height:auto;
+}
+
+#remove-image {
+	position: relative;
+	top: -7px;
+	left: -41px;
+	background: #fff;
+	padding: 1px 2px 0 0px;
+	margin: 0;
+	height: 23px;
+	width: 25px;
+	border: 1px solid #ddd;
+}
+
+#remove-file {
+	position: relative;
+	top: -6px;
+	left: -41px;
+	background: #fff;
+	padding: 1px 2px 0 0px;
+	margin: 0;
+	height: 25px;
+	width: 25px;
+	border: 1px solid #ddd;
+}
+
+#remove-image .mk-remove{
+	top: -1px;
+}
+
+
+#upload-image {
+	padding: 3px 10px 7px 3px;
+}
+
+#upload-image .mk-icon {
+	left:4px;
+}
+
+.field-alt{
+    clear: both;
+    padding-top: 1em;
+}
+
+/* @end */
+
+.edit .sortable li{
+	list-style: none;
+}
+.edit .topics-sortable li{
+	list-style: none;
+	width:100%;
+	clear:both;
+	color:#222;
+	background: #fff;
+}
+
+.edit .sortable .chosen-container-active .chosen-single {
+
+  box-shadow: none;
+}
+.edit .sortable .chosen-container-active.chosen-with-drop .chosen-single {
+  border: 1px solid #aaa;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-left-radius: 0;
+  background-image: none;
+  box-shadow: none;
+}
+
+.edit .relation{
+	width:85%;
+	float:left;
+}
+
+.edit .remove-relationship{
+color:#fff;
+border:none;
+background: #D9534F;
+border: 1px solid #7B3634;
+padding: 3px 6px;
+font-size: 14px;
+}
+
+.edit .remove-relationship .mk-icon{
+top:3px;
+}
+
+#settings-context #sidebar-inner {
+	display:block;
+}
+
+.chosen-container-single .chosen-single span {
+	color: #222;
+	font-weight: 200;
+}
+
+#file-progress-bar{
+	display:none;
+	margin-top: 1em;
+	margin-left: 196px;
+}
+
+#toc{
+	padding-top:2em;
+}
+
+#settings-context #topics .form-control {
+    width: 90%;
+    background-color: #fff;
+    background:none;
+}
+
+#metadata-form label{
+    width: 6em;
+    text-align: right;   
+}
+
+#metadata-form label, .label-right{
+    @include rem-fallback(width, 125);
+    text-align: right;   
+}
+
+.edit-form .author-date {
+  display: block; /* show if edit form */
+  margin-bottom: .5em;
+}
+
+.add-content .author-date { /* hide if add form */
+  display: none;
+}
+
+
+/* @end */
+
+/* @group Audio form */
+
+#admin-edit-audio .chosen-container-single .chosen-single {
+    border: 1px solid #565656;
+    background-color:transparent;
+    @include rem-fallback(width,190);
+    line-height: 1.75;
+}
+
+/* @end */
+
+/* @group FILE FORM */
+
+.edit-form.file-form #remove-file {
+  top: 0;
+  left: 11px;
+}
+
+/* @end */
+
+#order-items {
+	margin-top:1em;
+}
+.select-style {
+    border: 1px solid #ddd;
+    width: 120px;
+    overflow: hidden;
+    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+#order-items{
+	clear:both;
+}
+#sort-children{
+	list-style: none;
+	margin:1em 0;
+	padding:0;
+}
+#sort-children li { margin: 0 3px 3px 3px; padding-left: 1.5em; }
+#sort-children li span { position: absolute; margin-left: -1.3em; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background:#fff;
+	color:inherit;
+}
+
+
+.edit label.custom-colors, .edit label.skin {
+	padding-left:0;
+}
+
+
+/* Button Customizations */
+
+.btn-md {
+	padding:6px 10px;
+}
+
+.edit-options a{
+	color:#303030;
+}	
+
+.managing-this{
+    width:40%;
+}
+
+.edit-item-actions{
+    display:none;
+    left:auto;
+    right:0;
+}
+
+.edit-image #image-file,
+.edit-image #text-file{
+    display:none;
+}
+
+.edit-image #institional-file{
+    display:none;
+}
+
+.edit-image {
+   /* margin-bottom: 0.5em;*/
+}
+
+/*.edit-image,
+.edit .layout-styles,
+.widget-options {
+    margin-top: 1em;
+    border: 1px solid #ccc;
+    padding: .5em 1em 1em 1em;
+    border-radius: 3px;
+}*/
+
+
+/* @group WIDGET OPTIONS */
+
+#admin-edit-comparison .widget-options, #admin-edit-progression .widget-options { /* Hiding sidebar options on progressions and comparisons     */
+    display: none;
+}
+
+.layout-widget label {
+    display: inline;
+    @include rem-fallback(font-size, 16);
+}
+
+/* Hiding widget options on some items */
+#admin-edit-audio .widget-options,
+#admin-edit-slideshow .widget-options,
+#admin-edit-comparison .widget-options,
+#admin-edit-progression .widget-options,
+#admin-edit-story .widget-options {
+    display: none;
+}
+ 
+/* layout-transcript */
+
+/* @end */
+
+/* @group LAYOUT OPTIONS */  
+
+.section-appearance {
+  padding-bottom: 5em;
+}
+
+.text-form .layout-styles, /* hiding on edit forms with no layout styles */
+.comparison-form.layout-styles,
+.video-form .layout-styles,
+.image-form .layout-styles,
+.file-form .layout-styles,
+.progression-form .layout-styles { 
+    display: none;
+}
+
+#manage .layout-style {
+	height:130px;
+	display:block;
+	position:relative;
+	margin-bottom:1em;
+	background-image: url("../img/home-layout-default.jpg");
+	background-repeat: no-repeat;
+}
+
+.layout-option .option-title {
+	padding-left:165px;
+	display:block;
+	font-weight: bold;
+	padding-top: 0;
+  position: relative;
+	top: -7px;
+}
+
+.layout-option .option-title .help {
+  display: block;
+  font-weight:normal;
+  @include rem-fallback(font-size, 16);
+}
+
+.layout-option {
+	height:125px;
+	display:block;
+	position:relative;
+	background-image: url("../img/home-layout-default.jpg");
+	background-repeat: no-repeat;
+}
+
+.layout-option.folder-mosaic {
+  height: 165px;
+}
+
+.layout-option .option-input {
+	display:block;
+	background:#fff;
+	padding: 0 4px 3px 4px;
+	border: 1px solid #ddd;
+	position:absolute;
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	border-bottom-right-radius: 4px;
+	border: 1px solid #ddd;
+	z-index: 1;
+}
+
+#manage .layout-style .layout-title {
+	padding-left:165px;
+	display:block;
+}
+
+#manage .layout-style .layout-input {
+	display:block;
+	background:#fff;
+	padding: 0 4px 3px 4px;
+	border: 1px solid #ddd;
+	position:absolute;
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	border-bottom-right-radius: 4px;
+	border: 1px solid #ddd;
+}
+
+/* @end */
+
+#edit-loading { /* message when polling for new content  */
+    background: none repeat scroll 0 0 #fff;
+    color: #333;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 100%;
+    opacity: 0.8;
+    padding-top: 8em;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+
+/* @group LAYER FORM */
+
+.layer-form #admin-edit-layer{
+  padding: 4em 1.5em 1em 1.5em;
+}
+
+.filters-layers label {
+  display: inline-block;
+  margin-left: .5em;
+  font-weight: normal;
+}
+
+/* @end */
+
+/* @group Map Edit form */
+
+.layout-option.timemap {
+  height: auto;
+}
+
+.layout-option.timemap legend{
+  @include rem-fallback(font-size, 16);
+  padding-top: .5em;
+}
+
+.layout-option.timemap fieldset{
+  margin-top: 0;
+  margin-bottom: 0 !important;
+  margin-left: 165px;
+}
+
+#admin-edit-map .leaflet-control-zoom-out {
+  margin-left: 0;
+}
+
+/* @end */

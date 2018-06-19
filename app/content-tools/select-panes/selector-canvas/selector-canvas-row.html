@@ -1,0 +1,18 @@
+<tr class="item-row">
+	<td class="actions title post-title">
+		<% if(Mediakron.Status.ltiIntendedUse != 'navigation'){ %>
+			<a class="btn-add embed btn-primary" embed="<%= item.getLTIEmbed() %>?token=<%= Mediakron.Settings.token %>"><span class="mk-icon mk-add"></span> Embed</a>
+			<a class="btn-add add-link btn-primary" link="<%= item.getFullUrl() %>?token=<%= Mediakron.Settings.token %>" title="<%- item.get('title') %>"><span class="mk-icon mk-link"></span>Add Link </a> <span title="<%=item.getNormalType() %>" class="type-icon mk-icon mk-<%= item.getNormalType() %>"></span>  <%- item.get('title') %>
+		<% }else{ %>
+			<a class="btn-add embed btn-primary" link="<%= item.getLTIEmbed() %>?token=<%= Mediakron.Settings.token %>" title="<%- item.get('title') %>"><span class="mk-icon mk-add"></span> Add </a> <span title="<%=item.getNormalType() %>" class="type-icon mk-icon mk-<%= item.getNormalType() %>"></span> <%- item.get('title') %>
+		<% } %>
+	</td>
+	<% if(thumbnails){ %>
+		<td class="row-thumb" >
+			<%= item.getSquareImage('small',thumbnails,thumbnails,false) %>
+		</td>
+	<% } %>
+	<td class="browser-meta">
+		Created: <%= item.getCreated() %> | Changed: <%= item.getChanged() %>
+	</td>
+</tr>

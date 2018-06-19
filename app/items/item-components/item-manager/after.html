@@ -1,0 +1,37 @@
+<!-- ===== Edit Marker  ===== -->
+
+<% var record; %>
+
+<div class="organize-pane organize-marker collection overlay overlay-sidebar">
+
+  <header>
+    <div class="header-inner">
+      <h2><span class="toggles mk-icon mk-edit"></span> Adding a timeline item</h2>
+      <nav>
+        <ul class="page-options"> 
+          	<li class="option-close">	  	
+          		<button class="btn btn-sm btn-default close-button" aria-label="Close">
+            		<span class="mk-icon mk-close"></span>
+            		<span class="button-text"> Close</span> 
+            	</button>
+          	</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div id="edit-marker" class="organize">
+  
+    <fieldset class="marker-content">   
+  
+      <h3 class="title">Chose a date</h3>
+      <div class="form-instructions">The item you added does not have a date assigned to it.  Please assign a date below </div>
+      <div class="date-field"><%= dateEntry %></div>
+    </fieldset>
+    
+  </div>
+  <div class="add-layer hide"></div>
+
+</div>
+
+<div class="overlay-bg"></div>

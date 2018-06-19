@@ -1,0 +1,42 @@
+<div id="mediakron-content-default" class="clearfix">
+	<div id="compare-magnify-trigger">Zoom In</div>
+  <% if(itemD){ %>
+	<div id="mediakron-compare-left" class="clearfix">
+		<div id="mediakron-compare-top-left">
+			<%= itemA %>
+		</div>
+		<div id="mediakron-compare-bottom-left">
+			<%= itemC %>
+		</div>
+	</div>
+	<div id="mediakron-compare-right" class="clearfix">
+		<div id="mediakron-compare-top-right">
+			<%= itemB %>
+		</div>
+		<div id="mediakron-compare-bottom-right">
+			<%= itemD %>
+		</div>
+	</div>
+  <% }else if(itemC){ %>
+    <div id="mediakron-compare-left" class="clearfix">
+		<div id="mediakron-compare-top-left">
+			<%= itemA %>
+		</div>
+		<div id="mediakron-compare-bottom-left">
+			<%= itemC %>
+		</div>
+	</div>
+	<div id="mediakron-compare-right" class="clearfix">
+		<div id="mediakron-compare-top-right">
+			<%= itemB %>
+		</div>
+	</div>
+  <% }else { %>
+    <div id="mediakron-compare-left" class="clearfix">
+		<%= itemA %>
+	</div>
+	<div id="mediakron-compare-right" class="clearfix">
+		<%= itemB %>
+	</div>
+  <% } %>
+</div>

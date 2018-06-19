@@ -1,0 +1,250 @@
+/* @group === SEARCH (_search.scss) === */
+
+.search-pane {
+  top: -100%;
+}
+
+.opened.search-pane{
+  z-index: 1062;
+}
+
+.opened.search-pane .overlay header {
+  padding: .4em 1em .2em 1em;
+    border: 0; 
+    position:fixed;
+    top: 0;
+    max-width: 720px;
+    margin-top: .5em;
+    background: #ddd;
+    @include breakpoint(sm){ 
+      padding: .5em 1em 0em .5em;
+      margin: 0 auto;
+      display: block;
+      border-bottom: 1px solid #565656;
+      @include rem-fallback(height, 50);
+      width: 100%;
+      max-width: none;
+      z-index: 2;
+    	}
+}
+
+.opened.search-pane .overlay .header-inner {
+    margin: auto;
+    padding-left: 1em;
+}
+
+.opened.search-pane .overlay header h2, .opened.search-pane .overlay header h1 {
+  @include rem-fallback(font-size, 24);
+  display: inline-block;
+  margin: 0;
+  padding: .2em 0em .2em 0em;
+  color: #000;
+  font-weight: normal;
+}
+
+.opened.search-pane .overlay h2 .mk-icon {
+  position: relative;
+  top: 2px;
+  color: #000;
+}
+
+.opened.search-pane .overlay.organize-pane header, 
+.opened.search-pane .overlay.add-to-pane header  { /* organize, add to sidebar panes */
+  position: static;
+}
+
+.opened.search-pane .overlay nav {
+  float: none;
+  display: inline-block;
+}
+
+.opened.search-pane .overlay h2 {
+  padding-right: 0;
+}
+
+.opened.search-pane .overlay .page-options {
+  display: inline-block;
+  position:absolute;
+}
+
+.opened.search-pane .overlay .page-options .option-close {
+  position: relative;
+  right:0em;
+  top: 0  ;
+  @include breakpoint(md){ 
+    max-width: none;  
+    right: 1em;
+  }
+}
+
+.opened.search-pane .overlay .page-options .close-button{
+  border: none;
+  background: none;
+}
+
+.opened.search-pane .overlay .page-options .button-text {
+  display: none;
+}
+
+.opened.search-pane .overlay .page-options .option-help {
+  padding:0;
+  position: relative;
+  top: -3px;
+}
+
+.search-results {
+    padding: 0 1em;
+    width: 100%;
+    @include rem-fallback(max-width,960); 
+    margin: auto;
+    @include breakpoint(sm){
+    padding:0;
+    }
+}
+
+#search-results  table#admin-content tbody {
+  padding: 0;
+}
+
+#search-results table#admin-content .search-highlight {
+	float: none;
+	clear: left;
+	padding-top: .5em;
+}
+
+#search-results table#admin-content.gallery-view .search-highlight { /* hide in gallery view  */
+	display: none;
+}
+
+#search-results .show-highlight{
+    cursor: pointer;
+    font-weight: bold;
+    color:#333;
+}
+#search-results .show-highlight:hover{
+    color:#000;
+}
+
+#search-results .highlighted-results{
+    display:block;
+}
+
+#search-results .highlighted-results h4{
+   	@include scut-rem-fallback(18);
+   	padding-top: .5em;
+}
+
+#search-results table#admin-content.gallery-view .post-title{
+	@include scut-rem-fallback(14);
+}
+
+#search-results .highlighted-results em{
+    font-weight: bold;
+    color: red;
+}
+
+#search-results .highlighted-results ul{
+  padding-left: 4.2em
+}
+
+
+#search-results .highlighted-results li{
+  list-style: none;
+}
+
+#search-results table#admin-content.list-view tr.item-row .item-square-icon,
+#search-results table#admin-content.list-view tr.item-row .square-thumbnail {
+  height: 50px !important;
+  width: 50px !important;
+}
+
+#search-results tr.item-row .row-highlight{
+  display:none;
+}
+
+#search-results .list-view tr.item-row .row-highlight{
+    background: none repeat scroll 0 0 #eee;
+    display:inline;
+}
+
+#search-results .list-view .selected tr.item-row{
+    background: #eee;
+}
+
+#search-results .list-view .selected tr.item-row .row-highlight{
+    background: #aaa;
+}
+
+#search-results .no-results {
+  max-width: none;
+  border: none;
+  box-shadow: none;
+}
+
+#search-results h3{
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+#search.search-pane header {
+  padding-left: 1em;
+}
+
+/* @group SEARCH FIELD*/
+
+.search-form {
+    display: flex;  
+    width: 100%;
+    @include rem-fallback(max-width,960); 
+    margin: 2em auto; 
+    padding: 0 1em;
+    @include breakpoint(md){
+    padding: 0;
+    }
+}
+
+#search-field {
+  width: 100%; 
+  @include rem-fallback(font-size,32); 
+  flex: 1; 
+  padding: .1em .4em;
+}
+
+.search-submit.btn-primary.btn-large {
+  @include rem-fallback(height,55); 
+  margin-left: -2px;
+}
+
+
+.tt-menu.tt-open {
+    background: #fff;
+    top: 4.5em;
+    border: 1px solid #565656;
+    padding: 1em;
+    width: 100%;
+}
+
+.tt-hint {
+    display: none;
+}
+
+.twitter-typeahead {
+  width:100%;   
+}
+
+.typeahead-header {
+  padding-bottom: .3em;
+}
+  
+.tt-suggestion { /* Make type-ahead suggestions look like links */
+  cursor: pointer;
+} 
+
+.tt-suggestion:hover { /* Make type-ahead suggestions look like links */
+  text-decoration: none;
+  color: #999;
+} 
+  
+/* @end */
+
+/* @end SEARCH == */

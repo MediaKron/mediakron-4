@@ -1,0 +1,26 @@
+<article class="template video-template in-narrative video-template--basic <% if(caption.length){ %> caption-active<% } %>">
+	
+	<div class="content-primary">
+		
+		<header class="title-box">
+			<h3><a href="<%= uri %>" data-tooltip="View outside of narrative" class="tooltip--n"><%= title %></a></h3>	<span class="edit-menu edit-menu-<%= uri %>"></span>
+			<% if(caption.length){ %><div class="caption"><%= caption %></div><% } %>
+		</header>
+		
+		<div class="container-fluid">
+			<div class="item-content main-item-content no-sidebar">
+				<div class="video-container">
+					<%= renderedVideo %>
+				</div>		
+			</div>	
+			<aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+		</div>
+	</div>
+		
+  <div class="widgets widgets--below widgets--below-<%= uri %>">
+  	<div class="widgets__description widget-box"></div>
+  	<div class="widgets__transcript widget-box"></div>
+  	<div class="widgets__details widget-box"></div>
+  </div>	
+
+</article>

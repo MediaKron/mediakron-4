@@ -1,0 +1,36 @@
+<div id="sequence-editor">
+	<% 
+		var count = relationships.children.length;
+		if(count > 1){
+			var divisor = count - 1
+		} else {
+			var divisor = 1
+		}
+		var blockWidth = 750/divisor;
+	%>
+	
+	<h2><%= title %></h2>
+	<% var boxes = "", index = 0; %>
+	<% for (index; index < count; index++){ %>
+		<% var item = Mediakron.getItemFromURI(relationships.children[index]); %>
+		<div class="sequence-image sequence-image-<%= index %>" image-id ="<%= index %>" style="z-index:<%= 500-index %>;opacity:0;">
+		
+			<div class="frame">
+				<% var image = item.getImage('full'); %>
+				<div class="sequence-image" style ="left:<%= image.x %>px;top:<%= image.y %>px;width:<%= image.width %>px;height:<%= image.height %>px;">
+					<%= image %>
+				</div>
+			</div>
+			<div class="caption">
+				<h2><%= item.get('title') %></h2>
+				<%= item.get('caption') %>
+			</div>
+		</div>
+	<% } %>
+	<div id="slider">
+		<% for (var index = 0; index < count; index++){ %>
+		<% var left = (index*blockWidth) +"px"; %>
+		<div id="scrub-box" style="left:<%= left %>"> </div>
+		<% } %>
+	</div>
+</div>  

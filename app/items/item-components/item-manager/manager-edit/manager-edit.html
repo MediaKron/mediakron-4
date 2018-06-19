@@ -1,0 +1,111 @@
+<!-- ===== Organize Pane  ===== -->
+
+<% var record; %>
+
+<div class="organize-pane organize-marker collection overlay overlay-sidebar">
+
+  <header>
+    <div class="header-inner">
+      <h2><span class="toggles mk-icon mk-edit"></span> Marker Settings </h2>
+      <nav>
+        <ul class="page-options"> 
+          	<li class="option-close">	  	
+          		<button class="btn btn-sm btn-default close-button" aria-label="Close">
+            		<span class="mk-icon mk-close"></span>
+            		<span class="button-text"> Close</span> 
+            	</button>
+          	</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div id="edit-timeline-marker" class="organize">
+    
+      <% if(item){ %>
+        <h3 class="title"><%= item.get('title') %></h3>
+      <% }else{ %>
+        <fieldset class="marker-content"> 
+        <legend>Timeline Marker Label</legend>
+        <div id = "relationship-label" class="nav-item ">
+        	<div class="field simple-label">
+        		<label for="simple-layer"class="sr-only">Add/edit Label:</label>
+        		<input id="simple-label" class="model-field" value="<%= label %>" placeholder="Add/edit a marker label">
+        	</div>
+        </div>
+        </fieldset>
+      <% } %>
+      
+
+      
+      <fieldset>
+      <legend>Date</legend>
+      <% var timeline = Mediakron.CurrentTimeline.timelineData(); %>
+      <div class="timeline-information">
+        This timeline starts at <strong> <%= timeline.start %> </strong>and ends at <strong><%= timeline.end %></strong>. You must provide a date within this range for this item to appear on the timeline.
+      </div>
+      <%= dateWidget %>
+      
+      </fieldset>
+      
+      <fieldset class="timeline-category">
+      <legend>Group by Folder</legend>
+        <div class="form-instructions">Events can be grouped into categories on your page, with distinct colors and icons.</div>
+	 			<div class="currentCategory">
+  	 			<% var currentUri = false; if(currentCategory){ currentUri = currentCategory.get('uri'); } %> 
+  	 			    	 		<%= currentRender %>
+  	 		</div>
+	 			
+        <div class="timeline-folder-edit">
+	        
+	        <div class="category-existing">
+  	        <div class="field">
+  	        <% if(currentCategory) { %>  
+  	          <label for="Folder" class="category-type-label">Select a different folder						
+  	          </label>
+  	           <% } else { %>
+  	           <label for="Folder" class="category-type-label sr-only">Select an existing folder						
+  	           </label>
+  	           <% } %>
+
+              <select id="category" name="category" role="listbox" aria-labelledby="audio-type">
+                <option value="nocategory">Select Existing Folder</option>
+                <% if(inCategories){ %>
+                  <optgroup label="Folders this item is already in">
+        					<% _.each(inCategories, function(uri, type){ data = Mediakron.getItemFromURI(uri); if(data){ %>
+        						<option value="<%= data.get('uri') %>" <%= Mediakron.Selected(currentUri, data.get('uri')) %>><%= data.get('title') %></option>
+        					<% } }); %>
+        					</optgroup>
+        				<% } %>
+        				<optgroup label="All Folders">
+        					<% _.each(categories, function(data, type){  %>
+        						<option value="<%= data.get('uri') %>" <%= Mediakron.Selected(currentUri, data.get('uri')) %>><%= data.get('title') %></option>
+        					<% }); %>
+        				</optgroup>
+			        </select>
+      		  </div> 
+	       </div>
+	       
+	       <div><a href="#" class="add-category">
+	         <span class="toggles mk-icon mk-add"></span>
+	         Add a new folder</a>
+	       	</div>
+	       	<div id="folder-quick-add"></div>
+	       
+        </div>
+	     
+    </fieldset>
+    
+    
+  	<div class="save-bar">
+  	  <div class="save-bar-inner">
+  			<button id="done-editing" type="submit" class="btn btn-success submit btn-sm"><span class="mk-icon mk-save"> </span> Save</button>
+  			<button id="cancel-editing" class="btn btn-default btn-sm close-settings"><span class="mk-icon mk-close"> </span> Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="add-layer hide"></div>
+
+</div>
+
+<div class="overlay-bg"></div>

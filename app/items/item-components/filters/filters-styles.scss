@@ -1,0 +1,27 @@
+#actions{
+	display:block;
+	position:absolute;
+	background:#ccc;
+	z-index: 1;
+	width: 100%;
+	padding:5px;
+}
+#filter label{
+	display:block;
+	float:left;
+}
+.filter-group{
+	float:left;
+	margin: 0 5px;
+}
+.filter-group .filter-container{
+	display: none;
+}
+.filter-act{
+	float:right;
+	padding:5px;
+	border-radius: 5px;
+	background:#444;
+	color:#fff;
+	margin:5px;
+}

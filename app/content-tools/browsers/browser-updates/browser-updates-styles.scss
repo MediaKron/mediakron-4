@@ -1,0 +1,16 @@
+
+  /* #region -- UPDATES */
+
+  #recent-changes-container,
+  #new-content-container {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+    @include breakpoint(md) {
+      width: 48%;
+      float: left;
+      margin-right: 1em;
+    }
+  }
+
+  /* #endregion */

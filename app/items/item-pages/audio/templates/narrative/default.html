@@ -1,0 +1,27 @@
+<section class="template audio-template in-narrative audio-template--full">
+	
+	<div class="content-primary <% if(image){ %>background-image-active<% } %>"  <% if(image){ %> style="background: url(<%= Mediakron.Image.style(image.uri,"full") %>);" <% } %>">
+		
+		<header class="title-box">
+			<h3><a href="<%= uri %>" data-tooltip="View outside of narrative" class="tooltip--n"><%= title %></a></h3>	<span class="edit-menu edit-menu-<%= uri %>"></span>
+			</span>	
+		</header>
+		
+		<div class="item-content main-item-content">
+				<div class="item-content--inner">
+				<% if(caption.length){ %><div class="caption"><%= caption %></div><% } %>
+			    <div class="audio-container">
+					<%= renderedAudio %>
+				</div>
+			</div>
+		</div>
+		<aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+	</div>
+	
+  	<div class="widgets widgets--below widgets--below-<%= uri %>">
+  		<div class="widgets__description widget-box"></div>
+  		<div class="widgets__transcript widget-box"></div>
+  		<div class="widgets__details widget-box"></div>
+  	</div>	
+
+</section>

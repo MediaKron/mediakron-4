@@ -1,0 +1,48 @@
+<article class="comparison-item--text"> 
+	
+	<header class="title-box">
+		<h2 class="go-to-item"> <a href="<%= uri %>"> <%= title %></a></h2>
+
+        <div class="compare-actions">
+            <div class="show-description act">
+			     <button class="btn btn-default comparison-description-button tooltip--n" data-tooltip="More item 		information"><span class="mk-icon mk-info"></span><span class="sr-only">Item Information</span></button>
+			 </div>
+        </div>
+        <div class="comparison-description hidden">
+        
+        <% if(caption.length > 0){ %><div class="caption"><%= caption %></div><% } %>
+        <aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+        
+  	    <div class="widgets widgets--below widgets--below-<%= uri %>">
+  	    	<div class="widgets__description widget-box"></div>
+  	    	<div class="widgets__transcript widget-box"></div>
+  	    	<div class="widgets__details widget-box"></div>
+  	    </div>	
+  	    	
+        </div>
+    </header>
+    
+	<% if(text.type == 'pdf'){ var path = Mediakron.Data.pdfViewer+'#'+Mediakron.Settings.filepath+text.url; %>
+		<div class="pdf-controls-top">
+		    <span class="pdfPrev"><span class="mk-icon mk-arrow-left"></span> Previous Page</span>
+		    <span class="pages"></span>
+		    <span class="pdfNext">Next Page <span class="mk-icon mk-arrow-right"></span></span>
+		</div>
+		<canvas id="viewer-<%= uri %>" class="pdf-viewer" style="border:1px solid black;"/>
+		<div class="pdf-controls-bottom">
+		    <span class="pdfPrev">Previous Page</span>
+		    <span class="pages"></span>
+		    <span class="pdfNext">Next Page</span>
+		</div>
+	<% }else if(text.type == 'image'){ %>
+	    <div class="manuscript-image">
+			<% var themedImage = model.getImage('full',"img-responsive annotate-this"); %>
+			<div class="annotate"><%= themedImage %></div>
+		</div>
+		<% }else { %>
+		<div class="text-body body">
+			<%= body %>
+		</div>
+	<% } %>
+
+</article>

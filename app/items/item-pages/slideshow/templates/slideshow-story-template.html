@@ -1,0 +1,10 @@
+<div id="slideshow-<%= model.get('uri') %>" >
+    <% _.each(model.getRelationship('children'),function(child){ if(child){ childItem = Mediakron.getItemFromURI(child); %>
+        <% if(childItem){ %>
+                <div class="slideshow-image type-image" uri="<%= childItem.get('uri') %>">
+                    <img alt="<%= childItem.get('title') %>" src="<%= childItem.getStyledImage('medium') %> "/>
+                </div>
+        <% } %>
+    <% } }); %>
+</div>
+<div class="figure-caption"><% if(caption != '') { %><%= caption %><% } %></div>

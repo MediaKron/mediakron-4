@@ -60,44 +60,11 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(1);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_init__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__ = __webpack_require__(9);
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-
-
-
-console.log('debug');
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
-  window.Mediakron = __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */];
-  __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */].auth = Object(__WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__["a" /* default */])();
-});
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10468,13 +10435,101 @@ return jQuery;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(4);
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(2);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_init__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__ = __webpack_require__(9);
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+
+
+
+console.log('debug');
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
+  window.Mediakron = __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */];
+  __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */].auth = Object(__WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__["a" /* default */])();
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_backbone__);
@@ -10523,7 +10578,7 @@ var Mediakron = {
 /* harmony default export */ __webpack_exports__["a"] = (Mediakron);
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -27633,62 +27688,7 @@ var Mediakron = {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)(module)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)(module)))
 
 /***/ }),
 /* 7 */
@@ -27710,7 +27710,7 @@ module.exports = function(module) {
 
   // Set up Backbone appropriately for the environment. Start with AMD.
   if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(8), __webpack_require__(2), exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function(_, $, exports) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(8), __webpack_require__(0), exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function(_, $, exports) {
       // Export global even in AMD case in case this script is loaded with
       // others that may still expect a global Backbone.
       root.Backbone = factory(root, exports, _, $);
@@ -29616,7 +29616,7 @@ module.exports = function(module) {
   return Backbone;
 });
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 8 */
@@ -31316,15 +31316,15 @@ module.exports = function(module) {
   }
 }());
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)(module)))
 
 /***/ }),
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_models_user__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_models_user__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__);
 
 
@@ -31388,66 +31388,10 @@ function Auth(callback) {
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
-
-var ClassManagement = function ClassManagement(options) {
-    if (!options) options = {};
-    this.initialize.apply(this, arguments);
-};
-_.extend(ClassManagement.prototype, ClassManagement, {
-    body: 'body',
-    $body: false,
-    current: '',
-    next: '',
-    stat: '',
-    initialize: function initialize() {
-        this.$body = $(this.body);
-    },
-    setStatic: function setStatic(stat) {
-        this.$body.addClass(stat);
-        this.stat = this.stat + ' ' + stat;
-    },
-    swap: function swap(remove, add) {
-        this.$body.removeClass(remove).addClass(add);
-    },
-    toggle: function toggle(_toggle) {
-        this.$body.toggleClass(_toggle);
-    },
-    reset: function reset() {
-        this.$body.removeClass(this.current).addClass(this.next);
-        this.current = this.next;
-        this.next = '';
-    },
-    update: function update() {
-        this.$body.addClass(this.next);
-        this.current = this.current + ' ' + this.next;
-        this.next = '';
-    },
-    queue: function queue(add) {
-        this.next = this.next + ' ' + add;
-        return this.next;
-    },
-    item: function item(_item) {
-        var template = _item.get('template'),
-            type = _item.getNormalType();
-        this.queue(' type-' + type + ' item-' + type);
-        this.queue(type + '-' + template);
-        if (Mediakron.Templates[type]) {
-            if (Mediakron.Templates[type][template]) {
-                if (Mediakron.Templates[type][template].classes) this.queue(Mediakron.Templates[type][template].classes);
-            }
-        }
-    }
-});
-
-module.exports = ClassManagement;
-
-/***/ }),
-/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -31590,10 +31534,66 @@ var User = function (_Model) {
 /* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: Unexpected token (15:24)\n\n\u001b[0m \u001b[90m 13 | \u001b[39m    }\n \u001b[90m 14 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 | \u001b[39m        initialize() { }\u001b[33m,\u001b[39m\n \u001b[90m    | \u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 | \u001b[39m\n \u001b[90m 17 | \u001b[39m        cacheFilters() {\n \u001b[90m 18 | \u001b[39m            \u001b[36mvar\u001b[39m model \u001b[33m=\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n");
+
+/***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (7:15)\n\n\u001b[0m \u001b[90m  5 | \u001b[39m\n \u001b[90m  6 | \u001b[39m\u001b[36mclass\u001b[39m \u001b[33mModel\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mBackbone\u001b[39m\u001b[33m.\u001b[39m\u001b[33mModel\u001b[39m{\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 | \u001b[39m        folders\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\n \u001b[90m    | \u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 | \u001b[39m        layers\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\n \u001b[90m  9 | \u001b[39m        tags\u001b[33m:\u001b[39m {}\u001b[33m,\u001b[39m\n \u001b[90m 10 | \u001b[39m\u001b[0m\n");
+var ClassManagement = function ClassManagement(options) {
+    if (!options) options = {};
+    this.initialize.apply(this, arguments);
+};
+_.extend(ClassManagement.prototype, ClassManagement, {
+    body: 'body',
+    $body: false,
+    current: '',
+    next: '',
+    stat: '',
+    initialize: function initialize() {
+        this.$body = $(this.body);
+    },
+    setStatic: function setStatic(stat) {
+        this.$body.addClass(stat);
+        this.stat = this.stat + ' ' + stat;
+    },
+    swap: function swap(remove, add) {
+        this.$body.removeClass(remove).addClass(add);
+    },
+    toggle: function toggle(_toggle) {
+        this.$body.toggleClass(_toggle);
+    },
+    reset: function reset() {
+        this.$body.removeClass(this.current).addClass(this.next);
+        this.current = this.next;
+        this.next = '';
+    },
+    update: function update() {
+        this.$body.addClass(this.next);
+        this.current = this.current + ' ' + this.next;
+        this.next = '';
+    },
+    queue: function queue(add) {
+        this.next = this.next + ' ' + add;
+        return this.next;
+    },
+    item: function item(_item) {
+        var template = _item.get('template'),
+            type = _item.getNormalType();
+        this.queue(' type-' + type + ' item-' + type);
+        this.queue(type + '-' + template);
+        if (Mediakron.Templates[type]) {
+            if (Mediakron.Templates[type][template]) {
+                if (Mediakron.Templates[type][template].classes) this.queue(Mediakron.Templates[type][template].classes);
+            }
+        }
+    }
+});
+
+module.exports = ClassManagement;
 
 /***/ })
 /******/ ]);

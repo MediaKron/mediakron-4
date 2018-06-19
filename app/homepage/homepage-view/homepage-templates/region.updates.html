@@ -1,0 +1,100 @@
+<div class="homepage-updates-container <% if(updated.length != 0 || created.length != 0){ %>updates-present<% } %>">
+
+<% if(created.length != 0){ %>
+<div id="new-content-container" <% if(updated.length == 0){ %>class="no-updated-content"<% } %>>   
+
+<h3>New</h3>
+<% _.each(created, function(item){ %>
+  
+<div class="item-card">
+
+	<div class="item-card--thumbnail" >
+	   <%=item.getSquareImage('medium','80','80',true) %>
+	
+	  <div class="item-type" >
+	  	<span class="sr-only">Type:</span> <%= item.getNormalType() %>	
+	  </div>
+	</div>
+	
+	<div class="item-card--content">
+		
+  	<header class="item-card--title" >
+      <h4><%= item.getLink() %></h4>
+      	
+    	<div class="item-card--changes"> 	
+        <div class="item-card--changes"> 	
+        	<div class="created-by"><strong>Created: </strong><%= item.getCreated() %> by <%= item.get("user").name %> </div>
+        </div>
+    	</div>
+  	</header>
+  		
+    <div class="item-card--status">
+      <ul>
+        <% if(item.get('published') == 1){ %><% }else{ %><li><span class="unpublished"><span class="mk-icon mk-unpublish"></span> Unpublished</span></li> <% }  %>
+        
+        <% if(item.get('locked') == 1 && item.canEdit(false)){ %><li><span class="locked"><span class="mk-icon mk-lock"></span> Locked</span></li><% }else{ %> <% }  %>
+        
+        <% if (item.isCreated()){ %> <li><span class="updates-new"><span class="mk-icon mk-updates"></span> New</span> </li><% }  %>
+        
+         <% if (item.isUpdated() && !item.isCreated()){ %> <li><span class="updates-changed"><span class="mk-icon mk-updates"></span> Updated</span> </li><% }  %>
+      </ul>
+    </div>
+    </div>
+  </div>
+<% }); %>
+
+</div>
+
+<% } %>
+
+
+<% if(updated.length != 0 ){ %>
+<div id="recent-changes-container" <% if(created.length == 0){ %>class="no-new-content"<% } %>> 
+  <h3>Updated</h3>
+  <% _.each(updated, function(item){ %>
+  
+ <div class="item-card">
+ 
+ 	<div class="item-card--thumbnail" >
+ 	   <%=item.getSquareImage('medium','80','80',true) %>
+ 	
+ 	  <div class="item-type" >
+ 	  	<span class="sr-only">Type:</span> <%= item.getNormalType() %>	
+ 	  </div>
+ 	</div>
+ 	
+ 	<div class="item-card--content">
+ 		
+   	<header class="item-card--title" >
+       <h4><%= item.getLink() %></h4>
+       	
+     	<div class="item-card--changes"> 	
+        <div class="item-card--changes"> 	
+          <div class="last-changed"><strong>Updated:</strong> <%= item.getChanged() %> <% if(item.editor()){ %> by <%= item.editor() %><% } %></div>	
+        	<div class="created-by"><strong>Created: </strong><%= item.getCreated() %> by <%= item.get("user").name %> </div>
+
+        </div>	
+     	</div>
+   	</header>
+   		
+     <div class="item-card--status">
+       <ul>
+         <% if(item.get('published') == 1){ %><% }else{ %><li><span class="unpublished"><span class="mk-icon mk-unpublish"></span> Unpublished</span></li> <% }  %>
+         
+         <% if(item.get('locked') == 1 && item.canEdit(false)){ %><li><span class="locked"><span class="mk-icon mk-lock"></span> Locked</span></li><% }else{ %> <% }  %>
+         
+         <% if (item.isCreated()){ %> <li><span class="updates-new"><span class="mk-icon mk-updates"></span> New</span> </li><% }  %>
+         
+          <% if (item.isUpdated() && !item.isCreated()){ %> <li><span class="updates-changed"><span class="mk-icon mk-updates"></span> Updated</span> </li><% }  %>
+       </ul>
+     </div>
+     </div>
+   </div>
+ 
+   
+    <% }); %>
+   
+</div>
+<% } %>
+
+</div>

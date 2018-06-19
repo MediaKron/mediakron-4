@@ -1,0 +1,71 @@
+<div class="admin admin-general overlay overlay-half">
+
+    <header class="overlay-header">
+        <div class="header-inner">
+            <h2><span class="mk-icon mk-settings"></span> Settings > Site Title and Information</h2>
+            <nav>
+                <ul class="page-options">
+                    <li class="option-close">
+                        <button class="btn btn-sm btn-default close-button" aria-label="Close">
+          		<span class="mk-icon mk-close"></span>
+          		<span class="button-text"> Close</span> 
+          	</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="admin-site-settings" class="site-settings">
+        <div id="item-content">
+            <form class="form-horizontal" role="form">
+
+                <fieldset>
+                    <legend id="edit-settings" class="section-title">Site Information</legend>
+                    <div class="field">
+                        <label for="site-name">Site Name</label>
+                        <input name="name" class="settings-field" id="site-name" settings-attr="name" value="<%- Mediakron.Settings.name %>" type="textfield" placeholder="Enter the name of your project" />
+                    </div>
+
+                    <div class="field">
+                        <label for="site-subtitle">Subtitle</label>
+                        <input name="subtitle" class="settings-field" id="site-subtitle" settings-attr="subtitle" value="<%- Mediakron.Settings.subtitle %>" type="textfield" placeholder="An optional site subtitle " />
+                    </div>
+
+                    <div class="field">
+                        <label for="site-instituiton">Institution </label>
+                        <input name="institution" class="settings-field" id="site-instituiton" settings-attr="institution" value="<%- Mediakron.Settings.institution %>" type="textfield" placeholder="Your institution" />
+                    </div>
+                </fieldset>
+
+            
+                <fieldset class="sr-only">
+                    <legend>Copyright</legend>
+                    <div class="field">
+                        <label for="site-copyright" class="label-right sr-only">Copyright:</label>
+                        <div name="copyright" aria-labelledby="site-copyright" role="textbox" aria-multiline="false" contenteditable="true" id="site-copyright" class="settings-field model-field" settings-attr="copyright" data-placeholder="Intellectual property/copyright type ">
+                            <%- Mediakron.Settings.copyright %>
+                        </div>
+                    </div>
+                </fieldset>
+        </div>
+
+        </form>
+    </div>
+    <!-- End #item -->
+
+    <div class="save-bar">
+        <div class="save-bar-inner">
+            <button id="done-editing" type="submit" class="btn btn-success submit btn-sm"><span class="mk-icon mk-save"> </span> Save</button>
+            <button id="close-settings-context" class="btn btn-default btn-sm close-settings"><span class="mk-icon mk-close"> </span> Cancel</button>
+        </div>
+    </div>
+
+</div>
+<!-- End sidebar-->
+</div>
+
+</div>
+
+
+<div class="overlay-bg"></div>

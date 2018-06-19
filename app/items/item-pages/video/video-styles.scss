@@ -1,0 +1,403 @@
+/* @group VIDEO HEIGHT */
+
+.video-template .content-primary { 
+	height: 100%;
+	height: calc(87vh - 50px);
+	@include rem-fallback(min-height, 550);
+}
+
+.caption-active > .video-template .content-primary { 
+	height: 100%;
+	height: calc(87vh - 100px);
+	@include rem-fallback(min-height, 650);
+}
+
+/* @end */
+
+/* @group CONTAINER HEIGHT */
+
+.video-template {
+}
+	.video-template .content-primary {
+
+	}
+
+        .video-template .container-fluid {
+        }
+
+		.video-template .item-content  {
+			height: 100%;
+		}
+		
+			.video-template .video-container {
+			    margin: auto;
+			    padding: 0;
+			    width: auto;
+			    max-width: 700px;
+			}
+			
+			.video-template.caption-active .video-container {
+			    margin: auto;
+			    padding: 0em;
+			    width: auto;
+			    max-width: 700px;
+			}
+			
+			.item-overlay .video-template .video-container {
+			    margin: auto;
+			    padding: 0;
+			    width: auto;
+			    max-width: 700px;
+			}
+
+.video-template .title-box, .video-template	 .info-bar {
+    @include rem-fallback(max-width, 960);
+    margin: auto; 
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}	
+
+.video-template .caption {
+    @include rem-fallback(max-width, 960);
+    margin: auto; 
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}	
+
+.video-template .item-header {
+    border-bottom: 1px solid #565656;
+}
+
+#video-start-field,
+#video-end-field {
+  display: inline;
+}
+
+#video-timecodes label {
+  display: inline;
+  padding-right: .2em;
+}
+
+#video-timecodes input {
+  display: inline;
+  @include rem-fallback(width, 130);
+  margin-right: 1em;
+}
+
+.video-message-unsupported,
+.video-message-select {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.supported-types {
+  font-weight: normal;
+  display: block;
+}
+
+.video-message-unsupported {
+  display: none;
+}
+
+.video-message-unsupported.unsupported-video {
+  display: block;
+}
+			
+/* @end */
+
+/* @group YOUTUBE */
+
+.youtube-container  {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0; 
+    overflow: hidden;
+}
+ 
+.with-caption .youtube-container {
+    height:75%;
+}
+
+.video-template .item-content.col-md-8  {
+	max-width:none;
+}
+ 
+.youtube-container iframe,
+.youtube-container object,
+.youtube-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clear:both;
+    border: 1px solid #dad4ce;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+}
+
+
+/* @end */
+
+/* @group VIMEO */
+
+.vimeo-container {
+    position: relative;
+    overflow: hidden;
+    clear:both;
+    margin: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden;
+}
+
+.vimeo-container iframe,
+.vimeo-container object,
+.vimeo-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clear:both;
+}
+
+/* @end */
+
+/* @group MP4 
+
+.video-template .mejs-container {
+   position: relative;
+   padding-top: 30px; 
+   overflow: hidden;
+   clear:both;
+   margin: auto;
+   width: 100% !important;
+   position: relative;
+   padding-bottom: 56.25%;
+   padding-top: 30px; 
+   height: 0 !important; 
+   overflow: hidden;
+}
+*/
+.video-template .mejs-container  iframe,
+.video-template .mejs-container  object,
+.video-template .mejs-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clear:both;
+    border: 1px solid #dad4ce;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+}
+
+.mejs-poster {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* @end */
+
+/* @group BC Videos */
+
+.bc-video-container {
+    position: relative;
+    padding-top: 30px; 
+    overflow: hidden;
+    clear:both;
+    margin: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden;
+}
+
+.bc-video-container iframe,
+.bc-video-container object,
+.bc-video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clear:both;
+}
+
+/* @end */
+
+/* @group URL VIDEO */
+
+.external-video-container {
+  margin-left: -1.5em;
+}
+
+.external-video-url a{
+	display: block;
+	padding:1em;
+	background:#222;
+	color: #fff;
+	border:1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+	width: 100%;
+	@include rem-fallback(max-width, 712);
+	@include rem-fallback(height, 450);
+	margin: auto;
+	font-weight: bold;
+	@include rem-fallback(font-size, 24);
+	position: relative;
+}
+
+.external-video-url a:hover {
+	background:#555;
+	color: #fff;
+	text-decoration: none;
+}
+
+.external-video-url .external-video-container {
+  @include scut-center-transform;
+  text-align: center;
+}
+
+.external-video-url a .mk-play {
+  display: block;
+ 	@include rem-fallback(font-size, 75);
+}
+
+.external-video-url a .external-video-text {
+  
+}
+
+/* @end */
+
+/* @group PANOPTO */
+
+.panopto-video {
+  width: 100%;
+  height: auto;
+ 	@include rem-fallback(max-width,700);
+}
+
+.panopto-container {
+    position: relative;
+    padding-top: 30px; 
+    overflow: hidden;
+    clear:both;
+    margin: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden;
+}
+
+.panopto-container  iframe,
+.panopto-container  object,
+.panopto-container  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clear:both;
+}
+
+
+/* @end */
+
+/* @group KANOPY */
+
+.kanopy-container {
+    position: relative;
+    overflow: hidden;
+    clear:both;
+    margin: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden;
+    @include rem-fallback(min-height, 300);
+    @include breakpoint(sm){ 
+      @include rem-fallback(min-height, 400);
+    }
+    @include breakpoint(md){ 
+      @include rem-fallback(min-height, 475);
+    }
+}
+
+.tour-container .kanopy-container {
+  @include breakpoint(md){ 
+    @include rem-fallback(min-height, 300);
+  	}
+  }
+
+.kanopy-container iframe,
+.kanopy-container object,
+.kanopy-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clear:both;
+}
+
+
+
+
+/* @end */
+
+/* @group NARRATIVES */
+
+.nr-video{
+
+}
+
+.narrative-template__items .video-template .content-primary {
+  height: 100%;
+}
+
+.narrative-template__items .video-container{
+	@include rem-fallback(max-width, 700);
+	width: 100%;
+	margin: auto;
+	padding: 0 1.5em 0 0;
+}
+
+.narrative-template__items .video-template {
+    height: auto; /* set videos by width in narratives */
+}
+
+.in-narrative.video-template--basic .container-fluid {
+	@include breakpoint(md){
+	width: 80%;
+	}
+}
+
+.in-narrative.video-template--basic .col-md-8 {
+	@include breakpoint(md){
+	width: 50%;
+	}
+}
+
+.in-narrative.video-template--basic .col-md-4 {
+	@include breakpoint(md){
+	width: 50%;
+	margin-top: -1em;
+	}
+}
+
+/* @end */
+

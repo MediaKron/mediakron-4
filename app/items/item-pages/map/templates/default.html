@@ -1,0 +1,79 @@
+<article class="template map-template map-template--basic <% if(caption.length){ %> caption-active<% }%> collection maptype-<%= type %>">
+
+	<div class="content-primary<% if(caption.length){ %> caption-active<% } %>">
+		
+		<header class="item-header">
+		  <div class="item-nav">
+		    <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav>
+		    <nav class="widgets-menu widgets-menu-<%= uri %>"></nav>
+		  </div>
+		  
+		  <h2><%= title %></h2>
+		   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+			<% if(caption.length){ %><div class="caption map-caption"><%= caption %></div><% } %>
+		</header>
+		
+		<% if(Mediakron.Settings.timeline === true){ var time_class = "map-timeline"; }else{ var time_class = "map-no-timeline"; } %>
+		<div class="map-view render-maps <%= time_class %>">
+  		
+		  <div class="map-template__content <% if(options.hideSidebar){ if(options.hideSidebar == 'hide' || (options.layersHidden == 'hidden' && options.filtersHidden == 'hidden')){ %> sidebar-closed<% } } %>">
+  		  
+        <div class="item-sidebar">
+  	  
+  		    <div class="sidebar-controls">
+  		      <button class="close-sidebars-button btn btn-default tooltip--w" data-tooltip="Close">
+  		        <span class="close-icon" ></span><span class="sr-only">Close</span>
+  		      </button>
+  		      
+            <% if(options.layersHidden != 'hidden' && options.filtersHidden != 'hidden'){ %>
+              <button class="map-filters btn btn-default tooltip--w" data-tooltip="Tools">
+                <span class="mk-icon mk-filter" ></span><span class="sr-only">Tools</span>
+              </button>
+            <% } %>
+          
+            <% if((description) || item.hasMetadata() || item.hasSource() ||(Mediakron.Settings.showauthor)) { %>
+              <button class="sidebar-details btn btn-default tooltip--w" data-tooltip="Details">
+                <span class="mk-icon mk-info" ></span><span class="sr-only">Details</span>
+              </button>
+            <% } %>
+          </div>
+			 
+          <% if(options.layersHidden != 'hidden' && options.filtersHidden != 'hidden'){ %> 
+			      <div class="filter-bind"></div>
+			    <% } %>
+			  
+          <div class="sidebar-widgets"> 
+			      <div class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></div> 
+			      <div class="widgets widgets--below widgets--below-<%= uri %>">
+			   	   	<div class="widgets__description widget-box"></div>
+			   	   	<div class="widgets__details widget-box"></div>
+			   	   	<div class="widgets__transcript widget-box"></div>
+			   	   	<div class="widgets__comments widget-box"></div>
+			      </div>
+			    </div>
+			  </div>
+			  
+			</div>
+		  <% if(type == 'cartodb'){ %>
+		    <iframe id="cartodb-map" width="100%" height="100%" src="<%= map.url %>" />
+		  <% }else{ %>
+  		<div class="map-view">
+  		  <div class = "mediakron-map-load mediakron-openlayers-map"> &nbsp; </div>
+  		  <div class= "mediakron-map-tooltip"> </div>
+  		  <div id="<%= identifier %>" class="map">
+    		  <div class="info"></div>
+    		</div>
+  		</div>   
+  		<% } %>	   
+		</div>
+  </div>
+	
+  <% var curClass = "closed"; if(current !== uri){ curClass = "opened"; } %>
+  <div class="item-overlay map-overlay <%= curClass %>">
+    <div class="overlay-bg"></div>
+      <div class="overlay-window overlay">
+        <div class="item-contents"></div>
+      </div>
+    </div>
+  </div>
+</article>

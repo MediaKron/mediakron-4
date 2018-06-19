@@ -1,0 +1,34 @@
+<% var comments = relationships.comments, topic, map, timeline, countTopic, i = 0; %>  
+
+   <% if(item.hasMetadata() || item.hasSource() || Mediakron.Settings.showauthor || collections.tag.length > 0 || description.length > 0 || (transcript) || item.hasTags()) { %>
+   	<button type="button" class="btn-no-style details-button"><span class="mk-icon mk-arrow-down"></span>   	
+	   
+	<!-- deprecated -->
+   	<!-- <ul class="details-list">
+ 
+   <% if(description){ %>
+   		<% if(description.length > 0){ %>
+   			<li class="detail-list-description">Description</li>
+   		<% } %>
+   	<% } %>
+   	
+    <% if(item.hasTags()) { %>
+    	<li class="detail-list-tags">Tags</li>
+    <% } %>
+  
+  	<% if(item.hasMetadata() || item.hasSource() || (Mediakron.Settings.showauthor)) { %>
+  		<li class="detail-list-details">Details</li>
+  	<% } %>
+  	
+  	<% if(transcript){ %>
+  		<% if(transcript.length > 0){ %>
+  			<li class="detail-list-transcript">Transcript</li>
+  		<% } %>
+  	<% } %>
+
+  	
+  	</ul> -->
+  	      			
+   	</span></button>
+   	
+   <% } %>

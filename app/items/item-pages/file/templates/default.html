@@ -1,0 +1,46 @@
+<article class="template file-template file-template--basic <% if(caption.length){ %> caption-active<% } %> <% if(text.type == 'pdf'){ %>text-template--pdf<% } %><% if(text.type == 'image'){ %>text-template--image<% } %>">
+    
+    <div class="template content-primary clearfix">
+		
+		<header class="item-header file-header">
+		  <div class="item-nav">
+		    <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav><nav class="widgets-menu widgets-menu-<%= uri %>"></nav>
+		  </div>
+			  <h2><%= title %></h2>
+			   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+			<% if(caption.length){ %><div class="caption"><%= caption %></div><% } %>
+		</header>
+		
+		<header class="sticky-header">
+		  <h2><%= title %></h2>
+		  <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav>
+		   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+		</header>
+		  
+		<div class="container-fluid">  	
+			<div class="item-content main-item-content"> 
+	    		<% if(text.type == 'pdf' || text.type == 'doc' || text.type == 'ppt' || text.type == 'xls'){ %>
+		    		<div id="viewer-<%= uri %>" >Loading Preview</div>
+	            <% }else if(text.type == 'image'){ %>
+	                <div class="manuscript-image">
+	    				<% var themedImage = model.getImage('full',"img-responsive annotate-this"); %>
+	    				<div class="annotate"><%= themedImage %></div>
+	    			</div>
+                <% }else { %>
+	    			<div class="text-body body">
+    	    			<a target="_blank" href="<%= model.downloadUrl() %>" class="btn btn-success">Download File</a>
+	    			</div>
+	    		<% } %>
+	    		
+	    	</div>
+	    	<aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+	    </div>
+    </div>
+    
+  <div class="widgets widgets--below widgets--below-<%= uri %>">
+  	<div class="widgets__description widget-box"></div>
+  	<div class="widgets__transcript widget-box"></div>
+  	<div class="widgets__details widget-box"></div>
+  </div>	
+    
+</article>

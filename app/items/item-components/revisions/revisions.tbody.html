@@ -1,0 +1,18 @@
+<% var revision, formed, i=0, length = revisions.length %>
+<% for(i;i<length;i++){ revision = revisions[i]; %>
+    <% lastAccess = 'Never'; if(revision.changed > 0){ lastAccess = Mediakron.formatUnixDateStamp(revision.changed, 'small'); } %>
+    <% try{ formed = JSON.parse(revision.document); %>
+    <tr>
+        <td class="rev-actions">
+            <div class="hide" id="document-<%= revision.version %>"><%= revision.document %></div>
+            <a href="#" class="btn btn-primary preview-rev" revision="<%= revision.version %>" action="view"><span class="mk-icon mk-view"></span> Preview </a>  
+            <a href="#" class="btn btn-primary revert-rev" revision="<%= revision.version %>" action="revert"><span class="mk-icon mk-undo"></span> Revert</a>
+        </td>
+        <td class="rev-id"><%= revision.version %></td> 
+        <td class="rev-date"><%= lastAccess %></td>
+        <td class="rev-user"><% var userModel = Mediakron.users.get(revision.user); if(userModel){ %><%= userModel.get('name') %><% }else{ %> <% } %></td>
+        <td class="rev-title"><%= formed.title %></td>
+        
+    </tr>
+    <% }catch(err){ console.log(err); } %>
+<% } %>

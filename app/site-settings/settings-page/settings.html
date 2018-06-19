@@ -1,0 +1,91 @@
+<!-- # Admin Pane - Settings # -->
+
+<div class="admin-pane admin-settings overlay overlay-sidebar-narrow">
+
+<header class="overlay-header">
+  <div class="header-inner">
+    <h2><span class="mk-icon mk-settings"></span> Settings</h2> 	
+    <nav>
+      <ul class="page-options"> 
+        	<li class="option-close">	  	
+        		<button class="btn btn-sm btn-default close-button" aria-label="Close">
+          		<span class="mk-icon mk-close"></span>
+          		<span class="button-text"> Close</span> 
+          	</button>
+        	</li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="settings" class="site-settings">
+      
+  <% if(Mediakron.Access.check('can change site settings')){ %>  
+    
+    <h3><span class="mk-icon mk-equalizer"></span>General Site Settings</h3>
+
+    <ul class="settings-section">
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/general" class="settings-link">Site Title and Information</li></a>
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/privacy" class="settings-link">Privacy Settings</li></a>
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/comments" class="settings-link">Comments</li></a>
+    </ul>
+    
+    <h3><span class="mk-icon mk-appearance"></span>Appearance</h3>
+      <ul class="settings-section">
+        <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/appearance" class="settings-link">Color Scheme and Font</li></a>
+        <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/navigation" class="settings-link">Menus</li></a>
+        <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/homepage" class="settings-link">Homepage Options</li></a>
+        <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/itemoptions" class="settings-link">Item Options</li></a>
+     </ul>
+     
+    <h3><span class="mk-icon mk-users"></span>Users</h3>
+    <ul class="settings-section">
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/users" class="settings-link">Manage Users</a>
+      </li>
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/statistics" class="settings-link">Usage Statistics</a>
+      </li> 
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/googleanalytics" class="settings-link">Google Analytics</a>
+      </li> 
+    </ul>
+  <% } %>
+  <% if(Mediakron.Access.check('can archive content') || Mediakron.Access.check('can import')){ %>  
+    <h3><span class="mk-icon mk-grid"></span>Content</h3>
+    <ul class="settings-section" >
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>browse" class="settings-link">All Content</a>
+      </li>
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/import" class="settings-link">Import</a>
+      </li>
+      <li class="settings-item"><a class="comingsoon">Export (coming soon)</a>
+      </li>	
+      <% if(Mediakron.Access.check('can restore from trash')){ %> 
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/trash" class="settings-link"> Deleted Content</a>
+      </li>
+      <% } %>
+      <% if(Mediakron.Access.check('can archive content')){ %> 
+      <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>browse/archived" class="settings-link">Archived Content</a>
+      </li>      
+      <% } %>
+    </ul>
+  <% } %>
+  <% if(Mediakron.Access.check('can change site settings')){ %>  
+    
+    <h3><span class="mk-icon mk-wrench"></span>Tools</h3>
+    <ul class="settings-section">
+      <% if(Mediakron.Access.check('can change site settings')){ %>  
+        <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/canvas" class="settings-link">Canvas</a>
+        </li>
+        <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/performance" class="settings-link">Site Cache</a>
+        </li>
+        <li class="settings-item"><a href="<%= Mediakron.Settings.baseurl %>settings/search" class="settings-link">Search</a>
+        </li>  	
+      <% } %>
+         </ul>
+
+<% } %>
+    
+     
+</div>
+
+</div>
+
+<div class="overlay-bg"></div>

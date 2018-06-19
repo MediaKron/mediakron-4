@@ -1,0 +1,33 @@
+
+<div class="timelineSelectWidget">
+	<% var ranges = Mediakron.Timeline.ranges, months = ["January","February","March","April","May","June","July","August","September","October","November","December"]; %>
+	
+	<div class="form-group year">
+	    <input class="form-control" type="text" date="year" placeholder="Year"> /
+	</div>
+	<div class="form-group month">
+	        <% if(type == 'generic'){ %>
+	            <input class="form-control" type="text" date="month" placeholder="Month">/ 
+	        <% }else{ %>
+		        <select name="months" class="month-select" type="text" date="month" data-placeholder="Month">
+		            <option value=""></option>
+			        <% _.each(months, function(month,key){ %>  
+				        <option value="<%= key %>"><%= month %> </option>
+	                <% }); %>
+	            </select> /
+	        <% } %> 
+	</div>
+	<div class="form-group day">
+	    <input class="form-control" type="text" date="day" placeholder="Day"> 
+	</div>
+	<div class="form-group hour">
+	    <input class="form-control" type="text" date="hour" placeholder="Hour">
+	</div>
+	<div class="form-group minute">
+	    : <input class="form-control" type="text" date="Minute" placeholder="Min">
+	</div>
+	<div class="form-group second">
+	    : <input class="form-control" type="text" date="second" placeholder="Sec">
+	</div>
+
+</div>

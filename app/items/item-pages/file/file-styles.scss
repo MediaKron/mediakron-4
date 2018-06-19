@@ -1,0 +1,254 @@
+/* @group === FILE (_file.scss) === */
+
+.text-template {
+	height: 100%;
+}
+
+.text-body{
+	clear: both;
+	height: 100%;
+	text-align: left;
+	width: 100%;
+	@include rem-fallback(font-size, 20);
+	@include rem-fallback(max-width, 700);
+    padding: 0 1em;
+    margin: auto;
+	@include breakpoint(md){ 
+		padding: 0;
+	    }
+    }
+    
+.text-body p, .text-body ul, .text-body ol, .text-body blockquote {
+	@include rem-fallback(margin-bottom, 30);
+	}
+	
+.text-template .title-box {
+	position: relative;
+}
+
+.text-template .title-box .title, .text-template .title-box .info-bar.default-bar {
+	margin: auto;
+	@include rem-fallback(max-width, 700);
+	width: 100%;
+	padding-left: .3em;
+}
+
+.text-template .title-box h2 {
+	float: none;
+}
+
+.text-template .caption {
+	@include rem-fallback(max-width, 700);
+	margin: auto;
+	float: none;
+	width: 100%;
+	margin: auto auto 1em auto;
+	width: 100%;
+	font-style: italic;
+}
+
+.text-template img {
+	max-width: 43%;
+	float: left;
+	padding: 0 1em 0em 0;
+}	
+	
+
+.type-text iframe#viewer {
+	width:100%;
+	height:93%;
+}
+
+#canvasContainer {
+	background-color:#fff;
+	background-image:none;
+}
+
+#canvasContainer  .page {
+	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0); 
+   -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0);
+}
+ 
+
+
+/* @group PDFS */
+
+.text-template .title-box h2 {
+	float: left;
+}
+
+.text-template--pdf .content-primary {
+	width: 100%;
+	height: 90%;
+	margin-bottom: 2em;
+}
+
+.text-template--pdf .main-item-content {
+	height: 100%;
+	margin: auto;
+}
+
+.text-template--pdf iframe {
+	height: 100% !important;
+}
+ 
+#viewer {
+	width: 90%;
+	max-width: 1000px;
+	clear: both;
+	margin: .5em auto;
+}
+
+.pdf-controls-top {
+	margin-bottom: .3em;
+}
+
+.pdf-controls-bottom {
+	margin-top: .3em;
+}
+
+.pdf-controls-top .mk-con, .pdf-controls-bottom .mk-icon {
+	top: 1px;
+}
+
+.text-template--pdf .pdfPrev, .comparison-item--text .pdfPrev{
+	cursor: pointer;
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	padding: .2em .2em .2em .6em;
+	display: inline-block;
+}
+
+
+.text-template--pdf .pages .gotoPage, .comparison-item--text .pages .gotoPage {
+	@include breakpoint(xs){ 
+		display: none;
+		}
+	@include breakpoint(sm){ 
+    	display: inline-block;
+    	cursor: pointer;
+    	background: #eee;
+    	border: 1px solid #ddd;
+    	border-radius: 2px;
+    	padding: .2em;
+    	margin-left: .2em;
+	    }
+}
+
+.text-template--pdf .pdfNext, .comparison-item--text .pdfNext  {
+	cursor: pointer;
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	padding: .2em .6em .2em .2em;
+		display: inline-block;	
+}
+
+
+/* @end */
+
+/* @group MANUSCRIPT IMAGE */
+
+.text-template--image .content-primary {
+	height: 100%;
+}
+
+.text-template--image .manuscript-image {
+	height: 100%;
+	width: 100%;
+	margin-bottom: 2em;
+}
+
+.text-template--image .col-md-8 {
+	@include breakpoint(md){
+	width: 58.33333333%;
+	}
+}
+
+.text-template--image .col-md-4 {
+	@include breakpoint(md){
+	width: 41.66666667%;
+	}
+}
+
+.text-template--image .annotate {
+	height: 100%;
+	height: auto;
+	width: 100%;
+}
+
+.text-template--image .annotate img {
+    height:  100%;
+    width: 100%;
+    max-width: 100%;
+}
+
+.text-template--image .annotated-frame {
+    @include breakpoint(sm){
+           max-width: 80%;
+           }
+}
+
+.text-template--image .col-md-8 .annotated-frame {
+    @include breakpoint(sm){
+           max-width: 100%;
+           }
+}
+
+.text-template--image .title-box .title,
+.text-template--image .caption {
+	max-width: none;
+}
+
+/*.text-template--image .transcript__inner {
+	@include rem-fallback(padding-right, 20);
+}*/
+
+
+.text-template--image .img-responsive  {
+	width: 100%;
+}
+
+
+
+/* @end */
+
+/* @group MANUSCRIPT COMPARISON	 */
+
+@include breakpoint(sm){
+
+	.comparison-item.item-0 .comparison-item--text .annotate { /* Left Page */
+		margin-right: -15px;
+	}
+	
+	.comparison-item.item-1 .comparison-item--text .annotate { /* Right Page */
+		margin-left: -15px;
+	}
+	
+	.comparison-item.item-0 .comparison-item--text .annotated-frame { /* Left Page */
+		margin-right: 0;		
+	}
+	
+	.comparison-item.item-1 .comparison-item--text .annotated-frame { /* Right Page */
+		margin-left: 0;
+	}
+	
+	.comparison-item.item-0 .comparison-item--text .title-box { /* Left Page */
+		right: 0;
+		width: 75%;		
+	}
+	
+	.comparison-item.item-1 .comparison-item--text .title-box { /* Right Page */
+		left: 0;
+		width: 75%;
+	}
+	
+
+}
+
+
+
+/* @end */
+
+/* @end TEXTS */

@@ -1,6 +1,0 @@
-<span class="breadcrumb-in" >In</span> <ol class="breadcrumb-list <% if(items.length <= 1  ) { %> no-collections<% }; %>">
-	<% var i = 0, active, length = items.length; _.each(items, function(crumb){ i++; active = 'crumb'; if(i==length){ active="active-crumb"; } %>
-        <li class="<%= active %>" data-tooltip="The collection this item is in"><%= crumb.getCrumbLink(i) %> </li>
-	<% }); %>
-</ol>
-

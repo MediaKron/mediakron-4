@@ -1,0 +1,62 @@
+  /* #region -- CONTENT BROWSER: General -- */
+
+  .browser-page {
+    padding: 0 1.5em;
+  }
+
+  .browser-nav,
+  .browser-nav li {
+    display: inline-block;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .browser-page-links a {
+    @include rem-fallback(font-size, 18);
+    margin-left: .75em;
+    position: relative;
+  }
+
+  .browser-page-links a:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .no-results {
+    margin-top: 1em
+  }
+
+  .browser-page header {
+    @include breakpoint(md) {
+      white-space: nowrap;
+    }
+  }
+
+  .browser-page header {
+    @include breakpoint(md) {
+      white-space: nowrap;
+    }
+  }
+
+  .browser-page h2 {
+    display: inline-block;
+    margin-right: .5em;
+    margin-bottom: 0;
+  }
+
+  .browser-page h2 .mk-icon {
+    @include rem-fallback(font-size, 28);
+  }
+
+  .mycontent-label {
+    display: inline-block;
+    font-weight: normal;
+    margin-left: .1em;
+    @include rem-fallback(font-size, 18);
+  }
+
+  #updates-page h2 {
+    display: inline-block;
+  }
+
+  /* #endregion == */

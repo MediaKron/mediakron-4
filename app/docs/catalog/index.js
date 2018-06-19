@@ -1,16 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Catalog, pageLoader } from "catalog";
+import css from "../../../public/css/app.css";
 
 const pages = [
   { path: "/", title: "Welcome", component: require("./home.md") },
   {
-    title: 'Components',
+    title: 'Items',
     pages: [
       {
-        path: '/components/',
+        path: '/items/',
         title: 'Introduction',
-        component: require("../../components/components-docs.md")
+        component: require("../../items/items-docs.md")
+      },
+      // Other subpages
+    ]
+  },
+  {
+    title: 'UI',
+    pages: [
+      {
+        path: '/ui/',
+        title: 'Introduction',
+        component: require("../../ui/ui-docs.md")
       },
       // Other subpages
     ]

@@ -1,0 +1,784 @@
+/* @group OVERLAYS */
+
+body.settings-manage, 
+body.settings {
+  overflow: hidden;/* prevents double scroll bar on overlays  */
+}
+
+.closed .overlay {
+  position: fixed;
+}
+
+.opened .overlay {
+  background:#ffffff;
+  position: fixed;
+  z-index: 1062;
+  top: 0;
+  right: 0;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-bg {
+    opacity: 0;
+    visibility: hidden;
+    @include transition(opacity .4s ease);
+}
+
+.opened .overlay-bg {
+    opacity: 1;
+    visibility: visible;
+    @include position(fixed, 0px 0px 0px 0px);
+    background: #000;
+    opacity: .5;
+    z-index: 1061;
+    cursor: pointer;
+    @include transition(opacity .2s ease);
+}
+
+/* Transition: slide in left */
+
+.closed .overlay.add-to-pane,
+.closed .overlay.organize-pane,
+.settings-manage-edit .closed .overlay.edit-form,
+.closed #help-contents.overlay,
+.closed#annotation-edit .overlay,
+.closed .overlay.admin-add-content,
+.closed .overlay.admin-settings,
+.homepage .closed .overlay.admin-homepage,
+.closed .overlay.item-revisions,
+.closed.linkbrowser-pane .overlay,
+.closed .comment-edit-pane.overlay,
+.closed .admin-performance.overlay {
+  animation-name: slideOutRight;
+  animation-duration: .3s; 
+}
+
+.opened .overlay.add-to-pane,
+.opened .overlay.organize-pane,
+.settings-manage-edit .opened .overlay.edit-form,
+.opened #help-contents.overlay,
+.opened#annotation-edit .overlay,
+.opened .overlay.admin-add-content,
+.opened .overlay.admin-settings,
+.homepage .opened .overlay.admin-homepage,
+.opened .overlay.item-revisions,
+.opened .linkbrowser-pane .overlay,
+.opened .comment-edit-pane.overlay,
+.opened .admin-performance.overlay 
+ {
+  right: 0;
+  animation-name: slideInRight;
+  animation-duration: .3s; 
+}
+
+/* Super hacky Safari fix */
+@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+.opened .overlay.add-to-pane,
+.opened .overlay.organize-pane,
+.settings-manage-edit .opened .overlay.edit-form,
+.opened #help-contents.overlay,
+.opened#annotation-edit .overlay,
+.opened .overlay.admin-add-content,
+.opened .overlay.admin-settings,
+.homepage .opened .overlay.admin-homepage,
+.opened .overlay.item-revisions,
+.opened .linkbrowser-pane .overlay 
+ {
+    animation: none;
+}
+}
+
+/* Transition: slide down from top */
+.closed.search-pane .overlay {
+  right:auto;
+  animation-name: slideUpSmooth;
+  animation-duration: .3s; 
+  top: 100%;
+}
+
+.opened.search-pane .overlay {
+  right: 0;
+  top: 0;
+  animation-name: slideDownSmooth;
+  animation-duration: .3s; 
+}
+
+.opened .overlay.overlay-full{
+    width: 100%
+}
+
+.closed .overlay.overlay-sidebar,
+.closed .overlay.overlay-sidebar .save-bar  {
+  width: 100%;
+  animation-name: slideOutRight;
+  animation-duration: .3s; 
+  right: -100%;
+  left: auto;
+}
+
+/* Temporary - Change this in multisite template  */
+.opened #linkbrowser-contents .overlay.overlay-sidebar,
+.opened #linkbrowser-contents .overlay.overlay-sidebar .save-bar  {
+  width: 100%;
+  @include breakpoint(sm){ 
+    @include rem-fallback(max-width, 750);
+  	}
+}
+
+.opened .overlay.overlay-sidebar-narrow,
+.opened .overlay.overlay-sidebar-narrow .save-bar  {
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-left: 1px solid #999; 
+  left: auto;
+  @include breakpoint(sm){ 
+    @include rem-fallback(max-width, 400);
+  	}
+}
+
+.opened .overlay.overlay-sidebar,
+.opened .overlay.overlay-sidebar .save-bar  {
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-left: 1px solid #999; 
+  left: auto;
+  @include breakpoint(sm){ 
+    @include rem-fallback(max-width, 550);
+  	}
+}
+
+.closed .overlay.overlay-half {
+  animation-name: slideOutRight;
+  animation-duration: .3s; 
+}
+
+.opened .overlay.overlay-half,
+.opened .overlay.overlay-half .save-bar  {
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-left: 1px solid #999; 
+  @include breakpoint(sm){ 
+    @include rem-fallback(max-width, 750);
+  	}
+}
+
+.opened .overlay.overlay-half,
+.opened .overlay.overlay-half .save-bar  {
+  @include breakpoint(sm){ 
+    @include rem-fallback(max-width, 750);
+  	}
+}
+
+.settings-manage-organize #settings-context .add-new-item-pane .save-bar {
+  @include breakpoint(sm){ 
+    @include rem-fallback(width, 750);
+  	}
+}
+
+.overlay.opened header .option-close{
+    display: inline-block;
+    padding-top: 1px;
+}
+
+.overlay.opened header .page-options li{
+    display: inline-block;
+}
+
+.overlay.opened header .page-options #secondary-options {
+  display: none;
+}
+
+.settings-pane.closed .overlay-full {
+    z-index: 1063;
+    top: -100%;
+    right: auto;
+    @include transition(0.35s ease);
+}
+
+
+.settings-pane .overlay header,
+.overlay header.admin-style-header {
+    padding: .4em 1em .2em 1em;
+    border: 0; 
+    position: relative;
+    max-width: 720px;
+    margin-top: .5em;
+    background: #ddd;
+    @include breakpoint(sm){ 
+      padding: .5em 1em 0em .5em;
+      margin: 0 auto;
+      display: block;
+      border-bottom: 1px solid #565656;
+      @include rem-fallback(height, 50);
+      width: 100%;
+      max-width: none;
+      position: fixed;
+      top: 0;
+      z-index: 2;
+    	}
+}
+
+.overlay-full, .overlay-half {
+  @include rem-fallback(padding-top, 60);
+}
+
+.overlay-full .overlay-header, overlay-half {
+  top: 0;
+}
+
+.settings-pane .overlay .admin-pane header{
+    padding-top: .5em;
+    padding-left: 1em;
+}
+
+.settings-pane .overlay .header-inner {
+    margin: auto;
+    padding-left: 1em;
+}
+
+.settings-pane .overlay header h2, 
+.settings-pane .overlay header h1, 
+.overlay header.admin-style-header h2{
+  @include rem-fallback(font-size, 22);
+  display: inline-block;
+  margin: 0;
+  padding: .2em 0em .2em 0em;
+  color: #000;
+  font-weight: normal;
+}
+
+.settings-pane .overlay h2 .mk-icon,
+.linkbrowser-pane .overlay h2 .mk-icon {
+  position: relative;
+  top: 2px;
+  color: #000;
+}
+
+.settings-pane .overlay .organize-pane header, 
+.settings-pane .overlay .add-to-pane header  { /* organize, add to sidebar panes */
+  position: static;
+}
+
+.settings-pane .overlay nav {
+  float: none;
+  display: inline-block;
+}
+
+.settings-pane .overlay h2 {
+  padding-right: 0;
+}
+
+.settings-pane .overlay .page-options {
+  display: inline-block;
+}
+
+.settings-pane .overlay .page-options .option-close {
+  position: fixed;
+  right:0em;
+  top: .5em;
+  @include breakpoint(md){ 
+    max-width: none;  
+    right: 2em;
+  }
+}
+
+.settings-pane .overlay .admin-pane .page-options li.option-close{
+    right: 3em;
+    top: .75em;
+}
+
+.settings-pane .overlay .page-options .option-help {
+  padding:0;
+  position: relative;
+  top: -3px;
+}
+
+.settings-pane .overlay h3 {
+    padding: .5em 0 .1em 0;
+    margin-bottom:.5em;
+    clear:left;
+    @include rem-fallback(font-size, 26);
+}
+
+.settings-pane .overlay h3.title {
+  @include rem-fallback(font-size, 32);
+  border-bottom: 1px solid #565656;
+}
+
+.overlay .site-settings,
+.overlay #item-content,
+.overlay #admin-content-edit,
+.overlay .organize,
+.overlay .browser-selector
+ {
+	padding: 0 1em;
+	margin: auto;
+	max-width: 700px;
+}
+
+.overlay.add-existing-item-pane #admin-content-edit { /* mew add marker pane for timeline  */
+  padding-top: 3em;
+}
+
+.settings-pane .overlay .page-options {
+  position: static;
+}
+
+.settings-pane .overlay .page-options a,
+.settings-pane .overlay .page-options button {
+  padding: 0;
+  background: transparent;
+}
+
+.settings-pane .overlay .page-options li{ /* hide overlay edit options on small screens */
+  @include breakpoint(xs){
+    display: none;
+  }
+}
+
+.settings-pane .overlay .page-options li.option-close { /* show close button */
+  @include breakpoint(xs){
+    display: inline-block;
+    margin-left: 1em;
+  }
+}
+
+.settings-pane .overlay .page-options .close-button {
+  position: static;
+  margin: 0;
+  border: none;
+}
+
+.settings-pane .overlay .page-options .option-help a {
+  padding: .1em .4em;
+  border: none;
+}
+
+.settings-pane .overlay .page-options .mk-help {
+  font-size: 18px;
+  top: 2px;
+  position: relative; 
+}
+
+.settings-pane .overlay .page-options .close-button:hover {
+  text-decoration: none;
+}
+
+.settings-pane .overlay .page-options .close-button .button-text {
+  display: none;
+}
+
+.add-content .overlay .page-options .option-add,
+.add-content .overlay .page-options .option-organize {
+  display: none; /* Hide when adding new content  */
+}
+
+.overlay .non-collection .option-add,
+.overlay .non-collection .option-organize {
+  display: none; /* Hide on non-collection items  */
+}
+
+.close-button-single {
+  float: right;
+  padding: 0em .3em .1em .3em;
+  margin: 0;
+}
+
+/* @group HELP OVERLAY */
+
+.help-pane.opened .overlay-bg{
+  z-index: 1062; /* Needs to be higher than basic overlay  */
+}
+
+.opened #help-contents.overlay {
+  z-index: 1063; /* Needs to be higher than help background */
+}
+
+.help-pane.opened .overlay header {
+    padding: .5em 1em .2em 1em;
+    @include breakpoint(sm){ 
+      padding: 1em 1em .2em 1em;
+      margin: 0 auto;
+      display: block;
+      background: #fff;
+      border-bottom: none;
+      min-height: 50px;
+    	}
+}
+
+.help-pane.opened .overlay .header-inner {
+    margin: auto;
+    padding-left: .5em;
+}
+
+.help-pane.opened .overlay header h1 {
+  @include rem-fallback(font-size, 26);
+  display: inline-block;
+  margin: 0;
+  padding: .2em 1em .2em 0em;
+  color: #000;
+}
+
+.help-pane.opened .page-options {
+  top: .5em;
+}
+
+.help-pane .overlay .page-options .close-button{
+  border: none;
+}
+
+.help-pane .overlay .page-options .option-close {
+  top: .5em;
+  position: relative;
+  right: .65em;
+}
+  
+.help-pane .overlay .page-options .close-button .button-text {
+  display: none;
+}
+
+
+/* @end */
+
+/* @group LinkBrowser OVERLAY */
+
+
+.linkbrowser-pane.opened {
+    z-index: 1063;
+    background: rgba(0, 0, 0, 0.3)
+}
+
+/*.linkbrowser-pane.opened #linkbrowser-contents {
+    z-index: 1064;
+    @include rem-fallback(max-width, 750);  
+    margin: auto;
+    position: relative;
+    border-left: 1px solid #565656;
+    border-right: 1px solid #565656;
+}*/
+
+
+/* @end */
+
+/* @group ITEM OVERLAYS */
+
+.item-overlay.closed {
+  right: auto;
+}
+
+.item-overlay.opened {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1061;
+}
+
+.item-overlay.closed .overlay-window {
+  opacity: 1;
+  z-index: 1063;
+  bottom:  -100%;
+  right: 0;
+  top: auto;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  margin: 10px 10px;
+  @include transition(0.35s ease);
+  @include breakpoint(md){ 
+    height: calc(100% - 100px);
+    width: calc(100% - 200px);
+    margin: 50px 100px;
+    padding: 1em;
+  }
+}
+
+.item-overlay.opened .overlay-window{
+  z-index: 1061; 
+  background: #fff;
+  @include transition(.35s ease);
+  bottom: 0;
+  top: auto;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 90%;
+  margin: 0 10px;
+  border: 1px solid #303030;
+  @include breakpoint(md){ 
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1em;
+  max-width: 1500px;
+  }
+}
+
+.timeline-overlay.opened, 
+.map-overlay.opened {
+    background: rgba(250, 250, 250, 0.5); /* Transparent backgroudn o maps and timelines */
+}
+
+.timeline-overlay.opened .story-template .content-primary,
+.timeline-overlay.opened .slideshow-template .content-primary,
+.map-overlay.opened .story-template .content-primary,
+.map-overlay.opened .slideshow-template .content-primary { /* keep items with internal overlays from getting covered */
+  z-index: 1062;
+  position:relative;
+}
+
+.timeline-overlay.opened .slideshow-template .slideshow-overlay.opened .overlay,
+.map-overlay.opened .slideshow-template .slideshow-overlay.opened .overlay { /* keep slideshow items from getting covered */
+  z-index: 1063;
+  position:fixed;
+}
+
+.timeline-overlay.opened .slideshow-template .slideshow-overlay.opened .slideshow-navigation a,
+.map-overlay.opened .slideshow-template .slideshow-overlay.opened .slideshow-navigation a{ /* keep slideshow items from getting covered */
+  z-index: 1063;
+  position: absolute;
+}
+
+.overlay.opened .item-contents .annotate {
+	overflow: visible;
+}
+
+
+.story-template .story-template .story-overlay {
+  display:none; /* keep second overlay from opening when opening story attached to an annotation  */
+}
+
+/* disable sticky top bar styles in overlays until we get scrolling fixed  */
+
+.item-overlay.opened .sticky-header,
+.item-overlay.opened .sticky-header.active {
+    display: none;
+    background: #fff !important;
+    z-index: 999;
+    width: 100%;
+    max-width: none !important;
+    padding: .2em .5em .2em 1.5em !important;
+    position:fixed;
+    top:0;
+    left:0;
+    opacity:1; 
+    border-bottom: 1px solid #ddd; 
+    height: 48px;
+    animation:none;
+    @include breakpoint(sm){
+    	padding-right: 1.2em;
+    	}
+}
+
+.item-overlay.opened .sticky-header {
+  /*   box-shadow: 0 0 5px rgba(0,0,0,.4);*/
+  box-shadow: none;
+}
+
+.item-overlay.opened .header-visibility{               
+  transition:none;
+  visibility:visible; 
+  opacity:1;
+}
+
+.item-overlay.opened .sticky-header.active .page-options{
+    margin:0 1em 0 0;
+}
+
+.item-overlay.opened .sticky-header.active .close-button {
+  display: inline-block;
+}
+
+.item-overlay.opened header {
+    background: transparent;
+}
+
+.item-overlay.opened .item-header {
+ max-width: none;
+ padding-top: 0;
+ margin-bottom: 2em;
+ border-bottom: none;
+ margin-left: 1em;
+}
+
+.item-overlay.opened .item-header h2 {
+  @include rem-fallback(font-size, 26);
+}
+
+.item-overlay.opened .background-image-active .item-header {
+ padding-top: 0;
+ margin-top: 0;
+}
+
+.item-overlay.opened .item-header .item-nav {
+  margin: 0;
+  padding-left: 0;
+}
+
+.item-overlay .page-options {
+  right: 1em;
+  top: 0em;
+}
+
+.item-overlay .page-options li {
+  @include breakpoint(xs){ 
+  display: inline-block;
+  }
+}
+
+.item-overlay .overlay .page-options a,
+.item-overlay .overlay .page-options button {
+  color: #000; /* overwrites app.js color for overlay headers  */
+}
+
+.item-overlay .page-options li.option-close { 
+  position: static;
+  display: inline-block;
+}
+
+.item-overlay .page-options li.option-close button { 
+  padding: .2em .3em;
+  border: none;
+  @include rem-fallback(font-size, 16);
+}
+
+.item-overlay .page-options .close-button .button-text {
+  display: none;
+}
+
+.item-overlay .page-options .close-button {
+  background: #fff;
+}
+
+.item-overlay .background-image-active .page-options .close-button {
+ /*background: rgba(0, 0, 0, 0.5); */
+ background: transparent;
+}
+
+.item-overlay.opened .page-options .mk-icon.mk-close::before, 
+.item-overlay.opened .page-options .mk-icon.mk-close::after {
+  background: #000;
+}
+
+.item-overlay.opened .background-image-active .page-options .mk-icon.mk-close::before, 
+.item-overlay.opened .background-image-active .page-options .mk-icon.mk-close::after {
+  background: #fff; /* if background image */
+}
+
+.map-overlay.opened .overlay-window,
+.timeline-overlay.opened .overlay-window,
+.story-overlay.opened .overlay-window {
+  @include breakpoint(sm){
+  border: 1px solid #303030;
+  }
+}
+
+.map-overlay.opened .overlay-window .template,
+.timeline-overlay.opened .overlay-window .template
+ {
+/*  border-left: 1px solid #565656;
+  border-right: 1px solid #565656;*/
+  z-index: 1063;
+}
+
+.map-overlay.opened .overlay-window .details-button,
+.timeline-overlay.opened .overlay-window .details-button,
+.story-overlay.opened .overlay-window .details-button {
+  cursor: default;
+}
+
+.map-overlay .sticky-header #edit-story,
+.map-overlay .sticky-header .option-edit-details {
+    @include breakpoint(xs) {
+    display: none !important;
+    }
+}
+
+.item-overlay.opened .add-story-header {
+  display: none;
+}
+
+.item-overlay.opened .story-title {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.item-overlay.opened .template .mk-breadcrumb {
+  display: none;
+}
+
+.item-overlay.opened .folder-navigation {
+  display: none;
+}  
+
+.item-overlay.opened .item-header .option-edit-content,
+/*.item-overlay.opened .item-header .option-edit-details,
+.item-overlay.opened .item-header .edit-options.edit-single,
+.item-overlay.opened .item-header .option-edit,*/
+.item-overlay.opened .item-header .option-add,
+.item-overlay.opened .item-header .option-organize,
+.item-overlay.opened .item-header .option-view-revisions,
+.item-overlay.opened .item-header .option-download,
+.item-overlay.opened .item-header #secondary-options {
+  display: none; /* hide page options except for close button in item overlays */
+}
+
+.item-overlay.opened .item-header .option-edit-details .button-text,
+.item-overlay.opened .item-header .edit-options.edit-single .button-text,
+.item-overlay.opened .item-header .option-edit .button-text {
+  display: none;
+}
+
+.item-overlay.opened .item-header .option-new-window { 
+  display: inline-block;
+}
+
+.item-overlay.opened .item-header .option-new-window a { 
+  background: #fff;
+}
+
+.item-overlay.opened .item-header .option-new-window .button-text { 
+  display: none;
+}
+
+.item-overlay.opened .background-image-active .item-header .option-new-window a { 
+  background: #fff; 
+ }
+
+.item-overlay.opened .item-header .option-new-window .mk-icon { 
+  @include rem-fallback(font-size, 16);
+  background: #fff;
+  color: #000;
+}
+
+.item-overlay.opened .background-image-active .item-header .option-new-window .mk-icon { 
+  color: #000;
+  @include rem-fallback(font-size, 16);
+}
+
+
+/* @end */
+
+/* @group STORY OVERLAY */
+
+.story-overlay.item-overlay.opened .sticky-header nav .breadcrumb-list.no-collections, 
+ story-overlay.item-overlay.opened .sticky-header nav .breadcrumb-list > li.active-crumb {
+  display: none; /* hide breadcrumb title since it's not working on stories*/
+ }
+ 
+ .story-overlay.item-overlay.opened .sticky-header h2 {
+  display: inline-block;
+  color: #000;
+  margin-top: .2em;
+}
+
+.item-overlay.story-overlay.closed .overlay-bg{
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* @end */
+
+

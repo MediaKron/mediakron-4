@@ -1,0 +1,15 @@
+<h2><span class="mk-icon mk-asterisk"></span> Notes <span class="notes-count"><% if(annotations.length > 0){ %> (<% annotations.length %> ) <% } %></span></h2>
+<div id="annotations">
+  <% if(annotations.length > 0){ var i=0, length = annotations.length; for(i; i<length; i++ ){ if(annotations[i]){ %>
+    <div class="annotation-item annotation-item-<%= annotations[i].uri %>" annotation-id="<%= annotations[i].uri %>">
+      <div class="annotation-item-inner">
+        <div class="annotation-item-text"><%= annotations[i].data.body %></div>
+        <div id="annotation-bind-<%= annotations[i].uri %>" class="annotation-item-content annotation-model annotation-bind-<%= annotations[i].uri %>"></div>
+      </div>
+    </div>
+  <% } } } %>
+</div>
+  <button class="btn btn-sm btn-default close-button close-annotation-sidebar" aria-label="Close">
+  	<span class="close-icon"></span>
+  	<span class="button-text sr-only"> Close</span> 
+  </button>

@@ -1,0 +1,157 @@
+/* #region  ADD PANE */
+
+#add-new-content-pane {
+    padding-top: 0;
+  }
+  
+  #add-new-content-pane h3 {
+    border-bottom: none;
+  }
+  
+  #add-new-content-pane ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  #add-new-content-pane li {
+    position: relative;
+    margin-right: 1em;
+    margin-bottom: .5em;
+    list-style: none;
+    display: block;
+  }
+  
+  #add-new-content-pane a:first-child {
+    list-style: none;
+    background: #fff;
+    border: 1px solid #565656;
+    border-radius: 2px;
+    width: 100%;
+    display: block;
+    background: #fff;
+  }
+  
+  #add-new-content-pane a:first-child:hover {
+    background: #ffffd9;
+    text-decoration: none;
+    color: #222;
+    border: 1px solid #222;
+    transition: color .25s linear, background-color .25s ease-in-out;
+  }
+  
+  #add-new-content-pane a:first-child .btn-primary {
+    margin-right: .5em;
+    border-radius: 0;
+    border-right: 1px solid #565656;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+  }
+  
+  #add-new-content-pane li a,
+  #add-new-content-pane li mk-icon {
+    @include rem-fallback(font-size, 20);
+  }
+  
+  #add-new-content-pane a:first-child .mk-icon,
+  #add-new-content-pane a:first-child .mki-marker {
+    padding-right: .3em;
+    top: 2px;
+  }
+  
+  #add-new-content-pane a:first-child .mk-add {
+    display: block;
+    padding-right: 0;
+    top: 0;
+  }
+  
+  #add-new-content-pane .help-link {
+    position: absolute;
+    top: .2em;
+    right: .5em;
+  }
+  
+  #add-content #select-add {
+    margin-top: 1em;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  #add-content #select-add li {
+    list-style: none;
+  }
+  
+  #add-content #select-add a.btn {
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  #add-content #select-add li h3 {
+    cursor: default
+  }
+  
+  #add-secondary-tabs.nav-tabs {
+    margin-left: 0;
+    padding-left: 10px;
+    background: none;
+    border-bottom: none;
+    position: static;
+    z-index: 101;
+    width: 100%;
+  }
+  
+  #main.managing {
+    background: #eee;
+    border: 3px solid #222;
+  }
+  
+  #active-homepage {
+    font-size: 1.2em;
+  }
+  
+  .chosen-results li:hover {
+    background: #4c63fc;
+    color: #fff;
+  }
+  
+  #search-rows {
+    border: none;
+    width: 95%;
+    line-height: 1.4;
+    padding: 0;
+  }
+  
+  #content-manage .content-action input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: 200;
+    font-size: 1rem;
+  }
+  
+  #content-manage .content-action input:-moz-placeholder {
+    font-weight: 200;
+    font-size: 1rem;
+  }
+  
+  #content-manage .content-action input:-ms-input-placeholder {
+    font-weight: 200;
+    font-size: 1rem;
+  }
+  
+  .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+    font-weight: 200;
+    color: #222;
+    font-size: 1rem;
+  }
+  
+  .settings-manage-select.type-comparison #collections-container,
+  .settings-manage-select.type-comparison .add-story,
+  .settings-manage-select.type-progression #collections-container,
+  .settings-manage-select.type-progression .add-story,
+  .settings-manage-select.type-progression .add-audio,
+  .settings-manage-select.type-progression .add-file,
+  .settings-manage-select.type-progression .add-video {
+    display: none !important;
+    /* Hide content types not supported by comparisons  */
+  }
+  
+  /* #endregion  */

@@ -1,6 +1,0 @@
-<% var file = model.get('text'),  uri = model.get('uri'); if(file.type == 'pdf' || file.type == 'doc' || file.type == 'ppt' || file.type == 'xls'){ %>
-        <canvas class="file-<%= uri %>"></canvas>       
-<% }else{ %>
-        <%= model.getImage('full') %>
-<% } %>
-<div class="figure-caption"><% if(caption != '') { %><%= caption %><% } %></div>

@@ -1,0 +1,36 @@
+<article class="template video-template video-template--basic <% if(caption.length){ %> caption-active<% } %>">
+	
+	<div class="content-primary">
+			
+<header class="item-header">
+  <div class="item-nav">
+    <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav><nav class="widgets-menu widgets-menu-<%= uri %>"></nav>
+  </div>
+	  <h2><%= title %></h2>
+	   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+	<% if(caption.length){ %><div class="caption"><%= caption %></div><% } %>
+</header>
+
+<header class="sticky-header">
+  <h2><%= title %></h2>
+  <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav>
+   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+</header>
+		
+		<div class="container-fluid">
+			<div class="item-content main-item-content no-sidebar">
+				<div class="video-container">
+					<%= renderedVideo %>
+				</div>		
+			</div>	
+			<aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+		</div>
+	</div>
+		
+  <div class="widgets widgets--below widgets--below-<%= uri %>">
+  	<div class="widgets__description widget-box"></div>
+  	<div class="widgets__transcript widget-box"></div>
+  	<div class="widgets__details widget-box"></div>
+  </div>	
+
+</article>

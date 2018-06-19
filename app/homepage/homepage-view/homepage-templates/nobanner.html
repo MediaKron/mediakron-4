@@ -1,0 +1,24 @@
+<div class="home-template home-template--nobanner home-image--full <% if(description){ %>description-active<% } %> <% if(Mediakron.Settings.HomePage.image){ %>image-active<% } %>" >
+		
+		<div class="home-template__info" style="background-image: url(<%= Mediakron.Image.style(Mediakron.Settings.HomePage.image,'double') %>);">
+    		
+    		<div class="title-box-home">
+    			<div class="homepage-title">
+    			    <h1><%= Mediakron.Settings.name%></h1>
+    			</div>	
+    			<div class="home-description">
+    				<h2 class="subtitle"><%= Mediakron.Settings.subtitle%></h2>
+    			</div>
+    		</div>
+		</div> 
+		<% if(description){ %>
+		<div class="description"><%= description %></div>
+		<% } %>	
+        
+        
+	<% if(Mediakron.Access.check('can change site settings')){ %><a id="change-homepage" class="btn btn-default tooltip--w"  href="<%= basepath %>settings/homepage" data-tooltip="Change Homepage Settings"><span class="mk-icon mk-edit"></span><span class="button-text"> Edit Homepage</span></a><% } %>
+	
+</div>
+
+<div id="homepage-content">
+</div>

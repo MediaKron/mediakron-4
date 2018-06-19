@@ -1,0 +1,170 @@
+/* @group CONTENT BELOW */
+
+.widgets--below {
+	clear: both;
+	width: 100%;
+	@include rem-fallback(font-size, 21);
+	letter-spacing: .01rem;
+	line-height: 1.5;
+	position: relative;
+	background: #fff;
+}
+
+.widgets--below  p, 
+.widgets--below ul, 
+.widgets--below ol, 
+.widgets--below blockquote {
+	@include rem-fallback(margin-bottom, 30);
+}
+
+.widgets--below h3 {
+	@include rem-fallback(font-size, 28);
+	margin-top: 0;
+	padding-top: 1em;
+}
+
+.widgets--below .description {
+    @include breakpoint(md){ 
+    padding-top: 1em;
+    }
+} 
+
+.widgets--below .description h3 {
+    @include breakpoint(md){ 
+        margin: -1px;
+        padding: 0;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip: rect(0, 0, 0, 0);
+        position: absolute;
+    	}
+} 
+
+.widgets--below h4 {
+	@include rem-fallback(font-size, 24);
+}
+
+.map-template .widgets--below {
+	padding-top: 0;
+}
+
+.widget-box {
+	width: 100%;
+}
+
+.vertical-layout .widget-box {
+	background: transparent
+}
+
+.widget-box > aside  {
+	padding: .5em 1.5em 0 1.5em;
+	clear: both;
+	height: 100%;
+	text-align: left;
+	width: 100%;
+	margin: auto;
+	@include breakpoint(md){ 
+		padding:0;
+		@include rem-fallback(max-width, 700);
+		}
+}
+
+.widget-box > aside.details {
+   @include rem-fallback(font-size, 16);
+   margin-bottom: 2em;
+}
+
+.details ul {
+  display: inline;
+  padding-left: 0;
+}
+
+.details li {
+  display: inline;
+  list-style: none;
+}
+
+.details li:after {
+content: ", ";
+}
+ 
+.details li:last-child:after {
+content: "";
+}
+
+.details dt {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+/* @end */
+	
+/* @group SIDEBAR (FEATURED INFORMATION - not really sidebar) */
+
+.widgets--sidebar h3 {
+	margin-top: 0;
+}	
+
+.widgets--sidebar .description h3 {
+	@extend .visuallyhidden;
+}
+
+.widgets--sidebar.col-md-4 .description h3 {
+    @include breakpoint(md){ 
+        margin: -1px;
+        padding: 0;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip: rect(0, 0, 0, 0);
+        position: absolute;
+    	}
+}
+
+
+.widgets--sidebar.col-md-4 {
+    padding: .5em 0 0 0;
+    margin-top: 2em;
+    @include breakpoint(md){ 
+        margin-top: 0;
+        padding: 0 1em 0 1.5em;
+        background:none;
+    	}
+}
+
+.widgets--sidebar.col-md-4 > div {
+    width: 100%;
+    padding: .5em 1.5em;
+    @include rem-fallback(font-size, 20);
+    @include rem-fallback(line-height, 30);
+    @include rem-fallback(max-width, 700);
+    margin: auto;
+    @include breakpoint(md){ 
+        padding: 0em 1.5em 0 1em;
+        background: inherit;
+        @include rem-fallback(font-size, 16);
+    	}
+}
+
+.widgets--sidebar {
+	@include breakpoint(sm){
+	       @include rem-fallback(padding-right, 40);
+	       @include rem-fallback(padding-left, 40);
+	       }
+}
+
+.background-image-active .widgets--sidebar { 
+	color: #fff;
+}
+
+
+
+/* @end */
+
+
+
+
+

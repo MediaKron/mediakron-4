@@ -1,0 +1,73 @@
+<div id="search-results" class="search-results">
+	<h3>Results</h3>
+	<div id="content-manage" class="clearfix">
+		<div id="content-filters" class="clearfix">
+		<h3 class="sr-only">Content Filters</h3>
+			<div id="content-search" class="content-action clearfix">
+				<span class="mk-icon mk-search"></span>
+				<input id="search-rows" class="search" placeholder="Search" /><span class="mk-icon mk-close empty-search"></span>
+			</div>
+			<div id="content-filter" class="content-action clearfix">
+				<span class="mk-icon mk-filter"></span>
+				<div class="select">
+					<select id="filter" multiple="" name="filter" data-placeholder="Filter">
+						<option value="image">Images</option>
+						<option value="file">Files</option>
+                        <option value="story">Stories</option>
+						<option value="audio">Audio</option>
+						<option value="video">Videos</option>
+						<option value="folder">Folders</option>
+						<option value="slideshow">Slideshows</option>
+						<option value="narrative">Narratives</option>
+						<option value="map">Maps</option>
+						<option value="timeline">Timelines</option>
+						<option value="comparison">Comparisons</option>
+						<option value="progression">Progressions</option>
+					</select>
+				</div>
+			</div>
+			<div id="content-sort" class="content-action clearfix">
+				<span class="mk-icon mk-sort"></span>
+				<div class="select">
+					<select id="sort" name="sort">
+						<option value="changed_desc">Updated - New to Old</option>
+						<option value="changed_asc">Updated - Old to New</option>
+						<option value="title_asc">Title - A to Z</option>
+						<option value="title_desc">Title - Z to A</option>
+						<option value="created_asc">Created - New to Old</option>
+						<option value="created_desc">Created - Old to New</option>
+					</select>
+				</div>
+			</div>
+			<% if(Mediakron.Access.check('can administer site')){ %>
+			<div id="content-bulk" class="content-action clearfix">
+				<span class="mk-icon mk-settings"></span>
+				<div class="select">
+					<select id="bulk" name="bulk">			
+						<option>Bulk Actions</option>
+						<option value="publish">Publish</option>
+						<option value="unpublish">Unpublish</option>
+						<option value="delete">Delete</option>
+					</select>
+				</div>		
+			</div>
+			<% } %>
+		</div>
+	</div>
+	<h3 class="sr-only">Content List</h3>
+		<table id="admin-content" class="list-view">
+			<thead class="sr-only">
+				<tr class="sr-only">
+					<th scope="col" class="sr-only">Select Row</th>
+					<th scope="col" class="sr-only">Thumbnail</th>
+					<th scope="col" class="sr-only">Title</th>
+					<th scope="col" class="sr-only">View in Collection</th>
+					<th scope="col" class="sr-only">Metadata</th>
+					<th scope="col" class="sr-only">Editing Options</th>
+					</tr>
+			</thead>	
+			<tbody id="admin-content-body">
+				<!-- Empty Will Be replaced by body content -->
+			</tbody>
+		</table>
+</div>

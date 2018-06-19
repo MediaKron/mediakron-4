@@ -1,0 +1,111 @@
+<!-- ===== Add New Item  ===== -->
+
+<% var record; %>
+
+<div class="organize-pane organize-marker collection overlay overlay-sidebar add-new-item-pane">
+  <div class="add-show">
+    <header>
+      <div class="header-inner">
+        <h2><span class="toggles mk-icon mk-edit"></span> Add a new item</h2>
+        <nav>
+          <ul class="page-options"> 
+            	<li class="option-close">	  	
+            		<button class="btn btn-sm btn-default close-button" aria-label="Close">
+              		<span class="mk-icon mk-close"></span>
+              		<span class="button-text"> Close</span> 
+              	</button>
+            	</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+    <div class="organize">
+    
+      <fieldset>   
+    
+        <h3 class="title">Add a new item </h3>
+          <div id="add-content-pane" class="site-settings">
+            <h3>Basic Collections</h3>
+          
+            <ul class="add-item">
+              <li>
+                <a href="#" class="add-link" data-type="folder">
+                  <span class="mk-icon mk-folder"></span>Folder<span class="collection-description">Group related content with a table of contents</span>
+                </a>
+                <a href="#help/folder"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Folders</span></span></a>
+              </li>    
+              <li id="add-story">
+                <a href="#" class="add-link" data-type="story">
+                  <span class="mk-icon mk-story"></span>Story<span class="item-description">A page that combines text and other media</span>
+                </a>
+                <a href="#help/story"><span class="mk-icon mk-help get-help">
+                  <span class="sr-only">Help with Story</span></span>
+                </a>
+              </li>  
+              <li>
+                <a href="#" class="add-link" data-type="map"><span class="mk-icon mk-map"></span>Map<span class="collection-description">Show content on an interactive map</span></a>
+                <a href="#help/map"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Maps</span></span></a>
+              </li>
+              <li>
+                <a href="#" class="add-link" data-type="timeline"><span class="mk-icon mk-timeline"></span>Timeline<span class="collection-description">Display content chronologically</span></a>
+                <a href="#help/timeline"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Timelines</span></span></a>
+              </li>                   
+            </ul>
+          
+            <h3>Individual Media</h3>
+            <ul class="add-item individual-media">
+              <li>
+                <a href="#" class="add-link" data-type="image">
+                  <span class="mk-icon mk-image"></span>Image<span class="item-description">Upload and annotate annotate an image</span>
+                </a>
+                <a href="#help/image"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Images</span></span></a>
+              </li>
+              
+              <li id="add-file">
+                <a href="#" class="add-link" data-type="file"><span class="mk-icon mk-file"></span>File  <span class="item-description">Upload and display a PDF or other file.</span></a>
+                <a href="#help/file"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Files</span></span></a>
+              </li>
+              
+              <li>
+                <a href="#" class="add-link" data-type="video"><span class="mk-icon mk-video"></span>Video<span class="item-description">Embed streaming video</span></a>
+                <a href="#help/video"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Video</span></span></a>
+              </li>
+              <li>
+                <a href="#" class="add-link" data-type="audio"><span class="mk-icon mk-audio"></span>Audio<span class="item-description">Play audio files</span></a>
+                <a href="#help/audio"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Audio</span></span></a>
+              </li>
+            </ul>
+            
+            <h3>Special Collections</h3>
+            <ul class="add-collection">             
+              <li>
+                <a href="#" class="add-link" data-type="comparison"><span class="mk-icon mk-comparison"></span>Comparison<span class="collection-description">Show items next to each other</span></a>
+                <a href="#help/comparison"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Comparisons</span></span></a>
+              </li>         
+              <li>
+                <a href="#" class="add-link" data-type="progression">
+                  <span class="mk-icon mk-progression"></span>Progression<span class="collection-description">Show change in a series of images</span>
+                </a>
+                <a href="#help/progression">
+                  <span class="mk-icon mk-help get-help"><span class="sr-only">Help with Progressions</span></span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="add-link" data-type="slideshow"><span class="mk-icon mk-slideshow"></span>Slideshow<span class="collection-description">Show items in a series of slides</span> </a>
+                <a href="#help/slideshow"><span class="mk-icon mk-help get-help"><span class="sr-only">Help with Slideshows</span></span></a>
+              </li>
+            </ul>
+          </div>
+  
+        
+      </fieldset>
+      
+    </div>
+  </div>
+  <div class="add-bind hide">This is the add Bind point</div>
+
+</div>
+
+
+<div class="overlay-bg"></div>

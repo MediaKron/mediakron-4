@@ -1,0 +1,77 @@
+<!-- ===== Template for layer Content Type Edit Form  ===== -->
+
+<div class="edit-form layer-form non-collection overlay overlay-sidebar">
+
+  <header class="overlay-header">
+    <div class="header-inner">
+      <h2><%= label %></h2>	
+      <nav>
+        <ul class="page-options"> 
+          	<li class="option-help">	  	
+  	        	  <a class="btn btn-sm btn-default help-link" href="<%= Mediakron.Settings.basepath %>help/layer"><span class="mk-icon mk-help"><span class="sr-only">Help with Layers</span></span></a>
+          	</li>
+          	<li class="option-close">	  	
+          		<button class="btn btn-sm btn-default close-button" aria-label="Close">
+            		<span class="mk-icon mk-close"></span>
+            		<span class="button-text"> Close</span> 
+            	</button>
+          	</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="admin-edit-layer" class="edit">
+      <div id="item-content">
+          <div id="editors" class="hide"></div>
+  			<form role="form">	
+  				
+  				<!-- === SECTION: BASIC INFORMATION === --> 
+                <fieldset class="basic-information">
+  						
+					<legend>Title</legend>
+					
+					<!-- Title Field--> 
+					<div class="field title-field">
+						<label for="title" class="sr-only">Title:</label>
+						<div id="title" aria-labelledby="title" role="textbox" aria-multiline="false" 
+						    contenteditable="true" class="model-field single-line" 
+                        model-attr="title" data-placeholder="Add a title" ><%- title %></div>
+					</div>  
+		      </fieldset>
+  				
+  				<fieldset>
+      		  <legend>Layer Styles</legend>
+      		  <div class="form-instructions">  </div>
+				    <div class="field">
+					    <label for="layer-type" class="layer-type-label">Color</label>
+					    <% var color = '#000000'; if(options.color){ color = options.color; } %>
+                <input id="layer-color" type="color" name="layer-color" value="<%= color %>">
+		        </div>
+		        
+		        <div class="field layer-icon">
+  		        <% var icon = 'mki mki-marker'; if(options.icon){ icon = options.icon; } %>
+					    <label for="layer-type" class="layer-type-label">Current Icon: <span class="current-icon <%= icon %>"></span></label>
+					    <button class="btn btn-primary btn-sm select-icon">Choose Icon</button>
+  		        <div class="icons">
+                <div class="wrapper">
+                <h3>Choose Icon</h3>
+                  <button class="btn btn-sm btn-default close-icon" aria-label="Close">
+                  	<span class="mk-icon mk-close"></span>
+                  	<span class="button-text sr-only"> Close</span> 
+                  </button>
+                  <div id="search"><span class="mki mki-magnifier" style="-webkit-transform: translate(0px,0px);transform: translate(0px,0px);-ms-transform: translate(0px,0px)"></span> <input id="search_input" placeholder="search" type="text"/></div>
+                  <div id="types"></div>
+                  <div id="icons-wrapper"></div>
+                </div>
+              </div>
+		        </div>
+		        
+          </fieldset>	 
+  
+  			<%= savebar %>
+  
+  		</form>
+  	</div><!-- End #item -->				    
+  </div>
+</div>

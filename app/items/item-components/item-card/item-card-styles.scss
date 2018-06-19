@@ -1,0 +1,301 @@
+// used in browers
+
+/* #region -- ITEM CARD */
+
+.item-cards {
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    @include breakpoint(md) {
+      padding: 1.5em 0;
+    }
+  }
+
+  .item-cards>div {
+    float: left;
+    width: 100%;
+    @include breakpoint(md) {
+      width: 50%;
+    }
+    @include breakpoint(xxl) {
+      width: 33%;
+    }
+  }
+
+  .item-card {
+    border: 1px solid #565656;
+    border-radius: 3px;
+    margin: 0 1em 1em 0;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .item-card h4 {
+    @include rem-fallback(font-size,
+    20);
+    margin-bottom: .2em;
+    font-weight: 600;
+  }
+
+  .item-card--content {
+    flex: 1;
+    padding-right: .5em;
+  }
+
+  .item-card--changes {
+    @include clearfix;
+  }
+
+  .item-card--changes div {
+    display: inline-block;
+    float: left;
+    @include rem-fallback(font-size,
+    12);
+    margin: 0 .75em 0 0;
+  }
+
+  .item-card--thumbnail {
+    float: left;
+    position: relative;
+    margin-right: 1em;
+    border-right: 1px solid #565656;
+  }
+
+  .item-card--thumbnail:hover {
+    opacity: .7;
+  }
+
+  .item-card--thumbnail .bulk-check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: #999;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom-right-radius: 5px;
+    padding: 0px 4px 2px 4px;
+  }
+
+  .item-card--thumbnail .item-type {
+    @include rem-fallback(font-size,
+    12);
+    text-align: center;
+  }
+
+  .item-card--thumbnail .item-square-icon {
+    margin: 0px 0 0 0;
+    background: #ccc;
+    font-size: 65px !important;
+    border-bottom: 1px solid #999;
+  }
+
+  .item-card-small .item-card .item-card--thumbnail .item-square-icon {
+    font-size: 45px !important;
+  }
+
+  .item-card-medium .item-card .item-card--thumbnail .item-square-icon {
+    font-size: 67px !important;
+  }
+
+  .item-card-large .item-card--thumbnail .item-square-icon {
+    font-size: 100px !important;
+  }
+
+  .item-card--thumbnail .item-square-icon .mk-icon {
+    color: #565656;
+    left: 9px;
+    top: -3px;
+    position: relative;
+  }
+
+  .item-card--thumbnail .square-thumbnail {
+    margin: 0 0 0 0;
+    position: relative;
+    top: 0;
+    background: #ccc;
+  }
+
+  .item-card--actions {
+    clear: left;
+    margin-top: .2em;
+    float: left;
+    width: 100%;
+    @include breakpoint(md) {
+      margin-top: .5em;
+      margin-bottom: .5em;
+    }
+  }
+
+  .item-card--options .mk-ellipsis {
+    font-size: 18px;
+    padding-right: 0em;
+    top: 2px;
+  }
+
+  .item-card--actions div {
+    display: inline-block;
+  }
+
+  .item-card--actions button {
+    @include rem-fallback(font-size,
+    14);
+    padding-top: 0;
+    border: 1px solid transparent;
+  }
+
+  .item-card--status {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .item-card--status ul {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+
+  .item-card--status li {
+    display: inline-block;
+    overflow: hidden;
+    width: 1.5em;
+    line-height: 1;
+    padding: 0em 0 .5em 1.9em;
+    vertical-align: middle;
+    list-style: none;
+    height: 100%;
+    @include rem-fallback(margin-left,
+    -5);
+  }
+
+  .item-card--status li>span {
+    text-decoration: none;
+    vertical-align: middle;
+    text-align: center;
+    @include rem-fallback(min-width,
+    200);
+    padding: .5em;
+    color: #000;
+    text-shadow: none !important;
+    display: inline-block;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+    width: 100%;
+    border-bottom: 1px solid #999;
+    text-align: left;
+  }
+
+  .item-card--status li>span::before {
+    content: "";
+    float: left;
+    margin-top: 100%;
+  }
+
+  .item-card--status .unpublished {
+    background: #F8CDD2;
+    @include rem-fallback(font-size,
+    12);
+  }
+
+  .item-card--status .locked {
+    background: #f9edbe;
+    @include rem-fallback(font-size,
+    12);
+  }
+
+  .item-card--status .updates-new {
+    background: #DDEFC8;
+    @include rem-fallback(font-size,
+    12);
+  }
+
+  .item-card--status .updates-changed {
+    background: #D3E0F0;
+    @include rem-fallback(font-size,
+    12);
+  }
+
+  /* #endregion */
+
+  /* #region -- Untitled Group */
+
+  .view-in-collection button {
+    padding: .05em .5em;
+  }
+
+  .view-in-collection button .mk-view {
+    @include rem-fallback(font-size,
+    16);
+    padding-right: .2em;
+  }
+
+  .browser-page .modal-content.modal-up {
+    background: #f9edbe;
+  }
+
+  /* #endregion */
+
+  /* #region -- MODALs */
+
+  .modal-content {
+    position: absolute;
+    background: #fff;
+    overflow: auto;
+  }
+
+  .modal-content.modal-up {
+    top: 0;
+    background: #fff;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background: #ddd;
+    list-style: none;
+    margin-left: 0;
+    padding: .5em 2em 1em 1em;
+    overflow: auto;
+    animation-name: slideUpStay;
+    animation-duration: .3s;
+    border: none;
+    border-radius: 0;
+  }
+
+  .modal-content li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    @include rem-fallback(font-size,
+    15);
+  }
+
+  .modal-content li.horizontal {
+    display: inline-block;
+    padding: .2em .5em;
+  }
+
+  .modal-content .modal-title {
+    display: block;
+    padding-bottom: .5em;
+    font-weight: bold;
+    @include rem-fallback(font-size,
+    18);
+  }
+
+  .modal-content .close-modal {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .modal-content .close-modal button {
+    border: 1px solid transparent;
+    background: none;
+    padding: .2em .5em;
+  }
+
+  /* #endregion */

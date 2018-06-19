@@ -1,0 +1,113 @@
+<% var item,themedImage, children = relationships.children, count = children.length, i = 0, track = "backward", found = false; if(uri == current){ track="current"; found = true; }  %>
+
+<article class="template slideshow-template slideshow-template--mosaic <% if(caption.length){ %>caption-active<% } %> ">
+    <span id="key-nav"></span>
+    <div class="slideshow-items">
+        <div id="si-<%= uri %>" class="slideshow-template__intro si-item si-<%= uri %>">            
+        	<div class="content-primary"> 
+	        	<div class="slideshow-info">
+		        	
+		        	<header class="item-header">
+		        	  <div class="item-nav">
+
+		        	    <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav><nav class="widgets-menu widgets-menu-<%= uri %>"></nav>
+		        	  </div>
+		        		  <h2><%= title %></h2>
+		        		   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+		        		  
+		        		  <% if(caption.length){ %><div class="caption slideshow-intro"><%= caption %></div><% } %>
+		        		  
+		        	</header>
+		        	
+		        	<header class="sticky-header">
+		        	  <h2><%= title %></h2>
+		        	  <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav>
+		        	   <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+		        	</header>
+		        	
+	        	</div>
+
+	        
+	        <div class="container-fluid">  	
+	            <aside class="widgets widgets--sidebar widgets--sidebar-<%= uri %>"></aside>
+	        	<div  class="item-content main-item-content">    
+		        	 
+		        	 <div id="slideshow-<%= model.get('uri') %>"  class="mosaic-grid grid-items">
+                        <% _.each(model.getRelationship('children'),function(child){ if(child){ childItem = Mediakron.getItemFromURI(child); %>
+                            <% if(childItem){ %>
+                                    <a href="<%= Mediakron.controller.getContextPath() %><%= childItem.get('uri') %>" class="folder-item-<%= childItem.get('uri') %>" uri="<%= childItem.get('uri') %>">
+                                        <img alt="<%= childItem.get('title') %>" src="<%= childItem.getStyledImage('medium') %> "/>
+                                    </a>
+                            <% } %>
+                        <% } }); %>
+                    </div>
+		         </div>	
+
+	        </div>
+	        
+          <div class="widgets widgets--below widgets--below-<%= uri %>">
+            <div class="widgets__description widget-box"></div>
+            <div class="widgets__transcript widget-box"></div>
+            <div class="widgets__details widget-box"></div>
+          </div>
+       		 	
+            </div>
+        </div>
+    </div>
+    
+        <div class="item-overlay slideshow-overlay">
+	        <div class="overlay-bg"></div>
+	        <div class="overlay-window overlay ">
+		        <div class="item-container">
+			        <% track="backward"; for(i;i<count;i++){ if(found){ track="forward"; } if(children[i]){ if(children[i].uri == current){ track = "current"; found = true; } %>
+			            <div id="si-<%= uri %>-<%= children[i].uri %>" class="slideshow-count-<%= i+1 %> slideshow-item si-item si-<%= children[i].uri %> <%= track %>" slideposition="<%= i %>">
+			            </div>
+			        <% }} %>
+			    </div>
+		
+		      <div class="slideshow-navigation">
+		        <a class="slideshow-next" href="#">        
+		            <span class="mk-icon mk-arrow-right"></span><span class="sr-only">Next</span>
+		        </a>
+		        
+		        <a class="slideshow-previous" href="#">
+		            <span class="mk-icon mk-arrow-left"></span><span class="sr-only">Previous</span>
+		        </a>
+		      </div>
+
+		    
+			    <% var item, active = ""; if(uri == current){ active = "active"; } %>
+			    <div class="carousel sl-closed">
+			    	<div class="region-carousel">
+			    	    <div class="carousel-content" class="">
+			    	        <div class="carousel-item carousel-<%= uri %> <%= active %>">
+			    	    		<a href="<%= uri %>">
+			    	    			<%= model.getSquareImage('small') %>
+			    					<div class="carousel-title">
+			    						<%= title %>
+			    					</div>
+			    	    		</a>
+			    	        </div>
+			    	    <% _.each(children,function(child){ active = ""; if(child.uri == current){ active = "active"; } %>
+			    	    <% item = Mediakron.getItemFromURI(child.uri); if(item){ %>
+			    	    	<div class="carousel-item carousel-<%= child.uri %> <%= active %>">
+			    	    		
+			    	    		<a href="<%= uri %>/<%= child.uri %>">
+			    	    			<%= item.getSquareImage('medium') %>
+			    					<div class="carousel-title">
+			    						<%= item.get('title') %>
+			    					</div>
+			    	    		</a>
+			    	        </div>
+			    	    <% }}); %>
+			    	    </div>
+			    	    <div class="carousel-previous clearfix"></div>
+			    	    <div class="carousel-next clearfix"></div>
+			        </div>
+			        
+			    </div><!-- End carousel container -->
+			</div>
+		</div><!-- End slideshow contents -->
+    </div><!-- End slideshow container -->
+
+</article>

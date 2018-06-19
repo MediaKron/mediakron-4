@@ -1,0 +1,67 @@
+<% var item, themedImage, children = relationships.children, count = children.length, i = 0;  %>
+
+<article class="template folder-template folder-template--list <% if(caption.length){ %> caption-active<% } %>">
+    <div id="fl-<%= uri %>" class="folder-template--list__intro folder-item<% if(uri == current){ %> fl-open <% }else{ %> fl-close <% } %>" >
+        <div class="content-primary panel-layout">	
+          
+          <div class="folder-info">     
+              <header class="item-header <% if(image){ %> bottom-border<% } %>">
+              	
+                <div class="item-nav">
+                  <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav><nav class="widgets-menu widgets-menu-<%= uri %>"></nav>
+                </div>
+              	  <h2><%= title %></h2>
+              	  <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+                	<% if(caption.length){ %><div class="caption folder-caption"><%= caption %></div><% } %>
+              </header>
+              
+          <header class="sticky-header">
+            <h2><%= title %></h2>
+            <nav class="mk-breadcrumb" role="breadcrumbs"><%= Mediakron.breadcrumb.getBreadcrumb() %></nav>
+             <ul class="page-options page-options-<%= uri %> js-nav-system"></ul>
+          </header>   
+                  
+	        </div>
+	        
+          <div class="item-content main-item-content">
+            <div class="item-content-inner">
+               <% if(image){ %>
+               		<%= model.getImage("large", "folder-list-image") %>
+               <% } %>	                                       
+  		       <div class="widgets widgets--sidebar widgets--sidebar-<%= uri %> widgets-folder-list"></div>
+              <div class="folder-list organize-button-bind">
+                  <ul class="folder-list--items  <% if(image){ %>image-active<% } %> ">
+                      <% _.each(relationships.children,function(child){ if(child){ childItem = Mediakron.getItemFromURI(child); %>
+                          <% if(childItem){ %>
+                              <li class="folder-list--items-<%= childItem.get('uri') %>"><%= childItem.getContextLink(uri) %></li>
+                          <% } %>
+                      <% } }); %>
+      	        </ul>	
+
+  		        </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="widgets widgets--below widgets--below-<%= uri %> widgets-below-folder-list">
+        	<div class="widgets__description widget-box"></div>
+        	<div class="widgets__details widget-box"></div>
+        	<div class="widgets__transcript widget-box"></div>
+        	<div class="widgets__comments widget-box"></div>
+        </div>	
+        
+    </div>
+ 
+    <div class="folder-current-item"></div>
+    
+    <% if(last){ %>
+        <div class="folder-navigation">
+            <a class="folder-next" href="<%= uri %>"></a>
+            <a class="folder-next-long" href="<%= uri %>"></a>
+            <a class="folder-previous" href="<%= uri %>"></a> 
+        </div>
+      
+    <% } %>
+
+</article>

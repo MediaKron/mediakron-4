@@ -1,0 +1,22 @@
+
+  <td><%= name %></td>
+  <td><%= email %></td>
+  <td><label for="change-role-<%= id %>"class="sr-only">Role: </label>
+    <select id="change-role-<%= id %>" class="change-role" user="<%= id %>" name="change-role-[id]">
+      <option value="member" <%= user.roleSelect('member') %>>Member</option>
+      <option value="contributor" <%= user.roleSelect('contributor') %>>Contributor</option>
+      <option value="collaborator" <%= user.roleSelect('collaborator') %>>Collaborator</option>
+      <option value="editor" <%= user.roleSelect('editor') %>>Editor</option>
+      <option value="administrator" <%= user.roleSelect('administrator') %>>Administrator</option>
+    </select>
+  </td>
+  <td class="row-ldap">
+    <% if(bc){ %> 
+    <input name="browse" class="activatebc" type="checkbox" value="true"<% if(ldap != false){ %> checked<% } %>  />
+    <% } %>
+  </td>
+  <td class="row-remove">
+    <a class="btn btn-no-style remove-user" user="<%= id %>">
+    		<span class="sr-only">Remove</span><span class="mk-icon mk-remove" title="Remove Item"></span>
+    </a>
+  </td>
