@@ -3,19 +3,24 @@ import _ from "lodash";
 import Backbone from "backbone";
 
 // Auth
-import Auth from "auth/auth"
-import Site from "models/site"
+import Auth from "./auth/auth"
+import Site from "./models/site"
+
+// import url functions
+import { uri, base_path } from "./util/url"
+import Settings from "../settings"
 
 var state = {
 
     // 
+    uri: false,
 
     router: false, // this will later be the mediakron router funciton.  Useful for going cool places
     loading: true,
     socket: false,
 
     Status: { // a set of helpful internal flags.  Maybe will eventually incoperate some of these other places
-        url: document.URL.split('#')[0], // handy
+        url: false, // handy
         context: false, // maybe not necessary anymore
         time: 0, // not sure what this does
         CurrentTopic: 0, // Probably can be depricated
@@ -44,23 +49,29 @@ var state = {
     console: function (log) { },
 }
 
-class Mediakron {
-    constructor(state){
-        super(state)
-        this.data = {};
-    }
+class App {
+  constructor(state) {
+    this.data = {};
+    this.state = state;
 
-    boot(){
-        // Get the site
-        
-        this.site = Site.get()
-        // Start
-        Theme.Initialize();
-        Auth();
-    }
+    // set the base uri
+    this.Settings = Settings;
+  }
 
-    // make the utility class avaliable
+  /**
+   * Boot mediakron
+   */
+  boot() {
+    // load up the site
+    this.site = new Site({ uri: uri });
+    console.log(this.site.urlRoot);
+    this.site.fetch();
+    // Start
+    //Theme.Initialize();
+    //Auth();
+  }
 
+  // make the utility class avaliable
 }
 
-export default Mediakron;
+export default App;
