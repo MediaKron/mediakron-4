@@ -1,28 +1,46 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Catalog, pageLoader } from "catalog";
-import css from "../../../public/css/app.css";
+import css from "../public/css/app.css";
 
 const pages = [
-  { path: "/", title: "Welcome", component: require("./home.md") },
+  // Home
+  { path: "/", 
+    title: "Welcome", 
+    component: require("./doc-pages/home.md") },
+  // Items
+  
+  {
+    title: 'API',
+    pages: [
+      {
+        path: '/api/',
+        title: 'MediaKron API',
+        component: require("../app/items/items-docs.md")
+      },
+      // Other subpages
+    ]
+  },
+  
   {
     title: 'Items',
     pages: [
       {
         path: '/items/',
         title: 'Introduction',
-        component: require("../../items/items-docs.md")
+        component: require("../app/items/items-docs.md")
       },
       // Other subpages
     ]
   },
+  // UI
   {
     title: 'UI',
     pages: [
       {
         path: '/ui/',
         title: 'Introduction',
-        component: require("../../ui/ui-docs.md")
+        component: require("../app/ui/ui-docs.md")
       },
       // Other subpages
     ]
@@ -33,7 +51,7 @@ const pages = [
       {
         path: '/core-css/',
         title: 'Introduction',
-        component: require("../../core-css/core-css-docs.md")
+        component: require("../app/core-css/core-css-docs.md")
       },
       // Other subpages
     ]
@@ -44,7 +62,7 @@ const pages = [
       {
         path: '/core-js/',
         title: 'Introduction',
-        component: require("../../core-js/core-js-docs.md")
+        component: require("../app/core-js/core-js-docs.md")
       },
       // Other subpages
     ]
