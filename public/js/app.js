@@ -10538,7 +10538,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_site__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_url__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__settings__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__settings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__settings__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10602,7 +10601,7 @@ var App = function () {
     this.state = state;
 
     // set the base uri
-    this.Settings = __WEBPACK_IMPORTED_MODULE_6__settings___default.a;
+    this.Settings = new __WEBPACK_IMPORTED_MODULE_6__settings__["a" /* default */]();
   }
 
   /**
@@ -10618,7 +10617,7 @@ var App = function () {
       console.log(this.site.urlRoot);
       this.site.fetch();
       // Start
-      //Theme.Initialize();
+      Theme.Initialize();
       //Auth();
     }
 
@@ -33478,7 +33477,19 @@ var ClassManagement = function () {
 /* 34 */,
 /* 35 */,
 /* 36 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Settings = function Settings() {
+    _classCallCheck(this, Settings);
+
+    Object.assign(this, defaultSettings);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Settings);
+
 
 var defaultSettings = {
     "Name": '',
@@ -34368,10 +34379,17 @@ var Site = function (_Model) {
         };
         return _this;
     }
+    /**
+     * Pass the site object to the settings
+     * to initialize the settings
+     */
+
 
     _createClass(Site, [{
-        key: "populateSettings",
-        value: function populateSettings() {}
+        key: "initializeSettings",
+        value: function initializeSettings() {
+            Mediakron.Settings.site(this);
+        }
     }]);
 
     return Site;

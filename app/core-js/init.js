@@ -55,7 +55,7 @@ class App {
     this.state = state;
 
     // set the base uri
-    this.Settings = Settings;
+    this.Settings = new Settings();
   }
 
   /**
@@ -67,7 +67,7 @@ class App {
     console.log(this.site.urlRoot);
     this.site.fetch();
     // Start
-    //Theme.Initialize();
+    Theme.Initialize();
     //Auth();
   }
 

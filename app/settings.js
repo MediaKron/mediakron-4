@@ -1,3 +1,9 @@
+export default class Settings {
+    constructor(){
+        Object.assign(this, defaultSettings);
+    }
+}
+
 var defaultSettings = {
     "Name": '',
     "Settings": {
