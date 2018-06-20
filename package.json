@@ -40,5 +40,5 @@
         "spectrum-colorpicker": "^1.8.0",
         "style-loader": "^0.21.0",
         "typeahead": "^0.2.2"
-    },
+    }
 }

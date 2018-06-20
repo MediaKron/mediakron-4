@@ -1,0 +1,223 @@
+/* @group === PROGRESSION TEMPLATE (_progression.scss) === */
+
+/* @group PROGRESSION CONTAINERS */
+
+.progression-template{
+	width:100%;
+	height:100%;
+}
+
+	.progression-template .content-primary {
+		padding-bottom: 2em;
+	}
+
+		.progression{
+			position: relative;
+			height: 90%;
+			overflow: hidden;
+			clear:left;
+		}
+
+			.progression-frame{
+			    width:900px;
+				height:600px;
+				position: relative;
+				overflow: hidden;
+				margin:auto;
+				-webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+				box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+			}
+
+/* @end */
+
+.progression-template .item-header {
+    border-bottom: 1px solid #565656;;
+}
+
+
+.settings-manage .progression-frame{
+    margin:1em auto;
+}
+
+@media (max-width: 767px) {
+    .progression-frame{
+        width:400px;
+    	height:300px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .progression-frame{
+        width:768px;
+    	height:510px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .progression-frame{
+        width:900px;
+    	height:600px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .progression-frame{
+        width:1100px;
+    	height:726px;
+    }
+}
+
+/* @group PROGRESSION CONTROLS */
+
+.progression-bar{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    height: 5%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.progression-drag{
+	height: 100%;
+	width: 20px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	cursor: pointer;
+	cursor: -webkit-grab; 
+	cursor: -moz-grab;
+	background: #eee;
+	background-image: url('.../../../core-css/img/draghandle.png');
+	background-repeat: no-repeat;
+	background-position:50%;
+}
+
+/* @end */
+
+.pitem{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	display:none;
+}
+
+.pitem .caption { /* Hiding this since we now are showing this at the top; eventually we should probably remove this  */
+    display: none;
+}
+
+.first-progression-item{
+	opacity:1;
+	display: block;
+}
+#progression-item{
+	width:100%;
+	height:100%;
+}
+.progression-marker{
+	border-left:2px solid #ccc;
+	position: absolute;
+	height:100%;
+	top:0;
+}
+.last-prg{
+    
+}
+.last-prg .marker-title{
+    
+}
+.progression-list{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.progression-item .title-box{
+	position: absolute;
+	background: rgba(255,255,255,.7);
+	top:0;
+	left:0;
+	width:100%;
+	font-size:1.6em;
+	padding:3px 10px;
+	display:none;
+}
+
+.ui-resizable-helper{
+    border:1px solid white;
+}
+.progression-marker .marker-title{
+    color: #000;
+    padding-left:1em;
+    position: absolute;
+	top: 5px;
+}
+.progression-wrapper .ui-resizable-helper{
+    border:1px solid #fff;
+    width:12px;
+    height:12px;
+}
+
+.progression-item-info{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px;
+    position: absolute;
+    width: 100%;
+    display: none;
+}
+
+.showTitles{
+    top: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    padding: 3px 3px 0 5px;
+    background: #eee;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: #444;
+    border-bottom-left-radius: 5px;
+}
+
+.prog-itm-title{
+    
+}
+.prog-itm-caption{
+    font-size:.8rem;
+}
+
+/* @group ORGANIZE PROGRESSION */
+
+.item-progression .settings-manage-organize .item-header,
+.item-progression .settings-manage-organize .widgets
+ {
+    display: none; /* Hide when organizing progression */
+}
+
+#progression-arrange {
+  display: none;
+}
+
+.settings-manage-organize #progression-arrange {
+  display: block;
+  margin: auto;
+  @include rem-fallback(max-width, 700);
+  background: #eee;
+  padding: .2em 1em .2em 1em;
+  border: 1px solid #ccc;
+}
+
+.settings-manage-organize .progression-frame {
+  border: 2px solid #66afe9;
+}
+
+#settings-context .manage-item .title {
+  width: 350px;
+}
+
+/* @end */
+
+/* @end PROGRESSION TEMPLATE */
