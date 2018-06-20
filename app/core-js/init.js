@@ -2,7 +2,12 @@ import $ from "jquery";
 import _ from "lodash";
 import Backbone from "backbone";
 
-var Mediakron = {
+// Auth
+import Auth from "auth/auth"
+
+var state = {
+
+    // 
 
     router: false, // this will later be the mediakron router funciton.  Useful for going cool places
     loading: true,
@@ -34,10 +39,23 @@ var Mediakron = {
         storyDebug: false
 
     },
-    AuthResponse: {},
-    Extensions: {},
     eventBus: _.extend({}, Backbone.Events),
     console: function (log) { },
+}
+
+class Mediakron {
+    constructor(state){
+        super(state)
+        this.data = {};
+    }
+
+    boot(){
+        // auth?
+        Auth();
+    }
+
+    // make the utility class avaliable
+
 }
 
 export default Mediakron;
