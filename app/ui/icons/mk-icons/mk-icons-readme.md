@@ -4,46 +4,58 @@ Currently using [Icomoon](https://icomoon.io/) to curate and create web fonts
 
 ```html|span-1
 <span class="mk-icon mk-folder"></span>
+<i class="fas fa-folder"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-story"></span>
+<i class="fas fa-file-alt"></i>
+<i class="fas fa-newspaper"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-map"></span>
+<i class="fas fa-map-marker-alt"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-timeline"></span>
+<i class="fas fa-clock"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-image"></span>
+<i class="fas fa-image"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-file"></span>
+<i class="fas fa-file"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-audio"></span>
+<i class="fas fa-volume-up"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-video"></span>
+<i class="fas fa-video"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-slideshow"></span>
+<i class="fas fa-images"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-comparison"></span>
+<i class="fas fa-columns"></i>
 ```
 
 ```html|span-1
 <span class="mk-icon mk-progression"></span>
+<i class="fas fa-clone"></i>
 ```
 
 (deprecated)
@@ -364,5 +376,5 @@ Currently using [Icomoon](https://icomoon.io/) to curate and create web fonts
 
 
 ```html|span-1
-<i class="fas fa-user" data-fa-symbol></i>
+<i class="fas fa-camera-retro"></i>
 ```

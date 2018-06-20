@@ -53,6 +53,7 @@ const pages = [
         {
           path: '/ui/mk-icons',
           title: 'Icons',
+          scripts: ['https://use.fontawesome.com/releases/v5.0.13/js/all.js'],
           component: require("../../app/ui/icons/mk-icons/mk-icons-readme.md")
         },
         // Tooltips

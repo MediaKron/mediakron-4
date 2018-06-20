@@ -54,6 +54,7 @@
                           <div id="branding">
                                  <button type="button" class="mobile-nav-button"><span class="mk-icon mk-menu"></span></button>
                                 <span id="site-logo"></span>
+
                                 <h1 class="page-header"><span id="site-name"><a href="home"></a></span></h1>
                                 <span id="institution-logo"></span>
                           </div>
