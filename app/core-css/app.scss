@@ -1,7 +1,9 @@
 //Core Css;
+
 @import "base-styles/variables.scss";
 @import "base-styles/extend.scss";
-@import "base-styles/app.scss";
+@import "mixins/bourbon/app/assets/stylesheets/bourbon.scss";
+@import "mixins/neat/app/assets/stylesheets/neat.scss";
 
 
 @import "mixins/animate/animate.scss";
@@ -14,57 +16,57 @@
 @import "base-styles/base.scss";
 @import "base-styles/layout-styles.scss";
 
-@import "vendor/leaflet/dist/leaflet.css";
+// @import "vendor/leaflet/dist/leaflet.css";
 //@import "vendor/leaflet/leaflet.edit.scss";
 
-// Content;
-@import "../content/add-panes/add-styles.scss";
-@import "../content/add-panes/addpane-general/addpane-general-styles.scss";
+// Content Tools;
+@import "../content-tools/add-panes/add-styles.scss";
+@import "../content-tools/add-panes/addpane-general/addpane-general-styles.scss";
 
-@import "../content/browsers/browsers-styles.scss";
-@import "../content/browsers/browser-updates/browser-updates-styles.scss";
-@import "../content/browsers/browser-filters/browser-filters-styles.scss";
+@import "../content-tools/browsers/browsers-styles.scss";
+@import "../content-tools/browsers/browser-updates/browser-updates-styles.scss";
+@import "../content-tools/browsers/browser-filters/browser-filters-styles.scss";
 
-@import "../content/content-tools/import/import-styles.scss";
-@import "../content/content-tools/search/search-page/search-page-styles.scss";
+@import "../content-tools/import/import-styles.scss";
+@import "../content-tools/search/search-page/search-page-styles.scss";
 
-@import "../content/item-elements/annotations-comments/annotations-comments.scss";
-@import "../content/item-elements/breadcrumbs/breadcrumbs-styles.scss";
-@import "../content/item-elements/filters/filters-styles.scss";
-@import "../content/item-elements/item-details/item-details-styles.scss";
-@import "../content/item-elements/item-card/item-card-styles.scss";
-@import "../content/item-elements/item-header/item-header.scss";
-@import "../content/item-elements/item-page-options/item-page-options-styles.scss";
-@import "../content/item-elements/item-view-in/view-in-styles.scss";
-@import "../content/item-elements/item-wysiwyg/item-wysiwyg.scss";
-@import "../content/item-elements/pdf-viewer/pdf-viewer.scss";
-@import "../content/item-elements/revisions/revisions-styles.scss";
-@import "../content/item-elements/tourpane/tourpane-styles.scss";
-@import "../content/item-elements/widgets/widgets-styles.scss";
+@import "../content-tools/organize-panes/organize-styles.scss";
 
-@import "../content/item-types/audio/audio-styles.scss";
-@import "../content/item-types/comparison/comparison-styles.scss";
-@import "../content/item-types/file/file-styles.scss";
-@import "../content/item-types/folder/folder-styles.scss";
-@import "../content/item-types/image/image-styles.scss";
-@import "../content/item-types/map/maps-styles.scss";
-@import "../content/item-types/narrative/narrative-styles.scss";
-@import "../content/item-types/progression/progression-styles.scss";
-@import "../content/item-types/slideshow/slideshow-styles.scss";
-@import "../content/item-types/story/story-styles.scss";
-@import "../content/item-types/text/text-styles.scss";
-@import "../content/item-types/timeline/timeline-styles.scss";
-@import "../content/item-types/video/video-styles.scss";
+@import "../content-tools/select-panes/select-panes-styles.scss"; 
+@import "../content-tools/select-panes/selector-narrative/selector-narrative-styles.scss"; 
+@import "../content-tools/select-panes/selector-links/selector-links-styles.scss"; 
 
-@import "../content/organize-panes/organize-styles.scss";
+@import "../content-tools/tags/tag-page/tag-page-styles.scss";
+@import "../content-tools/tags/tags-form/tags-form-styles.scss";
+@import "../content-tools/tags/tags-page/tags-page-styles.scss";
 
-@import "../content/select-panes/select-panes-styles.scss"; 
-@import "../content/select-panes/selector-narrative/selector-narrative-styles.scss"; 
-@import "../content/select-panes/selector-links/selector-links-styles.scss"; 
+// Items
+@import "../items/item-components/annotations-comments/annotations-comments.scss";
+@import "../items/item-components/breadcrumbs/breadcrumbs-styles.scss";
+@import "../items/item-components/filters/filters-styles.scss";
+@import "../items/item-components/item-details/item-details-styles.scss";
+@import "../items/item-components/item-card/item-card-styles.scss";
+@import "../items/item-components/item-header/item-header.scss";
+@import "../items/item-components/item-page-options/item-page-options-styles.scss";
+@import "../items/item-components/item-view-in/view-in-styles.scss";
+@import "../items/item-components/item-wysiwyg/item-wysiwyg.scss";
+@import "../items/item-components/revisions/revisions-styles.scss";
+@import "../items/item-components/tourpane/tourpane-styles.scss";
+@import "../items/item-components/widgets/widgets-styles.scss";
 
-@import "../content/tags/tag-page/tag-page-styles.scss";
-@import "../content/tags/tags-form/tags-form-styles.scss";
-@import "../content/tags/tags-page/tags-page-styles.scss";
+@import "../items/item-pages/audio/audio-styles.scss";
+@import "../items/item-pages/comparison/comparison-styles.scss";
+@import "../items/item-pages/file/file-styles.scss";
+@import "../items/item-pages/folder/folder-styles.scss";
+@import "../items/item-pages/image/image-styles.scss";
+@import "../items/item-pages/map/maps-styles.scss";
+@import "../items/item-pages/narrative/narrative-styles.scss";
+@import "../items/item-pages/progression/progression-styles.scss";
+@import "../items/item-pages/slideshow/slideshow-styles.scss";
+@import "../items/item-pages/story/story-styles.scss";
+@import "../items/item-pages/text/text-styles.scss";
+@import "../items/item-pages/timeline/timeline-styles.scss";
+@import "../items/item-pages/video/video-styles.scss";
 
 //Form;
 @import "../forms/chosen/chosen-custom-styles.scss";
@@ -80,8 +82,8 @@
 @import "../homepage/homepage-view/homepage-styles.scss";
 
 //Settings;
-@import "../settings/settings-page/settings-page-styles.scss";
-@import "../settings/settings-styles.scss";
+@import "../site-settings/settings-page/settings-page-styles.scss";
+@import "../site-settings/settings-styles.scss";
 
 //Theme;
 @import "../theme/banner/banner-styles.scss";
@@ -92,8 +94,9 @@
 
 //UI;
 @import "../ui/fullscreen/fullscreen-styles.scss";
-@import "../ui/hovertip.scss";
-@import "../ui/icons/icons-styles.scss";
+@import "../ui/hovertip/hovertip-styles.scss";
+@import "../ui/icons/mk-icons/mk-icons-styles.scss";
+@import "../ui/icons/mapkey-icons/mapkey-styles.scss";
 @import "../ui/overlay/overlay-styles.scss";
 @import "../ui/tabs-accordion/tabs-accordion-styles.scss";
 @import "../ui/typography/typography-styles.scss";

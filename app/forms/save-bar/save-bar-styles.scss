@@ -36,7 +36,7 @@
   #settings-context .save-bar {
     right: 0;
     left: auto;
-    @include transition(0.35s ease);
+    transition: 0.35s ease;
     @include breakpoint(sm) {
       width: 100%;
     }
@@ -44,7 +44,7 @@
   
   .setting-pane.closed .save-bar {
     right: -100%;
-    @include transition(0.35s ease);
+    transition: 0.35s ease;
     @include breakpoint(md) {
       @include rem-fallback(right, -100%);
     }

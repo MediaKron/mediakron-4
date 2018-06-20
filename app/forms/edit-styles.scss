@@ -524,7 +524,7 @@ top:3px;
     border: 1px solid #ddd;
     width: 120px;
     overflow: hidden;
-    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+    background: #fafafa url("../../../core-css/img/icon-select.png") no-repeat 90% 50%;
 }
 
 .select-style select {
@@ -650,7 +650,7 @@ top:3px;
 	display:block;
 	position:relative;
 	margin-bottom:1em;
-	background-image: url("../img/home-layout-default.jpg");
+	// background-image: url("../../../core-css/img/layout-icons/home-layout-default.jpg");
 	background-repeat: no-repeat;
 }
 
@@ -673,7 +673,7 @@ top:3px;
 	height:125px;
 	display:block;
 	position:relative;
-	background-image: url("../img/home-layout-default.jpg");
+	// background-image: url("../../../core-css/img/layout-icons/home-layout-default.jpg");
 	background-repeat: no-repeat;
 }
 

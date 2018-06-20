@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10463,122 +10463,6 @@ module.exports = g;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(4);
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_init__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__ = __webpack_require__(9);
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-
-
-
-console.log('debug');
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
-  window.Mediakron = __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */];
-  __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */].auth = Object(__WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__["a" /* default */])();
-});
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_backbone__);
-
-
-
-
-var Mediakron = {
-
-    router: false, // this will later be the mediakron router funciton.  Useful for going cool places
-    loading: true,
-    socket: false,
-
-    Status: { // a set of helpful internal flags.  Maybe will eventually incoperate some of these other places
-        url: document.URL.split('#')[0], // handy
-        context: false, // maybe not necessary anymore
-        time: 0, // not sure what this does
-        CurrentTopic: 0, // Probably can be depricated
-        CurrentTag: 0, // depricate
-        CurrentMap: 0, // track the current map
-        CurrentTimeline: false, // track the current timeline
-        FileUploadSupport: true, // maybe impliment to throw a file upload alert:  ToDO impliment a loading broser check
-        uploadInProgress: false, // in use
-        lti: false, // in use
-        ltiReturnUrl: false, // in use
-        ltiIntendedUse: false, // in use
-        Managing: false, // in use
-        formChanged: false, // in use
-        bodyClasses: '', // figure out a better way
-        views: 0, // in use
-        historyStarted: false,
-        lastPoll: false, // when did we last check for updates
-        currentEditors: {}, // which users are currently editing what
-        PollQuery: '',
-        currentEditing: {},
-        online: false,
-        storyDebug: false
-
-    },
-    AuthResponse: {},
-    Extensions: {},
-    eventBus: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.extend({}, __WEBPACK_IMPORTED_MODULE_2_backbone___default.a.Events),
-    console: function console(log) {}
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (Mediakron);
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -27688,10 +27572,38 @@ var Mediakron = {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(3)(module)))
 
 /***/ }),
-/* 7 */
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Backbone.js 1.3.3
@@ -29619,6 +29531,95 @@ var Mediakron = {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(6);
+module.exports = __webpack_require__(13);
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_init__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__ = __webpack_require__(9);
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+
+
+
+console.log('debug');
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
+  window.Mediakron = __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */];
+  __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */].auth = Object(__WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__["a" /* default */])();
+});
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_backbone__);
+
+
+
+
+var Mediakron = {
+
+    router: false, // this will later be the mediakron router funciton.  Useful for going cool places
+    loading: true,
+    socket: false,
+
+    Status: { // a set of helpful internal flags.  Maybe will eventually incoperate some of these other places
+        url: document.URL.split('#')[0], // handy
+        context: false, // maybe not necessary anymore
+        time: 0, // not sure what this does
+        CurrentTopic: 0, // Probably can be depricated
+        CurrentTag: 0, // depricate
+        CurrentMap: 0, // track the current map
+        CurrentTimeline: false, // track the current timeline
+        FileUploadSupport: true, // maybe impliment to throw a file upload alert:  ToDO impliment a loading broser check
+        uploadInProgress: false, // in use
+        lti: false, // in use
+        ltiReturnUrl: false, // in use
+        ltiIntendedUse: false, // in use
+        Managing: false, // in use
+        formChanged: false, // in use
+        bodyClasses: '', // figure out a better way
+        views: 0, // in use
+        historyStarted: false,
+        lastPoll: false, // when did we last check for updates
+        currentEditors: {}, // which users are currently editing what
+        PollQuery: '',
+        currentEditing: {},
+        online: false,
+        storyDebug: false
+
+    },
+    AuthResponse: {},
+    Extensions: {},
+    eventBus: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.extend({}, __WEBPACK_IMPORTED_MODULE_2_backbone___default.a.Events),
+    console: function console(log) {}
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Mediakron);
+
+/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31316,7 +31317,7 @@ var Mediakron = {
   }
 }());
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(3)(module)))
 
 /***/ }),
 /* 9 */
@@ -31325,7 +31326,6 @@ var Mediakron = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_models_user__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__);
 
 
 
@@ -31346,10 +31346,10 @@ function Auth(callback) {
         success: function success(model, response) {
             if (model.get('role') == 'manager' || model.get('role') == 'instructor' || model.get('role') == 'administrator' || model.get('role') == 'ia') {
 
-                __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management___default.a.setStatic("can-administer");
+                __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__["a" /* default */].setStatic("can-administer");
             } else {
 
-                __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management___default.a.setStatic("not-administer");
+                __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__["a" /* default */].setStatic("not-administer");
             }
 
             // Set last visit to now
@@ -31392,7 +31392,6 @@ function Auth(callback) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31529,71 +31528,1878 @@ var User = function (_Model) {
   }]);
 
   return User;
-}(__WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__["default"]);
+}(__WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (15:24)\n\n\u001b[0m \u001b[90m 13 | \u001b[39m    }\n \u001b[90m 14 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 | \u001b[39m        initialize() { }\u001b[33m,\u001b[39m\n \u001b[90m    | \u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 | \u001b[39m\n \u001b[90m 17 | \u001b[39m        cacheFilters() {\n \u001b[90m 18 | \u001b[39m            \u001b[36mvar\u001b[39m model \u001b[33m=\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n");
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_backbone__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_backbone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_backbone__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Model = function (_Backbone$Model) {
+  _inherits(Model, _Backbone$Model);
+
+  function Model() {
+    _classCallCheck(this, Model);
+
+    return _possibleConstructorReturn(this, (Model.__proto__ || Object.getPrototypeOf(Model)).call(this, {
+      folders: {},
+      layers: {},
+      tags: {},
+      archived: false,
+      published: true
+    }));
+  }
+
+  _createClass(Model, [{
+    key: 'initialize',
+    value: function initialize() {}
+  }, {
+    key: 'cacheFilters',
+    value: function cacheFilters() {
+      var model = this;
+      this.folders = {};
+      this.tags = {};
+      var topics = this.getRelationship("topics"),
+          t = 0,
+          l = topics.length,
+          loadtopic,
+          topic,
+          type;
+      for (t; t < l; t++) {
+        topic = topics[t];
+        loadtopic = Mediakron.getItemFromURI(topic.uri);
+        if (loadtopic) {
+          type = topic.get("type");
+          if (type == "tag") {
+            this.tags[topic.uri] = loadtopic;
+          } else if (type == "folder") {
+            this.folders[topic.uri] = loadtopic;
+          }
+        }
+      }
+    }
+
+    /**
+     * If the user can publish, publish it
+     */
+
+  }, {
+    key: 'publish',
+    value: function publish() {
+      if (this.canPublish()) {
+        this.publish = true;
+      }
+    }
+    /**
+     * if the user can Unpublish, unpublish
+     */
+
+  }, {
+    key: 'unpublish',
+    value: function unpublish() {
+      if (this.canUnpublish()) {
+        this.publish = false;
+      }
+    }
+    /**
+     * if the user can Unpublish, unpublish
+     */
+
+  }, {
+    key: 'archive',
+    value: function archive() {
+      if (this.canArchive()) {
+        this.archived = true;
+      }
+    }
+  }, {
+    key: 'restore',
+    value: function restore() {
+      if (this.canArchive()) {
+        this.archived = false;
+      }
+    }
+
+    /**
+     * 
+     * @param {*} hideAlert 
+     */
+
+  }, {
+    key: 'canView',
+    value: function canView(hideAlert) {
+      var user = this.get("user");
+      if (!this.get("published") && user.id == Mediakron.user.get("id") && Mediakron.Access.check("can view own unpublished content")) {
+        return true;
+      }
+      if (!this.get("published") && !Mediakron.Access.check("can view unpublished content")) {
+        if (!hideAlert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+      if (Mediakron.Settings.public) {
+        return true;
+      }
+      if (!Mediakron.Access.check("can access site")) {
+        if (!hideAlert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+
+      return true;
+    }
+  }, {
+    key: 'canTransmit',
+    value: function canTransmit(alert) {
+      if (!Mediakron.Access.check("can administer site")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to send content");
+        return false;
+      }
+      var type = this.getNormalType();
+      if (type == "image" || type == "file" || type == "video" || type == "audio") {
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: 'canDuplicate',
+    value: function canDuplicate(alert) {
+      if (!Mediakron.Access.check("can create content")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to duplicate");
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'canDownload',
+    value: function canDownload(alert) {
+      if (!Mediakron.Settings.download) {
+        if (alert) Mediakron.Access.denied("Sorry, files cannot be downloaded.");
+        return true;
+      }
+      if (!Mediakron.Access.check("can download")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+
+      if (!this.get("published") && !Mediakron.Access.check("can view unpublished content")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'canEdit',
+    value: function canEdit(alert) {
+      if (!Mediakron.Access.check("can access site")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+      var user = this.get("user");
+      if (this.get("locked") === true) {
+        if (Mediakron.Access.check("can edit any locked content")) {
+          return true;
+        }
+        if (user.id == Mediakron.user.get("id")) {
+          return true;
+        }
+        //          if(alert) Mediakron.Access.denied('This item is locked.  Please contact the author or an administrator to unlock.');
+        //          return false;
+      }
+
+      if (Mediakron.Access.check("can edit any content")) {
+        return true;
+      }
+      if (Mediakron.Access.check("can edit own content") && user.id == Mediakron.user.get("id")) {
+        return true;
+      }
+      if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+      return false;
+    }
+  }, {
+    key: 'canLock',
+    value: function canLock(alert) {
+      var user = this.get("user");
+      if (this.canEdit(alert)) {
+        if (user.id == Mediakron.user.get("id")) return true;
+        if (Mediakron.Access.check("can edit any locked content")) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }, {
+    key: 'canManage',
+    value: function canManage(alert) {
+      var user = this.get("user");
+      if (!Mediakron.Access.check("can access site")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+      var type = this.get("type");
+
+      if (type == "image" || type == "video" || type == "audio" || type == "story" || type == "file" || type == "text") {
+        if (alert) Mediakron.Access.denied("Items cannot be added to this item");
+        return false;
+      }
+      if (this.get("locked") === true) {
+        if (Mediakron.Access.check("can edit any locked content")) {
+          return true;
+        }
+        if (user.id == Mediakron.user.get("id")) {
+          return true;
+        }
+        if (alert) Mediakron.Access.denied("This item is locked.  Please contact the author or an administrator to unlock.");
+        return false;
+      }
+      if (Mediakron.Access.check("can edit any content")) {
+        return true;
+      }
+      if (Mediakron.Access.check("can edit own content") && user.id == Mediakron.user.get("id")) {
+        return true;
+      }
+      if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+      return false;
+    }
+  }, {
+    key: 'canAddTo',
+    value: function canAddTo(alert) {
+      var user = this.get("user");
+      if (!Mediakron.Access.check("can access site")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+      var type = this.get("type");
+
+      if (type == "image" || type == "video" || type == "audio" || type == "story" || type == "file" || type == "text") {
+        if (alert) Mediakron.Access.denied("Items cannot be added to this item");
+        return false;
+      }
+      if (this.get("locked") === true) {
+        if (Mediakron.Access.check("can edit any locked content")) {
+          return true;
+        }
+        if (user.id == Mediakron.user.get("id")) {
+          return true;
+        }
+        if (alert) Mediakron.Access.denied("This item is locked.  Please contact the author or an administrator to unlock.");
+        return false;
+      }
+      if (Mediakron.Access.check("can edit any content")) {
+        return true;
+      }
+      if (Mediakron.Access.check("can add to any collection")) {
+        return true;
+      }
+      if (Mediakron.Access.check("can edit own content") && user.id == Mediakron.user.get("id")) {
+        return true;
+      }
+
+      if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+      return false;
+    }
+  }, {
+    key: 'canRemoveFrom',
+    value: function canRemoveFrom(alert) {
+      var user = this.get("user");
+      if (!Mediakron.Access.check("can access site")) {
+        if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+        return false;
+      }
+      var type = this.get("type");
+
+      if (type == "image" || type == "video" || type == "audio" || type == "story" || type == "file" || type == "text") {
+        if (alert) Mediakron.Access.denied("Items cannot be added to this item");
+        return false;
+      }
+      if (this.get("locked") === true) {
+        if (Mediakron.Access.check("can edit any locked content")) {
+          return true;
+        }
+        if (user.id == Mediakron.user.get("id")) {
+          return true;
+        }
+        if (alert) Mediakron.Access.denied("This item is locked.  Please contact the author or an administrator to unlock.");
+        return false;
+      }
+
+      if (Mediakron.Access.check("can edit any content")) {
+        return true;
+      }
+      if (Mediakron.Access.check("can remove from any collection")) {
+        return true;
+      }
+      if (Mediakron.Access.check("can edit own content") && user.id == Mediakron.user.get("id")) {
+        return true;
+      }
+
+      if (alert) Mediakron.Access.denied("Sorry, you must login to view that page");
+      return false;
+    }
+  }, {
+    key: 'canPublish',
+    value: function canPublish(alert) {
+      var user = this.get("user");
+      if (Mediakron.Access.check("can publish content")) {
+        return true;
+      }
+      if (alert) Mediakron.Access.denied("Sorry, you are not allowed to publish content");
+      return false;
+    }
+  }, {
+    key: 'canArchive',
+    value: function canArchive(alert) {
+      var user = this.get("user");
+      if (Mediakron.Access.check("can archive content")) {
+        return true;
+      }
+      if (alert) Mediakron.Access.denied("Sorry, you are not allowed to archive content");
+      return false;
+    }
+  }, {
+    key: 'canUnpublish',
+    value: function canUnpublish(alert) {
+      var user = this.get("user");
+      if (this.get("locked") === true) {
+        if (Mediakron.Access.check("can edit any locked content")) {
+          return true;
+        }
+        if (user.id == Mediakron.user.get("id")) {
+          return true;
+        }
+        if (alert) Mediakron.Access.denied("This item is locked.  Please contact the author or an administrator to unlock.");
+        return false;
+      }
+      if (Mediakron.Access.check("can unpublish content")) {
+        return true;
+      }
+      if (alert) Mediakron.Access.denied("Sorry, you are not allowed to unpublish content");
+      return false;
+    }
+  }, {
+    key: 'canDestroy',
+    value: function canDestroy(alert) {
+      var user = this.get("user");
+      if (this.get("locked") === true) {
+        if (Mediakron.Access.check("can edit any locked content")) {
+          return true;
+        }
+        if (user.id == Mediakron.user.get("id")) {
+          return true;
+        }
+        if (alert) Mediakron.Access.denied("This item is locked.  Please contact the author or an administrator to unlock.");
+        return false;
+      }
+      if (Mediakron.Access.check("can delete content")) {
+        return true;
+      }
+      if (alert) Mediakron.Access.denied("Sorry, you are not allowed to delete content");
+      return false;
+    }
+  }, {
+    key: 'downloadable',
+    value: function downloadable() {
+      if (!Mediakron.Settings.download) {
+        return false;
+      }
+      var type = this.getNormalType();
+
+      switch (type) {
+        case "image":
+        case "file":
+        case "text":
+        case "story":
+          return true;
+        default:
+          return false;
+      }
+    }
+  }, {
+    key: 'canOrganize',
+    value: function canOrganize() {
+      var type = this.getNormalType();
+
+      switch (type) {
+        case "map":
+        case "timeline":
+        case "slideshow":
+        case "tag":
+        case "narrative":
+        case "comparison":
+        case "progression":
+        case "folder":
+        case "walkingmap":
+          return true;
+        default:
+          return false;
+      }
+    }
+  }, {
+    key: 'cartoDB',
+    value: function cartoDB() {
+      var map = this.get("map"),
+          type = this.get("type");
+      if (type != "cartodb") return "";
+      if (map.url) {
+        return map.url;
+      }
+      return "";
+    }
+  }, {
+    key: 'duplicate',
+    value: function duplicate() {
+      var data = this.toJSON();
+      delete data.id;
+      delete data.uri;
+      var newitem = new Mediakron.Models.Item();
+      newitem.save(data, {
+        success: function success(model) {
+          model.addToCollection();
+          Mediakron.createUrlMap();
+          Mediakron.messages.message("Item Duplicated", "success", 5000, "bottom");
+          Mediakron.router.navigate("browse", {
+            trigger: true
+          });
+        }
+      });
+    }
+  }, {
+    key: 'metadata',
+    value: function metadata(id) {
+      var metadata = this.get("metadata");
+      if (metadata[id]) {
+        return metadata[id];
+      } else {
+        return "";
+      }
+    }
+  }, {
+    key: 'getClasses',
+    value: function getClasses() {
+      var classes = "";
+      if (this.get("published")) {
+        classes = classes + " published";
+      } else {
+        classes = classes + " unpublished";
+      }
+      if (this.get("archived")) {
+        classes = classes + " archived";
+      }
+      return classes;
+    }
+  }, {
+    key: 'getStatus',
+    value: function getStatus() {
+      var status = "";
+      if (!this.get("published")) {
+        status = status + ' <span class="unpublished-append"><span class="mk-icon mk-unpublish"></span><span class="status-text">Unpublished</span></span>';
+      }
+      if (this.get("archived")) {
+        status = status + ' <span class="archived-append"> <span class="mk-icon mk-archive"></span><span class="status-text">Archived</span></span>';
+      }
+      if (this.get("locked") && this.canEdit(false)) {
+        status = status + ' <span class="locked-append tooltip--w" data-tooltip="This item is locked"> <span class="mk-icon mk-lock"></span><span class="status-text">Locked</span></span>';
+      }
+
+      return status;
+    }
+  }, {
+    key: 'getStoryTeaser',
+    value: function getStoryTeaser() {
+      teaser = "";
+      if (this.get("type") == "story") {
+        var body = this.get("body"),
+            i = 0,
+            length = body.length;
+        if (length > 0) {
+          for (i; i < length; i++) {
+            if (body[i].tag == "p") {
+              if (body[i].content) {
+                teaser += body[i].content;
+              }
+            }
+            if (teaser.length > 300) break;
+          }
+        }
+      }
+
+      return teaser.substring(0, 300);
+    }
+  }, {
+    key: 'getPopup',
+    value: function getPopup(template, options) {
+      if (!options) options = {};
+      var jst = JST["popup.default"];
+      if (template) {
+        if (JST["popup." + template]) {
+          jst = JST["popup." + template];
+        }
+      }
+      options.item = this;
+      return jst(options);
+    }
+  }, {
+    key: 'getLTIEmbed',
+    value: function getLTIEmbed() {
+      var url = "",
+          type = this.get("type"),
+          id = this.id,
+          uri = this.get("uri");
+      return Mediakron.Settings.url + "/lti/" + uri;
+    }
+  }, {
+    key: 'getFullUrl',
+    value: function getFullUrl() {
+      var url = "",
+          type = this.get("type"),
+          id = this.id,
+          uri = this.get("uri");
+      return Mediakron.Settings.url + "/" + uri;
+    }
+
+    /* Get a link to this topic */
+
+  }, {
+    key: 'getLink',
+    value: function getLink() {
+      var url = this.getURL(),
+          title = this.get("title");
+      return Mediakron.Theme.link(title, url);
+    }
+  }, {
+    key: 'getContextPopover',
+    value: function getContextPopover(context, go) {
+      var url = this.getURL(),
+          title = this.get("title");
+      if (context) {
+        url = context + "/" + url;
+      } else if (Mediakron.context && Mediakron.context.item) {
+        url = Mediakron.context.item.get("uri") + "/" + url;
+      } else {
+        url = url;
+      }
+      if (go) {
+        url = url;
+      }
+      return '<a href="' + url + '" data-toggle="popover" title="' + title + '" >' + title + '</a><div class="popover-content">' + this.getPopup() + "</div>";
+    }
+  }, {
+    key: 'getContextLink',
+    value: function getContextLink(context, go, urlOnly) {
+      var url = this.getURL(),
+          title = this.get("title");
+      if (context) {
+        var breadcrumb = Mediakron.controller.breadcrumb,
+            length = breadcrumb.length,
+            i = 0,
+            item,
+            uri,
+            newurl = "";
+        if (length > 0) {
+          for (i; i < length; i++) {
+            uri = breadcrumb[i].get("uri");
+            newurl = newurl + breadcrumb[i].get("uri") + "/";
+            if (uri == context) {
+              break;
+            }
+          }
+          url = newurl + url;
+        } else {
+          url = context + "/" + url;
+        }
+      } else if (Mediakron.context && Mediakron.context.item) {
+        url = Mediakron.context.item.get("uri") + "/" + url;
+      } else {
+        url = url;
+      }
+      if (go) {
+        url = url;
+      }
+      if (urlOnly) return url;
+      return Mediakron.Theme.link(title, url);
+    }
+  }, {
+    key: 'overlayType',
+    value: function overlayType(type) {
+      var overlay = this.getMapOverlay();
+      if (overlay.type) {
+        return overlay.type;
+      }
+      return false;
+    }
+  }, {
+    key: 'overlayTitle',
+    value: function overlayTitle(title) {
+      var overlay = this.getMapOverlay();
+      if (overlay.title) {
+        return overlay.title;
+      }
+      return "";
+    }
+  }, {
+    key: 'overlayUrl',
+    value: function overlayUrl(url) {
+      var overlay = this.getMapOverlay();
+      if (overlay.url) {
+        return overlay.url;
+      }
+      return "";
+    }
+  }, {
+    key: 'overlayFile',
+    value: function overlayFile(url) {
+      var overlay = this.getMapOverlay();
+      if (overlay.file) {
+        return Mediakron.Settings.filepath + overlay.file;
+      }
+      return false;
+    }
+  }, {
+    key: 'overlayFileName',
+    value: function overlayFileName(url) {
+      var overlay = this.getMapOverlay();
+      if (overlay.name) {
+        return overlay.name;
+      }
+      return false;
+    }
+  }, {
+    key: 'getMapOverlay',
+    value: function getMapOverlay() {
+      var overlay = this.get("overlay");
+      return overlay;
+    }
+  }, {
+    key: 'getContextLinkTo',
+    value: function getContextLinkTo(context) {
+      var url = this.getURL(),
+          title = this.get("title");
+      if (typeof context == "string") {
+        url = context + "/" + url;
+        title = Mediakron.getItemFromURI(context).get("title");
+      } else if ((typeof context === 'undefined' ? 'undefined' : _typeof(context)) == "object") {
+        url = context.get("uri") + "/" + url;
+        title = context.get("title");
+      } else if (Mediakron.context) {
+        url = Mediakron.context.item.get("uri") + "/" + url;
+        title = Mediakron.context.item.get("title");
+      } else {
+        url = url;
+      }
+      return Mediakron.Theme.link(title, url);
+    }
+  }, {
+    key: 'getCrumbLink',
+    value: function getCrumbLink(t) {
+      var length = Mediakron.controller.uri.length,
+          i = 0,
+          uri = this.get("uri"),
+          url = "",
+          title = this.get("title");
+      for (i; i < length; i++) {
+        if (i == t) {
+          break;
+        }
+        url = url + Mediakron.controller.uri[i] + "/";
+      }
+      url = url.replace(/\/+$/, "");
+      return Mediakron.Theme.link(title, url);
+    }
+  }, {
+    key: 'getCurrentUrl',
+    value: function getCurrentUrl() {
+      var i = 0,
+          uri = this.get("uri"),
+          length = Mediakron.controller.uri.indexOf(uri),
+          url = "",
+          title = this.get("title");
+
+      for (i; i <= length; i++) {
+        url = url + Mediakron.controller.uri[i] + "/";
+      }
+      url = url.replace(/\/+$/, "");
+      return url;
+    }
+  }, {
+    key: 'editURL',
+    value: function editURL() {
+      var type = this.getNormalType(),
+          uri = this.get("uri");
+
+      switch (type) {
+        case "image":
+        case "video":
+        case "story":
+        case "file":
+        case "text":
+        case "audio":
+          if (this.get("uri") + "/" == Mediakron.controller.getEditPath(uri)) {
+            return "settings/content/edit/" + this.get("uri");
+          }
+          return "settings/content/edit/" + Mediakron.controller.getEditPath(uri) + this.get("uri");
+        default:
+          return "settings/manage/edit/" + Mediakron.controller.getEditPath(uri) + this.get("uri");
+      }
+    }
+  }, {
+    key: 'editLink',
+    value: function editLink() {
+      return Mediakron.Theme.link('<span title="Edit" class="mk-icon mk-edit"></span>&nbsp;<span class="button-text">Edit</span>', this.editURL());
+    }
+  }, {
+    key: 'downloadUrl',
+    value: function downloadUrl() {
+      return Mediakron.Settings.basepath + "download/" + this.get("uri");
+    }
+  }, {
+    key: 'revisionUrl',
+    value: function revisionUrl() {
+      return "settings/revisions/" + this.get("uri");
+    }
+  }, {
+    key: 'transmitUrl',
+    value: function transmitUrl() {
+      return "settings/transmit/" + this.get("uri");
+    }
+  }, {
+    key: 'transmitLink',
+    value: function transmitLink() {
+      return Mediakron.Theme.link('<span class="mk-icon mk-export transmit" title="Copy to Site" ></span>&nbsp;<span class="button-text">Copy to Site</span>', this.transmitUrl());
+    }
+  }, {
+    key: 'duplicateUrl',
+    value: function duplicateUrl() {
+      return "settings/duplicate/" + this.get("uri");
+    }
+  }, {
+    key: 'duplicateLink',
+    value: function duplicateLink() {
+      return Mediakron.Theme.link('<span class="mk-icon mk-duplicate duplicate" title="Duplicate" ></span>&nbsp;<span class="button-text">Duplicate</span>', this.duplicateUrl());
+    }
+  }, {
+    key: 'publishURL',
+    value: function publishURL() {
+      return "settings/content/publish/" + this.get("uri");
+    }
+  }, {
+    key: 'publishLink',
+    value: function publishLink() {
+      if (this.canPublish(false)) return Mediakron.Theme.link('<span class="mk-icon mk-save publish" title="Publish" ></span>&nbsp;<span class="button-text">Publish</span>', this.publishURL());
+      return "";
+    }
+  }, {
+    key: 'unpublishURL',
+    value: function unpublishURL() {
+      return "settings/content/unpublish/" + this.get("uri");
+    }
+  }, {
+    key: 'unpublishLink',
+    value: function unpublishLink() {
+      if (this.canUnpublish(false)) return Mediakron.Theme.link('<span title="Unpublish" class="mk-icon mk-unpublish unpublish"></span>&nbsp;<span class="button-text">Unpublish</span>', this.unpublishURL());
+      return "";
+    }
+  }, {
+    key: 'archiveUrl',
+    value: function archiveUrl() {
+      return "settings/content/archive/" + this.get("uri");
+    }
+  }, {
+    key: 'archiveLink',
+    value: function archiveLink() {
+      if (this.canArchive(false)) return Mediakron.Theme.link('<span class="mk-icon mk-archive unpublish" title="Archive" ></span>&nbsp;<span class="button-text">Archive</span>', this.archiveUrl());
+      return "";
+    }
+  }, {
+    key: 'restoreUrl',
+    value: function restoreUrl() {
+      return "settings/content/restore/" + this.get("uri");
+    }
+  }, {
+    key: 'restoreLink',
+    value: function restoreLink() {
+      if (this.canArchive(false)) return Mediakron.Theme.link('<span title="Unarchive" class="mk-icon mk-undo restore"></span>&nbsp;<span class="button-text">Unarchive</span>', this.restoreUrl());
+      return "";
+    }
+  }, {
+    key: 'lockUrl',
+    value: function lockUrl() {
+      return "settings/content/lock/" + this.get("uri");
+    }
+  }, {
+    key: 'lockLink',
+    value: function lockLink() {
+      if (this.canLock(false)) return Mediakron.Theme.link('<span class="mk-icon mk-lock" title="Lock" ></span>&nbsp;<span class="button-text">Lock</span>', this.lockUrl());
+      return "";
+    }
+  }, {
+    key: 'unlockUrl',
+    value: function unlockUrl() {
+      return "settings/content/unlock/" + this.get("uri");
+    }
+  }, {
+    key: 'unlockLink',
+    value: function unlockLink() {
+      if (this.canLock(false)) return Mediakron.Theme.link('<span title="Unlock" class="mk-icon mk-unlocked"></span>&nbsp;<span class="button-text">Unlock</span>', this.unlockUrl());
+      return "";
+    }
+  }, {
+    key: 'deleteURL',
+    value: function deleteURL() {
+      return "settings/content/delete/" + this.get("uri");
+    }
+  }, {
+    key: 'deleteLink',
+    value: function deleteLink() {
+      return Mediakron.Theme.link('<span title="Delete" class="mk-icon mk-delete"></span>&nbsp;<span class="button-text">Delete</span>', this.deleteURL());
+    }
+
+    // return this item as the url to its image styled with a certian theme
+
+  }, {
+    key: 'getStyledImage',
+    value: function getStyledImage(style) {
+      var image = this.get("image"),
+          path = "";
+      if (this.get("type") !== "file" && this.get("type") !== "text") {
+        if (image.uri) {
+          path = image.uri;
+        }
+        if (!path) return "";
+        return Mediakron.Image.style(path, style);
+      } else if (this.get("type") == "file" || this.get("type") == "text") {
+        image = this.get("text");
+        if (image.type == "image") {
+          if (image.url) {
+            path = image.url;
+          }
+          if (image.uri) {
+            path = image.uri;
+          }
+        }
+        if (!path) {
+          image = this.get("image");
+          if (image.uri) {
+            path = image.uri;
+          }
+        }
+        if (!path) return "";
+        return Mediakron.Image.style(path, style);
+      }
+    }
+
+    // get the themed image for this item, for a particular style
+
+  }, {
+    key: 'getImage',
+    value: function getImage(style, addClass) {
+      var styled, image, alt;
+      if (this.get("type") !== "file" && this.get("type") !== "text") {
+        image = this.get("image");
+        alt = this.get("title");
+        if (image.alt) {
+          alt = image.alt;
+        }
+        styled = this.getStyledImage(style);
+
+        if (styled === "") return "";
+        return Mediakron.Image.theme(styled, this.get("title"), alt, "img-responsive " + addClass);
+      } else if (this.get("type") == "file" || this.get("type") == "text") {
+        image = this.get("text");
+        alt = this.get("title");
+        if (image.alt) {
+          alt = image.alt;
+        }
+        styled = this.getStyledImage(style);
+
+        if (styled === "") return "";
+        return Mediakron.Image.theme(styled, this.get("title"), alt, "img-responsive " + addClass);
+      } else {
+        return "";
+      }
+    }
+  }, {
+    key: 'inTopic',
+    value: function inTopic(uri) {
+      var relationships = this.get("relationships");
+      var topics = relationships.topics,
+          t = 0,
+          len = topics.length,
+          topic;
+
+      for (t; t < len; t++) {
+        topic = topics[t];
+        if (topic.uri == uri) return true;
+      }
+      return false;
+    }
+  }, {
+    key: 'hasParent',
+    value: function hasParent() {
+      var relationships = this.get("relationships");
+      if (relationships.topics.length > 0 || relationships.tags.length > 0 || relationships.maps.length > 0 || relationships.timelines.length > 0) {
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: 'hasMetadata',
+    value: function hasMetadata() {
+      /* "Other Metadata" Fields */
+      var metadata = this.get("metadata");
+      if (!metadata.description && !metadata.published && !metadata.creator && !metadata.publisher && !metadata.contributor && !metadata.format && !metadata.identifier && !metadata.language && !metadata.relation && !metadata.coverage && !metadata.medium && !metadata.provenance && !metadata.SizeOrDuration && !metadata.subject && !metadata.location && !metadata.rights) {
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'hasSource',
+    value: function hasSource() {
+      /* "Source" fields */
+      var metadata = this.get("metadata");
+      if (metadata.source !== "" || metadata.citation !== "") {
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: 'hasTags',
+    value: function hasTags() {
+      var topics = this.getRelationship("topics"),
+          i = 0,
+          count = topics.length,
+          tag,
+          found = false;
+      for (i; i < count; i++) {
+        if (topics[i]) {
+          tag = Mediakron.getItemFromURI(topics[i].uri);
+          if (tag) {
+            if (tag.get("type") == "tag") {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
+    }
+  }, {
+    key: 'getNormalType',
+    value: function getNormalType() {
+      var type = this.get("type");
+      switch (type) {
+        case "map":
+        case "image-map":
+        case "carto-voyager":
+        case "stamen-lite":
+        case "physical":
+        case "stamen-light":
+        case "stamen-watercolor":
+        case "osm":
+        case "cartodb":
+          return "map";
+        default:
+          return type;
+      }
+    }
+  }, {
+    key: 'getOption',
+    value: function getOption(opt) {
+      var options = this.get("options");
+      if (options[opt]) {
+        return options[opt];
+      }
+      return false;
+    }
+  }, {
+    key: 'getColor',
+    value: function getColor() {
+      var type = this.getNormalType("type"),
+          val = false;
+      if (type == "layer") {
+        var filteropts = this.get("options");
+        if (filteropts.icon) {
+          val = filteropts.color;
+        }
+      }
+      return val;
+    }
+    // get the themed image for this item, for a particular style
+
+  }, {
+    key: 'getSquareImage',
+    value: function getSquareImage(style, width, height, link) {
+      if (!width) width = 200;
+      if (!height) height = 200;
+      var type = this.getNormalType("type"),
+          iconclass = "",
+          text = this.get("text"),
+          alt = this.get("title");
+      var image = this.get("image");
+      if (image && (type != "file" || this.get("type") !== "text")) {
+        if (image.uri) {
+          if (image.alt) {
+            alt = image.alt;
+          }
+
+          if (link) {
+            return '<a href="' + this.getURL() + '">' + Mediakron.Image.themeSquare(this.getStyledImage(style), this.get("title"), alt, "img-responsive", width, height) + "</a>";
+          } else {
+            return Mediakron.Image.themeSquare(this.getStyledImage(style), this.get("title"), alt, "img-responsive", width, height);
+          }
+        }
+      } else if (text && text.type == "image" && text.url) {
+        if (link) {
+          return '<a href="' + this.getURL() + '">' + Mediakron.Image.themeSquare(Mediakron.Image.style(text.url, style), this.get("title"), this.get("title"), "img-responsive", width, height) + "</a>";
+        } else {
+          return Mediakron.Image.themeSquare(Mediakron.Image.style(text.url, style), this.get("title"), this.get("title"), "img-responsive", width, height);
+        }
+      }
+      switch (type) {
+        case "map":
+          iconclass = "mk-map";
+          break;
+        case "layer":
+          var filteropts = this.get("options"),
+              defaultOpt = "mk-map";
+          if (filteropts.icon) {
+            defaultOpt = filteropts.icon;
+          }
+          iconclass = defaultOpt;
+          break;
+        case "timeline":
+          iconclass = "mk-timeline";
+          break;
+        case "video":
+          iconclass = "mk-video";
+          break;
+        case "story":
+          iconclass = "mk-story";
+          break;
+        case "text":
+          iconclass = "mk-text";
+          break;
+        case "file":
+          iconclass = "mk-file";
+          break;
+        case "audio":
+          iconclass = "mk-audio";
+          break;
+        case "narrative":
+          iconclass = "mk-narrative";
+          break;
+        case "progression":
+          iconclass = "mk-progression";
+          break;
+        case "comparison":
+          iconclass = "mk-comparison";
+          break;
+        case "folder":
+          iconclass = "mk-folder";
+          break;
+        case "slideshow":
+          iconclass = "mk-slideshow";
+          break;
+        case "tag":
+          iconclass = "mk-tag";
+          break;
+      }
+      if (link) {
+        return '<a href="' + this.getURL() + '"><div class="item-square-icon" style="width:' + width + "px;height:" + height + "px;font-size:" + width * 0.9 + 'px;"><span class="mk-icon ' + iconclass + '"></span><span class="sr-only">' + type + "</span></div></a>";
+      } else {
+        return '<div class="item-square-icon" style="width:' + width + "px;height:" + height + "px;font-size:" + width * 0.9 + 'px;"><span class="mk-icon ' + iconclass + '"></span><span class="sr-only">' + type + "</span></div>";
+      }
+    }
+    // get the themed image for this item, for a particular style
+
+  }, {
+    key: 'getMosaicImage',
+    value: function getMosaicImage(style, width, height, link) {
+      if (!width) width = 200;
+      if (!height) height = 200;
+      var type = this.getNormalType("type"),
+          iconclass = "",
+          text = this.get("text"),
+          alt = this.get("title");
+      var image = this.get("image");
+      if (image && (type != "file" || this.get("type") !== "text")) {
+        if (image.uri) {
+          if (image.alt) {
+            alt = image.alt;
+          }
+
+          if (link) {
+            return '<a href="' + this.getURL() + '">' + Mediakron.Image.theme(this.getStyledImage(style), this.get("title"), alt, "", width, height) + "</a>";
+          } else {
+            return Mediakron.Image.theme(this.getStyledImage(style), this.get("title"), alt, "", width, height);
+          }
+        }
+      } else if (text && text.type == "image" && text.url) {
+        if (link) {
+          return '<a href="' + this.getURL() + '">' + Mediakron.Image.theme(Mediakron.Image.style(text.url, style), this.get("title"), this.get("title"), "", width, height) + "</a>";
+        } else {
+          return Mediakron.Image.theme(Mediakron.Image.style(text.url, style), this.get("title"), this.get("title"), "", width, height);
+        }
+      }
+      switch (type) {
+        case "map":
+          iconclass = "mk-map";
+          break;
+        case "layer":
+          var filteropts = this.get("options"),
+              defaultOpt = "mk-map";
+          if (filteropts.icon) {
+            defaultOpt = filteropts.icon;
+          }
+          iconclass = defaultOpt;
+          break;
+        case "timeline":
+          iconclass = "mk-timeline";
+          break;
+        case "video":
+          iconclass = "mk-video";
+          break;
+        case "story":
+          iconclass = "mk-text";
+          break;
+        case "text":
+          iconclass = "mk-text";
+          break;
+        case "file":
+          iconclass = "mk-text";
+          break;
+        case "audio":
+          iconclass = "mk-audio";
+          break;
+        case "narrative":
+          iconclass = "mk-narrative";
+          break;
+        case "progression":
+          iconclass = "mk-progression";
+          break;
+        case "comparison":
+          iconclass = "mk-comparison";
+          break;
+        case "folder":
+          iconclass = "mk-folder";
+          break;
+        case "slideshow":
+          iconclass = "mk-slideshow";
+          break;
+        case "tag":
+          iconclass = "mk-tag";
+          break;
+      }
+      if (link) {
+        return '<a href="' + this.getURL() + '"><div class="item-square-icon" style="width:' + width + "px;height:" + height + "px;font-size:" + width * 0.9 + 'px;"><span class="mk-icon ' + iconclass + '"></span><span class="sr-only">' + type + "</span></div></a>";
+      } else {
+        return '<div class="item-square-icon" style="width:' + width + "px;height:" + height + "px;font-size:" + width * 0.9 + 'px;"><span class="mk-icon ' + iconclass + '"></span><span class="sr-only">' + type + "</span></div>";
+      }
+    }
+  }, {
+    key: 'getRelationship',
+    value: function getRelationship(relationship) {
+      var relationships = this.get("relationships");
+      if (!relationships[relationship]) return [];
+      return relationships[relationship];
+    }
+  }, {
+    key: 'getRelationshipByURI',
+    value: function getRelationshipByURI(uri, relationship) {
+      var children = this.getRelationship(relationship),
+          length = children.length,
+          i = 0;
+      if (length === 0) return false;
+      for (i; i < length; i++) {
+        if (children[i].uri == uri) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }, {
+    key: 'fetchRelationship',
+    value: function fetchRelationship(uri, relationship) {
+      var children = this.getRelationship(relationship),
+          length = children.length,
+          i = 0;
+      if (length === 0) return false;
+      for (i; i < length; i++) {
+        if (children[i].uri == uri) {
+          return children[i];
+        }
+      }
+      return false;
+    }
+  }, {
+    key: 'setRelationship',
+    value: function setRelationship(relationship, data) {
+      var relationships = this.get("relationships");
+      relationships[relationship] = data;
+      this.set("relationships", relationships);
+    }
+  }, {
+    key: 'getMetadata',
+    value: function getMetadata(attribute) {
+      var metadata = this.get("metadata");
+      return metadata[attribute];
+    }
+  }, {
+    key: 'getRelationalForm',
+    value: function getRelationalForm(relationship) {
+      var rendered = "",
+          relationships = this.get("relationships"),
+          relate = relationships[relationship],
+          length = relate.length,
+          i = 0,
+          template = JST["settings.section.add.to." + relationship];
+
+      for (i; i < length; i++) {
+        rendered = template(relate[i]);
+      }
+      return rendered;
+    }
+  }, {
+    key: 'getSidebar',
+    value: function getSidebar(parent) {
+      this.parent = parent;
+      var sidebar = new Mediakron.Sidebar.Init(this);
+      sidebar.render();
+      //        $('.page-options a').tooltip();
+
+      return sidebar;
+    }
+  }, {
+    key: 'renderMaps',
+    value: function renderMaps() {
+      var m,
+          map,
+          maps = this.get("maps");
+      for (m in maps) {
+        map = Mediakron.getItemFromURI(maps[m]);
+        Mediakron.Maps.Theme(map, "map-sidebar-" + this.get("uri"));
+      }
+    }
+  }, {
+    key: 'metadataForm',
+    value: function metadataForm() {
+      var metadata = this.get("metadata"),
+          template = JST["settings.section.metadata.form"],
+          html;
+      var keys = ["source", "citation", "description", "published", "creator", "publisher", "contributor", "format", "identifier", "language", "relation", "coverage", "medium", "provenance", "SizeOrDuration", "subject", "location", "rights"];
+      if (__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.size(metadata) === 0) {
+        metadata = {
+          source: "",
+          citation: "",
+          description: "",
+          published: "",
+          creator: "",
+          publisher: "",
+          contributor: "",
+          format: "",
+          identifier: "",
+          language: "",
+          relation: "",
+          coverage: "",
+          medium: "",
+          provenance: "",
+          SizeOrDuration: "",
+          subject: "",
+          location: "",
+          rights: ""
+        };
+      }
+      for (i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        if (!metadata[key]) {
+          metadata[key] = "";
+        }
+      }
+      html = template(metadata);
+      return html;
+    }
+  }, {
+    key: 'wysiwygForm',
+    value: function wysiwygForm() {
+      var template = JST["settings.section.wysiwyg"],
+          html = template();
+      return html;
+    }
+  }, {
+    key: 'defaultData',
+    value: function defaultData() {
+      var type = this.get("type");
+      switch (type) {
+        case "folder":
+        case "slideshow":
+        case "tag":
+        case "narrative":
+        case "walkingmap":
+        case "comparison":
+          return false;
+        case "progression":
+          return false;
+        case "map":
+        case "stamen-lite":
+        case "carto-voyager":
+        case "stamen-light":
+        case "stamen-watercolor":
+        case "osm":
+        case "cartodb":
+          var map = Mediakron.Status.CurrentMap;
+          return {
+            type: "point",
+            coordinate: map.getCenter()
+          };
+        case "timeline":
+          return {
+            start: {
+              year: 1000
+            }
+          };
+      }
+    }
+  }, {
+    key: 'getTagsComma',
+    value: function getTagsComma() {
+      var tags = this.getRelationship("tags"),
+          tag,
+          number = tags.length,
+          i = 0,
+          output = "";
+      for (i; i < number; i++) {
+        if (tags[i]) {
+          tag = Mediakron.getItemFromURI(tags[i].uri);
+          if (tag) {
+            output = output + tag.get("title") + ", ";
+          }
+        }
+      }
+      return output.substring(0, output.length - 2);
+    }
+  }, {
+    key: 'formatEvent',
+    value: function formatEvent(uri, which) {
+      if (!which) which = "start";
+      var time = this.getRelationship("timeline");
+      __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.each(time, function (time) {});
+    }
+  }, {
+    key: 'addComment',
+    value: function addComment(html) {
+      var comments = this.getRelationship("comments"),
+          time = new Date().getTime(),
+          uri = "comment:" + Mediakron.user.get("id") + ":" + time;
+      var comment = {
+        uri: uri,
+        data: {
+          body: html,
+          author: Mediakron.user.get("id"),
+          name: Mediakron.user.get("name"),
+          date: Mediakron.formatUnixDateStamp(time / 1000)
+        }
+      };
+      comments.push(comment);
+      this.setRelationship("comments", comments);
+    }
+  }, {
+    key: 'getFeature',
+    value: function getFeature(addClass) {
+      if (!addClass) addClass = "";
+      return '<figure id="feature-' + this.get("uri") + "-" + Date.now().toString(16) + '" uri="' + this.get("uri") + '" contenteditable="false" class="feature type-' + this.getNormalType() + " " + addClass + '" type="' + this.getNormalType() + '" />';
+    }
+  }, {
+    key: 'getChild',
+    value: function getChild(uri, type) {
+      if (!type) type = "children";
+      var children = this.getRelationship(type),
+          count = children.length,
+          i = 0,
+          child;
+      for (i; i < count; i++) {
+        child = children[i];
+        if (child.uri == uri) return child;
+      }
+      return false;
+    }
+  }, {
+    key: 'getChildByUri',
+    value: function getChildByUri(uri) {
+      var type = "children";
+      switch (this.getNormalType()) {
+        case "folder":
+        case "slideshow":
+        case "tag":
+        case "narrative":
+        case "story":
+        case "walkingmap":
+        case "progression":
+        case "comparison":
+        case "layer":
+        case "story":
+          type = "children";
+          break;
+        case "map":
+        case "image-map":
+        case "stamen-lite":
+        case "carto-voyager":
+        case "stamen-light":
+        case "stamen-watercolor":
+        case "osm":
+        case "cartodb":
+          type = "layers";
+          break;
+        case "timeline":
+          type = "events";
+          break;
+      }
+      return this.getChild(uri, type);
+    }
+  }, {
+    key: 'start',
+    value: function start() {
+      if (!this.get("date")) return false;
+      if (this.get("date").start) return this.get("date").start;
+      return false;
+    }
+  }, {
+    key: 'end',
+    value: function end() {
+      if (!this.get("date")) return false;
+      if (this.get("date").end) return this.get("date").end;
+      return false;
+    }
+  }, {
+    key: 'add',
+    value: function add(child, data, skipSave) {
+      var parent = this,
+          type = this.get("type"),
+          relationships,
+          relateTo,
+          relateFrom,
+          children = [],
+          parents = [],
+          i = 0,
+          length,
+          uri = this.get("uri"),
+          childURI = child.get("uri"),
+          found = false;
+
+      if (uri == childURI) {
+        return this;
+      }
+      switch (type) {
+        case "folder":
+        case "slideshow":
+        case "tag":
+        case "narrative":
+        case "story":
+        case "walkingmap":
+        case "progression":
+        case "comparison":
+        case "layer":
+        case "story":
+          relateTo = "children";
+          relateFrom = "topics";
+          break;
+        case "map":
+        case "image-map":
+        case "stamen-lite":
+        case "carto-voyager":
+        case "stamen-light":
+        case "stamen-watercolor":
+        case "osm":
+        case "cartodb":
+          relateTo = "layers";
+          relateFrom = "maps";
+          break;
+        case "timeline":
+          relateTo = "events";
+          relateFrom = "timelines";
+          break;
+      }
+
+      children = this.getRelationship(relateTo);
+      if (children) {
+        length = children.length;
+        for (i; i < length; i++) {
+          if (children[i].uri == childURI) {
+            found = i;
+            break;
+          }
+        }
+        if (found) {
+          children[found] = { uri: childURI, data: data, changed: true };
+        } else {
+          children.push({ uri: childURI, data: data, changed: true });
+        }
+        parent.setRelationship(relateTo, children);
+        if (!skipSave) {
+          this.save();
+        }
+      }
+
+      parents = child.getRelationship(relateFrom);
+      if (parents) {
+        length = parents.length;
+        for (i; i < length; i++) {
+          if (parents[i]) {
+            if (parents[i].uri) {
+              if (parents[i].uri == uri) {
+                found = i;
+                break;
+              }
+            }
+          }
+        }
+        if (found) {
+          parents[found] = { uri: uri, data: data, changed: true };
+        } else {
+          parents.push({ uri: uri, data: data, changed: true });
+        }
+        child.setRelationship(relateFrom, parents);
+      }
+
+      return this;
+    }
+  }, {
+    key: 'remove',
+    value: function remove(child, callback) {
+      var parent = this,
+          type = this.get("type"),
+          relateTo,
+          relateFrom,
+          children = [],
+          parents = [],
+          i = 0,
+          length,
+          uri = this.get("uri"),
+          found = [];
+      if (typeof child == "string") {
+        childURI = child;
+      } else {
+        childURI = child.get("uri");
+      }
+      switch (type) {
+        case "folder":
+        case "slideshow":
+        case "tag":
+        case "narrative":
+        case "walkingmap":
+        case "progression":
+        case "comparison":
+        case "layer":
+        case "story":
+          relateTo = "children";
+          relateFrom = "topics";
+          break;
+        case "map":
+        case "carto-voyager":
+        case "stamen-lite":
+        case "stamen-light":
+        case "stamen-watercolor":
+        case "osm":
+        case "cartodb":
+          relateTo = "layers";
+          relateFrom = "maps";
+          break;
+        case "timeline":
+          relateTo = "events";
+          relateFrom = "timelines";
+          break;
+      }
+      children = this.getRelationship(relateTo);
+      if (children) {
+        length = children.length;
+        for (i; i < length; i++) {
+          if (children[i].uri == childURI) {
+            children[i].remove = true;
+          }
+          found.push(children[i]);
+        }
+        this.setRelationship(relateTo, found);
+        this.save({}, {
+          success: function success(model) {
+            if (callback) {
+              callback(model);
+            }
+          }
+        });
+      }
+      found = [];
+      if (typeof child != "string") {
+        parents = child.getRelationship(relateFrom);
+
+        if (parents) {
+          length = parents.length;
+          for (i; i < length; i++) {
+            if (parents[i].uri == uri) {
+              parents[i].remove = true;
+            }
+            found.push(parents[i]);
+          }
+          if (found) {
+            child.setRelationship(relateFrom, found);
+            child.save();
+          }
+        }
+      }
+
+      return this;
+    }
+  }, {
+    key: 'skips',
+    value: function skips() {
+      var skip = [],
+          children,
+          items,
+          length,
+          i = 0;
+      switch (this.get("type")) {
+        case "folder":
+        case "slideshow":
+        case "tag":
+        case "narrative":
+        case "story":
+        case "walkingmap":
+        case "progression":
+        case "layer":
+        case "comparison":
+          children = "children";
+          break;
+        case "map":
+        case "image-map":
+        case "carto-voyager":
+        case "stamen-lite":
+        case "stamen-light":
+        case "stamen-watercolor":
+        case "osm":
+        case "cartodb":
+          children = "layers";
+          break;
+        case "timeline":
+          children = "events";
+          break;
+      }
+      items = this.getRelationship(children);
+      length = items.length;
+      for (i; i < length; i++) {
+        skip.push(items[i].uri);
+      }
+      skip.push(this.get("uri"));
+      return skip;
+    }
+  }, {
+    key: 'hasDate',
+    value: function hasDate() {
+      var date = this.get("date");
+      var validate = Mediakron.validateTimeline(date);
+      if (!validate) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }, {
+    key: 'validateTimeline',
+    value: function validateTimeline(changes) {
+      var date = this.get("date");
+      if (changes) {
+        date = changes;
+      }
+      return Mediakron.validateTimeline(date);
+    }
+  }, {
+    key: 'updateAnnotationRelationship',
+    value: function updateAnnotationRelationship() {
+      var saveAnnotations = [],
+          annotations = this.get("annotations"),
+          attachments = [];
+      __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.each(annotations, function (annotation, id) {
+        if (annotation.attachment) {
+          attachments.push(annotation.attachment);
+        }
+        saveAnnotations.push(annotation);
+      });
+      var i = 0,
+          length = attachments.length,
+          item,
+          citations,
+          c,
+          clen,
+          found;
+      for (i; i < length; i++) {
+        item = Mediakron.getItemFromURI(attachments[i]);
+        if (item) {
+          citations = item.getRelationship("citations");
+          if (!citations) citations = [];
+          c = 0;
+          clen = citations.length;
+          found = false;
+          for (c; c < clen; c++) {
+            if (citations.uri == this.get("uri")) {
+              found = true;
+            }
+          }
+          if (!found) {
+            citations.push({
+              uri: this.get("uri"),
+              data: false
+            });
+          }
+          item.setRelationship("citations", citations);
+        }
+      }
+      this.setRelationship("annotations", saveAnnotations);
+    }
+  }, {
+    key: 'getCreated',
+    value: function getCreated() {
+      return Mediakron.formatUnixDateStamp(this.get("created"), "small");
+    }
+  }, {
+    key: 'getChanged',
+    value: function getChanged() {
+      return Mediakron.formatUnixDateStamp(this.get("changed"), "small");
+    }
+  }, {
+    key: 'getRow',
+    value: function getRow(context, callback, thumbnails, extra) {
+      var view,
+          data = {
+        item: this,
+        context: context,
+        callback: callback,
+        thumbnails: thumbnails,
+        data: extra
+      };
+      if (context == "lti") {
+        view = new Mediakron.ContentBrowser.rowLTI(data);
+      } else if (context == "selectormap") {
+        view = new Mediakron.ContentBrowser.rowSelectorMap(data);
+      } else if (context == "timeline") {
+        view = new Mediakron.ContentBrowser.rowTimeline(data);
+      } else if (context == "narrative") {
+        view = new Mediakron.ContentBrowser.rowNarrative(data);
+      } else if (context == "selector") {
+        view = new Mediakron.ContentBrowser.rowSelector(data);
+      } else if (context == "elasticsearch") {
+        view = new Mediakron.Search.rowElasticSearch(data);
+      } else {
+        view = new Mediakron.ContentBrowser.Row(data);
+      }
+
+      return view;
+    }
+  }]);
+
+  return Model;
+}(__WEBPACK_IMPORTED_MODULE_0_backbone___default.a.Model);
+
+/* harmony default export */ __webpack_exports__["a"] = (Model);
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var ClassManagement = function ClassManagement(options) {
-    if (!options) options = {};
-    this.initialize.apply(this, arguments);
-};
-_.extend(ClassManagement.prototype, ClassManagement, {
-    body: 'body',
-    $body: false,
-    current: '',
-    next: '',
-    stat: '',
-    initialize: function initialize() {
-        this.$body = $(this.body);
-    },
-    setStatic: function setStatic(stat) {
-        this.$body.addClass(stat);
-        this.stat = this.stat + ' ' + stat;
-    },
-    swap: function swap(remove, add) {
-        this.$body.removeClass(remove).addClass(add);
-    },
-    toggle: function toggle(_toggle) {
-        this.$body.toggleClass(_toggle);
-    },
-    reset: function reset() {
-        this.$body.removeClass(this.current).addClass(this.next);
-        this.current = this.next;
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var ClassManagement = function () {
+    function ClassManagement() {
+        _classCallCheck(this, ClassManagement);
+
+        this.body = 'body';
+        this.$body = false;
+        this.current = '';
         this.next = '';
-    },
-    update: function update() {
-        this.$body.addClass(this.next);
-        this.current = this.current + ' ' + this.next;
-        this.next = '';
-    },
-    queue: function queue(add) {
-        this.next = this.next + ' ' + add;
-        return this.next;
-    },
-    item: function item(_item) {
-        var template = _item.get('template'),
-            type = _item.getNormalType();
-        this.queue(' type-' + type + ' item-' + type);
-        this.queue(type + '-' + template);
-        if (Mediakron.Templates[type]) {
-            if (Mediakron.Templates[type][template]) {
-                if (Mediakron.Templates[type][template].classes) this.queue(Mediakron.Templates[type][template].classes);
+        this.stat = '';
+        this.$body = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.body);
+    }
+
+    _createClass(ClassManagement, [{
+        key: 'setStatic',
+        value: function setStatic(stat) {
+            this.$body.addClass(stat);
+            this.stat = this.stat + ' ' + stat;
+        }
+    }, {
+        key: 'swap',
+        value: function swap(remove, add) {
+            this.$body.removeClass(remove).addClass(add);
+        }
+    }, {
+        key: 'toggle',
+        value: function toggle(_toggle) {
+            this.$body.toggleClass(_toggle);
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.$body.removeClass(this.current).addClass(this.next);
+            this.current = this.next;
+            this.next = '';
+        }
+    }, {
+        key: 'update',
+        value: function update() {
+            this.$body.addClass(this.next);
+            this.current = this.current + ' ' + this.next;
+            this.next = '';
+        }
+    }, {
+        key: 'queue',
+        value: function queue(add) {
+            this.next = this.next + ' ' + add;
+            return this.next;
+        }
+    }, {
+        key: 'item',
+        value: function item(_item) {
+            var template = _item.get('template'),
+                type = _item.getNormalType();
+            this.queue(' type-' + type + ' item-' + type);
+            this.queue(type + '-' + template);
+            if (Mediakron.Templates[type]) {
+                if (Mediakron.Templates[type][template]) {
+                    if (Mediakron.Templates[type][template].classes) this.queue(Mediakron.Templates[type][template].classes);
+                }
             }
         }
-    }
-});
+    }]);
 
-module.exports = ClassManagement;
+    return ClassManagement;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (ClassManagement);
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: ModuleNotFoundError: Module not found: Error: Can't resolve '../../../core-css/img/chosen-sprite.png' in '/Users/tim/Github/mediakron-4/app/core-css'\n    at factoryCallback (/Users/tim/Github/mediakron-4/node_modules/webpack/lib/Compilation.js:282:40)\n    at factory (/Users/tim/Github/mediakron-4/node_modules/webpack/lib/NormalModuleFactory.js:237:20)\n    at resolver (/Users/tim/Github/mediakron-4/node_modules/webpack/lib/NormalModuleFactory.js:60:20)\n    at asyncLib.parallel (/Users/tim/Github/mediakron-4/node_modules/webpack/lib/NormalModuleFactory.js:127:20)\n    at /Users/tim/Github/mediakron-4/node_modules/async/dist/async.js:3888:9\n    at /Users/tim/Github/mediakron-4/node_modules/async/dist/async.js:473:16\n    at iteratorCallback (/Users/tim/Github/mediakron-4/node_modules/async/dist/async.js:1062:13)\n    at /Users/tim/Github/mediakron-4/node_modules/async/dist/async.js:969:16\n    at /Users/tim/Github/mediakron-4/node_modules/async/dist/async.js:3885:13\n    at resolvers.normal.resolve (/Users/tim/Github/mediakron-4/node_modules/webpack/lib/NormalModuleFactory.js:119:22)\n    at onError (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/Resolver.js:65:10)\n    at loggingCallbackWrapper (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/createInnerCallback.js:31:19)\n    at runAfter (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/Resolver.js:158:4)\n    at innerCallback (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/Resolver.js:146:3)\n    at loggingCallbackWrapper (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/createInnerCallback.js:31:19)\n    at next (/Users/tim/Github/mediakron-4/node_modules/tapable/lib/Tapable.js:252:11)\n    at /Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/UnsafeCachePlugin.js:40:4\n    at loggingCallbackWrapper (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/createInnerCallback.js:31:19)\n    at runAfter (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/Resolver.js:158:4)\n    at innerCallback (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/Resolver.js:146:3)\n    at loggingCallbackWrapper (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/createInnerCallback.js:31:19)\n    at next (/Users/tim/Github/mediakron-4/node_modules/tapable/lib/Tapable.js:252:11)\n    at innerCallback (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/Resolver.js:144:11)\n    at loggingCallbackWrapper (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/createInnerCallback.js:31:19)\n    at next (/Users/tim/Github/mediakron-4/node_modules/tapable/lib/Tapable.js:249:35)\n    at resolver.doResolve.createInnerCallback (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:44:6)\n    at loggingCallbackWrapper (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/createInnerCallback.js:31:19)\n    at afterInnerCallback (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/Resolver.js:168:10)\n    at loggingCallbackWrapper (/Users/tim/Github/mediakron-4/node_modules/enhanced-resolve/lib/createInnerCallback.js:31:19)\n    at next (/Users/tim/Github/mediakron-4/node_modules/tapable/lib/Tapable.js:252:11)");
 
 /***/ })
 /******/ ]);
