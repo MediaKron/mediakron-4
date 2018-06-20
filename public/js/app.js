@@ -10614,7 +10614,7 @@ var App = function () {
     value: function boot() {
       // load up the site
       this.site = new __WEBPACK_IMPORTED_MODULE_4__models_site__["a" /* default */]({ uri: __WEBPACK_IMPORTED_MODULE_5__util_url__["b" /* uri */] });
-      console.log(this.site.urlRoot);
+      console.log(this.Settings);
       this.site.fetch();
       // Start
       Theme.Initialize();

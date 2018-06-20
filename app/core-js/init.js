@@ -64,7 +64,7 @@ class App {
   boot() {
     // load up the site
     this.site = new Site({ uri: uri });
-    console.log(this.site.urlRoot);
+    console.log(this.Settings);
     this.site.fetch();
     // Start
     Theme.Initialize();
