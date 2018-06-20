@@ -51,6 +51,7 @@ class Mediakron {
 
     boot(){
         // auth?
+        Theme.Initialize();
         Auth();
     }
 
