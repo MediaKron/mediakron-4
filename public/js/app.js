@@ -10528,7 +10528,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 /* 5 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: super() is only allowed in a derived constructor\n\n\u001b[0m \u001b[90m 46 | \u001b[39m\u001b[36mclass\u001b[39m \u001b[33mMediakron\u001b[39m {\n \u001b[90m 47 | \u001b[39m    constructor(state){\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 48 | \u001b[39m        \u001b[36msuper\u001b[39m(state)\n \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 49 | \u001b[39m        \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdata \u001b[33m=\u001b[39m {}\u001b[33m;\u001b[39m\n \u001b[90m 50 | \u001b[39m    }\n \u001b[90m 51 | \u001b[39m\u001b[0m\n");
+throw new Error("Module build failed: SyntaxError: super() is only allowed in a derived constructor\n\n\u001b[0m \u001b[90m 47 | \u001b[39m\u001b[36mclass\u001b[39m \u001b[33mMediakron\u001b[39m {\n \u001b[90m 48 | \u001b[39m    constructor(state){\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 49 | \u001b[39m        \u001b[36msuper\u001b[39m(state)\n \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 50 | \u001b[39m        \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdata \u001b[33m=\u001b[39m {}\u001b[33m;\u001b[39m\n \u001b[90m 51 | \u001b[39m    }\n \u001b[90m 52 | \u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 6 */
