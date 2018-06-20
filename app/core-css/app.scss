@@ -1,5 +1,8 @@
 //Core Css;
 
+//temporary to test
+@import url("https://use.fontawesome.com/releases/v5.0.13/js/all.js");
+
 @import "base-styles/theme.scss";
 @import "base-styles/variables.scss";
 @import "base-styles/extend.scss";
@@ -95,7 +98,7 @@
 
 //UI;
 @import "../ui/fullscreen/fullscreen-styles.scss";
-@import "../ui/hovertip/hovertip-styles.scss";
+@import "../ui/tooltips/tooltips-styles.scss";
 @import "../ui/icons/mk-icons/mk-icons-styles.scss";
 @import "../ui/icons/mapkey-icons/mapkey-styles.scss";
 @import "../ui/overlay/overlay-styles.scss";

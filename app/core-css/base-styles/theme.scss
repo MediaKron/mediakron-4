@@ -3,8 +3,8 @@
     --mk-primary-color-contrast: #fff; /* contasting color to primary color; function: getContrastColor */
     --mk-primary-color-onwhite: #fff; /* contasting color - primary color on white; function: getContrastOnWhite */
     --mk-primary-color-tint: #444; /* tinted primary color; function: getTint */
-    --mk-secondary-color: #fff /* default secondary color - "banner link color" in settings */
-    --mk-secondary-color-contrast: #030303 /* default secondary color */
+    --mk-secondary-color: #fff; /* default secondary color - "banner link color" in settings */
+    --mk-secondary-color-contrast: #030303; /* default secondary color */
 }
 
 // Primary Color - background
