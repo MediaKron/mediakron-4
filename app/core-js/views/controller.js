@@ -1,3 +1,13 @@
+import MediakronView from '../extensions/views';
+
+export default class Controller extends MediakronView {
+    constructor(options) {
+        super(options);
+    }
+
+    initialize() {}
+}
+
 /* 
  * The View handling for Mediakron
  * 
