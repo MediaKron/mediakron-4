@@ -5,11 +5,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import $ from "jquery";
-import Mediakron from "~/core-js/init"
+import App from "~/core-js/init";
 import Auth from "~/core-js/auth/auth";
 
-console.log('debug');
+var Mediakron;
 $(document).ready(function(){
-    window.Mediakron = Mediakron;
-    Mediakron.initialize();
+    Mediakron = new App();
+    Mediakron.boot();
 })

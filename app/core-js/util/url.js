@@ -86,7 +86,28 @@ function getInfoFromURI (uri) {
     return id;
 };
 
+function base_path(){
+    return window.location.origin;
+}
+
+function api_path() {
+    return base_path() + '/api';
+}
+/**
+ * 
+ */
+function uri() {
+    var url = window.location.pathname.split("/");
+    if(url[1]){
+        return url[1];
+    }
+    return false;
+}
+
 export {
+    base_path,
+    api_path,
+    uri,
     createUrlMap,
     getItem,
     getItemFromURI,

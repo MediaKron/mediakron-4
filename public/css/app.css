@@ -24927,8 +24927,8 @@ label.custom-colors {
 
 @font-face {
   font-family: 'mediakron';
-  src: url(fonts/mediakron.eot?7a98d67daaeb4b2e2780f7f5ed5eda9f);
-  src: url(fonts/mediakron.eot?7a98d67daaeb4b2e2780f7f5ed5eda9f) format("embedded-opentype"), url(fonts/mediakron.woff2?500895600b454fd25bfbdc2f53455325) format("woff2"), url(fonts/mediakron.ttf?dcf4f9a0bedabd6447f146dff3f5a38d) format("truetype"), url(fonts/mediakron.woff?73fc3c5eb10c8e6d803670124343ecf1) format("woff"), url(fonts/mediakron.svg?42cdb9f48eb0e50058987d84fd5b97ab) format("svg");
+  src: url(/fonts/mediakron.eot?7a98d67daaeb4b2e2780f7f5ed5eda9f);
+  src: url(/fonts/mediakron.eot?7a98d67daaeb4b2e2780f7f5ed5eda9f) format("embedded-opentype"), url(/fonts/mediakron.woff2?500895600b454fd25bfbdc2f53455325) format("woff2"), url(/fonts/mediakron.ttf?dcf4f9a0bedabd6447f146dff3f5a38d) format("truetype"), url(/fonts/mediakron.woff?73fc3c5eb10c8e6d803670124343ecf1) format("woff"), url(/fonts/mediakron.svg?42cdb9f48eb0e50058987d84fd5b97ab) format("svg");
   font-weight: normal;
   font-style: normal;
 }

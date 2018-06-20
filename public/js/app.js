@@ -10506,7 +10506,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_init__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_init___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__core_js_init__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__ = __webpack_require__(6);
 
 /**
@@ -10518,17 +10517,119 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-console.log('debug');
+var Mediakron;
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
-  window.Mediakron = __WEBPACK_IMPORTED_MODULE_1__core_js_init__["default"];
-  __WEBPACK_IMPORTED_MODULE_1__core_js_init__["default"].initialize();
+  Mediakron = new __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */]();
+  Mediakron.boot();
 });
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: super() is only allowed in a derived constructor\n\n\u001b[0m \u001b[90m 46 | \u001b[39m\u001b[36mclass\u001b[39m \u001b[33mMediakron\u001b[39m {\n \u001b[90m 47 | \u001b[39m    constructor(state){\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 48 | \u001b[39m        \u001b[36msuper\u001b[39m(state)\n \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 49 | \u001b[39m        \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdata \u001b[33m=\u001b[39m {}\u001b[33m;\u001b[39m\n \u001b[90m 50 | \u001b[39m    }\n \u001b[90m 51 | \u001b[39m\u001b[0m\n");
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_backbone__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_auth__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_site__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_url__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__settings__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__settings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__settings__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+// Auth
+
+
+
+// import url functions
+
+
+
+var state = {
+
+  // 
+  uri: false,
+
+  router: false, // this will later be the mediakron router funciton.  Useful for going cool places
+  loading: true,
+  socket: false,
+
+  Status: { // a set of helpful internal flags.  Maybe will eventually incoperate some of these other places
+    url: false, // handy
+    context: false, // maybe not necessary anymore
+    time: 0, // not sure what this does
+    CurrentTopic: 0, // Probably can be depricated
+    CurrentTag: 0, // depricate
+    CurrentMap: 0, // track the current map
+    CurrentTimeline: false, // track the current timeline
+    FileUploadSupport: true, // maybe impliment to throw a file upload alert:  ToDO impliment a loading broser check
+    uploadInProgress: false, // in use
+    lti: false, // in use
+    ltiReturnUrl: false, // in use
+    ltiIntendedUse: false, // in use
+    Managing: false, // in use
+    formChanged: false, // in use
+    bodyClasses: '', // figure out a better way
+    views: 0, // in use
+    historyStarted: false,
+    lastPoll: false, // when did we last check for updates
+    currentEditors: {}, // which users are currently editing what
+    PollQuery: '',
+    currentEditing: {},
+    online: false,
+    storyDebug: false
+
+  },
+  eventBus: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.extend({}, __WEBPACK_IMPORTED_MODULE_2_backbone___default.a.Events),
+  console: function console(log) {}
+};
+
+var App = function () {
+  function App(state) {
+    _classCallCheck(this, App);
+
+    this.data = {};
+    this.state = state;
+
+    // set the base uri
+    this.Settings = __WEBPACK_IMPORTED_MODULE_6__settings___default.a;
+  }
+
+  /**
+   * Boot mediakron
+   */
+
+
+  _createClass(App, [{
+    key: "boot",
+    value: function boot() {
+      // load up the site
+      this.site = new __WEBPACK_IMPORTED_MODULE_4__models_site__["a" /* default */]({ uri: __WEBPACK_IMPORTED_MODULE_5__util_url__["b" /* uri */] });
+      console.log(this.site.urlRoot);
+      this.site.fetch();
+      // Start
+      //Theme.Initialize();
+      //Auth();
+    }
+
+    // make the utility class avaliable
+
+  }]);
+
+  return App;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (App);
 
 /***/ }),
 /* 6 */
@@ -33352,6 +33453,1053 @@ var ClassManagement = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */
+/***/ (function(module, exports) {
+
+var defaultSettings = {
+    "Name": '',
+    "Settings": {
+        "name": "",
+        "uri": "",
+        "subtitle": "",
+        "copyright": "",
+        "version": "",
+        "url": "",
+        "ga": "",
+        "pushState": false,
+        "cssURL": "/mediakron/css/",
+        "layout": "default",
+        "institution": "Boston College",
+        "search": "internal",
+        "commenting": false,
+        "download": true,
+        "showauthor": true,
+        "showview": true,
+        "public": false,
+        "filepath": "/files/",
+        "appPath": "/",
+        "basepath": "/",
+        "device": "desktop",
+        "token": "{{ token }}",
+        "welcome": false,
+        "showArchive": false,
+        "Navigation": {
+            "primary": {},
+            "secondary": {}
+        },
+        "HomePage": {
+            "image": "",
+            "alt": "",
+            "description": "",
+            "item": "",
+            "layout": "basic",
+            "options": {
+                "menus-basic": {
+                    "id": "menus-basic",
+                    "title": "Menu Banner",
+                    "icon": "/mediakron/css/img/layout-icons/menu-banner.png",
+                    "help": "Menus display as thumbnails",
+                    "classes": "body-homepage body-menus-basic"
+                },
+                "menus-half": {
+                    "id": "menus-half",
+                    "title": "Half-page intro banner with thumbnail menus",
+                    "icon": "/mediakron/css/img/layout-icons/menu-half.png",
+                    "help": "Background image or solid theme color (if no image); Menu items included as thumbnails below",
+                    "classes": "body-homepage body-menus-half body-half-image"
+                },
+                "menus-full": {
+                    "id": "menus-full",
+                    "title": "Full-page intro banner with Thumbnail Menus",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
+                    "help": "Background image or solid theme color (if no image); Menu items included as thumbnails below",
+                    "classes": "body-homepage body-menus-full body-full-image"
+                },
+                "basic": {
+                    "id": "basic",
+                    "title": "Centered",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-centered.png",
+                    "help": "Centered layout with subtitle at the top, followed by an image, if present, and then a description.",
+                    "classes": "body-homepage body-homepage-basic"
+                },
+                "half": {
+                    "id": "half",
+                    "title": "Half-page Banner with background image/theme color",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-half.png",
+                    "help": "Centered title and subtitle over background image. Site description displays below, if present.",
+                    "classes": "body-homepage body-homepage-half body-half-image"
+                },
+                "nobanner": {
+                    "id": "nobanner",
+                    "title": "Full-page Banner with background image/theme color",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
+                    "help": "Centered title and subtitle over background image. Site description displays below, if present.",
+                    "classes": "body-homepage body-homepage-nobanner body-full-image"
+                },
+                "right": {
+                    "id": "right",
+                    "title": "Right",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-right.png",
+                    "help": "Image on right, subtitle/description on left.",
+                    "classes": "body-homepage body-homepage-right"
+                },
+                "left": {
+                    "id": "left",
+                    "title": "Left",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-left.png",
+                    "help": "Image on left, subtitle/description on right.",
+                    "classes": "body-homepage body-homepage-left"
+                },
+                "updates-basic": {
+                    "id": "updates-basic",
+                    "title": "Updates Basic",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-centered.png",
+                    "help": "List of new and updated content",
+                    "classes": "body-homepage body-updates-basic"
+                },
+                "updates-half": {
+                    "id": "updates-half",
+                    "title": "Half-page Banner with Updates",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-half.png",
+                    "help": "Background image or solid theme color (if no image); List of new and updated content below",
+                    "classes": "body-homepage body-updates-half body-half-image"
+                },
+                "updates-full": {
+                    "id": "updates-full",
+                    "title": "Full-page Banner with Updates",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
+                    "help": "Background image or solid theme color (if no image); List of new and updated content below",
+                    "classes": "body-homepage body-updates-full body-full-image"
+                },
+                "nointro": {
+                    "id": "nointro",
+                    "title": "No Introduction",
+                    "icon": "/mediakron/css/img/layout-icons/homepage-none.png",
+                    "help": "Choose this if you plan to use only a content item as the home page (see below).",
+                    "classes": "body-homepage body-homepage-left"
+                }
+
+            }
+        },
+        "Appearance": {
+            "logo": "{{ site.logo }}",
+            "navigation": "{{ navigation }}",
+            "skin": "{{ site.skin }}",
+            "font": "{{ site.font }}",
+            "colors": {
+                "navigation": "{{ site.navColor }}",
+                "links": "{{ site.linkColor }}",
+                "banner": "{{ site.bannerColor }}",
+                "bannerlink": "{{ site.bannerLinkColor }}"
+            },
+            "fonts": {
+                "Roboto (san serif)": "\"Roboto\", Helvetica, Arial, sans-serif",
+                "Helvetica Neue (sans serif)": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                "Georgia (serif)": "Georgia, serif",
+                "Merriweather (serif)": "\"Merriweather\", Georgia, serif"
+            }
+        },
+        "AudioTypes": {
+
+            "mp3": {
+                "id": "mp3",
+                "name": "Upload .mp3 File"
+            },
+            "google": {
+                "id": "google",
+                "name": "Google Drive"
+            },
+            "bc": {
+                "id": "bc",
+                "name": "BC Streaming Server"
+            },
+            "archiveorg": {
+                "id": "archiveorg",
+                "name": "Archive.org audio"
+            },
+            "rtmp": {
+                "id": "rtmp",
+                "name": "RTMP"
+            },
+            "url": {
+                "id": "url",
+                "name": "URL (link only, not embedded)"
+            }
+        },
+        "VideoTypes": {
+
+            "youtube": {
+                "id": "youtube",
+                "name": "YouTube"
+            },
+            "vimeo": {
+                "id": "vimeo",
+                "name": "Vimeo"
+            },
+            "google": {
+                "id": "google",
+                "name": "Google Drive"
+            },
+            "archiveorg": {
+                "id": "archiveorg",
+                "name": "Archive.org video"
+            },
+            "bc": {
+                "id": "bc",
+                "name": "BC Streaming Server"
+            },
+            "panopto": {
+                "id": "panopto",
+                "name": "BC Panopto Video"
+            },
+            "kanopy": {
+                "id": "kanopy",
+                "name": "Kanopy Video"
+            },
+            "mp4": {
+                "id": "mp4",
+                "name": "Upload .mp4 File"
+            },
+            "rtmp": {
+                "id": "rtmp",
+                "name": "RTMP"
+            },
+            "url": {
+                "id": "url",
+                "name": "URL (link only, not embedded)"
+            }
+        },
+        "TextTypes": {
+            "html": {
+                "id": "html",
+                "name": "Basic Text"
+            },
+            "pdf": {
+                "id": "pdf",
+                "name": "PDF"
+            },
+            "image": {
+                "id": "image",
+                "name": "Manuscript Image"
+            }
+
+        },
+        "FileTypes": {
+            "pdf": {
+                "id": "pdf",
+                "name": "PDF"
+            },
+            "image": {
+                "id": "image",
+                "name": "Manuscript Image"
+            },
+            "ppt": {
+                "id": "ppt",
+                "name": "Powerpoint"
+            },
+            "doc": {
+                "id": "doc",
+                "name": "Word Document"
+            },
+            "txt": {
+                "id": "txt",
+                "name": "Text Document"
+            },
+            "xls": {
+                "id": "xls",
+                "name": "Spreadsheet"
+            }
+
+        },
+        "MapTypes": {
+            "osm": {
+                "id": "osm",
+                "name": "Color Basemap with Terrain"
+            },
+            "Esri_WorldStreetMap": {
+                "id": "Esri_WorldStreetMap",
+                "name": "ESRI World Street Map"
+            },
+            "Esri_DeLorme": {
+                "id": "Esri_DeLorme",
+                "name": "ESRI DeLorme Map"
+            },
+            "Esri_NatGeoWorldMap": {
+                "id": "Esri_NatGeoWorldMap",
+                "name": "ESRI National Geographic Map"
+            },
+            "Esri_WorldImagery": {
+                "id": "Esri_WorldImagery",
+                "name": "ESRI Satellite Imagery"
+            },
+            "stamen-light": {
+                "id": "stamen-light",
+                "name": "Black And White Basemap"
+            },
+            "stamen-watercolor": {
+                "id": "stamen-watercolor",
+                "name": "Watercolor Basemap"
+            },
+            "cartodb": {
+                "id": "cartodb",
+                "name": "Carto Map (Embedded)"
+            },
+            "image-map": {
+                "id": "image-map",
+                "name": "Uploaded Image Basemap"
+            }
+        },
+        "MimeTypes": {
+            "bulk": ["application\/json", "application\/xml"],
+            "images": ["image\/jpeg", "image\/jpg", "image\/gif", "image\/png"],
+            "video": ["video\/mpeg", "video\/mpeg4", "video\/x-m4v", "video\/x-mp4", "video\/mp4"],
+            "audio": ["audio\/mpeg", "audio\/mpeg3", "audio\/x-m4a", "audio\/x-mp3", "audio\/mp3"],
+            "file": [],
+            "text": ["application\/pdf", "image\/jpeg", "image\/jpg", "image\/gif", "image\/png", "application\/msword", "application\/vnd.ms-powerpoint", "application\/vnd.ms-excel", "application\/vnd.openxmlformats-officedocument.wordprocessingml.document", "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application\/vnd.openxmlformats-officedocument.presentationml.presentation", "application\/vnd.ms-outlook"],
+            "textTypes": {
+                "application\/pdf": "pdf",
+                "application\/msword": "doc",
+                "application\/vnd.ms-powerpoint": "ppt",
+                "application\/vnd.ms-excel": "xls",
+                "application\/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc",
+                "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "xls",
+                "application\/vnd.openxmlformats-officedocument.presentationml.presentation": "ppt"
+            }
+        }
+    },
+    "skins": {
+        "default.css": {
+            "title": "Default",
+            "links": "#4b4b4b",
+            "banner": "#222",
+            "bannerlink": "#fff"
+        },
+        "compact.css": {
+            "title": "Compact(depricated)",
+            "links": "#4b4b4b",
+            "banner": "#030303",
+            "bannerlink": "#fff"
+        },
+        "guestbook.css": {
+            "title": "GB",
+            "links": "#252D31",
+            "banner": "#252D31",
+            "bannerlink": "#ffffff"
+        }
+    },
+    "Templates": {
+        "comparison": {},
+        "story": {
+            "default": {
+                "id": "default",
+                "name": "Basic Story",
+                "icon": "/mediakron/css/img/layout-icons/story-simple.png",
+                "help": "A basic story without an image"
+            },
+            "half": {
+                "id": "half",
+                "name": "Half-page Header Image",
+                "icon": "/mediakron/css/img/layout-icons/story-half.png",
+                "help": "A half-page background image at the beginning of the Story.",
+                "classes": ""
+            },
+            "full": {
+                "id": "full",
+                "name": "Full-page Header Image",
+                "icon": "/mediakron/css/img/layout-icons/story-full.png",
+                "help": "A full background image at the beginning of the Story.",
+                "classes": ""
+            }
+        },
+        "audio": {
+            "default": {
+                "id": "default",
+                "name": "Audio with Background Image",
+                "icon": "/mediakron/css/img/layout-icons/audio-full.png",
+                "help": "The audio player will appear over a background image, if present.",
+                "classes": "slideshow audio-default"
+            },
+            "simple": {
+                "id": "simple",
+                "name": "Audio with Inline Image",
+                "icon": "/mediakron/css/img/layout-icons/audio-simple.png",
+                "help": "The audio player will appear above an inline image, if present.",
+                "classes": "slideshow audio-simple"
+            }
+        },
+        "image": {},
+        "video": {},
+        "slideshow": {
+            "default": {
+                "id": "default",
+                "name": "Grid",
+                "icon": "/mediakron/css/img/layout-icons/slideshow-grid.png",
+                "help": "A grid layout with thumbnails. If you've uploaded an image for the slideshow, it will appear as a top banner.",
+                "classes": "slideshow slideshow-grid"
+            },
+            "mosaic": {
+                "id": "mosaic",
+                "name": "Mosaic Layout",
+                "icon": "/mediakron/css/img/layout-icons/slideshow-mosaic.png",
+                "help": "Images in their original aspect ratios.",
+                "classes": "slideshow slideshow-mosaic"
+            },
+            "full": {
+                "id": "full",
+                "name": "Centered Introduction",
+                "icon": "/mediakron/css/img/layout-icons/slideshow-full.png",
+                "help": "Full page introduction with background image if present.",
+                "classes": "slideshow slideshow-full"
+            }
+        },
+        "narrative": {
+            "default": {
+                "id": "default",
+                "name": "Introduction with Background Image",
+                "icon": "/mediakron/css/img/layout-icons/narrative-full.png",
+                "help": "An introductory page with a full background image. Widgets display below introduction.",
+                "classes": "narrative narrative-default"
+            },
+            "Top": {
+                "id": "top",
+                "name": "Image in Top Banner",
+                "icon": "/mediakron/css/img/layout-icons/narrative-top.png",
+                "help": "Image at the top, if present, and any widgets display below",
+                "classes": "narrative narrative-top"
+            },
+            "simple": {
+                "id": "simple",
+                "name": "Basic Narrative Layout",
+                "icon": "/mediakron/css/img/layout-icons/narrative-simple.png",
+                "help": "Image in the body of page, if present, and any widgets display below",
+                "classes": "narrative narrative-simple"
+            }
+        },
+        "file": {},
+        "map": {
+            "default": {
+                "id": "default",
+                "name": "Basic Map",
+                "icon": "/mediakron/css/img/layout-icons/map-basic.png",
+                "help": "A basic map for organizing content by location.",
+                "classes": "map map-basic"
+            },
+            "maptour": {
+                "id": "maptour",
+                "name": "Map Tour",
+                "icon": "/mediakron/css/img/layout-icons/map-tour.png",
+                "help": "A map that allows you to put items in an order and walk users through them in sequence."
+            },
+            "timemap": {
+                "id": "timemap",
+                "name": "Time Map",
+                "icon": "/mediakron/css/img/layout-icons/map-timeline.png",
+                "help": "A map with timeline controls to show and hide map markers based on dates."
+            }
+        },
+        "folder": {
+            "list-simple": {
+                "id": "list-simple",
+                "name": "Basic List",
+                "icon": "/mediakron/css/img/layout-icons/folder-list-simple.png",
+                "help": "A list of folder items. Item thumbnail does not appear in layout.",
+                "classes": "folder folder-default"
+            },
+            "default": {
+                "id": "default",
+                "name": "List with image",
+                "icon": "/mediakron/css/img/layout-icons/folder-list.png",
+                "help": "A list of folder items. If you've uploaded an image for the folder, it will appear above the item list",
+                "classes": "folder folder-default"
+            },
+            "list-half": {
+                "id": "list-half",
+                "name": "List (half-page image)",
+                "icon": "/mediakron/css/img/layout-icons/folder-list-half.png",
+                "help": "A list of folder items with a half-page image header",
+                "classes": "folder folder-default"
+            },
+            "list-full": {
+                "id": "list-full",
+                "name": "List (full-page image)",
+                "icon": "/mediakron/css/img/layout-icons/folder-list-full.png",
+                "help": "A list of folder items with a full-page image header",
+                "classes": "folder folder-default"
+            },
+            "grid-simple": {
+                "id": "grid-simple",
+                "name": "Grid Layout",
+                "icon": "/mediakron/css/img/layout-icons/folder-grid-simple.png",
+                "help": "A grid layout with thumbnails."
+            },
+            "grid": {
+                "id": "grid",
+                "name": "Grid with half-page header image",
+                "icon": "/mediakron/css/img/layout-icons/folder-grid.png",
+                "help": "A grid layout with square thumbnails. If you've uploaded an image for the folder, it will appear as a top banner."
+            },
+            "grid-full": {
+                "id": "grid-full",
+                "name": "Grid with full-page header image",
+                "icon": "/mediakron/css/img/layout-icons/folder-grid-full.png",
+                "help": "A grid layout with square thumbnails. If you've uploaded an image for the folder, it will appear as a top banner."
+            },
+            "folder-mosaic": {
+                "id": "folder-mosaic",
+                "name": "Mosaic thumbnail layout (item thumbnails required)",
+                "icon": "/mediakron/css/img/layout-icons/folder-mosaic.png",
+                "help": "Folder items with thumbnail images in their original aspect ratios. NOTE: only items with thumbnails will appear."
+            },
+            "table": {
+                "id": "table",
+                "name": "Table",
+                "icon": "/mediakron/css/img/layout-icons/folder-table.png",
+                "help": "A table layout with item details."
+            }
+        },
+        "options": {
+            "showSidebar": {
+                "id": "showSidebar",
+                "name": "Sidebar is visible by default",
+                "help": "If checked the sidebar will be visible by default.",
+                "default": false
+            }
+        }
+    },
+    "Story": {
+        "wysiwyg": {
+            "image": {
+                "Left": { "class": "alignLeft", "icon": "alignLeft", "help": "50% Left" },
+                "Left-Sm": { "class": "alignLeftSm", "icon": "alignLeftSm", "help": "40% Left" },
+                "Left-Lg": { "class": "alignLeftLg", "icon": "alignLeftLg", "help": "60% Left" },
+                "Right": { "class": "alignRight", "icon": "alignRight", "help": "50% Right" },
+                "Right-Sm": { "class": "alignRightSm", "icon": "alignRightSm", "help": "40% Right" },
+                "Right-Lg": { "class": "alignRightLg", "icon": "alignRightLg", "help": "60% Right" },
+                "Column": { "class": "alignCol", "icon": "alignCol", "help": "Full Column" },
+                "Large": { "class": "alignLarge", "icon": "alignLarge", "help": "Large Centered Image" },
+                "Full": { "class": "alignFull", "icon": "alignFull", "help": "Full screen alignment" }
+            },
+            "video": {
+                "Left": { "class": "alignLeft", "icon": "alignLeft", "help": "40% Left" },
+                "Left-Large": { "class": "alignLeftLg", "icon": "alignLeftLg", "help": "60% Left" },
+                "Right": { "class": "alignRight", "icon": "alignRight", "help": "40% Right" },
+                "Right-Large": { "class": "alignRightLg", "icon": "alignRightLg", "help": "60% Right" },
+                "Column": { "class": "alignCol", "icon": "alignCol", "help": "Full Column" },
+                "Large": { "class": "alignLarge", "icon": "alignLarge", "help": "Large Centered Video" },
+                "Full": { "class": "alignFull", "icon": "alignFull", "help": "Full screen alignment" }
+            },
+            "text": {
+                "left": { "class": "alignLeft", "icon": "alignLeft", "help": "40% Left" },
+                "right": { "class": "alignRight", "icon": "alignRight", "help": "40% Right" },
+                "col": { "class": "alignCol", "icon": "alignCol", "help": "Full Column" },
+                "full": { "class": "alignFull", "icon": "alignFull", "help": "Full screen alignment" }
+            },
+            "file": {
+                "Left": { "class": "alignLeft", "icon": "alignLeft", "help": "40% Left" },
+                "Right": { "class": "alignRight", "icon": "alignRight", "help": "40% Right" },
+                "Column": { "class": "alignCol", "icon": "alignCol", "help": "Full Column" }
+            },
+            "map": {
+                "Column": { "class": "alignCol", "icon": "alignCol", "help": "Full Column" },
+                "Full": { "class": "alignFull", "icon": "alignFull", "help": "Full screen alignment" }
+            }
+        }
+    },
+    "Narrative": {
+        "options": {
+            "hide_title": {
+                "id": "hide.title",
+                "name": "Hide Title"
+            },
+            "hide_sidebar": {
+                "id": "hide.sidebar",
+                "name": "Hide Sidebar"
+            }
+        },
+        "templates": {
+            "image": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": ""
+                },
+                "narrow": {
+                    "id": "narrow",
+                    "name": "Width of text body",
+                    "icon": "",
+                    "help": "Image width the same as text body"
+                },
+                "full": {
+                    "id": "full",
+                    "name": "Full-page width",
+                    "icon": "",
+                    "help": ""
+                }
+            },
+            "video": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "slideshow": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "audio": {
+                "default": {
+                    "id": "default",
+                    "name": "Background Image",
+                    "icon": "/mediakron/css/img/layout-icons/audio-full.png",
+                    "help": "The audio player will appear over a background image, if present."
+                },
+                "simple": {
+                    "id": "simple",
+                    "name": "Inline Image",
+                    "icon": "/mediakron/css/img/layout-icons/audio-simple.png",
+                    "help": "The audio player will appear above an inline image, if present."
+                }
+            },
+            "story": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "file": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "map": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "maptimeline": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "timeline": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "comparison": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            },
+            "progression": {
+                "default": {
+                    "id": "default",
+                    "name": "Default Layout",
+                    "icon": "",
+                    "help": "A single large image, description on the left."
+                }
+            }
+
+        }
+    },
+    "Contexts": {
+        "slideshow": {
+            "children": ["image", "video", "file", "audio"],
+            "scroll": false
+        },
+        "story": {
+            "children": ["image", "video", "file", "audio", "slideshow", "progression", "comparison", "map", "maptimeline", "physical", "timeline"],
+            "scroll": true
+        },
+        "narrative": {
+            "children": ["image", "video", "story", "file", "audio", "slideshow", "progression", "comparison", "map", "maptimeline", "physical", "timeline"],
+            "scroll": true
+        },
+        "progression": {
+            "children": ["image"],
+            "scroll": false
+        },
+        "comparison": {
+            "children": ["image", "video", "audio", "story"],
+            "scroll": false
+        },
+        "folder": {
+            "children": ["image", "video", "story", "file", "audio", "narrative", "slideshow", "folder", "progression", "comparison", "map", "maptimeline", "timeline"],
+            "scroll": false
+        },
+        "layer": {
+            "children": ["image", "video", "story", "file", "audio", "narrative", "slideshow", "folder", "progression", "comparison", "map", "maptimeline", "timeline"],
+            "scroll": false
+        },
+        "tag": {
+            "children": ["image", "video", "story", "file", "audio", "narrative", "slideshow", "folder", "progression", "comparison", "map", "maptimeline", "timeline"],
+            "scroll": false
+        },
+        "map": {
+            "children": ["image", "video", "story", "file", "audio", "folder", "narrative", "slideshow", "progression", "comparison", "map", "maptimeline", "timeline"],
+            "scroll": false
+        },
+        "maptimeline": {
+            "children": ["image", "video", "story", "file", "audio", "folder", "narrative", "slideshow", "progression", "comparison", "map", "maptimeline", "timeline"],
+            "scroll": false
+        },
+        "timeline": {
+            "children": ["image", "video", "story", "file", "audio", "folder", "narrative", "slideshow", "progression", "comparison", "map", "maptimeline", "timeline"],
+            "scroll": false
+        }
+    },
+    "Routes": {
+        "SettingsOrganize": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsContentAdd": {
+            "description": "",
+            "help": "",
+            "classes": "settings add-content"
+        },
+        "SettingsContentEdit": {
+            "description": "",
+            "help": "",
+            "classes": "settings edit-content"
+        },
+        "SettingsContentConfirm": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsContent": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsManageContext": {
+            "description": "",
+            "help": "",
+            "classes": "settings-manage"
+        },
+        "SettingsExport": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsStatistics": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsAppearance": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsHomepage": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsCanvas": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsSearch": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsNavigation": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsImport": {
+            "description": "",
+            "help": "",
+            "classes": "import"
+        },
+        "SettingsUsers": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "SettingsGeneral": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "Settings": {
+            "description": "",
+            "help": "",
+            "classes": "settings-pane"
+        },
+        "Help": {
+            "description": "",
+            "help": "",
+            "classes": "help"
+        },
+        "Login": {
+            "description": "",
+            "help": "",
+            "classes": "login login-page"
+        },
+        "Logout": {
+            "description": "",
+            "help": "",
+            "classes": ""
+        },
+        "Profile": {
+            "description": "",
+            "help": "",
+            "classes": ""
+        },
+        "BrowseLTI": {
+            "description": "",
+            "help": "",
+            "classes": "browse browse-lti"
+        },
+        "Search": {
+            "description": "",
+            "help": "",
+            "classes": "search"
+        },
+        "Browse": {
+            "description": "",
+            "help": "",
+            "classes": "browse"
+        },
+        "ItemInLTI": {
+            "description": "",
+            "help": "",
+            "classes": ""
+        },
+        "Primary": {
+            "description": "",
+            "help": "",
+            "classes": "item"
+        },
+        "Welcome": {
+            "description": "",
+            "help": "",
+            "classes": "homepage"
+        }
+    },
+    "Data": {}
+};
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_url__ = __webpack_require__(38);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Site = function (_Model) {
+    _inherits(Site, _Model);
+
+    function Site() {
+        _classCallCheck(this, Site);
+
+        var _this = _possibleConstructorReturn(this, (Site.__proto__ || Object.getPrototypeOf(Site)).call(this));
+
+        _this.id = 0;
+        _this.urlRoot = function () {
+            return Object(__WEBPACK_IMPORTED_MODULE_1__util_url__["a" /* base_path */])() + '/api/' + Object(__WEBPACK_IMPORTED_MODULE_1__util_url__["b" /* uri */])();
+        };
+        return _this;
+    }
+
+    _createClass(Site, [{
+        key: "populateSettings",
+        value: function populateSettings() {}
+    }]);
+
+    return Site;
+}(__WEBPACK_IMPORTED_MODULE_0__core_js_extensions_models__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Site);
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return base_path; });
+/* unused harmony export api_path */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return uri; });
+/* unused harmony export createUrlMap */
+/* unused harmony export getItem */
+/* unused harmony export getItemFromURI */
+/* unused harmony export getInfoFromURI */
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Build a url map from the items. 
+ */
+function createUrlMap() {
+    var urls = {},
+        ids = {
+        'topics': {},
+        'timelines': {},
+        'maps': {},
+        'comparisons': {},
+        'items': {}
+    },
+        id,
+        url,
+        maps = {};
+
+    Mediakron.items.each(function (item) {
+        url = item.get('uri');
+        if (url) {
+            id = item.get('id');
+            if (urls[url]) {
+                url = uniquify(url, urls);
+                item.set('uri', url);
+            }
+            urls[url] = {
+                id: id,
+                type: 'items',
+                entity: item.get('type')
+            };
+            ids.items[id] = item.getURL();
+        }
+    });
+
+    maps.idMap = ids;
+    maps.urlMap = urls;
+    return maps;
+};
+
+/**
+ * For a list of urls, generate a unique url
+ * @param {string} url 
+ * @param {array} urls 
+ */
+function uniquify(url, urls) {
+    var i = 0,
+        urla;
+    for (i; i < 10; i++) {
+        urla = url + '-' + i;
+        if (!urls[urla]) {
+            return urla;
+        }
+    }
+}
+
+/**
+ * A pass through function for simplifying code a bit
+ * @param {string} uri 
+ */
+function getItem(uri) {
+    return getItemFromURI(uri);
+}
+
+/**
+ * Fetch an item by uri
+ * @param {string} uri 
+ */
+function getItemFromURI(uri) {
+    var id, collection;
+    if (!uri) return false;
+    if ((typeof uri === 'undefined' ? 'undefined' : _typeof(uri)) == 'object') uri = uri.uri;
+    if (!Mediakron.data.urlMap[uri]) {
+        return false;
+    }
+    id = Mediakron.data.urlMap[uri];
+    collection = Mediakron[id.type];
+    return collection.get(id.id);
+};
+
+/**
+ * Get the id from the uri
+ * @param {string} uri 
+ */
+function getInfoFromURI(uri) {
+    var id, collection;
+    id = Mediakron.urlMap[uri];
+    return id;
+};
+
+function base_path() {
+    return window.location.origin;
+}
+
+function api_path() {
+    return base_path() + '/api';
+}
+/**
+ * 
+ */
+function uri() {
+    var url = window.location.pathname.split("/");
+    if (url[1]) {
+        return url[1];
+    }
+    return false;
+}
+
+
 
 /***/ })
 /******/ ]);
