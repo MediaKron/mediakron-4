@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Site;
+use App\Http\Requests\Admin\SiteRequest;
 
 class SettingsController extends Controller
 {
@@ -16,7 +17,7 @@ class SettingsController extends Controller
     public function index()
     {
         //
-        
+        return Site::orderBy('created', 'ASC')->paginate(10);
     }
 
     /**
@@ -24,24 +25,39 @@ class SettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        return response()->json($request->validator->messages(), 400);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Site in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SiteRequest $request)
     {
-        //
+        // Validate the data according to the rules
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json($request->validator->messages(), 400);
+        }
+
+        $data = $request->validated();
+
+        // Create a Site
+        $site = new Site;
+        $site->fill($data);
+        $site->adminFill($data);
+        $site->save();
+
+        // Return the Site data object
+        return response()->json($site);
     }
 
     /**
-     * Display the specified resource.
+     * Display the Site resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -49,6 +65,7 @@ class SettingsController extends Controller
     public function show($id)
     {
         //
+        return Site::where('uri', $id)->orderBy('created_at', 'ASC')->paginate(10);
     }
 
     /**
@@ -60,6 +77,7 @@ class SettingsController extends Controller
     public function edit($id)
     {
         //
+        return response()->json($request->validator->messages(), 400);
     }
 
     /**
@@ -69,9 +87,22 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SiteRequest $request, $id)
     {
-        //
+        // Validate the data according to the rules
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json($request->validator->messages(), 400);
+        }
+        $data = $request->validated();
+
+        // Create a Site
+        $site = Site::find($id);
+        $site->fill($data);
+        $site->adminFill($data);
+        $site->save();
+
+        // Return the Site data object
+        return response()->json($site);
     }
 
     /**
@@ -83,5 +114,8 @@ class SettingsController extends Controller
     public function destroy($id)
     {
         //
+        $site = Site::find($id);
+        $site->delete();
+        return response()->json([], 204);
     }
 }

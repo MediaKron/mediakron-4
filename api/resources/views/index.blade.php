@@ -55,7 +55,11 @@
                                  <button type="button" class="mobile-nav-button"><span class="mk-icon mk-menu"></span></button>
                                 <span id="site-logo"></span>
                                 <span id="site-name"></span>
-                                <h1 class="page-header"><span id="site-name"><a href="home"></a></span></h1>
+                                <h1 class="page-header">
+                                  <span id="site-name">
+                                    <a href="home"></a>
+                                  </span>
+                                </h1>
                                 <span id="institution-logo"></span>
                           </div>
                           <div id="poll"></div>
