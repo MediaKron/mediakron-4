@@ -11,10 +11,10 @@ var composer = spawn(
     "run",
     "--rm",
     "--interactive",
-    "--volume $PWD:/app",
+    "--volume $PWD/api:/app",
     "--volume $PWD/docker/composer:/tmp",
     "composer",
-    "install"
+    "install  --ignore-platform-reqs --no-scripts"
   ],
   { shell: true }
 );

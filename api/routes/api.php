@@ -15,33 +15,66 @@ use Illuminate\Http\Request;
 
 
 Route::group([
-    'middleware' => 'api',
+    //'middleware' => 'api',
     'prefix' => 'auth'
-
 ], function ($router) {
 
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('logout', 'Api\AuthController@logout');
+    Route::post('refresh', 'Api\AuthController@refresh');
+    Route::post('reset', 'Api\AuthController@reset');
+    Route::post('me', 'Api\AuthController@me');
 
 });
 
+Route::group([
+    'middleware' => [
+        //'auth:api',
+        'admin'
+    ],
+    'prefix' => 'admin'
+], function ($router) {
 
-// Item api
-Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
+    // Sites api
+    Route::resource('/site', 'Api\Admin\SiteController');
 
-// R api
-Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
+    // Admin System Settings api
+    Route::resource('/settings', 'Api\Admin\SettingsController');
 
-// Settings api
+    // User api
+    Route::resource('/user', 'Api\Admin\UserController');
 
-// User api
-Route::middleware('auth:api')->resource('/user', 'Api/UserController');
+    // Group api
+    Route::resource('/group', 'Api\Admin\GroupController');
+});
 
-Route::middleware('auth:api')->resource('/site', 'Api/SiteController');
 
-Route::middleware('auth:api')->resource('/{site}', 'Api/SettingsController');
+
+Route::group([
+    'middleware' => [
+        //'auth:api',
+        'site'
+    ],
+    'prefix' => '{site}'
+], function ($router) {
+    // Item api
+    Route::resource('/item', 'Api\ItemController');
+    // Relationship api
+    Route::resource('/relationship', 'Api\RelationshipController');
+    // Comment api
+    Route::resource('/comment', 'Api\CommentController');
+    // Statistics api
+    Route::resource('/statistics', 'Api\StatisticsController');
+    // Settings api
+    Route::resource('/settings', 'Api\SettingsController');
+    // Settings api
+    Route::resource('/', 'Api\SettingsController', [
+        'names' => [
+            'show' => 'settings.show'
+        ]
+    ]);
+});
+
 
 
 

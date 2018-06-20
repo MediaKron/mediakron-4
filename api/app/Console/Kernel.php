@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
      */
     public function __construct(Application $app, Dispatcher $events)
     {
-       // $app->useEnvironmentPath(base_path() . '/../'); //here customize the path
+        $app->useEnvironmentPath(base_path() . '/../'); //here customize the path
         parent::__construct($app, $events);
     }
     /**
