@@ -1,1 +1,0 @@
-# Mediakron API Docs
