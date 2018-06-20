@@ -11,12 +11,12 @@ class Theme {
     if (Mediakron.Site.Appearance.navigation)
       ClassManagement.swap(
         "default-nav menu-vertical menu-horizontal",
-        Mediakron.Settings.Appearance.navigation
+        Mediakron.Site.Appearance.navigation
       );
-    $("#site-name a").text(Mediakron.Settings.name);
+    $("#site-name a").text(Mediakron.Site.name);
     $("#branding a").click(Mediakron.linkHandle);
     $("#copyright").text(
-      Mediakron.Settings.copyright
+      Mediakron.Site.copyright
     ); /* Sidebar menu - mobile */
     $(".mobile-nav-button").click(function() {
       $("#navbar").toggleClass("is-visible");
@@ -50,28 +50,28 @@ class Theme {
       $(".toggle-search").focus(); /* return focus to search toggle button */
     });
     // Install override skin
-    if (Mediakron.skins[Mediakron.Settings.Appearance.skin]) {
+    if (Mediakron.skins[Mediakron.Site.Appearance.skin]) {
       $("#skin").attr(
         "href",
-        Mediakron.Settings.cssURL +
+        Mediakron.Site.cssURL +
           "skins/" +
-          Mediakron.Settings.Appearance.skin
+          Mediakron.Site.Appearance.skin
       );
     }
     // ==== Custom appearance styles ====
     var dynamicStyles = "";
-    var banner = Mediakron.Settings.Appearance.colors.banner;
+    var banner = Mediakron.Site.Appearance.colors.banner;
     var banner_rgb = convertHex(banner, 100);
     var banner_transparent = convertHex(banner, 0);
-    if (Mediakron.Settings.Appearance.colors.banner) {
+    if (Mediakron.Site.Appearance.colors.banner) {
       // Background color set in appearance settings
       dynamicStyles =
         ".primary-background, #mediakron #login-submit, #login-banner, #mediakron #header, #mediakron .sticky-filters #content-filters,  #messages .alert-success, #mediakron .btn-primary, #mediakron .btn-primary a, #mediakron .btn-success, #content-filter li.search-choice, #content-user .chosen-container-single .chosen-single, .settings-pane .overlay header, .overlay header.admin-style-header, .search-pane.opened .overlay header, .site-loader#progress-bar, .edit-story .wysiwyg, .edit-story .wysiwyg-headers-inner, cite.annotation.highlight, cite.annotation.highlight, cite.annotation.contains-sup sup:hover, sup.contains-cite:hover, cite.annotation.highlight, cite.annotation.contains-sup.highlight sup, sup.contains-cite.highlight, .home-menus--grid .homepage-menu-title, #navbar .dropdown-container li.dropdown-title, .home-image--half .home-template__info, .home-image--full .home-template__info,  .timeline-category .add-category, .folder-navigation .mk-icon, .folder-navigation a:hover { background-color:" +
-        Mediakron.Settings.Appearance.colors.banner +
+        Mediakron.Site.Appearance.colors.banner +
         "; }";
 
       // Linear gradient background for site-loader
-      //            dynamicStyles = dynamicStyles + '.site-loader .progress { background: linear-gradient(to left, ' + Mediakron.Settings.Appearance.colors.banner + ', ' + Mediakron.Settings.Appearance.colors.banner + ' 20%, rgba(255,255,255,0));}';
+      //            dynamicStyles = dynamicStyles + '.site-loader .progress { background: linear-gradient(to left, ' + Mediakron.Site.Appearance.colors.banner + ', ' + Mediakron.Site.Appearance.colors.banner + ' 20%, rgba(255,255,255,0));}';
       //
       // Linear gradient background fade left
       dynamicStyles =
@@ -116,105 +116,105 @@ class Theme {
       dynamicStyles =
         dynamicStyles +
         ".settings-pane .overlay .page-options .mk-icon.mk-close::before, .settings-pane .overlay .page-options .mk-icon.mk-close::after, .search-pane .overlay .page-options .mk-icon.mk-close::before, .search-pane .overlay .page-options .mk-icon.mk-close::after, .overlay header.admin-style-header .page-options .mk-icon.mk-close::before, .overlay header.admin-style-header .page-options .mk-icon.mk-close::after, .add-content .edit-story .story-edit-page-options .page-options .mk-icon.mk-close::before, .add-content .edit-story .story-edit-page-options .page-options .mk-icon.mk-close::after, .editing-enabled .story-template .story-edit-page-options .page-options .mk-icon.mk-close::before, .editing-enabled .story-template .story-edit-page-options .page-options .mk-icon.mk-close::after, #navbar .close-modal .mk-icon.mk-close::after, #navbar .close-modal .mk-icon.mk-close::before, .edit-story .wlink-tool button, .folder-navigation a:hover .mk-icon { background-color:" +
-        getContrastColor(Mediakron.Settings.Appearance.colors.banner) +
+        getContrastColor(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       // Provide contrasting font color
       dynamicStyles =
         dynamicStyles +
         "#mediakron .settings-pane .overlay header h2, .settings-pane .overlay header h1, #mediakron .settings-pane .overlay h2 .mk-icon, .overlay .page-options a, .overlay .page-options button, .add-story-header .page-options button.close-button, .overlay .page-options .option-help a, .add-story-header .page-options a, .add-story-header .page-options button, .search-pane.opened .overlay header h2,  .overlay header.admin-style-header h2, .overlay header.admin-style-header .mk-icon, .search-pane.opened .overlay header .mk-search, .edit-story .wysiwyg-button, .editing-enabled .story-template .story-edit-page-options .page-options .option-help a .mk-icon,  .timeline-category .add-category, .folder-previous .mk-arrow-left, .folder-navigation .mk-icon, .folder-navigation a:hover .mk-icon { color:" +
-        getContrastColor(Mediakron.Settings.Appearance.colors.banner) +
+        getContrastColor(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       // border color same as background
       dynamicStyles =
         dynamicStyles +
         "{ border-color:" +
-        Mediakron.Settings.Appearance.colors.banner +
+        Mediakron.Site.Appearance.colors.banner +
         "; }";
 
       // font color same as background
       dynamicStyles =
         dynamicStyles +
         ".edit-story .wlink-tool button, #mediakron #navbar #user .mk-user.level-1, .folder-navigation a:hover .mk-icon { color:" +
-        Mediakron.Settings.Appearance.colors.banner +
+        Mediakron.Site.Appearance.colors.banner +
         "; }";
 
       // Provide contrast color for borders
       dynamicStyles =
         dynamicStyles +
         "#navbar .main-menu .add-menu-navbar.no-menus a, .site-loader#progress-bar { border-color: " +
-        getContrastColor(Mediakron.Settings.Appearance.colors.banner) +
+        getContrastColor(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       // use color if it's dark enough on white background; otherwise, use black
       dynamicStyles =
         dynamicStyles +
         "cite.annotation.highlight, cite.annotation.highlight, cite.annotation.contains-sup sup:hover, sup.contains-cite:hover, cite.annotation.highlight, cite.annotation.contains-sup.highlight sup, sup.contains-cite.highlight { background:" +
-        getContrastOnWhite(Mediakron.Settings.Appearance.colors.banner) +
+        getContrastOnWhite(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       dynamicStyles =
         dynamicStyles +
         ".annotation-popup .mk-icon { color:" +
-        getContrastOnWhite(Mediakron.Settings.Appearance.colors.banner) +
+        getContrastOnWhite(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       dynamicStyles =
         dynamicStyles +
         ".annotation-popup, .annotation-item:hover, .annotation-item.highlight  { border-color: " +
-        getContrastOnWhite(Mediakron.Settings.Appearance.colors.banner) +
+        getContrastOnWhite(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       dynamicStyles =
         dynamicStyles +
         "cite.annotation.highlight, cite.annotation.highlight, cite.annotation.contains-sup sup:hover, sup.contains-cite:hover, cite.annotation.highlight, cite.annotation.contains-sup.highlight sup, sup.contains-cite.highlight {" +
-        getContrastOnWhiteColor(Mediakron.Settings.Appearance.colors.banner) +
+        getContrastOnWhiteColor(Mediakron.Site.Appearance.colors.banner) +
         " }";
 
       // Provide tinted color for borders
       dynamicStyles =
         dynamicStyles +
         " { border-color: " +
-        getTint(Mediakron.Settings.Appearance.colors.banner) +
+        getTint(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       // Provide tinted color for backgrounds
       dynamicStyles =
         dynamicStyles +
         ".site-loader .progress  { background-color: " +
-        getTint(Mediakron.Settings.Appearance.colors.banner) +
+        getTint(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       // Provide tinted color for color
       dynamicStyles =
         dynamicStyles +
         "{ color: " +
-        getTint(Mediakron.Settings.Appearance.colors.banner) +
+        getTint(Mediakron.Site.Appearance.colors.banner) +
         "; }";
 
       // Provide underline color based on link color
       dynamicStyles =
         dynamicStyles +
         "#mediakron .contrast-tint { border-bottom: 1px solid " +
-        Mediakron.Settings.Appearance.colors.bannerlink +
+        Mediakron.Site.Appearance.colors.bannerlink +
         "; }";
     }
-    var bannerlink = Mediakron.Settings.Appearance.colors.bannerlink;
+    var bannerlink = Mediakron.Site.Appearance.colors.bannerlink;
     banner_rgb = convertHex(banner, 100);
-    if (Mediakron.Settings.Appearance.colors.bannerlink) {
+    if (Mediakron.Site.Appearance.colors.bannerlink) {
       // Banner link color from appearance settings
 
       dynamicStyles =
         dynamicStyles +
         ".secondary-font, #mediakron #login-submit, #mediakron #header a, #mediakron #header .mk-icon, #mediakron #header button, .sticky-filters#content-manage h3, .add-menu-navbar a, .add-menu-navbar .mk-icon, #messages .alert-success, #mediakron .btn-primary, #mediakron .btn-success, #login-banner a, .loading-message,  #content-filter li.search-choice,  #content-user .chosen-container-single .chosen-single span, .site-loader #progress-text, .home-menus--grid .homepage-menu-title, #navbar .dropdown-container li.dropdown-title, .home-image--full h1, .home-image--half h1, .home-image--full .subtitle, .home-image--half .subtitle  { color:" +
-        Mediakron.Settings.Appearance.colors.bannerlink +
+        Mediakron.Site.Appearance.colors.bannerlink +
         "; }";
 
       dynamicStyles =
         dynamicStyles +
         "#navbar #user .mk-user.level-1, .secondary-menu li.level-1:hover { background:" +
-        Mediakron.Settings.Appearance.colors.bannerlink +
+        Mediakron.Site.Appearance.colors.bannerlink +
         "; }";
     }
     if (dynamicStyles) {
@@ -223,12 +223,12 @@ class Theme {
         "head"
       );
     }
-    if (Mediakron.Settings.Appearance.font) {
+    if (Mediakron.Site.Appearance.font) {
       // Apply custom font from appearance settings
       if (
-        Mediakron.Settings.Appearance.fonts[Mediakron.Settings.Appearance.font]
+        Mediakron.Site.Appearance.fonts[Mediakron.Site.Appearance.font]
       ) {
-        var sitefont = Mediakron.Settings.Appearance.font,
+        var sitefont = Mediakron.Site.Appearance.font,
           googlefont = false,
           bodyfont;
         if (sitefont == "Roboto" || sitefont == "Roboto (san serif)") {
@@ -256,8 +256,8 @@ class Theme {
         } else {
           $("body").css(
             "font-family",
-            Mediakron.Settings.Appearance.fonts[
-              Mediakron.Settings.Appearance.font
+            Mediakron.Site.Appearance.fonts[
+              Mediakron.Site.Appearance.font
             ]
           );
         }
@@ -277,19 +277,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    function hexToR(h) {
+    hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    function hexToG(h) {
+    hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    function hexToB(h) {
+    hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    function cutHex(h) {
+    cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     var cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -311,19 +311,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    function hexToR(h) {
+    hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    function hexToG(h) {
+    hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    function hexToB(h) {
+    hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    function cutHex(h) {
+    cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -345,19 +345,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    function hexToR(h) {
+    hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    function hexToG(h) {
+    hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    function hexToB(h) {
+    hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    function cutHex(h) {
+    cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -380,19 +380,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    function hexToR(h) {
+    hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    function hexToG(h) {
+    hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    function hexToB(h) {
+    hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    function cutHex(h) {
+    cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -411,19 +411,19 @@ class Theme {
     var threshold = 130;
     (hRed = hexToR(hex)), (hGreen = hexToG(hex)), (hBlue = hexToB(hex));
 
-    function hexToR(h) {
+    hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    function hexToG(h) {
+    hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    function hexToB(h) {
+    hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    function cutHex(h) {
+    cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -473,19 +473,19 @@ class Theme {
     var Lighter = LightenDarkenColor(hex, 80);
     var Darker = LightenDarkenColor(hex, -40);
 
-    function hexToR(h) {
+    hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    function hexToG(h) {
+    hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    function hexToB(h) {
+    hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    function cutHex(h) {
+    cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
