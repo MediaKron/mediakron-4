@@ -35,9 +35,13 @@ Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
 Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
 
 // Settings api
-Route::middleware('auth:api')->resource('/setting', 'Api/SettingsController');
 
 // User api
 Route::middleware('auth:api')->resource('/user', 'Api/UserController');
+
+Route::middleware('auth:api')->resource('/site', 'Api/SiteController');
+
+Route::middleware('auth:api')->resource('/{site}', 'Api/SettingsController');
+
 
 

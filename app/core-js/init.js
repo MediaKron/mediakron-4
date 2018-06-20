@@ -4,6 +4,7 @@ import Backbone from "backbone";
 
 // Auth
 import Auth from "auth/auth"
+import Site from "models/site"
 
 var state = {
 
@@ -50,7 +51,10 @@ class Mediakron {
     }
 
     boot(){
-        // auth?
+        // Get the site
+        
+        this.site = Site.get()
+        // Start
         Theme.Initialize();
         Auth();
     }

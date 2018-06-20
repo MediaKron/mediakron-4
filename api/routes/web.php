@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'PublicController@index');
-
 Route::get('/storage/{site}/styles/{style}/{image}', 'ImageController@style');
+
+Route::get('/{any}', 'PublicController@index')->where('any', '.*');
+
+
