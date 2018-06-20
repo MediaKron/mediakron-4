@@ -36,7 +36,7 @@
   #settings-context .save-bar {
     right: 0;
     left: auto;
-    transition: 0.35s ease;
+    transition: all 0.35s ease;
     @include breakpoint(sm) {
       width: 100%;
     }
@@ -67,7 +67,7 @@
   padding-left: 1em;
   border-top: none;
   padding: 1em 1.5em .75em 1.5em;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 5%, rgba(255, 255, 255, 0.5)10%, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 1) 100%);
+  background: lindear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 5%, rgba(255, 255, 255, 0.5)10%, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 1) 100%);
   @include breakpoint(md) {
     @include rem-fallback(width, 550);
     border-left: 1px solid #999;

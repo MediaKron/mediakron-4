@@ -1,14 +1,15 @@
 /* @group MK Fonts */
 
 @font-face {
-	font-family: 'mediakron';
-	src:url('mediakron.eot');
-	src:url('mediakron.eot') format('embedded-opentype'),
-		url('mediakron.woff') format('woff'),
-		url('mediakron.ttf') format('truetype'),
-		url('mediakron.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'mediakron';
+  src:  url('fonts/mediakron.eot?ra6f2d');
+  src:  url('fonts/mediakron.eot?ra6f2d#iefix') format('embedded-opentype'),
+    url('fonts/mediakron.woff2?ra6f2d') format('woff2'),
+    url('fonts/mediakron.ttf?ra6f2d') format('truetype'),
+    url('fonts/mediakron.woff?ra6f2d') format('woff'),
+    url('fonts/mediakron.svg?ra6f2d#mediakron') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .mk-icon {

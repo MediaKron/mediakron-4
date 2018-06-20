@@ -68,7 +68,7 @@
   color: #000;
   margin: .3em 0 0 .2em;
   @include rem-fallback(font-size,16);
-  @include placeholder {
+  input::placeholder {
       color: #565656;
       @include rem-fallback(font-size,16);
     } 

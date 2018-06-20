@@ -787,17 +787,17 @@
     margin-right: auto;
     max-width: 992px;
     @include clearfix;
-    @include display(flex);
-    @include justify-content(center);
-    @include align-items(stretch);
-    @include flex-wrap(wrap);
+    display:flex;;
+    justify-content: center;
+    align-items:stretch;
+    flex-wrap:wrap;
     clear: both;
     text-align: center;
 
   .grid-item {
-    @include transition (all 0.2s ease-in-out);
-    @include flex(1 1 150px);
-    @include align-self(flex-start);
+    transition: all 0.2s ease-in-out;
+    flex:1 1 150px;
+    align-self:flex-start;
     display: block;
     margin: $flex-box-gutter;
     list-style:none;
@@ -827,7 +827,7 @@
 	background:#ddd;
 	border:#ddd;
 	@extend .box-shadow-subtle;
-	@include align-self(center);
+	align-self:center;
 }
 
  .folder-template--grid .grid-items li .item-square-icon .mk-icon{
@@ -875,9 +875,8 @@
 
 /* @group FOLDER - MOSAIC */
 
-
 .folder-template--foldermosaic .grid-items {
-   margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
   max-width: 970px;
 }

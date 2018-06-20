@@ -58,7 +58,8 @@
 .btn-primary {
 	background-color: #444;
 	border: 1px solid #444;
-	padding: 5px 10px 6px 10px;
+    padding: 5px 10px 6px 10px;
+    color:#fff;
 }
 
 .btn-primary:focus, .btn-primary:active, .btn-primary.active {
@@ -349,8 +350,7 @@ border: 1px solid #444;
      display: none;
  
      + .checkbox {
-       @include transition(all 0.3s ease);
-      /* background: $switch-border-background;*/
+       transition: all 0.3s ease;
        background: #ccc;
        border-radius: $switch-radius;
        border: none;
@@ -363,10 +363,13 @@ border: 1px solid #444;
        z-index: 0;
  
        &:before {
-         @include position(absolute, 2px 0 0 2px);
+         position:absolute;
+         top:2px;
+         bottom:0;
+         right:0;
+         left:2px;
          @include transform(scale(1));
-         @include transition(all 0.3s ease);
-         /*background: $switch-background;*/
+         transition: all 0.3s ease;
          background:#ddd;
          border-radius: $switch-radius;
          content: "";
@@ -376,9 +379,14 @@ border: 1px solid #444;
        }
  
        &:after {
-         @include position(absolute, 2px 0 0 2px);
-         @include transition(all 0.3s ease);
-         @include size($knob-size);
+        position:absolute;
+        top:2px;
+        bottom:0;
+        right:0;
+        left:2px;
+         transition: all 0.3s ease;
+         width: $knob-size;
+         height:$knob-size;
          background: $switch-background;
          border-radius: $knob-radius;
          box-shadow: $switch-shadow;

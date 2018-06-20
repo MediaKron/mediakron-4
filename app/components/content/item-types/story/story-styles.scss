@@ -964,12 +964,17 @@ story-add-comparison {
 
 @keyframes highlightField {
   0% {
+    /*background-color:#ffffd9;*/
     border: 1px solid #ccc;
   }
   60% {
+    /*background-color:#ffffd9*/
+    ;
     border: 1px solid #ccc;
   }
   100% {
+    /*background-color: #fff*/
+    ;
     border: 1px solid #fff;
   }
 }
@@ -1055,7 +1060,7 @@ story-add-comparison {
 
 .edit-story h1.story-title[contenteditable=true] {
   @include rem-fallback(font-size, 34);
-  ::placeholder  {
+  input::placeholder {
     color: #565656;
     font-size: 34px;
     font-size: 2rem !important;
@@ -1288,7 +1293,7 @@ figure .helptext .tools {
   margin: 0;
   @include rem-fallback(font-size, 16);
   @include rem-fallback(height, 30);
-  ::placeholder  {
+  input::placeholder {
     color: #565656;
     @include rem-fallback(font-size, 16);
   }
@@ -1967,10 +1972,3 @@ figure.alignFull .figure-caption {
 }
 
 /* #endregion */
-
-#pastehelper{
-  position: fixed;
-  left:0;
-  top:0;
-  opacity: 0;
-}

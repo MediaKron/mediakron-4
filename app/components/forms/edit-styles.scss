@@ -50,7 +50,7 @@ fieldset.expandable-fieldset legend {
 }
 
 .field {
-    display:flex;
+    display:flex;;
     justify-content:flex-start;
     align-content:flex-start;
     margin: 10px 0;
@@ -68,7 +68,7 @@ label {
 }
 
 .radio-group {
-  display:flex;
+  display:flex;;
 }
 
 .radio-group label {
@@ -154,7 +154,7 @@ ul.sort-group, ul.sort-group li{
     @include rem-fallback(font-size, 21);
     padding: .2em .5em; 
     border: 1px solid #565656;
-    ::placeholder  {
+    input::placeholder {
         color: #565656;
       } 
 }
@@ -266,7 +266,7 @@ ul.sort-group, ul.sort-group li{
     @include rem-fallback(font-size, 28);
     font-weight: bold;
     background: #f1f1f1;
-    ::placeholder  {
+    input::placeholder {
         color: #565656;
         font-weight: bold;
         @include rem-fallback(font-size, 28);   
@@ -524,6 +524,7 @@ top:3px;
     border: 1px solid #ddd;
     width: 120px;
     overflow: hidden;
+    background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
 }
 
 .select-style select {
@@ -649,7 +650,7 @@ top:3px;
 	display:block;
 	position:relative;
 	margin-bottom:1em;
-	// background-image: url("../../../core-css/img/layout-icons/home-layout-default.jpg");
+	background-image: url("../img/home-layout-default.jpg");
 	background-repeat: no-repeat;
 }
 
@@ -672,7 +673,7 @@ top:3px;
 	height:125px;
 	display:block;
 	position:relative;
-	// background-image: url("../../../core-css/img/layout-icons/home-layout-default.jpg");
+	background-image: url("../img/home-layout-default.jpg");
 	background-repeat: no-repeat;
 }
 
