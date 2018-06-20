@@ -11,5 +11,5 @@ import Auth from "~/core-js/auth/auth";
 console.log('debug');
 $(document).ready(function(){
     window.Mediakron = Mediakron;
-    Mediakron.auth = Auth();
+    Mediakron.initialize();
 })
