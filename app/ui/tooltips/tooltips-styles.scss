@@ -260,4 +260,19 @@
     margin-top: -2px;
 }
 
+.tooltip { /* Override bootstrap  */
+	position: static;
+	display: block;
+	visibility: visible;
+	font-size: 1rem;
+	line-height: 1.4;
+	opacity: 1; 
+	filter: alpha(opacity=1);
+}
+
+[data-tooltip]:after {
+    @include rem-fallback(font-size, 14);
+}
+
+
 /* @end */

@@ -54,12 +54,17 @@
                           <div id="branding">
                                  <button type="button" class="mobile-nav-button"><span class="mk-icon mk-menu"></span></button>
                                 <span id="site-logo"></span>
+<<<<<<< HEAD
                                 <span id="site-name"></span>
                                 <h1 class="page-header">
                                   <span id="site-name">
                                     <a href="home"></a>
                                   </span>
                                 </h1>
+=======
+
+                                <h1 class="page-header"><span id="site-name"><a href="home"></a></span></h1>
+>>>>>>> 17150950e6059514dfac031f1b4dd14af36ac39e
                                 <span id="institution-logo"></span>
                           </div>
                           <div id="poll"></div>

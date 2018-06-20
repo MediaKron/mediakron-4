@@ -10521,7 +10521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 console.log('debug');
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
   window.Mediakron = __WEBPACK_IMPORTED_MODULE_1__core_js_init__["default"];
-  __WEBPACK_IMPORTED_MODULE_1__core_js_init__["default"].auth = Object(__WEBPACK_IMPORTED_MODULE_2__core_js_auth_auth__["a" /* default */])();
+  __WEBPACK_IMPORTED_MODULE_1__core_js_init__["default"].initialize();
 });
 
 /***/ }),
@@ -10595,7 +10595,7 @@ function Auth(callback) {
         }
     });
 }
-/* harmony default export */ __webpack_exports__["a"] = (Auth);
+/* unused harmony default export */ var _unused_webpack_default_export = (Auth);
 
 /***/ }),
 /* 7 */

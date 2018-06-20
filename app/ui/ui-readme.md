@@ -1,4 +1,4 @@
-# UI Elements
+# Basic UI Elements
 
 ## Links
 
@@ -22,9 +22,4 @@
 
 ```html|showSource
 <button type="submit" class="btn btn-sm btn-primary save-add" data-type="file"><span class="mk-icon mk-save"></span>Button with Icon</button>
-```
-
-## Icons
-```html
-<span class="mk-icon mk-save"></span>
 ```

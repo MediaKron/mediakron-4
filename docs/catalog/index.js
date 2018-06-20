@@ -3,6 +3,13 @@ import ReactDOM from "react-dom";
 import { Catalog, pageLoader } from "catalog";
 import css from "../../public/css/app.css";
 
+const colors = [
+  { 
+    brandColor: "#000",
+    textColor: "#660000",
+  }
+]
+
 const pages = [
   // Home
   { path: "/", 
@@ -39,10 +46,23 @@ const pages = [
     pages: [
       {
         path: '/ui/',
-        title: 'Introduction',
+        title: 'Basic UI Elements',
         component: require("../../app/ui/ui-readme.md")
       },
-      // Other subpages
+        // Icons
+        {
+          path: '/ui/mk-icons',
+          title: 'Icons',
+          scripts: ['https://use.fontawesome.com/releases/v5.0.13/js/all.js'],
+          component: require("../../app/ui/icons/mk-icons/mk-icons-readme.md")
+        },
+        // Tooltips
+        {
+          path: '/ui/tooltips',
+          title: 'Tooltips',
+          component: require("../../app/ui/tooltips/tooltips-readme.md")
+        },
+        // Other subpages
     ]
   },
   {
@@ -67,11 +87,14 @@ const pages = [
       // Other subpages
     ]
   },
-  
 ];
 
 ReactDOM.render(
-  <Catalog title="MediaKron 4 Style Guide" pages={pages} />,
+  <Catalog 
+    title="MediaKron 4 Docs" 
+    pages={pages}  
+    theme={colors}
+  />,
   document.getElementById("catalog")
 );
 
