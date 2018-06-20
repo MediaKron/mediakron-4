@@ -1,20 +1,33 @@
 /**
+ * This class provides some basic controls for WYSIWIG Eediting
  * 
+ * TODO: Build a class handler that can be attached to a field
+ * and understands the IO
  */
-function form() {
-    var template = JST['settings.section.wysiwyg'],
-        html = template();
+import wysiwyg from "wysiwyg.html"
+import _ from "lodash"
+
+function renderWysiwyg() {
+    var template = _.template(wysiwyg),
+      html = template();
     return html;
 }
 
+/**
+ * Show the bubble
+ * @param {*} target 
+ */
 function showBubble(target) {
-    function updateBubblePosition(target);
+    updateBubblePosition(target);
     var parent = $(target).parent();
     $('.wysiwyg', parent).show();
 }
 
+/**
+ * Given the parent object,float the bubble
+ * @param {*} target 
+ */
 function updateBubblePosition(target) {
-    console.log(target);
     var selection = window.getSelection(),
         range = selection.getRangeAt(0),
         boundary = range.getBoundingClientRect(),
@@ -37,7 +50,11 @@ function updateBubblePosition(target) {
     }
 }
 
-function apply(e) {
+/**
+ * When you click on a link, take an action in this scope
+ * @param {*} e 
+ */
+function executeWysiwyg(e) {
     e.preventDefault();
     var action = $(e.currentTarget),
         view = this,
@@ -117,6 +134,13 @@ function apply(e) {
             document.execCommand(execute);
             break;
     }
-    function updateBubblePosition(parentEditor);
+    pdateBubblePosition(parentEditor);
     return false;
 };
+
+export {
+    updateBubblePosition,
+    renderWysiwyg,
+    showBubble,
+    executeWysiwyg
+}
