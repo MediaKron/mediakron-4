@@ -8,8 +8,7 @@ import $ from "jquery";
 import App from "~/core-js/init";
 import Auth from "~/core-js/auth/auth";
 
-var Mediakron;
 $(document).ready(function(){
-    Mediakron = new App();
+    window.Mediakron = new App();
     Mediakron.boot();
 })

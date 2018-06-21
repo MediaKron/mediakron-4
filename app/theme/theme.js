@@ -1,51 +1,55 @@
 // @Tim 02-28-2015 - http://www.davidhalford.com/thoughts/2013/auto-contrasting-text/
+import $ from "jquery"
+import Link from "../core-js/util/link"
+import Image from "../core-js/util/image";
 
-import ClassManagement from "class.management"
 /**
  * Helper functions for getting good colors when setting the site colros
  */
-class Theme {
-  constructor() { }
+export default class Theme {
+  constructor() {   }
 
   Initialize() {
 
     // Install override skin
-    if (Mediakron.skins[Mediakron.Site.Appearance.skin]) {
+    /*
+    Depricated
+    if (Mediakron.skins[Mediakron.Settings.Appearance.skin]) {
       $("#skin").attr(
         "href",
-        Mediakron.Site.cssURL +
+        Mediakron.Settings.cssURL +
         "skins/" +
-        Mediakron.Site.Appearance.skin
+        Mediakron.Settings.Appearance.skin
       );
-    }
+    }*/
 
     // Add logo from appearance settings
-    $("#site-logo").html(Mediakron.Image.logo("medium"));
+    $("#site-logo").html(Image.logo("medium"));
 
     // Insert site name/ 
     $("#branding a").click(Mediakron.linkHandle);
 
     // Insert copyright information
     $("#copyright").text(
-      Mediakron.Site.copyright
+      Mediakron.Settings.copyright
     );
 
     // Menu Style - horizontal or sidebar
-    if (Mediakron.Site.Appearance.navigation)
-      ClassManagement.swap(
+    if (Mediakron.Settings.Appearance.navigation)
+      Mediakron.ClassManagement.swap(
         "default-nav menu-vertical menu-horizontal",
-        Mediakron.Site.Appearance.navigation
+        Mediakron.Settings.Appearance.navigation
       );
 
     // ==== Custom appearance styles ====
 
-    // var primaryColor = Mediakron.Site.Appearance.colors.banner;
+    // var primaryColor = Mediakron.Settings.Appearance.colors.banner;
     var primaryColor = "green"
 
     var secondaryColor = Mediakron.Settings.Appearance.colors.bannerlink;
 
-    var banner_rgb = convertHex(primary-color, 100);
-    var banner_transparent = convertHex(primary-color, 0);
+    //var banner_rgb = this.convertHex(primary-color, 100);
+    //var banner_transparent = this.convertHex(primary-color, 0);
 
     var root = document.querySelector(':root');
     var htmlStyle = window.getComputedStyle(root);
@@ -54,12 +58,12 @@ class Theme {
 
 
     // Site font
-    if (Mediakron.Site.Appearance.font) {
+    if (Mediakron.Settings.Appearance.font) {
       // Apply custom font from appearance settings
       if (
-        Mediakron.Site.Appearance.fonts[Mediakron.Site.Appearance.font]
+        Mediakron.Settings.Appearance.fonts[Mediakron.Settings.Appearance.font]
       ) {
-        var sitefont = Mediakron.Site.Appearance.font,
+        var sitefont = Mediakron.Settings.Appearance.font,
           googlefont = false,
           bodyfont;
         if (sitefont == "Roboto" || sitefont == "Roboto (san serif)") {
@@ -87,14 +91,18 @@ class Theme {
         } else {
           $("body").css(
             "font-family",
-            Mediakron.Site.Appearance.fonts[
-            Mediakron.Site.Appearance.font
+            Mediakron.Settings.Appearance.fonts[
+            Mediakron.Settings.Appearance.font
             ]
           );
         }
       }
     }
 
+  }
+
+  link(contents, url, html){
+    return Link.link(contents, url, html);
   }
 
   // ==== Color Functions ====
@@ -109,19 +117,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    hexToR(h) {
+    function hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    hexToG(h) {
+    function hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    hexToB(h) {
+    function hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    cutHex(h) {
+    function cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     var cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -143,19 +151,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    hexToR(h) {
+    function hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    hexToG(h) {
+    function hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    hexToB(h) {
+    function hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    cutHex(h) {
+    function cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -177,19 +185,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    hexToR(h) {
+    function hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    hexToG(h) {
+    function hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    hexToB(h) {
+    function hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    cutHex(h) {
+    function cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -212,19 +220,19 @@ class Theme {
       hGreen = hexToG(hex),
       hBlue = hexToB(hex);
 
-    hexToR(h) {
+    function hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    hexToG(h) {
+    function hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    hexToB(h) {
+    function hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    cutHex(h) {
+    function cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -243,19 +251,19 @@ class Theme {
     var threshold = 130;
     (hRed = hexToR(hex)), (hGreen = hexToG(hex)), (hBlue = hexToB(hex));
 
-    hexToR(h) {
+    function hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    hexToG(h) {
+    function hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    hexToB(h) {
+    function hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    cutHex(h) {
+    function cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -305,19 +313,19 @@ class Theme {
     var Lighter = LightenDarkenColor(hex, 80);
     var Darker = LightenDarkenColor(hex, -40);
 
-    hexToR(h) {
+    function hexToR(h) {
       return parseInt(cutHex(h).substring(0, 2), 16);
     }
 
-    hexToG(h) {
+    function hexToG(h) {
       return parseInt(cutHex(h).substring(2, 4), 16);
     }
 
-    hexToB(h) {
+    function hexToB(h) {
       return parseInt(cutHex(h).substring(4, 6), 16);
     }
 
-    cutHex(h) {
+    function cutHex(h) {
       return h.charAt(0) == "#" ? h.substring(1, 7) : h;
     }
     cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
@@ -343,4 +351,3 @@ class Theme {
   }
 }
 
-export default Theme

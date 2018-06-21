@@ -5,10 +5,12 @@ import Backbone from "backbone";
 // Auth
 import Auth from "./auth/auth"
 import Site from "./models/site"
+import ClassManagement from "../core-js/util/class.management";
 
 // import url functions
 import { uri, base_path } from "./util/url"
 import Settings from "../settings"
+import Theme from "../theme/theme";
 
 var state = {
 
@@ -54,24 +56,28 @@ class App {
     this.data = {};
     this.state = state;
 
-    // set the base uri
-    this.Settings = Settings;
+    // Set up the settings
+    this.Settings = new Settings();
+    this.ClassManagement = new ClassManagement();
   }
 
   /**
    * Boot mediakron
    */
   boot() {
+
     // load up the site
     this.site = new Site({ uri: uri });
-    console.log(this.site.urlRoot);
     this.site.fetch();
+
     // Start
-    //Theme.Initialize();
+    this.theme = new Theme();
+    this.theme = this.theme.Initialize();
+
     //Auth();
   }
 
   // make the utility class avaliable
-}
+}  
 
 export default App;

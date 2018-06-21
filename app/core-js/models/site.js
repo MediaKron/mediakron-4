@@ -9,9 +9,12 @@ class Site extends Model {
           return base_path() + '/api/' + uri()
       }
   }
-
-  populateSettings(){
-
+  /**
+   * Pass the site object to the settings
+   * to initialize the settings
+   */
+  initializeSettings(){
+    Mediakron.Settings.site(this);
   }
 }
 export default Site;
