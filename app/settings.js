@@ -2,11 +2,13 @@ export default class Settings {
     constructor(){
         Object.assign(this, defaultSettings);
     }
+
+    method1(){
+        alert('method')
+    }
 }
 
 var defaultSettings = {
-    "Name": '',
-    "Settings": {
         "name": "",
         "uri": "",
         "subtitle": "",
@@ -348,8 +350,7 @@ var defaultSettings = {
                 "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "xls",
                 "application\/vnd.openxmlformats-officedocument.presentationml.presentation": "ppt"
             }
-        }
-    },
+        },
     "skins": {
         "default.css": {
             "title": "Default",

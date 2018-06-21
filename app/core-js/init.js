@@ -9,6 +9,7 @@ import Site from "./models/site"
 // import url functions
 import { uri, base_path } from "./util/url"
 import Settings from "../settings"
+import Theme from "../theme/theme";
 
 var state = {
 
@@ -54,8 +55,9 @@ class App {
     this.data = {};
     this.state = state;
 
-    // set the base uri
+    // Set up the settings
     this.Settings = new Settings();
+    this.ClassManagement = new ClassManagement();
   }
 
   /**
@@ -67,11 +69,12 @@ class App {
     console.log(this.Settings);
     this.site.fetch();
     // Start
-    Theme.Initialize();
+    this.theme = new Theme();
+    this.theme = this.theme.Initialize();
     //Auth();
   }
 
   // make the utility class avaliable
-}
+}  
 
 export default App;
