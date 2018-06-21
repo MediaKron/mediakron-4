@@ -93,6 +93,10 @@ function base_path(){
 function api_path() {
     return base_path() + '/api';
 }
+
+function file_path() {
+  return base_path() + "/files";
+}
 /**
  * 
  */
@@ -108,6 +112,7 @@ export {
     base_path,
     api_path,
     uri,
+    file_path,
     createUrlMap,
     getItem,
     getItemFromURI,

@@ -65,7 +65,7 @@ class SettingsController extends Controller
     public function show($id)
     {
         //
-        return Site::where('uri', $id)->orderBy('created_at', 'ASC')->paginate(10);
+        return Site::where('uri', $id)->first();
     }
 
     /**

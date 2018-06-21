@@ -1,6 +1,9 @@
 let mix = require('laravel-mix');
 
 mix.webpackConfig({
+    output: {
+        publicPath: '/public'
+    },
     resolve: {
         alias: {
             // bind version of jquery-ui
@@ -30,5 +33,8 @@ mix.webpackConfig({
  |
  */
 
-mix.js('app/app.js', 'public/js')
-    .sass('app/core-css/app.scss', 'public/css');
+mix
+  .setPublicPath('public')
+  .js("app/app.js", "public/js")
+  .sass("app/core-css/app.scss", "public/css")
+  .sourceMaps();

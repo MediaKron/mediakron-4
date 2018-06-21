@@ -1,10 +1,48 @@
+import { base_path, file_path, uri } from "./core-js/util/url"
+
 export default class Settings {
     constructor(){
         Object.assign(this, defaultSettings);
     }
 
-    method1(){
-        alert('method')
+    site(site){
+
+        this.name = site.get('title');
+        this.uri = site.get('uri');
+        this.subtitle = site.get('subtitle');
+        this.version = site.get('version');
+        this.copyright = site.get('copyright');
+        this.url = base_path();
+        this.ga = site.get('ga');
+        this.comment = site.get('comment');
+        this.download = site.get('download');
+        this.showAuthor = site.get('showAuthor');
+        this.showView = site.get('showView');
+        this.public = site.get('public');
+
+        this.filepath = file_path();
+        this.basepath = base_path();
+        
+        // Build nav options
+        this.Navigation.primary = site.get('primaryNav');
+        this.Navigation.secondary = site.get('secondary');
+
+        // Build home page
+        this.HomePage.image = site.get('homepageImage');
+        this.HomePage.alt = site.get('homepageImageAlt');
+        this.HomePage.description = site.get('homepageDescription');
+        this.HomePage.item = site.get('homepageItem');
+        this.HomePage.layout = site.get('homepageLayout');
+
+        this.Appearance.logo = site.get('logo');
+        this.Appearance.navigation = site.get('navigation');
+        this.Appearance.skin = site.get('skin');
+        this.Appearance.font = site.get('font');
+
+        this.Appearance.colors.navigation = site.get('navColor');
+        this.Appearance.colors.links = site.get('linkColor');
+        this.Appearance.colors.banner = site.get('bannerColor');
+        this.Appearance.colors.bannerlink = site.get('bannerLinkColor');
     }
 }
 

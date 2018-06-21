@@ -68,11 +68,8 @@ Route::group([
     // Settings api
     Route::resource('/settings', 'Api\SettingsController');
     // Settings api
-    Route::resource('/', 'Api\SettingsController', [
-        'names' => [
-            'show' => 'settings.show'
-        ]
-    ]);
+    Route::get('/', 'Api\SettingsController@show')->name('site.setting.show' );
+    Route::put('/', 'Api\SettingsController@update')->name('site.setting.update');
 });
 
 

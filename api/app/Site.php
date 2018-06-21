@@ -23,8 +23,8 @@ class Site extends Model
 
     public function getDataAttribute(){
         return [
-            "settings" => route('settings.show', ['site' => $this->uri]),
-            
+            "settings" => route('site.setting.show', ['site' => $this->uri]),
+
         ];/*
             "search" => [
                 "query" => "{{ path(" search",{ 'uri': site.uri })|raw }}/" ,

@@ -12,10 +12,13 @@ import { uri, base_path } from "./util/url"
 import Settings from "../settings"
 import Theme from "../theme/theme";
 
+import Router from "./router";
+import MainMenu from "../theme/navigation/main-menu/main-menu";
+
 var state = {
 
     // 
-    uri: false,
+    uri: false, 
 
     router: false, // this will later be the mediakron router funciton.  Useful for going cool places
     loading: true,
@@ -65,17 +68,59 @@ class App {
    * Boot mediakron
    */
   boot() {
-
+    var view = this;
     // load up the site
-    this.site = new Site({ uri: uri });
-    this.site.fetch();
+    var site = this.site = new Site({ uri: uri });
+    this.site.fetch().done(function(){
 
-    // Start
-    this.theme = new Theme();
-    this.theme = this.theme.Initialize();
+        site.initializeSettings();
 
-    //Auth();
+        // Start
+        view.Theme = new Theme();
+        view.Theme = Mediakron.Theme.Initialize();
+        
+        view.run();
+        //Auth();
+    });
+    
+
+    
   }
+
+    run() {
+        //createUrlMap();
+        this.router = new Router();
+        this.menu = new MainMenu();
+        /*this.configure = new Mediakron.MenuRight();
+        //Mediakron.changeTracker = new Mediakron.UpdatedContent();
+        Mediakron.App.load();
+
+
+        Mediakron.router.routesHit = 0;
+        Backbone.listenTo(Mediakron.router, "route", function (route, params) {
+            // queue classes from route
+            Mediakron.controller.lastRoute = Mediakron.controller.currentRoute;
+            Mediakron.controller.currentRoute = Backbone.history.fragment;
+            if (Mediakron.Routes[route]) {
+                if (Mediakron.Routes[route].classes) {
+                    Mediakron.classes.queue(Mediakron.Routes[route].classes);
+                }
+            }
+            Mediakron.router.routesHit = Mediakron.router.routesHit + 1;
+            Mediakron.Status.views = Mediakron.Status.views + 1;
+            Mediakron.classes.reset();
+        });
+        if (!Mediakron.Status.historyStarted) {
+            Backbone.history.start({
+                pushState: true,
+                // I think we're going to stick with the Push state.  
+                // I was thinking about using hashbangs but 
+                // http://danwebb.net/2011/5/28/it-is-about-the-hashbangs is compelling
+                root: Mediakron.Settings.basepath
+            });
+            Mediakron.Status.historyStarted = true;
+        }*/
+    }
 
   // make the utility class avaliable
 }  

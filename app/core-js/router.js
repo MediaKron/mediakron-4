@@ -12,7 +12,7 @@ import _ from 'underscore';
 // Import modules
 
 
-class Router extends Backbone.Router {
+export default class Router extends Backbone.Router {
     get routes() {
         return {
             "settings/organize(/:type)": "SettingsOrganize",
@@ -180,16 +180,16 @@ class Router extends Backbone.Router {
         if (ContentPage) {
             Mediakron.controller.gotoAdmin(ContentPage);
         }
-    },
+    }
     Logout() {
         window.location = Mediakron.Data.logout;
-    },
+    }
     Profile() {
         window.location = Mediakron.Data.profile;
-    },
+    }
     Admin() {
         window.location = '/admin/sites/' + Mediakron.Settings.uri;
-    },
+    }
     Login() {
         if ((Mediakron.Access.check('can access site') && !Mediakron.Settings.public) || (Mediakron.Settings.public && !Mediakron.Access.isGuest())) {
             return this.Welcome();
@@ -198,7 +198,7 @@ class Router extends Backbone.Router {
         query.fromRoute = true;
         var login = new Mediakron.Login(query);
         Mediakron.controller.gotoView(login);
-    },
+    }
     getItem(id) {
         var item = Mediakron.getItemFromURI(id);
         if (!item) {
@@ -210,7 +210,7 @@ class Router extends Backbone.Router {
             return false;
         }
         return item;
-    },
+    }
     Primary(first, second, third, fourth, fifth, sixth, seventh) {
         if (typeof (first) == 'object') {
             var getter = first;
@@ -270,7 +270,7 @@ class Router extends Backbone.Router {
         }
         Mediakron.controller.lastRealPage = Mediakron.controller.breadcrumb;
         Mediakron.controller.gotoItem();
-    },
+    }
     ItemInLTI(id, access) {
         var item, url, itemView, itemcollection;
         Mediakron.classes.setStatic('lti-view snargle');
@@ -289,7 +289,7 @@ class Router extends Backbone.Router {
         }
         Mediakron.Status.current = item.get('uri');
         Mediakron.controller.gotoView(item.getView());
-    },
+    }
     // TODO: are we still using this?
     ItemWithContextFull(context, id) {
         var item, itemView, contextItem, contextView;
@@ -306,7 +306,7 @@ class Router extends Backbone.Router {
         Mediakron.Status.current = item.get('uri');
         Mediakron.controller.gotoView(item.getView());
         Mediakron.controller.showFull(item);
-    },
+    }
     // TODO: are we still using this?
     ItemWithContext(context, id) {
         var item, itemView, contextItem, contextView;
@@ -322,7 +322,7 @@ class Router extends Backbone.Router {
         }
         Mediakron.Status.current = item.get('uri');
         Mediakron.controller.gotoView(item.getView());
-    },
+    }
     // TODO: are we still using this?
     ItemWithContextAndSidebar(context, id, sidebar) {
         var item, itemView, contextItem, contextView;
@@ -338,7 +338,7 @@ class Router extends Backbone.Router {
         contextItem = Mediakron.getItemFromURI(context);
         Mediakron.Status.current = item.get('uri');
         Mediakron.controller.gotoView(item.getView());
-    },
+    }
     Help(help) {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
@@ -349,10 +349,10 @@ class Router extends Backbone.Router {
         } else {
             Mediakron.controller.gotoHelp(new Mediakron.HelpPage(help));
         }
-    },
+    }
     BrowseLTIToken(token, context) {
         this.BrowseLTI(context);
-    },
+    }
     BrowseLTI(context) {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
@@ -368,7 +368,7 @@ class Router extends Backbone.Router {
                 Mediakron.controller.gotoView(ContentPage);
             }
         });
-    },
+    }
     Browse(criteria, query, context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can access site')) {
@@ -403,7 +403,7 @@ class Router extends Backbone.Router {
                 Mediakron.controller.gotoView(ContentPage);
             }
         });
-    },
+    }
     BrowseArchived(criteria, query, context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can archive content')) {
@@ -481,7 +481,7 @@ class Router extends Backbone.Router {
                 Mediakron.controller.gotoView(ContentPage);
             }
         }
-    },
+    }
     Tags(context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can access site')) {
@@ -493,7 +493,7 @@ class Router extends Backbone.Router {
         if (Tags) {
             Mediakron.controller.gotoView(Tags);
         }
-    },
+    }
     Comments(context) {
         Mediakron.controller.reset();
         if (!Mediakron.Access.check('can access site')) {
@@ -505,7 +505,7 @@ class Router extends Backbone.Router {
         if (Comments) {
             Mediakron.controller.gotoView(Comments);
         }
-    },
+    }
     Search(search) {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
@@ -515,7 +515,7 @@ class Router extends Backbone.Router {
         Search.search(search, function () {
             Mediakron.controller.gotoView(Search);
         });
-    },
+    }
     ItemsInWelcome(first, second, third, fourth, fifth, sixth, seventh) {
         if (typeof (first) == 'object') {
             var getter = first;
@@ -580,7 +580,7 @@ class Router extends Backbone.Router {
         Mediakron.Status.current = item.get('uri');
         Mediakron.controller.lastRealPage = Mediakron.controller.breadcrumb;
         Mediakron.controller.gotoItem();
-    },
+    }
     Welcome() {
         if (!Mediakron.Access.check('can access site')) {
             Mediakron.Access.denied();
@@ -608,7 +608,7 @@ class Router extends Backbone.Router {
             Mediakron.classes.queue('home-help');
             Mediakron.controller.gotoView(new Mediakron.HelpPage(false));
         }
-    },
+    }
     SettingsContent(context) {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -621,7 +621,7 @@ class Router extends Backbone.Router {
         if (ContentPage) {
             Mediakron.controller.gotoAdmin(ContentPage);
         }
-    },
+    }
     SettingsStatistics() {
         if (!Mediakron.Access.check('can access statistics')) {
             Mediakron.Access.denied();
@@ -632,7 +632,7 @@ class Router extends Backbone.Router {
         if (StatisticsPage) {
             Mediakron.controller.gotoAdmin(StatisticsPage);
         }
-    },
+    }
     SettingsAppearance() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -643,7 +643,7 @@ class Router extends Backbone.Router {
         if (AppearancePage) {
             Mediakron.controller.gotoAdmin(AppearancePage);
         }
-    },
+    }
     SettingsHomepage() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -654,7 +654,7 @@ class Router extends Backbone.Router {
         if (HomePage) {
             Mediakron.controller.gotoAdmin(HomePage);
         }
-    },
+    }
     SettingsNavigation() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -665,7 +665,7 @@ class Router extends Backbone.Router {
         if (NavigationPage) {
             Mediakron.controller.gotoAdmin(NavigationPage);
         }
-    },
+    }
     SettingsComments() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -677,7 +677,7 @@ class Router extends Backbone.Router {
             Mediakron.controller.gotoAdmin(CommentsPage);
         }
 
-    },
+    }
     SettingsPrivacy() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -688,7 +688,7 @@ class Router extends Backbone.Router {
         if (PrivacyPage) {
             Mediakron.controller.gotoAdmin(PrivacyPage);
         }
-    },
+    }
     SettingsGoogleAnalytics() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -699,7 +699,7 @@ class Router extends Backbone.Router {
         if (GoogleAnalyticsPage) {
             Mediakron.controller.gotoAdmin(GoogleAnalyticsPage);
         }
-    },
+    }
     SettingsItemOptions() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -710,7 +710,7 @@ class Router extends Backbone.Router {
         if (ItemOptionsPage) {
             Mediakron.controller.gotoAdmin(ItemOptionsPage);
         }
-    },
+    }
     SettingsCanvas() {
         if (!Mediakron.Access.check('can connect site to canvas')) {
             Mediakron.Access.denied();
@@ -721,7 +721,7 @@ class Router extends Backbone.Router {
         if (NavigationPage) {
             Mediakron.controller.gotoAdmin(NavigationPage);
         }
-    },
+    }
     SettingsSearch() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -732,7 +732,7 @@ class Router extends Backbone.Router {
         if (Search) {
             Mediakron.controller.gotoAdmin(Search);
         }
-    },
+    }
     SettingsPerformance() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -743,7 +743,7 @@ class Router extends Backbone.Router {
         if (Performance) {
             Mediakron.controller.gotoAdmin(Performance);
         }
-    },
+    }
     SettingsOrganize(type) {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -756,7 +756,7 @@ class Router extends Backbone.Router {
                 Mediakron.controller.gotoAdmin(StructurePage);
             }
         }
-    },
+    }
     SettingsImport(type) {
         if (!Mediakron.Access.check('can import')) {
             Mediakron.Access.denied();
@@ -766,7 +766,7 @@ class Router extends Backbone.Router {
         if (ImportForm) {
             Mediakron.controller.gotoAdmin(ImportForm);
         }
-    },
+    }
     SettingsExport() {
         if (!Mediakron.Access.check('can export')) {
             Mediakron.Access.denied();
@@ -777,7 +777,7 @@ class Router extends Backbone.Router {
         if (ExportPage) {
             Mediakron.controller.gotoAdmin(ExportPage);
         }
-    },
+    }
     SettingsImportMK2(type) {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Access.denied();
@@ -788,7 +788,7 @@ class Router extends Backbone.Router {
         if (ImportForm) {
             Mediakron.controller.gotoAdmin(ImportForm);
         }
-    },
+    }
     SettingsRemoveMarker(map, marker) {
         var item = Mediakron.getItemFromURI(map);
         if (!item) return false;
@@ -815,7 +815,7 @@ class Router extends Backbone.Router {
                 }
             });
         }
-    },
+    }
 
     SettingsRemoveEvent(map, marker) {
         var item = Mediakron.getItemFromURI(map);
@@ -843,7 +843,7 @@ class Router extends Backbone.Router {
                 }
             });
         }
-    },
+    }
 
     SettingsMarkers(map, marker) {
 
@@ -861,7 +861,7 @@ class Router extends Backbone.Router {
         if (ManageMarkers) {
             Mediakron.controller.gotoAdmin(ManageMarkers);
         }
-    },
+    }
 
     SettingsManager(parent, child) {
 
@@ -877,7 +877,7 @@ class Router extends Backbone.Router {
             parent: item,
             child: false,
             data: {}
-        },
+        }
             Manager = false;
         if (child == 'simple') {
             request.event = false;
@@ -911,7 +911,7 @@ class Router extends Backbone.Router {
             Manager = new Mediakron.ContentManager.Edit(request);
         }
         if (Manager) Mediakron.controller.gotoAdmin(Manager);
-    },
+    }
 
     SettingsManagerRemove(parent, child) {
         Mediakron.classes.queue('settings-manage-organize');
@@ -989,7 +989,7 @@ class Router extends Backbone.Router {
                 reject(item, child);
             }
         });
-    },
+    }
 
     SettingsEvent(timeline, event) {
         Mediakron.classes.queue('settings-manage-organize');
@@ -1019,7 +1019,7 @@ class Router extends Backbone.Router {
             Mediakron.controller.gotoAdmin(ManageEvent);
         }
 
-    },
+    }
     SettingsManageContext(action, path) {
         Mediakron.classes.queue('settings-manage-' + action);
         var pathparts = path.split('/'),
@@ -1104,7 +1104,7 @@ class Router extends Backbone.Router {
                 Manage.hideLoad();
             }
         });
-    },
+    }
     SettingsContentAdd(type, arg) {
         var AddContent;
         if (!Mediakron.Access.check('can create content')) {
@@ -1131,7 +1131,7 @@ class Router extends Backbone.Router {
                 Mediakron.controller.gotoAdmin(AddContent);
             }
         }
-    },
+    }
     convertToType(type, uri) {
         var item = Mediakron.getItemFromURI(uri);
         if (item === undefined || !item) {
@@ -1169,7 +1169,7 @@ class Router extends Backbone.Router {
                 reject(item);
             }
         });
-    },
+    }
     SettingsContentEdit(path) {
         var pathparts = path.split('/'),
             pathcount = pathparts.length,
@@ -1226,7 +1226,7 @@ class Router extends Backbone.Router {
                 AddContent.hideLoad();
             }
         });
-    },
+    }
     SettingsContentConfirm(action, uri) {
         var item = Mediakron.getItemFromURI(uri);
         if (item === undefined) {
@@ -1236,7 +1236,7 @@ class Router extends Backbone.Router {
         var request = {
             item: item,
             action: action
-        },
+        }
             accept, reject, text;
         switch (action) {
             case 'publish':
@@ -1507,7 +1507,7 @@ class Router extends Backbone.Router {
                 });
                 break;
         }
-    },
+    }
     SettingsGeneral() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Events.AccessDenied();
@@ -1517,7 +1517,7 @@ class Router extends Backbone.Router {
         if (AdminPage) {
             Mediakron.controller.gotoAdmin(AdminPage);
         }
-    },
+    }
     SettingsUsers() {
         if (!Mediakron.Access.check('can change site settings')) {
             Mediakron.Events.AccessDenied();
@@ -1527,7 +1527,7 @@ class Router extends Backbone.Router {
         if (AdminPage) {
             Mediakron.controller.gotoAdmin(AdminPage);
         }
-    },
+    }
     Settings() {
         if (Mediakron.Access.isGuest()) {
             Mediakron.Events.AccessDenied();
@@ -1537,7 +1537,7 @@ class Router extends Backbone.Router {
         if (AdminPage) {
             Mediakron.controller.gotoAdmin(AdminPage);
         }
-    },
+    }
     back() {
         if (this.routesHit > 1) {
             //more than one route hit -> user did not land to current page directly
@@ -1550,7 +1550,7 @@ class Router extends Backbone.Router {
                 replace: true
             });
         }
-    },
+    }
     refresh() {
         var current = Backbone.history.fragment;
         Backbone.history.fragment = false;
@@ -1560,6 +1560,4 @@ class Router extends Backbone.Router {
         });
         Backbone.history.fragment = current;
     }
-});
-
-module.exports = router;
+}

@@ -9,6 +9,7 @@ class Site extends Model {
           return base_path() + '/api/' + uri()
       }
   }
+
   /**
    * Pass the site object to the settings
    * to initialize the settings

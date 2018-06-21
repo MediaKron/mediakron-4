@@ -1,12 +1,22 @@
 
-Mediakron.MainMenu = Backbone.View.extend({
-    template: JST['navigation.main.menu'],
-    el: '#nav-main',
-    items: [],
-    tags: [],
-    initialize: function () {
+import template from "./main-menu.html"
+import _ from "lodash"
+
+export default class MainMenu extends Backbone.View {
+    constructor(){
+        super();
+        this.template = _.template(template);
+        this.el = '#nav-main';
+        this.items = [];
+        this.tags = [];
+        
+    }
+    
+    initialize(){
+        console.log(template);
+        console.log(this.template);
         this.topics = Mediakron.topics;
-        Mediakron.App.Events.on("context:goto", function (event) {
+        /*Mediakron.App.Events.on("context:goto", function (event) {
             var title = '';
             if (event.view.model) {
                 title = event.view.model.get('title') + ' | ';
@@ -14,13 +24,14 @@ Mediakron.MainMenu = Backbone.View.extend({
             }
             title = title + Mediakron.Settings.name;
             $('title').text(title);
-        });
+        });*/
         var view = this;
-        Mediakron.App.Events.on('update_content', function () {
+        //Mediakron.App.Events.on('update_content', function () {
             view.render();
-        });
-    },
-    render: function () {
+        //});
+    }
+
+    render(){
         var items = Mediakron.Settings.Navigation.primary,
             length = items.length,
             i = 0,
@@ -46,21 +57,26 @@ Mediakron.MainMenu = Backbone.View.extend({
         this.$el.show();
 
         return this;
-    },
-    events: {
-        'click .js-menu-trigger': 'toggleMenu',
-        'click .js-menu-screen': 'toggleMenu',
-        'click .main-menu-sidebar .close-button': 'closeMenu',
-        'click a': Mediakron.linkHandle,
-        'click .main-menu-sidebar.is-visible a': 'toggleMenu'
-    },
-    toggleMenu: function () {
+    }
+
+    get events() {
+        return {
+            'click .js-menu-trigger': 'toggleMenu',
+            'click .js-menu-screen': 'toggleMenu',
+            'click .main-menu-sidebar .close-button': 'closeMenu',
+            'click a': Mediakron.linkHandle,
+            'click .main-menu-sidebar.is-visible a': 'toggleMenu'
+        }
+    }
+
+    toggleMenu(){
         $('.js-menu,.js-menu-screen', this.parent).toggleClass('is-visible');
         //         $('#main-container').toggleClass('content-push');
-    },
-    closeMenu: function () {
+    }
+
+    closeMenu(){
         $('.js-menu,.js-menu-screen', this.parent).removeClass('is-visible');
         //         $('#main-container').toggleClass('content-push');
     }
 
-});
+}
