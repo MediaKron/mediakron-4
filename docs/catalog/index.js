@@ -3,16 +3,18 @@ import ReactDOM from "react-dom";
 import { Catalog, pageLoader } from "catalog";
 import css from "../../public/css/app.css";
 
+// theme overrides
 const colors = { 
     pageHeadingBackground: "#255361",
     pageHeadingHeight: 100,
   }
 
+// page structure
 const pages = [
   // Home
   { path: "/", 
     title: "Home", 
-    component: require("./doc-pages/home.md") },
+    component: require("./home.md") },
   // Items
   
   {
@@ -24,7 +26,7 @@ const pages = [
   {
     path: '/api/',
     title: 'API',
-    component: require("./doc-pages/api-readme.md")
+    component: require("../../api/api-readme.md")
   },
 
   {
