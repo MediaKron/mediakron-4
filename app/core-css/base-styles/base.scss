@@ -5,9 +5,13 @@ html {
 body {
 	color:#333;
 	font-weight: normal;
-	@include rem-fallback(font-size, 16);
 	line-height: 1.5;
 }
+
+$modularscale: (
+  base: 1em,
+  ratio: 1.414
+);
 
 /* @group Default Skin Styles */
 

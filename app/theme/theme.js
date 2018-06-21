@@ -47,11 +47,9 @@ class Theme {
     var banner_rgb = convertHex(primary-color, 100);
     var banner_transparent = convertHex(primary-color, 0);
 
-    document.documentElement.style.setProperty("--mk-primary-color", "green");
-
     var root = document.querySelector(':root');
     var htmlStyle = window.getComputedStyle(root);
-    htmlStyle.getPropertyValue('--mk-primary-color');  // get the custom property --baseColor
+    htmlStyle.getPropertyValue('--mk-primary-color'); 
     root.style.setProperty("--mk-primary-color", "red"); // set --baseColor to red
 
 

@@ -1197,8 +1197,6 @@ html {
 body {
   color: #333;
   font-weight: normal;
-  font-size: 16px;
-  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -27161,6 +27159,26 @@ http://refills.bourbon.io/
 }
 
 /* @end */
+
+h1.modularscale {
+  font-size: 3.99758436em;
+}
+
+h2.modularscale {
+  font-size: 2.82714594em;
+}
+
+h3.modularscale {
+  font-size: 1.999396em;
+}
+
+h4.modularscale {
+  font-size: 1.414em;
+}
+
+p.modularscale.reading {
+  font-size: 1.414em;
+}
 
 /* #region  SITE SETTINGS - USERS */
 
