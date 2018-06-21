@@ -3,34 +3,38 @@ import ReactDOM from "react-dom";
 import { Catalog, pageLoader } from "catalog";
 import css from "../../public/css/app.css";
 
-const colors = [
-  { 
-    brandColor: "#000",
-    textColor: "#660000",
+const colors = { 
+    pageHeadingBackground: "#255361",
+    pageHeadingHeight: 100,
   }
-]
 
 const pages = [
   // Home
   { path: "/", 
-    title: "Welcome", 
+    title: "Home", 
     component: require("./doc-pages/home.md") },
   // Items
   
   {
-    title: 'API',
-    pages: [
-      {
-        path: '/api/',
-        title: 'MediaKron API',
-        component: require("./doc-pages/api-readme.md")
-      },
-      // Other subpages
-    ]
+    path: '/overview/',
+    title: 'Getting Started',
+    component: require("../../README.md")
   },
-  
+
   {
-    title: 'Items',
+    path: '/api/',
+    title: 'API',
+    component: require("./doc-pages/api-readme.md")
+  },
+
+  {
+    path: '/app/',
+    title: 'App',
+    component: require("../../app/app-readme.md")
+  },
+
+  {
+    title: 'App > Items',
     pages: [
       {
         path: '/items/',
@@ -40,9 +44,46 @@ const pages = [
       // Other subpages
     ]
   },
+  
+  {
+    path: '/comments/',
+    title: 'App > Comments',
+    component: require("../../app/comments/comments-readme.md")
+  },
+
+  {
+    path: '/content-tools/',
+    title: 'App > Content Tools',
+    component: require("../../app/content-tools/content-tools-readme.md")
+  },
+
+  {
+    path: '/forms/',
+    title: 'App > Forms',
+    component: require("../../app/forms/forms-readme.md")
+  },
+
+  {
+    path: '/help/',
+    title: 'App > Help',
+    component: require("../../app/help/help-readme.md")
+  },
+
+  {
+    path: '/site-settings/',
+    title: 'App > Site Settings',
+    component: require("../../app/site-settings/site-settings-readme.md")
+  },
+
+  {
+    path: '/theme/',
+    title: 'App > Theme',
+    component: require("../../app/theme/theme-readme.md")
+  },
+
   // UI
   {
-    title: 'UI',
+    title: 'App > UI',
     pages: [
       {
         path: '/ui/',
@@ -66,7 +107,7 @@ const pages = [
     ]
   },
   {
-    title: 'Core CSS',
+    title: 'App > Core CSS',
     pages: [
       {
         path: '/core-css/',
@@ -77,7 +118,7 @@ const pages = [
     ]
   },
   {
-    title: 'Core JS',
+    title: 'App > Core JS',
     pages: [
       {
         path: '/core-js/',
@@ -86,6 +127,12 @@ const pages = [
       },
       // Other subpages
     ]
+  },
+
+  {
+    path: '/utilities/',
+    title: 'App > Utilities',
+    component: require("../../app/utilities/utilities-readme.md")
   },
 ];
 

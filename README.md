@@ -1,12 +1,18 @@
 ![MediaKron Banner](mkbanner.png)
 # Mediakron V4
 
-About MediaKron: http://mediakron.bc.edu
-
-This repository contains the code as well as the build and deployment tooling to support both local builds and deployment to the EY environment
-for properly credentialed users.
+This repository contains the code as well as the build and deployment tooling to support both local builds and deployment to the EY environment for properly credentialed users.
 
 You can start development immediately by booting the application locally with Docker.
+
+General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.bc.edu)
+
+## Structure
+* **api**: Contains the root Larvel application for boot and api methods
+* **docker**: Contains the root Larvel application for boot and api methods
+* **public**: The public web root with any servable files and the main executable
+* **app**: Buildable code for the front-facing MediaKron JS application
+* **docs**: MediaKron technical documentation
 
 ## Local Build Requirements
 * [Docker](https://docs.docker.com/install/) 17.12+ 
@@ -25,12 +31,6 @@ You can start development immediately by booting the application locally with Do
 * **Development**: `npm run mediakron:build`
 * **Watch and Build**: `npm run mediakron:watch`
 * **Production** `npm run mediakron:build:prod`
-
-## Structure
-* **api**: Contains the root larvel application for boot and api methods
-* **docker**: Contains the root larvel application for boot and api methods
-* **public**: The public web root with any servable files and the main executable
-* **src**: This will contain all of the buildable code for the mediakron js application
 
 ## PHP MyAdmin 
 You can access phpmyadmin at `http://localhost:8080`
