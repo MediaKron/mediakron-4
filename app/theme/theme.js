@@ -1,6 +1,5 @@
 // @Tim 02-28-2015 - http://www.davidhalford.com/thoughts/2013/auto-contrasting-text/
 import $ from "jquery"
-import ClassManagement from "../core-js/util/class.management"
 import Link from "../core-js/util/link"
 import Image from "../core-js/util/image";
 
@@ -25,7 +24,6 @@ export default class Theme {
     }*/
 
     // Add logo from appearance settings
-    console.log(Image);
     $("#site-logo").html(Image.logo("medium"));
 
     // Insert site name/ 
@@ -50,8 +48,8 @@ export default class Theme {
 
     var secondaryColor = Mediakron.Settings.Appearance.colors.bannerlink;
 
-    var banner_rgb = convertHex(primary-color, 100);
-    var banner_transparent = convertHex(primary-color, 0);
+    //var banner_rgb = this.convertHex(primary-color, 100);
+    //var banner_transparent = this.convertHex(primary-color, 0);
 
     document.documentElement.style.setProperty("--mk-primary-color", "green");
 

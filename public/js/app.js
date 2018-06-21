@@ -10535,9 +10535,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_backbone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_backbone__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_auth__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_site__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_url__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__settings__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__theme_theme__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_js_util_class_management__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__util_url__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__settings__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__theme_theme__ = __webpack_require__(39);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10547,6 +10548,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 // Auth
+
 
 
 
@@ -10602,8 +10604,8 @@ var App = function () {
     this.state = state;
 
     // Set up the settings
-    this.Settings = new __WEBPACK_IMPORTED_MODULE_6__settings__["a" /* default */]();
-    this.ClassManagement = new ClassManagement();
+    this.Settings = new __WEBPACK_IMPORTED_MODULE_7__settings__["a" /* default */]();
+    this.ClassManagement = new __WEBPACK_IMPORTED_MODULE_5__core_js_util_class_management__["a" /* default */]();
   }
 
   /**
@@ -10614,13 +10616,15 @@ var App = function () {
   _createClass(App, [{
     key: "boot",
     value: function boot() {
+
       // load up the site
-      this.site = new __WEBPACK_IMPORTED_MODULE_4__models_site__["a" /* default */]({ uri: __WEBPACK_IMPORTED_MODULE_5__util_url__["b" /* uri */] });
-      console.log(this.Settings);
+      this.site = new __WEBPACK_IMPORTED_MODULE_4__models_site__["a" /* default */]({ uri: __WEBPACK_IMPORTED_MODULE_6__util_url__["b" /* uri */] });
       this.site.fetch();
+
       // Start
-      this.theme = new __WEBPACK_IMPORTED_MODULE_7__theme_theme__["a" /* default */]();
+      this.theme = new __WEBPACK_IMPORTED_MODULE_8__theme_theme__["a" /* default */]();
       this.theme = this.theme.Initialize();
+
       //Auth();
     }
 
@@ -34539,15 +34543,13 @@ function uri() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_util_link__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_js_util_image__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_link__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_util_image__ = __webpack_require__(41);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // @Tim 02-28-2015 - http://www.davidhalford.com/thoughts/2013/auto-contrasting-text/
-
 
 
 
@@ -34578,8 +34580,7 @@ var Theme = function () {
       }*/
 
       // Add logo from appearance settings
-      console.log(__WEBPACK_IMPORTED_MODULE_3__core_js_util_image__["a" /* default */]);
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#site-logo").html(__WEBPACK_IMPORTED_MODULE_3__core_js_util_image__["a" /* default */].logo("medium"));
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#site-logo").html(__WEBPACK_IMPORTED_MODULE_2__core_js_util_image__["a" /* default */].logo("medium"));
 
       // Insert site name/ 
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#branding a").click(Mediakron.linkHandle);
@@ -34597,8 +34598,8 @@ var Theme = function () {
 
       var secondaryColor = Mediakron.Settings.Appearance.colors.bannerlink;
 
-      var banner_rgb = convertHex(primary - color, 100);
-      var banner_transparent = convertHex(primary - color, 0);
+      //var banner_rgb = this.convertHex(primary-color, 100);
+      //var banner_transparent = this.convertHex(primary-color, 0);
 
       document.documentElement.style.setProperty("--mk-primary-color", "green");
 
@@ -34642,7 +34643,7 @@ var Theme = function () {
   }, {
     key: "link",
     value: function link(contents, url, html) {
-      return __WEBPACK_IMPORTED_MODULE_2__core_js_util_link__["a" /* default */].link(contents, url, html);
+      return __WEBPACK_IMPORTED_MODULE_1__core_js_util_link__["a" /* default */].link(contents, url, html);
     }
 
     // ==== Color Functions ====

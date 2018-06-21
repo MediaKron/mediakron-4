@@ -5,6 +5,7 @@ import Backbone from "backbone";
 // Auth
 import Auth from "./auth/auth"
 import Site from "./models/site"
+import ClassManagement from "../core-js/util/class.management";
 
 // import url functions
 import { uri, base_path } from "./util/url"
@@ -64,13 +65,15 @@ class App {
    * Boot mediakron
    */
   boot() {
+
     // load up the site
     this.site = new Site({ uri: uri });
-    console.log(this.Settings);
     this.site.fetch();
+
     // Start
     this.theme = new Theme();
     this.theme = this.theme.Initialize();
+
     //Auth();
   }
 
