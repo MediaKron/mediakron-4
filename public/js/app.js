@@ -10517,9 +10517,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var Mediakron;
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
-  Mediakron = new __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */]();
+  window.Mediakron = new __WEBPACK_IMPORTED_MODULE_1__core_js_init__["a" /* default */]();
   Mediakron.boot();
 });
 
@@ -10538,6 +10537,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_site__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_url__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__settings__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__theme_theme__ = __webpack_require__(39);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10551,6 +10551,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 // import url functions
+
 
 
 
@@ -10600,8 +10601,9 @@ var App = function () {
     this.data = {};
     this.state = state;
 
-    // set the base uri
+    // Set up the settings
     this.Settings = new __WEBPACK_IMPORTED_MODULE_6__settings__["a" /* default */]();
+    this.ClassManagement = new ClassManagement();
   }
 
   /**
@@ -10617,7 +10619,8 @@ var App = function () {
       console.log(this.Settings);
       this.site.fetch();
       // Start
-      Theme.Initialize();
+      this.theme = new __WEBPACK_IMPORTED_MODULE_7__theme_theme__["a" /* default */]();
+      this.theme = this.theme.Initialize();
       //Auth();
     }
 
@@ -33480,326 +33483,336 @@ var ClassManagement = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Settings = function Settings() {
-    _classCallCheck(this, Settings);
+var Settings = function () {
+    function Settings() {
+        _classCallCheck(this, Settings);
 
-    Object.assign(this, defaultSettings);
-};
+        Object.assign(this, defaultSettings);
+    }
+
+    _createClass(Settings, [{
+        key: "method1",
+        value: function method1() {
+            alert('method');
+        }
+    }]);
+
+    return Settings;
+}();
 
 /* harmony default export */ __webpack_exports__["a"] = (Settings);
 
 
 var defaultSettings = {
-    "Name": '',
-    "Settings": {
-        "name": "",
-        "uri": "",
-        "subtitle": "",
-        "copyright": "",
-        "version": "",
-        "url": "",
-        "ga": "",
-        "pushState": false,
-        "cssURL": "/mediakron/css/",
-        "layout": "default",
-        "institution": "Boston College",
-        "search": "internal",
-        "commenting": false,
-        "download": true,
-        "showauthor": true,
-        "showview": true,
-        "public": false,
-        "filepath": "/files/",
-        "appPath": "/",
-        "basepath": "/",
-        "device": "desktop",
-        "token": "{{ token }}",
-        "welcome": false,
-        "showArchive": false,
-        "Navigation": {
-            "primary": {},
-            "secondary": {}
-        },
-        "HomePage": {
-            "image": "",
-            "alt": "",
-            "description": "",
-            "item": "",
-            "layout": "basic",
-            "options": {
-                "menus-basic": {
-                    "id": "menus-basic",
-                    "title": "Menu Banner",
-                    "icon": "/mediakron/css/img/layout-icons/menu-banner.png",
-                    "help": "Menus display as thumbnails",
-                    "classes": "body-homepage body-menus-basic"
-                },
-                "menus-half": {
-                    "id": "menus-half",
-                    "title": "Half-page intro banner with thumbnail menus",
-                    "icon": "/mediakron/css/img/layout-icons/menu-half.png",
-                    "help": "Background image or solid theme color (if no image); Menu items included as thumbnails below",
-                    "classes": "body-homepage body-menus-half body-half-image"
-                },
-                "menus-full": {
-                    "id": "menus-full",
-                    "title": "Full-page intro banner with Thumbnail Menus",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
-                    "help": "Background image or solid theme color (if no image); Menu items included as thumbnails below",
-                    "classes": "body-homepage body-menus-full body-full-image"
-                },
-                "basic": {
-                    "id": "basic",
-                    "title": "Centered",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-centered.png",
-                    "help": "Centered layout with subtitle at the top, followed by an image, if present, and then a description.",
-                    "classes": "body-homepage body-homepage-basic"
-                },
-                "half": {
-                    "id": "half",
-                    "title": "Half-page Banner with background image/theme color",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-half.png",
-                    "help": "Centered title and subtitle over background image. Site description displays below, if present.",
-                    "classes": "body-homepage body-homepage-half body-half-image"
-                },
-                "nobanner": {
-                    "id": "nobanner",
-                    "title": "Full-page Banner with background image/theme color",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
-                    "help": "Centered title and subtitle over background image. Site description displays below, if present.",
-                    "classes": "body-homepage body-homepage-nobanner body-full-image"
-                },
-                "right": {
-                    "id": "right",
-                    "title": "Right",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-right.png",
-                    "help": "Image on right, subtitle/description on left.",
-                    "classes": "body-homepage body-homepage-right"
-                },
-                "left": {
-                    "id": "left",
-                    "title": "Left",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-left.png",
-                    "help": "Image on left, subtitle/description on right.",
-                    "classes": "body-homepage body-homepage-left"
-                },
-                "updates-basic": {
-                    "id": "updates-basic",
-                    "title": "Updates Basic",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-centered.png",
-                    "help": "List of new and updated content",
-                    "classes": "body-homepage body-updates-basic"
-                },
-                "updates-half": {
-                    "id": "updates-half",
-                    "title": "Half-page Banner with Updates",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-half.png",
-                    "help": "Background image or solid theme color (if no image); List of new and updated content below",
-                    "classes": "body-homepage body-updates-half body-half-image"
-                },
-                "updates-full": {
-                    "id": "updates-full",
-                    "title": "Full-page Banner with Updates",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
-                    "help": "Background image or solid theme color (if no image); List of new and updated content below",
-                    "classes": "body-homepage body-updates-full body-full-image"
-                },
-                "nointro": {
-                    "id": "nointro",
-                    "title": "No Introduction",
-                    "icon": "/mediakron/css/img/layout-icons/homepage-none.png",
-                    "help": "Choose this if you plan to use only a content item as the home page (see below).",
-                    "classes": "body-homepage body-homepage-left"
-                }
-
-            }
-        },
-        "Appearance": {
-            "logo": "{{ site.logo }}",
-            "navigation": "{{ navigation }}",
-            "skin": "{{ site.skin }}",
-            "font": "{{ site.font }}",
-            "colors": {
-                "navigation": "{{ site.navColor }}",
-                "links": "{{ site.linkColor }}",
-                "banner": "{{ site.bannerColor }}",
-                "bannerlink": "{{ site.bannerLinkColor }}"
+    "name": "",
+    "uri": "",
+    "subtitle": "",
+    "copyright": "",
+    "version": "",
+    "url": "",
+    "ga": "",
+    "pushState": false,
+    "cssURL": "/mediakron/css/",
+    "layout": "default",
+    "institution": "Boston College",
+    "search": "internal",
+    "commenting": false,
+    "download": true,
+    "showauthor": true,
+    "showview": true,
+    "public": false,
+    "filepath": "/files/",
+    "appPath": "/",
+    "basepath": "/",
+    "device": "desktop",
+    "token": "{{ token }}",
+    "welcome": false,
+    "showArchive": false,
+    "Navigation": {
+        "primary": {},
+        "secondary": {}
+    },
+    "HomePage": {
+        "image": "",
+        "alt": "",
+        "description": "",
+        "item": "",
+        "layout": "basic",
+        "options": {
+            "menus-basic": {
+                "id": "menus-basic",
+                "title": "Menu Banner",
+                "icon": "/mediakron/css/img/layout-icons/menu-banner.png",
+                "help": "Menus display as thumbnails",
+                "classes": "body-homepage body-menus-basic"
             },
-            "fonts": {
-                "Roboto (san serif)": "\"Roboto\", Helvetica, Arial, sans-serif",
-                "Helvetica Neue (sans serif)": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
-                "Georgia (serif)": "Georgia, serif",
-                "Merriweather (serif)": "\"Merriweather\", Georgia, serif"
-            }
-        },
-        "AudioTypes": {
-
-            "mp3": {
-                "id": "mp3",
-                "name": "Upload .mp3 File"
+            "menus-half": {
+                "id": "menus-half",
+                "title": "Half-page intro banner with thumbnail menus",
+                "icon": "/mediakron/css/img/layout-icons/menu-half.png",
+                "help": "Background image or solid theme color (if no image); Menu items included as thumbnails below",
+                "classes": "body-homepage body-menus-half body-half-image"
             },
-            "google": {
-                "id": "google",
-                "name": "Google Drive"
+            "menus-full": {
+                "id": "menus-full",
+                "title": "Full-page intro banner with Thumbnail Menus",
+                "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
+                "help": "Background image or solid theme color (if no image); Menu items included as thumbnails below",
+                "classes": "body-homepage body-menus-full body-full-image"
             },
-            "bc": {
-                "id": "bc",
-                "name": "BC Streaming Server"
+            "basic": {
+                "id": "basic",
+                "title": "Centered",
+                "icon": "/mediakron/css/img/layout-icons/homepage-centered.png",
+                "help": "Centered layout with subtitle at the top, followed by an image, if present, and then a description.",
+                "classes": "body-homepage body-homepage-basic"
             },
-            "archiveorg": {
-                "id": "archiveorg",
-                "name": "Archive.org audio"
+            "half": {
+                "id": "half",
+                "title": "Half-page Banner with background image/theme color",
+                "icon": "/mediakron/css/img/layout-icons/homepage-half.png",
+                "help": "Centered title and subtitle over background image. Site description displays below, if present.",
+                "classes": "body-homepage body-homepage-half body-half-image"
             },
-            "rtmp": {
-                "id": "rtmp",
-                "name": "RTMP"
+            "nobanner": {
+                "id": "nobanner",
+                "title": "Full-page Banner with background image/theme color",
+                "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
+                "help": "Centered title and subtitle over background image. Site description displays below, if present.",
+                "classes": "body-homepage body-homepage-nobanner body-full-image"
             },
-            "url": {
-                "id": "url",
-                "name": "URL (link only, not embedded)"
-            }
-        },
-        "VideoTypes": {
-
-            "youtube": {
-                "id": "youtube",
-                "name": "YouTube"
+            "right": {
+                "id": "right",
+                "title": "Right",
+                "icon": "/mediakron/css/img/layout-icons/homepage-right.png",
+                "help": "Image on right, subtitle/description on left.",
+                "classes": "body-homepage body-homepage-right"
             },
-            "vimeo": {
-                "id": "vimeo",
-                "name": "Vimeo"
+            "left": {
+                "id": "left",
+                "title": "Left",
+                "icon": "/mediakron/css/img/layout-icons/homepage-left.png",
+                "help": "Image on left, subtitle/description on right.",
+                "classes": "body-homepage body-homepage-left"
             },
-            "google": {
-                "id": "google",
-                "name": "Google Drive"
+            "updates-basic": {
+                "id": "updates-basic",
+                "title": "Updates Basic",
+                "icon": "/mediakron/css/img/layout-icons/homepage-centered.png",
+                "help": "List of new and updated content",
+                "classes": "body-homepage body-updates-basic"
             },
-            "archiveorg": {
-                "id": "archiveorg",
-                "name": "Archive.org video"
+            "updates-half": {
+                "id": "updates-half",
+                "title": "Half-page Banner with Updates",
+                "icon": "/mediakron/css/img/layout-icons/homepage-half.png",
+                "help": "Background image or solid theme color (if no image); List of new and updated content below",
+                "classes": "body-homepage body-updates-half body-half-image"
             },
-            "bc": {
-                "id": "bc",
-                "name": "BC Streaming Server"
+            "updates-full": {
+                "id": "updates-full",
+                "title": "Full-page Banner with Updates",
+                "icon": "/mediakron/css/img/layout-icons/homepage-full.png",
+                "help": "Background image or solid theme color (if no image); List of new and updated content below",
+                "classes": "body-homepage body-updates-full body-full-image"
             },
-            "panopto": {
-                "id": "panopto",
-                "name": "BC Panopto Video"
-            },
-            "kanopy": {
-                "id": "kanopy",
-                "name": "Kanopy Video"
-            },
-            "mp4": {
-                "id": "mp4",
-                "name": "Upload .mp4 File"
-            },
-            "rtmp": {
-                "id": "rtmp",
-                "name": "RTMP"
-            },
-            "url": {
-                "id": "url",
-                "name": "URL (link only, not embedded)"
-            }
-        },
-        "TextTypes": {
-            "html": {
-                "id": "html",
-                "name": "Basic Text"
-            },
-            "pdf": {
-                "id": "pdf",
-                "name": "PDF"
-            },
-            "image": {
-                "id": "image",
-                "name": "Manuscript Image"
+            "nointro": {
+                "id": "nointro",
+                "title": "No Introduction",
+                "icon": "/mediakron/css/img/layout-icons/homepage-none.png",
+                "help": "Choose this if you plan to use only a content item as the home page (see below).",
+                "classes": "body-homepage body-homepage-left"
             }
 
+        }
+    },
+    "Appearance": {
+        "logo": "{{ site.logo }}",
+        "navigation": "{{ navigation }}",
+        "skin": "{{ site.skin }}",
+        "font": "{{ site.font }}",
+        "colors": {
+            "navigation": "{{ site.navColor }}",
+            "links": "{{ site.linkColor }}",
+            "banner": "{{ site.bannerColor }}",
+            "bannerlink": "{{ site.bannerLinkColor }}"
         },
-        "FileTypes": {
-            "pdf": {
-                "id": "pdf",
-                "name": "PDF"
-            },
-            "image": {
-                "id": "image",
-                "name": "Manuscript Image"
-            },
-            "ppt": {
-                "id": "ppt",
-                "name": "Powerpoint"
-            },
-            "doc": {
-                "id": "doc",
-                "name": "Word Document"
-            },
-            "txt": {
-                "id": "txt",
-                "name": "Text Document"
-            },
-            "xls": {
-                "id": "xls",
-                "name": "Spreadsheet"
-            }
+        "fonts": {
+            "Roboto (san serif)": "\"Roboto\", Helvetica, Arial, sans-serif",
+            "Helvetica Neue (sans serif)": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+            "Georgia (serif)": "Georgia, serif",
+            "Merriweather (serif)": "\"Merriweather\", Georgia, serif"
+        }
+    },
+    "AudioTypes": {
 
+        "mp3": {
+            "id": "mp3",
+            "name": "Upload .mp3 File"
         },
-        "MapTypes": {
-            "osm": {
-                "id": "osm",
-                "name": "Color Basemap with Terrain"
-            },
-            "Esri_WorldStreetMap": {
-                "id": "Esri_WorldStreetMap",
-                "name": "ESRI World Street Map"
-            },
-            "Esri_DeLorme": {
-                "id": "Esri_DeLorme",
-                "name": "ESRI DeLorme Map"
-            },
-            "Esri_NatGeoWorldMap": {
-                "id": "Esri_NatGeoWorldMap",
-                "name": "ESRI National Geographic Map"
-            },
-            "Esri_WorldImagery": {
-                "id": "Esri_WorldImagery",
-                "name": "ESRI Satellite Imagery"
-            },
-            "stamen-light": {
-                "id": "stamen-light",
-                "name": "Black And White Basemap"
-            },
-            "stamen-watercolor": {
-                "id": "stamen-watercolor",
-                "name": "Watercolor Basemap"
-            },
-            "cartodb": {
-                "id": "cartodb",
-                "name": "Carto Map (Embedded)"
-            },
-            "image-map": {
-                "id": "image-map",
-                "name": "Uploaded Image Basemap"
-            }
+        "google": {
+            "id": "google",
+            "name": "Google Drive"
         },
-        "MimeTypes": {
-            "bulk": ["application\/json", "application\/xml"],
-            "images": ["image\/jpeg", "image\/jpg", "image\/gif", "image\/png"],
-            "video": ["video\/mpeg", "video\/mpeg4", "video\/x-m4v", "video\/x-mp4", "video\/mp4"],
-            "audio": ["audio\/mpeg", "audio\/mpeg3", "audio\/x-m4a", "audio\/x-mp3", "audio\/mp3"],
-            "file": [],
-            "text": ["application\/pdf", "image\/jpeg", "image\/jpg", "image\/gif", "image\/png", "application\/msword", "application\/vnd.ms-powerpoint", "application\/vnd.ms-excel", "application\/vnd.openxmlformats-officedocument.wordprocessingml.document", "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application\/vnd.openxmlformats-officedocument.presentationml.presentation", "application\/vnd.ms-outlook"],
-            "textTypes": {
-                "application\/pdf": "pdf",
-                "application\/msword": "doc",
-                "application\/vnd.ms-powerpoint": "ppt",
-                "application\/vnd.ms-excel": "xls",
-                "application\/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc",
-                "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "xls",
-                "application\/vnd.openxmlformats-officedocument.presentationml.presentation": "ppt"
-            }
+        "bc": {
+            "id": "bc",
+            "name": "BC Streaming Server"
+        },
+        "archiveorg": {
+            "id": "archiveorg",
+            "name": "Archive.org audio"
+        },
+        "rtmp": {
+            "id": "rtmp",
+            "name": "RTMP"
+        },
+        "url": {
+            "id": "url",
+            "name": "URL (link only, not embedded)"
+        }
+    },
+    "VideoTypes": {
+
+        "youtube": {
+            "id": "youtube",
+            "name": "YouTube"
+        },
+        "vimeo": {
+            "id": "vimeo",
+            "name": "Vimeo"
+        },
+        "google": {
+            "id": "google",
+            "name": "Google Drive"
+        },
+        "archiveorg": {
+            "id": "archiveorg",
+            "name": "Archive.org video"
+        },
+        "bc": {
+            "id": "bc",
+            "name": "BC Streaming Server"
+        },
+        "panopto": {
+            "id": "panopto",
+            "name": "BC Panopto Video"
+        },
+        "kanopy": {
+            "id": "kanopy",
+            "name": "Kanopy Video"
+        },
+        "mp4": {
+            "id": "mp4",
+            "name": "Upload .mp4 File"
+        },
+        "rtmp": {
+            "id": "rtmp",
+            "name": "RTMP"
+        },
+        "url": {
+            "id": "url",
+            "name": "URL (link only, not embedded)"
+        }
+    },
+    "TextTypes": {
+        "html": {
+            "id": "html",
+            "name": "Basic Text"
+        },
+        "pdf": {
+            "id": "pdf",
+            "name": "PDF"
+        },
+        "image": {
+            "id": "image",
+            "name": "Manuscript Image"
+        }
+
+    },
+    "FileTypes": {
+        "pdf": {
+            "id": "pdf",
+            "name": "PDF"
+        },
+        "image": {
+            "id": "image",
+            "name": "Manuscript Image"
+        },
+        "ppt": {
+            "id": "ppt",
+            "name": "Powerpoint"
+        },
+        "doc": {
+            "id": "doc",
+            "name": "Word Document"
+        },
+        "txt": {
+            "id": "txt",
+            "name": "Text Document"
+        },
+        "xls": {
+            "id": "xls",
+            "name": "Spreadsheet"
+        }
+
+    },
+    "MapTypes": {
+        "osm": {
+            "id": "osm",
+            "name": "Color Basemap with Terrain"
+        },
+        "Esri_WorldStreetMap": {
+            "id": "Esri_WorldStreetMap",
+            "name": "ESRI World Street Map"
+        },
+        "Esri_DeLorme": {
+            "id": "Esri_DeLorme",
+            "name": "ESRI DeLorme Map"
+        },
+        "Esri_NatGeoWorldMap": {
+            "id": "Esri_NatGeoWorldMap",
+            "name": "ESRI National Geographic Map"
+        },
+        "Esri_WorldImagery": {
+            "id": "Esri_WorldImagery",
+            "name": "ESRI Satellite Imagery"
+        },
+        "stamen-light": {
+            "id": "stamen-light",
+            "name": "Black And White Basemap"
+        },
+        "stamen-watercolor": {
+            "id": "stamen-watercolor",
+            "name": "Watercolor Basemap"
+        },
+        "cartodb": {
+            "id": "cartodb",
+            "name": "Carto Map (Embedded)"
+        },
+        "image-map": {
+            "id": "image-map",
+            "name": "Uploaded Image Basemap"
+        }
+    },
+    "MimeTypes": {
+        "bulk": ["application\/json", "application\/xml"],
+        "images": ["image\/jpeg", "image\/jpg", "image\/gif", "image\/png"],
+        "video": ["video\/mpeg", "video\/mpeg4", "video\/x-m4v", "video\/x-mp4", "video\/mp4"],
+        "audio": ["audio\/mpeg", "audio\/mpeg3", "audio\/x-m4a", "audio\/x-mp3", "audio\/mp3"],
+        "file": [],
+        "text": ["application\/pdf", "image\/jpeg", "image\/jpg", "image\/gif", "image\/png", "application\/msword", "application\/vnd.ms-powerpoint", "application\/vnd.ms-excel", "application\/vnd.openxmlformats-officedocument.wordprocessingml.document", "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application\/vnd.openxmlformats-officedocument.presentationml.presentation", "application\/vnd.ms-outlook"],
+        "textTypes": {
+            "application\/pdf": "pdf",
+            "application\/msword": "doc",
+            "application\/vnd.ms-powerpoint": "ppt",
+            "application\/vnd.ms-excel": "xls",
+            "application\/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc",
+            "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "xls",
+            "application\/vnd.openxmlformats-officedocument.presentationml.presentation": "ppt"
         }
     },
     "skins": {
@@ -34518,6 +34531,589 @@ function uri() {
 }
 
 
+
+/***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_js_util_class_management__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_js_util_link__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_js_util_image__ = __webpack_require__(41);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// @Tim 02-28-2015 - http://www.davidhalford.com/thoughts/2013/auto-contrasting-text/
+
+
+
+
+
+/**
+ * Helper functions for getting good colors when setting the site colros
+ */
+
+var Theme = function () {
+  function Theme() {
+    _classCallCheck(this, Theme);
+  }
+
+  _createClass(Theme, [{
+    key: "Initialize",
+    value: function Initialize() {
+
+      // Install override skin
+      /*
+      Depricated
+      if (Mediakron.skins[Mediakron.Settings.Appearance.skin]) {
+        $("#skin").attr(
+          "href",
+          Mediakron.Settings.cssURL +
+          "skins/" +
+          Mediakron.Settings.Appearance.skin
+        );
+      }*/
+
+      // Add logo from appearance settings
+      console.log(__WEBPACK_IMPORTED_MODULE_3__core_js_util_image__["a" /* default */]);
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#site-logo").html(__WEBPACK_IMPORTED_MODULE_3__core_js_util_image__["a" /* default */].logo("medium"));
+
+      // Insert site name/ 
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#branding a").click(Mediakron.linkHandle);
+
+      // Insert copyright information
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#copyright").text(Mediakron.Settings.copyright);
+
+      // Menu Style - horizontal or sidebar
+      if (Mediakron.Settings.Appearance.navigation) Mediakron.ClassManagement.swap("default-nav menu-vertical menu-horizontal", Mediakron.Settings.Appearance.navigation);
+
+      // ==== Custom appearance styles ====
+
+      // var primaryColor = Mediakron.Settings.Appearance.colors.banner;
+      var primaryColor = "green";
+
+      var secondaryColor = Mediakron.Settings.Appearance.colors.bannerlink;
+
+      var banner_rgb = convertHex(primary - color, 100);
+      var banner_transparent = convertHex(primary - color, 0);
+
+      document.documentElement.style.setProperty("--mk-primary-color", "green");
+
+      var root = document.querySelector(':root');
+      var htmlStyle = window.getComputedStyle(root);
+      htmlStyle.getPropertyValue('--mk-primary-color'); // get the custom property --baseColor
+      root.style.setProperty("--mk-primary-color", "red"); // set --baseColor to red
+
+
+      // Site font
+      if (Mediakron.Settings.Appearance.font) {
+        // Apply custom font from appearance settings
+        if (Mediakron.Settings.Appearance.fonts[Mediakron.Settings.Appearance.font]) {
+          var sitefont = Mediakron.Settings.Appearance.font,
+              googlefont = false,
+              bodyfont;
+          if (sitefont == "Roboto" || sitefont == "Roboto (san serif)") {
+            googlefont = "Roboto:400,700";
+            bodyfont = "font-roboto";
+          }
+          if (sitefont == "Merriweather" || sitefont == "Merriweather (serif)") {
+            googlefont = "Merriweather";
+            bodyfont = "font-merriweather";
+          }
+          // if (sitefont == "Open-Sans") { googlefont = 'Open+Sans:400,700'; bodyfont = 'font-open-sans'; }
+          // if (sitefont == "Nunito") { googlefont = 'Nunito|Open+Sans'; bodyfont = 'font-nunito'; }
+          // if (sitefont == "Roboto-Slab") { googlefont = 'Roboto+Slab|Roboto'; bodyfont = 'font-roboto-slab'; }
+          // if (sitefont == "Alegreya") { googlefont = 'Alegreya:700|Roboto'; bodyfont = 'font-alegreya'; }
+          // if (sitefont == "Amatic-Josefin-Sans") { googlefont = 'Josefin+Sans|Amatic+SC:700'; bodyfont = 'font-amatic-josefin-sans'; }
+          // if (sitefont == "Playfair-Display") { googlefont = 'Playfair+Display:900|Source+Sans+Pro'; bodyfont = 'font-playfair'; }
+          // if (sitefont == "Goudy-Book-Letter") { googlefont = 'Goudy+Bookletter+1911|Average+Sans'; bodyfont = 'font-goudy'; }
+          if (googlefont) {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()("head").append('<link href="https://fonts.googleapis.com/css?family=' + googlefont + '" rel="stylesheet">');
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()("body").addClass("" + bodyfont + "");
+          } else {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()("body").css("font-family", Mediakron.Settings.Appearance.fonts[Mediakron.Settings.Appearance.font]);
+          }
+        }
+      }
+    }
+  }, {
+    key: "link",
+    value: function link(contents, url, html) {
+      return __WEBPACK_IMPORTED_MODULE_2__core_js_util_link__["a" /* default */].link(contents, url, html);
+    }
+
+    // ==== Color Functions ====
+
+    /**
+     * Get contrasting colors
+     * @param {string} hex
+     */
+
+  }, {
+    key: "getContrastColor",
+    value: function getContrastColor(hex) {
+      var threshold = 130,
+          hRed = hexToR(hex),
+          hGreen = hexToG(hex),
+          hBlue = hexToB(hex);
+
+      function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      }
+
+      function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      }
+
+      function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      }
+
+      function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      }
+      var cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+      if (cBrightness > threshold) {
+        return "#000000";
+      } else {
+        return "#ffffff";
+      }
+    }
+
+    /**
+     * get contrast against white background
+     * @param {string} hex
+     */
+
+  }, {
+    key: "getContrastOnWhite",
+    value: function getContrastOnWhite(hex) {
+      var original = hex,
+          threshold = 200,
+          hRed = hexToR(hex),
+          hGreen = hexToG(hex),
+          hBlue = hexToB(hex);
+
+      function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      }
+
+      function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      }
+
+      function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      }
+
+      function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      }
+      cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+      if (cBrightness > threshold) {
+        return "#000000";
+      } else {
+        return original; /* if it's dark enough on white, return original color  */
+      }
+    }
+
+    /**
+     * use color if it's dark enough on white background; otherwise, use black
+     * @param {string} hex
+     */
+
+  }, {
+    key: "getContrastOnWhiteColor",
+    value: function getContrastOnWhiteColor(hex) {
+      var original = hex,
+          threshold = 200,
+          hRed = hexToR(hex),
+          hGreen = hexToG(hex),
+          hBlue = hexToB(hex);
+
+      function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      }
+
+      function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      }
+
+      function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      }
+
+      function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      }
+      cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+      if (cBrightness > threshold) {
+        return "background: #000000; color:#fff";
+      } else {
+        return "background:" + original + "; color: #fff"; /* if it's dark enough on white, return original color  */
+      }
+    }
+
+    /**
+     * Get contrast Tin on light
+     * @param {string} hex
+     */
+
+  }, {
+    key: "getContrastTintLight",
+    value: function getContrastTintLight(hex) {
+      var threshold = 130,
+          hRed = hexToR(hex),
+          hGreen = hexToG(hex),
+          hBlue = hexToB(hex);
+
+      function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      }
+
+      function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      }
+
+      function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      }
+
+      function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      }
+      cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+      if (cBrightness > threshold) {
+        return "rgba(0, 0, 0, 0.5)";
+      } else {
+        return "rgba(250, 250, 250, 0.5)";
+      }
+    }
+
+    /**
+     * Get Contrast Tint
+     * @param {*} hex
+     */
+
+  }, {
+    key: "getContrastTint",
+    value: function getContrastTint(hex) {
+      var threshold = 130;
+      hRed = hexToR(hex), hGreen = hexToG(hex), hBlue = hexToB(hex);
+
+      function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      }
+
+      function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      }
+
+      function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      }
+
+      function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      }
+      cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+      if (cBrightness > threshold) {
+        return "rgba(0, 0, 0, 0.1)";
+      } else {
+        return "rgba(250, 250, 250, 0.2)";
+      }
+    } /* http://jsfiddle.net/subodhghulaxe/t568u/  */
+
+    //
+    /**
+     * Lighten a or darken a color
+     * https://css-tricks.com/snippets/javascript/lighten-darken-color/
+     * @param {string} col
+     * @param {integer} amt
+     */
+
+  }, {
+    key: "LightenDarkenColor",
+    value: function LightenDarkenColor(col, amt) {
+      var usePound = false;
+      if (col[0] == "#") {
+        col = col.slice(1);
+        usePound = true;
+      }
+      var num = parseInt(col, 16);
+      var r = (num >> 16) + amt;
+      if (r > 255) r = 255;else if (r < 0) r = 0;
+      var b = (num >> 8 & 0x00ff) + amt;
+      if (b > 255) b = 255;else if (b < 0) b = 0;
+      var g = (num & 0x0000ff) + amt;
+      if (g > 255) g = 255;else if (g < 0) g = 0;
+      return (usePound ? "#" : "") + (g | b << 8 | r << 16).toString(16);
+    }
+
+    /**
+     * Geta tint color
+     * @param {string} hex
+     */
+
+  }, {
+    key: "getTint",
+    value: function getTint(hex) {
+      var threshold = 130,
+          hRed = hexToR(hex),
+          hGreen = hexToG(hex),
+          hBlue = hexToB(hex);
+
+      var Lighter = LightenDarkenColor(hex, 80);
+      var Darker = LightenDarkenColor(hex, -40);
+
+      function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      }
+
+      function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      }
+
+      function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      }
+
+      function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      }
+      cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+      if (cBrightness > threshold) {
+        return Darker;
+      } else {
+        return Lighter;
+      }
+    }
+
+    /**
+     * Convert a hex color to a rgba
+     * @param {string} hex
+     * @param {float} opacity
+     */
+
+  }, {
+    key: "convertHex",
+    value: function convertHex(hex, opacity) {
+      hex = hex.replace("#", "");
+      var r = parseInt(hex.substring(0, 2), 16);
+      var g = parseInt(hex.substring(2, 4), 16);
+      var b = parseInt(hex.substring(4, 6), 16);
+      var result = "rgba(" + r + "," + g + "," + b + "," + opacity / 100 + ")";
+      return result;
+    }
+  }]);
+
+  return Theme;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Theme);
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Link = function () {
+    function Link() {
+        _classCallCheck(this, Link);
+    }
+
+    _createClass(Link, null, [{
+        key: 'themeLink',
+
+
+        /**
+         * Helper passthrough
+         * @param {*} contents 
+         * @param {*} url 
+         * @param {*} html 
+         */
+        value: function themeLink(contents, url, html) {
+            return this.link(contents, url, html);
+        }
+
+        /**
+         * 
+         * @param {*} contents 
+         * @param {*} url 
+         * @param {*} html 
+         */
+
+    }, {
+        key: 'link',
+        value: function link(contents, url, html) {
+            var basepath = Mediakron.Settings.baseurl;
+            return '<a href="' + basepath + url + '" class="link">' + contents + '</a>';
+        }
+    }]);
+
+    return Link;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Link);
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__link__ = __webpack_require__(40);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var Image = function () {
+    function Image() {
+        _classCallCheck(this, Image);
+    }
+
+    _createClass(Image, null, [{
+        key: "render",
+        value: function render(image, style, attributes) {}
+    }, {
+        key: "style",
+        value: function style(image, _style) {
+            if (typeof image !== "string") {
+                var object = image;
+                if (object.uri) {
+                    image = object.uri;
+                }
+            }
+            // kludge goes here!
+            if (image == "b:0;") {
+                return "";
+            }
+            switch (_style) {
+                case "small":
+                    return Mediakron.Settings.filepath + "styles/small/public/" + image;
+                case "medium":
+                    return Mediakron.Settings.filepath + "styles/medium/public/" + image;
+                case "large":
+                    return Mediakron.Settings.filepath + "styles/large/public/" + image;
+                case "full":
+                    return Mediakron.Settings.filepath + "styles/full/public/" + image;
+                case "double":
+                    return Mediakron.Settings.filepath + "styles/double/public/" + image;
+                default:
+                    return Mediakron.Settings.filepath + image;
+            }
+        }
+    }, {
+        key: "theme",
+        value: function theme(path, title, alt, addClass, width, height) {
+            if (typeof path !== "string") {
+                var object = path;
+                if (object.uri) {
+                    path = object.uri;
+                }
+                if (object.alt) {
+                    alt = object.alt;
+                }
+            }
+            if (!addClass) {
+                addClass = "mediakron-image";
+            }
+            var style = "";
+            if (width) {
+                style += "width:" + width + "px;";
+            }
+            if (height) {
+                style += "height:" + height + "px;";
+            }
+            return '<img src="' + path + '" title="' + title + '" alt="' + alt + '" class="' + addClass + '" />';
+        }
+    }, {
+        key: "themeSquare",
+        value: function themeSquare(path, title, alt, addClass, width, height) {
+            return '<div class="square-thumbnail" alt="' + alt + '" style="background-image:url(' + path + "); background-size: cover; background-position: 50%; width:" + width + "px;height:" + height + 'px"></div>';
+        }
+    }, {
+        key: "logo",
+        value: function logo(size) {
+            if (!Mediakron.Settings.Appearance.logo) return "";
+            if (!size) size = "small";
+            var path = this.style(Mediakron.Settings.Appearance.logo, size);
+            return __WEBPACK_IMPORTED_MODULE_0__link__["a" /* default */].link('<img src="' + path + '" alt="' + Mediakron.Settings.institution + '" />', "", true);
+        }
+    }, {
+        key: "institution",
+        value: function institution(size) {
+            if (!Mediakron.Settings.Appearance.institutional) return "";
+            if (!size) size = "small";
+            var path = this.style(Mediakron.Settings.Appearance.institutional, size);
+            return '<img src="' + path + '" alt="' + Mediakron.Settings.institution + '" />';
+        }
+    }, {
+        key: "slideshow",
+        value: function slideshow(item) {
+            var image = item.get("image"),
+                item_type = item.get("type"),
+                title = item.get("title"),
+                id = item.get("id"),
+                path,
+                hideLoader,
+                themedImage;
+            if (image) {
+                path = this.style(image, item_type + "_slideshow_thumbnails");
+                hideLoader = false;
+            } else {
+                path = Mediakron.Settings.basepath + "sites/all/modules/mediakron/icons/slideshow_" + item_type + "_icon.png";
+                hideLoader = true;
+            }
+            themedImage = theme(path, image, title, "slideshow-image", hideLoader);
+            return __WEBPACK_IMPORTED_MODULE_0__link__["a" /* default */].link(themedImage, item.getURL(), {
+                title: title,
+                html: true
+            });
+        }
+    }, {
+        key: "getTagImage",
+        value: function getTagImage(item) {
+            var image = item.get("image"),
+                item_type = item.get("type"),
+                title = item.get("title"),
+                id = item.get("id"),
+                path,
+                hideLoader,
+                themedImage;
+            if (image) {
+                path = this.style(image, item_type + "_infobox_thumbnails");
+                hideLoader = false;
+            } else {
+                path = Mediakron.Settings.basepath + "sites/all/modules/mediakron/icons/infobox_" + item_type + "_icon.png";
+                hideLoader = true;
+            }
+            themedImage = this.theme(path, image, title, "tag-image", hideLoader);
+            return __WEBPACK_IMPORTED_MODULE_0__link__["a" /* default */].themeLink(themedImage, "mediakron/item/" + id, {
+                title: title,
+                html: true
+            });
+        }
+    }, {
+        key: "loaded",
+        value: function loaded(randStr) {
+            $(".loader-" + randStr).hide();
+            $(".actual-" + randStr).show();
+        }
+    }]);
+
+    return Image;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Image);
 
 /***/ })
 /******/ ]);

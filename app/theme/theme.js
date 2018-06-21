@@ -38,13 +38,22 @@ class Theme {
       );
 
     // ==== Custom appearance styles ====
-    var dynamicStyles = "";
-    var banner = Mediakron.Site.Appearance.colors.banner;
-    var banner_rgb = convertHex(banner, 100);
-    var banner_transparent = convertHex(banner, 0);
-    if (Mediakron.Site.Appearance.colors.banner) {
-      // Background color set in appearance settings
-    }
+
+    // var primaryColor = Mediakron.Site.Appearance.colors.banner;
+    var primaryColor = "green"
+
+    var secondaryColor = Mediakron.Settings.Appearance.colors.bannerlink;
+
+    var banner_rgb = convertHex(primary-color, 100);
+    var banner_transparent = convertHex(primary-color, 0);
+
+    document.documentElement.style.setProperty("--mk-primary-color", "green");
+
+    var root = document.querySelector(':root');
+    var htmlStyle = window.getComputedStyle(root);
+    htmlStyle.getPropertyValue('--mk-primary-color');  // get the custom property --baseColor
+    root.style.setProperty("--mk-primary-color", "red"); // set --baseColor to red
+
 
     // Site font
     if (Mediakron.Site.Appearance.font) {
