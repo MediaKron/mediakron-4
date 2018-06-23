@@ -1,0 +1,85 @@
+/* @group PROGRESS BAR */
+
+#progress-bar {
+    border: medium none;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 75%;
+    background: transparent;
+    z-index:1002;
+}
+
+#progress-text {
+    color: #666;
+    font-size: 1em;
+    font-weight: 700;
+    @include scut-center-transform (y);
+    text-align: right;
+    width: 100%;
+    padding-bottom: 0;
+    padding-right: 2em;
+}
+
+.loading-message {
+    opacity: 0;
+    @include scut-center-transform (x);
+    text-align: center;
+    width: 50px;
+    top: -40px;
+    background: transparent;
+}
+
+.progress {
+    overflow: hidden;
+    height: 6px;
+    border-radius: 0;
+    width: 100%;
+    margin: 0em auto 0 auto;
+}
+
+.site-loader#progress-bar {
+   @include scut-center-transform(x);
+   @include rem-fallback(width, 150);
+   @include rem-fallback(height, 23);
+   margin: 0;
+   @include rem-fallback(top, 13);
+   border-radius: 5px;
+}
+
+.site-loader #progress-text {
+  color: #000;
+  text-align: center;
+  padding: 0 0 .1em 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.site-loader .progress {
+  height: 24px;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 5px;
+}
+
+.site-loader .progress-bar {
+    background: transparent;
+    box-shadow: none;
+}
+
+.loading-image {
+	display: none;
+}
+
+
+.site-loader .loading-image {
+	display: block;
+	@include scut-center-transform;
+	top: 44%
+}
+
+
+
+/* @end */

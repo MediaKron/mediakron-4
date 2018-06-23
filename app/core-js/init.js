@@ -13,7 +13,7 @@ import Settings from "../settings"
 import Theme from "../theme/theme";
 
 import Router from "./router";
-import MainMenu from "../theme/navigation/main-menu/main-menu";
+import MainMenu from "../navigation/main-menu/main-menu";
 
 var state = {
 

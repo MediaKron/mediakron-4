@@ -1,4 +1,4 @@
-:root {
+@import url(https://fonts.googleapis.com/css?family=Roboto);:root {
   --mk-primary-color: #030303;
   /* default primary color - currently "background color" in settings */
   --mk-primary-color-contrast: #fff;
@@ -1198,6 +1198,7 @@ body {
   color: #333;
   font-weight: normal;
   line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* @group Default Skin Styles */
@@ -1225,7 +1226,7 @@ a {
 
 /* @end */
 
-/* @group TYPE */
+/* @group Links */
 
 a {
   color: #4b4b4b;
@@ -1310,189 +1311,6 @@ blockquote {
   border-bottom: none;
 }
 
-.folder-next {
-  border-top-left-radius: 2px;
-}
-
-.view-close {
-  border-bottom-left-radius: 2px;
-}
-
-/* @end */
-
-/* @group FROM BOOTSTRAP THEME */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-  font-weight: 400;
-  line-height: 1.1;
-  color: #222222;
-}
-
-h2 {
-  font-size: 38px;
-  font-size: 2.375rem;
-  margin-bottom: 20px;
-  font-weight: 400;
-}
-
-@media (max-width: 400px) {
-  h2 {
-    font-size: 32px;
-    font-size: 2rem;
-  }
-}
-
-h3 {
-  font-size: 30px;
-  font-size: 1.875rem;
-}
-
-h4 {
-  font-size: 26px;
-  font-size: 1.625rem;
-}
-
-h5 {
-  font-size: 18px;
-  font-size: 1.125rem;
-}
-
-.close {
-  text-shadow: none;
-}
-
-/* @end */
-
-/* @group PROGRESS BAR */
-
-#progress-bar {
-  border: medium none;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 75%;
-  background: transparent;
-  z-index: 1002;
-}
-
-#progress-text {
-  color: #666;
-  font-size: 1em;
-  font-weight: 700;
-  position: absolute;
-  top: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  text-align: right;
-  width: 100%;
-  padding-bottom: 0;
-  padding-right: 2em;
-}
-
-.loading-message {
-  opacity: 0;
-  position: absolute;
-  left: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  text-align: center;
-  width: 50px;
-  top: -40px;
-  background: transparent;
-}
-
-.progress {
-  overflow: hidden;
-  height: 6px;
-  border-radius: 0;
-  width: 100%;
-  margin: 0em auto 0 auto;
-}
-
-.site-loader#progress-bar {
-  position: absolute;
-  left: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 150px;
-  width: 9.375rem;
-  height: 23px;
-  height: 1.4375rem;
-  margin: 0;
-  top: 13px;
-  top: 0.8125rem;
-  border-radius: 5px;
-}
-
-.site-loader #progress-text {
-  color: #000;
-  text-align: center;
-  padding: 0 0 .1em 0;
-  font-weight: normal;
-  font-size: 14px;
-}
-
-.site-loader .progress {
-  height: 24px;
-  background: transparent;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-radius: 5px;
-}
-
-.site-loader .progress-bar {
-  background: transparent;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.loading-image {
-  display: none;
-}
-
-.site-loader .loading-image {
-  display: block;
-  position: absolute;
-  top: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
-  left: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  top: 44%;
-}
-
-/* @end */
-
-/* @group TABLES */
-
-.table-bordered,
-.table-bordered > thead > tr > th {
-  border: 1px solid #ccc;
-}
-
 /* @end */
 
 /* @group DROPDOWN MENUS */
@@ -1523,11 +1341,6 @@ h5 {
 }
 
 /* @end */
-
-#manage-relationships {
-  margin-right: 13em;
-  padding-top: 6px;
-}
 
 /* @end */
 
@@ -21636,118 +21449,6 @@ fieldset:last-of-type {
 
 /* #endregion  */
 
-/* @group Branding */
-
-#branding {
-  width: 100%;
-  padding: 0;
-  position: relative;
-  z-index: 100;
-  float: none;
-  display: inline;
-  width: auto;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  padding-left: .5em;
-  -webkit-animation-name: fadeIn;
-          animation-name: fadeIn;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-}
-
-@media (min-width: 992px) {
-  #branding {
-    position: absolute;
-  }
-}
-
-#branding .container {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-h1.page-header {
-  border: none;
-  margin: 0;
-  padding: .4em .5em .4em .5em;
-  font-size: 20px;
-  font-size: 1.25rem;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  border: none;
-  display: inline-block;
-  float: none;
-  position: relative;
-  margin-top: .4em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 767px) {
-  h1.page-header {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 700px;
-    width: 70%;
-    font-size: 1rem;
-    padding-top: .7em;
-  }
-}
-
-@media (max-width: 400px) {
-  h1.page-header {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 60%;
-    font-size: 15px;
-    font-size: 0.9375rem;
-    padding-top: .7em;
-  }
-}
-
-@media (min-width: 992px) {
-  h1.page-header {
-    white-space: normal;
-    padding: .2em 4em .2em .3em;
-    font-size: 22px;
-    font-size: 1.375rem;
-  }
-}
-
-h1.page-header a {
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-#institution-logo {
-  float: right;
-  display: block;
-  margin-right: 0;
-  max-height: 16px;
-}
-
-#site-logo {
-  display: inline;
-  float: none;
-}
-
-#site-logo img,
-#institution-logo img {
-  max-height: 32px;
-  max-width: 300px;
-  margin: .5em 0 0 0em;
-  float: left;
-}
-
-.homepage #institution-logo {
-  float: right;
-  display: block;
-  margin-top: .5em;
-  margin-right: 0;
-}
-
-/* @end */
-
 /* #region  SITE SETTINGS - MENUS */
 
 .settings #navigation {
@@ -23144,6 +22845,118 @@ h1.page-header a {
 .menu-horizontal #navbar .main-menu .close-button {
   display: none;
 }
+
+/* @group Branding */
+
+#branding {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  z-index: 100;
+  float: none;
+  display: inline;
+  width: auto;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding-left: .5em;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+@media (min-width: 992px) {
+  #branding {
+    position: absolute;
+  }
+}
+
+#branding .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+h1.page-header {
+  border: none;
+  margin: 0;
+  padding: .4em .5em .4em .5em;
+  font-size: 20px;
+  font-size: 1.25rem;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  border: none;
+  display: inline-block;
+  float: none;
+  position: relative;
+  margin-top: .4em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  h1.page-header {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 700px;
+    width: 70%;
+    font-size: 1rem;
+    padding-top: .7em;
+  }
+}
+
+@media (max-width: 400px) {
+  h1.page-header {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 60%;
+    font-size: 15px;
+    font-size: 0.9375rem;
+    padding-top: .7em;
+  }
+}
+
+@media (min-width: 992px) {
+  h1.page-header {
+    white-space: normal;
+    padding: .2em 4em .2em .3em;
+    font-size: 22px;
+    font-size: 1.375rem;
+  }
+}
+
+h1.page-header a {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+#institution-logo {
+  float: right;
+  display: block;
+  margin-right: 0;
+  max-height: 16px;
+}
+
+#site-logo {
+  display: inline;
+  float: none;
+}
+
+#site-logo img,
+#institution-logo img {
+  max-height: 32px;
+  max-width: 300px;
+  margin: .5em 0 0 0em;
+  float: left;
+}
+
+.homepage #institution-logo {
+  float: right;
+  display: block;
+  margin-top: .5em;
+  margin-right: 0;
+}
+
+/* @end */
 
 /* #region  SITE SETTINGS - APPEARANCE */
 
@@ -26955,6 +26768,117 @@ story-overlay.item-overlay.opened .sticky-header nav .breadcrumb-list > li.activ
 
 /* @end */
 
+/* @group PROGRESS BAR */
+
+#progress-bar {
+  border: medium none;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 75%;
+  background: transparent;
+  z-index: 1002;
+}
+
+#progress-text {
+  color: #666;
+  font-size: 1em;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: right;
+  width: 100%;
+  padding-bottom: 0;
+  padding-right: 2em;
+}
+
+.loading-message {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-align: center;
+  width: 50px;
+  top: -40px;
+  background: transparent;
+}
+
+.progress {
+  overflow: hidden;
+  height: 6px;
+  border-radius: 0;
+  width: 100%;
+  margin: 0em auto 0 auto;
+}
+
+.site-loader#progress-bar {
+  position: absolute;
+  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 150px;
+  width: 9.375rem;
+  height: 23px;
+  height: 1.4375rem;
+  margin: 0;
+  top: 13px;
+  top: 0.8125rem;
+  border-radius: 5px;
+}
+
+.site-loader #progress-text {
+  color: #000;
+  text-align: center;
+  padding: 0 0 .1em 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.site-loader .progress {
+  height: 24px;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 5px;
+}
+
+.site-loader .progress-bar {
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.loading-image {
+  display: none;
+}
+
+.site-loader .loading-image {
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 44%;
+}
+
+/* @end */
+
 /* 
 Tabs
 
@@ -27044,6 +26968,53 @@ http://refills.bourbon.io/
 .accordion-tabs .tab-header-and-content {
   margin-left: 1em;
   margin-right: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-weight: 400;
+  line-height: 1.1;
+  color: #222222;
+}
+
+h2 {
+  font-size: 38px;
+  font-size: 2.375rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+@media (max-width: 400px) {
+  h2 {
+    font-size: 32px;
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+
+h4 {
+  font-size: 26px;
+  font-size: 1.625rem;
+}
+
+h5 {
+  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .font-roboto {

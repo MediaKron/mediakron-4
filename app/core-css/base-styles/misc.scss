@@ -5,7 +5,8 @@ html {
 body {
 	color:#333;
 	font-weight: normal;
-	line-height: 1.5;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
 }
 
 $modularscale: (
@@ -28,7 +29,7 @@ a { color:#4b4b4b; }
 
 /* @end */
 
-/* @group TYPE */
+/* @group Links */
 
 a {
 	color:#4b4b4b;
@@ -67,6 +68,8 @@ a:focus {
     border-color: #66afe9;
     transition: all .5s ease;
 }
+
+// Blockquotes
 
 blockquote {
 	padding: 0 20px !important;
@@ -161,153 +164,8 @@ border-bottom-right-radius: 2px;
 border-bottom: none;
 }
 
-.folder-next {
-    -webkit-border-top-left-radius: 2px;
-    -moz-border-radius-topleft: 2px;
-    border-top-left-radius: 2px;
-}
-
-.view-close {
-	-webkit-border-bottom-left-radius: 2px;
-	-moz-border-radius-bottomleft: 2px;
-	border-bottom-left-radius: 2px;
-}
 
 /* @end */
-
-/* @group FROM BOOTSTRAP THEME */
-
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-font-weight: 400;
-line-height: 1.1;
-color: #222222;
-}
-
-h2 {
-	@include rem-fallback(font-size, 38);
-	margin-bottom: 20px;
-	font-weight: 400;
-	@include breakpoint(xxs){
-	  @include rem-fallback(font-size, 32);
-	}
-}
-
-h3 {
-	@include rem-fallback(font-size, 30);
-}
-
-h4 {
-	@include rem-fallback(font-size, 26);
-}
-
-h5 {
-	@include rem-fallback(font-size, 18);
-}
-
-.close {
-	text-shadow: none;
-}
-
-/* @end */
-
-/* @group PROGRESS BAR */
-
-#progress-bar {
-    border: medium none;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    width: 75%;
-    background: transparent;
-    z-index:1002;
-}
-
-#progress-text {
-    color: #666;
-    font-size: 1em;
-    font-weight: 700;
-    @include scut-center-transform (y);
-    text-align: right;
-    width: 100%;
-    padding-bottom: 0;
-    padding-right: 2em;
-}
-
-.loading-message {
-    opacity: 0;
-    @include scut-center-transform (x);
-    text-align: center;
-    width: 50px;
-    top: -40px;
-    background: transparent;
-}
-
-.progress {
-    overflow: hidden;
-    height: 6px;
-    border-radius: 0;
-    width: 100%;
-    margin: 0em auto 0 auto;
-}
-
-.site-loader#progress-bar {
-   @include scut-center-transform(x);
-   @include rem-fallback(width, 150);
-   @include rem-fallback(height, 23);
-   margin: 0;
-   @include rem-fallback(top, 13);
-   border-radius: 5px;
-}
-
-.site-loader #progress-text {
-  color: #000;
-  text-align: center;
-  padding: 0 0 .1em 0;
-  font-weight: normal;
-  font-size: 14px;
-}
-
-.site-loader .progress {
-  height: 24px;
-  background: transparent;
-  box-shadow: none;
-  border-radius: 5px;
-}
-
-.site-loader .progress-bar {
-    background: transparent;
-    box-shadow: none;
-}
-
-.loading-image {
-	display: none;
-}
-
-
-.site-loader .loading-image {
-	display: block;
-	@include scut-center-transform;
-	top: 44%
-}
-
-
-
-/* @end */
-
-
-/* @group TABLES */
-.table-bordered,
-.table-bordered > thead > tr > th {
-  border: 1px solid #ccc;
-}
-
-/* @end */
-
-
 
 /* @group DROPDOWN MENUS */
 
@@ -336,15 +194,6 @@ white-space: nowrap;
 }
 
 /* @end */
-
-
-#manage-relationships{
-	margin-right:13em;
-	padding-top:6px;
-}
-
-
-
 
 
 /* @end */
@@ -415,7 +264,6 @@ input, textarea {
 /* @end */
 
 /* @group Accessibility */
-
 
 [data-visually-hidden="true"] {
   display: none;

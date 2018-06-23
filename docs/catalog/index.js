@@ -72,15 +72,22 @@ const pages = [
   },
 
   {
-    path: '/site-settings/',
-    title: 'App > Site Settings',
-    component: require("../../app/site-settings/site-settings-readme.md")
+    path: '/navigation/',
+    title: 'App > Navigation',
+    component: require("../../app/navigation/navigation-readme.md")
   },
+
 
   {
     path: '/theme/',
     title: 'App > Theme',
     component: require("../../app/theme/theme-readme.md")
+  },
+
+  {
+    path: '/site-settings/',
+    title: 'App > Site Settings',
+    component: require("../../app/site-settings/site-settings-readme.md")
   },
 
   // UI
@@ -104,6 +111,13 @@ const pages = [
           path: '/ui/tooltips',
           title: 'Tooltips',
           component: require("../../app/ui/tooltips/tooltips-readme.md")
+        },
+
+        // Typography
+        {
+          path: '/ui/typography',
+          title: 'Typography',
+          component: require("../../app/ui/typography/typography-readme.md")
         },
         // Other subpages
     ]
