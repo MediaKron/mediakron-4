@@ -1,13 +1,22 @@
-Mediakron.Collections.Items = Backbone.Collection.extend({
-    model: Mediakron.Models.Item,
-    url: (Mediakron.Data.collections.items) ? Mediakron.Data.collections.items : '',
+import Item from "../models/item"
+import { base_path, uri } from "../util/url";
 
-    sortAttribute: "title",
-    sortDirection: 'asc',
+export default class Items extends Backbone.Collection{
+    constructor(options) {
+        super(options);
+        this.model = Item;
+        this.url = function(){
+            return base_path() + '/api/' + uri() +'/item';
+        } 
+        this.parse = function(response) {
+            return response.data;
+        }
+        this.sortAttribute = "title";
+        this.sortDirection = 'asc';
+        this.i = 0;
+    }
 
-    i: 0,
-
-    processSort: function (sort) {
+    processSort(sort) {
         var request = sort.split('_');
         if (!request[1]) { this.sortAttribute = sort; }
         else {
@@ -15,16 +24,16 @@ Mediakron.Collections.Items = Backbone.Collection.extend({
             this.sortDirection = request[1];
         }
         return this;
-    },
+    }
 
-    sortItems: function (attr, direction) {
+    sortItems(attr, direction) {
         if (!direction) direction = 'asc';
         this.sortAttribute = attr;
         this.sortDirection = direction;
         this.sort();
-    },
+    }
 
-    updatedItems: function () {
+    updatedItems() {
         var time = Mediakron.user.lastVisit();
         var id = Mediakron.user.get('id');
         var type;
@@ -42,8 +51,10 @@ Mediakron.Collections.Items = Backbone.Collection.extend({
         return _.sortBy(items, function (item) {
             return parseInt(item.get('changed'), 10) * -1;
         });
-    },
-    newItems: function () {
+    }
+
+
+    newItems() {
         var time = Mediakron.user.lastVisit();
         var id = Mediakron.user.get('id');
         var type;
@@ -56,8 +67,10 @@ Mediakron.Collections.Items = Backbone.Collection.extend({
         return _.sortBy(items, function (item) {
             return parseInt(item.get('created'), 10) * -1;
         });
-    },
-    changeCount: function () {
+    }
+
+
+    changeCount() {
         var time = Mediakron.user.lastVisit();
         var id = Mediakron.user.get('id');
         var type;
@@ -68,10 +81,10 @@ Mediakron.Collections.Items = Backbone.Collection.extend({
             return parseInt(item.get('changed'), 10) > time;
         });
         return items.length;
-    },
+    }
 
 
-    comparator: function (a, b) {
+    comparator(a, b) {
         a = a.get(this.sortAttribute);
         b = b.get(this.sortAttribute);
 
@@ -82,11 +95,15 @@ Mediakron.Collections.Items = Backbone.Collection.extend({
         } else {
             return a < b ? 1 : -1;
         }
-    },
-    loadedSuccess: function (success) {
+    }
+
+
+    loadedSuccess(success) {
         success();
-    },
-    progressiveFetch: function (success) {
+    }
+
+
+    progressiveFetch(success) {
         var collection = this;
         console.log('progressive');
         this.fetch({
@@ -94,7 +111,7 @@ Mediakron.Collections.Items = Backbone.Collection.extend({
             data: { start: collection.i * 3000, limit: (collection.i + 1) * 3000 },
             processData: true,
             xhr: Mediakron.Events.xhrProgress,
-            success: function (model, response) {
+            success(model, response) {
                 collection.i = collection.i + 1;
                 console.log(response.length);
                 if (response.length != 3000) {
@@ -105,4 +122,4 @@ Mediakron.Collections.Items = Backbone.Collection.extend({
             }
         });
     }
-});
+}

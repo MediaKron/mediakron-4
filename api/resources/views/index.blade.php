@@ -66,6 +66,8 @@
                              <div id="main"></div>
                           </main>
                       </div>
+
+                      <div id="overlay"></div>
                   
                   </div> 
                   

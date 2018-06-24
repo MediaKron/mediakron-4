@@ -12,7 +12,9 @@ class User extends Model {
       canvas: false,
       compare: {},
       history: {},
-      urlRoot: Mediakron.Data.models.user
+      urlRoot: function () {
+        return base_path() + '/api/' + uri() + '/user';
+      } 
     });
   }
 

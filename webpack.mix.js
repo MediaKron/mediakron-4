@@ -16,7 +16,7 @@ mix.webpackConfig({
     module: {
         rules: [{
             test: /(\.tpl|\.html)$/,
-            loader: 'lodash-template-webpack-loader',
+            loader: 'html-loader',
         }],
     }
 });

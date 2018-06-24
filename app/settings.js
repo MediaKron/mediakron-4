@@ -24,25 +24,25 @@ export default class Settings {
         this.basepath = base_path();
         
         // Build nav options
-        this.Navigation.primary = site.get('primaryNav');
+        this.Navigation.primary = site.get('primary_nav');
         this.Navigation.secondary = site.get('secondary');
 
         // Build home page
-        this.HomePage.image = site.get('homepageImage');
-        this.HomePage.alt = site.get('homepageImageAlt');
-        this.HomePage.description = site.get('homepageDescription');
-        this.HomePage.item = site.get('homepageItem');
-        this.HomePage.layout = site.get('homepageLayout');
+        this.HomePage.image = site.get('homepage_image');
+        this.HomePage.alt = site.get('homepage_image_alt');
+        this.HomePage.description = site.get('homepage_description');
+        this.HomePage.item = site.get('homepage_item');
+        this.HomePage.layout = site.get('homepage_layout');
 
         this.Appearance.logo = site.get('logo');
         this.Appearance.navigation = site.get('navigation');
         this.Appearance.skin = site.get('skin');
         this.Appearance.font = site.get('font');
 
-        this.Appearance.colors.navigation = site.get('navColor');
-        this.Appearance.colors.links = site.get('linkColor');
-        this.Appearance.colors.banner = site.get('bannerColor');
-        this.Appearance.colors.bannerlink = site.get('bannerLinkColor');
+        this.Appearance.colors.navigation = site.get('nav_color');
+        this.Appearance.colors.links = site.get("link_color");
+        this.Appearance.colors.banner = site.get("banner_color");
+        this.Appearance.colors.bannerlink = site.get("banner_link_color");
     }
 }
 

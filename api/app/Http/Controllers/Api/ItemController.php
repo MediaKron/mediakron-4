@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
@@ -8,6 +9,8 @@ use App\Item;
 use App\Site;
 use App\User;
 use App\Http\Requests\Admin\ItemRequest; 
+
+
 
 class ItemController extends Controller
 {
@@ -19,7 +22,7 @@ class ItemController extends Controller
     public function index($site_id)
     {
         //
-        return Item::with(['parents', 'children'])->orderBy('created_at', 'ASC')->paginate(10);
+        return Item::orderBy('created_at', 'ASC')->paginate(10);
     }
 
     /**

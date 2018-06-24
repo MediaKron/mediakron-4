@@ -1,5 +1,7 @@
 
 import User from "~/core-js/models/user"
+
+import Login from "~/utilities/login/login-view";
 import ClassManager from "~/core-js/util/class.management"
 
 function setGlobalUser(user){
@@ -52,13 +54,13 @@ function Auth(callback){
         error: function (model, response) {
             Mediakron.AuthResponse = response.responseJSON;
             if (Mediakron.Settings.public) {
-                user = new Mediakron.Models.User();
+                user = new User();
                 user.guest();
                 setGlobalUser(user);
                 return callback();
             } else {
-                var login = new Mediakron.Login(response.responseJSON);
-                Mediakron.controller.gotoView(login);
+                var login = new Login(response.responseJSON);
+                gotoView(login);
             }
         }
     });

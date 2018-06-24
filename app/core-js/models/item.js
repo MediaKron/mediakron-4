@@ -97,7 +97,9 @@ class Item extends Model {
             },
             viewObject: false,
             // The fetch url for this model, dervived from the id
-            urlRoot: Mediakron.Data.models.items,
+            urlRoot: function () {
+                return base_path() + '/api/' + uri()
+            },
             startSerial: false,
             endSerial: false,
             items: false,

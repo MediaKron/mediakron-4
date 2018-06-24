@@ -4,11 +4,14 @@ import Backbone from "backbone";
 
 // Auth
 import Auth from "./auth/auth"
+import Access from "./auth/access";
+
 import Site from "./models/site"
+import Items from "./collections/items";
 import ClassManagement from "../core-js/util/class.management";
 
 // import url functions
-import { uri, base_path } from "./util/url"
+import { uri, base_path, getItemFromURI, createUrlMap } from "./util/url"
 import Settings from "../settings"
 import Theme from "../theme/theme";
 
@@ -68,28 +71,43 @@ class App {
    * Boot mediakron
    */
   boot() {
-    var view = this;
+    var app = this;
+    // set up permissions
+    app.Access = Access;
     // load up the site
     var site = this.site = new Site({ uri: uri });
-    this.site.fetch().done(function(){
 
-        site.initializeSettings();
+    // Backfill functions to support mediakron legacy
+    this.polyfill(this);
 
-        // Start
-        view.Theme = new Theme();
-        view.Theme = Mediakron.Theme.Initialize();
-        
-        view.run();
-        //Auth();
+    // after fetch, initialize the site
+    this.router = new Router();
+    Auth(function(){
+        this.site.fetch().done(function () {
+
+            site.initializeSettings();
+
+            // Start
+            app.Theme = new Theme();
+            app.Theme = Mediakron.Theme.Initialize();
+
+            app.items = new Items();
+            app.items.fetch().done(function () {
+                app.run();
+            })
+        });
     });
-    
-
     
   }
 
+  polyfill(mk){
+      console.log(mk);
+      mk.getItemFromURI = getItemFromURI;
+  }
+
     run() {
-        //createUrlMap();
-        this.router = new Router();
+        this.data = createUrlMap();
+        
         this.menu = new MainMenu();
         /*this.configure = new Mediakron.MenuRight();
         //Mediakron.changeTracker = new Mediakron.UpdatedContent();

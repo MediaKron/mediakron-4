@@ -1,20 +1,30 @@
 
-import template from "./main-menu.html"
-import _ from "lodash"
+import _ from "lodash";
+var template = require("./main-menu.html")
+
 
 export default class MainMenu extends Backbone.View {
-    constructor(){
-        super();
-        this.template = _.template(template);
+    /**
+     * The constructor for the backbone class
+     * @param {object} options 
+     */
+    constructor(options){
+        // execute the parent options first
+        super(options);
+        //this.template = template;
         this.el = '#nav-main';
         this.items = [];
         this.tags = [];
-        
+        this.items = [];
     }
+
+    // Cast the html template 
+    get template() { return _.template(template); }
     
+    /**
+     * This should initialize the view
+     */
     initialize(){
-        console.log(template);
-        console.log(this.template);
         this.topics = Mediakron.topics;
         /*Mediakron.App.Events.on("context:goto", function (event) {
             var title = '';
