@@ -1,9 +1,8 @@
 //Core Css;
 
-//temporary to test
-@import url("https://use.fontawesome.com/releases/v5.0.13/js/all.js");
-
 @import "../theme/theme.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 @import '~modularscale-sass/stylesheets/modularscale';
 
@@ -20,7 +19,7 @@
 @import "mixins/position.scss";
 @import "mixins/clearfix.scss";
 
-@import "base-styles/base.scss";
+@import "base-styles/misc.scss";
 @import "base-styles/layout-styles.scss";
 
 // @import "vendor/leaflet/dist/leaflet.css";
@@ -92,10 +91,11 @@
 @import "../site-settings/settings-page/settings-page-styles.scss";
 @import "../site-settings/settings-styles.scss";
 
+@import "../navigation/menu-settings/menu-settings-styles.scss";
+@import "../navigation/navigation-styles.scss";
+
 //Theme;
 @import "../theme/banner/banner-styles.scss";
-@import "../theme/navigation/menu-settings/menu-settings-styles.scss";
-@import "../theme/navigation/navigation-styles.scss";
 @import "../theme/site-appearance/site-appearance-styles.scss";
 @import "../ui/buttons/buttons-styles.scss";
 
@@ -105,6 +105,7 @@
 @import "../ui/icons/mk-icons/mk-icons-styles.scss";
 @import "../ui/icons/mapkey-icons/mapkey-styles.scss";
 @import "../ui/overlay/overlay-styles.scss";
+@import "../ui/progress-loaders/progress-loaders-styles.scss";
 @import "../ui/tabs-accordion/tabs-accordion-styles.scss";
 @import "../ui/typography/typography-styles.scss";
 
