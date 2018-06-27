@@ -74,6 +74,8 @@ class App {
 
     // Set up the settings
     this.Settings = new Settings();
+    // Initialize the authorization controlls
+    Auth.init();
     // Manage class switching
     // TODO: Consider moving this into the controller
     this.ClassManagement = ClassManagement;
@@ -82,7 +84,6 @@ class App {
     this.messages = Messages;
     // Instantiate the controller, bind an ATC to the DOM
     this.controller = Controller;
-    console.log('apploaded')
     
   }
 
@@ -101,19 +102,19 @@ class App {
 
     // after fetch, initialize the site
     this.router = new Router();
-    Auth(function(){
-        this.site.fetch().done(function () {
+    Auth.check(function(){
+        console.log('check complete')
+        app.site.fetch().done(function() {
+          site.initializeSettings();
 
-            site.initializeSettings();
+          // Start
+          app.Theme = new Theme();
+          app.Theme = Mediakron.Theme.Initialize();
 
-            // Start
-            app.Theme = new Theme();
-            app.Theme = Mediakron.Theme.Initialize();
-
-            app.items = new Items();
-            app.items.fetch().done(function () {
-                app.run();
-            })
+          app.items = new Items();
+          app.items.fetch().done(function() {
+            app.run();
+          });
         });
     });
     

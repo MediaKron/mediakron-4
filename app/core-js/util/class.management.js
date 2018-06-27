@@ -114,7 +114,7 @@ class ClassManagement{
 const instance = new ClassManagement();
 
 // Freeze the instance
-Object.freeze(instance);
+//Object.freeze(instance);
 
 // Export the instance
 export default instance;

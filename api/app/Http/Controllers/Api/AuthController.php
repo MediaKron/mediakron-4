@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'check']]);
+        $this->middleware('jwt.check', ['except' => ['login']]);
     }
 
     /**
@@ -102,7 +102,7 @@ class AuthController extends Controller
      */
     public function check()
     {
-        if(Auth::check()){
+        if(auth()->user()){
             return $this->respondWithToken(auth()->refresh());
         }
         return response()->json([

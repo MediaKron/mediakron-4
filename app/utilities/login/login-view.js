@@ -6,6 +6,10 @@ import tpl from "./login.html";
 
 import Messages from "~/utilities/messages/messages-view";
 
+import Auth from "~/core-js/auth/auth";
+
+var view = false;
+
 export default class Login extends MediakronView {
     /**
      * The constructor for the backbone class
@@ -22,6 +26,7 @@ export default class Login extends MediakronView {
         if (options.fromRoute) {
           this.fromRoute = true;
         }
+        view = this;
     }
 
     // Cast the html template 
@@ -39,7 +44,6 @@ export default class Login extends MediakronView {
      * Render the view
      */
     render() {
-        console.log('rendering')
         this.$el.html(this.template(this.data)).addClass(this.className);
         return this;
     }
@@ -50,39 +54,41 @@ export default class Login extends MediakronView {
         }
     }
 
+    /**
+     * Attempt Login
+     * @param {object} e 
+     */
     tryLogin(e) {
         e.preventDefault();
-        $('#login-submit').attr('disabled', true).val('Logging in...');
-        var username = $('#username').val(),
-            password = $('#password').val(),
-            login = this;
-        $.ajax({
-          type: "post",
-          cache: false,
-          dataType: "json",
-          url: "/api/auth/login",
-          data: {
-            email: username,
-            password: password
-          }
-        })
-          .done(this.Success)
-          .fail(this.Failure);
+        $("#login-submit")
+          .attr("disabled", true)
+          .val("Logging in...");
+        // Try the login
+        Auth.login({
+            email: $('#username').val(),
+            password: $('#password').val()
+        },this.Success, this.Failure)
     }
 
-    Success(data, status) {
+    /**
+     * 
+     * @param {object} data 
+     */
+    Success(data) {
 
         if (data.authenticated) {
             $('#login-submit').attr('disabled', true).val('Hey, Welcome Back!');
             $('#login').addClass('logincorrect');
 
             Messages.success("Login Successful");
+            Mediakron.Settings.token = data.access_token;
+            Mediakron.Settings.expiration = new Date().getTime() + data.expires_in;
 
-            login.remove();
-            if (login.fromRoute) {
+            view.remove();
+            if (view.fromRoute) {
                 Mediakron.router.navigate('/', { trigger: true });
             }
-            Auth();
+            Mediakron.boot();
         } else {
             $('#login').addClass('loginincorrect');
             $('#login-submit').attr('disabled', false).val('Log in');
@@ -93,6 +99,11 @@ export default class Login extends MediakronView {
         }
 
     }
+
+    /**
+     * 
+     * @param {object} request 
+     */
     Failure(request) {
         $('#login').addClass('loginincorrect');
         $('#login-submit').attr('disabled', false).val('Log in');

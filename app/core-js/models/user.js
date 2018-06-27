@@ -87,6 +87,13 @@ class User extends Model {
 
   changedContent() {}
 
+  isAdmin(){
+    if (this.get('role') == 'manager' || this.get('role') == 'instructor' || this.get('role') == 'administrator' || this.get('role') == 'ia') {
+      return true;
+    }
+    return false;
+  }
+
   canEditItem(type, item) {
     if (Mediakron.Settings.editEnabled) {
       var canedit = this.get("canedit"),
