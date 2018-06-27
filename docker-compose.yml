@@ -15,7 +15,7 @@ redis:
 
 php:
     env_file: 
-        - ./api/.env
+        - ./.env
     build: ./docker/php/
     expose:
         - 9000

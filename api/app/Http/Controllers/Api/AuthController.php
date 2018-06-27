@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'check']]);
     }
 
     /**
@@ -34,7 +34,9 @@ class AuthController extends Controller
             if(isset($credentials['email'])){
                 $username = $credentials['email'];
             } else {
-                return response()->json(['error' => 'Unauthorized.  No Email.'], 401);
+                return response()->json([
+                    'error' => 'Unauthorized.  No Email.'
+                ], 401);
             }
             $username = 
             $user = User::where('email', $credentials['email'])
@@ -49,7 +51,9 @@ class AuthController extends Controller
                 }
                 $encoded = base64_encode($digest);
                 if($user->password !==  $encoded){
-                    return response()->json(['error' => 'Unauthorized.  Legacy Password.'], 401);
+                    return response()->json([
+                        'error' => 'Unauthorized.  Legacy Password.'
+                    ], 401);
                 }
                 $user->password = $user->password = Hash::make($credentials['password']);
                 $user->save();
@@ -92,6 +96,22 @@ class AuthController extends Controller
     }
 
     /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function check()
+    {
+        if(Auth::check()){
+            return $this->respondWithToken(auth()->refresh());
+        }
+        return response()->json([
+            'authenticated' => false,
+            'error' => 'Unauthorized.  No Email.'
+        ], 401);
+    }
+
+    /**
      * Get the token array structure.
      *
      * @param  string $token
@@ -101,9 +121,11 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
+            'authenticated' => true,
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => Auth::user()->toArray()
         ]);
     }
 }

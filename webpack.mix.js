@@ -1,24 +1,25 @@
 let mix = require('laravel-mix');
 
 mix.webpackConfig({
-    output: {
-        publicPath: '/public'
-    },
-    resolve: {
-        alias: {
-            // bind version of jquery-ui
-            "jquery-ui": 'jquery-ui-dist/jquery-ui.js',
-            '~': path.resolve(__dirname + '/app'),
-            // bind to modules;
-            modules: path.join(__dirname, "node_modules"),
-        }
-    },
-    module: {
-        rules: [{
-            test: /(\.tpl|\.html)$/,
-            loader: 'html-loader',
-        }],
+  output: {
+    publicPath: "/public"
+  },
+  resolve: {
+    alias: {
+      // bind version of jquery-ui
+      "jquery-ui": "jquery-ui-dist/jquery-ui.js",
+      "~": path.resolve(__dirname + "/app"),
+      // bind to modules;
+      modules: path.join(__dirname, "node_modules")
     }
+  },
+  module: {
+    rules: [
+      { test: /\.jpg$/, use: ["file-loader"] },
+      { test: /\.png$/, use: ["url-loader?mimetype=image/png"] },
+      { test: /\.html$/, loader: 'html-loader' }
+    ]
+  }
 });
 
 

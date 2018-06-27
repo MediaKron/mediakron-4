@@ -63,11 +63,13 @@
                       
                       <div id="wrapper-main">
                            <main role="main">
-                             <div id="main"></div>
+                             <div id="primary"></div>
+                             <div id="secondary"></div>
                           </main>
                       </div>
 
                       <div id="overlay"></div>
+                      <div id="admin"></div>
                   
                   </div> 
                   

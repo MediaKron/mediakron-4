@@ -1,77 +1,102 @@
-Mediakron.Login = Mediakron.Extensions.View.extend({
-    template: JST['navigation.login'],
-    className: 'login login-layout',
-    fromRoute: false,
-    initialize: function (data) {
+import MediakronView from '~/core-js/extensions/views';
+import $ from "jquery";
+import _ from "lodash";
+
+import tpl from "./login.html";
+
+import Messages from "~/utilities/messages/messages-view";
+
+export default class Login extends MediakronView {
+    /**
+     * The constructor for the backbone class
+     * @param {object} options 
+     */
+    constructor(options) {
+        // execute the parent options first
+        super({
+            className: 'login login-layout',
+            fromRoute: false,
+        })
         this.data = {};
-        this.data = data;
-        if (data.fromRoute) {
-            this.fromRoute = true;
+        this.data = options;
+        if (options.fromRoute) {
+          this.fromRoute = true;
         }
+    }
+
+    // Cast the html template 
+    get template() { 
+        return _.template(tpl); }
+    
+    /**
+     * 
+     * @param {object} data 
+     */
+    initialize(data) {
         return this;
-    },
-    render: function () {
+    }
+    /**
+     * Render the view
+     */
+    render() {
+        console.log('rendering')
         this.$el.html(this.template(this.data)).addClass(this.className);
         return this;
-    },
-    events: {
-        'submit': 'tryLogin'
-    },
-    tryLogin: function (e) {
+    }
+
+    get events() {
+        return {
+            'submit': 'tryLogin'
+        }
+    }
+
+    tryLogin(e) {
         e.preventDefault();
         $('#login-submit').attr('disabled', true).val('Logging in...');
         var username = $('#username').val(),
             password = $('#password').val(),
             login = this;
         $.ajax({
-            type: "post",
-            cache: false,
-            url: Mediakron.Data.login,
-            data: 'username=' + username + '&password=' + password + '&_username=' + username + '&_password=' + password,
-            success: function (data) {
-                if (data.success) {
-                    $('#login-submit').attr('disabled', true).val('Hey, Welcome Back!');
-                    $('#login').addClass('logincorrect');
-                    Mediakron.message({
-                        layout: 'bottom',
-                        text: 'Login Successful',
-                        type: 'success',
-                        timeout: 4000,
-                        dismiss: true
-                    });
-                    login.remove();
-                    if (login.fromRoute) {
-                        Mediakron.router.navigate('/', { trigger: true });
-                    }
-                    Mediakron.App.auth();
-                } else {
-                    $('#login').addClass('loginincorrect');
-                    $('#login-submit').attr('disabled', false).val('Log in');
-                    Mediakron.message({
-                        layout: 'top',
-                        text: data.message,
-                        type: 'danger',
-                        timeout: 5000
-                    });
-                    setTimeout(function () {
-                        $('#login').removeClass('loginincorrect');
-                    }, 5000);
-                }
-
-            },
-            error: function (request) {
-                $('#login').addClass('loginincorrect');
-                $('#login-submit').attr('disabled', false).val('Log in');
-                var message = JSON.parse(request.responseText);
-                Mediakron.message({
-                    layout: 'top',
-                    text: message.error,
-                    type: 'danger',
-                    timeout: 5000
-                });
-            }
-        });
-        return false;
+          type: "post",
+          cache: false,
+          dataType: "json",
+          url: "/api/auth/login",
+          data: {
+            email: username,
+            password: password
+          }
+        })
+          .done(this.Success)
+          .fail(this.Failure);
     }
 
-});
+    Success(xhr, data) {
+        if (data.success) {
+            $('#login-submit').attr('disabled', true).val('Hey, Welcome Back!');
+            $('#login').addClass('logincorrect');
+
+            Messages.success("Login Successful");
+
+            login.remove();
+            if (login.fromRoute) {
+                Mediakron.router.navigate('/', { trigger: true });
+            }
+            Auth();
+        } else {
+            $('#login').addClass('loginincorrect');
+            $('#login-submit').attr('disabled', false).val('Log in');
+            Messages.danger(data.message, "top");
+            setTimeout(function () {
+                $('#login').removeClass('loginincorrect');
+            }, 5000);
+        }
+
+    }
+    Failure(request) {
+        $('#login').addClass('loginincorrect');
+        $('#login-submit').attr('disabled', false).val('Log in');
+        var message = JSON.parse(request.responseText);
+        Messages.danger(message.error, "top");
+    }
+
+}
