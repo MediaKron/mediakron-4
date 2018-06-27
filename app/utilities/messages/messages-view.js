@@ -59,6 +59,8 @@ class Message {
       console.log(request);
     this.request = request;
 
+    this.$el = false;
+
     // Default overrides
     if (request.layout) this.layout = request.layout;
     if (!this.request.type) this.request.type = this.type;
@@ -84,12 +86,18 @@ class Message {
   }
 
   /**
+   * 
+   */
+  remove(){
+    this.$el.remove();
+  }
+
+  /**
    *
    */
   render() {
-      console.log(this.request);
-    var $el = this.template(this.request);
-    this.bindTo.append($el);
+    this.$el = $(this.template(this.request));
+    this.bindTo.append(this.$el);
     if (this.request.timeout && this.request.timeout > 0 && !this.confirm) {
       var view = this;
       setTimeout(function() {
@@ -102,10 +110,12 @@ class Message {
     }
     return this;
   }
+
   loadProgress(eventLabel, percentComplete) {
     Mediakron.siteLoaded = Math.round(percentComplete);
     Mediakron.messages.progress(eventLabel, Mediakron.siteLoaded);
   }
+  
   // Basic wrapper for normal boring messages
   progress(message, percent) {
     if (!Mediakron.messages.inProgress) {

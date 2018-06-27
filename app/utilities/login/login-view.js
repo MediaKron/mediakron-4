@@ -61,10 +61,10 @@ export default class Login extends MediakronView {
           cache: false,
           dataType: "json",
           url: "/api/auth/login",
-          data: JSON.stringify({
+          data: {
             email: username,
             password: password
-          })
+          }
         })
           .done(this.Success)
           .fail(this.Failure);
