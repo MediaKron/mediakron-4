@@ -70,8 +70,9 @@ export default class Login extends MediakronView {
           .fail(this.Failure);
     }
 
-    Success(xhr, data) {
-        if (data.success) {
+    Success(data, status) {
+
+        if (data.authenticated) {
             $('#login-submit').attr('disabled', true).val('Hey, Welcome Back!');
             $('#login').addClass('logincorrect');
 
@@ -85,7 +86,7 @@ export default class Login extends MediakronView {
         } else {
             $('#login').addClass('loginincorrect');
             $('#login-submit').attr('disabled', false).val('Log in');
-            Messages.danger(data.message, "top");
+            Messages.danger(data.error, "top");
             setTimeout(function () {
                 $('#login').removeClass('loginincorrect');
             }, 5000);
