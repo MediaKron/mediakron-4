@@ -9,6 +9,8 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 import _ from 'underscore';
 
+import Login from '../utilities/login/login-view'
+
 // Import modules
 
 
@@ -196,7 +198,7 @@ export default class Router extends Backbone.Router {
         }
         var query = Mediakron.AuthResponse;
         query.fromRoute = true;
-        var login = new Mediakron.Login(query);
+        var login = new Login(query);
         Mediakron.controller.gotoView(login);
     }
     getItem(id) {

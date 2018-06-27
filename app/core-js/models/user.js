@@ -1,6 +1,7 @@
 
 // User Class
 import Model from "~/core-js/extensions/models";
+import { base_path, uri } from "../util/url";
 class User extends Model {
   constructor() {
     super({
@@ -11,11 +12,11 @@ class User extends Model {
       bc: false,
       canvas: false,
       compare: {},
-      history: {},
-      urlRoot: function () {
-        return base_path() + '/api/' + uri() + '/user';
-      } 
+      history: {} 
     });
+    this.urlRoot = function () {
+      return base_path() + '/api/' + uri() + '/user';
+    }
   }
 
   defaults() {

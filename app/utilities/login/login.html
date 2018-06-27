@@ -1,17 +1,25 @@
 <div id="login-banner">
-<div id="branding">
-    <h1 class="page-header"><span id="site-name"><a href="home"><%= Mediakron.Settings.name %></a></span></h1>
-</div>
+	<div id="branding">
+		<h1 class="page-header"><span id="site-name"><a href="home"><%= Mediakron.Settings.name %></a></span></h1>
+	</div>
 </div>
 
 
 <div id="login">
-<h2 class="sr-only">Log in </h2>
+	<h2 class="sr-only">Log in </h2>
 	<div id="login-image">
-			<img src="/mediakron/images/mklogo-horizontal-300.png" alt="MediaKron Logo">
+		<img src="/images/mklogo-horizontal-300.png" alt="MediaKron Logo" />
 	</div>
-	<% if(authenticated){ %>
-    	<%= reason %>
+	<% if(authenticated){ %> 
+		<p>You are logged in, but you have not been given access to this site.</p>
+		<ul>
+			<li>
+				<a href="mailto:mksupport@bc.edu">Request Access</a>
+			</li>
+			<li>
+				<a href="/profile">Return to your account page</a>
+			</li>
+		</ul>
 	<% }else{ %>
     	<form method="post" id="user-login" accept-charset="UTF-8" role="form">
     		<div class="form-item form-type-textfield form-item-name">
