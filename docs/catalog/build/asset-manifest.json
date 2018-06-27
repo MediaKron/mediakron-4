@@ -1,8 +1,10 @@
 {
-  "catalog.js": "static/catalog.93a90f8a.js",
-  "catalog.js.map": "static/catalog.93a90f8a.js.map",
+  "catalog.css": "static/catalog.79bb3e6a.css",
+  "catalog.css.map": "static/catalog.79bb3e6a.css.map",
+  "catalog.js": "static/catalog.33b308f7.js",
+  "catalog.js.map": "static/catalog.33b308f7.js.map",
   "manifest.js": "static/manifest.63f9f379.js",
   "manifest.js.map": "static/manifest.63f9f379.js.map",
-  "vendor.js": "static/vendor.03323ccf.js",
-  "vendor.js.map": "static/vendor.03323ccf.js.map"
+  "vendor.js": "static/vendor.6cf27943.js",
+  "vendor.js.map": "static/vendor.6cf27943.js.map"
 }

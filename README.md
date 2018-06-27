@@ -19,6 +19,7 @@ General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.
 * [Docker Compose](https://docs.docker.com/compose/) 1.18+
 * [Node](https://nodejs.org) 6+
 * [NPM](https://www.npmjs.com/)
+* [Catalog](https://www.catalog.style/)
 
 ## Installation
 * Run `npm install` from the root directory to get all the npm modules you'll need
@@ -26,6 +27,7 @@ General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.
 * Copy the .env.example file to .env and customize as needed
 * To start the local dev environment run `docker-compose up`
 * Go to your mediakron site at `localhost:81`
+* To install the documentation site (Catalog), go to the docs directory and run "npm install catalog". Then, to start run "npm run catalog-start"
 
 ## How to build
 * **Development**: `npm run mediakron:build`
