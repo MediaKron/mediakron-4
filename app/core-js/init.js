@@ -84,13 +84,13 @@ class App {
     this.messages = Messages;
     // Instantiate the controller, bind an ATC to the DOM
     this.controller = Controller;
-    
   }
 
   /**
    * Boot mediakron
    */
   boot() {
+    console.log('boot')
     var app = this;
     // set up permissions
     app.Access = Access;

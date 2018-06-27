@@ -81,6 +81,7 @@ class Auth{
             .done(function(xhr, data){
                 user = new User(data.user);
                 ClassManager.setAdmin(user);
+                return callback();
             })
             .fail(function(xhr, message){
                 var data = JSON.parse(xhr.responseText);
