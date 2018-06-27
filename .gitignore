@@ -15,4 +15,4 @@ yarn-error.log
 docker/data
 docker/composer/cache
 /public/files
-docs/node_modules
+/docs/node_modules
