@@ -1,68 +1,136 @@
-
+import $ from "jquery";
 import User from "~/core-js/models/user"
 
 import Login from "~/utilities/login/login-view";
 import ClassManager from "~/core-js/util/class.management"
+import Controller from "~/core-js/views/controller";
 
-function setGlobalUser(user){
+var user, view;
+
+/**
+ * Check auth Status and get login
+ * or allow redirect
+ * @param {function} callback 
+ */
+class Auth{
+
+    constructor(){
+        view = this;
+    }
+
+    static init(){
+        
+        $.ajaxSetup({
+            beforeSend: function (xhr) {
+                var auth = new Auth().getSession();
+                if(auth.access_token){
+                    xhr.setRequestHeader("Authorization", "Bearer " + auth.access_token);
+                }
+            }
+        });
+    }
+
+    getSession(){
+        return {
+            access_token: localStorage.getItem('access_token', false),
+            token_type: localStorage.getItem('token_type', false),
+            expires_in: localStorage.getItem('expires_in', false)
+        }
+    }
+
+    setSession(auth) {
+        // Set the time that the Access Token will expire at
+        var expiresAt = JSON.stringify(
+            auth.expires_in * 1000 + new Date().getTime()
+        );
+        console.log('setting session ' + auth.access_token)
+        localStorage.setItem('access_token', auth.access_token);
+        localStorage.setItem("token_type", auth.token_type);
+        localStorage.setItem('expires_in', expiresAt);
+    }
+
+    static login(credentials, Success, Failure){
+        var auth = new Auth();
+        $.ajax({
+            type: "post",
+            cache: false,
+            dataType: "json",
+            url: "/api/auth/login",
+            data: {
+                email: credentials.email,
+                password: credentials.password
+            }
+        })
+            .done(function(data){
+                console.log(data);
+                auth.setSession(data);
+                Success(data);
+            })
+            .fail(function(xhr){
+                Failure(xhr);
+            });
+    }
+
+
+    /**
+     * 
+     */
+    static check(callback){
+        console.log('checking')
+        $.ajax({ url: "/api/auth/check", method: "GET", dataType: "json" })
+            .done(function(xhr, data){
+                user = new User(data.user);
+                ClassManager.setAdmin(user);
+                return callback();
+            })
+            .fail(function(xhr, message){
+                var data = JSON.parse(xhr.responseText);
+
+                if (Mediakron.Settings.public) {
+                    user = new User();
+                    user.guest();
+                    setGlobalUser(user);
+                    return callback();
+                } else {
+                    Controller.gotoView(new Login(data));
+                }
+            });
+    }
+
+    /**
+     * 
+     */
+    static renew() {
+        $.ajax({ url: "/api/auth/renew", method: "GET", dataType: "json" })
+            .done(function (xhr, data) {
+                user = new User(data.user);
+                ClassManager.setAdmin(user);
+            })
+            .fail(function (xhr, message) {
+                var data = JSON.parse(xhr.responseText);
+
+                if (Mediakron.Settings.public) {
+                    console.log('ublic')
+                    user = new User();
+                    user.guest();
+                    setGlobalUser(user);
+                    return callback();
+                } else {
+                    console.log('private')
+                    Controller.gotoView(new Login(data));
+                }
+            });
+    }
+
+
+}
+
+/**
+ * 
+ * @param {*} user 
+ */
+function setGlobalUser(user) {
     Mediakron.user = user;
 }
 
-
-function Auth(callback){
-    var user;
-    user = new User();
-    setGlobalUser(user);
-    user.fetch({
-        data: {
-            token: Mediakron.Settings.token
-        },
-        processData: true,
-        success: function (model, response) {
-            if (
-                model.get('role') == 'manager' || 
-                model.get('role') == 'instructor' || 
-                model.get('role') == 'administrator' || 
-                model.get('role') == 'ia') {
-
-                    ClassManager.setStatic("can-administer");
-
-            } else {
-
-                ClassManager.setStatic("not-administer");
-
-            }
-
-            // Set last visit to now
-            user.lastVisit();
-
-            // bind the unload handler to attach it to a parent action
-            // TODO: consider moving this to an observable pattern
-            $(window).unload(function () {
-                $.ajax({
-                    type: 'POST',
-                    url: Mediakron.Data.stats,
-                    async: false,
-                    data: {
-                        'views': Mediakron.Status.views
-                    }
-                });
-            });
-            //
-            return callback();
-        },
-        error: function (model, response) {
-            Mediakron.AuthResponse = response.responseJSON;
-            if (Mediakron.Settings.public) {
-                user = new User();
-                user.guest();
-                setGlobalUser(user);
-                return callback();
-            } else {
-                var login = new Login(response.responseJSON);
-                gotoView(login);
-            }
-        }
-    });
-}
 export default Auth;

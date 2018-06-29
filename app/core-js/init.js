@@ -5,6 +5,9 @@ import Backbone from "backbone";
 // Auth
 import Auth from "./auth/auth"
 import Access from "./auth/access";
+import Controller from "./views/controller";
+import Events from "./events";
+import Messages from "../utilities/messages/messages-view";
 
 import Site from "./models/site"
 import Items from "./collections/items";
@@ -20,14 +23,20 @@ import MainMenu from "../navigation/main-menu/main-menu";
 
 var state = {
 
-    // 
+    // Hold the current site url. TODO: Detect changes here and swap sites on change
     uri: false, 
+
+    // Debug Mode
+    debug: false,
+
 
     router: false, // this will later be the mediakron router funciton.  Useful for going cool places
     loading: true,
     socket: false,
 
     Status: { // a set of helpful internal flags.  Maybe will eventually incoperate some of these other places
+
+        /*
         url: false, // handy
         context: false, // maybe not necessary anymore
         time: 0, // not sure what this does
@@ -51,26 +60,37 @@ var state = {
         currentEditing: {},
         online: false,
         storyDebug: false
+        */
 
     },
-    eventBus: _.extend({}, Backbone.Events),
-    console: function (log) { },
+
 }
 
 class App {
   constructor(state) {
     this.data = {};
     this.state = state;
+    
 
     // Set up the settings
     this.Settings = new Settings();
-    this.ClassManagement = new ClassManagement();
+    // Initialize the authorization controlls
+    Auth.init();
+    // Manage class switching
+    // TODO: Consider moving this into the controller
+    this.ClassManagement = ClassManagement;
+    // Set up the global event bus
+    this.events = new Events();
+    this.messages = Messages;
+    // Instantiate the controller, bind an ATC to the DOM
+    this.controller = Controller;
   }
 
   /**
    * Boot mediakron
    */
   boot() {
+    console.log('boot')
     var app = this;
     // set up permissions
     app.Access = Access;
@@ -82,26 +102,32 @@ class App {
 
     // after fetch, initialize the site
     this.router = new Router();
-    Auth(function(){
-        this.site.fetch().done(function () {
+    Auth.check(function(){
+        console.log('check complete')
+        app.site.fetch().done(function() {
+          site.initializeSettings();
 
-            site.initializeSettings();
+          // Start
+          app.Theme = new Theme();
+          app.Theme = Mediakron.Theme.Initialize();
 
-            // Start
-            app.Theme = new Theme();
-            app.Theme = Mediakron.Theme.Initialize();
-
-            app.items = new Items();
-            app.items.fetch().done(function () {
-                app.run();
-            })
+          app.items = new Items();
+          app.items.fetch().done(function() {
+            app.run();
+          });
         });
     });
     
   }
 
+  /**
+   * Does a backfill of objects that the mediakron 
+   * code uses.  Eventually we'll depricate this
+   * as we move over to full es6 modules, and atomized
+   * packages
+   * @param {object} mk 
+   */
   polyfill(mk){
-      console.log(mk);
       mk.getItemFromURI = getItemFromURI;
   }
 
