@@ -14,15 +14,14 @@ export default class ClassName extends MediakronView {
     constructor(options) {
         // execute the parent options first
         super({
-            className: 'item-page',
+            className: 'classname',
             data: false,
             item: false,
         })
         this.data = {};
-        this.data = options;
-        if (options.fromRoute) {
-            this.fromRoute = true;
-        }
+            if (!this.changes) {
+                this.changes = Mediakron.Settings;
+            }
         view = this;
     }
 
@@ -63,4 +62,4 @@ export default class ClassName extends MediakronView {
 
 }
 
-// @REVIEW
+// @REVIEW then, delete. Original view below
