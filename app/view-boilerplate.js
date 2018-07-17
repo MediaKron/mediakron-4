@@ -1,11 +1,11 @@
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./homepage-templates/basic.html";
+import tpl  from "./templatename.html";
 
 var view = false;
 
-export default class [name] extends MediakronView {
+export default class ClassName extends MediakronView {
 
     /**
      * The constructor for the backbone class
@@ -49,12 +49,12 @@ export default class [name] extends MediakronView {
 
     get events() {
         return {
-            'submit': 'tryLogin'
+            'event target': 'callback'
         }
     }
 
     /**
-     * Commment
+     * Description
      * @param {object} something 
      */
     newName(something) {
