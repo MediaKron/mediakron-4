@@ -1,6 +1,7 @@
 import MediakronView from '~/core-js/extensions/views';
+import $ from "jquery";
 import _ from "lodash";
-var template = require("./homepage-templates/basic.html");
+import tpl  from "./homepage-templates/basic.html";
 
 var view = false;
 
@@ -66,6 +67,7 @@ export default class Homepage extends MediakronView {
     }
 }
 
+// @REVIEW
 // Mediakron.Pages.home = Mediakron.Extensions.View.extend({
 //     template: JST['pages.welcome.full'],
 //     className: 'item-page',
