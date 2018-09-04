@@ -52,6 +52,10 @@ export default class ClassName extends MediakronView {
         }
     }
 
+    afterrender() {
+        
+    }
+
     /**
      * Description
      * @param {object} something 
