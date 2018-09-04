@@ -132,7 +132,7 @@ export default class SecondaryMenu extends MediakronView {
      * Search
      * @param {object} e 
      */
-    doSearch(some) {
+    doSearch(e) {
         e.preventDefault();
         var searchFor = $(e.currentTarget).val();
         if (e.keyCode == '13') {
@@ -144,20 +144,16 @@ export default class SecondaryMenu extends MediakronView {
     }
 
     /**
-     * Description
-     * @param {object} something 
+     * Open Modal
+     * @param {object} e 
      */
-    newName(something) {
-       
-    }
-
-    openModal: function (e) {
+    openModal(e) {
         e.preventDefault();
         this.closeAllModels();
         $(e.currentTarget).next().attr({ 'data-visually-hidden': 'false' });
         $('.menu-bg').addClass('open');
         return false;
-    },
+    }
 
     /**
      * Close Modal

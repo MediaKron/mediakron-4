@@ -23,46 +23,46 @@ export default class Homepage extends MediakronView {
             if (JST['pages.welcome.' + this.data.layout]) {
                 this.template = JST['pages.welcome.' + this.data.layout];
             }
-
         }
         this.item = false;
         if (request.item) {
             this.item = request.item;
         }
+    }
 
-        // Cast the html template 
-        get template() { 
-        return _.template(tpl); }
+    // Cast the html template 
+    get template() { 
+    return _.template(tpl); }
 
-        /**
-         * 
-         * @param {object} data 
-         */
-        initialize(data) {
-            return this;
+    /**
+     * 
+     * @param {object} data 
+     */
+    initialize(data) {
+        return this;
+    }
+    
+    /**
+     * Render the view
+     */
+    render() {
+        this.$el.html(this.template(this.data));
+        return this;
+    }
+
+    afterrender() {
+    if (this.item) {
+        var view = this.item.getView();
+        if (view) {
+            view.setElement('#homepage-content');
+            $('.home-template--nobanner').addClass('home-content-active');
+            view.render();
         }
-        /**
-         * Render the view
-         */
-        render() {
-            this.$el.html(this.template(this.data));
-            return this;
-        }
+    }
 
-        afterrender() {
-        if (this.item) {
-            var view = this.item.getView();
-            if (view) {
-                view.setElement('#homepage-content');
-                $('.home-template--nobanner').addClass('home-content-active');
-                view.render();
-            }
-        }
-
-        get events() {
-            return {
-                'click a': Mediakron.linkHandle
-            }
+    get events() {
+        return {
+            'click a': Mediakron.linkHandle
         }
     }
 }
