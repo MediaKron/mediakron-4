@@ -437,28 +437,3 @@ Mediakron.Pages.map = Mediakron.Extensions.View.extend({
         }
     }
 });
-Mediakron.Pages.layer = Mediakron.Extensions.View.extend({
-    template: JST['pages.layer.default'],
-    initialize: function(model) {
-        this.model = model;
-        return this;
-    },
-    render: function() {
-        if (this.layout) {
-            this.template = JST['pages.layer.' + this.layout];
-        } else if (this.model.get('template')) {
-            this.template = JST['pages.layer.' + this.model.get('template')];
-        }
-        var content = this.model.toJSON();
-        content.model = this.model;
-        this.$el.html(this.template(content));
-        return this;
-    },
-    afterRender: function() {
-        this.model.getSidebar(this.$el);
-    },
-    gotoItem: function() {},
-    events: {
-        'click a': Mediakron.linkHandle
-    }
-});
