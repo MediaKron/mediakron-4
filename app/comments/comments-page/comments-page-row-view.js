@@ -1,11 +1,11 @@
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./content-tools/tags/tag-page/tag.html";
+import tpl  from "./comments-page-row.html";
 
 var view = false;
 
-export default class TagList extends MediakronView {
+export default class CommentsPageRow extends MediakronView {
 
     /**
      * The constructor for the backbone class
@@ -14,13 +14,8 @@ export default class TagList extends MediakronView {
     constructor(options) {
         // execute the parent options first
         super({
-            el: '.taglist',
+            el: '.commentlist',
         })
-        this.data = {};
-            if (!this.changes) {
-                this.changes = Mediakron.Settings;
-            }
-        view = this;
     }
 
     // Cast the html template 
@@ -50,32 +45,30 @@ export default class TagList extends MediakronView {
 
     get events() {
         return {
-            'event target': 'callback'
+            'click a': Mediakron.linkHandle
         }
     }
-
 }
 
 // @REVIEW then, delete. Original view below
 
-// Mediakron.Pages.tagRow = Mediakron.Extensions.View.extend({
-//     template: JST['pages.tag.tag'],
-//     el: '.taglist',
-//     initialize: function(model){
+// Mediakron.Pages.commentRow = Mediakron.Extensions.View.extend({
+//     template: JST['pages.comment.row'],
+//     el: '.commentlist',
+//     initialize: function (model) {
 //         this.model = model;
 //         this.render();
 //         return this;
 //     },
-    
-//     render: function(){
+
+//     render: function () {
 //         var content = this.model.toJSON();
 //         content.model = this.model;
 //         this.$el.append(this.template(content));
 //         return this;
 //     },
-    
-//     events: {
-//         'click a':                          Mediakron.linkHandle
-//     }
 
+//     events: {
+//         'click a': Mediakron.linkHandle
+//     }
 // });

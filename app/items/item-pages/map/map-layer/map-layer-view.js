@@ -1,11 +1,11 @@
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./templatename.html";
+import tpl  from "./default.html";
 
 var view = false;
 
-export default class Tag extends MediakronView {
+export default class MapLayer extends MediakronView {
 
     /**
      * The constructor for the backbone class
@@ -43,60 +43,61 @@ export default class Tag extends MediakronView {
      * Render the view
      */
     render() {
-        if(this.layout){
-            this.template = JST['pages.tag.'+this.layout];
-        }else if(this.model.get('template')){
-            this.template = JST['pages.tag.'+this.model.get('template')];
+        if (this.layout) {
+            this.template = JST['pages.layer.' + this.layout];
+        } else if (this.model.get('template')) {
+            this.template = JST['pages.layer.' + this.model.get('template')];
         }
-        
         var content = this.model.toJSON();
-            content.model = this.model;
+        content.model = this.model;
         this.$el.html(this.template(content));
-
         return this;
     }
 
     get events() {
         return {
-            'event target': 'callback'
+            'click a': Mediakron.linkHandle
         }
     }
 
     afterrender() {
         this.model.getSidebar(this.$el);
     }
+
+    /**
+     * Description
+     * @param {object} something 
+     */
+    gotoItem:{}
+       
+    }
+
 }
 
 // @REVIEW then, delete. Original view below
 
-// Mediakron.Pages.tag = Mediakron.Extensions.View.extend({
-//     template: JST['pages.tag.default'],
-    
-//     initialize: function(model){
+// Mediakron.Pages.layer = Mediakron.Extensions.View.extend({
+//     template: JST['pages.layer.default'],
+//     initialize: function(model) {
 //         this.model = model;
 //         return this;
 //     },
-//     render: function(){
-//         if(this.layout){
-//             this.template = JST['pages.tag.'+this.layout];
-//         }else if(this.model.get('template')){
-//             this.template = JST['pages.tag.'+this.model.get('template')];
+//     render: function() {
+//         if (this.layout) {
+//             this.template = JST['pages.layer.' + this.layout];
+//         } else if (this.model.get('template')) {
+//             this.template = JST['pages.layer.' + this.model.get('template')];
 //         }
-        
 //         var content = this.model.toJSON();
-//             content.model = this.model;
+//         content.model = this.model;
 //         this.$el.html(this.template(content));
-
 //         return this;
 //     },
-    
-//     afterRender: function(){
+//     afterRender: function() {
 //         this.model.getSidebar(this.$el);
 //     },
-//     gotoItem:function(){},
+//     gotoItem: function() {},
 //     events: {
-//         'click a':                          Mediakron.linkHandle
+//         'click a': Mediakron.linkHandle
 //     }
 // });
-
-

@@ -16,3 +16,7 @@ docker/data
 docker/composer/cache
 /public/files
 /docs/node_modules
+.DS_Store
+app/.DS_Store
+
+

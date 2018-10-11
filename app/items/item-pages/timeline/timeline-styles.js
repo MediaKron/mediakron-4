@@ -1,4 +1,4 @@
-/**
+s/**
  * This is the primary app view.  Its going to attach itself to the core region and act as an
  * air traffic controller for all of the children views.  Awesome, cause by binding it this way,
  * we can grab a view, and ask it to transition inward, and the fly effects will work nicely.

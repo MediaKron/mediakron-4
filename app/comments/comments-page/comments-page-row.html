@@ -1,0 +1,13 @@
+<% var private = model.get("private"); %> 
+<% if (model.get("private") == 'personal') { var private = 'personal note'} %>
+<li class="filter-<%= model.get('private') %> filter-user-<%= model.get('user_id') %>">
+    <div class="comment-list-details">
+            <span class="mk-icon mk-comment"></span> <span class="<%= model.get('private') %> comment-label"><%= private %><span class="sr-only">comment</span></span> <a class="comment-context-link tooltip--n" data-tooltip="View in Context" href="<%= model.get('uri') %>">  By <%= model.getUsername() %> on <%= Mediakron.formatUnixDateStamp(created, 'small') %> </a> 
+    </div>
+    <div class="comment-list-content">
+        <% if(comment){ %>
+            <% var length = 1000; var commentTrimmed = comment.substring(0,length);  %>
+            <%= commentTrimmed %>
+        <% } %>
+    </div>
+</li>

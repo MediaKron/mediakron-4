@@ -1,0 +1,30 @@
+<% basepath = Mediakron.Controller.baseurl; %>
+
+<div class="comment-list-page browser-page">
+
+    <header>
+        <h2><span class="mk-icon mk-comment"></span> Comments and Personal Notes</h2>
+
+        <ul class="browser-nav" role="navigation" aria-label="Other Browse Pages">
+            <li class="browser-page-links"><a class="all-content-link" href="<%= basepath %>browse"><span class="mk-icon mk-grid"></span>
+                    All Content</a></li>
+            <li class="browser-page-links"> <a class="updates-link" href="<%= basepath %>mycontent"><span class="mk-icon mk-user"></span>
+                    My Content</a></li>
+            <li class="browser-page-links"><a class="all-content-link" href="<%= basepath %>updates"><span class="mk-icon mk-updates"></span>
+                    Recent Changes </a></li>
+            <li class="browser-page-links"><a class="all-content-link" href="<%= basepath %>tags"><span class="mk-icon mk-tag"></span>
+                    Tags </a></li>
+        </ul>
+
+    </header>
+    <ul class="filter-options">
+        <li><button class="all">All <span class="comment-list-count"></span></button></li>
+        <li><button class="filter-user-<%= Mediakron.user.get('id') %>">My Comments <span class="comment-list-count"></span></button></li>
+        <li class="comment-label-button"><button class="filter-public">Public Comments <span class="comment-list-count"></span></button></li>
+        <li class="comment-label-button"><button class="filter-private">Private Comments <span class="comment-list-count"></span></button></li>
+        <li class="comment-label-button"><button class="filter-personal">Personal Notes <span class="comment-list-count"></span></button></li>
+    </ul>
+    
+    <ul class="commentlist"></ul>
+
+</div>

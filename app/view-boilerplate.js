@@ -1,10 +1,11 @@
 import MediakronView from '~/core-js/extensions/views';
+import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./items/item-components/breadcrumbs/breadcrumbs.html";
+import tpl  from "./templatename.html";
 
 var view = false;
 
-export default class breadcrumbs extends MediakronView {
+export default class ClassName extends MediakronView {
 
     /**
      * The constructor for the backbone class
@@ -51,38 +52,18 @@ export default class breadcrumbs extends MediakronView {
         }
     }
 
-    /**
-     * Description
-     * @param {object} something 
-     */
-    setBreadcrumb(items) {
-        this.items = items;
+    afterrender() {
+        
     }
 
     /**
      * Description
      * @param {object} something 
      */
-    getBreadcrumb() {
-        return this.template({ items: this.items });
+    newName(something) {
+       
     }
 
 }
 
 // @REVIEW then, delete. Original view below
-// var template = require('../../templates/navigation/breadcrumb.html')
-// module.exports = Backbone.View.extend({
-//     template: template,
-//     el: '#breadcrumb',
-//     items: [],
-//     initialize: function () {
-//         this.$el.hide();
-//         return this;
-//     },
-//     setBreadcrumb: function (items) {
-//         this.items = items;
-//     },
-//     getBreadcrumb: function () {
-//         return this.template({ items: this.items });
-//     }
-// });
