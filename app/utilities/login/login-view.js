@@ -1,16 +1,27 @@
+// The base view class
 import MediakronView from '~/core-js/extensions/views';
+// Import Jquewry
 import $ from "jquery";
+// Import Lodash
 import _ from "lodash";
 
-import tpl from "./login.html";
+// Import template
+import template from "./login.html";
 
+// Import Message
 import Messages from "~/utilities/messages/messages-view";
 
+// Import Message
 import Auth from "~/core-js/auth/auth";
 
+// Make the view globally avaliable in this template
 var view = false;
 
+/**
+ * Extend the base view class found in ~/core-js/extensions/views
+ */
 export default class Login extends MediakronView {
+
     /**
      * The constructor for the backbone class
      * @param {object} options 
@@ -21,6 +32,7 @@ export default class Login extends MediakronView {
             className: 'login login-layout',
             fromRoute: false,
         })
+
         this.data = {};
         this.data = options;
         if (options.fromRoute) {
@@ -29,17 +41,23 @@ export default class Login extends MediakronView {
         view = this;
     }
 
-    // Cast the html template 
-    get template() { 
-        return _.template(tpl); }
-    
     /**
-     * 
+     * Intialize the view
      * @param {object} data 
      */
     initialize(data) {
         return this;
     }
+
+    /**
+     *  Cast the html template 
+     */
+    get template() { 
+        return _.template(template); 
+    }
+    
+    
+
     /**
      * Render the view
      */
@@ -48,6 +66,9 @@ export default class Login extends MediakronView {
         return this;
     }
 
+    /**
+     * 
+     */
     get events() {
         return {
             'submit': 'tryLogin'

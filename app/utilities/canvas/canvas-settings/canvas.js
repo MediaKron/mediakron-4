@@ -1,18 +1,38 @@
-Mediakron.Canvas = {};
+// The base view class
+import MediakronView from '~/core-js/extensions/views';
+// Import Jquewry
+import $ from "jquery";
+// Import Lodash
+import _ from "lodash";
 
-Mediakron.Canvas.Form = Mediakron.Extensions.View.extend({
-    template: JST['settings.canvas'],
-    courses: false,
-    popup: false,
-    initialize: function () {
-        
-    },
-    render: function () {
+// Import template
+import template from "./canvas.html";
+
+export default class CanvasForm extends MediakronView{
+    /**
+     * 
+     */
+    constructor(){
+        this.courses = false;
+        this.popup = false;
+    }
+    
+    /**
+     * 
+     */
+    initialize () {
+        return this;
+    }
+
+    /**
+     * 
+     */
+    render () {
         this.$el.html(this.template(Mediakron.user.toJSON()));
         var view = this;
         Mediakron.App.Events.on("refresh:canvas",function(change) {
             Mediakron.user.fetch({
-                success: function(user){
+                success(user){
                     view.render();
                     setTimeout(function(){
                         if(user.get('canvas')){
@@ -31,82 +51,40 @@ Mediakron.Canvas.Form = Mediakron.Extensions.View.extend({
             });
         });
         return this;
-    },
-    events: {
-        'click a':                         Mediakron.linkHandle,
+    }
+    /**
+     * 
+     */
+    get events(){
+        return {
+            'click a':                          Mediakron.linkHandle,
+            'click #connect':                   'connect',
+            'click #disconnect':                'disconnect',
+            'click #close-settings-context':    Mediakron.Edit.cancelEdit,
+            'click .close-button':              Mediakron.Edit.cancelEdit,
+        }
+    }
 
-        'click #connect':            'connect',
-        'click #disconnect':         'disconnect',
-        'click #close-settings-context':   Mediakron.Edit.cancelEdit,
-        'click .close-button':              Mediakron.Edit.cancelEdit,
-    },
-    afterRender:function(){
+    /**
+     * 
+     */
+    afterRender(){
         var courses = new Mediakron.Canvas.Courses();
         
-    },
-    connect:function(){
+    }
+    /**
+     * 
+     */
+    connect(){
         var view = this;
         window.open(Mediakron.Data.canvasConnect, 'canvasconnect', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=700,height=500');
-    },
-    disconnect:function(){
+    }
+
+    /**
+     * 
+     */
+    disconnect(){
         var view = this;
         window.open(Mediakron.Data.canvasDisconnect, 'canvasconnect', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=450,height=450');
     }
-});
-
-Mediakron.Canvas.Courses = Mediakron.Extensions.View.extend({
-    template: JST['settings.canvas.courses'],
-    courses: false,
-    el:'#site-list',
-    initialize: function () {
-        this.render();
-    },
-    render: function () {
-        var courses = this.courses, view = this;
-        $.ajax( {
-            type: "get",
-            cache: false,
-            url: Mediakron.Data.courses, 
-            success: function(data) {
-                courses = JSON.parse(data);
-                view.$el.html(view.template({'courses':courses}));
-            },
-            error: function(request) {
-                var message = JSON.parse(request.responseText);
-                Mediakron.message({
-                    layout: 'top',
-                    text: message.error,
-                    type:'danger',
-                    confirm:     false,
-                    dismiss:    true      
-                });
-            }
-        });
-        
-        
-        return this;
-    },
-    events: {
-        'click a':                         Mediakron.linkHandle,
-        'click .connect':                   'connect'
-    },
-    connect: function(e){
-        var target = $(e.currentTarget), courseId = target.attr('course'), view = this;
-        $.ajax( {
-            type: "get",
-            cache: false,
-            url: Mediakron.Data.connectCourse + '/' + courseId , 
-            success: function(data) {
-                view.render();
-            },
-            error: function(request) {
-                var message = JSON.parse(request.responseText);
-                Mediakron.message({
-                    layout: 'top',
-                    text: message.error,
-                    type:'danger'
-                });
-            }
-        });
-    }
-});
+}

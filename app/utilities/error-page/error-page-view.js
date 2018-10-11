@@ -13,7 +13,7 @@ export default class ErrorPage extends MediakronView {
      */
     constructor(options) {
         // execute the parent options first
-        super()
+        super();
         this.errorCode = '404';
     }
 
@@ -23,7 +23,7 @@ export default class ErrorPage extends MediakronView {
     get template() { return _.template(template); }
 
     /**
-     * 
+     * Initialize this with a errorCode integer
      * @param {string} errorCode 
      */
     initialize(errorCode) {
