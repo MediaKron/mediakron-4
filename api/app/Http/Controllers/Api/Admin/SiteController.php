@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Site;
+use App\Models\Site;
 use App\Http\Requests\Admin\SiteRequest;
 
 class SiteController extends Controller

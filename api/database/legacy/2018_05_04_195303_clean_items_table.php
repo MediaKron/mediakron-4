@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-use App\Site;
-use App\Item;
-use App\Relationship;
+use App\Models\Site;
+use App\Models\Item;
+use App\Models\Relationship;
 
 class CleanItemsTable extends Migration
 {

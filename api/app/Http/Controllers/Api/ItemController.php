@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Item;
-use App\Site;
-use App\User;
+use App\Models\Item;
+use App\Models\Site;
+use App\Models\User;
 use App\Http\Requests\Admin\ItemRequest; 
 
 
