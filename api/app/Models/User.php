@@ -1,16 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Hash;
+use App\Models\Traits\User\Permissions;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, Permissions;
 
     protected $table = 'User';
 
@@ -34,7 +35,6 @@ class User extends Authenticatable implements JWTSubject
         'salt',
         'credentials_expired',
         'credentials_expire_at'
-        
     ];
 
     /**
@@ -101,24 +101,4 @@ class User extends Authenticatable implements JWTSubject
         }
     }
         
-    /**
-     * Get the roles for the user
-     *
-     * @param [type] $value
-     * @return void
-     */
-    public function getRolesAttribute($value)
-    {
-        return unserialize($value);
-    }
-
-    /**
-     * Set the roles for the user as a serialized array
-     *
-     * @param [type] $roles
-     * @return void
-     */
-    public function setRolesAttribute($roles){
-        $this->attributes['roles'] = serialize($roles);
-    }
 }

@@ -19,8 +19,13 @@ import Settings from "../settings"
 import Theme from "../theme/theme";
 
 import Router from "./router";
-import MainMenu from "../navigation/main-menu/main-menu";
+import MainMenu from "../navigation/main-menu/main-menu-view";
 
+/**
+ * This is the mediakron state controller singleton
+ * This should get replaced eventually with a vuex state manager
+ * TODO: Can/Should we move this into a seperate module?
+ */
 var state = {
 
     // Hold the current site url. TODO: Detect changes here and swap sites on change
@@ -28,7 +33,6 @@ var state = {
 
     // Debug Mode
     debug: false,
-
 
     router: false, // this will later be the mediakron router funciton.  Useful for going cool places
     loading: true,
@@ -67,71 +71,72 @@ var state = {
 }
 
 class App {
-  constructor(state) {
-    this.data = {};
-    this.state = state;
-    
+    constructor(state) {
+        this.data = {};
+        this.state = state;
+        
+        // Set up the settings
+        this.Settings = new Settings();
+        // Initialize the authorization controlls
+        Auth.init();
+        // Manage class switching
+        // TODO: Consider moving this into the controller
+        this.ClassManagement = ClassManagement;
+        // Set up the global event bus
+        this.events = new Events();
+        this.messages = Messages;
+        // Instantiate the controller, bind an ATC to the DOM
+        this.controller = Controller;
 
-    // Set up the settings
-    this.Settings = new Settings();
-    // Initialize the authorization controlls
-    Auth.init();
-    // Manage class switching
-    // TODO: Consider moving this into the controller
-    this.ClassManagement = ClassManagement;
-    // Set up the global event bus
-    this.events = new Events();
-    this.messages = Messages;
-    // Instantiate the controller, bind an ATC to the DOM
-    this.controller = Controller;
-  }
+    }
 
-  /**
-   * Boot mediakron
-   */
-  boot() {
-    console.log('boot')
-    var app = this;
-    // set up permissions
-    app.Access = Access;
-    // load up the site
-    var site = this.site = new Site({ uri: uri });
+    /**
+     * Boot mediakron
+     */
+    boot() {
+        console.log('boot')
+        var app = this;
+        // set up permissions
+        app.Access = Access;
+        // load up the site
+        var site = this.site = new Site({ uri: uri });
 
-    // Backfill functions to support mediakron legacy
-    this.polyfill(this);
+        // Backfill functions to support mediakron legacy
+        this.polyfill(this);
 
-    // after fetch, initialize the site
-    this.router = new Router();
-    Auth.check(function(){
-        console.log('check complete')
-        app.site.fetch().done(function() {
-          site.initializeSettings();
+        // after fetch, initialize the site
+        this.router = new Router();
+        Auth.check(function(){
+            console.log('check complete')
+            app.site.fetch().done(function() {
+                site.initializeSettings();
 
-          // Start
-          app.Theme = new Theme();
-          app.Theme = Mediakron.Theme.Initialize();
+                // Start
+                app.Theme = new Theme();
+                app.Theme = Mediakron.Theme.Initialize();
 
-          app.items = new Items();
-          app.items.fetch().done(function() {
-            app.run();
-          });
+                app.items = new Items();
+                app.items.fetch().done(function() {
+                    app.run();
+                });
+            });
         });
-    });
-    
-  }
+        
+    }
 
-  /**
-   * Does a backfill of objects that the mediakron 
-   * code uses.  Eventually we'll depricate this
-   * as we move over to full es6 modules, and atomized
-   * packages
-   * @param {object} mk 
-   */
-  polyfill(mk){
-      mk.getItemFromURI = getItemFromURI;
-  }
+    /**
+     * Does a backfill of objects that the mediakron 
+     * code uses.  Eventually we'll depricate this
+     * as we move over to full es6 modules, and atomized
+     * packages
+     * @param {object} mk 
+     */
+    polyfill(mk){
+        mk.getItemFromURI = getItemFromURI;
+    }
 
     run() {
+        console.log('running MK')
         this.data = createUrlMap();
         
         this.menu = new MainMenu();

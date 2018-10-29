@@ -6,7 +6,7 @@
     "**/.idea": true,
     "**/.tmp": true,
     "**/.vagrant": true,
-    "docker": true,
+    //"docker": true,
     "node_modules": true
   },
   "files.watcherExclude": {

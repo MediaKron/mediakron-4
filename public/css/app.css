@@ -249,7 +249,8 @@ table#admin-content .btn-add:hover,
 .visuallyhidden,
 .browser-selector table#admin-content .btn-add .btn-primary .button-text,
 .widgets--sidebar .description h3,
-#navbar .link-text {
+#navbar .link-text,
+.sr-only {
   margin: -1px;
   padding: 0;
   width: 1px;

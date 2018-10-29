@@ -15,6 +15,10 @@ yarn-error.log
 docker/data
 docker/composer/cache
 /public/files
+/public/js
+/public/js/app.js
+/public/css
+/public/css/app.css
 /docs/node_modules
 .DS_Store
 app/.DS_Store

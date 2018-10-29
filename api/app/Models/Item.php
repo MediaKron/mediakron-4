@@ -1,23 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\ItemScope;
 
 class Item extends Model
 {
-
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-        static::addGlobalScope(new ItemScope);
-    }
 
     /**
      * The attributes that should be hidden for arrays.

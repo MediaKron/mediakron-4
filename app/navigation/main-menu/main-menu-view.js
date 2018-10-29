@@ -37,7 +37,7 @@ export default class MainMenu extends Backbone.View {
         });*/
         var view = this;
         //Mediakron.App.Events.on('update_content', function () {
-            view.render();
+        view.render();
         //});
     }
 

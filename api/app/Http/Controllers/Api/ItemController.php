@@ -22,7 +22,7 @@ class ItemController extends Controller
     public function index($site_id)
     {
         //
-        return Item::orderBy('created_at', 'ASC')->paginate(10);
+        return Item::index($site_id);
     }
 
     /**
@@ -33,6 +33,7 @@ class ItemController extends Controller
     public function create()
     {
         //
+        abort(405);
     }
 
     /**
@@ -41,9 +42,12 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
         //
+        $item = new Item();
+        $item->hydrate($request);
+        return $item;
     }
 
     /**
@@ -55,7 +59,7 @@ class ItemController extends Controller
     public function show($id)
     {
         //
-        return Item::where('id', $id)->orderBy('created_at', 'ASC')->paginate(10);
+        return Item::findOrFail($id);
     }
 
 

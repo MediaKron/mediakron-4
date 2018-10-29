@@ -18,13 +18,13 @@ RUN docker-php-ext-install mbstring && docker-php-ext-enable mbstring
 
 RUN docker-php-ext-install mcrypt && docker-php-ext-enable mcrypt
 
-#RUN docker-php-ext-configure opcache --enable-opcache \
-    #&& docker-php-ext-install opcache
+RUN docker-php-ext-configure opcache --enable-opcache \
+    && docker-php-ext-install opcache
 
 COPY config/opcache.ini $PHP_INI_DIR/conf.d/
 
-#RUN pecl install apcu \
-    #&& echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini
+RUN pecl install apcu \
+    && echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini
 
 RUN pecl install xdebug-2.6.0 \
     && docker-php-ext-enable xdebug \
