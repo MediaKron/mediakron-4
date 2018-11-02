@@ -1,7 +1,7 @@
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./commentsettings/comments.html";
+import tpl  from "./comments/commentsettings/comments.html";
 
 var view = false;
 
