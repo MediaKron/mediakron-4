@@ -9,13 +9,26 @@ class Item extends Model
 {
 
     /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Allow us to set permissions via the global scope
+        static::addGlobalScope(new ItemScope);
+    }
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\Models\User');
     }
 
     /**
@@ -24,7 +37,7 @@ class Item extends Model
     * @var array
     */
     public function  editor() {
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\Models\User');
     }
 
     /**

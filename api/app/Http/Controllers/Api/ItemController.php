@@ -22,7 +22,7 @@ class ItemController extends Controller
     public function index($site_id)
     {
         //
-        return Item::index($site_id);
+        return Item::paginate(50);
     }
 
     /**
@@ -42,12 +42,19 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ItemRequest $request)
+    public function store($site_id, ItemRequest $request)
     {
         //
-        $item = new Item();
-        $item->hydrate($request);
-        return $item;
+        try{
+            $item = new Item();
+            // Check edit permissions
+            $item->canCreate()->hydrate($request);
+            return $item;
+        }catch(\Exception $e){
+            // 
+            Log::info('Access denied to user when creating item');
+            return response()->json(['error' => $e->getMessage() ]);
+        }
     }
 
     /**
@@ -56,10 +63,18 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($site_id, $id)
     {
         //
-        return Item::findOrFail($id);
+        try{
+            $item = Item::findOrFail($id);
+            $item->canView();
+            return $item;
+        }catch(\Exception $e){
+            // 
+            Log::info('Access denied to user when viewing item');
+            return response()->json(['error' => $e->getMessage() ]);
+        }
     }
 
 
@@ -81,9 +96,20 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($site_id, $id, Request $request)
     {
         //
+        try{
+            $item = Item::findOrFail($id);
+            // Check edit permissions
+            $item->canEdit()->hydrate($request);
+            return $item;
+        }catch(\Exception $e){
+            // 
+            Log::info('Access denied to user when editing item');
+            return response()->json(['error' => $e->getMessage() ]);
+        }
+        
     }
 
     /**

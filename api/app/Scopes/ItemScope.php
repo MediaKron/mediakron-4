@@ -19,9 +19,7 @@ class ItemScope implements Scope
     {
         $site = site();
         if($site){
-            $builder->from($site->uri . '_Items');
-            $model->setTable($site->uri . '_Items');
-            $model->refresh();
+            $builder->where('site_id', $site->id);
         }
         
     }

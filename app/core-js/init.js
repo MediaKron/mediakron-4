@@ -79,15 +79,17 @@ class App {
         this.Settings = new Settings();
         // Initialize the authorization controlls
         Auth.init();
+
         // Manage class switching
         // TODO: Consider moving this into the controller
         this.ClassManagement = ClassManagement;
+
         // Set up the global event bus
         this.events = new Events();
         this.messages = Messages;
+
         // Instantiate the controller, bind an ATC to the DOM
         this.controller = Controller;
-
     }
 
     /**
@@ -95,9 +97,12 @@ class App {
      */
     boot() {
         console.log('boot')
+        // Define the app namespace in this function
         var app = this;
+
         // set up permissions
         app.Access = Access;
+
         // load up the site
         var site = this.site = new Site({ uri: uri });
 
@@ -111,10 +116,12 @@ class App {
             app.site.fetch().done(function() {
                 site.initializeSettings();
 
-                // Start
+                // Start a theme engine.  This lets us drop  in different themes
+                // and designs
                 app.Theme = new Theme();
                 app.Theme = Mediakron.Theme.Initialize();
 
+                // Start creating the store, load all the items
                 app.items = new Items();
                 app.items.fetch().done(function() {
                     app.run();
