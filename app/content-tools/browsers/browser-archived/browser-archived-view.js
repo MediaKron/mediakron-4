@@ -1,11 +1,14 @@
+
+
+
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./browser-mycontent.html";
+import tpl  from "./browser-archived.html";
 
 var view = false;
 
-export default class BrowserMycontent extends MediakronView {
+export default class BrowserArchived extends MediakronView {
 
     /**
      * The constructor for the backbone class
@@ -14,7 +17,7 @@ export default class BrowserMycontent extends MediakronView {
     constructor(options) {
         // execute the parent options first
         super({
-            className: 'BrowserMycontent',
+            className: 'BrowserArchived',
             data: false,
             item: false,
         })
@@ -68,14 +71,12 @@ export default class BrowserMycontent extends MediakronView {
 
 // @REVIEW then, delete. Original view below
 
-/*
 
-Mediakron.ContentBrowser.MyContent = Mediakron.ContentBrowser.View.extend({
-    className: 'mycontent',
-    template: JST['components.browsers.content.mycontent'],
-    title: 'My Content',
+/*
+Mediakron.ContentBrowser.Archived = Mediakron.ContentBrowser.View.extend({
+    template: JST['components.browsers.content'],
+    title: 'Archived Content',
     context: 'default',
     help: ''
 });
-
 */
