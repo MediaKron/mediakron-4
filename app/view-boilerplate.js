@@ -9,7 +9,7 @@ export default class ClassName extends MediakronView {
 
     /**
      * The constructor for the backbone class
-     * @param {object} options 
+     * @param {object} options
      */
     constructor(options) {
         // execute the parent options first
@@ -25,14 +25,14 @@ export default class ClassName extends MediakronView {
         view = this;
     }
 
-    // Cast the html template 
-    get template() { 
-        return _.template(tpl); 
+    // Cast the html template
+    get template() {
+        return _.template(tpl);
     }
 
     /**
-     * 
-     * @param {object} data 
+     *
+     * @param {object} data
      */
     initialize(data) {
         return this;
@@ -53,15 +53,15 @@ export default class ClassName extends MediakronView {
     }
 
     afterrender() {
-        
+
     }
 
     /**
      * Description
-     * @param {object} something 
+     * @param {object} something
      */
     newName(something) {
-       
+
     }
 
 }
