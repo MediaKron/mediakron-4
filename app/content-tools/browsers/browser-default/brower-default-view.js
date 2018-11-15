@@ -426,6 +426,7 @@ export default class BrowserDefault extends MediakronView {
     }
 }
 
+// the following necessitates a new component //
 //
 // Mediakron.ContentBrowser.Updates = Mediakron.Extensions.View.extend({
 //   template: JST['compontents.browser.content.updates'],
