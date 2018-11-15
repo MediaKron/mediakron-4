@@ -1,7 +1,7 @@
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./templatename.html";
+import tpl  from "./templates/filters.html";
 
 var view = false;
 

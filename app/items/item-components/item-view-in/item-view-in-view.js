@@ -1,144 +1,74 @@
-Mediakron.Sidebar.Init = Backbone.View.extend({
-    template: JST['widgets.item-view-in'],
-    sidebar: false,
-    active: false,
-    parent: false,
-    el: false,
-    collections: {
-        'comparison': [],
-        'story': [],
-        'folder': [],
-        'slideshow': [],
-        'progression': [],
-        'narrative': [],
-        'map': [],
-        'tag': [],
-        'timeline': [],
-        'citation': []
+import MediakronView from '~/core-js/extensions/views';
+import $ from "jquery";
+import _ from "lodash";
+import tpl  from "./item-view-in.html";
 
-    },
-    initialize: function(model) {
-        this.parent = model.parent;
-        this.model = model;
-        this.el = '.widgets-menu-' + model.get('uri');
-        this.$el = $(this.el);
-        var topics = model.getRelationship('topics'),
-            count = topics.length,
-            t = 0,
-            topic, item, type;
-        this.collections = {
-            'comparison': [],
-            'story': [],
-            'folder': [],
-            'slideshow': [],
-            'progression': [],
-            'narrative': [],
-            'map': [],
-            'tag': [],
-            'timeline': [],
-            'citation': []
+var view = false;
 
-        };
+export default class ItemViewIn extends MediakronView {
 
-        for (t; t < count; t++) {
-            topic = topics[t];
-            if (topic) {
-                item = Mediakron.getItemFromURI(topic.uri);
-                if (item) {
-                    type = item.get('type');
-                    if (this.collections[type]) {
-                        this.collections[type].push(topic);
-                    }
-
-                }
+    /**
+     * The constructor for the backbone class
+     * @param {object} options
+     */
+    constructor(options) {
+        // execute the parent options first
+        super({
+            className: 'ItemViewIn',
+            data: false,
+            item: false,
+        })
+        this.data = {};
+            if (!this.changes) {
+                this.changes = Mediakron.Settings;
             }
+        view = this;
+    }
+
+    // Cast the html template
+    get template() {
+        return _.template(tpl);
+    }
+
+    /**
+     *
+     * @param {object} data
+     */
+    initialize(data) {
+        return this;
+    }
+
+    /**
+     * Render the view
+     */
+    render() {
+        this.$el.html(this.template(this.data)).addClass(this.className);
+        return this;
+    }
+
+    get events() {
+        return {
+            'click a': Mediakron.linkHandle,
+            'click .toggleSidebar': Mediakron.sidebarHandle,
+            'click .details-button': 'scrollDown',
+            'click .description-button': 'description',
+            'click .transcript-button': 'transcript',
+            'click .collections-link': 'toggleCollections',
+            'click .comments-button': 'comments',
+            'click .scroll-down': 'scrollDown',
+            'click .top-button': 'backToTop',
+            'click .item-header h2': 'backToTop',
         }
-        this.collections.map = model.getRelationship('maps');
-        this.collections.citation = model.getRelationship('citations');
-        if (!this.collections.citation) this.collections.citation = [];
-        this.collections.timeline = model.getRelationship('timelines');
-        this.hasCollection = false;
-        if (this.collections.map.length > 1 || this.collections.timeline.length > 1 || this.collections.citation.length > 1 || topics.length > 1) {
-            this.hasCollection = true;
-        }
-    },
-    render: function() {
-        var content = this.model.toJSON(),
-            options = this.model.get('options'),
-            uri = this.model.get('uri'),
-            $below = $('.widgets--below-' + uri),
-            object = this.model.toJSON();
-        sidebar = false;
-        options = content.options;
-        content.item = this.model;
-        content.context = false;
-        content.collections = this.collections;
-        content.hasCollection = this.hasCollection;
+    }
 
-        if (Mediakron.context) {
-            if (Mediakron.context.item) {
-                content.context = Mediakron.context.item;
-            }
-        }
-        this.edit = new Mediakron.Sidebar.Edit(this.model);
+    afterrender() {
 
-        this.$el.html(this.template(content));
+    }
 
-        object.item = this.model;
-        if (options.defaultSidebar) {
-            if (options.defaultSidebar !== 'none') {
-                var $sidebar = $('.widgets--sidebar-' + uri),
-                    parent = $sidebar.parent();
-                $sidebar.html(JST['widgets.' + options.defaultSidebar](object));
-                sidebar = options.defaultSidebar;
-                $('.main-item-content', parent).addClass('col-md-8');
-                $('.widgets--sidebar-' + uri).addClass('col-md-4');
-            }
-            if (options.defaultSidebar == 'description') {
-                $('.description-button').addClass('hidden');
-                $('.detail-list-description').addClass('hidden');
-            }
-            if (options.defaultSidebar == 'details') {
-                $('.details-button').addClass('hidden');
-                $('.detail-list-details').addClass('hidden');
-            }
-            if (options.defaultSidebar == 'transcript') {
-                $('.transcript-button').addClass('hidden');
-                $('.detail-list-transcript').addClass('hidden');
-            }
-        }
-
-        if (sidebar != 'details') $('.widgets--below-' + uri + ' .widgets__details').html(JST['widgets.details'](object));
-        if (sidebar != 'description') $('.widgets--below-' + uri + ' .widgets__description').html(JST['widgets.description'](object));
-        if (sidebar != 'transcript') $('.widgets--below-' + uri + ' .widgets__transcript').html(JST['widgets.transcript'](object));
-
-        /*var maps = new Mediakron.Sidebar.Description(this.model);
-        maps.setElement('.content-below-'+uri+' .maps-wrapper');
-        maps.render();*/
-
-        var comments = new Mediakron.Sidebar.Comments(this.model);
-        comments.setElement('.widgets--below-' + uri + ' .widgets__comments');
-        comments.render();
-    },
-
-    events: {
-
-        'click a': Mediakron.linkHandle,
-        'click .toggleSidebar': Mediakron.sidebarHandle,
-        'click .details-button': 'scrollDown',
-        'click .description-button': 'description',
-        'click .transcript-button': 'transcript',
-        'click .collections-link': 'toggleCollections',
-        'click .comments-button': 'comments',
-        'click .scroll-down': 'scrollDown',
-        'click .top-button': 'backToTop',
-        'click .item-header h2': 'backToTop',
-
-    },
-    toggleCollections: function(e) {
+    toggleCollections(e) {
         $('.collections-list', this.parent).toggleClass('opened');
     },
-    maps: function(e) {
+    maps(e) {
         if (!e) return false;
         var parent = this.parent,
             map = $(e.currentTarget).attr('map');
@@ -159,7 +89,7 @@ Mediakron.Sidebar.Init = Backbone.View.extend({
             }
         }
     },
-    topics: function(e) {
+    topics(e) {
         var parent = this.parent,
             topic = $(e.currentTarget).attr('topic');
         $('.collections-list', this.parent).removeClass('opened');
@@ -179,28 +109,237 @@ Mediakron.Sidebar.Init = Backbone.View.extend({
             }
         }
     },
-    backToTop: function() {
+    backToTop() {
         $('#main-container').animate({ scrollTop: 0 }, '700');
     },
-    scrollDown: function() {
+    scrollDown() {
         var uri = this.model.get('uri');
         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + '').offset().top - 50 }, '700');
     },
-    details: function() {
+    details() {
         var uri = this.model.get('uri');
         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__details').offset().top - 50 }, '700');
     },
-    description: function() {
+    description() {
         var uri = this.model.get('uri');
         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__description').offset().top - 50 }, '700');
     },
-    comments: function() {
+    comments() {
         var uri = this.model.get('uri');
         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__comments').offset().top - 50 }, '700');
     },
-    transcript: function() {
+    transcript() {
         var uri = this.model.get('uri');
         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__transcript').offset().top - 50 }, '700');
     }
 
-});
+
+}
+
+// @REVIEW then, delete. Original view below
+// Mediakron.Sidebar.Init = Backbone.View.extend({
+//     template: JST['widgets.item-view-in'],
+//     sidebar: false,
+//     active: false,
+//     parent: false,
+//     el: false,
+//     collections: {
+//         'comparison': [],
+//         'story': [],
+//         'folder': [],
+//         'slideshow': [],
+//         'progression': [],
+//         'narrative': [],
+//         'map': [],
+//         'tag': [],
+//         'timeline': [],
+//         'citation': []
+//
+//     },
+//     initialize(model) {
+//         this.parent = model.parent;
+//         this.model = model;
+//         this.el = '.widgets-menu-' + model.get('uri');
+//         this.$el = $(this.el);
+//         var topics = model.getRelationship('topics'),
+//             count = topics.length,
+//             t = 0,
+//             topic, item, type;
+//         this.collections = {
+//             'comparison': [],
+//             'story': [],
+//             'folder': [],
+//             'slideshow': [],
+//             'progression': [],
+//             'narrative': [],
+//             'map': [],
+//             'tag': [],
+//             'timeline': [],
+//             'citation': []
+//
+//         };
+//
+//         for (t; t < count; t++) {
+//             topic = topics[t];
+//             if (topic) {
+//                 item = Mediakron.getItemFromURI(topic.uri);
+//                 if (item) {
+//                     type = item.get('type');
+//                     if (this.collections[type]) {
+//                         this.collections[type].push(topic);
+//                     }
+//
+//                 }
+//             }
+//         }
+//         this.collections.map = model.getRelationship('maps');
+//         this.collections.citation = model.getRelationship('citations');
+//         if (!this.collections.citation) this.collections.citation = [];
+//         this.collections.timeline = model.getRelationship('timelines');
+//         this.hasCollection = false;
+//         if (this.collections.map.length > 1 || this.collections.timeline.length > 1 || this.collections.citation.length > 1 || topics.length > 1) {
+//             this.hasCollection = true;
+//         }
+//     },
+//     render() {
+//         var content = this.model.toJSON(),
+//             options = this.model.get('options'),
+//             uri = this.model.get('uri'),
+//             $below = $('.widgets--below-' + uri),
+//             object = this.model.toJSON();
+//         sidebar = false;
+//         options = content.options;
+//         content.item = this.model;
+//         content.context = false;
+//         content.collections = this.collections;
+//         content.hasCollection = this.hasCollection;
+//
+//         if (Mediakron.context) {
+//             if (Mediakron.context.item) {
+//                 content.context = Mediakron.context.item;
+//             }
+//         }
+//         this.edit = new Mediakron.Sidebar.Edit(this.model);
+//
+//         this.$el.html(this.template(content));
+//
+//         object.item = this.model;
+//         if (options.defaultSidebar) {
+//             if (options.defaultSidebar !== 'none') {
+//                 var $sidebar = $('.widgets--sidebar-' + uri),
+//                     parent = $sidebar.parent();
+//                 $sidebar.html(JST['widgets.' + options.defaultSidebar](object));
+//                 sidebar = options.defaultSidebar;
+//                 $('.main-item-content', parent).addClass('col-md-8');
+//                 $('.widgets--sidebar-' + uri).addClass('col-md-4');
+//             }
+//             if (options.defaultSidebar == 'description') {
+//                 $('.description-button').addClass('hidden');
+//                 $('.detail-list-description').addClass('hidden');
+//             }
+//             if (options.defaultSidebar == 'details') {
+//                 $('.details-button').addClass('hidden');
+//                 $('.detail-list-details').addClass('hidden');
+//             }
+//             if (options.defaultSidebar == 'transcript') {
+//                 $('.transcript-button').addClass('hidden');
+//                 $('.detail-list-transcript').addClass('hidden');
+//             }
+//         }
+//
+//         if (sidebar != 'details') $('.widgets--below-' + uri + ' .widgets__details').html(JST['widgets.details'](object));
+//         if (sidebar != 'description') $('.widgets--below-' + uri + ' .widgets__description').html(JST['widgets.description'](object));
+//         if (sidebar != 'transcript') $('.widgets--below-' + uri + ' .widgets__transcript').html(JST['widgets.transcript'](object));
+//
+//         /*var maps = new Mediakron.Sidebar.Description(this.model);
+//         maps.setElement('.content-below-'+uri+' .maps-wrapper');
+//         maps.render();*/
+//
+//         var comments = new Mediakron.Sidebar.Comments(this.model);
+//         comments.setElement('.widgets--below-' + uri + ' .widgets__comments');
+//         comments.render();
+//     },
+//
+//     events: {
+//
+//         'click a': Mediakron.linkHandle,
+//         'click .toggleSidebar': Mediakron.sidebarHandle,
+//         'click .details-button': 'scrollDown',
+//         'click .description-button': 'description',
+//         'click .transcript-button': 'transcript',
+//         'click .collections-link': 'toggleCollections',
+//         'click .comments-button': 'comments',
+//         'click .scroll-down': 'scrollDown',
+//         'click .top-button': 'backToTop',
+//         'click .item-header h2': 'backToTop',
+//
+//     },
+//     toggleCollections(e) {
+//         $('.collections-list', this.parent).toggleClass('opened');
+//     },
+//     maps(e) {
+//         if (!e) return false;
+//         var parent = this.parent,
+//             map = $(e.currentTarget).attr('map');
+//         $('.collections-list', this.parent).removeClass('opened');
+//         if (this.sidebar != 'maps-' + map || !this.active) { // we aren't on the details right now
+//             var view = new Mediakron.Sidebar.Maps({ 'model': this.model, 'map': map, 'parent': this.parent });
+//             view.render();
+//             if (!this.active) {
+//                 Mediakron.Sidebar.show(parent);
+//                 this.active = true;
+//             }
+//             view.afterRender();
+//             this.sidebar = 'maps-' + map;
+//         } else {
+//             if (this.active) {
+//                 Mediakron.Sidebar.hide(parent);
+//                 this.active = false;
+//             }
+//         }
+//     },
+//     topics(e) {
+//         var parent = this.parent,
+//             topic = $(e.currentTarget).attr('topic');
+//         $('.collections-list', this.parent).removeClass('opened');
+//         if (this.sidebar != 'topics-' + topic || !this.active) { // we aren't on the details right now
+//             var view = new Mediakron.Sidebar.Topics({ 'model': this.model, 'topic': topic, 'parent': this.parent });
+//             view.render();
+//             if (!this.active) {
+//                 Mediakron.Sidebar.show(parent);
+//                 this.active = true;
+//             }
+//             view.afterRender();
+//             this.sidebar = 'topics-' + topic;
+//         } else {
+//             if (this.active) {
+//                 Mediakron.Sidebar.hide(parent);
+//                 this.active = false;
+//             }
+//         }
+//     },
+//     backToTop() {
+//         $('#main-container').animate({ scrollTop: 0 }, '700');
+//     },
+//     scrollDown() {
+//         var uri = this.model.get('uri');
+//         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + '').offset().top - 50 }, '700');
+//     },
+//     details() {
+//         var uri = this.model.get('uri');
+//         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__details').offset().top - 50 }, '700');
+//     },
+//     description() {
+//         var uri = this.model.get('uri');
+//         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__description').offset().top - 50 }, '700');
+//     },
+//     comments() {
+//         var uri = this.model.get('uri');
+//         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__comments').offset().top - 50 }, '700');
+//     },
+//     transcript() {
+//         var uri = this.model.get('uri');
+//         $('#main-container').animate({ scrollTop: $('.widgets--below-' + uri + ' .widgets__transcript').offset().top - 50 }, '700');
+//     }
+//
+// });
