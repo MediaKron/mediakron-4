@@ -46,7 +46,6 @@ class CreateSitesTable extends Migration
             $table->longtext('primary_navigation');
             $table->longtext('secondary_navigation');
 
-
             // Long text fields
             $table->longtext('description');
             $table->longtext('transcript');

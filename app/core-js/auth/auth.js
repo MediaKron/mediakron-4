@@ -15,14 +15,21 @@ var user, view;
 class Auth{
 
     constructor(){
+        this.access_token = false;
+        this.token_type = false;
+        this.expires_in = false;
+        this.user = false;
         view = this;
     }
 
+    /**
+     * Initialize the authentication
+     */
     static init(){
-        
+        var auth = new Auth().getSession();
         $.ajaxSetup({
             beforeSend: function (xhr) {
-                var auth = new Auth().getSession();
+                console.log(auth);
                 if(auth.access_token){
                     xhr.setRequestHeader("Authorization", "Bearer " + auth.access_token);
                 }
@@ -30,6 +37,9 @@ class Auth{
         });
     }
 
+    /**
+     * Fetch the session from local storage
+     */
     getSession(){
         return {
             access_token: localStorage.getItem('access_token', false),
@@ -38,12 +48,15 @@ class Auth{
         }
     }
 
+    /**
+     * Set the session after authentication
+     * @param {*} auth 
+     */
     setSession(auth) {
         // Set the time that the Access Token will expire at
         var expiresAt = JSON.stringify(
             auth.expires_in * 1000 + new Date().getTime()
         );
-        console.log('setting session ' + auth.access_token)
         localStorage.setItem('access_token', auth.access_token);
         localStorage.setItem("token_type", auth.token_type);
         localStorage.setItem('expires_in', expiresAt);
@@ -76,8 +89,11 @@ class Auth{
      * 
      */
     static check(callback){
-        console.log('checking')
-        $.ajax({ url: "/api/auth/check", method: "GET", dataType: "json" })
+        $.ajax({ 
+            url: "/api/auth/check", 
+            method: "GET", 
+            dataType: "json" 
+        })
             .done(function(xhr, data){
                 user = new User(data.user);
                 ClassManager.setAdmin(user);
@@ -110,7 +126,7 @@ class Auth{
                 var data = JSON.parse(xhr.responseText);
 
                 if (Mediakron.Settings.public) {
-                    console.log('ublic')
+                    console.log('Public site')
                     user = new User();
                     user.guest();
                     setGlobalUser(user);
@@ -133,4 +149,11 @@ function setGlobalUser(user) {
     Mediakron.user = user;
 }
 
-export default Auth;
+// Create an instance
+const instance = new Auth();
+
+// Freeze the instance
+//Object.freeze(instance);
+
+// Export the instance
+export default instance;
