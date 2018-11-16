@@ -5,7 +5,7 @@ import tpl  from "./trash.html";
 
 var view = false;
 
-export default class Trash extends MediakronView {
+class Trash extends MediakronView {
 
     /**
      * The constructor for the backbone class
@@ -84,6 +84,31 @@ export default class Trash extends MediakronView {
         });
     }
 
+}
+
+/**
+ * Export the router function that invokes the above 
+ * @param {string} uri 
+ */
+export default Trashcan(uri) {
+    var item = Mediakron.getItemFromURI(uri);
+    if (!Mediakron.Access.check('can restore from trash')) {
+        Mediakron.Access.denied();
+        return false;
+    }
+    $('#settings-context').removeClass('opened').addClass('closed');
+    Mediakron.message({
+        text: 'Retrieving Deleted Items',
+        type: 'success',
+        timeout: 4000,
+        layout: 'bottom'
+    });
+    $.getJSON(Mediakron.Data.trash, function (data) {
+        var ContentPage = new Mediakron.Admin.Trashcan({ 'trash': data });
+        if (ContentPage) {
+            Mediakron.controller.gotoAdmin(ContentPage);
+        }
+    });
 }
 
 // @REVIEW then, delete. Original view below
