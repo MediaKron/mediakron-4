@@ -1,11 +1,12 @@
+
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./browser-mycontent.html";
+import tpl  from "./comparison-organize.html";
 
 var view = false;
 
-export default class BrowserMycontent extends MediakronView {
+export default class ComparisonOrganize extends MediakronView {
 
     /**
      * The constructor for the backbone class
@@ -14,7 +15,7 @@ export default class BrowserMycontent extends MediakronView {
     constructor(options) {
         // execute the parent options first
         super({
-            className: 'BrowserMycontent',
+            className: 'ComparisonOrganize',
             data: false,
             item: false,
         })
@@ -68,14 +69,27 @@ export default class BrowserMycontent extends MediakronView {
 
 // @REVIEW then, delete. Original view below
 
-/*
 
-Mediakron.ContentBrowser.MyContent = Mediakron.ContentBrowser.View.extend({
-    className: 'mycontent',
-    template: JST['components.browsers.content.mycontent'],
-    title: 'My Content',
-    context: 'default',
-    help: ''
-});
-
-*/
+// Mediakron.Relationships.Manage.comparison = Mediakron.Relationships.Manage.abstract.extend({
+//     template: JST['settings.relationships.manage.comparison'],
+//     afterRender: function() {
+//         var view = this;
+//         $('#sort-comparison').sortable({
+//             placeholder: "ui-state-highlight",
+//             stop: function(event, ui) {
+//                 Mediakron.Status.formChanged = true;
+//                 var uri, type, title, order = [];
+//                 $('#sort-comparison li').each(function() {
+//                     item = $(this);
+//                     uri = item.attr('uri');
+//                     data = JSON.parse(item.attr('data'));
+//                     order.push({
+//                         'uri': uri,
+//                         'data': data
+//                     });
+//                 });
+//                 view.changes = order;
+//             }
+//         });
+//     }
+// });

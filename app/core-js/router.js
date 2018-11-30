@@ -11,6 +11,12 @@ import _ from 'underscore';
 
 import Login from '../utilities/login/login-view'
 
+import Home from '~/homepage/index-view/index';
+
+
+// Browser Views
+import Trashcan from '~/content-tools/browsers/trash/trash-view';
+
 // Import modules
 
 
@@ -151,6 +157,8 @@ export default class Router extends Backbone.Router {
             Mediakron.controller.gotoAdmin(ContentPage);
         }
     }
+    
+    
     /**
      * Restore an item from the trash
      * @param {string} uri 

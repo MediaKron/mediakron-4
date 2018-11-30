@@ -110,7 +110,9 @@ class App {
         this.polyfill(this);
 
         // after fetch, initialize the site
+        console.log('init router')
         this.router = new Router();
+        /*
         Auth.check(function(){
             console.log('check complete')
             app.site.fetch().done(function() {
@@ -127,7 +129,7 @@ class App {
                     app.run();
                 });
             });
-        });
+        });*/
         
     }
 
@@ -143,7 +145,6 @@ class App {
     }
 
     run() {
-        console.log('running MK')
         this.data = createUrlMap();
         
         this.menu = new MainMenu();
