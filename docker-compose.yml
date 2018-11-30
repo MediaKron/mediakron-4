@@ -8,11 +8,6 @@ nginx:
     volumes_from:
         - app
 
-redis:
-  image: redis:alpine
-  expose:
-    - "6379"
-
 php:
     build: ./docker/php/
     expose:
@@ -38,7 +33,7 @@ app:
 db:
     image: mysql:5.6
     ports:
-        - 3308:3306
+        - 3306:3306
     volumes:
         - ./db:/docker-entrypoint-initdb.d
         - ./db:/db-imports

@@ -15,17 +15,24 @@ var user, view;
 class Auth{
 
     constructor(){
+      
+        this.instance = this;
         this.access_token = false;
         this.token_type = false;
         this.expires_in = false;
         this.user = false;
-        view = this;
+
+        // the class constructor
+        if(! Auth.instance){
+            Auth.instance = this;
+        }
+        return Auth.instance;
     }
 
     /**
      * Initialize the authentication
      */
-    static init(){
+    init(){
         var auth = new Auth().getSession();
         $.ajaxSetup({
             beforeSend: function (xhr) {
@@ -150,10 +157,9 @@ function setGlobalUser(user) {
 }
 
 // Create an instance
-const instance = new Auth();
-
+var instance = new Auth();
 // Freeze the instance
-//Object.freeze(instance);
+Object.freeze(instance);
 
 // Export the instance
 export default instance;

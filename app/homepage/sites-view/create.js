@@ -1,11 +1,9 @@
 import MediakronView from '~/core-js/extensions/views';
 import $ from "jquery";
 import _ from "lodash";
-import tpl  from "./index.html";
+import tpl  from "./new.html";
 
-var view = false;
-
-export default class Index extends MediakronView {
+export default class New extends MediakronView {
     /**
      * The constructor for the backbone class
      * @param {object} options 

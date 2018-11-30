@@ -112,7 +112,7 @@ class ClassManagement{
 
 // Create an instance
 const instance = new ClassManagement();
-
+console.log(instance);
 // Freeze the instance
 //Object.freeze(instance);
 

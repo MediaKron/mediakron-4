@@ -11,7 +11,7 @@ import _ from 'underscore';
 
 import Login from '../utilities/login/login-view'
 
-import Home from '~/homepage/index-view/index';
+import Index from '~/homepage/index-view/index';
 
 
 // Browser Views
@@ -95,6 +95,11 @@ export default class Router extends Backbone.Router {
             "*actions": "Index"
         }
     }
+
+    Index(){            return Index.index();     }
+    Sites(){            return Sites.list();     }
+    CreateSite(){       return Sites.create();     }
+    
     /**
      * Browse my owncontent
      */

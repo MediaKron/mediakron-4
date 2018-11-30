@@ -3,9 +3,7 @@ import $ from "jquery";
 import _ from "lodash";
 import tpl  from "./index.html";
 
-var view = false;
-
-export default class Index extends MediakronView {
+export default class List extends MediakronView {
     /**
      * The constructor for the backbone class
      * @param {object} options 

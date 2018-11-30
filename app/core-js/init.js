@@ -77,8 +77,10 @@ class App {
         
         // Set up the settings
         this.Settings = new Settings();
-        // Initialize the authorization controlls
-        Auth.init();
+        console.log(Auth)
+        // Initialize the authorization control
+        // TODO: Reneable auth
+        //Auth.init();
 
         // Manage class switching
         // TODO: Consider moving this into the controller
