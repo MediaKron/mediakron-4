@@ -5,7 +5,7 @@ import tpl  from "./index.html";
 
 var view = false;
 
-class IndexPage extends MediakronView {
+class AppView extends MediakronView {
     /**
      * The constructor for the backbone class
      * @param {object} options 

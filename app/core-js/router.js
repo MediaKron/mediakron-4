@@ -11,74 +11,88 @@ import _ from 'underscore';
 
 import Login from '../utilities/login/login-view'
 
+import Home from '~/homepage/index-view/index';
+
+
+// Browser Views
+import Trashcan from '~/content-tools/browsers/trash/trash-view';
+
 // Import modules
 
 
 export default class Router extends Backbone.Router {
     get routes() {
         return {
-            "settings/organize(/:type)": "SettingsOrganize",
-            "settings/content/add(/:type)": "SettingsContentAdd",
-            "settings/content/edit/*path": "SettingsContentEdit",
-            "settings/convert/:type/:uri": "convertToType",
-            "settings/revisions/:uri": "getRevisions",
-            "settings/transmit/:uri": "transmitTo",
-            "settings/duplicate/:uri": "copyItem",
-            "settings/content/:action(/:uri)": "SettingsContentConfirm",
-            "settings/content(/:context)": "SettingsContent",
-            "settings/manage/:action/*path": "SettingsManageContext",
-            "settings/marker/:map/:marker": "SettingsMarkers",
-            "settings/marker/:map/:marker/remove": "SettingsRemoveMarker",
+            ":site/settings/organize(/:type)": "SettingsOrganize",
+            ":site/settings/content/add(/:type)": "SettingsContentAdd",
+            ":site/settings/content/edit/*path": "SettingsContentEdit",
+            ":site/settings/convert/:type/:uri": "convertToType",
+            ":site/settings/revisions/:uri": "getRevisions",
+            ":site/settings/transmit/:uri": "transmitTo",
+            ":site/settings/duplicate/:uri": "copyItem",
+            ":site/settings/content/:action(/:uri)": "SettingsContentConfirm",
+            ":site/settings/content(/:context)": "SettingsContent",
+            ":site/settings/manage/:action/*path": "SettingsManageContext",
+            ":site/settings/marker/:map/:marker": "SettingsMarkers",
+            ":site/settings/marker/:map/:marker/remove": "SettingsRemoveMarker",
 
-            ":parent/manager/:child/remove": "SettingsManagerRemove",
+            ":site/:parent/manager/:child/remove": "SettingsManagerRemove",
 
-            ":parent/manager/:type(/:uri)": "SettingsManager",
+            ":site/:parent/manager/:type(/:uri)": "SettingsManager",
 
 
-            "settings/event/:timeline/:event": "SettingsEvent",
-            "settings/event/:timeline/:event/remove": "SettingsRemoveEvent",
+            ":site/settings/event/:timeline/:event": "SettingsEvent",
+            ":site/settings/event/:timeline/:event/remove": "SettingsRemoveEvent",
 
-            "settings/export": "SettingsExport",
-            "settings/statistics": "SettingsStatistics",
-            "settings/appearance": "SettingsAppearance",
-            "settings/homepage": "SettingsHomepage",
-            "settings/canvas": "SettingsCanvas",
-            "settings/search": "SettingsSearch",
-            "settings/performance": "SettingsPerformance",
-            "settings/navigation": "SettingsNavigation",
-            "settings/import": "SettingsImport",
-            "settings/trash": "Trashcan",
-            "settings/import/mediakron2": "SettingsImportMK2",
-            "settings/general": "SettingsGeneral",
-            "settings/users": "SettingsUsers",
-            "settings/comments": "SettingsComments",
-            "settings/privacy": "SettingsPrivacy",
-            "settings/googleanalytics": "SettingsGoogleAnalytics",
-            "settings/itemoptions": "SettingsItemOptions",
-            "settings": "Settings",
-            "help(/:help)": "Help",
+            ":site/settings/export": "SettingsExport",
+            ":site/settings/statistics": "SettingsStatistics",
+            ":site/settings/appearance": "SettingsAppearance",
+            ":site/:site/settings/homepage": "SettingsHomepage",
+            ":site/settings/canvas": "SettingsCanvas",
+            ":site/settings/search": "SettingsSearch",
+            ":site/settings/performance": "SettingsPerformance",
+            ":site/settings/navigation": "SettingsNavigation",
+            ":site/settings/import": "SettingsImport",
+            ":site/settings/trash": "Trashcan",
+            ":site/settings/import/mediakron2": "SettingsImportMK2",
+            ":site/settings/general": "SettingsGeneral",
+            ":site/settings/users": "SettingsUsers",
+            ":site/settings/comments": "SettingsComments",
+            ":site/settings/privacy": "SettingsPrivacy",
+            ":site/settings/googleanalytics": "SettingsGoogleAnalytics",
+            ":site/settings/itemoptions": "SettingsItemOptions",
+            ":site/settings": "Settings",
+            ":site/help(/:help)": "Help",
             // Authentication routes
-            "redirect/logout": "Logout",
-            "redirect/profile": "Profile",
-            "redirect/admin": "Admin",
+            ":site/redirect/logout": "Logout",
+            ":site/redirect/profile": "Profile",
+            ":site/redirect/admin": "Admin",
+
             "(/)browse/lti": "BrowseLTI",
             "?token=:token/browse/lti(:context)": "BrowseLTIToken",
-            "(/)search/:search": "Search",
-            "(/)browse": "Browse",
-            "(/)browse/archived": "BrowseArchived",
-            "(/)browse/archived/clear": "BrowseArchivedClear",
-            "(/)browse/(:criteria)(/)(:query)": "Browse",
-            "(/)updates": "Updates",
-            "(/)mycontent": "MyContentBrowse",
-            "(/)tags": "Tags",
-            "(/)comments": "Comments",
-            "(/)login": "Login",
-            "(/)home": "Welcome",
-            "(/)home/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemsInWelcome",
 
-            "(/)lti/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemInLTI",
-            "(/):first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "Primary",
-            "*actions": "Welcome"
+            ":site/search/:search": "Search",
+            ":site/browse": "Browse",
+            ":site/browse/archived": "BrowseArchived",
+            ":site/browse/archived/clear": "BrowseArchivedClear",
+            ":site/browse/(:criteria)(/)(:query)": "Browse",
+            ":site/updates": "Updates",
+            ":site/mycontent": "MyContentBrowse",
+            ":site/tags": "Tags",
+            ":site/comments": "Comments",
+            ":site/login": "Login",
+            ":site/home": "Welcome",
+            ":site/home/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemsInWelcome",
+
+            ":site/lti/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "ItemInLTI",
+            ":site/:first(/)(:second)(/)(:third)(/)(:fourth)(/)(:fifth)(/)(:sixth)(/)(:seventh)": "Primary",
+            ":site": "Welcome",
+
+            "/sites/new": "CreateSite",
+            "/sites": "Sites",
+            
+            "/": "Index",
+            "*actions": "Index"
         }
     }
     /**
@@ -143,30 +157,9 @@ export default class Router extends Backbone.Router {
             Mediakron.controller.gotoAdmin(ContentPage);
         }
     }
+    
+    
     /**
-     * Restore an item from the trash
-     * @param {string} uri 
-     */
-    Trashcan(uri) {
-        var item = Mediakron.getItemFromURI(uri);
-        if (!Mediakron.Access.check('can restore from trash')) {
-            Mediakron.Access.denied();
-            return false;
-        }
-        $('#settings-context').removeClass('opened').addClass('closed');
-        Mediakron.message({
-            text: 'Retrieving Deleted Items',
-            type: 'success',
-            timeout: 4000,
-            layout: 'bottom'
-        });
-        $.getJSON(Mediakron.Data.trash, function (data) {
-            var ContentPage = new Mediakron.Admin.Trashcan({ 'trash': data });
-            if (ContentPage) {
-                Mediakron.controller.gotoAdmin(ContentPage);
-            }
-        });
-    }/**
      * 
      * @param {*} uri 
      */

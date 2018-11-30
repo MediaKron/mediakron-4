@@ -90,7 +90,7 @@ class Trash extends MediakronView {
  * Export the router function that invokes the above 
  * @param {string} uri 
  */
-export default Trashcan(uri) {
+export default function Trashcan(uri) {
     var item = Mediakron.getItemFromURI(uri);
     if (!Mediakron.Access.check('can restore from trash')) {
         Mediakron.Access.denied();
