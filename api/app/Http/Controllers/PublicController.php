@@ -13,6 +13,6 @@ class PublicController extends Controller
      * @return void
      */
     public function index(){
-        return view('index');
+        return view('vue');
     }
 }

@@ -114,6 +114,8 @@ class App {
         // after fetch, initialize the site
         console.log('init router')
         this.router = new Router();
+
+        
         /*
         Auth.check(function(){
             console.log('check complete')

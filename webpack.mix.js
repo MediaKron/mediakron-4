@@ -9,6 +9,7 @@ mix.webpackConfig({
       // bind version of jquery-ui
       "jquery-ui": "jquery-ui-dist/jquery-ui.js",
       "~": path.resolve(__dirname + "/app"),
+      "@": path.resolve(__dirname + "/app"),
       // bind to modules;
       modules: path.join(__dirname, "node_modules")
     }

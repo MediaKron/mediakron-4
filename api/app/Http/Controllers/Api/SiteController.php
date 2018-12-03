@@ -18,7 +18,7 @@ class SiteController extends Controller
     public function index()
     {
         //
-        return Site::orderBy('created_at', 'ASC')->paginate(10);
+        return Site::orderBy('created_at', 'ASC')->paginate(50);
     }
 
     /**

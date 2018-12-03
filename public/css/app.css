@@ -3257,12 +3257,6 @@ table#admin-content .btn-add .type-icon {
   font-size: 1.125rem;
 }
 
-.field-group-tags #tag-field input:-ms-input-placeholder {
-  color: #565656;
-  font-size: 18px;
-  font-size: 1.125rem;
-}
-
 .field-group-tags #tag-field input::-ms-input-placeholder {
   color: #565656;
   font-size: 18px;
@@ -5998,12 +5992,6 @@ ol.breadcrumb-list {
 }
 
 #wlink-external-field input::-webkit-input-placeholder {
-  color: #565656;
-  font-size: 16px;
-  font-size: 1rem;
-}
-
-#wlink-external-field input:-ms-input-placeholder {
   color: #565656;
   font-size: 16px;
   font-size: 1rem;
@@ -10876,7 +10864,7 @@ table#admin-content.list-view .add-to-map-title h4 {
 }
 
 .leaflet-control-geosearch a.spinner {
-  background-image: url(/images/spinner.gif?a24a495633e5bc88d7710f1390f4be7e);
+  background-image: url(/images/spinner.gif?fe1d63d9400c77870362fa0159675466);
   background-position: 50% 50%;
 }
 
@@ -14230,13 +14218,6 @@ story-add-comparison {
   /* getting overwritten by edit.scss */
 }
 
-.edit-story h1.story-title[contenteditable=true] :-ms-input-placeholder {
-  color: #565656;
-  font-size: 34px;
-  font-size: 2rem !important;
-  /* getting overwritten by edit.scss */
-}
-
 .edit-story h1.story-title[contenteditable=true] ::-ms-input-placeholder {
   color: #565656;
   font-size: 34px;
@@ -14493,12 +14474,6 @@ figure .helptext .tools {
 }
 
 .edit-story #wlink-external-field ::-webkit-input-placeholder {
-  color: #565656;
-  font-size: 16px;
-  font-size: 1rem;
-}
-
-.edit-story #wlink-external-field :-ms-input-placeholder {
   color: #565656;
   font-size: 16px;
   font-size: 1rem;
@@ -18661,12 +18636,6 @@ ul.sort-group li {
   color: #565656;
 }
 
-.edit-story .story-body :-ms-input-placeholder,
-.edit-story .story-title[contenteditable=true] :-ms-input-placeholder,
-.model-field :-ms-input-placeholder {
-  color: #565656;
-}
-
 .edit-story .story-body ::-ms-input-placeholder,
 .edit-story .story-title[contenteditable=true] ::-ms-input-placeholder,
 .model-field ::-ms-input-placeholder {
@@ -18803,13 +18772,6 @@ ul.sort-group li {
 }
 
 .title-field .model-field ::-webkit-input-placeholder {
-  color: #565656;
-  font-weight: bold;
-  font-size: 28px;
-  font-size: 1.75rem;
-}
-
-.title-field .model-field :-ms-input-placeholder {
   color: #565656;
   font-weight: bold;
   font-size: 28px;
@@ -25128,7 +25090,7 @@ label.custom-colors {
   font-family: 'MapkeyIcons';
   src: url(/fonts/MapkeyIcons.eot?3899dbe072d186520a1bed15fbe407cc);
   /* IE9 */
-  src: url(/fonts/MapkeyIcons.eot?3899dbe072d186520a1bed15fbe407cc) format("embedded-opentype"), url(/fonts/MapkeyIcons.woff?8636a2d6b77d24b0ba7c30e367d25745) format("woff"), url(/fonts/MapkeyIcons.ttf?54421a3c8290b2e7dc0b0207c4b4b837) format("truetype"), url(/images/MapkeyIcons.svg?87a860141871d3e244923ea547f82ca5) format("svg");
+  src: url(/fonts/MapkeyIcons.eot?3899dbe072d186520a1bed15fbe407cc) format("embedded-opentype"), url(/fonts/MapkeyIcons.woff?8636a2d6b77d24b0ba7c30e367d25745) format("woff"), url(/fonts/MapkeyIcons.ttf?54421a3c8290b2e7dc0b0207c4b4b837) format("truetype"), url(/images/MapkeyIcons.svg?b9325c59798852467ad4022badaa8dd9) format("svg");
   font-weight: normal;
   font-style: normal;
 }

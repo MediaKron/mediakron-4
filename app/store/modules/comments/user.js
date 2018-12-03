@@ -1,7 +1,7 @@
 
 // User Class
 import Model from "~/core-js/extensions/models";
-import { base_path, uri } from "../util/url";
+import { base_path, uri } from "../../../util/url";
 class User extends Model {
   constructor() {
     super({
