@@ -27,12 +27,12 @@ import Vue from 'vue';
 import { mapActions, mapState, mapGetters } from 'vuex';
 import MediakronMenu from './navigation/Mediakron';
 import Primary from './navigation/Primary';
-import Secondary from './navigation/Secondary';
+//import Secondary from './navigation/Secondary';
 export default Vue.extend({
     components:{
         MediakronMenu,
         Primary,
-        Secondary
+        //Secondary
     },
     computed:{
         ...mapState('sites', [

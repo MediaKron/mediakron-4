@@ -2,36 +2,28 @@
 <div>
     <ul class="secondary-menu" role="navigation">
 
-    <% if(secondary.browse && !Mediakron.user.isGuest() && !Mediakron.user.isMember() || Mediakron.Access.check('can create content')){ %>
-    <li class="level-1 browse-menu">
+    <li v-if="canBrowse" class="level-1 browse-menu">
         <a href="<%= basepath %>browse" title="Browse All Site Content"><span class="mk-icon mk-grid level-1"></span><span class="link-text"> Browse</span> </a>
     </li>  
-    
-    <% if(secondary.browse && !Mediakron.user.isGuest() && !Mediakron.user.isMember() || Mediakron.Access.check('can create content')){ %>
-        <% if(Mediakron.items.changeCount() > 0){ %>
-        <li class="level-1 updates-menu">
-            <a href="<%= basepath %>updates"><span class="mk-icon mk-updates level-1"></span><sup><%= Mediakron.items.changeCount() %></sup><span class="update-text link-text">Changes </span> </a>          
-        </li>
-        <% } %>
-    <% } %>
 
-        <% if(secondary.tags && tags.length > 0){ %>
-        <li id="tags" class="level-1">
-            <a href="<%= basepath %>tags" class="tags-menu"><span class="mk-icon mk-tag level-1"></span><span class="link-text"> Tags</span></a>
-        </li><% } %>
+    <li v-if="canBrowse && changeCount > 0" class="level-1 updates-menu">
+        <a href="<%= basepath %>updates"><span class="mk-icon mk-updates level-1"></span><sup><%= Mediakron.items.changeCount() %></sup><span class="update-text link-text">Changes </span> </a>          
+    </li>
+
+    <li v-if="currentSite.secondary.tags && tags.length > 0" id="tags" class="level-1">
+        <a href="<%= basepath %>tags" class="tags-menu"><span class="mk-icon mk-tag level-1"></span><span class="link-text"> Tags</span></a>
+    </li>
         
-        <% if(secondary.search){ %>
-        <li id="search" class="level-1">
+    <li v-if="currentSite.secondary.search" id="search" class="level-1">
         <button class="toggle-search btn-no-style" aria-label="Search Button"><span class="mk-icon mk-search level-1"></span><span class="link-text"> Search</span></button>
-        </li>
-        <% } %>
+    </li>
 
         
         <% if(Mediakron.Access.check('can create content')){ %>
-            <li class="level-1 add-content-button nav-left">
+    <li class="level-1 add-content-button nav-left">
             <a href="settings/content/add" title="Add Content"><span class="mk-icon mk-add level-1"></span><span class="link-text">Add</span>  
             </a>
-            </li>
+    </li>
         <% } %>
         
 
@@ -86,14 +78,14 @@
         </li><% } %>
         
         <% if(secondary.user && Mediakron.user.isGuest()){ %>
-            <li id="settings-button" class="level-1">
+            <li v-if=""  id="settings-button" class="level-1">
                 <a href="<%= basepath %>login" title="Log into this site"><span class="mk-icon mk-user" ></span><span class="link-text"> Login</span></a>
             </li>
         <% } %>
 
         
-        <% if(!Mediakron.user.isGuest()){ %>
-        <li id="help-menu" class="level-1">
+
+        <li v-if="!isGuest" id="help-menu" class="level-1">
         <button class="btn-no-style open-modal"  aria-label="Help Button"><span class="mk-icon mk-help level-1"></span><span class="link-text"> Help</span></button>
         <ul class="modal-content dropdown-container" data-visually-hidden="true">
             <li class="modal-title dropdown-title"><span class="mk-icon mk-help"></span> MediaKron Support
@@ -182,13 +174,18 @@ export default Vue.extend({
             'isGuest',
             'isAdmin',
             'isMember',
+            'canBrowse'
 
         ]),
         ...mapState('sites', [
-            'current'
+            'currentSite'
         ]),
         ...mapState('items', [
-            'changed'
+            'changed',
+            'changeCount'
+        ]),
+        ...mapGetter('items', [
+            'tags'
         ]),
     }
 

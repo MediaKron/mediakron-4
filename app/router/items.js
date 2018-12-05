@@ -1,5 +1,5 @@
 import Layout from '../views/layouts/Layout';
-import HomePage from '../views/items/HomePage';
+import HomePage from '../views/homepage/HomePage';
 import ItemPage from '../views/items/Item';
 
 export default {

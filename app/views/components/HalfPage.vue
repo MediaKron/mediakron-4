@@ -1,5 +1,7 @@
 <template>
-    <div>MEdiakron site Homepage</div>
+    <div>
+        <h2><slot></slot></h2>
+    </div>
 </template>
 
 <script>
