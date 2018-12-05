@@ -29,6 +29,7 @@ import EditSite from './views/sites/Edit';
 // Site Views
 import itemsRoutes from './router/items';
 import browseRoutes from './router/browse';
+import settingsRoutes from './router/settings';
 
 import NotFound from './views/404.vue';
 import store from './store';
@@ -90,6 +91,7 @@ var baseRoutes = [
 
   // Get the item routes
   baseRoutes.push(browseRoutes);
+  baseRoutes.push(settingsRoutes);
   baseRoutes.push(itemsRoutes);
 
 // 404 route
