@@ -1,6 +1,7 @@
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
+import profile from './profile';
 import { Module } from 'vuex';
 
 export const getInitialState = (checkLocalStorage = false) => {
@@ -18,7 +19,10 @@ const user = {
   state,
   getters,
   mutations,
-  actions
+  actions,
+  modules: {
+    profile
+  }
 };
 
 export default user;

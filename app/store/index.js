@@ -9,7 +9,6 @@ import users from './modules/users';
 import items from './modules/items';
 import sites from './modules/sites';
 import comments from './modules/comments';
-import profile from './modules/profile';
 
 import config from '@/config';
 import progressIncrementPlugin from './plugins/progress';
@@ -39,8 +38,7 @@ const store = {
     users,
     sites,
     items,
-    comments,
-    profile
+    comments
   }
 };
 
