@@ -1,6 +1,6 @@
 //Core Css;
 
-@import "../theme/theme.scss";
+@import "../backbone/theme/theme.scss";
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
@@ -26,95 +26,95 @@
 //@import "vendor/leaflet/leaflet.edit.scss";
 
 // Content Tools;
-@import "../content-tools/add-panes/add-styles.scss";
-@import "../content-tools/add-panes/addpane-general/addpane-general-styles.scss";
+@import "../backbone/content-tools/add-panes/add-styles.scss";
+@import "../backbone/content-tools/add-panes/addpane-general/addpane-general-styles.scss";
 
-@import "../content-tools/browsers/browsers-styles.scss";
-@import "../content-tools/browsers/browser-updates/browser-updates-styles.scss";
-@import "../content-tools/browsers/browser-filters/browser-filters-styles.scss";
+@import "../backbone/content-tools/browsers/browsers-styles.scss";
+@import "../backbone/content-tools/browsers/browser-updates/browser-updates-styles.scss";
+@import "../backbone/content-tools/browsers/browser-filters/browser-filters-styles.scss";
 
-@import "../content-tools/import/import-styles.scss";
-@import "../content-tools/search/search-page/search-page-styles.scss";
+@import "../backbone/content-tools/import/import-styles.scss";
+@import "../backbone/content-tools/search/search-page/search-page-styles.scss";
 
-@import "../content-tools/organize-panes/organize-styles.scss";
+@import "../backbone/content-tools/organize-panes/organize-styles.scss";
 
-@import "../content-tools/select-panes/select-panes-styles.scss"; 
-@import "../content-tools/select-panes/selector-narrative/selector-narrative-styles.scss"; 
-@import "../content-tools/select-panes/selector-links/selector-links-styles.scss"; 
+@import "../backbone/content-tools/select-panes/select-panes-styles.scss"; 
+@import "../backbone/content-tools/select-panes/selector-narrative/selector-narrative-styles.scss"; 
+@import "../backbone/content-tools/select-panes/selector-links/selector-links-styles.scss"; 
 
-@import "../content-tools/tags/tag-page/tag-page-styles.scss";
-@import "../content-tools/tags/tags-form/tags-form-styles.scss";
-@import "../content-tools/tags/tags-page/tags-page-styles.scss";
+@import "../backbone/content-tools/tags/tag-page/tag-page-styles.scss";
+@import "../backbone/content-tools/tags/tags-form/tags-form-styles.scss";
+@import "../backbone/content-tools/tags/tags-page/tags-page-styles.scss";
 
 // Items
-@import "../items/item-components/annotations-comments/annotations-comments.scss";
-@import "../items/item-components/breadcrumbs/breadcrumbs-styles.scss";
-@import "../items/item-components/filters/filters-styles.scss";
-@import "../items/item-components/item-details/item-details-styles.scss";
-@import "../items/item-components/item-card/item-card-styles.scss";
-@import "../items/item-components/item-header/item-header.scss";
-@import "../items/item-components/item-page-options/item-page-options-styles.scss";
-@import "../items/item-components/item-view-in/view-in-styles.scss";
-@import "../items/item-components/item-wysiwyg/item-wysiwyg.scss";
-@import "../items/item-components/revisions/revisions-styles.scss";
-@import "../items/item-components/tourpane/tourpane-styles.scss";
-@import "../items/item-components/widgets/widgets-styles.scss";
+@import "../backbone/items/item-components/annotations-comments/annotations-comments.scss";
+@import "../backbone/items/item-components/breadcrumbs/breadcrumbs-styles.scss";
+@import "../backbone/items/item-components/filters/filters-styles.scss";
+@import "../backbone/items/item-components/item-details/item-details-styles.scss";
+@import "../backbone/items/item-components/item-card/item-card-styles.scss";
+@import "../backbone/items/item-components/item-header/item-header.scss";
+@import "../backbone/items/item-components/item-page-options/item-page-options-styles.scss";
+@import "../backbone/items/item-components/item-view-in/view-in-styles.scss";
+@import "../backbone/items/item-components/item-wysiwyg/item-wysiwyg.scss";
+@import "../backbone/items/item-components/revisions/revisions-styles.scss";
+@import "../backbone/items/item-components/tourpane/tourpane-styles.scss";
+@import "../backbone/items/item-components/widgets/widgets-styles.scss";
 
-@import "../items/item-pages/audio/audio-styles.scss";
-@import "../items/item-pages/comparison/comparison-styles.scss";
-@import "../items/item-pages/file/file-styles.scss";
-@import "../items/item-pages/folder/folder-styles.scss";
-@import "../items/item-pages/image/image-styles.scss";
-@import "../items/item-pages/map/maps-styles.scss";
-@import "../items/item-pages/narrative/narrative-styles.scss";
-@import "../items/item-pages/progression/progression-styles.scss";
-@import "../items/item-pages/slideshow/slideshow-styles.scss";
-@import "../items/item-pages/story/story-styles.scss";
-@import "../items/item-pages/text/text-styles.scss";
-@import "../items/item-pages/timeline/timeline-styles.scss";
-@import "../items/item-pages/video/video-styles.scss";
+@import "../backbone/items/item-pages/audio/audio-styles.scss";
+@import "../backbone/items/item-pages/comparison/comparison-styles.scss";
+@import "../backbone/items/item-pages/file/file-styles.scss";
+@import "../backbone/items/item-pages/folder/folder-styles.scss";
+@import "../backbone/items/item-pages/image/image-styles.scss";
+@import "../backbone/items/item-pages/map/maps-styles.scss";
+@import "../backbone/items/item-pages/narrative/narrative-styles.scss";
+@import "../backbone/items/item-pages/progression/progression-styles.scss";
+@import "../backbone/items/item-pages/slideshow/slideshow-styles.scss";
+@import "../backbone/items/item-pages/story/story-styles.scss";
+@import "../backbone/items/item-pages/text/text-styles.scss";
+@import "../backbone/items/item-pages/timeline/timeline-styles.scss";
+@import "../backbone/items/item-pages/video/video-styles.scss";
 
 //Form;
-@import "../forms/chosen/chosen-custom-styles.scss";
-@import "../forms/edit-styles.scss";
-@import "../forms/form-expand-collapse/accessibleplugins-styles.scss";
-@import "../forms/save-bar/save-bar-styles.scss";
+@import "../backbone/forms/chosen/chosen-custom-styles.scss";
+@import "../backbone/forms/edit-styles.scss";
+@import "../backbone/forms/form-expand-collapse/accessibleplugins-styles.scss";
+@import "../backbone/forms/save-bar/save-bar-styles.scss";
 
 //Help;
-@import "../help/help-styles.scss";
+@import "../backbone/help/help-styles.scss";
 
 //Homepage;
-@import "../homepage/homepage-settings/homepage-settings.scss";
-@import "../homepage/homepage-view/homepage-styles.scss";
+@import "../backbone/homepage/homepage-settings/homepage-settings.scss";
+@import "../backbone/homepage/homepage-view/homepage-styles.scss";
 
 //Settings;
-@import "../site-settings/settings-page/settings-page-styles.scss";
-@import "../site-settings/settings-styles.scss";
+@import "../backbone/site-settings/settings-page/settings-page-styles.scss";
+@import "../backbone/site-settings/settings-styles.scss";
 
-@import "../navigation/menu-settings/menu-settings-styles.scss";
-@import "../navigation/navigation-styles.scss";
+@import "../backbone/navigation/menu-settings/menu-settings-styles.scss";
+@import "../backbone/navigation/navigation-styles.scss";
 
 //Theme;
-@import "../theme/banner/banner-styles.scss";
-@import "../theme/site-appearance/site-appearance-styles.scss";
-@import "../ui/buttons/buttons-styles.scss";
+@import "../backbone/theme/banner/banner-styles.scss";
+@import "../backbone/theme/site-appearance/site-appearance-styles.scss";
+@import "../backbone/ui/buttons/buttons-styles.scss";
 
 //UI;
-@import "../ui/fullscreen/fullscreen-styles.scss";
-@import "../ui/tooltips/tooltips-styles.scss";
-@import "../ui/icons/mk-icons/mk-icons-styles.scss";
-@import "../ui/icons/mapkey-icons/mapkey-styles.scss";
-@import "../ui/overlay/overlay-styles.scss";
-@import "../ui/progress-loaders/progress-loaders-styles.scss";
-@import "../ui/tabs-accordion/tabs-accordion-styles.scss";
-@import "../ui/typography/typography-styles.scss";
+@import "../backbone/ui/fullscreen/fullscreen-styles.scss";
+@import "../backbone/ui/tooltips/tooltips-styles.scss";
+@import "../backbone/ui/icons/mk-icons/mk-icons-styles.scss";
+@import "../backbone/ui/icons/mapkey-icons/mapkey-styles.scss";
+@import "../backbone/ui/overlay/overlay-styles.scss";
+@import "../backbone/ui/progress-loaders/progress-loaders-styles.scss";
+@import "../backbone/ui/tabs-accordion/tabs-accordion-styles.scss";
+@import "../backbone/ui/typography/typography-styles.scss";
 
 //Users;
-@import "../users/manage-users/manage-users-styles.scss";
+@import "../backbone/users/manage-users/manage-users-styles.scss";
 
 //Utilities;
-@import "../utilities/active-editors/active-editors-styles.scss";
-@import "../utilities/canvas/canvas-lti/canvas-lti-styes.scss";
-@import "../utilities/login/login-styles.scss";
-@import "../utilities/messages/messages-styles.scss";
-@import "../utilities/print/print-styles.scss";
+@import "../backbone/utilities/active-editors/active-editors-styles.scss";
+@import "../backbone/utilities/canvas/canvas-lti/canvas-lti-styes.scss";
+@import "../backbone/utilities/login/login-styles.scss";
+@import "../backbone/utilities/messages/messages-styles.scss";
+@import "../backbone/utilities/print/print-styles.scss";
