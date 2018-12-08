@@ -1,6 +1,6 @@
-import Layout from '../views/layouts/Layout';
-import HomePage from '../views/homepage/HomePage';
-import ItemPage from '../views/items/Item';
+import Layout from '@/views/layouts/Layout';
+import HomePage from '@/views/homepage/Homepage';
+import ItemPage from '@/views/items/Item';
 
 export default {
     path: '/:site',

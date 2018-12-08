@@ -43,8 +43,9 @@ class CreateSitesTable extends Migration
             $table->string('homepage_item');
             $table->text('homepage_description');
 
-            $table->longtext('primary_navigation');
-            $table->longtext('secondary_navigation');
+            // Secondary menu
+            $table->boolean('browse');
+            $table->boolean('tags');
 
             // Long text fields
             $table->longtext('description');

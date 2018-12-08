@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-@import '~modularscale-sass/stylesheets/modularscale';
+//@import '~modularscale-sass/stylesheets/modularscale';
 
 @import "base-styles/variables.scss";
 @import "base-styles/extend.scss";
@@ -26,7 +26,7 @@
 //@import "vendor/leaflet/leaflet.edit.scss";
 
 // Content Tools;
-@import "../backbone/content-tools/add-panes/add-styles.scss";
+/*@import "../backbone/content-tools/add-panes/add-styles.scss";
 @import "../backbone/content-tools/add-panes/addpane-general/addpane-general-styles.scss";
 
 @import "../backbone/content-tools/browsers/browsers-styles.scss";
@@ -117,4 +117,4 @@
 @import "../backbone/utilities/canvas/canvas-lti/canvas-lti-styes.scss";
 @import "../backbone/utilities/login/login-styles.scss";
 @import "../backbone/utilities/messages/messages-styles.scss";
-@import "../backbone/utilities/print/print-styles.scss";
+@import "../backbone/utilities/print/print-styles.scss";*/

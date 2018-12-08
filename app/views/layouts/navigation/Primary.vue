@@ -4,9 +4,9 @@
 
 <script>
 import Vue from 'vue';
-export default {
+export default Vue.extend({
 
-}
+});
 </script>
 
 <style>

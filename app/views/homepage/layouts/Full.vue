@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapActions, mapState, mapGetters } from 'vuex';
 export default {
     prop:['item'],
     computed:{
