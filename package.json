@@ -6,8 +6,8 @@
     "mediakron:build": "vue-cli-service build",
     "mediakron:lint": "vue-cli-service lint",
     "mediakron:watch": "vue-cli-service serve",
-    "styleguide": "vue-cli-service styleguidist",
-    "styleguide:build": "vue-cli-service styleguidist:build"
+    "mediakron:styleguide": "vue-cli-service styleguidist",
+    "mediakron:styleguide:build": "vue-cli-service styleguidist:build"
   },
   "dependencies": {
     "animate.css": "^3.7.0",
