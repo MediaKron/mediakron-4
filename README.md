@@ -19,7 +19,6 @@ General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.
 * [Docker Compose](https://docs.docker.com/compose/) 1.18+
 * [Node](https://nodejs.org) 6+
 * [NPM](https://www.npmjs.com/)
-* [Catalog](https://www.catalog.style/)
 
 ## Installation
 * Run `npm install` from the root directory to get all the npm modules you'll need
