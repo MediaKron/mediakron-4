@@ -1,15 +1,13 @@
 <template>
     <header id="header" role="banner">
-        <div id="root-nav" v-if="!current">
-            <mediakron-menu></mediakron-menu>
-        </div>
-        <div v-if="current && isLoaded" id="navbar">
+        <div id="navbar">
+            <mediakron-menu v-if="!current" ></mediakron-menu>
             <button type="button" class="mobile-nav-button mobile-nav-close"><span class="mk-icon mk-close"></span></button>
-            <nav id="nav-main" role="navigaton" aria-label="Main Navigation">
-                <!-- Main Menu will get loaded here -->
+            <nav v-if="current && isLoaded" id="nav-main" role="navigaton" aria-label="Main Navigation">
+                <primary></primary>
             </nav>
-            <nav id="nav-secondary" role="navigaton" aria-label="Secondary Navigation">                       
-                <!-- Navbar Right Goes Here -->
+            <nav v-if="current && isLoaded"  id="nav-secondary" role="navigaton" aria-label="Secondary Navigation">                       
+                <secondary></secondary>
             </nav>
         </div>
         <div id="branding">
@@ -27,12 +25,12 @@ import Vue from 'vue';
 import { mapActions, mapState, mapGetters } from 'vuex';
 import MediakronMenu from './navigation/Mediakron';
 import Primary from './navigation/Primary';
-//import Secondary from './navigation/Secondary';
+import Secondary from './navigation/Secondary';
 export default Vue.extend({
     components:{
         MediakronMenu,
         Primary,
-        //Secondary
+        Secondary
     },
     computed:{
         ...mapState('sites', [
