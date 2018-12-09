@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel;
 
-class SiteAccess extends Model
+class SiteAccess extends BaseModel
 {
     //
 }

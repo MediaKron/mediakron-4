@@ -1,15 +1,15 @@
 {
   "files.exclude": {
     ".vscode": true,
-    "**/.git": true,
     "**/.DS_Store": true,
+    "**/.git": true,
     "**/.idea": true,
     "**/.tmp": true,
     "**/.vagrant": true,
-    "docker": true,
-    "node_modules": true,
-    "db": true,
     "build": true,
+    "db": true,
+    "docker1": true,
+    "node_modules": true,
     "vendor": true
   },
   "files.watcherExclude": {

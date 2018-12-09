@@ -32,11 +32,12 @@ Route::group([
         //'auth:api',
         'admin'
     ],
-    'prefix' => 'admin'
+    //'prefix' => 'admin'
 ], function ($router) {
 
     // Sites api
-    Route::resource('/site', 'Api\Admin\SiteController');
+    Route::resource('/site', 'Api\SiteController');
+    Route::get('/sites', 'Api\SiteController@index');
 
     // Admin System Settings api
     Route::resource('/settings', 'Api\Admin\SettingsController');

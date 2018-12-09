@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel;
 use App\Scopes\ItemScope;
 
-class Item extends Model
+class Item extends BaseModel
 {
 
     /**
@@ -28,7 +28,7 @@ class Item extends Model
      */
     public function user()
     {
-        return $this->hasOne('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     /**
@@ -37,7 +37,7 @@ class Item extends Model
     * @var array
     */
     public function  editor() {
-        return $this->hasOne('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'editor_id');
     }
 
     /**
