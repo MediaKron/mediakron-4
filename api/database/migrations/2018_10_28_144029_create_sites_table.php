@@ -28,30 +28,41 @@ class CreateSitesTable extends Migration
             $table->boolean('initialized');
             $table->boolean('production');
             $table->boolean('indexed');
-            $table->boolean('ldap');
+            $table->boolean('sso');
 
             // Basic record data
             $table->string('uri');
             $table->string('title');
             $table->string('subtitle');
             $table->string('logo');
-            $table->string('navigation');
+            $table->string('ga');
+            $table->string('algorithm');
+
+            // Design
             $table->string('navigation_color');
             $table->string('link_color');
             $table->string('banner_color');
             $table->string('banner_link_color');
-            $table->string('homepage_item');
-            $table->text('homepage_description');
+            $table->string('skin');
+            $table->string('font');
+
+            // Homepage
+            $table->string('item');
+            $table->text('description');
+            $table->string('layout');
+            $table->string('image');
+            $table->string('alt');
+
+            // Navigation 
+            $table->string('navigation');
 
             // Secondary menu
             $table->boolean('browse');
             $table->boolean('tags');
-
-            // Long text fields
-            $table->longtext('description');
-            $table->longtext('transcript');
-            $table->longtext('body');
-            $table->longtext('caption');
+            $table->boolean('search');
+            $table->boolean('mklogo');
+            $table->boolean('login');
+            $table->boolean('fullscreen');
 
             // Timestamps
             $table->timestamp('last_login')->nullable();

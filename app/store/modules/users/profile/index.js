@@ -6,6 +6,16 @@ import { Module } from 'vuex';
 export const getInitialState = (checkLocalStorage = false) => {
 
   return {
+    currentToken: false,
+
+    loginStatus: false,
+    loginPending: false,
+    loginSuccess: false,
+    loginFailed: false,
+
+    user: false,
+
+    
 
   };
 };

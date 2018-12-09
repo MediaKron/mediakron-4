@@ -16,10 +16,13 @@ class CreateSiteUserTable extends Migration
         Schema::create('site_user', function (Blueprint $table) {
             $table->integer('site_id')->unsigned();
             $table->integer('user_id')->unsigned();
+
+            // Metadata
             $table->string('role');
             $table->boolean('active')->nullable();
             $table->boolean('ldap')->default(false);
 
+            // Timing
             $table->timestamp('granted_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();

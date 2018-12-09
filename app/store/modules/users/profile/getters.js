@@ -3,7 +3,7 @@ import { GetterTree } from 'vuex';
 export const getters = {
   isLoggedIn: state => !!state.currentToken,
 
-  isPending: state => state.loginStatus === LoginStatus.Pending? true : false,
+  isPending: state => state.loginStatus ? true : false,
   isSuccess: (state, geters) => state.loginStatus === LoginStatus.Success? true : false,
   isError: state => state.loginStatus === LoginStatus.Failed? true : false,
 
@@ -32,14 +32,16 @@ export const getters = {
     return true;
   },
 
-  checkAccess: (state) => {
+  access: (state) => (permission) => {
     // TODO Impliment permission checking for user
+    if(permission == 'test'){
+      return false;
+    }
     return true;
   },
 
-  canBrowse: (state, getters, rootState, rootGetters) => {
+  canBrowse: (state, getters, rootState) => {
     var site = rootState['sites/currentSite'];
-
     return (site && site.secondary.browse) && !getters.isGuest() && !getters.isMember() || getters.check('can create content')
   }
 };

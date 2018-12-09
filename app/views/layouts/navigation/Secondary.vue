@@ -187,7 +187,7 @@
 
 <script>
 import Vue from 'vue';
-import { mapActions, mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 export default Vue.extend({
     data(){
         return {

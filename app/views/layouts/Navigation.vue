@@ -1,8 +1,9 @@
 <template>
     <header id="header" role="banner">
         <div id="navbar">
-            <mediakron-menu v-if="!current" ></mediakron-menu>
             <button type="button" class="mobile-nav-button mobile-nav-close"><span class="mk-icon mk-close"></span></button>
+            <mediakron-menu v-if="!current" ></mediakron-menu>
+            
             <nav v-if="current && isLoaded" id="nav-main" role="navigaton" aria-label="Main Navigation">
                 <primary></primary>
             </nav>
@@ -22,7 +23,7 @@
 
 <script>
 import Vue from 'vue';
-import { mapActions, mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import MediakronMenu from './navigation/Mediakron';
 import Primary from './navigation/Primary';
 import Secondary from './navigation/Secondary';

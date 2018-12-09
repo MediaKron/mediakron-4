@@ -15,9 +15,13 @@ class CreateRelationshipsTable extends Migration
     {
         Schema::create('relationships', function (Blueprint $table) {
             $table->increments('id');
+
+            // Relationships
             $table->integer('parent_id');
             $table->integer('child_id');
             $table->integer('attachment_id');
+
+            // User
             $table->integer('user_id');
 
             // booleans
