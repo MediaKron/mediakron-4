@@ -17,8 +17,8 @@
 </template>
  
 <script>
-import TextField from "@/components/forms/TextField";
-import RichText from "@/components/forms/RichText";
+import TextField from "@/components/controls/TextField";
+import RichText from "@/components/controls/RichText";
 export default {
     components:{
         TextField,

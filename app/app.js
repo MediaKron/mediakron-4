@@ -11,7 +11,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import * as svgicon from 'vue-svgicon';
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './core-css/base.scss';
+
 import VeeValidate from 'vee-validate';
 import VueMoment from 'vue-moment';
 import VueTransmit from 'vue-transmit';
@@ -19,6 +23,9 @@ import config from '@/config';
 import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 import api from '@/store/utils/api';
+import BootstrapVue from 'bootstrap-vue'
+
+
 //import VueIntro from 'vue-introjs';
 //import VueRouterMiddleware from 'vue-router-middleware';
 
@@ -38,6 +45,8 @@ Vue.use(VeeValidate, { inject: false, delay: 700 });
 Vue.use(VueMoment);
 
 Vue.use(VueTransmit);
+
+Vue.use(BootstrapVue);
 
 //Vue.use(VueIntro);
 //import 'intro.js/introjs.css';
