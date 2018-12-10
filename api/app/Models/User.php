@@ -7,13 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Hash;
 use App\Models\Traits\User\Permissions;
+use App\Models\Traits\User\Import;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, SoftDeletes, Permissions;
-
-    protected $table = 'User';
+    use Notifiable, SoftDeletes, Import;
 
     /**
      * The attributes that are mass assignable.

@@ -7,7 +7,7 @@ use App\Models\BaseModel;
 class Site extends BaseModel
 {
 
-    
+    use \App\Models\Traits\Site\Import;
     
     //
     /**

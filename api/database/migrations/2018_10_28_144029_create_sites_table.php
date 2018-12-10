@@ -15,58 +15,58 @@ class CreateSitesTable extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('creator_id');
-            $table->integer('administrator_id');
-            $table->integer('institution_id');
+            $table->integer('creator_id')->default(0);
+            $table->integer('administrator_id')->default(0);
+            $table->integer('institution_id')->default(0);
 
             // booleans
-            $table->boolean('comment');
-            $table->boolean('download');
-            $table->boolean('author');
-            $table->boolean('view');
-            $table->boolean('public');
-            $table->boolean('initialized');
-            $table->boolean('production');
-            $table->boolean('indexed');
-            $table->boolean('sso');
+            $table->boolean('comment')->default(0)->nullable();
+            $table->boolean('download')->default(0)->nullable();
+            $table->boolean('author')->default(0)->nullable();
+            $table->boolean('view')->default(0)->nullable();
+            $table->boolean('public')->default(0)->nullable();
+            $table->boolean('initialized')->default(0)->nullable();
+            $table->boolean('production')->default(0)->nullable();
+            $table->boolean('indexed')->default(0)->nullable();
+            $table->boolean('sso')->default(0)->nullable();
 
             // Basic record data
-            $table->string('uri');
-            $table->string('title');
-            $table->string('subtitle');
-            $table->string('logo');
-            $table->string('ga');
-            $table->string('algorithm');
+            $table->string('uri')->default('');
+            $table->string('title')->default('')->nullable();
+            $table->string('subtitle')->default('')->nullable();
+            $table->string('logo')->default('')->nullable();
+            $table->string('ga')->default('')->nullable();
+            $table->string('algorithm')->default('')->nullable();
 
             // Design
-            $table->string('navigation_color');
-            $table->string('link_color');
-            $table->string('banner_color');
-            $table->string('banner_link_color');
-            $table->string('skin');
-            $table->string('font');
+            $table->string('navigation_color')->default('')->nullable();
+            $table->string('link_color')->default('')->nullable();
+            $table->string('banner_color')->default('')->nullable();
+            $table->string('banner_link_color')->default('')->nullable();
+            $table->string('skin')->default('')->nullable();
+            $table->string('font')->default('')->nullable();
 
             // Homepage
-            $table->string('item');
-            $table->text('description');
-            $table->string('layout');
-            $table->string('image');
-            $table->string('alt');
+            $table->integer('item_id')->default(0);
+            $table->string('item_uri')->default('')->nullable();
+            $table->text('description')->nullable();
+            $table->string('layout')->default('')->nullable();
+            $table->string('image')->default('')->nullable();
+            $table->string('alt')->default('')->nullable();
 
             // Navigation 
             $table->string('navigation');
 
             // Secondary menu
-            $table->boolean('browse');
-            $table->boolean('tags');
-            $table->boolean('search');
-            $table->boolean('mklogo');
-            $table->boolean('login');
-            $table->boolean('fullscreen');
+            $table->boolean('browse')->default(0);
+            $table->boolean('tags')->default(0);
+            $table->boolean('search')->default(0);
+            $table->boolean('mklogo')->default(0);
+            $table->boolean('login')->default(0);
+            $table->boolean('user')->default(0);
+            $table->boolean('fullscreen')->default(0);
 
             // Timestamps
-            $table->timestamp('last_login')->nullable();
-            $table->timestamp('expired_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

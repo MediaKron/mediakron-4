@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideosTable extends Migration
+class CreateTextsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('texts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('item_id');
             $table->string('url');
+            $table->string('filename');
             $table->string('type');
-            $table->integer('start')->nullable();
-            $table->integer('stop')->nullable();
+            $table->string('mime')->nullable();
+            $table->string('extension')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('texts');
     }
 }

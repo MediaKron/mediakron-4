@@ -16,7 +16,6 @@ class CreateMapsTable extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('item_id');
-            $table->integer('user_id');
             $table->string('url');
             $table->string('type');
             $table->string('latitude')->nullable();

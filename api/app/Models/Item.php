@@ -7,6 +7,7 @@ use App\Scopes\ItemScope;
 
 class Item extends BaseModel
 {
+    use \App\Models\Traits\Item\Import;
 
     /**
      * The "booting" method of the model.
@@ -48,6 +49,56 @@ class Item extends BaseModel
     public function relationship()
     {
         return $this->hasMany('App\Relationship');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function audio()
+    {
+        return $this->hasOne('App\Models\Attributes\Audio');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function image()
+    {
+        return $this->hasOne('App\Models\Attributes\Image');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function video()
+    {
+        return $this->hasOne('App\Models\Attributes\Video');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function map()
+    {
+        return $this->hasOne('App\Models\Attributes\Map');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function metadata()
+    {
+        return $this->hasOne('App\Models\Attributes\Metadata');
     }
 
     /**
