@@ -16,6 +16,7 @@ import Home from './views/Home.vue';
 // Authentication Views
 import Login from './views/auth/Login.vue';
 import Logout from './views/auth/Logout.vue';
+import Profile from './views/Profile.vue';
 import Reset from './views/auth/Reset.vue';
 import Confirm from './views/auth/Confirm.vue';
 
@@ -53,6 +54,11 @@ var baseRoutes = [
             path: '/logout',
             name: 'mediakron-logout',
             component: Logout
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            component: Profile
         },
         {
             path: '/reset',
@@ -120,7 +126,7 @@ const actionableName = (name) => {
 
 /**
  * Global navigation guard to present the login for unauthenticated users
- 
+
 router.beforeEach(async (to, from, routerNext) => {
   store.dispatch(RootActions.CLEAR_ERRORS);
   store.dispatch(RootActions.LOAD_PROGRESS_RESET);
@@ -180,7 +186,7 @@ export default router;
  *
  * I think we are going to drift away from demanding the layout object be called as a variable.  It makes the
  * routing table kind of unreadable, and I think I want to rethink the way we handle this a bit.
- 
+
 
 export default class Router extends Backbone.Router {
     get routes() {
@@ -252,7 +258,7 @@ export default class Router extends Backbone.Router {
 
             "/sites/new": "CreateSite",
             "/sites": "Sites",
-            
+
             "/": "Index",
             "*actions": "Index"
         }
