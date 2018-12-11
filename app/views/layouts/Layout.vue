@@ -73,5 +73,11 @@ export default {
 </script>
 
 <style>
-
+.scroll-arrow,
+.fullscreen-nav-toggle,
+#pastehelper,
+#progress-bar
+ {
+    display:none;
+}
 </style>
