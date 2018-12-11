@@ -7,7 +7,7 @@ export const getters = {
   sites: state => state.siteList,
   listIsLoading: state => state.listIsLoading,
   listIsLoaded: state => state.listIsLoaded,
-  listIsError: state => state.siteIsError,
+  listIsError: state => state.listIsError,
   listIsEmpty: state => !(state.siteList && state.siteList.length > 0 && state.listIsLoading)? true : false,
 
   /**

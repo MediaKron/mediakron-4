@@ -1,8 +1,8 @@
 let api = '';
-
-switch (process.env.APP_API) {
+console.log(process.env)
+switch (process.env.NODE_ENV) {
   case 'development':
-        api = 'http://localhost:81/api';
+        api = 'http://localhost/api';
     break;
   case 'remote_dev':
         api = 'https://dev.mediakron.us/api';

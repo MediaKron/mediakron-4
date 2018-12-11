@@ -44,8 +44,8 @@ export const mutations = {
      * List Page.  Set the pager information from the request
      * @param {*} state 
      */
-    listFailed(state, error){
-
+    listError(state, error){
+        console.log(error)
     }
 
 }

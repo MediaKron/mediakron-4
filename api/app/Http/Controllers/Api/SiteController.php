@@ -19,6 +19,7 @@ class SiteController extends Controller
     public function index()
     {
         //
+        return Site::orderBy('created_at', 'ASC')->paginate(50);
         $user = Auth::user();
         if($user->isAdmin()){
             return Site::orderBy('created_at', 'ASC')->paginate(50);

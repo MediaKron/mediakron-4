@@ -1,5 +1,5 @@
 export const progressIncrementPlugin = (store) => {
-  store.subscribeAction((action, state) => {
+  /*store.subscribeAction((action, state) => {
     const ignoredActions = [
       RootActions.LOAD_PROGRESS_INCREMENT,
       RootActions.LOAD_PROGRESS_DECREMENT,
@@ -10,7 +10,7 @@ export const progressIncrementPlugin = (store) => {
     if(ignoredActions.indexOf(action.type) === -1 && action.type.includes('LOAD')){
       store.dispatch(RootActions.LOAD_PROGRESS_INCREMENT);
     }
-  });
+  });*/
 };
 
 export default progressIncrementPlugin;

@@ -46,7 +46,9 @@ export default {
   },
 
   init () {
+    console.log(config)
     axios.defaults.baseURL = config.API_HOSTNAME;
+    console.log(axios.defaults.baseURL)
     const storedToken = localStorage.getItem('user-token');
     if(storedToken){
       this.setToken(storedToken);

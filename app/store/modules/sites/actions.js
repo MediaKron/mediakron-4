@@ -17,6 +17,7 @@ const actions = {
             commit("listLoaded");
           })
           .catch((error) => {
+            console.log(error);
             error.errorMessage = "There was an error loading the site list";
             return dispatch("listError", error);
           });
@@ -36,7 +37,7 @@ const actions = {
             commit("siteLoaded");
           })
           .catch((error) => {
-            error.errorMessage = "There was an error loading the site list";
+            error.errorMessage = "There was an error loading the site";
             return dispatch("siteError", error);
           });
       },

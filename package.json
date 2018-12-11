@@ -9,7 +9,7 @@
     "mediakron:build:stage": "vue-cli-service build --mode staging",
     "mediakron:build:prod": "vue-cli-service build --mode production",
     "mediakron:lint": "vue-cli-service lint",
-    "mediakron:watch": "vue-cli-service serve",
+    "mediakron:watch": "vue-cli-service serve --mode development",
     "mediakron:styleguide": "vue-cli-service styleguidist",
     "mediakron:styleguide:build": "vue-cli-service styleguidist:build"
   },
