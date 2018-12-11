@@ -1,106 +1,50 @@
 <template>
-    <div>
-        <grid-list-skeleton v-if="isLoading && isGridView" />
-        <div v-if="isLoaded && isGridView" class="o-row">
-            <div class="o-col-12@sm o-col-12@md u-text-center" v-if="isEmpty">
-                <p class="c-big-message">You don't have any locations added yet!</p>
-                <router-link :to="{ name: 'add-location' }" class="c-button c-button c-button--primary">Add a Location</router-link>
-            </div>
-            <div v-else v-for="(item) in locationsList" :key="item.id" class="o-col-6@sm o-col-4@md">
-                <div class="c-tile c-tile--item">
-                    <location-block :location="item" />
-                </div>
-            </div>
-            <div class="o-col-12@sm o-col-4@md" v-if="!isEmpty">
-                <div class="c-add__item c-add__item--column@md">
-                    <router-link :to="{ name: 'add-location' }">
-                        <svgicon name="plus"></svgicon>
-                        <span class="c-add__text">Add New Location</span>
-                    </router-link>
-                </div>
-            </div>
-        </div>
-        <div v-if="!isGridView">
-            <div v-if="paginated && isAdmin" class="c-filter-page">
-                <locations-filter-form/>
-            </div>
-            <table-list-skeleton v-if="isLoading" />
-            <div v-if="isLoaded && !isGridView" class="c-tile u-px-0">
-                <div class="c-table__wrapper u-move-up">
-                    <table class="c-table u-mb-0" :class="{ 'c-table--disabled': isEmpty }">
-                        <thead>
-                            <tr>
-                                <th @click="applySort('title')" :class="columnClasses('title')">
-                                    <div>Location
-                                        <svgicon name="chevron"></svgicon>
-                                    </div>
-                                </th>
-                                <th @click="applySort('status')" :class="columnClasses('status')">
-                                    <div>Location Status
-                                        <svgicon name="chevron"></svgicon>
-                                    </div>
-                                </th>
-                                <th @click="applySort('practice_id')" v-if="isAdmin" :class="columnClasses('practice_id')">
-                                    <div>Practice
-                                        <svgicon name="chevron"></svgicon>
-                                    </div>
-                                </th>
-                                <th @click="applySort('state')" :class="columnClasses('state')">
-                                    <div>State
-                                        <svgicon name="chevron"></svgicon>
-                                    </div>
-                                </th>
-                                <th @click="applySort('updated_at')" :class="columnClasses('updated_at')">
-                                    <div>Last Updated
-                                        <svgicon name="chevron"></svgicon>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-if="isEmpty" key="locations-empty-table-row">
-                                <td colspan="5">
-                                    <p class="c-table__message u-text-center">No Locations Found</p>
-                                </td>
-                            </tr>
-                            <tr v-else v-for="(location) in locationsList" :key="location.id">
-                                <td>
-                                    <router-link :to="{ name: 'edit-location', params: { id: location.id }}">{{ location.title }}</router-link>
-                                </td>
-                                <td v-if="isPublished(location.status)">
-                                    <span class="c-entry__dot c-entry__dot--success"></span>Published
-                                </td>
-                                <td v-else-if="isPending(location.status)">
-                                    <span class="c-entry__dot c-entry__dot--warning"></span>Pending review
-                                </td>
-                                <td v-else-if="isDeleted(location.status)">
-                                    <span class="c-entry__dot c-entry__dot--error"></span>Deleted
-                                </td>
-                                <td v-else>
-                                    <span class="c-entry__dot c-entry__dot--neutral"></span>Draft
-                                </td>
-                                <td v-if="isAdmin">
-                                    <span :title="location.practice.title">{{ location.practice.title }}</span>
-                                </td>
-                                <td>{{ location.state }}</td>
-                                <td>{{ location.updated_at | moment('MMMM Do YYYY') }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <pagination-control v-if="paginated && hasMorePages" v-bind="pagination" @requestPage="handlePageRequest" />
-            <div v-if="!paginated" class="u-text-center">
-                <router-link :to="{ name: 'locations' }" class="c-button c-button--primary">View All</router-link>
-            </div>
-        </div>
+    <div class="container">
+        <h1>Site List</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Url</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="site in sites" v-bind:key="site.id">
+                    <th scope="row">{{ site.id }}</th>
+                    <td>{{ site.name }}</td>
+                    <td>{{ site.uri }}</td>
+                    <td>OPERATIONS</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
 <script>
-    export default {
-        components: {}
-    };
+import { mapActions, mapState, mapGetters } from 'vuex';
+export default {
+    components: {},
+    computed:{
+        ...mapGetters('sites',[
+            'isLoaded',
+            'isLoading',
+            'sites'
+        ]),
+        page(){
+            return 1;
+        }
+    },
+    methods:{
+        ...mapActions('sites', [
+            'loadSites'
+        ])
+    },
+    mounted(){
+        this.loadSites({ page: this.page });
+    }
+};
 </script>
 
 <style>

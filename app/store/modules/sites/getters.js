@@ -4,18 +4,20 @@ export const getters = {
   /**
    * List
    */
-  listIsLoading: state => state.listStatus === LocationsStatus.Loading? true : false,
-  listIsLoaded: state => state.listStatus === LocationsStatus.Loaded? true : false,
-  listIsError: state => state.listStatus === LocationsStatus.Failed? true : false,
-  listIsEmpty: state => !(state.locationsList && state.locationsList.length > 0 && state.listStatus !== LocationsStatus.Loading)? true : false,
+  sites: state => state.siteList,
+  listIsLoading: state => state.listIsLoading,
+  listIsLoaded: state => state.listIsLoaded,
+  listIsError: state => state.siteIsError,
+  listIsEmpty: state => !(state.siteList && state.siteList.length > 0 && state.listIsLoading)? true : false,
 
   /**
    * Current
    */
-  currentIsLoading: state => state.listStatus === LocationsStatus.Loading? true : false,
-  currentIsLoaded: state => state.listStatus === LocationsStatus.Loaded? true : false,
-  currentIsError: state => state.listStatus === LocationsStatus.Failed? true : false,
-  currentIsEmpty: state => !(state.locationsList && state.locationsList.length > 0 && state.listStatus !== LocationsStatus.Loading)? true : false,
+  current: state => state.currentSite,
+  currentIsLoading: state => state.currentIsLoading,
+  currentIsLoaded: state => state.currentIsLoaded,
+  currentIsError: state => state.currentIsError,
+  currentIsEmpty: state => !(state.currentSite && state.currentIsLoading)? true : false,
 };
 
 export default getters;
