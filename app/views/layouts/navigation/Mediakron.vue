@@ -13,8 +13,6 @@
       <b-navbar-nav>
         <b-nav-item to="/help/mediakron-basics">About</b-nav-item>
         <b-nav-item to="/help">Help</b-nav-item>
-        <b-nav-item href="mailto:mediakron@bc.edu">Contact</b-nav-item>
-        <b-nav-item to="/profile">Profile</b-nav-item>
         <b-nav-item-dropdown text="Administration" right>
           <b-dropdown-item to="/admin/sites">Sites</b-dropdown-item>
           <b-dropdown-item to="/admin/groups">Groups</b-dropdown-item>
@@ -24,7 +22,7 @@
         <template slot="button-content">
           <em>User</em>
         </template>
-        <b-dropdown-item to="/profile">Profile</b-dropdown-item>
+        <b-nav-item to="/profile">Profile</b-nav-item>
         <b-dropdown-item to="/logout">Log Out</b-dropdown-item>
       </b-nav-item-dropdown>
      </b-navbar-nav>
