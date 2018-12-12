@@ -12,7 +12,8 @@ import router from './router';
 import store from './store';
 import * as svgicon from 'vue-svgicon';
 
-import 'bootstrap/dist/css/bootstrap.css'
+
+// import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './core-css/base.scss';
 
