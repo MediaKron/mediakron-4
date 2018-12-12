@@ -90,7 +90,6 @@ export default {
         ])
     },
     mounted(){
-        console.log(this.site)
         this.getSite(this.site);
     }
 

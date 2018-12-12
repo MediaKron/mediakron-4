@@ -33,7 +33,7 @@ app:
 db:
     image: mysql:5.6
     ports:
-        - 3307:3306
+        - 3306:3306
     volumes:
         - ./db:/docker-entrypoint-initdb.d
         - ./db:/db-imports
@@ -41,9 +41,9 @@ db:
         - data
     environment:
         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_DATABASE: ${DB_DATABASE}
+        MYSQL_USER: ${DB_USER}
+        MYSQL_PASSWORD: ${DB_PASSWORD}
 
 data:
     image: mysql:5.6

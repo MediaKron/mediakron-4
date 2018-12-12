@@ -7,8 +7,6 @@
     "**/.tmp": true,
     "**/.vagrant": true,
     "build": true,
-    "db": true,
-    "docker1": true,
     "node_modules": true,
     "vendor": true
   },
