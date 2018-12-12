@@ -29,7 +29,8 @@ import Navigation from './Navigation'
 import MediakronMenu from './navigation/Mediakron';
 export default {
     components:{
-        Navigation
+        Navigation,
+        MediakronMenu
     }
 
 }
