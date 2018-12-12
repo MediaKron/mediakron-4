@@ -1,19 +1,21 @@
 <template>
     <header id="header" role="banner">
         <div id="navbar">
-            <mediakron-menu v-if="!current" ></mediakron-menu>
-            
-            <nav v-if="current && isLoaded" id="nav-main" role="navigaton" aria-label="Main Navigation">
+            <nav v-if="currentSite && siteIsLoaded" id="nav-main" role="navigaton" aria-label="Main Navigation">
                 <primary></primary>
             </nav>
-            <nav v-if="current && isLoaded"  id="nav-secondary" role="navigaton" aria-label="Secondary Navigation">                       
+            <nav v-if="currentSite && siteIsLoaded"  id="nav-secondary" role="navigaton" aria-label="Secondary Navigation">                     
                 <secondary></secondary>
             </nav>
         </div>
         <div id="branding">
             <span id="site-logo"></span>
             <span id="site-name"></span>
-            <h1 class="page-header"><span id="site-name"><a href="home"></a></span></h1>
+            <h1 class="page-header"><span id="site-name">
+                <a href="home">
+                    {{ currentSite.title }}
+                </a>
+            </span></h1>
             <span id="institution-logo"></span>
         </div>
     </header>  
@@ -22,22 +24,20 @@
 <script>
 import Vue from 'vue';
 import { mapState, mapGetters } from 'vuex';
-import MediakronMenu from './navigation/Mediakron';
 import Primary from './navigation/Primary';
 import Secondary from './navigation/Secondary';
 export default Vue.extend({
     components:{
-        MediakronMenu,
         Primary,
         Secondary
     },
     computed:{
         ...mapState('sites', [
-            'current'
+            'currentSite'
         ]),
         ...mapGetters('sites', [
-            'isLoading',
-            'isLoaded'
+            'siteIsLoading',
+            'siteIsLoaded'
         ])
     }
 });

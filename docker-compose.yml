@@ -13,7 +13,7 @@ php:
     expose:
         - 9000
     environment:
-        DB_HOST: localhost
+        DB_HOST: db
         DB_NAME: mediakron
         DB_USER: mediakron_user
         DB_PASS: mediakron_pw

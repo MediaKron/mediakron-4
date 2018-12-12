@@ -29,10 +29,11 @@ const actions = {
        * @param {*} id 
        */
     getSite({ commit, dispatch }, id) {
-        commit("listLoading");
+        commit("siteLoading");
     
-        return api.get('sites/'+id)
+        return api.get('site/'+id)
           .then((response) => {
+            console.log(response.data);
             commit("siteLoad", response.data);
             commit("siteLoaded");
           })

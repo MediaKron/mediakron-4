@@ -71,17 +71,17 @@ var baseRoutes = [
             component: Confirm
         },
         {
-            path: '/sites',
+            path: '/admin/sites',
             name: 'list-sites',
             component: ListSites
         },
         {
-            path: '/sites/new',
+            path: '/admin/sites/new',
             name: 'create-site',
             component: CreateSite
         },
         {
-            path: '/sites/:id',
+            path: '/admin/sites/:id/edit',
             name: 'edit-site',
             component: EditSite,
             props: true
@@ -96,7 +96,7 @@ var baseRoutes = [
   ];
 
   // Get the item routes
-  baseRoutes.push(browseRoutes);
+  //baseRoutes.push(browseRoutes);
   //baseRoutes.push(settingsRoutes);
   baseRoutes.push(itemsRoutes);
 
@@ -113,7 +113,7 @@ baseRoutes.push({
       }
     ]
 });
-console.log(baseRoutes);
+
 const router = new Router({
     mode: 'history',
     routes: baseRoutes

@@ -1,5 +1,6 @@
 <template>
-    <div>This is thefull screen component
+    <div>
+        This is thefull screen component
 
         {{ item.title }}
         <ul>

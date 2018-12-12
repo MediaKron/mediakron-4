@@ -1,6 +1,6 @@
 import { MutationTree } from 'vuex';
-import api from '@/store/utils/api';
-import { getInitialState } from '@/store/modules/users';
+import Site from './site';
+import { getInitialState } from '@/store/modules/sites';
 
 export const mutations = {
 
@@ -29,7 +29,7 @@ export const mutations = {
      * @param {*} state 
      */
     listLoad(state, data){
-        state.siteList = data;
+        state.siteList = data.data.map(site => new Site(site));
     },
 
     /**
@@ -45,6 +45,42 @@ export const mutations = {
      * @param {*} state 
      */
     listError(state, error){
+        console.log(error)
+    },
+
+    /**
+     * Called when the list is loading
+     * @param {*} state 
+     */
+    siteLoading(state){
+        state.siteIsLoading = true;
+        state.siteIsLoaded = false;
+        state.siteIsFailed = false;
+    },
+
+    /**
+     * Called after the list has loaded
+     * @param {*} state 
+     */
+    siteLoaded(state){
+        state.siteIsLoading = false;
+        state.siteIsLoaded = true;
+        state.siteIsFailed = false;
+    },
+
+    /**
+     * Called with the data to load as the current list
+     * @param {*} state 
+     */
+    siteLoad(state, data){
+        state.currentSite = new Site(data);
+    },
+
+    /**
+     * List Page.  Set the pager information from the request
+     * @param {*} state 
+     */
+    siteError(state, error){
         console.log(error)
     }
 
