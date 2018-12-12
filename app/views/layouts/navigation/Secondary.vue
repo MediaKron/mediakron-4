@@ -175,7 +175,7 @@
             </button>
         </li>
 
-        <li v-if="logo" id="mk-logo-menu" class="level=1">
+        <li v-if="currentSite.mklogo" id="mk-logo-menu" class="level=1">
             <a href="http://mediakron.bc.edu" class="tooltip--sw" data-tooltip="About MediaKron">
             <img id="mediakron-logo" src="/images/MKlogo.png" alt="MediaKron Logo"></a>
         </li>
@@ -196,7 +196,7 @@ export default Vue.extend({
         }
     },
     computed:{
-        ...mapGetters('profile', [
+        ...mapGetters('users/profile', [
             'isGuest',
             'isAdmin',
             'isMember',

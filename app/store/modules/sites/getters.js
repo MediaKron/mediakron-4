@@ -13,11 +13,11 @@ export const getters = {
   /**
    * Current
    */
-  current: state => state.currentSite,
-  currentIsLoading: state => state.currentIsLoading,
-  currentIsLoaded: state => state.currentIsLoaded,
-  currentIsError: state => state.currentIsError,
-  currentIsEmpty: state => !(state.currentSite && state.currentIsLoading)? true : false,
+  currentSite: state => state.currentSite,
+  siteIsLoading: state => state.siteIsLoading,
+  siteIsLoaded: state => state.siteIsLoaded,
+  siteIsError: state => state.siteIsError,
+  siteIsEmpty: state => !(state.currentSite && state.siteIsLoading)? true : false,
 };
 
 export default getters;

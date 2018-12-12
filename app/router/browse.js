@@ -7,11 +7,6 @@ export default {
     title: 'Site',
     props: true,
     children: [
-      {
-        path: 'browse',
-        name: 'item',
-        component: Browse,
-        props: true,
-      },
+      
     ],
 }

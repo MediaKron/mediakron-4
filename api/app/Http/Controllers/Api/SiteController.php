@@ -74,7 +74,12 @@ class SiteController extends Controller
     public function show($id)
     {
         //
-        return Site::where('id', $id)->orderBy('created_at', 'ASC')->paginate(10);
+        $site = Site::find($id);
+        if(!$site){
+            $site = Site::where('uri', $id)->first();
+        }
+        if(!$site) abort(404);
+        return $site;
     }
 
     /**

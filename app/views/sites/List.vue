@@ -13,9 +13,11 @@
             <tbody>
                 <tr v-for="site in sites" v-bind:key="site.id">
                     <th scope="row">{{ site.id }}</th>
-                    <td>{{ site.name }}</td>
+                    <td><router-link :to="{ name: 'homepage', params: { site: site.uri } }">{{ site.title }}</router-link></td>
                     <td>{{ site.uri }}</td>
-                    <td>OPERATIONS</td>
+                    <td>
+                        <router-link :to="{ name: 'edit-site', params: { id: site.id } }"><font-awesome-icon icon="coffee" /></router-link>
+                    </td>
                 </tr>
             </tbody>
         </table>
