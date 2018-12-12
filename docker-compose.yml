@@ -1,8 +1,8 @@
 nginx:
     build: ./docker/nginx/
     ports:
-        - 80:80
-        - 443:443
+        - 81:80
+        - 444:443
     links:
         - php
     volumes_from:
@@ -33,7 +33,7 @@ app:
 db:
     image: mysql:5.6
     ports:
-        - 3306:3306
+        - 3307:3306
     volumes:
         - ./db:/docker-entrypoint-initdb.d
         - ./db:/db-imports
