@@ -1,8 +1,8 @@
 <template>
     <div class="home-container background-image background-image-darkened" style="background-image: url(https://mediakron.bc.edu/files/help/styles/double/public/help_6uDmgd.jpg);">
-        <img src="@/assets/images/mk-banner-white.png" />
-        <h1 class="home-title text-uppercase sr-only">MediaKron</h1>
-        <h2 class="subtitle">A Collaborative Portfolio and Curation Platform</h2>
+        <img class="mk-logo" src="@/assets/images/mk-banner-white.png" />
+        <h1 class="home-title sr-only">MediaKron</h1>
+        <h2 class="subtitle mt-3">A Collaborative Portfolio and Curation Platform</h2>
     </div>
 </template>
  
@@ -33,15 +33,15 @@
         z-index: 2;
     }
     
-    .home-title {
-        font-size: 7vw;
-    }
-    
     .subtitle {
         font-size: 3vw;
     }
     
     #branding {
         display: none;
+    }
+
+    .mk-logo {
+        z-index: 2;
     }
 </style>
