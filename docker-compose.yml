@@ -14,9 +14,9 @@ php:
         - 9000
     environment:
         DB_HOST: db
-        DB_NAME: mediakron
-        DB_USER: mediakron_user
-        DB_PASS: mediakron_pw
+        DB_NAME: ${DB_DATABASE}
+        DB_USER: ${DB_USERNAME}
+        DB_PASS: ${DB_PASSWORD}
         PHP_ENV: ${APP_ENV}
     links:
         - db
@@ -42,7 +42,7 @@ db:
     environment:
         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         MYSQL_DATABASE: ${DB_DATABASE}
-        MYSQL_USER: ${DB_USER}
+        MYSQL_USER: ${DB_USERNAME}
         MYSQL_PASSWORD: ${DB_PASSWORD}
 
 data:
