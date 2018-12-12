@@ -1,10 +1,10 @@
 <template>
 
-<b-navbar toggleable="md" type="dark" class="px-2 py-0" >
+<b-navbar toggleable="md" type="dark" class="px-2 py-0"  fixed="top">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-  <b-navbar-brand href="/">MediaKron</b-navbar-brand>
+  <b-navbar-brand href="/" class="text-uppercase">MediaKron</b-navbar-brand>
 
   <b-collapse is-nav id="nav_collapse">
 
@@ -22,14 +22,14 @@
         <template slot="button-content">
           <em>User</em>
         </template>
-        <b-nav-item to="/profile">Profile</b-nav-item>
+        <b-dropdown-item to="/profile">Profile</b-dropdown-item>
         <b-dropdown-item to="/logout">Log Out</b-dropdown-item>
       </b-nav-item-dropdown>
      </b-navbar-nav>
 
     <b-navbar-nav class="ml-auto">
      
-       <b-nav-item href="http://www.bc.edu" id="bclogo"><img src="/bundles/mediakron/img/bclogo.png" alt="Boston College"></b-nav-item>
+       <b-nav-item href="http://www.bc.edu" id="bclogo"> <img class="bc-logo img-fluid" src="@/assets/images/BC-logo.png" /></b-nav-item>
     </b-navbar-nav>
 
   </b-collapse>
@@ -55,4 +55,9 @@
     .navbar {
       background-color: var(--mk-primary-color);;
     }
+
+    .bc-logo {
+        width:200px;
+    }
+
 </style>
