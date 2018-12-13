@@ -5,12 +5,6 @@
                 <div id="navbar">
                     <mediakron-menu></mediakron-menu>
                 </div>
-                <div id="branding">
-                    <span id="site-logo"></span>
-                    <span id="site-name"></span>
-                    <h1 class="page-header"><span id="site-name"><a href="home"></a></span></h1>
-                    <span id="institution-logo"></span>
-                </div>
             </header>  
                       
             <div id="wrapper-main">

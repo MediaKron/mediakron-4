@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container mt-5">
         <h1>Site List</h1>
         <table class="table table-striped">
             <thead>

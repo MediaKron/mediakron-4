@@ -17,7 +17,7 @@
     }
 </script>
 
-<style>
+<style >
     .home-container {
         display: flex;
         flex-direction: column;
@@ -36,10 +36,6 @@
     .subtitle {
         font-size: 3em;
         text-align:center;
-    }
-    
-    #branding {
-        display: none;
     }
 
     .mk-banner {

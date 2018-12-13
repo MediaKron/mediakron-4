@@ -44,23 +44,10 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped lang="scss">
-    header{
-        background:black;
-        #branding{
-            display:block;
-        }
-        #site-name{
-            display: inline-block;
-            padding-top: 0.3125rem;
-            padding-bottom: 0.3125rem;
-            margin-right: 1rem;
-            font-size: 1.25rem;
-            line-height: inherit;
-            white-space: nowrap;
-            a{
-                color:#fff;
-            }
-        }
-    }
+<style>
+
+
+#branding {
+    display: none;
+}
 </style>
