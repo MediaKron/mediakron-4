@@ -9,6 +9,8 @@ class Item extends BaseModel
 {
     use \App\Models\Traits\Item\Import;
 
+    static $select_with = ['metadata', 'image', 'audio', 'video', 'text', 'timeline', 'map'];
+
     /**
      * The "booting" method of the model.
      *
@@ -20,6 +22,26 @@ class Item extends BaseModel
 
         // Allow us to set permissions via the global scope
         static::addGlobalScope(new ItemScope);
+    }
+
+    /**
+     * Set options attribute
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function setOptionsAttribute($value){
+        $this->attributes['options'] = json_encode($value);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function getOptionsAttribute($value){
+        return json_decode($value);
     }
 
     /**
@@ -86,9 +108,29 @@ class Item extends BaseModel
      *
      * @var array
      */
+    public function text()
+    {
+        return $this->hasOne('App\Models\Attributes\Text');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     public function map()
     {
         return $this->hasOne('App\Models\Attributes\Map');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function timeline()
+    {
+        return $this->hasOne('App\Models\Attributes\timeline');
     }
 
     /**
@@ -101,27 +143,6 @@ class Item extends BaseModel
         return $this->hasOne('App\Models\Attributes\Metadata');
     }
 
-    /**
-     * Get the roles for the user
-     *
-     * @param [type] $value
-     * @return void
-     */
-    public function getOptionsAttribute($value)
-    {
-        return unserialize($value);
-    }
-
-    /**
-     * Set the roles for the user as a serialized array
-     *
-     * @param [type] $roles
-     * @return void
-     */
-    public function setOptionsAttribute($metadata)
-    {
-        $this->attributes['options'] = serialize($metadata);
-    }
 
     /**
      * Get the roles for the user
@@ -146,62 +167,13 @@ class Item extends BaseModel
     }
 
     /**
-     * Get the roles for the user
-     *
-     * @param [type] $value
-     * @return void
-     */
-    public function getMetadataAttribute($value)
-    {
-        return unserialize($value);
-    }
-
-    /**
-     * Set the roles for the user as a serialized array
-     *
-     * @param [type] $roles
-     * @return void
-     */
-    public function setMetadataAttribute($metadata)
-    {
-        $this->attributes['metadata'] = serialize($metadata);
-    }
-
-    /**
-     * Get the roles for the user
-     *
-     * @param [type] $value
-     * @return void
-     */
-    public function getDataAttribute($value)
-    {
-        return unserialize($value);
-    }
-
-    /**
-     * Set the roles for the user as a serialized array
-     *
-     * @param [type] $roles
-     * @return void
-     */
-    public function setDataAttribute($metadata)
-    {
-        $this->attributes['data'] = serialize($metadata);
-    }
-
-    /**
      * Get the parents
      *
      * @return void
      */
     public function parents()
     {
-      $site = site();
-      $foreign_key = 'Relationship.parent_id';
-      if($site){
-        $foreign_key = $site->uri . '_Relationships.parent_id';
-      }
-      return $this->hasMany('App\Relationship', $foreign_key);
+      return $this->hasMany('App\Relationship');
     }
 
     /**
@@ -211,10 +183,6 @@ class Item extends BaseModel
      */
     public function children()
     {
-        $foreign_key = 'Relationship.child_id';
-        if ($site) {
-            $foreign_key = $site->uri . '_Relationships.child_id';
-        }
-        return $this->hasMany('App\Relationship', $foreign_key);
+        return $this->hasMany('App\Relationship');
     }
 }

@@ -10,6 +10,8 @@ use App\Models\Site;
 use App\Models\User;
 use App\Http\Requests\Admin\ItemRequest; 
 
+use Log;
+
 
 
 class ItemController extends Controller
@@ -52,7 +54,7 @@ class ItemController extends Controller
             return $item;
         }catch(\Exception $e){
             // 
-            Log::info('Access denied to user when creating item');
+            Log::info('Access denied to user when creating item.' . $e->getMessage());
             return response()->json(['error' => $e->getMessage() ]);
         }
     }
@@ -67,8 +69,8 @@ class ItemController extends Controller
     {
         //
         try{
-            $item = Item::findOrFail($id);
-            $item->canView();
+            $item = Item::with(Item::$select_with)->findOrFail($id);
+            //$item->canView();
             return $item;
         }catch(\Exception $e){
             // 

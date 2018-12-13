@@ -14,7 +14,7 @@ class Audio extends BaseModel
 
     static function mediakron_v3($data, $item_id){
         $audio = new static();
-        $audio->fill($data);
+        $audio->fill((array) $data);
         $audio->item_id = $item_id;
         $audio->save();
     }

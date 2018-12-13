@@ -52,7 +52,7 @@ class Mediakron3Migration extends Command
             $new_site = Site::mediakron_v3($site);
         }
 
-        /*$sites = Site::all();
+        $sites = Site::all();
         foreach($sites as $site){
             $id = $site->uri . '_Items';
             if(DB::connection('mediakron_v3')->getSchemaBuilder()->hasTable($id)){
@@ -62,7 +62,7 @@ class Mediakron3Migration extends Command
                 }
             }
             
-        }*/
+        }
 
     }
 }

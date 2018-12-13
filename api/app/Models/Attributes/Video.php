@@ -14,7 +14,7 @@ class Video extends BaseModel
 
     static function mediakron_v3($data, $item_id){
         $video = new static();
-        $video->fill($data);
+        $video->fill((array) $data);
         $video->item_id = $item_id;
         $video->save();
     }

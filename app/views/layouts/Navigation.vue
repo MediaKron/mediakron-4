@@ -4,7 +4,8 @@
             <nav v-if="currentSite && siteIsLoaded" id="nav-main" role="navigaton" aria-label="Main Navigation">
                 <primary></primary>
             </nav>
-            <nav v-if="currentSite && siteIsLoaded"  id="nav-secondary" role="navigaton" aria-label="Secondary Navigation">                     
+            <nav  id="nav-secondary" role="navigaton" aria-label="Secondary Navigation">      
+                site is loaded               
                 <secondary></secondary>
             </nav>
         </div>
@@ -43,6 +44,23 @@ export default Vue.extend({
 });
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    header{
+        background:black;
+        #branding{
+            display:block;
+        }
+        #site-name{
+            display: inline-block;
+            padding-top: 0.3125rem;
+            padding-bottom: 0.3125rem;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            line-height: inherit;
+            white-space: nowrap;
+            a{
+                color:#fff;
+            }
+        }
+    }
 </style>

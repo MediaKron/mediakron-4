@@ -9,12 +9,12 @@ class Image extends BaseModel
     //
 
     public $fillable = [
-        'uri', 'filename', 'type', 'mime', 'extension'
+        'url', 'filename', 'type', 'mime', 'extension'
     ];
 
     static function mediakron_v3($data, $item_id){
         $image = new static();
-        $image->fill($data);
+        $image->fill((array) $data);
         $image->item_id = $item_id;
         $image->save();
     }

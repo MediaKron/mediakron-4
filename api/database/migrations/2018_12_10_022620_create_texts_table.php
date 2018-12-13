@@ -15,9 +15,10 @@ class CreateTextsTable extends Migration
     {
         Schema::create('texts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('url');
-            $table->string('filename');
-            $table->string('type');
+            $table->string('url')->nullable();
+            $table->integer('item_id');
+            $table->string('filename')->nullable();
+            $table->string('type')->nullable();
             $table->string('mime')->nullable();
             $table->string('extension')->nullable();
             $table->timestamps();

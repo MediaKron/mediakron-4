@@ -16,8 +16,11 @@ class Site
      */
     public function handle($request, Closure $next)
     {
-        $site = $request->route()->parameter('site');
-        $site = SiteModel::where('uri', $site)->first();
+        $site_id = $request->route()->parameter('site');
+        $site = SiteModel::where('uri', $site_id)->first();
+        if(!$site) $site = SiteModel::where('id', $site_id)->first();
+
+        if(!$site) abort(404);
         app()->instance('App\Models\Site', $site);
         return $next($request);
     }

@@ -9,12 +9,12 @@ class Text extends BaseModel
     //
 
     public $fillable = [
-        'uri', 'filename', 'type', 'mime', 'extension'
+        'url', 'filename', 'type', 'mime', 'extension'
     ];
 
     static function mediakron_v3($data, $item_id){
         $text = new static();
-        $text->fill($data);
+        $text->fill((array) $data);
         $text->item_id = $item_id;
         $text->save();
     }

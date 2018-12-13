@@ -17,19 +17,19 @@ class CreateMetadataTable extends Migration
             $table->increments('id');
             $table->integer('item_id');
             // metadata
-            $table->text('source');
-            $table->text('citation');
-            $table->text('description');
-            $table->text('published');
-            $table->text('creator');
-            $table->text('publisher');
-            $table->text('contributor');
-            $table->text('format');
-            $table->text('identifier');
-            $table->text('language');
-            $table->text('relation');
-            $table->text('coverage');
-            $table->text('rights');            
+            $table->text('source')->nullable();
+            $table->text('citation')->nullable();
+            $table->text('description')->nullable();
+            $table->text('published')->nullable();
+            $table->text('creator')->nullable();
+            $table->text('publisher')->nullable();
+            $table->text('contributor')->nullable();
+            $table->text('format')->nullable();
+            $table->text('identifier')->nullable();
+            $table->text('language')->nullable();
+            $table->text('relation')->nullable();
+            $table->text('coverage')->nullable();
+            $table->text('rights')->nullable();
             $table->timestamps();
         });
     }
