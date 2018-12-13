@@ -11,7 +11,7 @@
     <!-- Right aligned nav items -->
    
       <b-navbar-nav>
-        <b-nav-item to="/help/mediakron-basics">About</b-nav-item>
+        <b-nav-item to="/about">About</b-nav-item>
         <b-nav-item to="/help">Help</b-nav-item>
         <b-nav-item-dropdown text="Administration" right>
           <b-dropdown-item to="/admin/sites">Sites</b-dropdown-item>

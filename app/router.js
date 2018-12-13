@@ -12,6 +12,8 @@ import Layout from './views/layouts/Layout.vue';
 
 // Home page vue
 import Home from './views/Home.vue';
+import About from './views/About.vue';
+import Help from './views/Help.vue';
 
 // Authentication Views
 import Login from './views/auth/Login.vue';
@@ -90,7 +92,17 @@ var baseRoutes = [
           path: '/',
           name: 'mediakron-home',
           component: Home
-        }
+        },
+        {
+          path: '/about',
+          name: 'About',
+          component: About
+        },
+        {
+          path: '/help',
+          name: 'Help',
+          component: Help
+        },
       ]
     }
   ];
