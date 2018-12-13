@@ -1,6 +1,5 @@
 <template lang="html">
     <div class="container mt-5">
-
          <h1>User Profile: {{ user.name }}</h1>
          <h2>Details</h2>
          <b-form-group id="exampleInputGroup1"
@@ -15,26 +14,32 @@
               {{ user.email }}
             </b-form-input>
          </b-form-group>
-        
         <h2>Sites</h2>
-        <b-list-group v-for="(site, index) in sites" :key="index" class="mb-1" tag="ul">
-            <b-list-group-item tag="li"><router-link to="#" class="font-weight-bold ">{{ site.name }}</router-link> (role: {{ site.role }})</b-list-group-item>
-        </b-list-group>
-
-
-        <div v-if="render">
-            hello
-        </div>
-        <b-button @click="render = !render">Toggle v-if</b-button>
-        <form @submit.prevent="submitForm">
-            <input type="text" v-model="form.name">
-            <input type="text" v-model="form.role">
-            <b-button type="submit" name="button" variant="primary">Submit fake form</b-button>
-        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Url</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="site in sites" v-bind:key="site.id">
+                    <th scope="row">{{ site.id }}</th>
+                    <td><router-link :to="{ name: 'homepage', params: { site: site.uri } }">{{ site.title }}</router-link></td>
+                    <td>{{ site.uri }}</td>
+                    <td>
+                        <router-link :to="{ name: 'edit-site', params: { id: site.id } }"><font-awesome-icon icon="coffee" /></router-link>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
 <script>
+import { mapActions, mapState, mapGetters } from 'vuex';
 export default {
     data() {
         return {
@@ -42,45 +47,22 @@ export default {
                 name: 'Austin Bailey',
                 email: 'baileyau@bc.edu'
             },
-            sites: [
-                {
-                    link: 'austin',
-                    name: "Austin's Site",
-                    role: 'administrator'
-                },
-                {
-                    link: 'demo',
-                    name: 'Mediakron Demo',
-                    role: 'viewer'
-                }
-            ],
-            render: true,
-            form: {
-                name: '',
-                role: '',
-            }
         }
-    },
-    created() {
-        // Runs immediately, before HTML is rendered
-        console.log(this.user.email)
-        this.customFunction()
     },
     mounted() {
-        // Runs after the DOM is mounted, after created()
+        this.loadSites({ page: this.page });
     },
     methods: {
-        // Methods for whatever
-        customFunction() {
-            // Do whatever
-            console.log("In custom function")
-        },
-        submitForm(event) {
-            console.log(this.form)
-        }
+        ...mapActions('sites', [
+            'loadSites'
+        ])
     },
     computed: {
-        // Basically replaces mustache code to clean it up
+        ...mapGetters('sites',[
+            'isLoaded',
+            'isLoading',
+            'sites'
+        ]),
     }
 }
 </script>

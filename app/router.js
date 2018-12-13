@@ -35,6 +35,8 @@ import settingsRoutes from './router/settings';
 import NotFound from './views/404.vue';
 import store from './store';
 
+import VueDemo from './views/VueDemo.vue';
+
 Vue.use(Router);
 
 /**
@@ -90,6 +92,11 @@ var baseRoutes = [
           path: '/',
           name: 'mediakron-home',
           component: Home
+        },
+        {
+          path: '/vue-demo',
+          name: 'vue-demo',
+          component: VueDemo,
         }
       ]
     }
