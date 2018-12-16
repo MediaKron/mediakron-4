@@ -36,10 +36,15 @@ class User extends Model {
    * into a static function that spins out a new
    * object when called
    */
-  guest() {
-    this.set("id", 0);
-    this.set("name", "Guest");
-    this.set("role", "guest");
+  static guest() {
+    return new User({
+      id: 0,
+      email: "",
+      name: "guest",
+      role: "guest",
+      bc: false,
+      canvas: false
+    });
   }
 
 

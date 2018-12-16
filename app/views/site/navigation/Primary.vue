@@ -1,39 +1,8 @@
 <template>
-    <div>
-        <ul class="main-menu" role="navigation" aria-label="Main menu">
-            <li v-if="!hasItems && access('can change site settings')" class="add-menu-navbar no-menus">
-                <a href="/settings/navigation"> Add Menus </a>
-            </li>
-            <li>
-    
-                <button v-if="hasItems" type="button" id="menu-toggle" class="js-menu-trigger btn-no-style">
-                    <span class="mk-icon mk-menu"></span> Menu
-                </button>
-    
-                <ul class="js-menu main-menu-sidebar">
-                    <li class="home-link menu-item">
-                        <a href="/" class="contrast-tint">Home</a>
-                    </li>
-    
-                    <li v-for="item in items" v-bind:key="item.id" class="menu-item">
-                        <a :href="item.uri">{{ item.title }}</a>
-                    </li>
-    
-                    <li v-if="access('can change site settings')" class="add-menu-navbar menu-item">
-                        <a href="#settings/navigation">
-                            <span class="mk-icon mk-edit"></span> Edit Menus
-                        </a>
-                    </li>
-    
-                    <li class="close-button">
-                        <button><span class="mk-icon mk-close"></span></button>
-                    </li>
-                </ul>
-    
-            </li>
-        </ul>
-        <div class="js-menu-screen sliding-menu-fade-screen"></div>
-    </div>
+    <b-navbar-nav right="true" class="primary-menu">
+        <b-nav-item v-if="!hasItems && access('can change site settings')" to="/settings/navigation">Add Menus</b-nav-item>
+        <b-nav-item v-for="item in items" v-bind:key="item.id" class="menu-item" :to="item.url">Menu {{item.id}}</b-nav-item>
+    </b-navbar-nav>
 </template>
 
 <script>
@@ -47,13 +16,13 @@
                 return this.items.length > 0;
             },
             items() {
-                return this.currentSite.menu;
+                return this.currentSite.primary;
             },
             ...mapGetters('sites', [
                 'currentSite',
-                'currentIsLoaded'
+                'siteIsLoaded'
             ]),
-            ...mapGetters('profile', [
+            ...mapGetters('users/profile', [
                 'isGuest',
                 'isAdmin',
                 'access'

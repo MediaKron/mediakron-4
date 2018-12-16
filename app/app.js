@@ -26,12 +26,11 @@ import RavenVue from 'raven-js/plugins/vue';
 import api from '@/store/utils/api';
 import BootstrapVue from 'bootstrap-vue'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import icons from '@/config/icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee)
-
+// Invoke the icons initialization
+icons();
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 

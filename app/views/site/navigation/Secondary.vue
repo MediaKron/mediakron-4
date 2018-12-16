@@ -1,202 +1,71 @@
 <template>
-    <div>
-        wrapper
-        <ul class="secondary-menu" role="navigation">
-            secondary
-            
-            <li v-if="canBrowse" class="level-1 browse-menu">
-                <router-link to="browse" title="Browse All Site Content">
-                    <span class="mk-icon mk-grid level-1"></span>
-                    <span class="link-text"> Browse</span> 
-                </router-link>
-            </li>  
+    <b-navbar-nav right="true" class="secondary-menu">
+        <b-nav-item v-if="canBrowse" to="/browse">
+            <font-awesome-icon icon="list"/> 
+            <span class="sr-only"> Browse</span>
+        </b-nav-item>
+        <b-nav-item v-if="canBrowse && changeCount > 0" to="/updates"><sup>{{ changeCount }}</sup> Changes</b-nav-item>
+        <b-nav-item v-if="currentSite.tags && tags.length > 0" to="/tags"> Tags</b-nav-item>
+        <b-nav-item v-if="currentSite.search" to="/search">
+            <font-awesome-icon icon="search"/> 
+            <span class="sr-only"> Search</span>
+        </b-nav-item>
+        <b-nav-item v-if="access('can create content')" to="/settings/content/add">
+            <font-awesome-icon icon="plus-square"/> 
+            <span class="sr-only"> Add</span>
+        </b-nav-item>
+        <b-nav-item v-if="access('can create content') || access('can archive content') || access('can import')" to="/settings"> 
+            <font-awesome-icon icon="cogs"/> 
+            <span class="sr-only"> Settings</span>
+        </b-nav-item>
 
-            <li v-if="canBrowse && changeCount > 0" class="level-1 updates-menu">
-                <router-link to="updates">
-                    <span class="mk-icon mk-updates level-1"></span>
-                    <sup>{{ changeCount }}</sup>
-                    <span class="update-text link-text">Changes </span> 
-                </router-link>          
-            </li>
-
-            <li v-if="currentSite.tags && tags.length > 0" class="level-1">
-                <router-link to="tags" class="tags-menu">
-                    <span class="mk-icon mk-tag level-1"></span>
-                    <span class="link-text"> Tags</span>
-                </router-link>
-            </li>
-                
-            <li v-if="currentSite.search" id="search" class="level-1">
-                <button class="toggle-search btn-no-style" aria-label="Search Button"><span class="mk-icon mk-search level-1"></span><span class="link-text"> Search</span></button>
-            </li>
-
-                
-            <li v-if="access('can create content')" class="level-1 add-content-button nav-left">
-                    <a href="settings/content/add" title="Add Content"><span class="mk-icon mk-add level-1"></span><span class="link-text">Add</span>  
-                    </a>
-            </li>
-            
-
-            <li v-if="access('can create content')" class="level-1 add-content-button nav-top ">
-                <a href="settings/content/add" title="Add Content">
-                    <span class="mk-icon mk-add level-1"></span>
-                    <span class="link-text">Add</span>  
-                </a>
-            </li>
-
-
-            <li v-if="access('can create content') || access('can archive content') || access('can import')" id="settings-button" class="level-1">
-                <a href="/settings"><span class="mk-icon mk-settings level-1"></span><span class="link-text" >Settings</span></a>
-            </li>
-
-            <li v-if="isGuest" id="user" class="level-1">
-                <button class="btn-no-style open-modal"><span class="mk-icon mk-user level-1"></span><span class="link-text"> User</span></button>
-
-                <ul class="modal-content dropdown-container" data-visually-hidden="true">
-
-                    <li class="modal-title dropdown-title">
-                        <span class="mk-icon mk-user"></span> User Information
-                    </li> 
-                
-                    <li v-if="!isGuest" class="dropdown-item user-details"> 
-                        {{ user.name }} <span class="user-role">Role: {{ user.role }}</span>
-                    </li> 
-                
-                    <li class="close-modal">
-                        <button class="btn btn-sm btn-default" aria-label="Close">
-                            <span class="mk-icon mk-close"></span>
-                            <span class="button-text sr-only"> Close</span> 
-                        </button>
-                    </li>
-                
-                    <li class="dropdown-item  my-content-menu">
-                        <a href="/mycontent" ><span class="mk-icon mk-grid"></span><span> My Content</span></a>
-                    </li> 
-
-                    <li class="dropdown-item ">
-                        <a href="redirect/profile"><span class="mk-icon mk-tools"></span> My Account</a>
-                    </li>
-
-                    <li v-if="access('can change site settings')" class="dropdown-item ">
-                        <a href="/settings/users" class=""> <span class="mk-icon mk-settings"></span> Manage All Users</a>
-                    </li>  
-
-                    <li v-if="!isGuest" class="dropdown-item ">
-                        <a href="/redirect/logout" class=""> <span class="mk-icon mk-unpublish"></span> Sign Out </a>
-                    </li>
-                </ul>        
-            </li>
-
-            <li v-if="currentSite.user && isGuest"  id="settings-button" class="level-1">
-                <a href="/login" title="Log into this site"><span class="mk-icon mk-user" ></span><span class="link-text"> Login</span></a>
-            </li>
-
-
-            
-
-            <li v-if="!isGuest" id="help-menu" class="level-1">
-                <button class="btn-no-style open-modal"  aria-label="Help Button">
-                    <span class="mk-icon mk-help level-1"></span><span class="link-text"> Help</span>
-                </button>
-                <ul class="modal-content dropdown-container" data-visually-hidden="true">
-
-                    <li class="modal-title dropdown-title">
-                        <span class="mk-icon mk-help"></span> MediaKron Support
-                    </li>
-
-                    <li class="close-modal">
-                        <button class="btn btn-sm btn-default" aria-label="Close">
-                            <span class="mk-icon mk-close"></span>
-                            <span class="button-text sr-only"> Close</span> 
-                        </button>
-                    </li>
-
-                    <li class="dropdown-item email-support">
-                        <a href="mailto:mediakron@bc.edu"><span class="mk-icon mk-mail"></span> Email mediakron@bc.edu</a>
-                    </li>
-
-                    <li class="dropdown-item ">
-                        <a href="http://mediakron.bc.edu/help"><span class="mk-icon mk-info"></span> Visit Support Site</a>
-                    </li>
-                    
-                    <li class="dropdown-item dropdown-header">
-                        Help Categories
-                        <ul>
-                            <li>
-                                <a href="http://tmkp2.bc.edu/help/mediakron-basics">About MediaKron</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/working-with-content">Working with Content</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/site-administration">Administering Your Site</a>
-                            </li>
-                        </ul>
-                    </li>
-                
-                    <li class="dropdown-item dropdown-header">
-                        For Content Editors
-                        <ul>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/working-with-content/content-types/stories-overview">Working with stories</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/working-with-content/content-types/folder-overview">Working with folders</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/working-with-content/content-types/map-overview">Working with maps</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/working-with-content/content-types/timeline-overview">Working with timelines</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/working-with-content/content-types">Other content types</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/working-with-content/revisions">Recovering previous versions</a>
-                            </li>
-                        </ul>
-                    </li>
-                
-                    <li class="dropdown-item dropdown-header">
-                        For Site Administrators
-                        <ul>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/site-administration/managing-users">Adding users or classes to a site</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/site-administration/hompage-overview">Customizing the homepage</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/site-administration/menu-overview">Adding Menus</a>
-                            </li>
-                            <li>
-                                <a href="https://mediakron.bc.edu/help/site-administration/site-appearance">Changing site colors/logo</a>
-                            </li>
-                            <li>
-                                <a href="http://tmkp2.bc.edu/help/site-administration/mediakron-to-canvas-overview">Integrating MediaKron with Canvas</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <li v-if="currentSite.fullscreen" id="full-screen-menu" class="level-1">
-                <button id="full-screen" title="Full screen On/Off">
-                    <span class="mk-icon mk-fullscreen-open level-1" ></span>
-                    <span class="link-text"> Full </span>
-                    
-                </button>
-            </li>
-
-            <li v-if="currentSite.mklogo" id="mk-logo-menu" class="level=1">
-                <a href="http://mediakron.bc.edu" class="tooltip--sw" data-tooltip="About MediaKron">
-                <img id="mediakron-logo" src="/images/MKlogo.png" alt="MediaKron Logo"></a>
-            </li>
-        </ul>
-
-        <div class="menu-bg"></div>
-    </div>
+        <b-nav-item-dropdown v-if="currentSite.user && isGuest"  text="User" right>
+          <template slot="button-content">
+            <font-awesome-icon icon="user"/> 
+            <span class="sr-only"> User</span>
+          </template>
+          <b-dropdown-item>User Information</b-dropdown-item>
+          <b-dropdown-item >{{ user.name }} <span class="user-role">Role: {{ user.role }}</span></b-dropdown-item>
+           <b-nav-item to="/mycontent">My Content</b-nav-item>
+            <b-nav-item to="/profile">My Account</b-nav-item>
+             <b-nav-item to="/settings/users">Manage Site Users</b-nav-item>
+             <b-nav-item to="/logout">Sign Out</b-nav-item>
+        </b-nav-item-dropdown>
+        <b-nav-item v-if="isGuest" to="/login"> 
+            <font-awesome-icon icon="sign-in-alt"/> 
+            <span class="sr-only"> Login</span>
+        </b-nav-item>
+        <b-nav-item-dropdown v-if="!isGuest"  text="Help" right>
+            <b-nav-item>MediaKron Support</b-nav-item>
+            <b-nav-item href="mailto:mediakron@bc.edu">Email mediakron@bc.edu</b-nav-item>
+            <b-nav-item href="/help">Visit Support</b-nav-item>
+            <b-nav-item-dropdown text="Help Categories" right>
+                <b-nav-item to="/help/mediakron-basics">About MediaKron</b-nav-item>
+                <b-nav-item to="/help/working-with-content">Working with Content</b-nav-item>
+                <b-nav-item to="/help/mediakron-basics">Administering Your Site</b-nav-item>
+            </b-nav-item-dropdown>
+            <b-nav-item-dropdown text="For content creators" right>
+                <b-nav-item to="/help/working-with-content/content-types/stories-overview">Working with stories</b-nav-item>
+                <b-nav-item to="/help/working-with-content/content-types/folder-overview">Working with folders</b-nav-item>
+                <b-nav-item to="/help/working-with-content/content-types/map-overview">Working with maps</b-nav-item>
+                <b-nav-item to="/help/working-with-content/content-types/timeline-overview">Working with timelines</b-nav-item>
+                <b-nav-item to="/help/working-with-content/content-types">Other content types</b-nav-item>
+                <b-nav-item to="/help/working-with-content/revisions">Recovering previous versions</b-nav-item>
+            </b-nav-item-dropdown>
+            <b-nav-item-dropdown text="For Site Administrators" right>
+                <b-nav-item to="/help/site-administration/managing-users">Adding users or classes to a site</b-nav-item>
+                <b-nav-item to="/help/site-administration/hompage-overview">Customizing the homepage</b-nav-item>
+                <b-nav-item to="/help/site-administration/menu-overview">Adding Menus</b-nav-item>
+                <b-nav-item to="/help/site-administration/site-appearance">Changing site colors/logo</b-nav-item>
+                <b-nav-item to="/help/site-administration/mediakron-to-canvas-overview">Integrating MediaKron with Canvas</b-nav-item>
+            </b-nav-item-dropdown>
+        </b-nav-item-dropdown>
+        <b-nav-item> 
+            <font-awesome-icon icon="expand-arrows-alt"/> 
+            <span class="sr-only"> Fullscreen</span>
+        </b-nav-item>
+        <b-nav-item href="http://mediakron.bc.edu" id="mklogo"> <img class="mediakron-logo img-fluid" :src="require('@/assets/images/MKlogo.png')" /></b-nav-item>
+    </b-navbar-nav>
 </template>
 
 <script>
@@ -205,6 +74,7 @@ import { mapState, mapGetters } from 'vuex';
 export default  Vue.extend({
     computed:{
         ...mapGetters('users/profile', [
+            'user',
             'isGuest',
             'isAdmin',
             'isMember',
@@ -227,11 +97,14 @@ export default  Vue.extend({
         ]),
     },
     mounted(){
-        console.log('secondary mounting')
+        
     }
 });
 </script>
 
-<style>
-
+<style lang="sass">
+.secondary-menu
+    float: right
+    .mediakron-logo
+        height: 20px
 </style>

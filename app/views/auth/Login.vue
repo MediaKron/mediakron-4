@@ -1,13 +1,64 @@
 <template>
-    
+  <div>
+    <div id="login-banner">
+      <div id="branding">
+        <h1 class="page-header">
+          <span id="site-name">
+            <a href="home">TODO: Site Name</a>
+          </span>
+        </h1>
+      </div>
+    </div>
+
+    <div id="login">
+      <h2 class="sr-only">Log in</h2>
+      <div id="login-image">
+        <img :src="require('@/assets/images/mklogo-horizontal-300.png')" alt="MediaKron Logo">
+      </div>
+
+      <form method="post" id="user-login" accept-charset="UTF-8" role="form">
+        <div class="form-item form-type-textfield form-item-name">
+          <label class="sr-only" for="username">Username
+            <span class="form-required" title="This field is required.">*</span>
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="name"
+            value
+            class="form-text required"
+            placeholder="Username"
+          >
+          <div
+            class="login-instructions"
+          >If you are a BC user, please use your basic BC ID as username. Otherwise, use your email address.</div>
+        </div>
+        <div class="form-item form-type-password form-item-pass">
+          <label class="sr-only" for="password">Password
+            <span class="form-required" title="This field is required.">*</span>
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="pass"
+            class="form-text required"
+            placeholder="Password"
+          >
+          <div class="login-instructions"></div>
+        </div>
+        <input type="hidden" name="form_id" value="user_login">
+        <div class="form-actions form-wrapper" id="edit-actions">
+          <input type="submit" id="login-submit" name="op" value="Log in" class="form-submit">
+        </div>
+        <a href="/resetting/request" class="forgot-password">I forgot my password</a>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>

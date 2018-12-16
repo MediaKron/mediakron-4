@@ -83,7 +83,7 @@ class Site extends BaseModel
      *
      * @return void
      */
-    public function menus()
+    public function primary()
     {
         return $this->hasMany('App\Models\Menu');
     }

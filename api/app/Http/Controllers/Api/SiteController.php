@@ -74,9 +74,9 @@ class SiteController extends Controller
     public function show($id)
     {
         //
-        $site = Site::find($id);
+        $site = Site::with(['primary'])->find($id);
         if(!$site){
-            $site = Site::where('uri', $id)->first();
+            $site = Site::with(['primary'])->where('uri', $id)->first();
         }
         if(!$site) abort(404);
         return $site;

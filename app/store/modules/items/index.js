@@ -5,7 +5,8 @@ import { Module } from 'vuex';
 
 export const getInitialState = (checkLocalStorage = false) => {
   return {
-
+    tags: [],
+    items: [],
   };
 };
 
