@@ -3,6 +3,6 @@
 if (!function_exists('site')) {
     function site()
     {
-        return app()->make('App\Site');
+        return app()->make('App\Models\Site');
     }
 }

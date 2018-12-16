@@ -32,11 +32,12 @@ Route::group([
         //'auth:api',
         'admin'
     ],
-    'prefix' => 'admin'
+    //'prefix' => 'admin'
 ], function ($router) {
 
     // Sites api
-    Route::resource('/site', 'Api\Admin\SiteController');
+    Route::resource('/site', 'Api\SiteController');
+    Route::get('/sites', 'Api\SiteController@index');
 
     // Admin System Settings api
     Route::resource('/settings', 'Api\Admin\SettingsController');
@@ -58,6 +59,7 @@ Route::group([
     'prefix' => '{site}'
 ], function ($router) {
     // Item api
+    Route::get('/items', 'Api\ItemController@index');
     Route::resource('/item', 'Api\ItemController');
     // Relationship api
     Route::resource('/relationship', 'Api\RelationshipController');

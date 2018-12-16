@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\Admin;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Site;
 use App\Http\Requests\Admin\SiteRequest;
+use Auth;
 
 class SiteController extends Controller
 {
@@ -18,7 +19,14 @@ class SiteController extends Controller
     public function index()
     {
         //
-        return Site::orderBy('created_at', 'ASC')->paginate(50);
+        return Site::orderBy('created_at', 'ASC')->paginate(10);
+        $user = Auth::user();
+        if($user->isAdmin()){
+            return Site::orderBy('created_at', 'ASC')->paginate(10);
+        }else{
+            return $user->sites()->latest()->paginate(50);
+        }
+        
     }
 
     /**
@@ -66,7 +74,12 @@ class SiteController extends Controller
     public function show($id)
     {
         //
-        return Site::where('id', $id)->orderBy('created_at', 'ASC')->paginate(10);
+        $site = Site::with(['primary'])->find($id);
+        if(!$site){
+            $site = Site::with(['primary'])->where('uri', $id)->first();
+        }
+        if(!$site) abort(404);
+        return $site;
     }
 
     /**

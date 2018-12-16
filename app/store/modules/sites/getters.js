@@ -4,18 +4,24 @@ export const getters = {
   /**
    * List
    */
-  listIsLoading: state => state.listStatus === LocationsStatus.Loading? true : false,
-  listIsLoaded: state => state.listStatus === LocationsStatus.Loaded? true : false,
-  listIsError: state => state.listStatus === LocationsStatus.Failed? true : false,
-  listIsEmpty: state => !(state.locationsList && state.locationsList.length > 0 && state.listStatus !== LocationsStatus.Loading)? true : false,
+  sites: state => state.siteList,
+  listIsLoading: state => state.listIsLoading,
+  listIsLoaded: state => state.listIsLoaded,
+  listIsError: state => state.listIsError,
+  listIsEmpty: state => !(state.siteList && state.siteList.length > 0 && state.listIsLoading)? true : false,
 
   /**
    * Current
    */
-  currentIsLoading: state => state.listStatus === LocationsStatus.Loading? true : false,
-  currentIsLoaded: state => state.listStatus === LocationsStatus.Loaded? true : false,
-  currentIsError: state => state.listStatus === LocationsStatus.Failed? true : false,
-  currentIsEmpty: state => !(state.locationsList && state.locationsList.length > 0 && state.listStatus !== LocationsStatus.Loading)? true : false,
+  currentSite: state => state.currentSite,
+  siteIsLoading: state => state.siteIsLoading,
+  siteIsLoaded: state => state.siteIsLoaded,
+  siteIsError: state => state.siteIsError,
+  siteIsEmpty: state => !(state.currentSite && state.siteIsLoading)? true : false,
+
+  currentPage: state => state.pagination.currentPage,
+  totalItems: state => state.pagination.total,
+  lastPage: state => state.pagination.lastPage,
 };
 
 export default getters;

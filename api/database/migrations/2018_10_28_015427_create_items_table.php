@@ -16,9 +16,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             // Ids
             $table->increments('id');
+            $table->integer('site_id');
             $table->integer('version_id');
             $table->integer('user_id');
-            $table->integer('editor_id');
+            $table->integer('editor_id')->nullable();
 
             // booleans
             $table->boolean('active');
@@ -27,16 +28,18 @@ class CreateItemsTable extends Migration
             $table->boolean('locked');
 
             // Basic record data
-            $table->string('uri');
+            $table->string('uri')->length(255);
             $table->string('type');
             $table->string('template');
-            $table->string('title');
+            $table->string('title')->length(1001);
 
             // Long text fields
             $table->longtext('description');
             $table->longtext('transcript');
-            $table->longtext('body');
+            $table->longtext('body')->nullable();
             $table->longtext('caption');
+            $table->longtext('options');
+            $table->longtext('overlay')->nullable();
 
             // Timestamps
             $table->timestamp('last_login')->nullable();

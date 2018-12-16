@@ -1,5 +1,5 @@
-import Layout from '../views/layouts/Layout';
-import Browse from '../views/items/Browse';
+import Layout from '../views/site/SiteLayout';
+import Browse from '../views/site/items/Browse';
 
 export default {
     path: '/:site',
@@ -7,11 +7,6 @@ export default {
     title: 'Site',
     props: true,
     children: [
-      {
-        path: 'browse',
-        name: 'item',
-        component: Browse,
-        props: true,
-      },
+      
     ],
 }

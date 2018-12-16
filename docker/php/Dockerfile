@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.2-fpm
 # install the PHP extensions we need
 # XDEBUG requires Docker 18.03+ because of the host IP resolution on mac
 RUN apt-get update && apt-get install -y \ 
@@ -16,7 +16,7 @@ RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
 RUN docker-php-ext-install mbstring && docker-php-ext-enable mbstring
 
-RUN docker-php-ext-install mcrypt && docker-php-ext-enable mcrypt
+#RUN docker-php-ext-install mcrypt && docker-php-ext-enable mcrypt # LIbsodium replaces this
 
 RUN docker-php-ext-configure opcache --enable-opcache \
     && docker-php-ext-install opcache
@@ -26,12 +26,12 @@ COPY config/opcache.ini $PHP_INI_DIR/conf.d/
 RUN pecl install apcu \
     && echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini
 
-RUN pecl install xdebug-2.6.0 \
-    && docker-php-ext-enable xdebug \
-    && sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && sed -i '1 a xdebug.remote_mode=req' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && sed -i '1 a xdebug.remote_handler=dbgp' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    # && sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && sed -i '1 a xdebug.remote_port=9000' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && sed -i '1 a xdebug.remote_host=host.docker.internal' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+#RUN pecl install xdebug-2.6.0 \
+#    && docker-php-ext-enable xdebug \
+#    && sed -i '1 a xdebug.remote_autostart=true' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    && sed -i '1 a xdebug.remote_mode=req' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    && sed -i '1 a xdebug.remote_handler=dbgp' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    # && sed -i '1 a xdebug.remote_connect_back=1 ' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    && sed -i '1 a xdebug.remote_port=9000' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    && sed -i '1 a xdebug.remote_host=host.docker.internal' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#    && sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini

@@ -1,6 +1,7 @@
 import { GetterTree } from 'vuex';
 
 export const getters = {
+  user: state => state.user,
   isLoggedIn: state => !!state.currentToken,
 
   isPending: state => state.loginStatus ? true : false,
@@ -42,7 +43,7 @@ export const getters = {
 
   canBrowse: (state, getters, rootState) => {
     var site = rootState['sites/currentSite'];
-    return (site && site.secondary.browse) && !getters.isGuest() && !getters.isMember() || getters.check('can create content')
+    return (site && site.secondary.browse) && !getters.isGuest() && !getters.isMember() || getters.access('can create content')
   }
 };
 

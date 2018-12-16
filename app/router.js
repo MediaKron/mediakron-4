@@ -8,21 +8,24 @@ import require from './middleware/auth';
 import log from './middleware/log';
 
 // Layouts
-import Layout from './views/layouts/Layout.vue';
+import Layout from './views/multisite/Layout.vue';
 
 // Home page vue
-import Home from './views/Home.vue';
+import Home from './views/multisite/Home.vue';
+import About from './views/multisite/About.vue';
+import Help from './views/multisite/Help.vue';
 
 // Authentication Views
 import Login from './views/auth/Login.vue';
 import Logout from './views/auth/Logout.vue';
+import Profile from './views/multisite/Profile.vue';
 import Reset from './views/auth/Reset.vue';
 import Confirm from './views/auth/Confirm.vue';
 
 // Mediakron Site Mangement
-import ListSites from './views/sites/List';
-import CreateSite from './views/sites/Edit';
-import EditSite from './views/sites/Edit';
+import ListSites from './views/multisite/sites/List';
+import CreateSite from './views/multisite/sites/Edit';
+import EditSite from './views/multisite/sites/Edit';
 
 
 
@@ -33,6 +36,8 @@ import settingsRoutes from './router/settings';
 
 import NotFound from './views/404.vue';
 import store from './store';
+
+import VueDemo from './views/multisite/VueDemo.vue';
 
 Vue.use(Router);
 
@@ -55,6 +60,11 @@ var baseRoutes = [
             component: Logout
         },
         {
+            path: '/profile',
+            name: 'profile',
+            component: Profile
+        },
+        {
             path: '/reset',
             name: 'mediakron-reset',
             component: Reset
@@ -65,17 +75,17 @@ var baseRoutes = [
             component: Confirm
         },
         {
-            path: '/sites',
+            path: '/admin/sites/:page?',
             name: 'list-sites',
             component: ListSites
         },
         {
-            path: '/sites/new',
+            path: '/admin/sites/new',
             name: 'create-site',
             component: CreateSite
         },
         {
-            path: '/sites/:id',
+            path: '/admin/sites/:id/edit',
             name: 'edit-site',
             component: EditSite,
             props: true
@@ -84,13 +94,28 @@ var baseRoutes = [
           path: '/',
           name: 'mediakron-home',
           component: Home
+        },
+        {
+          path: '/about',
+          name: 'About',
+          component: About
+        },
+        {
+          path: '/help',
+          name: 'Help',
+          component: Help
+        },
+        {
+          path: '/vue-demo',
+          name: 'vue-demo',
+          component: VueDemo
         }
       ]
     }
   ];
 
   // Get the item routes
-  baseRoutes.push(browseRoutes);
+  //baseRoutes.push(browseRoutes);
   //baseRoutes.push(settingsRoutes);
   baseRoutes.push(itemsRoutes);
 
@@ -107,7 +132,7 @@ baseRoutes.push({
       }
     ]
 });
-console.log(baseRoutes);
+
 const router = new Router({
     mode: 'history',
     routes: baseRoutes
@@ -120,7 +145,7 @@ const actionableName = (name) => {
 
 /**
  * Global navigation guard to present the login for unauthenticated users
- 
+
 router.beforeEach(async (to, from, routerNext) => {
   store.dispatch(RootActions.CLEAR_ERRORS);
   store.dispatch(RootActions.LOAD_PROGRESS_RESET);
@@ -180,7 +205,7 @@ export default router;
  *
  * I think we are going to drift away from demanding the layout object be called as a variable.  It makes the
  * routing table kind of unreadable, and I think I want to rethink the way we handle this a bit.
- 
+
 
 export default class Router extends Backbone.Router {
     get routes() {
@@ -252,7 +277,7 @@ export default class Router extends Backbone.Router {
 
             "/sites/new": "CreateSite",
             "/sites": "Sites",
-            
+
             "/": "Index",
             "*actions": "Index"
         }

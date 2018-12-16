@@ -1,6 +1,7 @@
 import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
+import User from '../user';
 import { Module } from 'vuex';
 
 export const getInitialState = (checkLocalStorage = false) => {
@@ -13,7 +14,7 @@ export const getInitialState = (checkLocalStorage = false) => {
     loginSuccess: false,
     loginFailed: false,
 
-    user: false,
+    user: User.guest(),
 
     
 

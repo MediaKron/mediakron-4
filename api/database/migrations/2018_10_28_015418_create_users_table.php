@@ -15,17 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('v3_id')->default(0);
             $table->string('username');
-            $table->string('display_name');
+            $table->string('display_name')->nullable();
             $table->string('email');
+            $table->string('salt');
             $table->string('password');
-            $table->string('canvas_token');
+            $table->string('canvas_token')->default('')->nullable();
 
             // booleans
-            $table->boolean('enabled');
-            $table->boolean('locked');
-            $table->boolean('expired');
-            $table->boolean('bc');
+            $table->boolean('enabled')->default(0);
+            $table->boolean('locked')->default(0);
+            $table->boolean('expired')->default(0);
+            $table->boolean('bc')->default(0)->nullable();
+            $table->boolean('admin')->default(0);
 
             // Timestamps
             $table->timestamp('last_login')->nullable();

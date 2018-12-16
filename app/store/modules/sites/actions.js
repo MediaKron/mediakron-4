@@ -2,6 +2,27 @@ import api from '../../utils/api';
 import router from '@/router';
 
 const actions = {
+
+    /**
+     * Dispatch this action when you want to load a site list
+     * and make the site list sensitive to the query being
+     * passed in from the router
+     * @param {*} param0 
+     * @param {*} param1 
+     */
+    routeLoad({ commit, dispatch }, { to }){
+      const { page } = to.params;
+      const { search, sort, direction, status } = to.query;
+      //
+      var options = {
+        page: page || 0,
+        search: search || '',
+        sort: sort || 'id',
+        direction: direction || 'ASC',
+        status: status || ''
+      }
+      dispatch('loadSites', options);
+    },
     /**
      * Load a list of sites
      * @param {*} param0 
@@ -17,6 +38,7 @@ const actions = {
             commit("listLoaded");
           })
           .catch((error) => {
+            console.log(error);
             error.errorMessage = "There was an error loading the site list";
             return dispatch("listError", error);
           });
@@ -28,15 +50,16 @@ const actions = {
        * @param {*} id 
        */
     getSite({ commit, dispatch }, id) {
-        commit("listLoading");
+        commit("siteLoading");
     
-        return api.get('sites/'+id)
+        return api.get('site/'+id)
           .then((response) => {
+            console.log(response.data);
             commit("siteLoad", response.data);
             commit("siteLoaded");
           })
           .catch((error) => {
-            error.errorMessage = "There was an error loading the site list";
+            error.errorMessage = "There was an error loading the site";
             return dispatch("siteError", error);
           });
       },

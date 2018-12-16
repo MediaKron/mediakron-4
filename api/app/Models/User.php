@@ -7,13 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Hash;
 use App\Models\Traits\User\Permissions;
+use App\Models\Traits\User\Import;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, SoftDeletes, Permissions;
-
-    protected $table = 'User';
+    use Notifiable, SoftDeletes, Import;
 
     /**
      * The attributes that are mass assignable.
@@ -99,6 +98,91 @@ class User extends Authenticatable implements JWTSubject
             }
             $this->roles = $roles;
         }
+    }
+
+    /**
+     * Get the model's relationships in array form.
+     *
+     * @return array
+     */
+    public function relationsToArray()
+    {
+        $attributes = [];
+        foreach ($this->getArrayableRelations() as $key => $value) {
+            // If the values implements the Arrayable interface we can just call this
+            // toArray method on the instances which will convert both models and
+            // collections to their proper array form and we'll set the values.
+            if ($value instanceof Arrayable) {
+                if ($value instanceof BaseCollection) {
+                    $relation = array_map(function ($item) {
+                        return $item instanceof Arrayable ? $item->toRelationshipArray() : $item;
+                    }, $value->all());
+                } else {
+                    $relation = $value->toRelationshipArray();
+                }
+
+            }
+
+            // If the value is null, we'll still go ahead and set it in this list of
+            // attributes since null is used to represent empty relationships if
+            // if it a has one or belongs to type relationships on the models.
+            elseif (is_null($value)) {
+                $relation = $value;
+            }
+
+            // If the relationships snake-casing is enabled, we will snake case this
+            // key so that the relation attribute is snake cased in this returned
+            // array to the developers, making this consistent with attributes.
+            if (static::$snakeAttributes) {
+                $key = Str::snake($key);
+            }
+
+            // If the relation value has been set, we will set it on this attributes
+            // list for returning. If it was not arrayable or null, we'll not set
+            // the value on the array because it is some type of invalid value.
+            if (isset($relation) || is_null($value)) {
+                $attributes[$key] = $relation;
+            }
+
+            unset($relation);
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * Convert the model instance to an array.
+     *
+     * @return array
+     */
+    public function toRelationshipArray()
+    {
+        $table = $this->getTable();
+        $resource = str_singular($table) . '/';
+        return [
+            'id' => $this->id,
+            'path' => $this->api_path . $resource . $this->id
+        ];
+    }
+
+    /**
+     * Practices can have multiple users
+     *
+     * @return void
+     */
+    public function sites()
+    {
+        return $this->hasMany('App\Models\Menu');
+    }
+
+    /**
+     * Practices can have multiple users
+     *
+     * @return void
+     */
+    public function items()
+    {
+        return $this->hasMany('App\Models\Menu');
     }
         
 }

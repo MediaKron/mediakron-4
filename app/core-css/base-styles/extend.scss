@@ -9,10 +9,22 @@
 	right: 0;
 	background-size: cover;
 	background-position: 50% !important;
-	height: 100%;
+	// height: 100%;
 }
 
-.background-image-darkened {
+// .background-image-darkened {
+// 	content: " ";
+// 	display: block;
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	background: rgba(0,0,0,0.5);
+// 	height:100%;
+// }
+
+.background-image-darkened:after {
 	content: " ";
 	display: block;
 	position: absolute;

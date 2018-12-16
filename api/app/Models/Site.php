@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel;
 
-class Site extends Model
+class Site extends BaseModel
 {
-    protected $table = 'Site';
 
-    protected $appends = [ 'data' ];
+    use \App\Models\Traits\Site\Import;
     
     //
+    /**
+     * Get Site by URI
+     *
+     * @param [type] $uri
+     * @return void
+     */
     static function byUri($uri){
         $site = static::where('uri', $uri)->first();
         if($site){
@@ -21,6 +26,14 @@ class Site extends Model
 
     public $data = [];
 
+    // Add the data on, not sure if we need this
+    protected $appends = [ 'data' ];
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function getDataAttribute(){
         return [
             "settings" => route('site.setting.show', ['site' => $this->uri]),
@@ -66,47 +79,23 @@ class Site extends Model
     }
 
     /**
-     * Get the roles for the user
+     * Practices can have multiple users
      *
-     * @param [type] $value
      * @return void
      */
-    public function getPrimaryNavAttribute($value)
+    public function primary()
     {
-        return unserialize($value);
+        return $this->hasMany('App\Models\Menu');
     }
 
     /**
-     * Set the roles for the user as a serialized array
+     * Practices can have multiple products
      *
-     * @param [type] $roles
      * @return void
      */
-    public function setPrimaryNavAttribute($metadata)
+    public function institution()
     {
-        $this->attributes['primary_nav'] = serialize($metadata);
-    }
-
-    /**
-     * Get the roles for the user
-     *
-     * @param [type] $value
-     * @return void
-     */
-    public function getSecondaryNavAttribute($value)
-    {
-        return unserialize($value);
-    }
-
-    /**
-     * Set the roles for the user as a serialized array
-     *
-     * @param [type] $roles
-     * @return void
-     */
-    public function setSecondaryNavAttribute($metadata)
-    {
-        $this->attributes['secondary_nav'] = serialize($metadata);
+        return $this->belongsTo('App\Models\Institution');
     }
 
 

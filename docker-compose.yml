@@ -1,8 +1,8 @@
 nginx:
     build: ./docker/nginx/
     ports:
-        - 80:80
-        - 443:443
+        - 81:80
+        - 444:443
     links:
         - php
     volumes_from:
@@ -13,10 +13,10 @@ php:
     expose:
         - 9000
     environment:
-        DB_HOST: localhost
-        DB_NAME: mediakron
-        DB_USER: mediakron_user
-        DB_PASS: mediakron_pw
+        DB_HOST: db
+        DB_NAME: ${DB_DATABASE}
+        DB_USER: ${DB_USERNAME}
+        DB_PASS: ${DB_PASSWORD}
         PHP_ENV: ${APP_ENV}
     links:
         - db
@@ -24,7 +24,7 @@ php:
         - app
 
 app:
-    image: php:7.1-fpm
+    image: php:7.2-fpm
     volumes:
         - ./public:/var/www/public
         - ./:/app
@@ -41,9 +41,9 @@ db:
         - data
     environment:
         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_DATABASE: ${DB_DATABASE}
+        MYSQL_USER: ${DB_USERNAME}
+        MYSQL_PASSWORD: ${DB_PASSWORD}
 
 data:
     image: mysql:5.6

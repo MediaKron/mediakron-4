@@ -23,8 +23,8 @@ export const getInitialState = () => {
       'currentPage': 1,
       'firstPage': 1,
       'lastPage': 1,
-      'pageSize': 15,
-      'totalItems': 15,
+      'pageSize': 10,
+      'totalItems': 10,
     },
 
   };

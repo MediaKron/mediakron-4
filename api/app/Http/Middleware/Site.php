@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Site as SiteModel;
+use App\Models\Site as SiteModel;
 
 class Site
 {
@@ -16,9 +16,12 @@ class Site
      */
     public function handle($request, Closure $next)
     {
-        $site = $request->route()->parameter('site');
-        $site = SiteModel::where('uri', $site)->first();
-        app()->instance('App\Site', $site);
+        $site_id = $request->route()->parameter('site');
+        $site = SiteModel::where('uri', $site_id)->first();
+        if(!$site) $site = SiteModel::where('id', $site_id)->first();
+
+        if(!$site) abort(404);
+        app()->instance('App\Models\Site', $site);
         return $next($request);
     }
 }
