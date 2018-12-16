@@ -5,6 +5,9 @@ class Site extends Model {
       super(data)
   }
 
+  getLink(){
+    return 'https://' + this.uri
+  }
   
 }
 export default Site;

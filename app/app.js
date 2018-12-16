@@ -69,7 +69,9 @@ new Vue({
 
 /**
  * 
+ * 
  */
+console.log(process.env)
 if (process.env.VUE_APP_MODE !== 'development') {
   Raven.config('https://a33196655ca34c068578612debf5f473@sentry.io/1334871', {
         release: config.BUILD,

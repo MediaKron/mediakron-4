@@ -2,6 +2,27 @@ import api from '../../utils/api';
 import router from '@/router';
 
 const actions = {
+
+    /**
+     * Dispatch this action when you want to load a site list
+     * and make the site list sensitive to the query being
+     * passed in from the router
+     * @param {*} param0 
+     * @param {*} param1 
+     */
+    routeLoad({ commit, dispatch }, { to }){
+      const { page } = to.params;
+      const { search, sort, direction, status } = to.query;
+      //
+      var options = {
+        page: page || 0,
+        search: search || '',
+        sort: sort || 'id',
+        direction: direction || 'ASC',
+        status: status || ''
+      }
+      dispatch('loadSites', options);
+    },
     /**
      * Load a list of sites
      * @param {*} param0 

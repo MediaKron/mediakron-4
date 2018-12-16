@@ -18,6 +18,10 @@ export const getters = {
   siteIsLoaded: state => state.siteIsLoaded,
   siteIsError: state => state.siteIsError,
   siteIsEmpty: state => !(state.currentSite && state.siteIsLoading)? true : false,
+
+  currentPage: state => state.pagination.currentPage,
+  totalItems: state => state.pagination.total,
+  lastPage: state => state.pagination.lastPage,
 };
 
 export default getters;

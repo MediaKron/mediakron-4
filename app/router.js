@@ -8,24 +8,24 @@ import require from './middleware/auth';
 import log from './middleware/log';
 
 // Layouts
-import Layout from './views/layouts/Layout.vue';
+import Layout from './views/multisite/Layout.vue';
 
 // Home page vue
-import Home from './views/Home.vue';
-import About from './views/About.vue';
-import Help from './views/Help.vue';
+import Home from './views/multisite/Home.vue';
+import About from './views/multisite/About.vue';
+import Help from './views/multisite/Help.vue';
 
 // Authentication Views
 import Login from './views/auth/Login.vue';
 import Logout from './views/auth/Logout.vue';
-import Profile from './views/Profile.vue';
+import Profile from './views/multisite/Profile.vue';
 import Reset from './views/auth/Reset.vue';
 import Confirm from './views/auth/Confirm.vue';
 
 // Mediakron Site Mangement
-import ListSites from './views/sites/List';
-import CreateSite from './views/sites/Edit';
-import EditSite from './views/sites/Edit';
+import ListSites from './views/multisite/sites/List';
+import CreateSite from './views/multisite/sites/Edit';
+import EditSite from './views/multisite/sites/Edit';
 
 
 
@@ -37,7 +37,7 @@ import settingsRoutes from './router/settings';
 import NotFound from './views/404.vue';
 import store from './store';
 
-import VueDemo from './views/VueDemo.vue';
+import VueDemo from './views/multisite/VueDemo.vue';
 
 Vue.use(Router);
 
@@ -75,7 +75,7 @@ var baseRoutes = [
             component: Confirm
         },
         {
-            path: '/admin/sites',
+            path: '/admin/sites/:page?',
             name: 'list-sites',
             component: ListSites
         },

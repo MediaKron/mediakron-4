@@ -162,7 +162,7 @@
 
 <script>
 	import { mapActions, mapState, mapGetters } from 'vuex';
-	import { imageSizeMixin } from '@/components/mixins/image-size';
+	import { imageSizeMixin } from '@/components/mixins/ImageSize';
 
 	export default {
 		mixins: [imageSizeMixin],

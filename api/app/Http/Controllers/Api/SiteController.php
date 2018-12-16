@@ -19,10 +19,10 @@ class SiteController extends Controller
     public function index()
     {
         //
-        return Site::orderBy('created_at', 'ASC')->paginate(50);
+        return Site::orderBy('created_at', 'ASC')->paginate(10);
         $user = Auth::user();
         if($user->isAdmin()){
-            return Site::orderBy('created_at', 'ASC')->paginate(50);
+            return Site::orderBy('created_at', 'ASC')->paginate(10);
         }else{
             return $user->sites()->latest()->paginate(50);
         }

@@ -19,11 +19,9 @@
 
 <script>
 import Vue from 'vue';
-import Navigation from './Navigation'
 import MediakronMenu from './navigation/Mediakron';
 export default {
     components:{
-        Navigation,
         MediakronMenu
     }
 

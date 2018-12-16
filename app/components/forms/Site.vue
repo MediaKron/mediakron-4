@@ -43,19 +43,15 @@
 <script>
 import Vue from 'vue';
 import ImageUploadControl from '@/components/controls/image-upload.vue';
-import FormInput from '@/components/controls/form-input.vue';
-import { formDataMixin } from '@/components/mixins/form-data';
 import { mapState, mapActions } from 'vuex';
-import * as _ from 'lodash';
-import { PractitionersActions, PractitionerImage } from '@/store/modules/practitioners/types';
 
 export default Vue.extend({
-  mixins: [formDataMixin],
+  //mixins: [formDataMixin],
   inject: {
-    $validator: '$validator'
+    //$validator: '$validator'
   },
   components: {
-    FormInput,
+    //FormInput,
     ImageUploadControl,
   },
   data() {

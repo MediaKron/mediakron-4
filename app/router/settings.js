@@ -1,4 +1,4 @@
-//import Layout from '../views/layouts/Layout';
+//import Layout from '../views/site/SiteLayout';
 //import HomePage from '../views/items/HomePage';
 //import ItemPage from '../views/items/Item';
 

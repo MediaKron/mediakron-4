@@ -1,7 +1,7 @@
-import SiteLayout from '@/views/layouts/SiteLayout';
-import HomePage from '@/views/homepage/Homepage';
-import ItemPage from '@/views/items/Item';
-import Browse from '../views/items/Browse';
+import SiteLayout from '@/views/site/SiteLayout';
+import HomePage from '@/views/site/homepage/Homepage';
+import ItemPage from '@/views/site/items/Item';
+import Browse from '../views/site/items/Browse';
 
 export default {
     path: '/:site',

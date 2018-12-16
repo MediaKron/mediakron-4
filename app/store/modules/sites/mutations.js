@@ -37,7 +37,11 @@ export const mutations = {
      * @param {*} state 
      */
     listPage(state, data){
-
+        state.pagination.currentPage = data.current_page;
+        state.pagination.firstPage = 0;
+        state.pagination.lastPage = data.last_page;
+        state.pagination.pageSize = data.per_page;
+        state.pagination.totalItems = data.total;
     },
 
     /**
