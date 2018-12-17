@@ -11,9 +11,7 @@
     "mediakron:lint": "vue-cli-service lint",
     "mediakron:watch": "vue-cli-service serve --mode development",
     "mediakron:styleguide": "vue-cli-service styleguidist",
-    "mediakron:styleguide:build": "vue-cli-service styleguidist:build",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "mediakron:styleguide:build": "vue-cli-service styleguidist:build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.9",
@@ -24,7 +22,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "file-loader": "^2.0.0",
     "i": "^0.3.6",
-    "npm": "^6.5.0",
+    "npm": "^6.4.1",
     "raven-js": "^3.27.0",
     "vue": "^2.5.17",
     "vue-moment": "^4.0.0",
@@ -33,7 +31,6 @@
     "vue-styleguidist": "^2.1.1",
     "vue-svgicon": "^3.2.1",
     "vue-transmit": "^8.1.4",
-    "vuepress-jsdoc": "^0.3.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -49,7 +46,6 @@
     "vue-cli-plugin-styleguidist": "^0.1.9",
     "vue-router-middleware": "^0.2.1",
     "vue-template-compiler": "^2.5.17",
-    "vuepress": "^0.14.8",
     "webpack": "^4.27.1"
   },
   "eslintConfig": {
