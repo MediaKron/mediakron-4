@@ -37,28 +37,44 @@ export default {
     return this.request('post', url, data, cancelToken);
   },
 
+  /**
+   * Issue a put request
+   * @param {string} url 
+   * @param {object} data 
+   * @param {} cancelToken 
+   */
   put (url, data, cancelToken) {
     return this.request('put', url, data, cancelToken);
   },
 
+  /**
+   * Issue a delete request
+   * @param {*} url 
+   * @param {*} data 
+   * @param {*} cancelToken 
+   */
   delete (url, data, cancelToken) {
     return this.request('delete', url, data, cancelToken);
   },
 
+  /**
+   * initialize the api, set the token from the
+   * local storage, and get the base url from the hostname 
+   */
   init () {
     axios.defaults.baseURL = config.API_HOSTNAME;
-    const storedToken = localStorage.getItem('user-token');
-    if(storedToken){
-      this.setToken(storedToken);
+    const token = localStorage.getItem('user-token');
+    if(token){
+      this.setToken(token);
     }
 
     axios.interceptors.response.use(
       (response) => response,
       (error) => {
         if (!axios.isCancel(error)) {
-          store.dispatch('ERROR', error);
+          //store.dispatch('ERROR', error);
         }
-
+        console.log(error)
         return Promise.reject(error);
       }
     );
@@ -66,11 +82,18 @@ export default {
     return this;
   },
 
-  // Intercept the request to make sure the token is injected into the header.
+  /**
+   * All requests should have a token.  Set the token on the header
+   * @param {string} token 
+   */
   setToken (token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
 
+  /**
+   * When we log out, we should remove the token and 
+   * reset everything
+   */
   removeToken () {
     delete axios.defaults.headers.common.Authorization;
   },

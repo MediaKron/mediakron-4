@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="login-form">
     <div id="login-banner">
       <div id="branding">
         <h1 class="page-header">
           <span id="site-name">
-            <a href="home">TODO: Site Name</a>
+            <a href="home">{{ name }}</a>
           </span>
         </h1>
       </div>
@@ -16,19 +16,21 @@
         <img :src="require('@/assets/images/mklogo-horizontal-300.png')" alt="MediaKron Logo">
       </div>
 
-      <form method="post" id="user-login" accept-charset="UTF-8" role="form">
         <div class="form-item form-type-textfield form-item-name">
           <label class="sr-only" for="username">Username
             <span class="form-required" title="This field is required.">*</span>
           </label>
-          <input
-            type="text"
-            id="username"
-            name="name"
-            value
-            class="form-text required"
-            placeholder="Username"
-          >
+          <b-form-input v-model="username"
+                  type="text"
+                  id="username"
+                  name="name"
+                  value
+                  class="form-text required"
+                  placeholder="Username"
+                  v-validate="'required'"></b-form-input>
+                  
+          <span>{{ errors.first('username') }}</span>
+
           <div
             class="login-instructions"
           >If you are a BC user, please use your basic BC ID as username. Otherwise, use your email address.</div>
@@ -37,28 +39,84 @@
           <label class="sr-only" for="password">Password
             <span class="form-required" title="This field is required.">*</span>
           </label>
-          <input
-            type="password"
-            id="password"
-            name="pass"
-            class="form-text required"
-            placeholder="Password"
-          >
+          <b-form-input v-model="password"
+                  type="password"
+                  id="password"
+                  name="name"
+                  value
+                  class="form-text required"
+                  placeholder="Password"
+                  v-validate="'required'"></b-form-input>
+            <span>{{ errors.first('password') }}</span>
           <div class="login-instructions"></div>
         </div>
         <input type="hidden" name="form_id" value="user_login">
         <div class="form-actions form-wrapper" id="edit-actions">
-          <input type="submit" id="login-submit" name="op" value="Log in" class="form-submit">
+          <input type="submit" id="login-submit" name="op" value="Log in" class="form-submit" @click="fireLogin">
         </div>
-        <a href="/resetting/request" class="forgot-password">I forgot my password</a>
-      </form>
+        <router-link to="/reset" class="forgot-password">I forgot my password</router-link>
+
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+    import {
+        mapGetters, mapActions
+    } from 'vuex';
+export default {
+  data(){
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  computed:{
+    name(){
+      return 'name'
+    },
+    ...mapGetters('users/profile', [
+      'isLoggedIn',
+      'isLoading',
+      'isLoggingIn'
+    ])
+  },
+  methods:{
+    ...mapActions('users/profile', [
+      'login'
+    ]),
+    fireLogin(){
+      this.login({ username: this.username, password: this.password});
+    }
+  }
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+#login{
+  padding: 2em;
+  width: 100%; 
+  z-index: 10000;
+  background: #ddd;
+  border: 1px solid #ccc;
+  max-width: 400px;
+  margin: 6em auto 0 auto;
+  border-radius: 5px;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  #login-image{
+    padding: 1em 1em;
+    background: #fff;
+    text-align: center;
+    display: block;
+    width: auto;
+    margin-bottom: 1.5em;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+  }
+}
+  
 </style>
+

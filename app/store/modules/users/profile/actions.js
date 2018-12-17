@@ -8,17 +8,26 @@ const actions = {
      * @param {*} options 
      */
     login({ commit, dispatch }, credentials) {
-        commit("loggingIn");
-    
+        commit("loginPending");
+        commit("setToken", false);
+        console.log(credentials)
         return api.post('auth/login', credentials)
           .then((response) => {
-            commit("login", response.data);
-            commit("loggedIn");
+            console.log(response)
+            //commit("login", response.data);
+            //commit("loginSuccess");
+          })
+          .then(() => {
+            // TODO: dispatch event action
+          })
+          .then(() => {
+            //return router.push({ name: 'homepage' });
           })
           .catch((error) => {
             console.log(error);
-            error.errorMessage = "The Login failed";
-            return dispatch("loginError", error);
+            error.errorMessage = "The login failed";
+            commit("loginError", error);
+            // TODO Dispatch error event action
           });
       },
 }
