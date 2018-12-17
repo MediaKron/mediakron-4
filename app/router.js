@@ -30,7 +30,7 @@ import EditSite from './views/multisite/sites/Edit';
 
 
 // Site Views
-import itemsRoutes from './router/items';
+import itemsRoutes from './router/index';
 import browseRoutes from './router/browse';
 import settingsRoutes from './router/settings';
 

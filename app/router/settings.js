@@ -1,8 +1,29 @@
-//import Layout from '../views/site/SiteLayout';
-//import HomePage from '../views/items/HomePage';
-//import ItemPage from '../views/items/Item';
 
-export default {
+import HomePage from '@/views/site/homepage/Homepage';
+import ItemPage from '@/views/site/items/Item';
+import Browse from '../views/site/items/Browse';
+
+export default [
+      {
+        path: ':first/:second?/:third?',
+        name: 'item',
+        component: ItemPage,
+        props: true,
+      },
+      {
+        path: '/browse',
+        name: 'browser',
+        component: Browse,
+        props: true,
+      },
+      {
+        path: '/',
+        name: 'homepage',
+        component: HomePage,
+        props: true,
+      }
+    ]
+/*export default {
     /*
     ":site/settings/organize(/:type)": "SettingsOrganize",
             ":site/settings/content/add(/:type)": "SettingsContentAdd",
@@ -43,5 +64,6 @@ export default {
             ":site/settings/googleanalytics": "SettingsGoogleAnalytics",
             ":site/settings/itemoptions": "SettingsItemOptions",
             ":site/settings": "Settings",
-            */
+            
 }
+*/
