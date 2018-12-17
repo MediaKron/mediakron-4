@@ -117,7 +117,7 @@ var baseRoutes = [
   // Get the item routes
   //baseRoutes.push(browseRoutes);
   //baseRoutes.push(settingsRoutes);
-  baseRoutes.push(itemsRoutes);
+  baseRoutes.concat(itemsRoutes);
 
 // 404 route
 baseRoutes.push({
