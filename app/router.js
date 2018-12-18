@@ -30,6 +30,7 @@ import EditSite from './views/multisite/sites/Edit';
 // People
 import ListPeople from './views/multisite/people/List';
 import User from './views/multisite/people/User';
+import EditUser from './views/multisite/people/Edit';
 
 // Site Views
 import itemsRoutes from './router/index';
@@ -85,6 +86,11 @@ var baseRoutes = [
             path: '/admin/user/:username',
             name: 'user',
             component: User
+        },
+        {
+            path: '/admin/user/:username/edit',
+            name: 'user-edit',
+            component: EditUser,
         },
         {
             path: '/admin/sites/:page?',
