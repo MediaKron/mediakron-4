@@ -4,8 +4,7 @@
             <b-card :title="'Display Name: ' + user.displayname"
                     header-tag="header"
                     footer-tag="footer">
-                <h6 slot="header"
-                    class="mb-0">Details</h6>
+                <h6 slot="header" class="mb-0">Details</h6>
                 <em slot="footer"><router-link :to="{ name: 'user-edit', params: { username: user.username } }">Edit</router-link></em>
                 <p class="card-text"><b>Email:</b> {{ user.email }}</p>
                 <p class="card-text"><b>Username:</b> {{ user.username }}</p>
@@ -19,8 +18,7 @@
             <b-card
                     header-tag="header"
                     footer-tag="footer">
-                <h6 slot="header"
-                    class="mb-0">Sites</h6>
+                <h6 slot="header" class="mb-0">Sites</h6>
                 <em slot="footer"><router-link :to="{ name: 'user-edit', params: {} }">Edit</router-link></em>
             </b-card>
         </b-card-group>
