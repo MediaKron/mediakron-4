@@ -8,8 +8,7 @@
                 <navigation></navigation>
                         
                 <div id="wrapper-main">
-                    <main role="main">
-                        router view here
+                    <main role="main">                        
                         <router-view></router-view>
                     </main>
                 </div>

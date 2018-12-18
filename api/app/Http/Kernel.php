@@ -56,7 +56,8 @@ class Kernel extends HttpKernel
 
         'api' => [
             'throttle:60,1',
-            'bindings'
+            'bindings',
+            'cors'
         ],
     ];
 
@@ -80,5 +81,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'site' => \App\Http\Middleware\Site::class,
         'site.access' => \App\Http\Middleware\Site::class,
+        'cors' => \App\Http\Middleware\Cors::class
     ];
 }

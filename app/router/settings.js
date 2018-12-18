@@ -1,9 +1,14 @@
 
 import SettingsIndex from '@/views/site/settings/Index';
-import ItemPage from '@/views/site/items/Item';
+import General from '@/views/site/settings/General';
 import Browse from '../views/site/items/Browse';
 
 export default [
+      {
+        path: 'general',
+        name: 'general_settings',
+        component: General
+      },
       {
         path: '/',
         name: 'settings_index',
