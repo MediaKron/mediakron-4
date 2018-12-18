@@ -5,7 +5,7 @@
                     header-tag="header"
                     footer-tag="footer">
                 <h6 slot="header" class="mb-0">Details</h6>
-                <em slot="footer"><router-link :to="{ name: 'user-edit', params: { username: user.username } }">Edit</router-link></em>
+                <em slot="footer"><router-link :to="{ name: 'user-edit', params: { id: user.id } }">Edit</router-link></em>
                 <p class="card-text"><b>Email:</b> {{ user.email }}</p>
                 <p class="card-text"><b>Username:</b> {{ user.username }}</p>
                 <p class="card-text"><b>Roles:</b></p>
@@ -36,7 +36,8 @@ export default {
                 roles: [
                     'admin',
                     'super-admin'
-                ]
+                ],
+                id: 3,
             }
         }
     }

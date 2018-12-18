@@ -3,7 +3,7 @@
         <h1>People</h1>
         <b-table striped hover :items="users" :fields="fields">
             <template slot="username" slot-scope="user">
-              <router-link :to="{ name: 'user', params: { username: user.item.username } }">{{ user.item.username }}</router-link>
+              <router-link :to="{ name: 'user', params: { id: user.item.id } }">{{ user.item.username }}</router-link>
             </template>
         </b-table>
     </div>
@@ -20,7 +20,8 @@ export default {
                     displayname: 'Austin Bailey',
                     roles: [
                         'admin',
-                    ]
+                    ],
+                    id: 1,
                 },
                 {
                     username: 'walkerjj',
@@ -28,7 +29,8 @@ export default {
                     displayname: 'Jamie Walker',
                     roles: [
                         'admin',
-                    ]
+                    ],
+                    id: 2,
                 }
             ],
             fields: {

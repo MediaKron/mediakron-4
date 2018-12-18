@@ -83,12 +83,12 @@ var baseRoutes = [
             component: ListPeople,
         },
         {
-            path: '/admin/user/:username',
+            path: '/admin/user/:id',
             name: 'user',
             component: User
         },
         {
-            path: '/admin/user/:username/edit',
+            path: '/admin/user/:id/edit',
             name: 'user-edit',
             component: EditUser,
         },
