@@ -1,7 +1,8 @@
 <template lang="html">
     <div class="container mt-5">
         <h1>People</h1>
-        <b-table striped hover :items="users" :fields="fields">
+        <div v-if="listIsLoading" class="skeleton">Loading Table Skeleton here</div>
+        <b-table v-if="listIsLoaded" striped hover :items="users" :fields="fields">
             <template slot="username" slot-scope="user">
               <router-link :to="{ name: 'user', params: { id: user.item.id } }">{{ user.item.username }}</router-link>
             </template>
@@ -57,7 +58,7 @@ export default {
         }
     },
     computed: {
-    ...mapGetters("users", ["isLoaded", "isLoading", "users", 'currentPage', "totalItems", "lastPage"]),
+    ...mapGetters("users", ["listIsLoaded", "listIsLoading", "users", 'currentPage', "totalItems", "lastPage"]),
     ...mapState("users", ["pagination"]),
     },
     methods: {

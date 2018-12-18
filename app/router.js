@@ -78,7 +78,7 @@ var baseRoutes = [
             component: Confirm
         },
         {
-            path: '/admin/people',
+            path: '/admin/people/:page?',
             name: 'list-people',
             component: ListPeople,
         },
