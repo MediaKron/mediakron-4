@@ -16,6 +16,7 @@
         <b-nav-item-dropdown text="Administration" right>
           <b-dropdown-item to="/admin/sites">Sites</b-dropdown-item>
           <b-dropdown-item to="/admin/groups">Groups</b-dropdown-item>
+          <b-dropdown-item to="/admin/people">Users</b-dropdown-item>
         </b-nav-item-dropdown>
          <b-nav-item-dropdown right>
         <!-- Using button-content slot -->
