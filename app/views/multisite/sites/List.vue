@@ -7,7 +7,10 @@
       </template>
       <template slot="operations" slot-scope="site">
         <router-link :to="{ name: 'edit-site', params: { id: site.item.id } }">
-            <font-awesome-icon icon="coffee"/>
+            Edit
+        </router-link>
+        <router-link :to="{ name: 'site-overview', params: { uri: site.item.uri } }">
+            View
         </router-link>
       </template>
     </b-table>

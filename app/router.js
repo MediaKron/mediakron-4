@@ -26,8 +26,7 @@ import Confirm from './views/auth/Confirm.vue';
 import ListSites from './views/multisite/sites/List';
 import CreateSite from './views/multisite/sites/Create';
 import EditSite from './views/multisite/sites/Edit';
-
-
+import SiteOverview from './views/multisite/sites/SiteOverview';
 
 // Site Views
 import itemsRoutes from './router/index';
@@ -83,6 +82,11 @@ var baseRoutes = [
             path: '/admin/sites-new',
             name: 'create-site',
             component: CreateSite
+        },
+        {
+            path: '/admin/sites-view/:uri',
+            name: 'site-overview',
+            component: SiteOverview
         },
         {
             path: '/admin/sites/:id/edit',
