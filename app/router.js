@@ -27,7 +27,9 @@ import ListSites from './views/multisite/sites/List';
 import CreateSite from './views/multisite/sites/Edit';
 import EditSite from './views/multisite/sites/Edit';
 
-
+// People
+import ListPeople from './views/multisite/people/List';
+import User from './views/multisite/people/User';
 
 // Site Views
 import itemsRoutes from './router/index';
@@ -73,6 +75,16 @@ var baseRoutes = [
             path: '/confirm',
             name: 'mediakron-confirm',
             component: Confirm
+        },
+        {
+            path: '/admin/people',
+            name: 'list-people',
+            component: ListPeople,
+        },
+        {
+            path: '/admin/user/:username',
+            name: 'user',
+            component: User
         },
         {
             path: '/admin/sites/:page?',
