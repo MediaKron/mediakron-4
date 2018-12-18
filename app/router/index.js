@@ -1,18 +1,25 @@
 import SiteLayout from "@/views/site/SiteLayout";
-import SiteAdminLayout from "@/views/site/SiteAdminLayout";
+import AdminLayout from "@/views/site/AdminLayout";
 import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
 import Browse from "../views/site/items/Browse";
 
 import settings from "./settings";
 
-export default [
-  {
+var routes = {
+  default: {
     path: "/:site",
     component: SiteLayout,
     title: "Site",
     props: true,
     children: [
+      {
+        path: "settings",
+        component: AdminLayout,
+        title: "Site",
+        props: true,
+        children: settings
+      },
       {
         path: ":first/:second?/:third?",
         name: "item",
@@ -32,12 +39,7 @@ export default [
         props: true
       }
     ]
-  },
-  {
-    path: "/:site/settings",
-    component: SiteAdminLayout,
-    title: "Site",
-    props: true,
-    children: settings
   }
-];
+};
+export default routes;
+

@@ -1,25 +1,13 @@
 
-import HomePage from '@/views/site/homepage/Homepage';
+import SettingsIndex from '@/views/site/settings/Index';
 import ItemPage from '@/views/site/items/Item';
 import Browse from '../views/site/items/Browse';
 
 export default [
       {
-        path: ':first/:second?/:third?',
-        name: 'item',
-        component: ItemPage,
-        props: true,
-      },
-      {
-        path: '/browse',
-        name: 'browser',
-        component: Browse,
-        props: true,
-      },
-      {
         path: '/',
-        name: 'homepage',
-        component: HomePage,
+        name: 'settings_index',
+        component: SettingsIndex,
         props: true,
       }
     ]
