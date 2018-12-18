@@ -6,14 +6,17 @@
               <router-link :to="{ name: 'user', params: { id: user.item.id } }">{{ user.item.username }}</router-link>
             </template>
         </b-table>
+        <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
     </div>
 </template>
 
 <script>
+import { mapActions, mapState, mapGetters } from "vuex";
+
 export default {
     data() {
         return {
-            users: [
+            /*users: [
                 {
                     username: 'baileyau',
                     email: 'baileyau@bc.edu',
@@ -32,7 +35,7 @@ export default {
                     ],
                     id: 2,
                 }
-            ],
+            ],*/
             fields: {
               displayname: {
                 label: "Display Name",
@@ -52,6 +55,24 @@ export default {
               }
             }
         }
+    },
+    computed: {
+    ...mapGetters("users", ["isLoaded", "isLoading", "users", 'currentPage', "totalItems", "lastPage"]),
+    ...mapState("users", ["pagination"]),
+    },
+    methods: {
+        linkGen (pageNum) {
+            return '/admin/people/' + pageNum
+        },
+        ...mapActions("users", ["routeLoad"])
+    },
+    watch: {
+        '$route.params.page': function (page) {
+        this.routeLoad({to: this.$route});
+        }
+    },
+    mounted() {
+        this.routeLoad({to: this.$route});
     }
 }
 </script>

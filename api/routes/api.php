@@ -44,6 +44,7 @@ Route::group([
 
     // User api
     Route::resource('/user', 'Api\Admin\UserController');
+    Route::get('/users', 'Api\Admin\UserController@index');
 
     // Group api
     Route::resource('/group', 'Api\Admin\GroupController');

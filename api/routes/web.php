@@ -13,6 +13,6 @@
 
 Route::get('/storage/{site}/styles/{style}/{image}', 'ImageController@style');
 
-Route::get('/{any}', 'PublicController@index')->where('any', '.*');
+//Route::get('/{any}', 'PublicController@index')->where('any', '.*');
 
 
