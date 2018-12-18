@@ -5,6 +5,7 @@
                     header-tag="header"
                     footer-tag="footer">
                 <h6 slot="header" class="mb-0">Details</h6>
+                <em slot="footer"><router-link :to="{ name: 'edit-site', params: { id: currentSite.id } }">Edit</router-link></em>
             </b-card>
         </b-card-group>
     </div>
@@ -17,7 +18,7 @@ export default {
         ...mapGetters("sites", ["isLoaded", "isLoading", "currentSite"]),
     },
     methods: {
-      ...mapActions("sites", ["getSite"])
+        ...mapActions("sites", ["getSite"])
     },
     created() {
         this.getSite(this.$route.params.uri)
