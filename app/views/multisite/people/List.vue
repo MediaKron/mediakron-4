@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             fields: {
-              displayname: {
+              display_name: {
                 label: "Display Name",
                 sortable: true
               },
@@ -30,8 +30,8 @@ export default {
                 label: "Username",
                 sortable: true
               },
-              roles: {
-                label: "Roles",
+              admin: {
+                label: "Admin",
                 sortable: false
               }
             }
