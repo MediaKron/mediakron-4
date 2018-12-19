@@ -12,7 +12,8 @@ class Site extends BaseModel
     public $fillable = [
         'title',
         'subtitle',
-        'institution'
+        'institution',
+        'public'
     ];
     
     //

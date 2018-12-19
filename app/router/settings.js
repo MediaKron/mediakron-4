@@ -1,13 +1,18 @@
 
 import SettingsIndex from '@/views/site/settings/Index';
 import General from '@/views/site/settings/General';
-import Browse from '../views/site/items/Browse';
+import Privacy from '@/views/site/settings/Privacy';
 
 export default [
       {
         path: 'general',
         name: 'general_settings',
         component: General
+      },
+      {
+        path: 'privacy',
+        name: 'privacy_settings',
+        component: Privacy
       },
       {
         path: '/',

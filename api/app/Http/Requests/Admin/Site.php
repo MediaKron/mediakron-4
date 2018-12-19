@@ -51,7 +51,9 @@ class Site extends JsonRequest
         return [
             'title' => 'required',
             'subtitle' => '',
-            'institution' => ''
+            'institution' => '',
+            'public' => 'boolean'
+
         ];
     }
 }

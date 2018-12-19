@@ -115,6 +115,8 @@ class SiteController extends Controller
         $site->adminFill($data);
         $site->save();
 
+        $site = Site::with(['primary'])->find($site->id);
+
         // Return the Site data object
         return response()->json($site);
     }
