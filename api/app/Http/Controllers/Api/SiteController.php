@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Site;
-use App\Http\Requests\Admin\SiteRequest;
+use App\Http\Requests\Admin\Site as SiteRequest;
 use Auth;
 
 class SiteController extends Controller

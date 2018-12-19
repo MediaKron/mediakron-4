@@ -86,6 +86,34 @@ export const mutations = {
      */
     siteError(state, error){
         console.log(error)
+    },
+
+    updateSite(state, data){
+        state.editPending = true;
+        state.editSite = data;
+    },
+
+    siteSaving(state){
+        state.siteIsSaving = true;
+        state.siteIsSaved = false;
+        state.siteSaveFailed = false;
+    },
+
+    siteUpdate(state, data){
+        state.currentSite = new Site(data);
+    },
+
+    siteUpdated(state){
+        state.siteIsSaving = false;
+        state.siteIsSaved = true;
+        state.siteSaveFailed = false;
+    },
+
+    siteUpdateFailed(state, error){
+        state.siteIsSaving = false;
+        state.siteIsSaved = false;
+        state.siteSaveFailed = true;
+        
     }
 
 }

@@ -19,22 +19,22 @@
 
     <div id="admin-site-settings" class="site-settings">
         <div id="item-content">
-
+             <form autocomplete="off">
                 <fieldset>
                     <legend id="edit-settings" class="section-title">Site Information</legend>
                     <div class="field">
                         <label for="site-name">Site Name</label>
-                        <input name="name" class="settings-field" id="site-name" settings-attr="name" type="textfield" placeholder="Enter the name of your project"   v-model="currentSite.title" @input="dataChange"/>
+                        <input name="name" class="settings-field" id="site-name" settings-attr="name" type="textfield" placeholder="Enter the name of your project"   v-model="localData.title" @input="dataChange"/>
                     </div>
 
                     <div class="field">
                         <label for="site-subtitle">Subtitle</label>
-                        <input name="subtitle" class="settings-field" id="site-subtitle" settings-attr="subtitle" type="textfield" placeholder="An optional site subtitle "  v-model="currentSite.subtitle" @input="dataChange" />
+                        <input name="subtitle" class="settings-field" id="site-subtitle" settings-attr="subtitle" type="textfield" placeholder="An optional site subtitle "  v-model="localData.subtitle" @input="dataChange" />
                     </div>
 
                     <div class="field">
                         <label for="site-instituiton">Institution </label>
-                        <input name="institution" class="settings-field" id="site-instituiton" settings-attr="institution" type="textfield" placeholder="Your institution" v-model="currentSite.institution" @input="dataChange" />
+                        <input name="institution" class="settings-field" id="site-instituiton" settings-attr="institution" type="textfield" placeholder="Your institution" v-model="localData.institution" @input="dataChange" />
                     </div>
                 </fieldset>
 
@@ -48,16 +48,23 @@
                         </div>
                     </div>
                 </fieldset>
+
+                <div class="save-bar">
+                    <div class="save-bar-inner">
+                        <button id="done-editing" type="submit" class="btn btn-success submit btn-sm" @click.prevent="save">
+                            <span class="mk-icon mk-save"> </span> Save
+                        </button>
+                        <button id="close-settings-context" class="btn btn-default btn-sm close-settings" @click.prevent="cancel">
+                            <span class="mk-icon mk-close"> </span> Cancel
+                        </button>
+                    </div>
+                </div>
+             </form>
         </div>
     </div>
     <!-- End #item -->
 
-    <div class="save-bar">
-        <div class="save-bar-inner">
-            <button id="done-editing" type="submit" class="btn btn-success submit btn-sm"><span class="mk-icon mk-save"> </span> Save</button>
-            <button id="close-settings-context" class="btn btn-default btn-sm close-settings"><span class="mk-icon mk-close"> </span> Cancel</button>
-        </div>
-    </div>
+    
 
 </div>
 </template>
@@ -65,17 +72,31 @@
 <script>
 import Vue from 'vue';
 import _ from 'underscore';
-import { mapState, mapGetters } from 'vuex';
+import data from '@/components/mixins/data';
+import { mapState, mapGetters, mapActions } from 'vuex';
 export default  Vue.extend({
+    mixins: [ data ],
     computed:{
-        ...mapState('sites', [
-            'currentSite'
-        ])
+        ...mapState('sites', {
+            sourceData: 'currentSite'
+        })
     },
     methods:{
+        ...mapActions('sites', [
+            'update',
+            'saveSite'
+        ]),
+
         dataChange: _.debounce( function() {
-            
+            this.update(this.localData);
         }, 500),
+
+        save(){
+            this.saveSite(this.localData);
+        },
+
+        cancel(){
+        }
     },
     mounted(){
         

@@ -36,8 +36,9 @@ Route::group([
 ], function ($router) {
 
     // Sites api
-    Route::resource('/site', 'Api\SiteController');
+    Route::resource('site', 'Api\SiteController');
     Route::get('/sites', 'Api\SiteController@index');
+    Route::post('/site/{site}', 'Api\SiteController@update');
 
     // Admin System Settings api
     Route::resource('/settings', 'Api\Admin\SettingsController');
