@@ -2,6 +2,8 @@
 import SettingsIndex from '@/views/site/settings/Index';
 import General from '@/views/site/settings/General';
 import Privacy from '@/views/site/settings/Privacy';
+import Comments from '@/views/site/settings/Comments';
+import Appearance from '@/views/site/settings/Appearance';
 
 export default [
       {
@@ -13,6 +15,16 @@ export default [
         path: 'privacy',
         name: 'privacy_settings',
         component: Privacy
+      },
+      {
+        path: 'comments',
+        name: 'comment_settings',
+        component: Comments
+      },
+      {
+        path: 'appearance',
+        name: 'appearance_settings',
+        component: Appearance
       },
       {
         path: '/',

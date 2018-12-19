@@ -13,7 +13,8 @@ class Site extends BaseModel
         'title',
         'subtitle',
         'institution',
-        'public'
+        'public',
+        'comment'
     ];
     
     //
