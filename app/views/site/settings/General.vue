@@ -24,17 +24,17 @@
                     <legend id="edit-settings" class="section-title">Site Information</legend>
                     <div class="field">
                         <label for="site-name">Site Name</label>
-                        <input name="name" class="settings-field" id="site-name" settings-attr="name" type="textfield" placeholder="Enter the name of your project"   v-model="name"/>
+                        <input name="name" class="settings-field" id="site-name" settings-attr="name" type="textfield" placeholder="Enter the name of your project"   v-model="currentSite.title" @input="dataChange"/>
                     </div>
 
                     <div class="field">
                         <label for="site-subtitle">Subtitle</label>
-                        <input name="subtitle" class="settings-field" id="site-subtitle" settings-attr="subtitle" type="textfield" placeholder="An optional site subtitle "  v-model="subtitle" />
+                        <input name="subtitle" class="settings-field" id="site-subtitle" settings-attr="subtitle" type="textfield" placeholder="An optional site subtitle "  v-model="currentSite.subtitle" @input="dataChange" />
                     </div>
 
                     <div class="field">
                         <label for="site-instituiton">Institution </label>
-                        <input name="institution" class="settings-field" id="site-instituiton" settings-attr="institution" type="textfield" placeholder="Your institution" v-model="institution"/>
+                        <input name="institution" class="settings-field" id="site-instituiton" settings-attr="institution" type="textfield" placeholder="Your institution" v-model="currentSite.institution" @input="dataChange" />
                     </div>
                 </fieldset>
 
@@ -64,14 +64,18 @@
 
 <script>
 import Vue from 'vue';
+import _ from 'underscore';
 import { mapState, mapGetters } from 'vuex';
 export default  Vue.extend({
     computed:{
-        ...mapState('sites', {
-            name: state => state.currentSite.title,
-            subtitle: state => state.currentSite.subtitle,
-            institution: state => state.currentSite.institution
-        })
+        ...mapState('sites', [
+            'currentSite'
+        ])
+    },
+    methods:{
+        dataChange: _.debounce( function() {
+            
+        }, 500),
     },
     mounted(){
         
