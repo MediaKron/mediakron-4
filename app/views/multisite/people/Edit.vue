@@ -7,7 +7,7 @@
                        label="Username:">
                    <b-form-input
                                  type="text"
-                                 v-model="form.username"
+                                 v-model="currentUser.username"
                                  required
                                  placeholder="">
                    </b-form-input>
@@ -18,7 +18,7 @@
                        description="We'll never share your email with anyone else.">
                    <b-form-input
                                  type="email"
-                                 v-model="form.email"
+                                 v-model="currentUser.email"
                                  required
                                  placeholder="">
                    </b-form-input>
@@ -27,7 +27,7 @@
                        label="Display Name:">
                    <b-form-input
                                  type="text"
-                                 v-model="form.displayname"
+                                 v-model="currentUser.display_name"
                                  required
                                  placeholder="">
                    </b-form-input>
@@ -36,7 +36,7 @@
                        label="New Password:">
                    <b-form-input
                                  type="password"
-                                 v-model="form.newPassword"
+                                 v-model="currentUser.newPassword"
                                  placeholder="">
                    </b-form-input>
                 </b-form-group>
@@ -44,12 +44,12 @@
                        label="Repeat New Password:">
                    <b-form-input
                                  type="password"
-                                 v-model="form.repeatNewPassword"
+                                 v-model="currentUser.repeatNewPassword"
                                  placeholder="">
                    </b-form-input>
                 </b-form-group>
                 <b-form-group id="exampleGroup4">
-                    <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
+                    <b-form-checkbox-group>
                         <b-form-checkbox value="enabled">Enabled</b-form-checkbox>
                         <b-form-checkbox value="isBcUser">Is BC User</b-form-checkbox>
                    </b-form-checkbox-group>
@@ -57,24 +57,22 @@
              <b-button type="submit" variant="primary">Submit</b-button>
             </b-form>
         </b-card>
-
     </div>
 </template>
 
 <script>
+import { mapActions, mapState, mapGetters } from "vuex";
+
 export default {
-    data() {
-        return {
-            form: {
-                username: 'testuser',
-                email: 'testuser@bc.edu',
-                displayname: 'Test User',
-                newPassword: '',
-                repeatNewPassword: '',
-                checked: ['isBcUser']
-            }
-        }
-    }
+    created() {
+        this.getUser(this.$route.params.id)
+    },
+    computed: {
+        ...mapGetters("users", ["currentUser"]),
+    },
+    methods: {
+        ...mapActions("users", ["getUser"]),
+    },
 }
 </script>
 

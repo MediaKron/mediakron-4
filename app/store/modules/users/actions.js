@@ -6,8 +6,8 @@ const actions = {
      * Dispatch this action when you want to load a site list
      * and make the site list sensitive to the query being
      * passed in from the router
-     * @param {*} param0 
-     * @param {*} param1 
+     * @param {*} param0
+     * @param {*} param1
      */
     routeLoad({ commit, dispatch }, { to }){
         const { page } = to.params;
@@ -24,12 +24,12 @@ const actions = {
       },
       /**
        * Load a list of sites
-       * @param {*} param0 
-       * @param {*} options 
+       * @param {*} param0
+       * @param {*} options
        */
       loadUsers({ commit, dispatch }, options) {
           commit("listLoading");
-      
+
           return api.get('users', options)
             .then((response) => {
               commit("listLoad", response.data);
@@ -42,20 +42,20 @@ const actions = {
               return dispatch("listError", error);
             });
         },
-  
+
         /**
          * Load a single site
-         * @param {*} param0 
-         * @param {*} id 
+         * @param {*} param0
+         * @param {*} id
          */
       getUser({ commit, dispatch }, id) {
           commit("siteLoading");
-      
+
           return api.get('user/'+id)
             .then((response) => {
               console.log(response.data);
-              commit("siteLoad", response.data);
-              commit("siteLoaded");
+              commit("userLoad", response.data.data[0]);
+              commit("userLoaded");
             })
             .catch((error) => {
               error.errorMessage = "There was an error loading the site";

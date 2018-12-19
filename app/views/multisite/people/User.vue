@@ -1,17 +1,14 @@
 <template lang="html">
     <div class="container mt-5">
         <b-card-group deck class="mb-3">
-            <b-card :title="'Display Name: ' + user.displayname"
+            <b-card :title="'Display Name: ' + currentUser.display_name"
                     header-tag="header"
                     footer-tag="footer">
                 <h6 slot="header" class="mb-0">Details</h6>
-                <em slot="footer"><router-link :to="{ name: 'user-edit', params: { id: user.id } }">Edit</router-link></em>
-                <p class="card-text"><b>Email:</b> {{ user.email }}</p>
-                <p class="card-text"><b>Username:</b> {{ user.username }}</p>
-                <p class="card-text"><b>Roles:</b></p>
-                <ul class="card-text">
-                    <li class="card-text" v-for="role in user.roles">{{ role }}</li>
-                </ul>
+                <em slot="footer"><router-link :to="{ name: 'user-edit', params: { id: currentUser.id } }">Edit</router-link></em>
+                <p class="card-text"><b>Email:</b> {{ currentUser.email }}</p>
+                <p class="card-text"><b>Username:</b> {{ currentUser.username }}</p>
+                <p class="card-text"><b>Role:</b> {{ (currentUser.admin ? "Admin" : "Not Admin" )}}</p>
             </b-card>
         </b-card-group>
         <b-card-group deck class="mb-3">
@@ -26,21 +23,18 @@
 </template>
 
 <script>
+import { mapActions, mapState, mapGetters } from "vuex";
+
 export default {
-    data() {
-        return {
-            user: {
-                displayname: 'Test User',
-                email: 'testuser@bc.edu',
-                username: 'testuser',
-                roles: [
-                    'admin',
-                    'super-admin'
-                ],
-                id: 3,
-            }
-        }
-    }
+    created() {
+        this.getUser(this.$route.params.id)
+    },
+    computed: {
+        ...mapGetters("users", ["currentUser"]),
+    },
+    methods: {
+        ...mapActions("users", ["getUser"]),
+    },
 }
 </script>
 

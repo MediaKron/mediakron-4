@@ -6,7 +6,7 @@ import User from './user';
 export const mutations = {
   /**
      * Called when the list is loading
-     * @param {*} state 
+     * @param {*} state
      */
     listLoading(state){
         state.listIsLoading = true;
@@ -16,7 +16,7 @@ export const mutations = {
 
     /**
      * Called after the list has loaded
-     * @param {*} state 
+     * @param {*} state
      */
     listLoaded(state){
         state.listIsLoading = false;
@@ -26,7 +26,7 @@ export const mutations = {
 
     /**
      * Called with the data to load as the current list
-     * @param {*} state 
+     * @param {*} state
      */
     listLoad(state, data){
         state.userList = data.data.map(user => new User(user));
@@ -34,7 +34,7 @@ export const mutations = {
 
     /**
      * List Page.  Set the pager information from the request
-     * @param {*} state 
+     * @param {*} state
      */
     listPage(state, data){
         state.pagination.currentPage = data.current_page;
@@ -46,7 +46,7 @@ export const mutations = {
 
     /**
      * List Page.  Set the pager information from the request
-     * @param {*} state 
+     * @param {*} state
      */
     listError(state, error){
         console.log(error)
@@ -54,7 +54,7 @@ export const mutations = {
 
     /**
      * Called when the list is loading
-     * @param {*} state 
+     * @param {*} state
      */
     userLoading(state){
         state.userIsLoading = true;
@@ -64,7 +64,7 @@ export const mutations = {
 
     /**
      * Called after the list has loaded
-     * @param {*} state 
+     * @param {*} state
      */
     userLoaded(state){
         state.userIsLoading = false;
@@ -74,15 +74,16 @@ export const mutations = {
 
     /**
      * Called with the data to load as the current list
-     * @param {*} state 
+     * @param {*} state
      */
     userLoad(state, data){
-        state.currentUser = new user(data);
+        console.log(data)
+        state.currentUser = new User(data);
     },
 
     /**
      * List Page.  Set the pager information from the request
-     * @param {*} state 
+     * @param {*} state
      */
     userError(state, error){
         console.log(error)

@@ -17,26 +17,6 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
     data() {
         return {
-            /*users: [
-                {
-                    username: 'baileyau',
-                    email: 'baileyau@bc.edu',
-                    displayname: 'Austin Bailey',
-                    roles: [
-                        'admin',
-                    ],
-                    id: 1,
-                },
-                {
-                    username: 'walkerjj',
-                    email: 'walkerjj@bc.edu',
-                    displayname: 'Jamie Walker',
-                    roles: [
-                        'admin',
-                    ],
-                    id: 2,
-                }
-            ],*/
             fields: {
               displayname: {
                 label: "Display Name",
