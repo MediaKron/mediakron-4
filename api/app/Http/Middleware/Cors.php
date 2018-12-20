@@ -7,7 +7,8 @@ use Closure;
 class Cors
 {
     private static $allowedOriginsWhitelist = [
-        'http://localhost:8081'
+        'http://localhost:8081',
+        'http://localhost:8082'
     ];
     
     // All the headers must be a string

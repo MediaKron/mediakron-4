@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "mediakron:install": "node build/install.js",
     "mediakron:build": "vue-cli-service build",
     "mediakron:build:local": "vue-cli-service build --mode development",
     "mediakron:build:dev": "vue-cli-service build --mode remotedev",
