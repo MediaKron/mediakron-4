@@ -24,8 +24,9 @@ import Confirm from './views/auth/Confirm.vue';
 
 // Mediakron Site Mangement
 import ListSites from './views/multisite/sites/List';
-import CreateSite from './views/multisite/sites/Edit';
+import CreateSite from './views/multisite/sites/Create';
 import EditSite from './views/multisite/sites/Edit';
+import SiteOverview from './views/multisite/sites/SiteOverview';
 
 // People
 import ListPeople from './views/multisite/people/List';
@@ -98,9 +99,14 @@ var baseRoutes = [
             component: ListSites
         },
         {
-            path: '/admin/sites/new',
+            path: '/admin/sites-new',
             name: 'create-site',
             component: CreateSite
+        },
+        {
+            path: '/admin/sites-view/:uri',
+            name: 'site-overview',
+            component: SiteOverview
         },
         {
             path: '/admin/sites/:id/edit',
