@@ -36,14 +36,16 @@ Route::group([
 ], function ($router) {
 
     // Sites api
-    Route::resource('/site', 'Api\SiteController');
+    Route::resource('site', 'Api\SiteController');
     Route::get('/sites', 'Api\SiteController@index');
+    Route::post('/site/{site}', 'Api\SiteController@update');
 
     // Admin System Settings api
     Route::resource('/settings', 'Api\Admin\SettingsController');
 
     // User api
     Route::resource('/user', 'Api\Admin\UserController');
+    Route::get('/users', 'Api\Admin\UserController@index');
 
     // Group api
     Route::resource('/group', 'Api\Admin\GroupController');

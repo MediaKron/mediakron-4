@@ -28,13 +28,13 @@
 
           <ul class="settings-section">
             <li class="settings-item">
-              <a href="/settings/general" class="settings-link">Site Title and Information</a>
+              <router-link :to="basePath + '/settings/general'" class="settings-link">Site Title and Information</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/privacy" class="settings-link">Privacy Settings</a>
+              <router-link :to="basePath + '/settings/privacy'" class="settings-link">Privacy Settings</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/comments" class="settings-link">Comments</a>
+              <router-link :to="basePath + '/settings/comments'" class="settings-link">Comments</router-link>
             </li>
           </ul>
 
@@ -43,16 +43,16 @@
           </h3>
           <ul class="settings-section">
             <li class="settings-item">
-              <a href="/settings/appearance" class="settings-link">Color Scheme and Font</a>
+              <router-link :to="basePath + '/settings/appearance'" class="settings-link">Color Scheme and Font</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/navigation" class="settings-link">Menus</a>
+              <router-link :to="basePath + '/settings/navigation'" class="settings-link">Menus</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/homepage" class="settings-link">Homepage Options</a>
+              <router-link :to="basePath + '/settings/homepage'" class="settings-link">Homepage Options</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/itemoptions" class="settings-link">Item Options</a>
+              <router-link :to="basePath + '/settings/itemoptions'" class="settings-link">Item Options</router-link>
             </li>
           </ul>
 
@@ -61,13 +61,13 @@
           </h3>
           <ul class="settings-section">
             <li class="settings-item">
-              <a href="/settings/users" class="settings-link">Manage Users</a>
+              <router-link :to="basePath + '/settings/users'" class="settings-link">Manage Users</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/statistics" class="settings-link">Usage Statistics</a>
+              <router-link :to="basePath + '/settings/statistics'" class="settings-link">Usage Statistics</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/googleanalytics" class="settings-link">Google Analytics</a>
+              <router-link :to="basePath + '/settings/googleanalytics'" class="settings-link">Google Analytics</router-link>
             </li>
           </ul>
         </div>
@@ -77,21 +77,21 @@
           </h3>
           <ul class="settings-section">
             <li class="settings-item">
-              <a href="/browse" class="settings-link">All Content</a>
+              <router-link :to="basePath + '/browse'" class="settings-link">All Content</router-link>
             </li>
             <li class="settings-item">
-              <a href="/settings/import" class="settings-link">Import</a>
+              <router-link :to="basePath + '/settings/import'" class="settings-link">Import</router-link>
             </li>
             <li class="settings-item">
-              <a class="comingsoon">Export (coming soon)</a>
+               <router-link :to="basePath + '/comingsoon'">Export (coming soon)</router-link>
             </li>
 
             <li v-if="access('can restore from trash')" class="settings-item">
-              <a href="/settings/trash" class="settings-link">Deleted Content</a>
+              <router-link :to="basePath + '/settings/trash'" class="settings-link">Deleted Content</router-link>
             </li>
 
             <li v-if="access('can archive content')" class="settings-item">
-              <a href="/browse/archived" class="settings-link">Archived Content</a>
+              <router-link :to="basePath + '/browse/archived'" class="settings-link">Archived Content</router-link>
             </li>
           </ul>
           <div v-if="access('can change site settings')">
@@ -100,13 +100,13 @@
             </h3>
             <ul class="settings-section" v-if="access('can change site settings')">
               <li class="settings-item">
-                <a href="/settings/canvas" class="settings-link">Canvas</a>
+                <router-link :to="basePath + '/settings/canvas'" class="settings-link">Canvas</router-link>
               </li>
               <li class="settings-item">
-                <a href="/settings/performance" class="settings-link">Site Cache</a>
+                <router-link :to="basePath + '/settings/performance'" class="settings-link">Site Cache</router-link>
               </li>
               <li class="settings-item">
-                <a href="/settings/search" class="settings-link">Search</a>
+                <router-link :to="basePath + '/settings/search'" class="settings-link">Search</router-link>
               </li>
             </ul>
           </div>
@@ -124,6 +124,10 @@ export default {
     computed:{
         ...mapGetters('users/profile', [
             'access'
+        ]),
+        ...mapGetters('sites', [
+            'currentSite',
+            'basePath'
         ])
     }
 };

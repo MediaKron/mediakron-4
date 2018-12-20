@@ -22,6 +22,11 @@ export const getters = {
   currentPage: state => state.pagination.currentPage,
   totalItems: state => state.pagination.total,
   lastPage: state => state.pagination.lastPage,
+
+  /**
+   * Utility
+   */
+  basePath: state => '/' + state.currentSite.uri,
 };
 
 export default getters;

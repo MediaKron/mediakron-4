@@ -8,6 +8,14 @@ class Site extends BaseModel
 {
 
     use \App\Models\Traits\Site\Import;
+
+    public $fillable = [
+        'title',
+        'subtitle',
+        'institution',
+        'public',
+        'comment'
+    ];
     
     //
     /**
@@ -96,6 +104,21 @@ class Site extends BaseModel
     public function institution()
     {
         return $this->belongsTo('App\Models\Institution');
+    }
+
+    /**
+     * When we save from an admin side, we might need to
+     * allow users to change passwords and roles.  
+     * 
+     * This should only be submitted by a user that has super admin 
+     * privlidges because this would allow the super admin to take
+     * over the user account
+     *
+     * @param [type] $data
+     * @return void
+     */
+    public function adminFill($data){
+        return $this;
     }
 
 

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Site;
-use App\Http\Requests\Admin\SiteRequest;
+use App\Http\Requests\Admin\Site as SiteRequest;
 use Auth;
 
 class SiteController extends Controller
@@ -114,6 +114,8 @@ class SiteController extends Controller
         $site->fill($data);
         $site->adminFill($data);
         $site->save();
+
+        $site = Site::with(['primary'])->find($site->id);
 
         // Return the Site data object
         return response()->json($site);

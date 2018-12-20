@@ -54,13 +54,41 @@ const actions = {
 
         return api.get('site/'+id)
           .then((response) => {
-            console.log(response.data);
             commit("siteLoad", response.data);
             commit("siteLoaded");
           })
           .catch((error) => {
             error.errorMessage = "There was an error loading the site";
             return dispatch("siteError", error);
+          });
+      },
+
+      /**
+       * Load a single site
+       * @param {*} param0 
+       * @param {*} id 
+       */
+    update({ commit, state }, site) {
+      if(JSON.stringify(site) !== JSON.stringify(state.editSite)){
+        commit('updateSite', site);
+      }
+    },
+
+    /**
+       * Load a single site
+       * @param {*} param0 
+       * @param {*} id 
+       */
+      saveSite({ commit, state }) {
+        commit("siteSaving");
+        return api.post('site/' + state.currentSite.id, state.editSite)
+          .then((response) => {
+            commit("siteUpdate", response.data);
+            commit("siteUpdated");
+          })
+          .catch((error) => {
+            error.errorMessage = "There was an error saving the site";
+            return dispatch("siteUpdateFailed", error);
           });
       },
 }

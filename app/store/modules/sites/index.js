@@ -7,17 +7,11 @@ export const getInitialState = () => {
   return {
     // Primary value holders
     'siteList': [],
-    'currentSite': false,
 
     // Site List Statuses
     'siteIsLoading':false,
     'siteIsLoaded': false,
     'siteIsError': false,
-    
-    'listIsLoading': false,
-    'listIsLoaded': false,
-    'listIsError': false,
-    'listIsEmpty': false,
 
     'pagination' : {
       'currentPage': 1,
@@ -26,6 +20,21 @@ export const getInitialState = () => {
       'pageSize': 10,
       'totalItems': 10,
     },
+    
+    'currentSite': false,
+
+    'listIsLoading': false,
+    'listIsLoaded': false,
+    'listIsError': false,
+    'listIsEmpty': false,
+
+    'editSite': {},
+    'editPending': false,
+    'siteIsSaving': false,
+    'siteIsSaved': false,
+    'siteSaveFailed': false,
+
+
 
   };
 };

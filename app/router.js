@@ -28,6 +28,11 @@ import CreateSite from './views/multisite/sites/Create';
 import EditSite from './views/multisite/sites/Edit';
 import SiteOverview from './views/multisite/sites/SiteOverview';
 
+// People
+import ListPeople from './views/multisite/people/List';
+import User from './views/multisite/people/User';
+import EditUser from './views/multisite/people/Edit';
+
 // Site Views
 import itemsRoutes from './router/index';
 import browseRoutes from './router/browse';
@@ -72,6 +77,21 @@ var baseRoutes = [
             path: '/confirm',
             name: 'mediakron-confirm',
             component: Confirm
+        },
+        {
+            path: '/admin/people/:page?',
+            name: 'list-people',
+            component: ListPeople,
+        },
+        {
+            path: '/admin/user/:id',
+            name: 'user',
+            component: User
+        },
+        {
+            path: '/admin/user/:id/edit',
+            name: 'user-edit',
+            component: EditUser,
         },
         {
             path: '/admin/sites/:page?',
@@ -121,7 +141,9 @@ var baseRoutes = [
   // Get the item routes
   //baseRoutes.push(browseRoutes);
   //baseRoutes.push(settingsRoutes);
-  baseRoutes.concat(itemsRoutes);
+  //baseRoutes.push(itemsRoutes.settings);
+  baseRoutes.push(itemsRoutes.default);
+
 
 // 404 route
 baseRoutes.push({
