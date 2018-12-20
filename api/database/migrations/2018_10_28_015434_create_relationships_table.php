@@ -17,6 +17,7 @@ class CreateRelationshipsTable extends Migration
             $table->increments('id');
 
             // Relationships
+            $table->integer('site_id');
             $table->integer('parent_id');
             $table->integer('child_id');
             $table->integer('attachment_id');

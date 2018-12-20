@@ -57,9 +57,27 @@ class Mediakron3Migration extends Command
             $id = $site->uri . '_Items';
             if(DB::connection('mediakron_v3')->getSchemaBuilder()->hasTable($id)){
                 $items = DB::connection('mediakron_v3')->table($site->uri . '_Items')->get();
+                $new_items = [];
                 foreach($items as $item){
-                    $new_item = Item::mediakron_v3($item, $site->id);
+                    $new_items[$item->uri] = Item::mediakron_v3($item, $site->id);
                 }
+                foreach($new_items as $item){
+                    $relationships = DB::connection('mediakron_v3')->table($site->uri . '_Relationships')
+                        ->where('parent', $site->uri)
+                        ->orWhere('child', $site->uri)
+                        ->orWhere('attachment', $site->uri)
+                        ->get();
+
+                    $new_relationship = Relationship::where('site_id', $site->id)
+                        ->where('parent_id', $item->id)
+                        ->orWhere('child_id', $item->id)
+                        ->orWhere('attachment_id', $item->id)
+                        ->first();
+
+                    $new_relationship = 
+                        $new_items[$item->uri] = Item::mediakron_v3($item, $site->id);
+                }
+
             }
             
         }

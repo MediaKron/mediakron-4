@@ -3,9 +3,12 @@
 </template>
 
 <script>
-
+import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
-    props:[ 'site' ]
+    props:[ 
+        'site' 
+    ],
+    
 }
 </script>
 

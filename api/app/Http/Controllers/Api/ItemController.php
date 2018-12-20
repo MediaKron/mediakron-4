@@ -21,10 +21,10 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($site_id)
+    public function index($site)
     {
         //
-        return Item::paginate(50);
+        return Item::with(['children', 'parents'])->paginate(50);
     }
 
     /**

@@ -24,12 +24,28 @@
                     <legend id="edit-settings" class="section-title">Site Information</legend>
                     <div class="field">
                         <label for="site-name">Site Name</label>
-                        <input name="name" class="settings-field" id="site-name" settings-attr="name" type="textfield" placeholder="Enter the name of your project"   v-model="localData.title" @input="dataChange"/>
+                        <input 
+                            name="name" 
+                            class="settings-field" 
+                            id="site-name" 
+                            settings-attr="name" 
+                            type="textfield" 
+                            placeholder="Enter the name of your project"
+                            v-model="localData.title" 
+                            @input="dataChange" />
                     </div>
 
                     <div class="field">
                         <label for="site-subtitle">Subtitle</label>
-                        <input name="subtitle" class="settings-field" id="site-subtitle" settings-attr="subtitle" type="textfield" placeholder="An optional site subtitle "  v-model="localData.subtitle" @input="dataChange" />
+                        <input 
+                            name="subtitle" 
+                            class="settings-field" 
+                            id="site-subtitle" 
+                            settings-attr="subtitle" 
+                            type="textfield" 
+                            placeholder="An optional site subtitle " 
+                            v-model="localData.subtitle" 
+                            @input="dataChange" />
                     </div>
 
                     <div class="field">
@@ -51,10 +67,17 @@
 
                 <div class="save-bar">
                     <div class="save-bar-inner">
-                        <button id="done-editing" type="submit" class="btn btn-success submit btn-sm" @click.prevent="save">
+                        <button 
+                            id="done-editing" 
+                            type="submit" 
+                            class="btn btn-success submit btn-sm" 
+                            @click.prevent="save" >
                             <span class="mk-icon mk-save"> </span> Save
                         </button>
-                        <button id="close-settings-context" class="btn btn-default btn-sm close-settings" @click.prevent="cancel">
+                        <button 
+                            id="close-settings-context" 
+                            class="btn btn-default btn-sm close-settings" 
+                            @click.prevent="cancel" >
                             <span class="mk-icon mk-close"> </span> Cancel
                         </button>
                     </div>

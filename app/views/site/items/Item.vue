@@ -3,9 +3,20 @@
 </template>
 
 <script>
-
+import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
-    props:[ 'site', 'first' , 'second', 'third' ]
+    props:[ 
+        'site', 
+        'first' , 
+        'second', 
+        'third' 
+    ],
+
+    created(){
+        // go fetch the items
+
+    }
+
 }
 </script>
 
