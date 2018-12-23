@@ -1,8 +1,10 @@
 <template>
     <div id="mediakron">
-        <div v-if="siteIsLoading">
-            Site Loading
+        <transition  name="fade">
+        <div v-if="siteIsLoading" class="d-flex is-loading">
+              <b-alert show fade variant="primary" > <font-awesome-icon icon="spinner" class="loading-icon"/> Site Loading  </b-alert>
         </div>
+         </transition>
         <div v-if="siteIsLoaded">
             <div id="main-container">
                 <navigation></navigation>
@@ -99,8 +101,25 @@ export default {
 .scroll-arrow,
 .fullscreen-nav-toggle,
 #pastehelper,
-#progress-bar
+#progress-bar,
+#debug
  {
     display:none;
+}
+
+.is-loading {
+height: 100vh;   
+width: 100vw;
+align-items: center;
+justify-content: center;
+flex-direction: column; 
+background: #f5f5f5;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .75s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

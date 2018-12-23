@@ -1,22 +1,30 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
-    faCogs,
+    faCog,
     faPlusSquare,
     faList,
     faSearch,
     faUser,
     faExpandArrowsAlt,
-    faSignInAlt
+    faSignInAlt,
+    faThLarge,
+    faSpinner,
+    faCheck,
+    faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function initializeIcons(){
     library.add(
         faSearch, 
         faPlusSquare, 
-        faCogs, 
+        faCog, 
         faList,
         faUser,
         faExpandArrowsAlt,
-        faSignInAlt
+        faSignInAlt,
+        faThLarge,
+        faSpinner,
+        faCheck,
+        faTimes
     );
 }

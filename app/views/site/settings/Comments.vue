@@ -1,59 +1,45 @@
 <template>
-    <div class="admin admin-comments overlay overlay-half">
+    <div class="comment-settings">
 
-    <header class="overlay-header">
-        <div class="header-inner">
-            <h2><span class="mk-icon mk-settings"></span> Settings > Comments</h2>
-            <nav>
-                <ul class="page-options">
-                    <li class="option-close">
-                        <button class="btn btn-sm btn-default close-button" aria-label="Close">
-          		<span class="mk-icon mk-close"></span>
-          		<span class="button-text"> Close</span> 
-          	</button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <h2 class="mb-4"> Comment Settings</h2>
     </header>
+    <b-form>
+        <b-form-group label="Settings for whether users can add comments to site content:" description="">
+        <b-form-radio-group id="comment-settings"
+            size="lg"
+            v-model="selected"
+            :options="options"
+        name="comment-settings" />
+        </b-form-group>
+        <b-button-group class="savebar mt-5">
+            <b-button type="submit" variant="primary"><font-awesome-icon icon="check"/> Save</b-button>
+            <b-button type="reset" variant="outline-primary"><font-awesome-icon icon="times"/> Cancel</b-button>
+         </b-button-group>
+    </b-form>
+     <div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet egestas nunc. Sed commodo libero vel lacus consectetur feugiat. Phasellus ac vestibulum turpis, ac sollicitudin erat. Etiam venenatis auctor mi, sit amet iaculis libero feugiat tristique. Mauris sed sem quis ligula elementum pretium quis ut turpis. Donec in finibus lacus. Aliquam placerat sit amet dolor vel auctor. Nam pulvinar in odio sed venenatis. Suspendisse pharetra sapien mauris, id placerat enim condimentum vel.
 
-    <div id="admin-site-settings" class="site-settings">
-        <div id="item-content">
-          <h3 class="title">Comments</h3>
-          <form autocomplete="off">
-          <div class="form-instructions">Settings for whether users can add comments to site content. </div>
-            <div class="toggle-comments">
-              <span class="toggle-label" aria-hidden="true">Comments are: </span>
-              <div class='toggle'>
-                <input name="comments" type="hidden" value="0" />
-                <input id="comments-visibility" class="toggle-field" settings-attr="commenting" name="comments" type="checkbox" v-model="localData.comment" @input="dataChange" />
-                  <div class='btn'>
-                    <label for='comments-visibility'>
-                     <div class='toggle-on btn btn-success btn-sm'> <i class='mk-icon mk-save'></i><span class="sr-only">Comments are </span> Visible</div>
-                     <div class='toggle-handle btn btn-default'></div>
-                     <div class='toggle-off btn btn-warning active'><i class='mk-icon mk-close'></i> 
-                     </div>
-                   </label>
-                  </div>
-                  <a href="#help/comments"><span class="mk-icon mk-help get-help"><span class="sr-only">Help: Comments</span></span></a>
-              </div>
-            </div>
-        
-        </form>
-    </div>
-    <!-- End #item -->
+Aliquam a nisi in lorem posuere eleifend ut eget risus. Quisque molestie diam sed porttitor maximus. In a auctor est, id facilisis nibh. Aliquam at diam aliquam eros euismod sollicitudin. Praesent sit amet dui luctus ante efficitur volutpat sit amet non neque. Fusce ac ex vitae ipsum vulputate suscipit. Nam non consectetur nibh, quis lobortis magna. Integer accumsan erat eu purus dictum, eget rutrum lectus mollis.
 
-    <div class="save-bar">
-        <div class="save-bar-inner">
-            <button id="done-editing" type="submit" class="btn btn-success submit btn-sm" @click.prevent="save">
-                <span class="mk-icon mk-save"> </span> Save</button>
-            <button id="close-settings-context" class="btn btn-default btn-sm close-settings" @click.prevent="cancel">
-                <span class="mk-icon mk-close"> </span> Cancel</button>
-        </div>
-    </div>
+Sed lorem risus, molestie nec aliquam feugiat, mattis quis arcu. Nunc nisi enim, vehicula ut rhoncus et, malesuada sed massa. Aliquam pulvinar felis nec molestie vestibulum. Vivamus sed velit eget lacus lobortis eleifend. Phasellus nisi nulla, hendrerit vel tristique at, tincidunt nec sem. Cras quis lacus nec eros tincidunt tempor. Aenean sem nulla, faucibus vel luctus eu, placerat vitae justo. Ut et nulla at libero pretium imperdiet. Cras nulla massa, dictum non massa vitae, commodo varius nisi. Sed a risus ac urna convallis ultricies. Sed metus purus, posuere nec efficitur dignissim, lobortis eu massa. Pellentesque dignissim purus vel est cursus, sit amet imperdiet magna elementum. Donec volutpat enim id urna dapibus, id consequat libero volutpat.
 
+Sed ut pellentesque tellus. In dictum tristique risus, vel lacinia elit ultricies ut. Proin eros nisl, facilisis at risus nec, sagittis venenatis nisl. Nam odio lectus, fringilla ultrices nibh et, vestibulum viverra orci. Quisque luctus nunc ac consectetur accumsan. Maecenas ante metus, laoreet malesuada augue volutpat, efficitur commodo augue. Duis pharetra leo sit amet diam tincidunt, nec commodo magna molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet egestas nunc. Sed commodo libero vel lacus consectetur feugiat. Phasellus ac vestibulum turpis, ac sollicitudin erat. Etiam venenatis auctor mi, sit amet iaculis libero feugiat tristique. Mauris sed sem quis ligula elementum pretium quis ut turpis. Donec in finibus lacus. Aliquam placerat sit amet dolor vel auctor. Nam pulvinar in odio sed venenatis. Suspendisse pharetra sapien mauris, id placerat enim condimentum vel.
+
+Aliquam a nisi in lorem posuere eleifend ut eget risus. Quisque molestie diam sed porttitor maximus. In a auctor est, id facilisis nibh. Aliquam at diam aliquam eros euismod sollicitudin. Praesent sit amet dui luctus ante efficitur volutpat sit amet non neque. Fusce ac ex vitae ipsum vulputate suscipit. Nam non consectetur nibh, quis lobortis magna. Integer accumsan erat eu purus dictum, eget rutrum lectus mollis.
+
+Sed lorem risus, molestie nec aliquam feugiat, mattis quis arcu. Nunc nisi enim, vehicula ut rhoncus et, malesuada sed massa. Aliquam pulvinar felis nec molestie vestibulum. Vivamus sed velit eget lacus lobortis eleifend. Phasellus nisi nulla, hendrerit vel tristique at, tincidunt nec sem. Cras quis lacus nec eros tincidunt tempor. Aenean sem nulla, faucibus vel luctus eu, placerat vitae justo. Ut et nulla at libero pretium imperdiet. Cras nulla massa, dictum non massa vitae, commodo varius nisi. Sed a risus ac urna convallis ultricies. Sed metus purus, posuere nec efficitur dignissim, lobortis eu massa. Pellentesque dignissim purus vel est cursus, sit amet imperdiet magna elementum. Donec volutpat enim id urna dapibus, id consequat libero volutpat.
+
+Sed ut pellentesque tellus. In dictum tristique risus, vel lacinia elit ultricies ut. Proin eros nisl, facilisis at risus nec, sagittis venenatis nisl. Nam odio lectus, fringilla ultrices nibh et, vestibulum viverra orci. Quisque luctus nunc ac consectetur accumsan. Maecenas ante metus, laoreet malesuada augue volutpat, efficitur commodo augue. Duis pharetra leo sit amet diam tincidunt, nec commodo magna molestie.
+
+
+   </div>
 </div>
-    </div>
+
+  
+
 </template>
 
 <script>
@@ -87,10 +73,23 @@ export default  Vue.extend({
     },
     mounted(){
         
+    },
+    data () {
+    return {
+      selected: 'off',
+      options: [
+        { text: 'Comments are on', value: 'on' },
+        { text: 'Comments are off', value: 'off' }
+      ]
     }
+  }
+
 });
 </script>
 
 <style>
-
+.savebar.btn-group {
+    position:fixed;
+    bottom:2em;
+}
 </style>

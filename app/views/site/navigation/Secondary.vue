@@ -1,7 +1,7 @@
 <template>
-    <b-navbar-nav right="true" class="secondary-menu">
+    <b-navbar-nav class="secondary-menu ml-auto">
         <b-nav-item v-if="canBrowse" :to="basePath + '/browse'">
-            <font-awesome-icon icon="list"/> 
+            <font-awesome-icon icon="th-large"/> 
             <span class="sr-only"> Browse</span>
         </b-nav-item>
         <b-nav-item v-if="canBrowse && changeCount > 0" :to="basePath + '/updates'"><sup>{{ changeCount }}</sup> Changes</b-nav-item>
@@ -15,22 +15,22 @@
             <span class="sr-only"> Add</span>
         </b-nav-item>
         <b-nav-item v-if="access('can create content') || access('can archive content') || access('can import')" :to="basePath + '/settings'"> 
-            <font-awesome-icon icon="cogs"/> 
+            <font-awesome-icon icon="cog"/> 
             <span class="sr-only"> Settings</span>
         </b-nav-item>
-
         <b-nav-item-dropdown v-if="currentSite.user && isGuest"  text="User" right>
-          <template slot="button-content">
-            <font-awesome-icon icon="user"/> 
-            <span class="sr-only"> User</span>
-          </template>
-          <b-dropdown-item>User Information</b-dropdown-item>
-          <b-dropdown-item >{{ user.name }} <span class="user-role">Role: {{ user.role }}</span></b-dropdown-item>
-           <b-nav-item :to="basePath + '/mycontent'">My Content</b-nav-item>
-            <b-nav-item :to="basePath + '/profile'">My Account</b-nav-item>
-             <b-nav-item :to="basePath + '/settings/users'">Manage Site Users</b-nav-item>
-             <b-nav-item :to="basePath + '/logout'">Sign Out</b-nav-item>
+            
+            <template slot="button-content">
+                <font-awesome-icon icon="user"/> 
+                <span class="sr-only"> User</span>
+            </template>
+           <b-dropdown-item >{{ user.name }} <span class="user-role">Roles: {{ user.role }}</span></b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/mycontent'">My Content</b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/profile'">My Account</b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/settings/users'">Manage Site Users</b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/logout'">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
+        
         <b-nav-item v-if="isGuest" :to="basePath + '/login'"> 
             <font-awesome-icon icon="sign-in-alt"/> 
             <span class="sr-only"> Login</span>
@@ -103,9 +103,17 @@ export default  Vue.extend({
 });
 </script>
 
-<style lang="sass">
-.secondary-menu
-    float: right
-    .mediakron-logo
-        height: 20px
+<style scoped>
+#mklogo .mediakron-logo {
+    height: 20px;
+}
+.fade-enter-active, 
+.fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, 
+.fade-leave-to {
+  opacity: 0;
+}
+
 </style>
