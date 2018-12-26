@@ -53,6 +53,10 @@ Route::group([
 
 
 
+Route::resource('item', 'Api\ItemController');
+Route::get('/items', 'Api\ItemController@index');
+
+
 Route::group([
     'middleware' => [
         //'auth:api',
@@ -60,9 +64,11 @@ Route::group([
     ],
     'prefix' => '{site}'
 ], function ($router) {
+    
     // Item api
     Route::get('/items', 'Api\ItemController@index');
     Route::resource('/item', 'Api\ItemController');
+
     // Relationship api
     Route::resource('/relationship', 'Api\RelationshipController');
     // Comment api

@@ -31,6 +31,7 @@ class CreateMetadataTable extends Migration
             $table->text('coverage')->nullable();
             $table->text('rights')->nullable();
             $table->timestamps();
+            $table->index('item_id');
         });
     }
 

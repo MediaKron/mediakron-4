@@ -27,6 +27,10 @@ class CreateRevisionsTable extends Migration
             // Timestamps
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index('site_id');
+            $table->index('item_id');
+            $table->index('user_id');
         });
     }
 

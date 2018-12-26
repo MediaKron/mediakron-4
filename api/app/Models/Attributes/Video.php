@@ -19,4 +19,24 @@ class Video extends BaseModel
         $video->save();
     }
 
+    /**
+     * Convert the model instance to an array
+     * because we don't often want the full
+     * data in relationships
+     *
+     * @return array
+     */
+    public function toRelationshipArray()
+    {
+        $data = [ 
+            'url' => $this->url,
+            'type' => $this->type,
+            'mime' => $this->mime,
+            'start' => $this->start,
+            'stop' => $this->stop,
+        ];
+        return $data;
+    }
+
+
 }

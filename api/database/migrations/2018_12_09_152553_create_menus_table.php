@@ -26,6 +26,9 @@ class CreateMenusTable extends Migration
 
             $table->softDeletes();
             $table->timestamps();
+            $table->index('item_id');
+            $table->index('site_id');
+            $table->index('user_id');
         });
     }
 

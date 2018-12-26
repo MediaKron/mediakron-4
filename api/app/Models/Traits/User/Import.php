@@ -35,5 +35,6 @@ trait Import
         //$user->created_at = $record->created_at;
         //$user->updated_at = $record->updated_at;
         $user->save();
+        return $user;
     }
 }

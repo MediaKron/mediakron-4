@@ -75,7 +75,7 @@ trait Import
         if(isset($data['text'])){
             if(!empty($data['text'])) Text::mediakron_v3($data['text'], $item->id);
         }
-
+        return $item;
         //$item->save();
     }
 

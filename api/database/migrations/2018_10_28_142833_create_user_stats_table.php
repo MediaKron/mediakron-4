@@ -23,6 +23,9 @@ class CreateUserStatsTable extends Migration
             $table->boolean('visit');
             $table->string('log', 1000)->default('');
             $table->timestamps();
+            $table->index('site_id');
+            $table->index('user_id');
+            
         });
     }
 

@@ -5,11 +5,29 @@ namespace App\Models;
 use App\Models\BaseModel;
 use App\Scopes\ItemScope;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection as BaseCollection;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
+
 class Item extends BaseModel
 {
     use \App\Models\Traits\Item\Import;
 
-    static $select_with = ['metadata', 'image', 'audio', 'video', 'text', 'timeline', 'map'];
+    static $select_with = [
+        'metadata', 
+        'image',
+        'audio', 
+        'video', 
+        'text', 
+        'timeline', 
+        'map', 
+        'children', 
+        'parents', 
+        'attachments'
+    ];
 
     /**
      * The "booting" method of the model.
@@ -19,9 +37,6 @@ class Item extends BaseModel
     protected static function boot()
     {
         parent::boot();
-
-        // Allow us to set permissions via the global scope
-        static::addGlobalScope(new ItemScope);
     }
 
     /**
@@ -68,9 +83,29 @@ class Item extends BaseModel
      *
      * @var array
      */
-    public function relationship()
+    public function parents()
     {
-        return $this->hasMany('App\Relationship');
+        return $this->hasManyThrough('App\Models\Item', 'App\Models\Relationship', 'child_id', 'id');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function children()
+    {
+        return $this->hasManyThrough('App\Models\Item', 'App\Models\Relationship', 'parent_id', 'id');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function attachments()
+    {
+        return $this->hasMany('App\Models\Relationship', 'attachment_id');
     }
 
     /**
@@ -167,22 +202,70 @@ class Item extends BaseModel
     }
 
     /**
-     * Get the parents
+     * Convert the model instance to an array
+     * because we don't often want the full
+     * data in relationships
      *
-     * @return void
+     * @return array
      */
-    public function parents()
+    public function toRelationshipArray()
     {
-      return $this->hasMany('App\Relationship');
+
+        $data = [ 
+            'id' => $this->id,
+            'title' => $this->title
+        ];
+        return $data;
     }
 
     /**
-     * Get the children relationships
+     * Get the model's relationships in array form.
      *
-     * @return void
+     * @return array
      */
-    public function children()
+    public function relationsToArray()
     {
-        return $this->hasMany('App\Relationship');
+        $attributes = [];
+        dd($this->parents);
+        foreach ($this->getArrayableRelations() as $key => $value) {
+            // If the values implements the Arrayable interface we can just call this
+            // toArray method on the instances which will convert both models and
+            // collections to their proper array form and we'll set the values.
+            if ($value instanceof Arrayable) {
+                if ($value instanceof BaseCollection) {
+                    dd($value->pivot);
+                    //$item->toRelationshipArray();
+                } else {
+                    $relation = $value->toRelationshipArray();
+                }
+
+            }
+
+            // If the value is null, we'll still go ahead and set it in this list of
+            // attributes since null is used to represent empty relationships if
+            // if it a has one or belongs to type relationships on the models.
+            elseif (is_null($value)) {
+                $relation = $value;
+            }
+
+            // If the relationships snake-casing is enabled, we will snake case this
+            // key so that the relation attribute is snake cased in this returned
+            // array to the developers, making this consistent with attributes.
+            if (static::$snakeAttributes) {
+                $key = Str::snake($key);
+            }
+
+            // If the relation value has been set, we will set it on this attributes
+            // list for returning. If it was not arrayable or null, we'll not set
+            // the value on the array because it is some type of invalid value.
+            if (isset($relation) || is_null($value)) {
+                $attributes[$key] = $relation;
+            }
+
+            unset($relation);
+        }
+
+        return $attributes;
     }
+
 }
