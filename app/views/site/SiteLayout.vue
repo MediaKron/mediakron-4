@@ -6,8 +6,9 @@
         </div>
          </transition>
         <div v-if="siteIsLoaded">
-            <div id="main-container">
+            <div id="main-container" class="utilitynav-gap">
                 <navigation></navigation>
+                <utilitynav v-if="currentSite && siteIsLoaded"></utilitynav>
                         
                 <div id="wrapper-main">
                     <main role="main">                        
@@ -16,10 +17,6 @@
                 </div>
                     
             </div> 
-                    
-            <section id="settings-context" class="closed settings-pane">
-                <router-view name="settings"></router-view>
-            </section>
                     
             <div id="help-context" class="closed help-pane">
                 <div id="help-contents" class="overlay overlay-sidebar">
@@ -68,12 +65,13 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import Navigation from './Navigation'
+import Utilitynav from "./navigation/UtilityNav";
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
     components:{
-        Navigation
+        Navigation,
+        Utilitynav
     },
     props:['site'],
     computed:{
@@ -122,4 +120,5 @@ background: #f5f5f5;
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
 </style>

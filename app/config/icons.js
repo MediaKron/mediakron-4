@@ -10,7 +10,9 @@ import {
     faThLarge,
     faSpinner,
     faCheck,
-    faTimes
+    faTimes,
+    faQuestionCircle,
+    faUserCog
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function initializeIcons(){
@@ -25,6 +27,8 @@ export default function initializeIcons(){
         faThLarge,
         faSpinner,
         faCheck,
-        faTimes
+        faTimes,
+        faQuestionCircle,
+        faUserCog
     );
 }

@@ -5,17 +5,7 @@
 
 <header class="overlay-header">
   <div class="header-inner">
-    <h2><span class="mk-icon mk-settings"></span> Settings > Appearance</h2> 	
-    <nav>
-      <ul class="page-options"> 
-        	<li class="option-close">	  	
-        		<button class="btn btn-sm btn-default close-button" aria-label="Close">
-          		<span class="mk-icon mk-close"></span>
-          		<span class="button-text"> Close</span> 
-          	</button>
-        	</li>
-      </ul>
-    </nav>
+    <h2><span class="mk-icon mk-settings"></span>Appearance</h2> 	
   </div>
 </header>
 
@@ -23,9 +13,7 @@
 	<div id="item-content">
 		
 		<form class="form-horizontal">
-		
-				<h3 class="title">Appearance</h3>	
-								
+						
 				<fieldset class="appearance-colors">
 				
 				<legend>Banner Colors</legend>

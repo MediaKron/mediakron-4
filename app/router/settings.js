@@ -1,9 +1,9 @@
 
-import SettingsIndex from '@/views/site/settings/Index';
-import General from '@/views/site/settings/General';
-import Privacy from '@/views/site/settings/Privacy';
-import Comments from '@/views/site/settings/Comments';
-import Appearance from '@/views/site/settings/Appearance';
+import SettingsIndex from '@/views/site/siteadmin/Index';
+import General from '@/views/site/siteadmin/General';
+import Privacy from '@/views/site/siteadmin/Privacy';
+import Comments from '@/views/site/siteadmin/Comments';
+import Appearance from '@/views/site/siteadmin/Appearance';
 
 export default [
       {
