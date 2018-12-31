@@ -24,7 +24,7 @@
     "child-process-promise": "^2.2.1",
     "file-loader": "^2.0.0",
     "i": "^0.3.6",
-    "npm": "^6.4.1",
+    "npm": "^6.5.0",
     "raven-js": "^3.27.0",
     "vue": "^2.5.17",
     "vue-color": "^2.7.0",

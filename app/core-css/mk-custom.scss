@@ -4,6 +4,23 @@
 //     background:$gray-600;
 // }
 
+
+/* Header with line behind */
+
+.line-behind {
+  display: flex;
+  align-items: center;
+}
+
+.line-behind::after {
+  content: "";
+  height: 2px;
+  flex: 1 1 auto;
+  opacity: .6;
+  margin-left: 10px;
+  background-color: #565656;
+} 
+
 .modal-dialog-right.show .modal-dialog{
     margin: 0 0 1rem auto;
 }
@@ -26,21 +43,22 @@ height:100vh;
 }
 
 
-.sidebar {
+.sidebar-left {
     position: fixed;
-    top: 0;
+    top: 2.5em;
     bottom: 0;
-    right: 3.5em;
     z-index: 100; /* Behind the navbar */
-    padding: 48px 0 0; /* Height of navbar */
-    border-left:1px solid #ccc;
+    padding: 0 0 0; /* Height of navbar */
+    border-right:1px solid #ccc;
+    padding-top:.5rem;
+    width:15rem;
+    padding-top:2em;
   }
   
   .sidebar-sticky {
     position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
+    top: 3.5em;
+    height: calc(100vh - 3.5em);
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   }
@@ -52,23 +70,24 @@ height:100vh;
     }
   }
   
-  .sidebar .nav-link {
+  .sidebar-left .nav-link {
     font-weight: 500;
     color: #333;
+    margin-left: 0;
   }
   
-  .sidebar .nav-link .feather {
+  .sidebar-left .nav-link .feather {
     margin-right: 4px;
     color: #999;
   }
   
-  .sidebar .nav-link.active {
-    background: #ccc;
-    color:#222;
+  .sidebar-left .nav-link.active {
+    background: #333;
+    color:#fff;
   }
   
-  .sidebar .nav-link:hover .feather,
-  .sidebar .nav-link.active .feather {
+  .sidebar-left .nav-link:hover .feather,
+  .sidebar-left .nav-link.active .feather {
     color: inherit;
   }
   
@@ -77,3 +96,120 @@ height:100vh;
     text-transform: uppercase;
   }
 
+  .sidebar-left-wrapper {
+    margin: auto auto auto 15rem;
+  }
+
+  .sidebar-left-main {
+    max-width: 40em; 
+    margin: 2em auto auto auto;
+  }
+
+
+/* Comeing out in next version of Bootstrap  */
+/* https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_stretched-link.scss */
+  .stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+  }
+
+  .heading-underlined {
+    border-bottom: 2px solid #333;
+    margin-bottom: 2rem;
+    padding-bottom:.25rem;
+  }
+
+  .savebar.btn-group {
+    position:fixed;
+    bottom:2em;
+}
+
+
+
+/* Floating Labels */
+.floating-label {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.floating-label div > input,
+.floating-label > label {
+  height: 3.125rem;
+  padding: .75rem;
+}
+
+.floating-label > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  pointer-events: none;
+  cursor: text; /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.floating-label input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.floating-label input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.floating-label input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.floating-label input::-moz-placeholder {
+  color: transparent;
+}
+
+.floating-label input::placeholder {
+  color: transparent;
+}
+
+.floating-label input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+.floating-label input:not(:placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .floating-label > label {
+    display: none;
+  }
+  .floating-label input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .floating-label > label {
+    display: none;
+  }
+  .floating-label input:-ms-input-placeholder {
+    color: #777;
+  }
+}

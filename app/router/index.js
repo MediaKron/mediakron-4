@@ -1,5 +1,5 @@
 import SiteLayout from "@/views/site/SiteLayout";
-import SiteAdminLayout from "@/views/site/SiteAdminLayout";
+import SettingsLayout from "@/views/site/siteadmin/SettingsLayout";
 import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
 import Browse from "../views/site/items/Browse";
@@ -15,9 +15,9 @@ var routes = {
     props: true,
     children: [
       {
-        path: "siteadmin",
-        component: SiteAdminLayout,
-        title: "Site",
+        path: "settings",
+        component: SettingsLayout,
+        title: "Site Settings",
         props: true,
         children: settings
       },

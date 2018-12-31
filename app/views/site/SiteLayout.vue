@@ -6,16 +6,9 @@
         </div>
          </transition>
         <div v-if="siteIsLoaded">
-            <div id="main-container" class="utilitynav-gap">
-                <navigation></navigation>
-                <utilitynav v-if="currentSite && siteIsLoaded"></utilitynav>
-                        
-                <div id="wrapper-main">
-                    <main role="main">                        
-                        <router-view></router-view>
-                    </main>
-                </div>
-                    
+            <div id="main-container">
+                <navigation></navigation>                    
+                <router-view></router-view>   
             </div> 
                     
             <div id="help-context" class="closed help-pane">
@@ -66,12 +59,10 @@
 
 <script>
 import Navigation from './Navigation'
-import Utilitynav from "./navigation/UtilityNav";
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
     components:{
-        Navigation,
-        Utilitynav
+        Navigation
     },
     props:['site'],
     computed:{
