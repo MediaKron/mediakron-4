@@ -2,6 +2,7 @@
 import General from '@/views/site/siteadmin/General';
 import SearchSettings from '@/views/site/siteadmin/SearchSettings';
 import Canvas from '@/views/site/siteadmin/Canvas';
+import SettingsIndex from "@/views/site/siteadmin/SettingsIndex";
 
 export default [
       {
@@ -18,7 +19,13 @@ export default [
         path: 'canvas',
         name: 'canvas_settings',
         component: Canvas
-      }
+      },
+      {
+        path: "/",
+        component: SettingsIndex,
+        title: "setting_index",
+        props: true,
+      },
     ]
 /*export default {
     /*

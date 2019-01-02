@@ -1,9 +1,9 @@
 import SiteLayout from "@/views/site/SiteLayout";
 import SettingsLayout from "@/views/site/siteadmin/SettingsLayout";
-import SiteOptions from "@/views/site/siteadmin/SiteOptions";
 import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
 import Browse from "../views/site/items/Browse";
+import SiteOptions from "@/views/site/siteadmin/SiteOptions";
 
 
 import settings from "./settings";
@@ -17,17 +17,24 @@ var routes = {
     props: true,
     children: [
       {
-        path: "siteoptions",
-        component: SiteOptions,
-        title: "SiteOptions",
-        props: true,
-      },
-      {
-        path: "settings",
+        path: "options/settings",
         component: SettingsLayout,
         title: "Site Settings",
         props: true,
         children: settings
+      },
+      {
+        path: "options/appearence",
+        component: SettingsLayout,
+        title: "Site Settings",
+        props: true,
+        children: settings
+      },
+      {
+        path: "options",
+        component: SiteOptions,
+        title: "SiteOptions",
+        props: true,
       },
       {
         path: ":first/:second?/:third?",
