@@ -1,18 +1,15 @@
 <template>
     <b-navbar-nav class="secondarynav ml-3">
-         <b-nav-item v-if="currentSite.search" :to="basePath + '/search'" v-b-tooltip.bottom title="Search">
-            <font-awesome-icon icon="search"/> 
-            <span class="sr-only">Search</span>
+        
+        <b-nav-item v-if="canBrowse" :to="basePath + '/browse'" class="bg-dark">
+            <font-awesome-icon icon="th-large"/> 
+            <span class="item-text">Content</span>
         </b-nav-item>
-         <!-- <b-nav-item v-if="currentSite.tags && tags.length > 0" :to="basePath + '/tags'"> Tags</b-nav-item> -->
-        <b-nav-item :to="basePath + '/tags'" v-b-tooltip.bottom title="Tags">  
-            <font-awesome-icon icon="tags"/> 
-            <span class="sr-only">Tags</span>
-        </b-nav-item>
-        <b-nav-item-dropdown no-caret right v-if="currentSite.user && isGuest" extra-toggle-classes="text-uppercase" extra-menu-classes="users-dropdown" >
+
+        <b-nav-item-dropdown no-caret right v-if="currentSite.user && isGuest" extra-toggle-classes="text-uppercase bg-dark px-3" extra-menu-classes="users-dropdown" >
             <template slot="button-content" >
                 <font-awesome-icon icon="user"/> 
-                <span class="sr-only">Me</span>
+                <span class="item-text">Me</span>
             </template>
 
             <b-dropdown-item :to="basePath + '/mycontent'">My Content</b-dropdown-item>
@@ -25,9 +22,14 @@
             <span class="sr-only"> Login</span>
         </b-nav-item>
 
-        <b-nav-item-dropdown right no-caret extra-toggle-classes="manage-button text-uppercase" extra-menu-classes="manage-dropdown">
+         <!-- <b-nav-item v-if="isGuest" :to="basePath + '/siteoptions'" class="manage-button text-uppercase"> 
+            <font-awesome-icon icon="ellipsis-v"/> 
+            <span class="item-text">Options</span>
+        </b-nav-item> -->
+
+        <b-nav-item-dropdown right no-caret extra-toggle-classes="manage-button text-uppercase bg-dark" extra-menu-classes="manage-dropdown">
             <template slot="button-content">
-                <font-awesome-icon icon="ellipsis-v"/> 
+                <font-awesome-icon icon="cog"/> 
                 <span class="item-text">Options</span>
             </template>
             <b-dropdown-item v-if="access('can create content') || access('can archive content') || access('can import')" :to="basePath + '/settings/general/'"> 
@@ -46,10 +48,7 @@
             <font-awesome-icon icon="home"/> 
             <span class="utilitynav-text">Homepage</span>
             </b-dropdown-item> 
-            <b-dropdown-item v-if="canBrowse" :to="basePath + '/browse'">
-            <font-awesome-icon icon="th-large"/> 
-            <span class="utilitynav-text">Content</span>
-            </b-dropdown-item >
+
             <b-dropdown-item v-if="canBrowse && changeCount > 0" :to="basePath + '/updates'"><sup>{{ changeCount }}</sup> Changes
             </b-dropdown-item > 
             <b-dropdown-item :to="basePath + '/people'"><font-awesome-icon icon="user-cog"/> 
@@ -108,8 +107,8 @@ export default  Vue.extend({
 }
 
 .secondarynav .nav-item .nav-link {
-    /* padding-top:0;
-    padding-bottom:0; */
+    padding-top:.3em;
+    padding-bottom: .4em;
 }
 
 /* .secondarynav .nav-item:first-child .nav-link {
@@ -123,16 +122,16 @@ export default  Vue.extend({
 
 .secondarynav .item-text {
     text-transform: uppercase;
-    /* font-size: .5em; */
-    /* display:block; */
+    font-size: .5em;
+    display:block;
     padding-left: .5em;
 }
 
-.secondarynav .nav-item .nav-link.manage-button {
-    background:#333;
+.secondarynav .nav-item .manage-button.nav-link{
     /* border-left: 1px solid #ccc; */
-    margin-left:1em; 
-    padding-left: 1em;
+    /* margin-left:1em;  */
+    /* padding-left: 1em; */
+    display:block;
   }
 
 .secondarynav .dropdown-item {

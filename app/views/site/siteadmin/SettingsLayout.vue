@@ -1,23 +1,26 @@
 <template>
-     <div id="site-settings" class="admin-site-layout">  
-        <SettingsNav></SettingsNav>          
-        <div id="wrapper-main" class="">
-            <div class="justify-content-center sidebar-left-wrapper" >
+    <div class="settings-layout">
+        <UtilityNav></UtilityNav> 
+        <div id="site-settings">  
+            <SettingsNav></SettingsNav>          
+            <div id="wrapper-main" class="justify-content-center sidebar-left-wrapper" >
                  <main role="main" class="sidebar-left-main" > 
                      <transition name="fade">
                             <router-view></router-view>
                      </transition>
                  </main>
              </div>
-         </div>
+        </div>
     </div>
 </template>
 
 <script>
 import SettingsNav from "./SettingsNav.vue";
+import UtilityNav from "./../navigation/UtilityNav";
 export default {
     components: {
-        SettingsNav
+        SettingsNav,
+        UtilityNav
   }
 };
 </script>

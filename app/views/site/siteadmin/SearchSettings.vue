@@ -8,12 +8,10 @@
 import Vue from 'vue';
 import _ from 'underscore';
 import data from '@/components/mixins/data';
-import Settingsnav from "./SettingsNav.vue";
 import { mapState, mapActions } from 'vuex';
 export default  Vue.extend({
     mixins: [ data ],
     components: {
-     Settingsnav,
     },
     computed:{
         ...mapState('sites', {

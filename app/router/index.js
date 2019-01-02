@@ -1,11 +1,13 @@
 import SiteLayout from "@/views/site/SiteLayout";
 import SettingsLayout from "@/views/site/siteadmin/SettingsLayout";
+import SiteOptions from "@/views/site/siteadmin/SiteOptions";
 import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
 import Browse from "../views/site/items/Browse";
-import People from "../views/site/siteadmin/People";
+
 
 import settings from "./settings";
+import people from "./people";
 
 var routes = {
   default: {
@@ -14,6 +16,12 @@ var routes = {
     title: "Site",
     props: true,
     children: [
+      {
+        path: "siteoptions",
+        component: SiteOptions,
+        title: "SiteOptions",
+        props: true,
+      },
       {
         path: "settings",
         component: SettingsLayout,
@@ -36,8 +44,9 @@ var routes = {
       {
         path: "/people",
         name: "people",
-        component: People,
-        props: true
+        component: SettingsLayout,
+        props: true,
+        children: people
       },
       {
         path: "/",

@@ -6,8 +6,7 @@
         </div>
          </transition>
         <div v-if="siteIsLoaded">
-            <div id="main-container">
-                <navigation></navigation>                    
+            <div id="site-container">                                
                 <router-view></router-view>   
             </div> 
                     
@@ -58,11 +57,10 @@
 </template>
 
 <script>
-import Navigation from './Navigation'
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
     components:{
-        Navigation
+    
     },
     props:['site'],
     computed:{
