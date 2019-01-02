@@ -7,6 +7,7 @@ use DB;
 use App\Models\Site;
 use App\Models\User;
 use App\Models\Item;
+use App\Models\Relationship;
 
 class Mediakron3Migration extends Command
 {
@@ -43,8 +44,9 @@ class Mediakron3Migration extends Command
     {
         //
         $users = DB::connection('mediakron_v3')->table('User')->get();
+        $new_users = [];
         foreach($users as $user){
-            $new_user = User::mediakron_v3($user);
+            $new_users[$user->id] = User::mediakron_v3($user);
         }
 
         $sites = DB::connection('mediakron_v3')->table('Site')->get();
@@ -56,26 +58,34 @@ class Mediakron3Migration extends Command
         foreach($sites as $site){
             $id = $site->uri . '_Items';
             if(DB::connection('mediakron_v3')->getSchemaBuilder()->hasTable($id)){
-                $items = DB::connection('mediakron_v3')->table($site->uri . '_Items')->get();
+                // Fetch Items
+                $items = DB::connection('mediakron_v3')->table($id)->get();
                 $new_items = [];
                 foreach($items as $item){
                     $new_items[$item->uri] = Item::mediakron_v3($item, $site->id);
                 }
-                foreach($new_items as $item){
-                    $relationships = DB::connection('mediakron_v3')->table($site->uri . '_Relationships')
-                        ->where('parent', $site->uri)
-                        ->orWhere('child', $site->uri)
-                        ->orWhere('attachment', $site->uri)
-                        ->get();
 
-                    $new_relationship = Relationship::where('site_id', $site->id)
-                        ->where('parent_id', $item->id)
-                        ->orWhere('child_id', $item->id)
-                        ->orWhere('attachment_id', $item->id)
-                        ->first();
+                // Fetch Relationships
+                $relationships = DB::connection('mediakron_v3')->table($site->uri . '_Relationships')
+                    ->get();
 
-                    $new_relationship = 
-                        $new_items[$item->uri] = Item::mediakron_v3($item, $site->id);
+                foreach($relationships as $import){
+                    $relationship = new Relationship();
+                    if(!isset($new_items[$import->parent]) || !isset($new_items[$import->child])) continue;
+                    $relationship->parent_id = $new_items[$import->parent]->id;
+                    $relationship->child_id = $new_items[$import->child]->id;
+                    if(isset($new_items[$import->attachment])){
+                        $relationship->attachment_id = $new_items[$import->attachment]->id;
+                    }else{
+                        $relationship->attachment_id = 0;
+                    }
+                    $relationship->site_id = $site->id;
+                    $relationship->active = $import->active;
+                    $relationship->type = $import->type;
+                    $relationship->weight = $import->weight;
+                    $relationship->user_id = (isset($new_users[$import->user_id])) ? $new_users[$import->user_id] : 0;
+                    $relationship->data = json_encode(unserialize($import->data));
+                    $relationship->save();
                 }
 
             }

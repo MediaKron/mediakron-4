@@ -5,11 +5,33 @@ namespace App\Models;
 use App\Models\BaseModel;
 use App\Scopes\ItemScope;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection as BaseCollection;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
+
 class Item extends BaseModel
 {
     use \App\Models\Traits\Item\Import;
 
-    static $select_with = ['metadata', 'image', 'audio', 'video', 'text', 'timeline', 'map'];
+    static $select_with = [
+        'metadata', 
+        'image',
+        'audio', 
+        'video', 
+        'text', 
+        'timeline', 
+        'map', 
+        'children', 
+        'parents', 
+        'attachments'
+    ];
+
+    protected $appends = [
+        'thumbnail'
+    ];
 
     /**
      * The "booting" method of the model.
@@ -19,9 +41,6 @@ class Item extends BaseModel
     protected static function boot()
     {
         parent::boot();
-
-        // Allow us to set permissions via the global scope
-        static::addGlobalScope(new ItemScope);
     }
 
     /**
@@ -68,9 +87,29 @@ class Item extends BaseModel
      *
      * @var array
      */
-    public function relationship()
+    public function parents()
     {
-        return $this->hasMany('App\Relationship');
+        return $this->hasManyThrough('App\Models\Item', 'App\Models\Relationship', 'child_id', 'id');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function children()
+    {
+        return $this->hasManyThrough('App\Models\Item', 'App\Models\Relationship', 'parent_id', 'id');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function attachments()
+    {
+        return $this->hasMany('App\Models\Relationship', 'attachment_id');
     }
 
     /**
@@ -150,39 +189,34 @@ class Item extends BaseModel
      * @param [type] $value
      * @return void
      */
-    public function getImageAttribute($value)
+    public function getThumbnailAttribute($value)
     {
-        return unserialize($value);
+        if($this->image){
+            if(isset($this->image->url)){
+                return $this->image->url;
+            }
+        }
+        return false;
     }
 
     /**
-     * Set the roles for the user as a serialized array
+     * Convert the model instance to an array
+     * because we don't often want the full
+     * data in relationships
      *
-     * @param [type] $roles
-     * @return void
+     * @return array
      */
-    public function setImageAttribute($metadata)
+    public function toRelationshipArray()
     {
-        $this->attributes['image'] = serialize($metadata);
+
+        $data = [ 
+            'id' => $this->id,
+            'title' => $this->title,
+            'type' => $this->type,
+            'image' => $this->thumbnail
+        ];
+        return $data;
     }
 
-    /**
-     * Get the parents
-     *
-     * @return void
-     */
-    public function parents()
-    {
-      return $this->hasMany('App\Relationship');
-    }
 
-    /**
-     * Get the children relationships
-     *
-     * @return void
-     */
-    public function children()
-    {
-        return $this->hasMany('App\Relationship');
-    }
 }

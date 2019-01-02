@@ -27,6 +27,7 @@ class CreateTimelinesTable extends Migration
             $table->float('second')->nullable();
             $table->float('timestamp')->nullable();
             $table->timestamps();
+            $table->index('item_id');
         });
     }
 

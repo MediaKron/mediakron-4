@@ -22,6 +22,7 @@ class CreateMapsTable extends Migration
             $table->string('longitude')->nullable();
             $table->string('zoom')->nullable();
             $table->timestamps();
+            $table->index('item_id');
         });
     }
 

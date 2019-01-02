@@ -65,7 +65,7 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($site_id, $id)
+    public function show($id)
     {
         //
         try{

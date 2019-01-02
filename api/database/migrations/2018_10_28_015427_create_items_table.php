@@ -46,6 +46,10 @@ class CreateItemsTable extends Migration
             $table->timestamp('expired_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index('user_id');
+            $table->index('editor_id');
+            $table->index('site_id');
         });
     }
 

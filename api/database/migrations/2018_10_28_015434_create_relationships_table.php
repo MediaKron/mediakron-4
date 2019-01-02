@@ -36,6 +36,12 @@ class CreateRelationshipsTable extends Migration
             // Timestamps
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index('site_id');
+            $table->index('parent_id');
+            $table->index('child_id');
+            $table->index('attachment_id');
+            $table->index('user_id');
         });
     }
 

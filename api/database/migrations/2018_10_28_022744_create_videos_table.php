@@ -22,6 +22,7 @@ class CreateVideosTable extends Migration
             $table->integer('start')->nullable();
             $table->integer('stop')->nullable();
             $table->timestamps();
+            $table->index('item_id');
         });
     }
 

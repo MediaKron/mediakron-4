@@ -22,6 +22,7 @@ class CreateTextsTable extends Migration
             $table->string('mime')->nullable();
             $table->string('extension')->nullable();
             $table->timestamps();
+            $table->index('item_id');
         });
     }
 

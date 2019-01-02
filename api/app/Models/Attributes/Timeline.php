@@ -19,6 +19,13 @@ class Timeline extends BaseModel
         'second',
     ];
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $data
+     * @param [type] $item_id
+     * @return void
+     */
     static function mediakron_v3($data, $item_id){
         $metadata = new static();
         $metadata->fill((array) $data);

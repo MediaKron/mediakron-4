@@ -15,6 +15,7 @@ class Image extends BaseModel
     static function mediakron_v3($data, $item_id){
         $image = new static();
         $image->fill((array) $data);
+        if(isset($data->uri)) $image->url = $data->uri;
         $image->item_id = $item_id;
         $image->save();
     }
