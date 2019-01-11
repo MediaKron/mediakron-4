@@ -1,15 +1,18 @@
 <template>
-    <div class="settings-layout">
+    <div class="people-layout">
         <UtilityNav></UtilityNav> 
-        <div id="site-settings">  
+        <div id="people">  
               <div class="sidebar-left" >
                 <div v-if="access('can change site siteadmin')" class="sidebar-sticky">
                     <div v-if="access('can change site siteadmin')">
                         <b-nav pills vertical class="pb-2 px-3 ">
-                            <b-nav-text class="py-1 pl-3 mb-2 font-weight-bold text-uppercase"> <font-awesome-icon icon="sliders-h"/> Site Settings</b-nav-text>  
-                            <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
-                            <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
-                            <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
+                            <h4 class="sidebar-heading"><font-awesome-icon icon=""/> Users</h4>  
+
+                            <b-nav vertical pills>
+                            <b-nav-item :to="basePath + '/users/general'">List</b-nav-item>
+                            <b-nav-item :to="basePath + '/users/add'">Add People</b-nav-item>
+                            <b-nav-item :to="basePath + '/users/groups'">Groups</b-nav-item>
+                            </b-nav>  
                         </b-nav>  
                     </div>
                 </div>
@@ -28,7 +31,7 @@
 <script>
 import UtilityNav from "./../navigation/UtilityNav";
 import {
-        mapGetters
+        mapGetters, mapActions
     } from 'vuex';
 export default {
     components: {

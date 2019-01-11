@@ -32,7 +32,7 @@
                 <font-awesome-icon icon="cog"/> 
                 <span class="item-text">Options</span>
             </template>
-            <b-dropdown-item v-if="access('can create content') || access('can archive content') || access('can import')" :to="basePath + '/settings/general/'"> 
+            <b-dropdown-item v-if="access('can create content') || access('can archive content') || access('can import')" :to="basePath + '/options/settings/general/'"> 
             <font-awesome-icon icon="sliders-h"/> 
             <span class="utilitynav-text">Settings</span>
             </b-dropdown-item >  
@@ -51,7 +51,7 @@
 
             <b-dropdown-item v-if="canBrowse && changeCount > 0" :to="basePath + '/updates'"><sup>{{ changeCount }}</sup> Changes
             </b-dropdown-item > 
-            <b-dropdown-item :to="basePath + '/people'"><font-awesome-icon icon="user-cog"/> 
+            <b-dropdown-item :to="basePath + '/options/people'"><font-awesome-icon icon="user-cog"/> 
             <span class="utilitynav-text">People</span>
             </b-dropdown-item >
             <b-dropdown-item :to="basePath + '/help'"> <font-awesome-icon icon="question-circle"/> 

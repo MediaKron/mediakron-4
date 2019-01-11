@@ -1,54 +1,24 @@
 <template>
-
-    <div class="people">
-                <UtilityNav class="hide-menus"></UtilityNav> 
-        <h1>People</h1>
-               
-        </div>
+    <div class="site-options">
+        Settings lander
+    </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import _ from 'underscore';
-import data from '@/components/mixins/data';
-// import PeopleNav from "./PeopleNav.vue";
-import SettingsNav from "./SettingsNav.vue";
 import UtilityNav from "./../navigation/UtilityNav";
-import { mapState, mapActions } from 'vuex';
-export default  Vue.extend({
-    mixins: [ data ],
+export default {
     components: {
-    //  Poeplenav,
         UtilityNav
-    },
-    computed:{
-        ...mapState('sites', {
-            sourceData: 'currentSite'
-        })
-    },
-    methods:{
-        ...mapActions('sites', [
-            'update',
-            'saveSite'
-        ]),
-
-        dataChange: _.debounce( function() {
-            this.update(this.localData);
-        }, 500),
-
-        save(){
-            this.saveSite(this.localData);
-        },
-
-        cancel(){
-        }
-    },
-    mounted(){
-        
-    }
-});
+  }
+};
 </script>
 
 <style>
 
+.fade-enter-active  {
+  transition: opacity .5s;
+}
+.fade-enter /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

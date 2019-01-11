@@ -17,25 +17,6 @@ export default {
 
 <style>
 
-.site-options h2{
-    font-size: 1.5rem;
-    margin-bottom:0;
-}
-
-.card-svg-top {
-    display:flex;
-    height: 4rem;
-    background: #ccc;
-    padding: .5em 0;
-    width:100%;
-    align-content: center;
-    justify-content: center;
-}
-
-.card-svg-top svg {
-    font-size:3rem;
-}
-
 .fade-enter-active  {
   transition: opacity .5s;
 }

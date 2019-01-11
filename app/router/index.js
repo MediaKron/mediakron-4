@@ -1,5 +1,6 @@
 import SiteLayout from "@/views/site/SiteLayout";
 import SettingsLayout from "@/views/site/siteadmin/SettingsLayout";
+import PeopleLayout from "@/views/site/siteadmin/PeopleLayout";
 import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
 import Browse from "../views/site/items/Browse";
@@ -27,8 +28,7 @@ var routes = {
         path: "options/appearence",
         component: SettingsLayout,
         title: "Site Settings",
-        props: true,
-        children: settings
+        props: true
       },
       {
         path: "options",
@@ -49,9 +49,9 @@ var routes = {
         props: true
       },
       {
-        path: "/people",
-        name: "people",
-        component: SettingsLayout,
+        path: "options/people",
+        component: PeopleLayout,
+        title: "People",
         props: true,
         children: people
       },
