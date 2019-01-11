@@ -1,0 +1,9 @@
+<div v-if="access('can archive content') || access('can import') ">
+  <h4 class="sidebar-heading"><font-awesome-icon icon="User"/> Content</h4>  
+    <b-nav vertical pills>
+      <b-nav-item :to="basePath + '/browse/import'">Import</b-nav-item>
+      <b-nav-item :to="basePath + '/browse/export'">Export</b-nav-item>
+      <b-nav-item v-if="access('can restore from trash')" :to="basePath + '/browse/trash'">Deleted Content</b-nav-item>
+      <b-nav-item v-if="access('can archive content')" :to="basePath + '/browse/trash'">Archived Content</b-nav-item>
+    </b-nav>  
+</div>

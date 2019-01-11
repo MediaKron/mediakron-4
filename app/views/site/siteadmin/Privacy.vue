@@ -1,21 +1,7 @@
 <template>
 <div class="admin admin-general overlay overlay-half">
-
-    <header class="overlay-header">
-        <div class="header-inner">
-            <h2>
-                <span class="mk-icon mk-settings"></span> Settings</h2>
-            <nav>
-                <ul class="page-options">
-                    <li class="option-close">
-                        <button class="btn btn-sm btn-default close-button" aria-label="Close">
-                            <span class="mk-icon mk-close"></span>
-                            <span class="button-text"> Close</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <h2> Privacy</h2>
     </header>
 
     <div id="admin-site-settings" class="site-settings">

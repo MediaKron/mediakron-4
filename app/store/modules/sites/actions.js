@@ -7,8 +7,8 @@ const actions = {
      * Dispatch this action when you want to load a site list
      * and make the site list sensitive to the query being
      * passed in from the router
-     * @param {*} param0 
-     * @param {*} param1 
+     * @param {*} param0
+     * @param {*} param1
      */
     routeLoad({ commit, dispatch }, { to }){
       const { page } = to.params;
@@ -25,12 +25,12 @@ const actions = {
     },
     /**
      * Load a list of sites
-     * @param {*} param0 
-     * @param {*} options 
+     * @param {*} param0
+     * @param {*} options
      */
     loadSites({ commit, dispatch }, options) {
         commit("listLoading");
-    
+
         return api.get('sites', options)
           .then((response) => {
             commit("listLoad", response.data);
@@ -46,12 +46,12 @@ const actions = {
 
       /**
        * Load a single site
-       * @param {*} param0 
-       * @param {*} id 
+       * @param {*} param0
+       * @param {*} id
        */
     getSite({ commit, dispatch }, id) {
         commit("siteLoading");
-    
+
         return api.get('site/'+id)
           .then((response) => {
             commit("siteLoad", response.data);

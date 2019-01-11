@@ -7,8 +7,11 @@
         <router-link :to="{ name: 'homepage', params: { site: site.item.uri } }">{{ site.item.title }}</router-link>
       </template>
       <template slot="operations" slot-scope="site">
-        <router-link :to="{ name: 'edit-site', params: { id: site.item.id } }">
-            <font-awesome-icon icon="coffee"/>
+        <router-link :to="{ name: 'site', params: { id: site.item.id } }">
+            View
+        </router-link>
+        <router-link :to="{ name: 'site-overview', params: { uri: site.item.uri } }">
+            Manage
         </router-link>
       </template>
     </b-table>

@@ -1,9 +1,8 @@
 
-import SettingsIndex from '@/views/site/settings/Index';
-import General from '@/views/site/settings/General';
-import Privacy from '@/views/site/settings/Privacy';
-import Comments from '@/views/site/settings/Comments';
-import Appearance from '@/views/site/settings/Appearance';
+import General from '@/views/site/siteadmin/General';
+import SearchSettings from '@/views/site/siteadmin/SearchSettings';
+import Canvas from '@/views/site/siteadmin/Canvas';
+import SettingsIndex from "@/views/site/siteadmin/SettingsIndex";
 
 export default [
       {
@@ -12,26 +11,21 @@ export default [
         component: General
       },
       {
-        path: 'privacy',
-        name: 'privacy_settings',
-        component: Privacy
+        path: 'searchsettings',
+        name: 'search_settings',
+        component: SearchSettings
       },
       {
-        path: 'comments',
-        name: 'comment_settings',
-        component: Comments
+        path: 'canvas',
+        name: 'canvas_settings',
+        component: Canvas
       },
       {
-        path: 'appearance',
-        name: 'appearance_settings',
-        component: Appearance
-      },
-      {
-        path: '/',
-        name: 'settings_index',
+        path: "/",
         component: SettingsIndex,
+        title: "setting_index",
         props: true,
-      }
+      },
     ]
 /*export default {
     /*
