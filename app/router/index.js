@@ -31,6 +31,13 @@ var routes = {
         props: true
       },
       {
+        path: "options/people",
+        component: PeopleLayout,
+        title: "People",
+        props: true,
+        children: people
+      },
+      {
         path: "options",
         component: SiteOptions,
         title: "SiteOptions",
@@ -48,13 +55,7 @@ var routes = {
         component: Browse,
         props: true
       },
-      {
-        path: "options/people",
-        component: PeopleLayout,
-        title: "People",
-        props: true,
-        children: people
-      },
+      
       {
         path: "/",
         name: "homepage",
