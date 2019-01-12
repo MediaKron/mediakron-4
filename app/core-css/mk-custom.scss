@@ -5,6 +5,17 @@
 // }
 
 
+/* Loading Spinner */
+
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  animation: spinner 1s linear infinite;
+}
+
 /* Position Nav Bar Toggler Button in top right*/
 .navbar-toggler {
   position: absolute;
@@ -243,7 +254,7 @@ height:100vh;
   }
   
   .sidebar-left .nav-link.active {
-    background: #333;
+    // background: #333;
     color:#fff;
   }
   

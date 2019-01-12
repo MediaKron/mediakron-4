@@ -1,7 +1,13 @@
 <template>
   <div class="container mt-5">
     <h1>Site List</h1>
-    <div v-if="listIsLoading" class="skeleton">Loading Table Skeleton here</div>
+
+    <transition  name="fade">
+       <div v-if="listIsLoading"> 
+        <b-alert show fade variant="primary" ><font-awesome-icon icon="spinner" class="loading-spinner"/> Loading...</b-alert>
+      </div>
+     </transition>
+
     <b-table v-if="listIsLoaded" striped hover :items="sites" :fields="fields">
       <template slot="title" slot-scope="site">
         <router-link :to="{ name: 'homepage', params: { site: site.item.uri } }">{{ site.item.title }}</router-link>
@@ -15,6 +21,7 @@
         </router-link>
       </template>
     </b-table>
+
     <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
   </div>
 </template>
@@ -68,4 +75,10 @@ export default {
 </script>
 
 <style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

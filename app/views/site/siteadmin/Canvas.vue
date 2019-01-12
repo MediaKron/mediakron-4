@@ -1,4 +1,5 @@
 <template>
+
     <header>
         <h1 class="heading-underlined">Canvas</h1>
     </header>

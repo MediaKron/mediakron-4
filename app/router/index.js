@@ -5,10 +5,13 @@ import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
 import Browse from "../views/site/items/Browse";
 import SiteOptions from "@/views/site/siteadmin/SiteOptions";
-
+import MenusLayout from "@/views/site/siteadmin/MenusLayout";
+import Appearance from "@/views/site/siteadmin/Appearance";
+import HomePageSettings from "@/views/site/siteadmin/HomePageSettings";
 
 import settings from "./settings";
 import people from "./people";
+import menus from "./menus";
 
 var routes = {
   default: {
@@ -38,6 +41,25 @@ var routes = {
         children: people
       },
       {
+        path: "options/menus",
+        component: MenusLayout,
+        title: "Menus",
+        props: true,
+        children: menus
+      },
+      {
+        path: "options/appearance",
+        component: Appearance,
+        title: "Appearance",
+        props: true
+      },
+      {
+        path: "options/homepage",
+        component: HomePageSettings,
+        title: "Homepage Settings",
+        props: true
+      },
+      {
         path: "options",
         component: SiteOptions,
         title: "SiteOptions",
@@ -55,6 +77,7 @@ var routes = {
         component: Browse,
         props: true
       },
+      
       
       {
         path: "/",

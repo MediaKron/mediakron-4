@@ -1,6 +1,6 @@
 <template>
     <div class="site-options">
-        Settings lander
+        Menus
     </div>
 </template>
 
@@ -14,5 +14,4 @@ export default {
 </script>
 
 <style>
-
 </style>

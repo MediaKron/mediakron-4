@@ -36,15 +36,15 @@
             <font-awesome-icon icon="sliders-h"/> 
             <span class="utilitynav-text">Settings</span>
             </b-dropdown-item >  
-            <b-dropdown-item v-if="canBrowse" :to="basePath + '/menus'">
+            <b-dropdown-item v-if="canBrowse" :to="basePath + '/options/menus'">
             <font-awesome-icon icon="sitemap"/> 
             <span class="utilitynav-text">Menus</span>
             </b-dropdown-item> 
-            <b-dropdown-item v-if="canBrowse" :to="basePath + '/appearance'">
+            <b-dropdown-item v-if="canBrowse" :to="basePath + '/options/appearance'">
             <font-awesome-icon icon="paint-brush"/> 
             <span class="utilitynav-text">Appearance</span>
             </b-dropdown-item> 
-             <b-dropdown-item v-if="canBrowse" :to="basePath + '/homepage'">
+             <b-dropdown-item v-if="canBrowse" :to="basePath + '/options/homepage'">
             <font-awesome-icon icon="home"/> 
             <span class="utilitynav-text">Homepage</span>
             </b-dropdown-item> 

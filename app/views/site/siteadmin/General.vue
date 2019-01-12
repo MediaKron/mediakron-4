@@ -1,6 +1,10 @@
 <template>
-    <div class="settings-general">
-
+             <div class="settings-general">
+                        <b-nav pills class="mb-4">
+                            <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
+                            <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
+                            <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
+                        </b-nav>
                 <header>
                      <h1 class="heading-underlined"> General Site Settings</h1>
                 </header>
@@ -101,7 +105,7 @@ import Vue from 'vue';
 import _ from 'underscore';
 import data from '@/components/mixins/data';
 import Settingsnav from "./SettingsNav.vue";
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions,mapGetters } from 'vuex';
 export default  Vue.extend({
     mixins: [ data ],
     components: {
@@ -110,8 +114,12 @@ export default  Vue.extend({
     computed:{
         ...mapState('sites', {
             sourceData: 'currentSite'
-        })
+        }),
+        ...mapGetters('sites', [
+            'basePath'
+        ]),
     },
+    
     methods:{
         ...mapActions('sites', [
             'update',

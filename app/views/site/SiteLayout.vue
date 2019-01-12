@@ -2,7 +2,7 @@
     <div id="mediakron">
         <transition  name="fade">
         <div v-if="siteIsLoading" class="d-flex is-loading">
-              <b-alert show fade variant="primary" > <font-awesome-icon icon="spinner" class="loading-icon"/> Site Loading  </b-alert>
+              <b-alert show fade variant="primary" > <font-awesome-icon icon="spinner" class="loading-spinner"/> Site Loading  </b-alert>
         </div>
          </transition>
         <div v-if="siteIsLoaded">

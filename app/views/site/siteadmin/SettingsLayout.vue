@@ -1,22 +1,17 @@
 <template>
     <div class="settings-layout">
         <UtilityNav></UtilityNav> 
-        <div id="site-settings">  
-              <div class="sidebar-left" >
+
+         <div class="sidebar-left" >
                 <div v-if="access('can change site siteadmin')" class="sidebar-sticky">
-                    <div v-if="access('can change site siteadmin')">
-                        <b-nav pills vertical class="pb-2 px-3 ">
-                            <b-nav-text class="py-1 pl-3 mb-2 font-weight-bold text-uppercase"> <font-awesome-icon icon="sliders-h"/> Site Settings</b-nav-text>  
-                            <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
-                            <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
-                            <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
-                        </b-nav>  
-                    </div>
+           <OptionsNav></OptionsNav> 
                 </div>
-            </div>  
+                </div>
+        <div id="site-settings">  
             <div id="wrapper-main" class="justify-content-center sidebar-left-wrapper" >
                  <main role="main" class="sidebar-left-main" > 
                      <transition name="fade">
+                         s
                             <router-view></router-view>
                      </transition>
                  </main>
@@ -27,12 +22,14 @@
 
 <script>
 import UtilityNav from "./../navigation/UtilityNav";
+import OptionsNav from "./../navigation/OptionsNav";
 import {
         mapGetters
     } from 'vuex';
 export default {
     components: {
-        UtilityNav
+        UtilityNav,
+        OptionsNav
   },
   computed:{
         ...mapGetters('users/profile', [

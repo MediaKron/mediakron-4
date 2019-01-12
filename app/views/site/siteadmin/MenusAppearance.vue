@@ -1,6 +1,6 @@
 <template>
     <div class="site-options">
-        Settings lander
+        Menus Appearance
     </div>
 </template>
 
