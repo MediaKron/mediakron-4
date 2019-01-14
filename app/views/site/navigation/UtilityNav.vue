@@ -1,6 +1,6 @@
 <template>
     <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-index-1 w-100" variant="primary" aria-label="site menus" >
-    <b-navbar-brand class="text-uppercase site-options-title ml-4"> <font-awesome-icon icon="ellipsis-v" class="mr-1"/>  Site Options</b-navbar-brand>
+    <b-navbar-brand class="text-uppercase site-options-title ml-4"> <font-awesome-icon icon="cog" class="mr-1"/>  Site Options</b-navbar-brand>
      <b-navbar-nav class="ml-auto">
         <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 "> 
             <font-awesome-icon icon="times"/> 

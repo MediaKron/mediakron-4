@@ -1,11 +1,19 @@
 <template>
 
-
-<div class="admin-pane admin-appearance overlay overlay-half">
+<div class="appearance-layout">
+        <UtilityNav></UtilityNav> 
+        <div id="appearance" class="layout-sidebar-left mt-5 container">  
+            <div class="row">
+                <div class="sidebar-left col-md-4" >
+                        <OptionsNav inAppearance></OptionsNav> 
+                </div>
+                <main role="main" class="with-sidebar-left col-md-8" > 
+                    <transition name="fade">
+                        <div class="admin-pane admin-appearance overlay overlay-half">
 
 <header class="overlay-header">
   <div class="header-inner">
-    <h2><span class="mk-icon mk-settings"></span>Appearance</h2> 	
+    <h1 class="line-behind heading-nudge-up mb-4"><span class="mk-icon mk-settings"></span>Appearance</h1> 	
   </div>
 </header>
 
@@ -72,18 +80,18 @@
 		</form>
 	</div><!-- End #item -->				    
 				
-  <div class="save-bar">
-    <div class="save-bar-inner">
-  		<button id="done-editing" type="submit" class="btn btn-success submit btn-sm" @click.prevent="save">
-			  <span class="mk-icon mk-save"> </span> Save</button>
-  		<button id="close-settings-context" class="btn btn-default btn-sm close-settings" @click.prevent="cancel">
-			  <span class="mk-icon mk-close"> </span> Cancel</button>
-  	</div>
-  </div>
+          <OptionsSavebar></OptionsSavebar>
 	
 </div>
 
 </div>
+                    </transition>
+                </main>
+            </div>
+        </div>
+    </div>
+
+
 
 </template>
 
@@ -92,8 +100,16 @@ import Vue from 'vue';
 import _ from 'underscore';
 import data from '@/components/mixins/data';
 import { mapState, mapGetters, mapActions } from 'vuex';
+import UtilityNav from "./../navigation/UtilityNav";
+import OptionsNav from "./../navigation/OptionsNav";
+import OptionsSavebar from '@/components/forms/OptionsSavebar';
 export default  Vue.extend({
-    mixins: [ data ],
+	    components: {
+        UtilityNav,
+		OptionsNav,
+		OptionsSavebar
+  },
+	mixins: [ data ],
     data(){
         return{
             fonts: {

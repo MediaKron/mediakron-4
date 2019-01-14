@@ -1,29 +1,24 @@
 <template>
-  <div v-if="access('can change site siteadmin')">
-    <b-nav pills vertical class="pb-2 px-3 ">
-        <b-nav-item v-if="canBrowse" :to="basePath + '/options/settings/general'">
-        <font-awesome-icon icon="sliders-h"/> 
-        <span class="optionsnav-text">Settings</span>
+  <div v-if="access('can change site siteadmin')" class="optionsnav mx-3" :class="activesection">
+    <b-nav pills vertical class="">
+        <b-nav-item :class="[ inSettings ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/settings/general'">
+            <font-awesome-icon icon="sliders-h"/> 
+            <span class="optionsnav-text">Settings</span>
         </b-nav-item> 
-        <b-nav-item v-if="canBrowse" :to="basePath + '/options/menus'">
-        <font-awesome-icon icon="sitemap"/> 
-        <span class="optionsnav-text">Menus</span>
+        <b-nav-item :class="[ inMenus ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/menus'">
+            <font-awesome-icon icon="sitemap"/> 
+            <span class="optionsnav-text">Menus</span>
         </b-nav-item> 
-        <b-nav-item v-if="canBrowse" :to="basePath + '/options/appearance'">
+        <b-nav-item :class="[ inAppearance ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/appearance'">
         <font-awesome-icon icon="paint-brush"/> 
         <span class="optionsnav-text">Appearance</span>
         </b-nav-item> 
-        <b-nav-item v-if="canBrowse" :to="basePath + '/options/homepage'">
+        <b-nav-item :class="[ inHomepage ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/homepage'">
         <font-awesome-icon icon="home"/> 
         <span class="optionsnav-text">Homepage</span>
         </b-nav-item> 
-        <b-nav-item v-if="canBrowse && changeCount > 0" :to="basePath + '/updates'"><sup>{{ changeCount }}</sup> Changes
-        </b-nav-item > 
-        <b-nav-item :to="basePath + '/options/people'"><font-awesome-icon icon="user-cog"/> 
+        <b-nav-item :class="[ inPeople ? 'active-section' : '' ]" :to="basePath + '/options/people'"><font-awesome-icon icon="user-cog"/> 
         <span class="optionsnav-text">People</span>
-        </b-nav-item >
-        <b-nav-item :to="basePath + '/help'"> <font-awesome-icon icon="question-circle"/> 
-        <span class="optionsnav-text">Help</span>
         </b-nav-item >
       </b-nav>  
     </div>   
@@ -34,6 +29,13 @@
 import Vue from 'vue';
 import { mapState, mapGetters } from 'vuex';
 export default  Vue.extend({
+    props: {
+    inSettings: Boolean,
+    inMenus: Boolean,
+    inAppearance: Boolean,
+    inHomepage: Boolean,
+    inPeople: Boolean
+    },
     computed:{
         ...mapGetters('users/profile', [
             'user',
@@ -65,10 +67,29 @@ export default  Vue.extend({
 });
 </script>
 
-<style>
+<style scss>
 
 /* needs to be unscoped */
 
+.optionsnav {
+ max-width: 12rem;
+}
+
+.active-section.nav-item {
+ order:-1;
+}
+
+
+.active-section.nav-item.nav-link.active,
+  .nav-item.show .nav-link {
+    color: $nav-tabs-link-active-color;
+    background-color: $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color;
+}
+
+.menus .optionsnav-menus {
+ background: red;
+}
 
 .optionsnav .manage-button {
     width: 15rem;

@@ -24,6 +24,16 @@ export default {
 
 <style>
 
+.site-options .optionsnav {
+    max-width: 18rem;
+    margin:auto !important;
+}
+
+.site-options .optionsnav .nav {
+    font-size: 1.8rem;
+}
+
+
 .site-options h2{
     font-size: 1.5rem;
     margin-bottom:0;

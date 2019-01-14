@@ -1,8 +1,8 @@
 <template>
  <div class="homepage-layout">
         <navigation></navigation> 
-        <div id="homepage">         
-            <div id="wrapper-main" class="justify-content-center" >
+        <div id="homepage container">         
+            <div id="wrapper-main" class="justify-content-center row" >
                  <main role="main" > 
                      <transition name="fade">
                             <h1 class="mt-5"> Site Homepage </h1>

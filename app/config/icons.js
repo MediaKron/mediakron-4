@@ -12,6 +12,7 @@ import {
     faUserCircle,
     faExpandArrowsAlt,
     faSignInAlt,
+    faSignOutAlt,
     faThLarge,
     faSpinner,
     faCheck,
@@ -22,7 +23,10 @@ import {
     faTag,
     faTags,
     faUserCog,
-    faWindowClose, /* close square */ 
+    faUserPlus,
+    faUsers,
+    faInfoCircle,
+    faWindowClose /* close square */ 
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function initializeIcons(){
@@ -39,6 +43,7 @@ export default function initializeIcons(){
         faUserCircle,
         faExpandArrowsAlt,
         faSignInAlt,
+        faSignOutAlt,
         faThLarge,
         faSpinner,
         faSlidersH,
@@ -49,6 +54,9 @@ export default function initializeIcons(){
         faTags,
         faQuestionCircle,
         faUserCog,
+        faUserPlus,
+        faUsers,
         faWindowClose, /* close square */ 
+        faInfoCircle
     );
 }

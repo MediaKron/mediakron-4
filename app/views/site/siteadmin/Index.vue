@@ -1,6 +1,6 @@
 <template>
-    <div class="settings-general">
- <OptionsNav></OptionsNav> 
+    <div id="options">
+     <OptionsNav></OptionsNav> 
               
 </div>
 </template>
@@ -9,13 +9,11 @@
 import Vue from 'vue';
 import _ from 'underscore';
 import data from '@/components/mixins/data';
-import Settingsnav from "./SettingsNav.vue";
 import OptionsNav from "./../navigation/OptionsNav";
 import { mapState, mapActions } from 'vuex';
 export default  Vue.extend({
     mixins: [ data ],
     components: {
-     Settingsnav,
      OptionsNav
     },
     computed:{
@@ -47,5 +45,9 @@ export default  Vue.extend({
 </script>
 
 <style>
+
+#options .optionsnav .nav {
+    font-size: 1.7rem;
+}
 
 </style>

@@ -186,11 +186,16 @@
 
 .line-behind::after {
   content: "";
-  height: 2px;
+  height: 5px;
   flex: 1 1 auto;
-  opacity: .6;
-  margin-left: 10px;
-  background-color: #565656;
+  margin-left: 1rem;
+  background-color: #225362;
+  position:relative;
+  top:.3rem;
+} 
+
+.line-behind.primary::after {
+  background-color: $primary;
 } 
 
 .modal-dialog-right.show .modal-dialog{
@@ -215,32 +220,32 @@ height:100vh;
 }
 
 
-.sidebar-left {
-    position: fixed;
-    top: 2.5em;
-    bottom: 0;
-    // z-index: 100; /* Behind the navbar */
-    padding: 0 0 0; /* Height of navbar */
-    border-right:1px solid #ccc;
-    padding-top:.5rem;
-    width:15rem;
-    padding-top:2em;
-  }
+// .sidebar-left {
+//     position: fixed;
+//     top: 2.5em;
+//     bottom: 0;
+//     // z-index: 100; /* Behind the navbar */
+//     padding: 0 0 0; /* Height of navbar */
+//     border-right:1px solid #ccc;
+//     padding-top:.5rem;
+//     width:15rem;
+//     padding-top:2em;
+//   }
   
-  .sidebar-sticky {
-    position: relative;
-    top: 3.5em;
-    height: calc(100vh - 3.5em);
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  }
+  // .sidebar-sticky {
+  //   position: relative;
+  //   top: 3.5em;
+  //   height: calc(100vh - 3.5em);
+  //   overflow-x: hidden;
+  //   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  // }
   
-  @supports ((position: -webkit-sticky) or (position: sticky)) {
-    .sidebar-sticky {
-      position: -webkit-sticky;
-      position: sticky;
-    }
-  }
+  // @supports ((position: -webkit-sticky) or (position: sticky)) {
+  //   .sidebar-sticky {
+  //     position: -webkit-sticky;
+  //     position: sticky;
+  //   }
+  // }
   
   .sidebar-left .nav-link {
     font-weight: 500;
@@ -278,7 +283,7 @@ height:100vh;
   }
 
 
-  .main-centered {
+  .centered-main {
     max-width: 40em; 
     margin: auto;
   }
@@ -287,6 +292,11 @@ height:100vh;
   .z-index-1 {
     z-index:1;
   }
+
+.make-first {
+  order:-1;
+} 
+
 
 /* Comeing out in next version of Bootstrap  */
 /* https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_stretched-link.scss */
@@ -307,10 +317,10 @@ height:100vh;
     padding-bottom:.25rem;
   }
 
-  .savebar.btn-group {
-    position:fixed;
-    bottom:2em;
-}
+  .heading-nudge-up {
+    position: relative;
+    top: -.5rem;
+  }
 
 
 

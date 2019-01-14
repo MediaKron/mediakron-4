@@ -1,21 +1,17 @@
 <template>
     <div class="settings-layout">
         <UtilityNav></UtilityNav> 
-
-         <div class="sidebar-left" >
-                <div v-if="access('can change site siteadmin')" class="sidebar-sticky">
-           <OptionsNav></OptionsNav> 
+        <div id="site-settings" class="layout-sidebar-left mt-5 container">  
+            <div class="row">
+                <div class="sidebar-left col-md-4" >
+                        <OptionsNav inSettings></OptionsNav> 
                 </div>
-                </div>
-        <div id="site-settings">  
-            <div id="wrapper-main" class="justify-content-center sidebar-left-wrapper" >
-                 <main role="main" class="sidebar-left-main" > 
-                     <transition name="fade">
-                         s
-                            <router-view></router-view>
-                     </transition>
-                 </main>
-             </div>
+                <main role="main" class="with-sidebar-left col-md-8" > 
+                    <transition name="fade">
+                        <router-view></router-view>
+                    </transition>
+                </main>
+            </div>
         </div>
     </div>
 </template>

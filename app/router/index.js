@@ -3,11 +3,13 @@ import SettingsLayout from "@/views/site/siteadmin/SettingsLayout";
 import PeopleLayout from "@/views/site/siteadmin/PeopleLayout";
 import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
-import Browse from "../views/site/items/Browse";
+import Content from "@/views/site/items/Content";
 import SiteOptions from "@/views/site/siteadmin/SiteOptions";
 import MenusLayout from "@/views/site/siteadmin/MenusLayout";
 import Appearance from "@/views/site/siteadmin/Appearance";
 import HomePageSettings from "@/views/site/siteadmin/HomePageSettings";
+import Profile from "@/views/site/siteadmin/Profile";
+import Help from "@/views/help/help";
 
 import settings from "./settings";
 import people from "./people";
@@ -20,6 +22,26 @@ var routes = {
     title: "Site",
     props: true,
     children: [
+      {
+        path: "profile",
+        component: Profile,
+        title: "Profile",
+        props: true
+      },
+      {
+        path: "help",
+        component: Help,
+        title: "Help",
+        props: true
+      },
+
+      {
+        path: "content",
+        component: Content,
+        title: "Content",
+        props: true
+      },
+
       {
         path: "options/settings",
         component: SettingsLayout,
@@ -71,14 +93,6 @@ var routes = {
         component: ItemPage,
         props: true
       },
-      {
-        path: "/browse",
-        name: "browser",
-        component: Browse,
-        props: true
-      },
-      
-      
       {
         path: "/",
         name: "homepage",

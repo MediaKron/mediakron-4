@@ -5,11 +5,9 @@
 </template>
 
 <script>
-import SettingsNav from "./SettingsNav.vue";
 import UtilityNav from "./../navigation/UtilityNav";
 export default {
     components: {
-        SettingsNav,
         UtilityNav
   }
 };

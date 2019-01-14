@@ -1,24 +1,16 @@
 <template>
        <div class="homepage-settings">
         <UtilityNav></UtilityNav> 
-        <div id="homepage-settings">  
-            <div id="wrapper-main" class="justify-content-center sidebar-left-wrapper" >
-                 <main role="main" class="sidebar-left-main" > 
+        <div id="appearance" class="layout-sidebar-left mt-5 container">  
+            <div class="row">
+                <div class="sidebar-left col-md-4" >
+                        <OptionsNav inHomepage></OptionsNav> 
+                </div>
+                <main role="main" class="with-sidebar-left col-md-8" > 
                  <header>
-                     <h1 class="heading-underlined"> Homepage Settings</h1>
+                     <h1 class="line-behind heading-nudge-up mb-4"> Homepage Settings</h1>
                 </header>
-                <b-nav pills vertical>
-                    <b-nav-item>Active</b-nav-item>
-                    <b-nav-item>Link</b-nav-item>
-                    <b-nav-item-dropdown id="nav7_ddown" text="Dropdown" extra-toggle-classes="nav-link-custom">
-                        <b-dropdown-item>one</b-dropdown-item>
-                        <b-dropdown-item>two</b-dropdown-item>
-                        <b-dropdown-divider></b-dropdown-divider>
-                        <b-dropdown-item>three</b-dropdown-item>
-                    </b-nav-item-dropdown>
-                     <b-nav-item>Link</b-nav-item>
-                      <b-nav-item>Link</b-nav-item>
-                    </b-nav>
+                
 
                  </main>
              </div>
@@ -28,9 +20,11 @@
 
 <script>
 import UtilityNav from "./../navigation/UtilityNav";
+import OptionsNav from "./../navigation/OptionsNav";
 export default {
     components: {
-        UtilityNav
+        UtilityNav,
+        OptionsNav
   }
 };
 </script>

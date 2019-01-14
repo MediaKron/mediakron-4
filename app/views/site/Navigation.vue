@@ -2,10 +2,6 @@
   <header id="site-header" role="banner">
     <b-navbar toggleable="md" type="dark" class="site-nav pl-3 pr-0 py-0 z-index-1" variant="primary" aria-label="site menus" >
       <b-navbar-toggle target="nav_collapse" class="order-2 pl-3 border-0 navbar-toggle">
-          <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar top-bar"></span>
-        <span class="icon-bar middle-bar"></span>
-        <span class="icon-bar bottom-bar"></span>
       </b-navbar-toggle>
 
       <b-navbar-brand :to="'/' + currentSite.uri" class="text-uppercase">{{ currentSite.title }}</b-navbar-brand>
