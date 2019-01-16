@@ -1,13 +1,19 @@
 <template lang="html">
     <div class="container mt-5">
         <h1>People</h1>
-        <div v-if="listIsLoading" class="skeleton">Loading Table Skeleton here</div>
+        <div v-if="listIsLoading"> 
+          <b-alert show variant="primary" ><font-awesome-icon icon="spinner" class="loading-spinner"/> Loading...</b-alert>
+        </div>
+       
         <b-table v-if="listIsLoaded" striped hover :items="users" :fields="fields">
             <template slot="username" slot-scope="user">
               <router-link :to="{ name: 'user', params: { id: user.item.id } }">{{ user.item.username }}</router-link>
             </template>
         </b-table>
+
         <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
+     
+
     </div>
 </template>
 
@@ -59,4 +65,11 @@ export default {
 </script>
 
 <style lang="css">
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

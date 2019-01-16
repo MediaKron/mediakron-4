@@ -1,13 +1,13 @@
 <template>
-    <div class="settings-layout">
+    <div class="people-layout">
         <UtilityNav></UtilityNav> 
-        <div id="site-settings" class="layout-sidebar-left mt-5 container">  
+        <div id="people" class="layout-sidebar-left mt-5 container">  
             <div class="row">
                 <div class="sidebar-left col-md-4" >
-                        <OptionsNav inSettings></OptionsNav> 
+                        <OptionsNav inPeople></OptionsNav> 
                 </div>
                 <main role="main" class="with-sidebar-left col-md-8" > 
-                     <router-view></router-view>
+                    <router-view></router-view>
                 </main>
             </div>
         </div>
