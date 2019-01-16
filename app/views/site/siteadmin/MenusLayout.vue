@@ -7,9 +7,7 @@
                         <OptionsNav inMenus></OptionsNav> 
                 </div>
                 <main role="main" class="with-sidebar-left col-md-8" > 
-                    <transition name="fade">
-                        <router-view></router-view>
-                    </transition>
+                     <router-view></router-view>
                 </main>
             </div>
         </div>

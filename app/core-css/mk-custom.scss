@@ -194,9 +194,42 @@
   top:.3rem;
 } 
 
-.line-behind.primary::after {
-  background-color: $primary;
+
+.nav-line-behind .nav-link.active, 
+.nav-line-behind .show > .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-line-behind .nav-link.active::after,
+.nav-line-behind .show > .nav-link::after { 
+// .nav-line-behind .nav-link.active::before,
+// .nav-line-behind .show > .nav-link::before 
+  content: "";
+  height: .4rem;
+  flex: 1 1 auto;
+  background-color: #225362;
+  position: relative;
+  width: 1rem;
 } 
+
+.nav-line-behind .nav-link.active::after,
+.nav-line-behind .show > .nav-link::after {
+  margin-left: .5rem;
+}
+
+// .nav-line-behind .nav-link.active::before,
+// .nav-line-behind .show > .nav-link::before {
+//   margin-right: .5rem;
+// } 
+
+
+.nav-underline .nav-link.active, 
+.nav-underline .show > .nav-link {
+  border-bottom:5px solid #225362;
+}
+
+
 
 .modal-dialog-right.show .modal-dialog{
     margin: 0 0 1rem auto;
@@ -219,6 +252,11 @@ height:100vh;
 
 }
 
+
+/* Add padding when savebar is present */
+.with-savebar {
+  padding-bottom: 5rem;
+}
 
 // .sidebar-left {
 //     position: fixed;

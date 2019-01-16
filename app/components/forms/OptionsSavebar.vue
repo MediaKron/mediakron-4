@@ -26,6 +26,7 @@
     width:100%;
     background: #fff;
     border-top: 1px solid #ccc;
+    z-index: 2; /* appear over certain form elements */
 }
 
 </style>

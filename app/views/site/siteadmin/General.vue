@@ -1,15 +1,15 @@
 <template>
-    <div class="settings-general">
+    <div class="settings-general with-savebar">
         <b-nav pills class="options-sectionnav mb-4">
             <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
             <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
             <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
         </b-nav>
         <header>
-                <h1 class="line-behind mb-4"> General Site Settings</h1>
+             <h1 class="line-behind mb-4"> General Site Settings</h1>
         </header>
     
-        <h2><span class="mk-icon mk-settings"></span> Site Title and Information</h2>
+        <h2 class="mt-5">Site Title and Subtitle</h2>
     
         <b-form-group
         id="site-information"
@@ -47,6 +47,9 @@
             </b-form-input>
         </b-form-group>
 
+
+        <h2 class="mt-5">Other Site Information</h2>
+
         <b-form-group
         id="insitution"
         description=""
@@ -81,15 +84,59 @@
                 </b-form-input>
         </b-form-group>
 
-        <h2 class="mt-4 pb-1"> Privacy</h2>
+        <h2 class="mt-5">Google Analytics</h2>
 
-        <b-form-group label="Settings for whether your site is visible to the public or requires a password to access." description="">
-            <b-form-radio-group id="privacy-settings"
-                size="lg"
-                v-model="selected"
-                :options="options"
-            name="privacy-settings" />
+            <b-form-group
+            id="google-analytics"
+            description=""
+            label="Google Analytics"
+            label-for="google-analytics-field"
+            label-sr-only
+            :invalid-feedback="invalidFeedback"
+            :valid-feedback="validFeedback"
+            :state="state">
+           
+            <b-form-input 
+            id="google-analytics-field"
+            v-model="localData.googleanalytics" 
+            @input="dataChange"
+            type="text"
+            placeholder="Enter the Google Analytics code id">
+        </b-form-input>
         </b-form-group>
+
+        <h2 class="mt-5 pb-1"> Privacy</h2>
+
+        <b-form-group label="Settings for whether your site is visible to the public or requires a password to access.">
+            <b-form-radio-group class="mt-2" id="privacy-settings" v-model="selected" name="privacy-settings" >
+                <b-form-radio  value="selected">Site is Private</b-form-radio>
+                <b-form-radio value="">Site is Public</b-form-radio>
+            </b-form-radio-group>
+        </b-form-group>
+
+        <h2 class="mt-5 pb-1"> Item options</h2>
+        <div class="form-instructions mb-4">Show or hide page elements site-wide.</div>
+        
+            <b-form-group>
+                <b-form-radio-group class="mt-2" id="view-in-visibility" v-model="viewin" :options="options" name="view-in visibility" >
+                        <b-form-radio checked value="is-visible">View In is Visible</b-form-radio>
+                        <b-form-radio value="is-hidden">View-In is Hidden</b-form-radio>
+                </b-form-radio-group>
+            </b-form-group>     
+
+            <b-form-group>
+                <b-form-radio-group class="mt-2" id="author-date-visibility" v-model="authorinfo" name="author and date visibility" >
+                        <b-form-radio value="is-visible">Author Info is Visible</b-form-radio>
+                        <b-form-radio checked value="is-hidden">Author Info is Hidden</b-form-radio>
+                </b-form-radio-group>
+            </b-form-group>   
+
+              <b-form-group>
+                <b-form-radio-group  class="mt-2" id="download-visibility" v-model="download" :options="options" name="download button visibility" >
+                        <b-form-radio value="is-visible">Download button is Visible</b-form-radio>
+                        <b-form-radio checked value="is-hidden">Download button is Hidden</b-form-radio>
+                </b-form-radio-group>
+            </b-form-group>   
 
         <OptionsSavebar></OptionsSavebar>
     </div>
@@ -114,7 +161,14 @@ export default  Vue.extend({
             'basePath'
         ]),
     },
-    
+    data () {
+        return {
+        selected: 'selected',
+        viewin: 'is-visible',
+        authorinfo: 'is-hidden',
+        download: 'is-hidden',
+        }
+    },
     methods:{
         ...mapActions('sites', [
             'update',
@@ -135,6 +189,7 @@ export default  Vue.extend({
     mounted(){
         
     }
+
 });
 </script>
 

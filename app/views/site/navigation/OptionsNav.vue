@@ -1,5 +1,5 @@
 <template>
-  <div v-if="access('can change site siteadmin')" class="optionsnav mx-3" :class="activesection">
+  <div v-if="access('can change site siteadmin')" class="optionsnav" :class="activesection">
     <b-nav pills vertical class="">
         <b-nav-item :class="[ inSettings ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/settings/general'">
             <font-awesome-icon icon="sliders-h"/> 
@@ -73,12 +73,12 @@ export default  Vue.extend({
 
 .optionsnav {
  max-width: 12rem;
+ margin:auto;
 }
 
 .active-section.nav-item {
  order:-1;
 }
-
 
 .active-section.nav-item.nav-link.active,
   .nav-item.show .nav-link {

@@ -7,9 +7,7 @@
                         <OptionsNav inSettings></OptionsNav> 
                 </div>
                 <main role="main" class="with-sidebar-left col-md-8" > 
-                    <transition name="fade">
-                        <router-view></router-view>
-                    </transition>
+                     <router-view></router-view>
                 </main>
             </div>
         </div>
@@ -41,10 +39,4 @@ export default {
 
 <style>
 
-.fade-enter-active  {
-  transition: opacity .5s;
-}
-.fade-enter /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
 </style>
