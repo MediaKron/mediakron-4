@@ -1,24 +1,37 @@
 <template>
-    <header>
-        <h1 class="heading-underlined">Canvas</h1>
-    </header>
+<div class="canvas-settings">
+        <b-nav pills class="mb-4 options-section-nav">
+            <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
+            <b-nav-item class="make-first" :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
+            <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
+        </b-nav>
+        <header>
+                <h1 class="line-behind heading-nudge-up mb-4"> Canvas Settings</h1>
+        </header>
+    
+
+         <OptionsSavebar></OptionsSavebar>
+    </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import _ from 'underscore';
 import data from '@/components/mixins/data';
-import Settingsnav from "./SettingsNav.vue";
-import { mapState, mapActions } from 'vuex';
+import OptionsSavebar from '@/components/forms/OptionsSavebar';
+import { mapState, mapActions,mapGetters } from 'vuex';
 export default  Vue.extend({
     mixins: [ data ],
     components: {
-     Settingsnav,
+     OptionsSavebar
     },
     computed:{
         ...mapState('sites', {
             sourceData: 'currentSite'
-        })
+        }),
+         ...mapGetters('sites', [
+            'basePath'
+        ]),
     },
     methods:{
         ...mapActions('sites', [

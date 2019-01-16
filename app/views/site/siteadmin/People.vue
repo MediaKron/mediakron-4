@@ -1,52 +1,29 @@
 <template>
+<div class="menus">
+        <b-nav pills class="mb-4">
+            <b-nav-item :to="basePath + '/options/people'"> Manage</b-nav-item>
+            <b-nav-item :to="basePath + '/options/people/add'"><font-awesome-icon icon="user-plus"/> Add People</b-nav-item>
+            <b-nav-item :to="basePath + '/options/people/groups'"><font-awesome-icon icon="users"/> Groups</b-nav-item>
+        </b-nav>
+        <header>
+            <h1 class="line-behind heading-nudge-up mb-4"> People</h1>
+        </header>
 
-    <div class="people">
-                <UtilityNav class="hide-menus"></UtilityNav> 
-        <h1>People</h1>
-               
-        </div>
+    </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import _ from 'underscore';
-import data from '@/components/mixins/data';
-// import PeopleNav from "./PeopleNav.vue";
-import SettingsNav from "./SettingsNav.vue";
-import UtilityNav from "./../navigation/UtilityNav";
-import { mapState, mapActions } from 'vuex';
-export default  Vue.extend({
-    mixins: [ data ],
+import { mapGetters } from 'vuex';
+export default {
     components: {
-    //  Poeplenav,
-        UtilityNav
-    },
-    computed:{
-        ...mapState('sites', {
-            sourceData: 'currentSite'
-        })
-    },
-    methods:{
-        ...mapActions('sites', [
-            'update',
-            'saveSite'
+
+  },
+      computed:{
+        ...mapGetters('sites', [
+            'basePath'
         ]),
-
-        dataChange: _.debounce( function() {
-            this.update(this.localData);
-        }, 500),
-
-        save(){
-            this.saveSite(this.localData);
-        },
-
-        cancel(){
-        }
     },
-    mounted(){
-        
-    }
-});
+};
 </script>
 
 <style>
