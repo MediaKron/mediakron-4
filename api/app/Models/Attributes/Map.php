@@ -13,13 +13,13 @@ class Map extends BaseModel
 
     static function mediakron_v3($data, $item_id){
         $metadata = new static();
-        $metadata->fill($data);
+        $metadata->fill((array) $data);
         
-        if(isset($data['center'])){
-            if(isset($data['center']['lng'])) $map->longitude = $data['center']['lng'];
-            if(isset($data['center']['lat'])) $map->latitude = $data['center']['lat'];
+        if(isset($data->center)){
+            if(isset($data->center['lng'])) $map->longitude = $data->center['lng'];
+            if(isset($data->center['lat'])) $map->latitude = $data->center['lat'];
         }
-        if(isset($data['zoom'])) $map->zoom = $data['zoom'];
+        if(isset($data->zoom)) $map->zoom = $data->zoom;
         $metadata->item_id = $item_id;
         $metadata->save();
     }

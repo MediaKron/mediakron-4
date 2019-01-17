@@ -69,10 +69,21 @@ class Relationship extends BaseModel
     {
         $table = $this->getTable();
         $resource = str_singular($table) . '/';
-        $data = [ 
-            'id' => $this->id,
-            'data' => $this->data,
-        ];
+        $data = (array) json_decode($this->data);
+
+        if ($this->relationLoaded('child')){
+            $data['id'] = $this->child->id;
+            $data['title'] = $this->child->title;
+            $data['uri'] = $this->child->uri;
+            $data['thumbnail'] = $this->child->thumbnail;
+        }
+
+        if ($this->relationLoaded('parent')){
+            $data['id'] = $this->parent->id;
+            $data['title'] = $this->parent->title;
+            $data['uri'] = $this->parent->uri;
+            $data['thumbnail'] = $this->parent->thumbnail;
+        }
 
         foreach($this->addToArray as $key){
             $data[$key] = $this->{$key};

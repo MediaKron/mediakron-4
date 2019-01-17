@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Site;
+use Storage;
+use Image;
 
 class ImageController extends Controller
 {
@@ -56,29 +58,33 @@ class ImageController extends Controller
         $site = Site::byUri($site);
         if(!$site) abort(404, 'Site Not Found');
 
+
+
         // if the request style doesn't exist abort
         if(!isset($this->styles[$style])) abort(404, 'Style Not Found');
         $style = $this->styles[$style];
 
         // Make sure the site folder exists
-        if(!Storage::exists($site->uri)){
-            Storage::makeDirectory($directory);
+        if(!Storage::disk('public')->exists($site->uri)){
+            Storage::disk('public')->makeDirectory($site->uri);
         }
-        $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
-        if (!Storage::exists($pathToOriginal)) abort(404, 'Image Not Found');
 
-        if (!Storage::exists($site->uri . '/styles/')) {
-            Storage::makeDirectory($site->uri . '/styles/');
+        $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
+        if (!Storage::disk('public')->exists($pathToOriginal)) abort(404, 'Image Not Found');
+
+        if (!Storage::disk('public')->exists($site->uri . '/styles/')) {
+            Storage::disk('public')->makeDirectory($site->uri . '/styles/');
         }
 
         // Make sure the style path exists
         $pathToStyle = $site->uri . '/styles/' . $style['uri'];
-        if (!Storage::exists($pathToStyle)){
-            Storage::makeDirectory($pathToStyle);
+        if (!Storage::disk('public')->exists($pathToStyle)){
+            Storage::disk('public')->makeDirectory($pathToStyle);
         }
 
         $pathToNew = $pathToStyle . DIRECTORY_SEPARATOR . $image;
-        $image = Image::make(storage_path($pathToOriginal))->resize($style['height'], $style['height']);
+
+        $image = Image::make(public_path('storage/' . $pathToOriginal))->resize($style['height'], $style['height']);
         $image->save($pathToNew);
         return $image->response('jpg');
     }

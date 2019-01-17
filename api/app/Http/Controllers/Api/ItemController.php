@@ -24,7 +24,7 @@ class ItemController extends Controller
     public function index($site)
     {
         //
-        return Item::with(['children', 'parents'])->paginate(50);
+        return Item::with(Item::$select_with)->paginate(50);
     }
 
     /**

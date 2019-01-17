@@ -25,8 +25,9 @@ class Item extends BaseModel
         'timeline', 
         'map', 
         'children', 
+        'children.child', 
         'parents', 
-        'attachments'
+        'parents.parent'
     ];
 
     protected $appends = [
@@ -89,7 +90,7 @@ class Item extends BaseModel
      */
     public function parents()
     {
-        return $this->hasManyThrough('App\Models\Item', 'App\Models\Relationship', 'child_id', 'id');
+        return $this->hasMany('App\Models\Relationship', 'child_id');
     }
 
     /**
@@ -99,7 +100,7 @@ class Item extends BaseModel
      */
     public function children()
     {
-        return $this->hasManyThrough('App\Models\Item', 'App\Models\Relationship', 'parent_id', 'id');
+        return $this->hasMany('App\Models\Relationship','parent_id');
     }
 
     /**
