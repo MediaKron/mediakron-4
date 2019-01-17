@@ -138,7 +138,8 @@
                 </b-form-radio-group>
             </b-form-group>   
 
-        <OptionsSavebar></OptionsSavebar>
+        <OptionsSavebar 
+        ></OptionsSavebar>
     </div>
 </template>
 
@@ -171,17 +172,12 @@ export default  Vue.extend({
     },
     methods:{
         ...mapActions('sites', [
-            'update',
-            'saveSite'
+            'update'
         ]),
 
         dataChange: _.debounce( function() {
             this.update(this.localData);
         }, 500),
-
-        save(){
-            this.saveSite(this.localData);
-        },
 
         cancel(){
         }

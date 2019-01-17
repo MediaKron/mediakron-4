@@ -5,8 +5,8 @@
              <div class="col-md-4" >
              </div>
             <b-button-group class="savebar-buttons p-2 col-md-8">
-                <b-button type="submit" variant="primary"><font-awesome-icon icon="check"/> Save</b-button>
-                <b-button type="reset" variant="outline-primary" class="cancel-button bg-white"><font-awesome-icon icon="times"/> Cancel</b-button>
+                <b-button type="submit" variant="primary" @click="save"><font-awesome-icon icon="check"/> Save</b-button>
+                <b-button type="reset" variant="outline-primary" @click="cancel" class="cancel-button bg-white"><font-awesome-icon icon="times"/> Cancel</b-button>
             </b-button-group>
         </div>
     </div>
@@ -14,7 +14,27 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import { mapState, mapActions,mapGetters } from 'vuex';
+export default  Vue.extend({
+    methods:{
+        ...mapActions('sites', [
+            'saveSite'
+        ]),
 
+        save(){
+            this.saveSite();
+        },
+        cancel(){
+            console.log('cancel');
+        }
+
+    },
+    mounted(){
+        
+    }
+
+});
 </script>
 
 <style>
