@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -42,7 +41,7 @@ return [
     */
 
     'disks' => [
-        
+
         'gcs' => [
             'driver' => 'gcs',
             'project_id' => env('GOOGLE_CLOUD_PROJECT_ID', 'your-project-id'),
@@ -59,7 +58,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/../public'),
+            'root' => getcwd() . '/../api/storage/app/public',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
