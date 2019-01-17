@@ -75,6 +75,13 @@ trait Import
         if(isset($data['text'])){
             if(!empty($data['text'])) Text::mediakron_v3($data['text'], $item->id);
         }
+        $date = json_decode($record->date);
+        if(!empty($date)){
+            Timeline::mediakron_v3($data['timeline'], $date, $item->id);
+        } 
+        if(isset($data['map'])){
+            if(!empty($data['map'])) Map::mediakron_v3($data['map'], $item->id);
+        }
         return $item;
         //$item->save();
     }

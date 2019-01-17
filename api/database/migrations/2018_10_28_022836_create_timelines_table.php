@@ -16,15 +16,14 @@ class CreateTimelinesTable extends Migration
         Schema::create('timelines', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('item_id');
-            $table->string('url')->nullable();
             $table->string('type')->nullable();
             $table->string('position')->nullable();
-            $table->float('year')->nullable();
-            $table->float('month')->nullable();
-            $table->float('day')->nullable();
-            $table->float('hour')->nullable();
-            $table->float('minute')->nullable();
-            $table->float('second')->nullable();
+            $table->integer('year')->nullable();
+            $table->integer('month')->nullable();
+            $table->integer('day')->nullable();
+            $table->integer('hour')->nullable();
+            $table->integer('minute')->nullable();
+            $table->integer('second')->nullable();
             $table->float('timestamp')->nullable();
             $table->timestamps();
             $table->index('item_id');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Traits\Item;
+namespace App\Models\Traits\Relationship;
 
 use Carbon\Carbon;
 
