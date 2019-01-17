@@ -25,8 +25,9 @@ class Item extends BaseModel
         'timeline', 
         'map', 
         'children', 
+        'children.child', 
         'parents', 
-        'attachments'
+        'parents.parent'
     ];
 
     protected $appends = [
