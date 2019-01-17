@@ -20,12 +20,12 @@ trait Import
      * @param [type] $record
      * @return void
      */
-    static function mediakron_v3($record, $site_id){
+    static function mediakron_v3($record, $site_id, $users){
         $item = new static();
         
         $item->version_id = $record->version;
-        $item->user_id = $record->userId;
-        $item->editor_id = $record->editor_id;
+        $item->user_id = $users[$record->userId]->id;
+        $item->editor_id = $users[$record->editor_id]->id;
         $item->site_id = $site_id;
 
         // booleans

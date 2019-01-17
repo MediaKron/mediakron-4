@@ -10,9 +10,35 @@ use App\Models\Traits\User\Permissions;
 use App\Models\Traits\User\Import;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection as BaseCollection;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, SoftDeletes, Import;
+
+    static $filterable = [
+        'username',
+        'name',
+        'email',
+        'enabled',
+        'bc'
+    ];
+
+    static $sortable = [
+        'username',
+        'name',
+        'email',
+        'enabled',
+        'bc',
+        'created_at',
+        'updated_at',
+        'last_login'
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -117,6 +143,8 @@ class User extends Authenticatable implements JWTSubject
                     $relation = array_map(function ($item) {
                         return $item instanceof Arrayable ? $item->toRelationshipArray() : $item;
                     }, $value->all());
+                }elseif($value instanceof Pivot){
+                    $relation = $value;
                 } else {
                     $relation = $value->toRelationshipArray();
                 }
@@ -172,7 +200,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function sites()
     {
-        return $this->hasMany('App\Models\Menu');
+        return $this->belongsToMany('App\Models\Site')->lists('role')->withPivot(['role', 'active', 'ldap', 'granted_at']);
     }
 
     /**
@@ -182,7 +210,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function items()
     {
-        return $this->hasMany('App\Models\Menu');
+        return $this->hasMany('App\Models\Item');
     }
         
 }

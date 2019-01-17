@@ -92,5 +92,6 @@ trait Import
                 }
             }
         }
+        return $site;
     }
 }

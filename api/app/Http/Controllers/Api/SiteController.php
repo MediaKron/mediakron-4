@@ -30,6 +30,19 @@ class SiteController extends Controller
     }
 
     /**
+     * Get all users for a site
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function users($id)
+    {
+        //
+        $site = Site::find($id);
+        return $site->users;
+        
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

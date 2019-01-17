@@ -12,14 +12,15 @@ const actions = {
      */
     routeLoad({ commit, dispatch }, { to }){
       const { page } = to.params;
-      const { search, sort, direction, status } = to.query;
+      const { search, sort, direction, status, institution } = to.query;
       //
       var options = {
         page: page || 0,
         search: search || '',
         sort: sort || 'id',
         direction: direction || 'ASC',
-        status: status || ''
+        status: status || '',
+        institution: institution || false
       }
       dispatch('loadSites', options);
     },
