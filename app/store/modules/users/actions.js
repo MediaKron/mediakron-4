@@ -9,17 +9,17 @@ const actions = {
      * @param {*} param0
      * @param {*} param1
      */
-    routeLoad({ commit, dispatch }, { to, site }){
+    routeLoad({ commit, dispatch }, { to }){
         const { page } = to.params;
         const { search, sort, direction, status } = to.query;
+
         //
         var options = {
           page: page || 0,
           search: search || '',
           sort: sort || 'id',
           direction: direction || 'ASC',
-          status: status || '',
-          site: site || false,
+          status: status || ''
         }
         dispatch('loadUsers', options);
         
@@ -29,13 +29,15 @@ const actions = {
        * @param {*} param0
        * @param {*} options
        */
-      loadUsers({ commit, dispatch }, options) {
-          commit("listLoading");
+      loadUsers({ commit, dispatch, getters, rootGetters }, options) {
+          commit("listLoading"); 
           let url = 'users';
-          if(options.site){
-            url = site + '/users'
+          var currentSite = rootGetters['sites/currentSite'];
+          console.log(currentSite);
+          if(currentSite){
+            url = currentSite.id + '/users'
           }
-          return api.get('users', options)
+          return api.get(url, options)
             .then((response) => {
               commit("listLoad", response.data);
               commit("listPage", response.data);
