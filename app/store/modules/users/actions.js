@@ -9,7 +9,7 @@ const actions = {
      * @param {*} param0
      * @param {*} param1
      */
-    routeLoad({ commit, dispatch }, { to }){
+    routeLoad({ commit, dispatch }, { to, site }){
         const { page } = to.params;
         const { search, sort, direction, status } = to.query;
         //
@@ -18,9 +18,11 @@ const actions = {
           search: search || '',
           sort: sort || 'id',
           direction: direction || 'ASC',
-          status: status || ''
+          status: status || '',
+          site: site || false,
         }
         dispatch('loadUsers', options);
+        
       },
       /**
        * Load a list of sites
@@ -29,7 +31,10 @@ const actions = {
        */
       loadUsers({ commit, dispatch }, options) {
           commit("listLoading");
-
+          let url = 'users';
+          if(options.site){
+            url = site + '/users'
+          }
           return api.get('users', options)
             .then((response) => {
               commit("listLoad", response.data);
@@ -37,8 +42,7 @@ const actions = {
               commit("listLoaded");
             })
             .catch((error) => {
-              console.log(error);
-              error.errorMessage = "There was an error loading the site list";
+              error.errorMessage = "There was an error loading the user list";
               return dispatch("listError", error);
             });
         },

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Site;
+use App\Models\User;
 use App\Http\Requests\Admin\Site as SiteRequest;
 use Auth;
 
@@ -38,7 +39,8 @@ class SiteController extends Controller
     {
         //
         $site = Site::find($id);
-        return $site->users()->paginate(request('per_page', Site::$per_page));
+        $query = $site->users();
+        return User::listQuery($query)->paginate(request('per_page', Site::$per_page));
         
     }
 

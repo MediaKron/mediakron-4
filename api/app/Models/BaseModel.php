@@ -36,8 +36,8 @@ class BaseModel extends Model
     static $sortable = [];
     static $per_page = 10;
 
-    static function listQuery(){
-        $query = static::query();
+    static function listQuery($query = false){
+        if(!$query) $query = static::query();
         // Get an array of possible filters
         $filters = request(static::$filterable, []); 
         // fetch a string of the column to sort on, assuming created_at if not specified
