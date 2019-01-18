@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Site;
+use App\Models\User;
 use App\Http\Requests\Admin\Site as SiteRequest;
 use Auth;
 
@@ -26,6 +27,20 @@ class SiteController extends Controller
         }else{
             return $user->sites()->latest()->paginate(50);
         }
+        
+    }
+
+    /**
+     * Get all users for a site
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function users($id)
+    {
+        //
+        $site = Site::find($id);
+        $query = $site->users();
+        return User::listQuery($query)->paginate(request('per_page', Site::$per_page));
         
     }
 

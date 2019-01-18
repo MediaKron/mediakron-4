@@ -107,6 +107,16 @@ class Site extends BaseModel
     }
 
     /**
+     * Practices can have multiple products
+     *
+     * @return void
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User')->withPivot(['role', 'active', 'ldap', 'granted_at']);
+    }
+
+    /**
      * When we save from an admin side, we might need to
      * allow users to change passwords and roles.  
      * 

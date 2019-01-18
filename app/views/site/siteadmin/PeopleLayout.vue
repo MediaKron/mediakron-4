@@ -7,7 +7,18 @@
                         <OptionsNav inPeople></OptionsNav> 
                 </div>
                 <main role="main" class="with-sidebar-left col-md-8" > 
-                    <router-view></router-view>
+                    <div class="menus">
+                        <b-nav pills class="mb-4">
+                            <b-nav-item :to="basePath + '/options/people'"> Manage</b-nav-item>
+                            <b-nav-item :to="basePath + '/options/people/add'"><font-awesome-icon icon="user-plus"/> Add People</b-nav-item>
+                            <b-nav-item :to="basePath + '/options/people/groups'"><font-awesome-icon icon="users"/> Groups</b-nav-item>
+                        </b-nav>
+                        <header>
+                            <h1 class="line-behind heading-nudge-up mb-4"> People</h1>
+                        </header>
+                        <router-view></router-view>
+                    </div>
+                    
                 </main>
             </div>
         </div>

@@ -15,6 +15,10 @@ class UserController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        $query = User::listQuery();
+        return $query->paginate(request('per_page', User::$per_page));
+        
     }
 
     /**
@@ -22,24 +26,39 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        return response()->json($request->validator->messages(), 400);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created User in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        // Validate the data according to the rules
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json($request->validator->messages(), 400);
+        }
+
+        $data = $request->validated();
+
+        // Create a User
+        $user = new User;
+        $user->fill($data);
+        $user->adminFill($data);
+        $user->save();
+
+        // Return the User data object
+        return response()->json($user);
     }
 
     /**
-     * Display the specified resource.
+     * Display the User resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -47,6 +66,12 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id);
+        if(!$user){
+            $user = User::where('id', $id)->first();
+        }
+        if(!$user) abort(404);
+        return $user;
     }
 
     /**
@@ -58,6 +83,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        return response()->json($request->validator->messages(), 400);
     }
 
     /**
@@ -67,9 +93,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        // Validate the data according to the rules
+        if (isset($request->validator) && $request->validator->fails()) {
+            return response()->json($request->validator->messages(), 400);
+        }
+        $data = $request->validated();
+
+        // Create a User
+        $user = User::find($id);
+        $user->fill($data);
+        $user->adminFill($data);
+        $user->save();
+
+        $user = User::find($user->id);
+
+        // Return the User data object
+        return response()->json($user);
     }
 
     /**
@@ -81,5 +122,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::find($id);
+        $user->delete();
+        return response()->json([], 204);
     }
 }

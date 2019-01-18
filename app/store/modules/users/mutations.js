@@ -77,7 +77,6 @@ export const mutations = {
      * @param {*} state
      */
     userLoad(state, data){
-        console.log(data)
         state.currentUser = new User(data);
     },
 

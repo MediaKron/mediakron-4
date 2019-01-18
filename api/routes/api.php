@@ -69,6 +69,8 @@ Route::group([
     Route::get('/items', 'Api\ItemController@index');
     Route::resource('/item', 'Api\ItemController');
 
+    Route::get('/users', 'Api\SiteController@users');
+
     // Relationship api
     Route::resource('/relationship', 'Api\RelationshipController');
     // Comment api

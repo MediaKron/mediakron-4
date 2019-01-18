@@ -30,13 +30,16 @@ import Vue from 'vue';
 import { mapState, mapGetters } from 'vuex';
 export default  Vue.extend({
     props: {
-    inSettings: Boolean,
-    inMenus: Boolean,
-    inAppearance: Boolean,
-    inHomepage: Boolean,
-    inPeople: Boolean
+        inSettings: Boolean,
+        inMenus: Boolean,
+        inAppearance: Boolean,
+        inHomepage: Boolean,
+        inPeople: Boolean
     },
     computed:{
+        activesection(){
+            return 'inactive';
+        },
         ...mapGetters('users/profile', [
             'user',
             'isGuest',

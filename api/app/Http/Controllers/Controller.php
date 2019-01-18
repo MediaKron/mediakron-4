@@ -14,6 +14,15 @@ class Controller extends BaseController
 
     public $validator = false;
 
+    // default number of records per page
+    public $per_page = 10;
+
+    /**
+     * Validates a json request or returns false
+     *
+     * @param [type] $rules
+     * @return void
+     */
     public function validateJsonRequest($rules){
         // Fetch Contents
         $data = json_decode(request()->getContent(), true);
@@ -23,7 +32,7 @@ class Controller extends BaseController
         if ($this->validator->passes()) {
             return $data;
         } else {
-            // Return error array if errorss
+            // Return error array if errors
             return false;
         }
     }

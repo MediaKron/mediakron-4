@@ -32,6 +32,28 @@ class BaseModel extends Model
 
     public $addToArray = [];
 
+    static $filterable = [];
+    static $sortable = [];
+    static $per_page = 10;
+
+    static function listQuery($query = false){
+        if(!$query) $query = static::query();
+        // Get an array of possible filters
+        $filters = request(static::$filterable, []); 
+        // fetch a string of the column to sort on, assuming created_at if not specified
+        $sort = request('sort', 'created_at');
+        // Get the sort direction, assume ASC unless provided
+        $direction = request('direction', 'ASC');
+
+        foreach($filters as $key => $filter){
+            $query->where($key, $filter);
+        }
+
+        $query->orderBy($sort, $direction);
+        return $query;
+    }
+
+
     /**
      * upload a file
      *

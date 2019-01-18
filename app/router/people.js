@@ -1,16 +1,16 @@
 
-import People from '@/views/site/siteadmin/People';
 import PeopleList from '@/views/site/siteadmin/PeopleList';
 
 export default [
       {
         path: 'list',
         name: 'people_list',
-        component: PeopleList
+        component: PeopleList,
+        props: true,
       },
       {
         path: '/',
-        component: People,
+        component: PeopleList,
         title: "people_index",
         props: true,
       }

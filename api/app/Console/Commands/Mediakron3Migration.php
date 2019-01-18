@@ -48,13 +48,13 @@ class Mediakron3Migration extends Command
         foreach($users as $user){
             $new_users[$user->id] = User::mediakron_v3($user);
         }
-
+        $new_sites = [];
         $sites = DB::connection('mediakron_v3')->table('Site')->get();
         foreach($sites as $site){
-            $new_site = Site::mediakron_v3($site);
+            $new_sites[$site->id] = Site::mediakron_v3($site);
         }
 
-        $sites = Site::all();
+        /*$sites = Site::all();
         foreach($sites as $site){
             $id = $site->uri . '_Items';
             if(DB::connection('mediakron_v3')->getSchemaBuilder()->hasTable($id)){
@@ -62,7 +62,7 @@ class Mediakron3Migration extends Command
                 $items = DB::connection('mediakron_v3')->table($id)->get();
                 $new_items = [];
                 foreach($items as $item){
-                    $new_items[$item->uri] = Item::mediakron_v3($item, $site->id);
+                    $new_items[$item->uri] = Item::mediakron_v3($item, $site->id, $new_users);
                 }
 
                 // Fetch Relationships
@@ -90,6 +90,19 @@ class Mediakron3Migration extends Command
 
             }
             
+        }*/
+        $access = DB::connection('mediakron_v3')->table('SiteAccess')->get();
+        foreach($access as $role){
+            if(isset($new_sites[$role->site_id]) && isset($new_users[$role->user_id])){
+                $site = $new_sites[$role->site_id];
+                $user = $new_users[$role->user_id];
+                $site->users()->attach($user, [
+                    'role' => $role->role,
+                    'granted_at' => $role->granted,
+                    'active' => $role->active,
+                    'ldap' => $role->ldap
+                ]);
+            }
         }
 
     }
