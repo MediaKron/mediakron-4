@@ -113,7 +113,7 @@ class Site extends BaseModel
      */
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User')->withPivot(['role', 'active', 'ldap', 'granted_at']);
     }
 
     /**

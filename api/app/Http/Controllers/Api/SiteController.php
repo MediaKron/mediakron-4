@@ -38,7 +38,7 @@ class SiteController extends Controller
     {
         //
         $site = Site::find($id);
-        return $site->users;
+        return $site->users()->paginate(request('per_page', Site::$per_page));
         
     }
 

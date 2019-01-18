@@ -200,7 +200,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function sites()
     {
-        return $this->belongsToMany('App\Models\Site')->lists('role')->withPivot(['role', 'active', 'ldap', 'granted_at']);
+        return $this->belongsToMany('App\Models\Site');
     }
 
     /**
