@@ -24,8 +24,8 @@ trait Import
         $item = new static();
         
         $item->version_id = $record->version;
-        $item->user_id = $users[$record->userId]->id;
-        $item->editor_id = $users[$record->editor_id]->id;
+        $item->user_id = isset($users[$record->userId]) ? $users[$record->userId]->id : 0;
+        $item->editor_id = isset($users[$record->editor_id]) ? $users[$record->editor_id]->id : 0;
         $item->site_id = $site_id;
 
         // booleans

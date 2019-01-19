@@ -54,7 +54,7 @@ class Mediakron3Migration extends Command
             $new_sites[$site->id] = Site::mediakron_v3($site);
         }
 
-        /*$sites = Site::all();
+        $sites = Site::all();
         foreach($sites as $site){
             $id = $site->uri . '_Items';
             if(DB::connection('mediakron_v3')->getSchemaBuilder()->hasTable($id)){
@@ -87,10 +87,8 @@ class Mediakron3Migration extends Command
                     $relationship->data = json_encode(unserialize($import->data));
                     $relationship->save();
                 }
-
             }
-            
-        }*/
+        }
         $access = DB::connection('mediakron_v3')->table('SiteAccess')->get();
         foreach($access as $role){
             if(isset($new_sites[$role->site_id]) && isset($new_users[$role->user_id])){

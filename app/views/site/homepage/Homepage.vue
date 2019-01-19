@@ -4,10 +4,8 @@
         <div id="homepage container">         
             <div id="wrapper-main" class="justify-content-center row" >
                  <main role="main" > 
-                     <transition name="fade">
                             <h1 class="mt-5"> Site Homepage </h1>
                          <component :is="dynamicComponent"></component>
-                     </transition>
                  </main>
              </div>
         </div>
@@ -34,6 +32,8 @@ export default {
                 case 'full':
                     return 'full';
                 case 'basic':
+                    return 'basic';
+                default:
                     return 'basic';
            }
            
