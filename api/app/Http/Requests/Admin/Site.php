@@ -49,12 +49,47 @@ class Site extends JsonRequest
     {
 
         return [
+            // metadata
             'title' => 'required',
             'subtitle' => '',
             'institution' => '',
-            'public' => 'boolean',
-            'comment' => 'boolean',
+            'logo' => '',
+            
 
+            // Options
+            'public' => '',
+            'comment' => '',
+            'download' => '',
+            'view' => '',
+            'production' => '',
+            'sso' => '',
+            'navigation' => '',
+            'browse' => '',
+            'tags' => '',
+            'search' => '',
+            'mklogo' => '',
+            'login' => '',
+            'user' => '',
+            'fullscreen' => '',
+
+            // Settings
+            'ga' => '',
+            'algorithm' => '',
+
+            // Styles
+            'link_color' => '',
+            'banner_color' => '',
+            'banner_link_color' => '',
+            'skin' => '',
+            'font' => '',
+
+            // home page
+            'description' => '',
+            'layout' => '',
+            'image' => '',
+            'alt' => '',
+
+            'primary' => ''
         ];
     }
 }

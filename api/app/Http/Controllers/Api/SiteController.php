@@ -128,6 +128,7 @@ class SiteController extends Controller
         $site = Site::find($id);
         $site->fill($data);
         $site->adminFill($data);
+        $site->primaryMenu($data['primary']);
         $site->save();
 
         $site = Site::with(['primary'])->find($site->id);
