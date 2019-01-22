@@ -393,6 +393,7 @@ height:100vh;
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
+  text-transform:uppercase;
 }
 
 .floating-label input::placeholder {
@@ -401,7 +402,9 @@ height:100vh;
 
 .floating-label input:not(:placeholder-shown) {
   // border-width: 2px;
-  border: 2px solid var(--primary);
+  border: 1px solid #000;
+  color:var(--primary);
+  font-weight:bold;
 }
 
 .floating-label input:not(:placeholder-shown) ~ label {
