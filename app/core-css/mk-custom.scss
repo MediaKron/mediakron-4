@@ -403,8 +403,8 @@ height:100vh;
 .floating-label input:not(:placeholder-shown) {
   // border-width: 2px;
   border: 1px solid #000;
-  color:var(--primary);
-  font-weight:bold;
+  color:var(--primary);  
+  font-weight:500;
 }
 
 .floating-label input:not(:placeholder-shown) ~ label {
