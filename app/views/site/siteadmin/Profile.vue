@@ -12,19 +12,17 @@
 <b-container class="mt-5 layout-sidebar-left ">
 
     <div class="row">
-                <div class="sidebar-left col-md-4" >
-                    <b-nav pills vertical class="mb-4">
-                        <b-nav-item class="text-uppercase" :to="basePath + '/profile'"><font-awesome-icon icon="info-circle"/> My Details</b-nav-item>
-                        <b-nav-item class="text-uppercase" ><font-awesome-icon icon="sign-out-alt"/> Log Out</b-nav-item>
-                        <b-nav-item class="text-uppercase"> <font-awesome-icon icon="th-large"/> My Content</b-nav-item>
-                          </b-nav>
-                </div>
-                <main role="main" class="with-sidebar-left col-md-8" > 
+
+                <main role="main" class="with-sidebar-left col-md-12" > 
                    <header>
-                    <h1 class=" heading-nudge-up line-behind"> {{ user.name }}</h1>
+                    <h1 class=" heading-nudge-up line-behind">Logged in as: {{ user.name }}</h1>
                      </header>
    
-                     <div>Role: {{ user.role }}</div>
+                     <div>My Role: {{ user.role }}</div>
+                    
+                    <b-button variant="primary" class="text-uppercase d-block mt-4"><font-awesome-icon icon="th-large"/> My Content</b-button>
+                    <b-button variant="primary" class="text-uppercase d-block mt-4"><font-awesome-icon icon="sign-out-alt"/> Log Out</b-button>
+                    
 
                 </main>
     </div>

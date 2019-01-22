@@ -1,5 +1,5 @@
 <template>
-<div class="savebar ">
+<div class="savebar bg-light">
     <div class="savebar-inner container">
         <div class="row">
              <div class="col-md-4" >

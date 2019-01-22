@@ -70,24 +70,48 @@ export default  Vue.extend({
 });
 </script>
 
-<style scss>
+<style>
 
 /* needs to be unscoped */
 
 .optionsnav {
- max-width: 12rem;
+ max-width: 10rem;
  margin:auto;
 }
 
 .active-section.nav-item {
  order:-1;
+
 }
 
-.active-section.nav-item.nav-link.active,
+.options-sectionnav .nav-link {
+    text-transform:uppercase;
+    color: var(--primary);
+}
+
+.options-sectionnav .nav-link.active {
+    margin-right: .5rem;
+}
+
+.options-sectionnav .nav-link:hover {
+    text-decoration:underline;
+}
+
+.options-sectionnav .nav-link.active:hover {
+    text-decoration:none;
+}
+
+.options-sectionnav .nav-link.active,
+.active-section.nav-item .nav-link,
+.active-section.nav-item .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-link-active-color;
-    background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    color: #fff;
+    background-color:  var(--primary) !important;
+    border-color: var(--primary);
+    font-weight:normal;
+    padding: 0.25rem 1rem .3rem 1rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
 }
 
 .menus .optionsnav-menus {

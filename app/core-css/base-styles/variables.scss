@@ -1,7 +1,13 @@
-$theme-colors: (
-  "primary":#225362
-  // "primary":#030303
-);
+// $theme-colors: (
+//   "primary":#225362
+//   // "primary":#030303
+//   // "primary": #660000
+// );
+
+$primary: #225362;
+$primary-darkened: darken( $primary, 20% );
+
+$light: #f2f2f2;
 
 $navbar-dark-color:                 white ;
 $navbar-dark-hover-color:           gray;

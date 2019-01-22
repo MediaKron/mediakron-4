@@ -1,20 +1,19 @@
 <template>
     <div class="settings-general with-savebar">
-        <b-nav pills class="options-sectionnav mb-4">
+        <b-nav pills class="options-sectionnav mb-4 line-behind">
             <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
             <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
             <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
         </b-nav>
         <header>
-             <h1 class="line-behind mb-4"> General Site Settings</h1>
+             <h1 class="mb-4"> General Site Settings</h1>
         </header>
     
         <h2 class="mt-5">Site Title and Subtitle</h2>
     
         <b-form-group
         id="site-information"
-        description=""
-        label="Site Information"
+        class="floating-label mt-4"
         label-for="site-information-field"
         :invalid-feedback="invalidFeedback"
         :valid-feedback="validFeedback"
@@ -25,26 +24,25 @@
                 v-model="localData.title" 
                 @input="dataChange"
                 type="text"
-                placeholder="Enter a title">
+                placeholder="Site Information">
             </b-form-input>
+            <label for="site-information-field">Site Information</label>
         </b-form-group>
 
         <b-form-group
             id="site-subtitle"
-            description=""
-            label="Site Subtitle"
-            label-for="site-subtitle-field"
+            class="floating-label mt-4"
             :invalid-feedback="invalidFeedback"
             :valid-feedback="validFeedback"
             :state="state">
-        
-            <b-form-input 
-                id="site-subtitle-field"
-                v-model="localData.subtitle" 
-                @input="dataChange"
-                type="text"
-                placeholder="Enter a Subtitle">
-            </b-form-input>
+                <b-form-input 
+                    id="site-subtitle-field"
+                    v-model="localData.subtitle" 
+                    @input="dataChange"
+                    type="text"
+                    placeholder="Enter a Subtitle">
+                </b-form-input>
+                <label for="site-subtitle-field">Site Subtitle</label>
         </b-form-group>
 
 
@@ -52,27 +50,24 @@
 
         <b-form-group
         id="insitution"
-        description=""
-        label="Insitution"
-        label-for="institution-field"
+        class="floating-label mt-4"
         :invalid-feedback="invalidFeedback"
         :valid-feedback="validFeedback"
         :state="state">
     
-        <b-form-input 
-            id="insitution-field"
-            v-model="localData.institution" 
-            @input="dataChange"
-            type="text"
-            placeholder="Enter Insitution">
-        </b-form-input>
+            <b-form-input 
+                id="insitution-field"
+                v-model="localData.institution" 
+                @input="dataChange"
+                type="text"
+                placeholder="Insitution">
+            </b-form-input>
+            <label for="institution-field">Institution</label>
         </b-form-group>
 
         <b-form-group
             id="copyright"
-            description=""
-            label="Copyright"
-            label-for="copyright-field"
+            class="floating-label mt-4"
             :invalid-feedback="invalidFeedback"
             :valid-feedback="validFeedback"
             :state="state">
@@ -80,18 +75,16 @@
                 <b-form-input 
                 id="copyright-field"
                 type="text"
-                placeholder="Enter copyright">
+                placeholder="Copyright">
                 </b-form-input>
+                <label for="copyright-field">Copyright</label>
         </b-form-group>
 
         <h2 class="mt-5">Google Analytics</h2>
 
             <b-form-group
             id="google-analytics"
-            description=""
-            label="Google Analytics"
-            label-for="google-analytics-field"
-            label-sr-only
+            class="floating-label mt-3"
             :invalid-feedback="invalidFeedback"
             :valid-feedback="validFeedback"
             :state="state">
@@ -101,8 +94,9 @@
             v-model="localData.googleanalytics" 
             @input="dataChange"
             type="text"
-            placeholder="Enter the Google Analytics code id">
-        </b-form-input>
+            placeholder="Google Analytics">
+            </b-form-input>
+            <label for="google-analytics-field">Google Analytics</label>
         </b-form-group>
 
         <h2 class="mt-5 pb-1"> Privacy</h2>
@@ -137,6 +131,8 @@
                         <b-form-radio checked value="is-hidden">Download button is Hidden</b-form-radio>
                 </b-form-radio-group>
             </b-form-group>   
+
+
 
         <OptionsSavebar 
         ></OptionsSavebar>
@@ -190,7 +186,6 @@ export default  Vue.extend({
 </script>
 
 <style>
-
 
 
 </style>

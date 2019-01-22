@@ -1,5 +1,5 @@
 <template>
-    <div class="site-options">
+    <div class="site-options pt-5">
         <UtilityNav class="hide-menus"></UtilityNav> 
         <div id="site-settings">      
             <div id="wrapper-main" class="justify-content-center" >
@@ -22,10 +22,10 @@ export default {
 };
 </script>
 
-<style>
+<style scss>
 
 .site-options .optionsnav {
-    max-width: 18rem;
+    max-width: 28rem;
     margin:auto !important;
 }
 
@@ -33,25 +33,35 @@ export default {
     font-size: 1.8rem;
 }
 
+.site-options .optionsnav .nav-link {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+
+.site-options .optionsnav .nav-link svg {
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+}
+
+.site-options .optionsnav .nav-link::after {
+  content: "";
+  height: .5rem;
+  flex: 1 1 auto;
+  margin-left: 1rem;
+  background-color: var(--primary);
+  position:relative;
+  top:.1rem;
+} 
+
 
 .site-options h2{
     font-size: 1.5rem;
     margin-bottom:0;
 }
 
-.card-svg-top {
-    display:flex;
-    height: 4rem;
-    background: #ccc;
-    padding: .5em 0;
-    width:100%;
-    align-content: center;
-    justify-content: center;
-}
 
-.card-svg-top svg {
-    font-size:3rem;
-}
 
 .fade-enter-active  {
   transition: opacity .5s;
