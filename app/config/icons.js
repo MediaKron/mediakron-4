@@ -1,7 +1,16 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
+    faArrowDown,
+    faArrowLeft,
+    faArrowRight,
+    faArrowUp,
+    faAsterisk,
     faPaintBrush, /* Appearance */
     faHome, /* Home */
+    faChevronDown,
+    faChevronLeft,
+    faChevronRight,
+    faChevronUp,
     faCog,
     faCogs, /* Manage */
     faPlusSquare,
@@ -25,14 +34,24 @@ import {
     faUserCog,
     faUserPlus,
     faUsers,
+    faUserEdit,
     faInfoCircle,
     faWindowClose /* close square */ 
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function initializeIcons(){
     library.add(
+        faArrowDown,
+        faArrowLeft,
+        faArrowRight,
+        faArrowUp,
+        faAsterisk,
         faPaintBrush, /* Appearance */
         faHome, /* Home */
+        faChevronDown,
+        faChevronLeft,
+        faChevronRight,
+        faChevronUp,
         faSearch, 
         faPlusSquare, 
         faCog, 
@@ -56,6 +75,7 @@ export default function initializeIcons(){
         faUserCog,
         faUserPlus,
         faUsers,
+        faUserEdit,
         faWindowClose, /* close square */ 
         faInfoCircle
     );
