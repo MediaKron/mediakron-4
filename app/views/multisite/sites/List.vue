@@ -3,9 +3,10 @@
     <h1>Site List</h1>
 
     <transition  name="fade">
-       <div v-if="listIsLoading"> 
-        <b-alert show fade variant="primary" ><font-awesome-icon icon="spinner" class="loading-spinner"/> Loading...</b-alert>
-      </div>
+       <div v-if="listIsLoading" class="bg-light px-4 py-2 mb-3"> 
+            <bar-loader  color="#303030" height="6" width="200" size="150" sizeUnit="px" class="d-inline-block"> </bar-loader>
+            <span class="d-inline-block pl-3 font-weight-bold">Loading... </span>
+        </div>
      </transition>
 
     <b-table v-if="listIsLoaded" striped hover :items="sites" :fields="fields">
@@ -28,7 +29,11 @@
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
+import { BarLoader } from '@saeris/vue-spinners'
 export default {
+   components:{
+        BarLoader
+    },
   data() {
     return {
       // Note 'isActive' is left out and will not appear in the rendered table
@@ -52,7 +57,6 @@ export default {
       }
     };
   },
-  components: {},
   computed: {
     ...mapGetters("sites", ["listIsLoading", "listIsLoaded", "sites", 'currentPage', "totalItems", "lastPage"]),
     ...mapState("sites", ["pagination"]),
