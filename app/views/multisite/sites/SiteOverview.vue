@@ -19,7 +19,7 @@
         </b-card-group>
         <div class="container mt-5">
             <h1>Members</h1>
-
+            
         </div>
         <div class="container mt-5">
             <h1>Groups</h1>
@@ -33,13 +33,16 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
     computed: {
         ...mapGetters("sites", ["isLoaded", "isLoading", "currentSite"]),
+        ...mapGetters("users", ["users"]),
     },
     methods: {
-        ...mapActions("sites", ["getSite"])
+        ...mapActions("sites", ["getSite"]),
+        ...mapActions("users", ["loadUsers"]),
     },
     created() {
         this.getSite(this.$route.params.uri)
-        console.log(this.currentSite)
+        this.loadUsers()
+        console.log(this.users)
     },
 }
 </script>
