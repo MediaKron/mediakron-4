@@ -1,12 +1,12 @@
 <template>
-<div class="savebar bg-light">
+<div class="savebar">
     <div class="savebar-inner container">
         <div class="row">
              <div class="col-md-4" >
              </div>
             <b-button-group class="savebar-buttons p-2 col-md-8">
                 <b-button type="submit" variant="primary" @click="save"><font-awesome-icon icon="check"/> Save</b-button>
-                <b-button type="reset" variant="outline-primary" @click="cancel" class="cancel-button bg-white"><font-awesome-icon icon="times"/> Cancel</b-button>
+                <b-button type="reset" variant="outline-primary" @click="cancel" class="bg-light cancel-button"><font-awesome-icon icon="times"/> Cancel</b-button>
             </b-button-group>
         </div>
     </div>
@@ -47,6 +47,7 @@ export default  Vue.extend({
     background: #fff;
     border-top: 1px solid #ccc;
     z-index: 2; /* appear over certain form elements */
+    border-top: 3px solid var(--primary);
 }
 
 </style>

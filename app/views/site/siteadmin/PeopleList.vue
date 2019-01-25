@@ -6,6 +6,7 @@
                <strong>{{ user.username }}</strong> Role: {{ user.pivot.role }}
            </li>
        </ul>
+       dsfasdf
     </div>
 
 </template>

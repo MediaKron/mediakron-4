@@ -2,7 +2,7 @@
     <div class="container mt-5">
         <b-card header-tag="header">
             <h2 slot="header" class="mb-0">Edit Site Details</h2>
-            <b-form>
+            <b-form @submit.prevent="updateSite">
                 <b-form-group
                         label="Site Address: ">
                     <b-form-input
@@ -54,7 +54,11 @@
             ...mapGetters("sites", ["currentSite"]),
         },
         methods: {
-            ...mapActions("sites", ["getSite"]),
+            updateSite() {
+                this.update()
+                this.saveSite()
+            },
+            ...mapActions("sites", ["getSite", "update", "saveSite"]),
         },
     }
 </script>

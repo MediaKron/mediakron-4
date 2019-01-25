@@ -1,8 +1,9 @@
 <template>
     <div id="mediakron">
         <transition  name="fade">
-        <div v-if="siteIsLoading" class="d-flex is-loading">
-              <b-alert show fade variant="primary" > <font-awesome-icon icon="spinner" class="loading-spinner"/> Site Loading  </b-alert>
+        <div v-if="siteIsLoading" class="d-flex is-loading text-center">
+            <bar-loader  color="#303030" height="6" width="200" size="150" sizeUnit="px"> </bar-loader>
+            <div class="pt-3">Site Loading... </div>
         </div>
          </transition>
         <div v-if="siteIsLoaded">
@@ -58,9 +59,10 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
+import { BarLoader } from '@saeris/vue-spinners'
 export default {
     components:{
-    
+        BarLoader
     },
     props:['site'],
     computed:{

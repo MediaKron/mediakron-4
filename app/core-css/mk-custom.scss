@@ -362,6 +362,7 @@ height:100vh;
 
 
 
+
 /* Floating Labels */
 .floating-label {
   position: relative;
@@ -418,8 +419,6 @@ height:100vh;
   height: auto;
   background: #fff;
   text-transform:uppercase;
-
-
 }
 
 /* Fallback for Edge
@@ -444,4 +443,38 @@ height:100vh;
   .floating-label input:-ms-input-placeholder {
     color: #777;
   }
+}
+
+
+.floating-label > label,
+.floating-label div > label { 
+  border: none;
+}
+
+.floating-label.floating-underlined > input, 
+.floating-label.floating-underlined div > input {
+  color: #000;
+  border-radius:0;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  // padding-left:0;
+  background: #eee;
+  border:none; 
+  border-bottom: 1px solid var(--primary);
+}
+
+.floating-label.floating-underlined input:not(:placeholder-shown) {
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  color:var(--primary);  
+  font-weight:500;
+  padding-top:1.25rem;
+  height: 3rem;
+}
+
+.floating-label.floating-underlined  input:not(:placeholder-shown) ~ label { 
+  // padding-left:0;
+  // left:0;
+  top:.25rem;
+  background: none;
 }

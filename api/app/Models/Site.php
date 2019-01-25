@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Models\BaseModel;
+use App\Models\Item;
+use App\Models\Menu;
+use Auth;
 
 class Site extends BaseModel
 {
@@ -10,13 +13,47 @@ class Site extends BaseModel
     use \App\Models\Traits\Site\Import;
 
     public $fillable = [
+        // metadata
         'title',
         'subtitle',
         'institution',
+        'logo',
+        
+
+        // Options
         'public',
-        'comment'
+        'comment',
+        'download',
+        'view',
+        'production',
+        'sso',
+        'navigation',
+        'browse',
+        'tags',
+        'search',
+        'mklogo',
+        'login',
+        'user',
+        'fullscreen',
+
+        // Settings
+        'ga',
+        'algorithm',
+
+        // Styles
+        'link_color',
+        'banner_color',
+        'banner_link_color',
+        'skin',
+        'font',
+
+        // home page
+        'description',
+        'layout',
+        'image',
+        'alt'
     ];
-    
+
     //
     /**
      * Get Site by URI
@@ -129,6 +166,42 @@ class Site extends BaseModel
      */
     public function adminFill($data){
         return $this;
+    }
+
+    public function primaryMenu($data){
+        $menus = [];
+        $user = Auth::user();
+        foreach($data as $link){
+            // They're adding a 
+            if(isset($link['id'])){
+                // get item and attach it as the menu item
+                $item = Item::where('id', $link['id'])->where('site_id', $this->id)->first();
+                if($item){
+                    // Get Menu
+                    $menu = Menu::where('item_id', $link['id'])->where('site_id', $this->id)->first();
+                    if(!$menu){
+                        $menu = new Menu();
+                        $menu->item_id = $item->id;
+                        $menu->user_id = $user->id;
+                        $menu->save();
+                    } 
+                    $menus[] = $menu->id;
+                }                
+            }elseif(isset($link['url'])){
+                // get item and attach it as the menu item
+                    // Get Menu
+                $menu = Menu::where('url', $link['url'])->where('site_id', $this->id)->first();
+                if(!$menu){
+                    $menu = new Menu();
+                    $menu->url = $link['url'];
+                    $menu->title = isset($link['title']) ? $link['title'] : '';
+                    $menu->save();
+                } 
+                $menus[] = $menu->id;               
+            }
+
+
+        }
     }
 
 

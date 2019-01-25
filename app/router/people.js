@@ -1,5 +1,6 @@
 
 import PeopleList from '@/views/site/siteadmin/PeopleList';
+import PeopleAdd from '@/views/site/siteadmin/PeopleAdd';
 
 export default [
       {
@@ -13,5 +14,11 @@ export default [
         component: PeopleList,
         title: "people_index",
         props: true,
-      }
+      },
+      {
+        path: "options/people/add",
+        component: PeopleAdd,
+        title: "Add People",
+        name: "people-add"
+      },
     ]
