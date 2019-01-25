@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import UtilityNav from "./../navigation/UtilityNav";
-import OptionsNav from "./../navigation/OptionsNav";
+import UtilityNav from "./../../navigation/UtilityNav";
+import OptionsNav from "./../../navigation/OptionsNav";
 import {
         mapGetters
     } from 'vuex';

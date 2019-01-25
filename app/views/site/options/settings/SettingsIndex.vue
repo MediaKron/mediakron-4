@@ -1,14 +1,14 @@
 <template>
     <div class="site-options">
-        Settings lander
+        Settings lander 
     </div>
 </template>
 
 <script>
-import UtilityNav from "./../navigation/UtilityNav";
+// import UtilityNav from "./../navigation/UtilityNav";
 export default {
     components: {
-        UtilityNav
+        // UtilityNav
   }
 };
 </script>

@@ -1,6 +1,6 @@
 
-import PeopleList from '@/views/site/siteadmin/PeopleList';
-import PeopleAdd from '@/views/site/siteadmin/PeopleAdd';
+import PeopleList from '@/views/site/options/people/PeopleList';
+import PeopleAdd from '@/views/site/options/people/PeopleAdd';
 
 export default [
       {
