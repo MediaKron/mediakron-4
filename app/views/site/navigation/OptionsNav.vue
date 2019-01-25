@@ -75,7 +75,7 @@ export default  Vue.extend({
 /* needs to be unscoped */
 
 .optionsnav {
- max-width: 10rem;
+ max-width: 11rem;
  margin:auto;
 }
 
