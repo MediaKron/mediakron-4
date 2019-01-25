@@ -3,7 +3,7 @@ import SettingsLayout from "@/views/site/options/settings/SettingsLayout";
 import PeopleLayout from "@/views/site/options/people/PeopleLayout";
 import HomePage from "@/views/site/homepage/Homepage";
 import ItemPage from "@/views/site/items/Item";
-import Content from "@/views/site/items/Content";
+import Content from "@/views/site/content/Content";
 import SiteOptions from "@/views/site/options/SiteOptions";
 import MenusLayout from "@/views/site/options/menus/MenusLayout";
 import Appearance from "@/views/site/options/Appearance";
