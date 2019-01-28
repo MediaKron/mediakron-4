@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form>
+    <b-form @submit.prevent="updateUser">
       <b-form-group :label="'Role: '">
         <b-form-select v-model="newUserType" :options="options" class="mb-3"></b-form-select>
       </b-form-group>
@@ -15,6 +15,7 @@
           :max-rows="6"
         ></b-form-textarea>
       </b-form-group>
+      <b-button type="submit" variant="primary">Add Person</b-button>
     </b-form>
   </div>
 </template>
