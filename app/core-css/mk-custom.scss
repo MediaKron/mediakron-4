@@ -189,7 +189,7 @@
   height: .5rem;
   flex: 1 1 auto;
   margin-left: 1rem;
-  background-color: $primary;
+  background-color: #343a40;
   position:relative;
   top:.1rem;
 } 
@@ -404,14 +404,12 @@ height:100vh;
 .floating-label input:not(:placeholder-shown) {
   // border-width: 2px;
   border: 1px solid #000;
-  color:var(--primary);  
   font-weight:500;
 }
 
 .floating-label input:not(:placeholder-shown) ~ label {
   padding: 0 0.25rem;
   font-size: .7rem;
-  color:var(--primary);
   position: absolute;
   left: .5rem;
   top: -.6rem;

@@ -8,14 +8,11 @@
                 </div>
                 <main role="main" class="with-sidebar-left col-md-8" > 
                     <div class="menus">
-                        <b-nav pills class="mb-4 line-behind options-sectionnav ">
-                            <b-nav-item> Manage</b-nav-item>
-                            <b-nav-item><font-awesome-icon icon="user-plus"/><router-link :to="{ name: 'people-add' }">Add People</router-link></b-nav-item>
-                            <b-nav-item><font-awesome-icon icon="users"/> Groups</b-nav-item>
+                        <b-nav class="mb-4 line-behind options-sectionnav ">
+                            <b-nav-item :to="{ name: 'people_list' }">Users</b-nav-item>
+                            <b-nav-item :to="{ name: 'groups' }">Groups</b-nav-item>
                         </b-nav>
-                        <header>
-                            <h1 class="heading-nudge-up mb-4"> People</h1>
-                        </header>
+
                         <router-view></router-view>
                     </div>
                 </main>

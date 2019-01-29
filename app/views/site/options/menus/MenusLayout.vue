@@ -7,6 +7,10 @@
                         <OptionsNav inMenus></OptionsNav> 
                 </div>
                 <main role="main" class="with-sidebar-left col-md-8" > 
+                <b-nav class="mb-4 line-behind options-sectionnav">
+                    <b-nav-item :to="{ name: 'menus' }">Manage</b-nav-item>
+                    <b-nav-item :to="{ name: 'menus_appearance' }">Appearance</b-nav-item>
+                </b-nav>
                      <router-view></router-view>
                 </main>
             </div>

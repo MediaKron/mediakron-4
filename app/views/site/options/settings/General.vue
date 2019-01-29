@@ -1,6 +1,6 @@
 <template>
     <div class="settings-general with-savebar">
-        <b-nav pills class="options-sectionnav mb-4 line-behind">
+        <b-nav class="options-sectionnav mb-4 line-behind">
             <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
             <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
             <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
@@ -14,7 +14,6 @@
         <b-form-group
         id="site-information"
         class="floating-label mt-4"
-        label-for="site-information-field"
         :invalid-feedback="invalidFeedback"
         :valid-feedback="validFeedback"
         :state="state">
@@ -80,11 +79,10 @@
                 <label for="copyright-field">Copyright</label>
         </b-form-group>
 
-        <h2 class="mt-5">Google Analytics</h2>
-
-            <b-form-group
+        <b-form-group
             id="google-analytics"
-            class="floating-label mt-3"
+            class="floating-label mt-4"
+            description="Enter your Google Analytics code"
             :invalid-feedback="invalidFeedback"
             :valid-feedback="validFeedback"
             :state="state">
