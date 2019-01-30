@@ -41,7 +41,7 @@ import settingsRoutes from './router/settings';
 import NotFound from './views/404.vue';
 import store from './store';
 
-import VueDemo from './views/multisite/VueDemo.vue';
+import VueDemo from './sandbox/VueDemo.vue';
 
 Vue.use(Router);
 
