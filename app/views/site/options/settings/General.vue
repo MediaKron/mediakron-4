@@ -6,10 +6,10 @@
             <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
         </b-nav>
         <header>
-             <h1 class="mb-4"> General Site Settings</h1>
+             <h1 class="mb-5"> General Site Settings</h1>
         </header>
     
-        <h2 class="mt-5">Site Title and Subtitle</h2>
+        <h2 class="mt-4">Site Title and Subtitle</h2>
     
         <b-form-group
         id="site-information"

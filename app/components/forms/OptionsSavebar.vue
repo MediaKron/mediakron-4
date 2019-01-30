@@ -1,5 +1,5 @@
 <template>
-<div class="savebar">
+<div class="savebar bg-white">
     <div class="savebar-inner container">
         <div class="row">
              <div class="col-md-4" >
@@ -47,7 +47,7 @@ export default  Vue.extend({
     background: #fff;
     border-top: 1px solid #ccc;
     z-index: 2; /* appear over certain form elements */
-    border-top: 3px solid var(--primary);
+    border-top: 1px solid #565656;
 }
 
 </style>
