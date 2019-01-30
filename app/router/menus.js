@@ -1,6 +1,6 @@
 
-import Menus from '@/views/site/siteadmin/Menus';
-import MenusAppearance from '@/views/site/siteadmin/MenusAppearance';
+import Menus from '@/views/site/options/menus/Menus';
+import MenusAppearance from '@/views/site/options/menus/MenusAppearance';
 
 export default [
       {
@@ -12,6 +12,7 @@ export default [
         path: '/',
         component: Menus,
         title: "menus_index",
+        name: 'menus',
         props: true,
       }
     ]

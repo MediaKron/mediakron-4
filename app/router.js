@@ -41,7 +41,11 @@ import settingsRoutes from './router/settings';
 import NotFound from './views/404.vue';
 import store from './store';
 
-import VueDemo from './views/multisite/VueDemo.vue';
+import VueDemo from './sandbox/VueDemo.vue';
+
+// Style Guide
+import Guide from './guide/guide.vue';
+import IconsGuide from './guide/icons.vue';
 
 Vue.use(Router);
 
@@ -133,7 +137,17 @@ var baseRoutes = [
           path: '/vue-demo',
           name: 'vue-demo',
           component: VueDemo
-        }
+        },
+        {
+          path: '/guide',
+          name: 'MediaKron Design Guide',
+          component: Guide
+        },
+        {
+          path: '/guide/icons',
+          name: 'Icons',
+          component: IconsGuide
+        },
       ]
     }
   ];

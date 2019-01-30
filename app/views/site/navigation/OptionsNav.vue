@@ -1,6 +1,6 @@
 <template>
   <div v-if="access('can change site siteadmin')" class="optionsnav" :class="activesection">
-    <b-nav pills vertical class="">
+    <b-nav vertical pills class="">
         <b-nav-item :class="[ inSettings ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/settings/general'">
             <font-awesome-icon icon="sliders-h"/> 
             <span class="optionsnav-text">Settings</span>
@@ -17,7 +17,7 @@
         <font-awesome-icon icon="home"/> 
         <span class="optionsnav-text">Homepage</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inPeople ? 'active-section' : '' ]" :to="basePath + '/options/people'"><font-awesome-icon icon="user-cog"/> 
+        <b-nav-item :class="[ inPeople ? 'active-section' : '' ]" :to="basePath + '/options/people/list'"><font-awesome-icon icon="user-cog"/> 
         <span class="optionsnav-text">People</span>
         </b-nav-item >
       </b-nav>  
@@ -75,7 +75,7 @@ export default  Vue.extend({
 /* needs to be unscoped */
 
 .optionsnav {
- max-width: 10rem;
+ max-width: 12rem;
  margin:auto;
 }
 
@@ -86,7 +86,7 @@ export default  Vue.extend({
 
 .options-sectionnav .nav-link {
     text-transform:uppercase;
-    color: var(--primary);
+    color: #343a40;
 }
 
 .options-sectionnav .nav-link.active {
@@ -105,13 +105,22 @@ export default  Vue.extend({
 .active-section.nav-item .nav-link,
 .active-section.nav-item .nav-link.active,
   .nav-item.show .nav-link {
+    background-color: #343a40;
     color: #fff;
-    background-color:  var(--primary) !important;
-    border-color: var(--primary);
-    font-weight:normal;
+    border-color: none;
     padding: 0.25rem 1rem .3rem 1rem;
     margin-top: .25rem;
     margin-bottom: .25rem;
+
+}
+
+.options-sectionnav .nav-link.active {
+    /* padding-left:0;
+    color: #343a40;
+    font-weight:bold;
+    background-color:none !important; */
+    font-size: 100%;
+    padding:.1rem .5rem;
 }
 
 .menus .optionsnav-menus {

@@ -42,7 +42,12 @@ export default {
 .site-options .optionsnav .nav-link svg {
   display: flex;
   align-items: center;
-  color: var(--primary);
+  color: white;
+  background: #343a40;
+  padding: .5rem;
+  border-radius: .2rem;
+  font-size: 2.5rem;
+  width: 2.5rem;
 }
 
 .site-options .optionsnav .nav-link::after {
@@ -50,7 +55,7 @@ export default {
   height: .5rem;
   flex: 1 1 auto;
   margin-left: 1rem;
-  background-color: var(--primary);
+  background-color: #343a40;
   position:relative;
   top:.1rem;
 } 

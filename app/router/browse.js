@@ -1,5 +1,5 @@
-import Layout from '../views/site/SiteLayout';
-import Content from '../views/site/items/Content';
+import Layout from '@/views/site/SiteLayout';
+// import Content from '@/views/site/content/Content';
 
 export default {
     path: '/:site',

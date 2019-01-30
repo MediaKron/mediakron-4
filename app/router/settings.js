@@ -1,8 +1,8 @@
 
-import General from '@/views/site/siteadmin/General';
-import SearchSettings from '@/views/site/siteadmin/SearchSettings';
-import Canvas from '@/views/site/siteadmin/Canvas';
-import SettingsIndex from "@/views/site/siteadmin/SettingsIndex";
+import General from '@/views/site/options/settings/General';
+import SearchSettings from '@/views/site/options/settings/SearchSettings';
+import Canvas from '@/views/site/options/settings/Canvas';
+import SettingsIndex from "@/views/site/options/settings/SettingsIndex";
 
 export default [
       {
