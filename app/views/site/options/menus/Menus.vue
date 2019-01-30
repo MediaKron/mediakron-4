@@ -1,9 +1,6 @@
 <template>
 <div class="menus">
-        <b-nav pills class="line-behind mb-4 options-sectionnav">
-            <b-nav-item :to="basePath + '/options/menus'">Manage</b-nav-item>
-            <b-nav-item :to="basePath + '/options/menus/appearance'">Appearance</b-nav-item>
-        </b-nav>
+
         <header>
             <h1 class="heading-nudge-up mb-4"> Manage Menus</h1>
         </header>

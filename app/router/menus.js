@@ -12,6 +12,7 @@ export default [
         path: '/',
         component: Menus,
         title: "menus_index",
+        name: 'menus',
         props: true,
       }
     ]
