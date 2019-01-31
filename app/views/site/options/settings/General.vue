@@ -12,11 +12,8 @@
         <h2 class="mt-4">Site Title and Subtitle</h2>
     
         <b-form-group
-        id="site-information"
-        class="floating-label mt-4"
-        :invalid-feedback="invalidFeedback"
-        :valid-feedback="validFeedback"
-        :state="state">
+            id="site-information"
+            class="floating-label mt-4">
     
             <b-form-input 
                 id="site-information-field"
@@ -30,10 +27,7 @@
 
         <b-form-group
             id="site-subtitle"
-            class="floating-label mt-4"
-            :invalid-feedback="invalidFeedback"
-            :valid-feedback="validFeedback"
-            :state="state">
+            class="floating-label mt-4">
                 <b-form-input 
                     id="site-subtitle-field"
                     v-model="localData.subtitle" 
@@ -49,10 +43,7 @@
 
         <b-form-group
         id="insitution"
-        class="floating-label mt-4"
-        :invalid-feedback="invalidFeedback"
-        :valid-feedback="validFeedback"
-        :state="state">
+        class="floating-label mt-4">
     
             <b-form-input 
                 id="insitution-field"
@@ -66,10 +57,7 @@
 
         <b-form-group
             id="copyright"
-            class="floating-label mt-4"
-            :invalid-feedback="invalidFeedback"
-            :valid-feedback="validFeedback"
-            :state="state">
+            class="floating-label mt-4">
         
                 <b-form-input 
                 id="copyright-field"
@@ -82,10 +70,7 @@
         <b-form-group
             id="google-analytics"
             class="floating-label mt-4"
-            description="Enter your Google Analytics code"
-            :invalid-feedback="invalidFeedback"
-            :valid-feedback="validFeedback"
-            :state="state">
+            description="Enter your Google Analytics code">
            
             <b-form-input 
             id="google-analytics-field"
@@ -110,7 +95,7 @@
         <div class="form-instructions mb-4">Show or hide page elements site-wide.</div>
         
             <b-form-group>
-                <b-form-radio-group class="mt-2" id="view-in-visibility" v-model="viewin" :options="options" name="view-in visibility" >
+                <b-form-radio-group class="mt-2" id="view-in-visibility" v-model="viewin"  name="view-in visibility" >
                         <b-form-radio checked value="is-visible">View In is Visible</b-form-radio>
                         <b-form-radio value="is-hidden">View-In is Hidden</b-form-radio>
                 </b-form-radio-group>
@@ -124,7 +109,7 @@
             </b-form-group>   
 
               <b-form-group>
-                <b-form-radio-group  class="mt-2" id="download-visibility" v-model="download" :options="options" name="download button visibility" >
+                <b-form-radio-group  class="mt-2" id="download-visibility" v-model="download"  name="download button visibility" >
                         <b-form-radio value="is-visible">Download button is Visible</b-form-radio>
                         <b-form-radio checked value="is-hidden">Download button is Hidden</b-form-radio>
                 </b-form-radio-group>
@@ -146,7 +131,7 @@ import { mapState, mapActions,mapGetters } from 'vuex';
 export default  Vue.extend({
     mixins: [ data ],
     components: {
-     OptionsSavebar
+        OptionsSavebar
     },
     computed:{
         ...mapState('sites', {
@@ -154,14 +139,14 @@ export default  Vue.extend({
         }),
         ...mapGetters('sites', [
             'basePath'
-        ]),
+        ])
     },
     data () {
         return {
-        selected: 'selected',
-        viewin: 'is-visible',
-        authorinfo: 'is-hidden',
-        download: 'is-hidden',
+            selected: 'selected',
+            viewin: 'is-visible',
+            authorinfo: 'is-hidden',
+            download: 'is-hidden',
         }
     },
     methods:{

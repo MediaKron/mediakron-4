@@ -55,7 +55,7 @@ export default {
     },
     watch: {
         '$route.params.page': function (page) {
-        this.routeLoad({to: this.$route});
+            this.routeLoad({to: this.$route});
         }
     },
     mounted() {
