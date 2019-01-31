@@ -10,7 +10,8 @@ export default [
         name: 'general_settings',
         component: General,
         meta:{
-          inSettings: true
+          inSettings: true,
+          sectionClass: "section-settings"
         }
       },
       {
@@ -18,7 +19,8 @@ export default [
         name: 'search_settings',
         component: SearchSettings,
         meta:{
-          inSettings: true
+          inSettings: true,
+          sectionClass: "section-settings"
         }
       },
       {
@@ -26,7 +28,8 @@ export default [
         name: 'canvas_settings',
         component: Canvas,
         meta:{
-          inSettings: true
+          inSettings: true,
+          sectionClass: "section-settings"
         }
       },
       {
@@ -35,7 +38,8 @@ export default [
         title: "setting_index",
         props: true,
         meta:{
-          inSettings: true
+          inSettings: true,
+          sectionClass: "section-settings"
         }
       },
     ]

@@ -1,13 +1,7 @@
 <template>
   <div class="container mt-5">
     <h1>Site List</h1>
-
-    <transition  name="fade">
-       <div v-if="listIsLoading" class="bg-light px-4 py-2 mb-3"> 
-            <bar-loader  color="#303030" height="6" width="200" size="150" sizeUnit="px" class="d-inline-block"> </bar-loader>
-            <span class="d-inline-block pl-3 font-weight-bold">Loading... </span>
-        </div>
-     </transition>
+         <loader v-if="listIsLoading"></loader>
 
     <b-table v-if="listIsLoaded" striped hover :items="sites" :fields="fields">
       <template slot="title" slot-scope="site">
@@ -29,10 +23,10 @@
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
-import { BarLoader } from '@saeris/vue-spinners'
+import Loader from '@/components/Loader';
 export default {
    components:{
-        BarLoader
+        Loader
     },
   data() {
     return {

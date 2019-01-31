@@ -1,5 +1,5 @@
 <template>
-  <div v-if="access('can change site siteadmin')" class="optionsnav" :class="activesection">
+  <div v-if="access('can change site siteadmin')" class="optionsnav" v-bind:class="[sectionClass]">
     <b-nav vertical pills class="">
         <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings/general'">
             <font-awesome-icon icon="sliders-h"/> 
@@ -30,8 +30,8 @@ import Vue from 'vue';
 import { mapState, mapGetters } from 'vuex';
 export default  Vue.extend({
     computed:{
-        activesection(){
-            return 'inactive';
+        sectionClass(){
+            return this.$route.meta.sectionClass;
         },
         inSettings(){
             return this.$route.meta.inSettings;
@@ -107,6 +107,10 @@ export default  Vue.extend({
 
 .options-sectionnav .nav-link.active:hover {
     text-decoration:none;
+}
+
+.optionsnav .nav-pills .nav-link.active {
+     background-color: #343a40;
 }
 
 .options-sectionnav .nav-link.active,

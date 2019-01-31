@@ -7,6 +7,11 @@
                         <OptionsNav inSettings></OptionsNav> 
                 </div>
                 <main role="main" class="with-sidebar-left col-md-8" > 
+                    <b-nav class="mb-4 line-behind options-sectionnav">
+                        <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
+                        <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
+                        <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
+                    </b-nav>
                      <router-view></router-view>
                 </main>
             </div>

@@ -1,10 +1,7 @@
 <template lang="html">
     <div class="container mt-5">
         <h1>People</h1>
-        <div v-if="listIsLoading"> 
-          <b-alert show variant="primary" ><font-awesome-icon icon="spinner" class="loading-spinner"/> Loading...</b-alert>
-        </div>
-       
+          <loader v-if="listIsLoading"></loader>
         <b-table v-if="listIsLoaded" striped hover :items="users" :fields="fields">
             <template slot="username" slot-scope="user">
               <router-link :to="{ name: 'user', params: { id: user.item.id } }">{{ user.item.username }}</router-link>
@@ -19,8 +16,11 @@
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
-
+import Loader from '@/components/Loader';
 export default {
+     components:{
+        Loader
+    },
     data() {
         return {
             fields: {

@@ -1,10 +1,6 @@
 <template>
     <div class="settings-general with-savebar">
-        <b-nav class="options-sectionnav mb-4 line-behind">
-            <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
-            <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
-            <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
-        </b-nav>
+
         <header>
              <h1 class="mb-5"> General Site Settings</h1>
         </header>
