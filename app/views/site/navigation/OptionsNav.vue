@@ -5,19 +5,19 @@
             <font-awesome-icon icon="sliders-h"/> 
             <span class="optionsnav-text">Settings</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inMenus ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/menus'">
+        <b-nav-item :active="inMenu" v-if="canBrowse" :to="basePath + '/options/menus'">
             <font-awesome-icon icon="sitemap"/> 
             <span class="optionsnav-text">Menus</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inAppearance ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/appearance'">
+        <b-nav-item :active="inAppearance" v-if="canBrowse" :to="basePath + '/options/appearance'">
         <font-awesome-icon icon="paint-brush"/> 
         <span class="optionsnav-text">Appearance</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inHomepage ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/homepage'">
+        <b-nav-item :active="inHomepage" v-if="canBrowse" :to="basePath + '/options/homepage'">
         <font-awesome-icon icon="home"/> 
         <span class="optionsnav-text">Homepage</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inPeople ? 'active-section' : '' ]" :to="basePath + '/options/people/list'"><font-awesome-icon icon="user-cog"/> 
+        <b-nav-item :active="inPeople"  :to="basePath + '/options/people/list'"><font-awesome-icon icon="user-cog"/> 
         <span class="optionsnav-text">People</span>
         </b-nav-item >
       </b-nav>  
