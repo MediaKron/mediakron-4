@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="container mt-5">
     <div>
-    <TestButton :size="sm" ></TestButton>
+    <TestButton size="sm" ></TestButton>
     </div>
 </div>
 </template>
@@ -13,7 +13,6 @@ export default  Vue.extend({
     components: {
      TestButton
     }
-
 });
 </script>
 
