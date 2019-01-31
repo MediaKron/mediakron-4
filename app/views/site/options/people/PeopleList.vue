@@ -32,10 +32,7 @@
 
     </div>
     <h2 class="mt-4"> Current Users</h2>
-        <div v-if="listIsLoading" class="bg-light px-4 py-2 mb-3"> 
-            <bar-loader  color="#303030" height="6" width="200" size="150" sizeUnit="px" class="d-inline-block"> </bar-loader>
-            <span class="d-inline-block pl-3 font-weight-bold">Loading... </span>
-        </div>
+        <loader v-if="listIsLoading"></loader>
         <ul class="loading" v-if="listIsLoaded">
             <li v-for="user in users" v-bind:key="user.id">
                 <strong>{{ user.username }}</strong> Role: {{ user.pivot.role }}
