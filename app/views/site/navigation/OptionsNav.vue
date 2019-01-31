@@ -1,23 +1,23 @@
 <template>
   <div v-if="access('can change site siteadmin')" class="optionsnav" :class="activesection">
     <b-nav vertical pills class="">
-        <b-nav-item :class="[ inSettings ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/settings/general'">
+        <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings/general'">
             <font-awesome-icon icon="sliders-h"/> 
             <span class="optionsnav-text">Settings</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inMenus ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/menus'">
+        <b-nav-item :active="inMenu" v-if="canBrowse" :to="basePath + '/options/menus'">
             <font-awesome-icon icon="sitemap"/> 
             <span class="optionsnav-text">Menus</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inAppearance ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/appearance'">
+        <b-nav-item :active="inAppearance" v-if="canBrowse" :to="basePath + '/options/appearance'">
         <font-awesome-icon icon="paint-brush"/> 
         <span class="optionsnav-text">Appearance</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inHomepage ? 'active-section' : '' ]" v-if="canBrowse" :to="basePath + '/options/homepage'">
+        <b-nav-item :active="inHomepage" v-if="canBrowse" :to="basePath + '/options/homepage'">
         <font-awesome-icon icon="home"/> 
         <span class="optionsnav-text">Homepage</span>
         </b-nav-item> 
-        <b-nav-item :class="[ inPeople ? 'active-section' : '' ]" :to="basePath + '/options/people/list'"><font-awesome-icon icon="user-cog"/> 
+        <b-nav-item :active="inPeople"  :to="basePath + '/options/people/list'"><font-awesome-icon icon="user-cog"/> 
         <span class="optionsnav-text">People</span>
         </b-nav-item >
       </b-nav>  
@@ -29,16 +29,24 @@
 import Vue from 'vue';
 import { mapState, mapGetters } from 'vuex';
 export default  Vue.extend({
-    props: {
-        inSettings: Boolean,
-        inMenus: Boolean,
-        inAppearance: Boolean,
-        inHomepage: Boolean,
-        inPeople: Boolean
-    },
     computed:{
         activesection(){
             return 'inactive';
+        },
+        inSettings(){
+            return this.$route.meta.inSettings;
+        },
+        inMenus(){
+            return this.$route.meta.inMenus;
+        },
+        inAppearance(){
+            return this.$route.meta.inAppearance;
+        },
+        inHomepage(){
+            return this.$route.meta.inHomepage;
+        },
+        inPeople(){
+            return this.$route.meta.inPeople;
         },
         ...mapGetters('users/profile', [
             'user',

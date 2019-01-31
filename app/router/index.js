@@ -73,13 +73,19 @@ var routes = {
         path: "options/appearance",
         component: Appearance,
         title: "Appearance",
-        props: true
+        props: true,
+        meta:{
+          inAppearance: true
+        }
       },
       {
         path: "options/homepage",
         component: HomePageSettings,
         title: "Homepage Settings",
-        props: true
+        props: true,
+        meta:{
+          inHomepage: true
+        }
       },
       {
         path: "options",
