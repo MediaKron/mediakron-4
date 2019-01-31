@@ -9,6 +9,9 @@ export default [
         name: 'people_list',
         component: PeopleList,
         props: true,
+        meta:{
+          inPeople: true
+        }
       },
       
       {
@@ -16,18 +19,27 @@ export default [
         component: PeopleList,
         title: "people_index",
         props: true,
+        meta:{
+          inPeople: true
+        }
       },
 
       {
         path: "add",
         component: PeopleAdd,
         title: "Add People",
-        name: "people-add"
+        name: "people-add",
+        meta:{
+          inPeople: true
+        }
       },
       {
         path: 'groups',
         component: Groups,
         name: "groups",
         props: true,
+        meta:{
+          inPeople: true
+        }
       },
     ]

@@ -6,7 +6,10 @@ export default [
       {
         path: 'appearance',
         name: 'menus_appearance',
-        component: MenusAppearance
+        component: MenusAppearance,
+        meta:{
+          inMenus: true
+        }
       },
       {
         path: '/',
@@ -14,5 +17,8 @@ export default [
         title: "menus_index",
         name: 'menus',
         props: true,
+        meta:{
+          inMenus: true
+        }
       }
     ]

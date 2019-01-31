@@ -8,23 +8,35 @@ export default [
       {
         path: 'general',
         name: 'general_settings',
-        component: General
+        component: General,
+        meta:{
+          inSettings: true
+        }
       },
       {
         path: 'searchsettings',
         name: 'search_settings',
-        component: SearchSettings
+        component: SearchSettings,
+        meta:{
+          inSettings: true
+        }
       },
       {
         path: 'canvas',
         name: 'canvas_settings',
-        component: Canvas
+        component: Canvas,
+        meta:{
+          inSettings: true
+        }
       },
       {
         path: "/",
         component: SettingsIndex,
         title: "setting_index",
         props: true,
+        meta:{
+          inSettings: true
+        }
       },
     ]
 /*export default {
