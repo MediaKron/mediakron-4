@@ -12,7 +12,7 @@ export const getInitialState = (checkLocalStorage = false) => {
 
 export const state = getInitialState(true);
 
-const user = {
+const item = {
   namespaced: true,
   state,
   getters,
@@ -20,4 +20,4 @@ const user = {
   actions
 };
 
-export default user;
+export default item;

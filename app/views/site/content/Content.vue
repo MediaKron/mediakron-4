@@ -18,17 +18,22 @@
             <header>
             <h1 class="line-behind heading-nudge-up"> Content Browser</h1>
                 </header>
-
-        <content-card></content-card>
+            <!-- div v-if="items" -->
+                <div v-for="item in items" v-bind:key="items.items.id">
+                    <content-card :item="item"></content-card>
+                </div>
+            <!-- /div -->
         </main>
     </div>
     </b-container>  
 </div>
+</div>
+
 </template>
 
 <script>
 import Vue from 'vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import ContentCard from "./ContentCard";
 export default  Vue.extend({
      components: {
@@ -39,9 +44,17 @@ export default  Vue.extend({
             'siteIsLoading',
             'siteIsLoaded',
             'basePath'
-        ])
+        ]),
+        ...mapGetters('items', [
+            'listIsLoading',
+            'listLoaded',
+            'items'
+        ]),
+        ...mapActions('items',['loadItems'])
     },
     mounted(){
+         this.loadItems()
+         console.log(this.items)
         
     }
 });
