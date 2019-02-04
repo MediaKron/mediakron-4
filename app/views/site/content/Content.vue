@@ -50,12 +50,14 @@ export default  Vue.extend({
             'listLoaded',
             'items'
         ]),
+    },
+    methods:{
         ...mapActions('items',['loadItems'])
     },
     mounted(){
          this.loadItems()
          console.log(this.items)
-        
+
     }
 });
 </script>

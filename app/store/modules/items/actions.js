@@ -15,6 +15,7 @@ const actions = {
                 commit("listLoad", response.data);
         commit("listPage", response.data);
         commit("listLoaded");
+
     })
     .catch((error) => {
             console.log(error);
