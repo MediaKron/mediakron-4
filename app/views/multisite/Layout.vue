@@ -36,4 +36,14 @@ export default {
  {
     display:none;
 }
+
+/* :root {
+    --primary: #990000  ;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+} */
+
+
 </style>

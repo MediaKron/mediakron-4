@@ -3,6 +3,12 @@
 // .custom-control-label::before {
 //     background:$gray-600;
 // }
+.bg-primary {
+
+  background-color: var(--primary) !important;
+  background-color: #000;
+}
+
 
 
 /* Loading Spinner */

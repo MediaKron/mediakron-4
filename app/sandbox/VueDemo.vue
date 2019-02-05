@@ -3,6 +3,10 @@
     <div>
     <TestButton size="sm" ></TestButton>
     </div>
+
+    <div>
+  <b-img src="../../node_modules/fortawesome/font-awesome/svgs/regular/bookmark.svg" fluid alt="Responsive image" />
+</div>
 </div>
 </template>
 
