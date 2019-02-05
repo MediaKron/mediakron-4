@@ -29,7 +29,7 @@
 
                         <div class="form-instructions mb-4">The default font style for the site.</div>	
                             <b-form-group label="Site Font" label-for="font" label-sr-only>
-                            <b-form-select id="font" v-model="selected" :options="fonts" class="mb-3" />    
+                            <b-form-select id="font" :options="fonts" class="mb-3" />    
                         </b-form-group>
          
                         <h2 class="mt-5">Logo</h2>
@@ -86,10 +86,6 @@ export default  Vue.extend({
         })
     },
     methods:{
-        ...mapActions('sites', [
-            'update',
-            'saveSite'
-        ]),
 
         dataChange: _.debounce( function() {
             this.update(this.localData);
