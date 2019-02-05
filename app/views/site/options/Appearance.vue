@@ -86,14 +86,12 @@ export default  Vue.extend({
         })
     },
     methods:{
-
+        ...mapActions('sites', [
+            'update'
+        ]),
         dataChange: _.debounce( function() {
-            console.log('data changing')
             this.update(this.localData);
-        }, 500),
-
-        cancel(){
-        }
+        }, 500)
     },
     mounted(){
         
