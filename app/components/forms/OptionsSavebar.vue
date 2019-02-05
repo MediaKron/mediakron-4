@@ -5,10 +5,10 @@
              <div class="col-md-4" >
              </div>
             <b-button-group class="savebar-buttons p-2 col-md-8">
-                <b-button type="submit" variant="primary" @click="save">
+                <b-button variant="primary" @click="save">
                     <font-awesome-icon icon="check"/> Save
                 </b-button>
-                <b-button type="reset" variant="outline-primary" @click="cancel" class="bg-light cancel-button">
+                <b-button variant="outline-primary" @click="cancel" class="bg-light cancel-button">
                     <font-awesome-icon icon="times"/> Cancel
                 </b-button>
             </b-button-group>

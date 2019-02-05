@@ -78,7 +78,10 @@ export default {
         ])
     },
     mounted(){
-        this.getSite(this.site);
+        var parent = this;
+        this.getSite(this.site).then((site) => {
+            console.log(parent.currentSite.title);
+        });
     }
 
 }
