@@ -11,9 +11,27 @@
     </b-navbar>
     <b-container class="mt-5 layout-sidebar-left ">
     <div class="row">
-        <!-- <div class="sidebar-left col-md-4" >
-        
-        </div> -->
+      <!-- <div class="sidebar-left col-md-4" > -->
+        <div id="filters">
+           <b-form-group id="fieldsetHorizontal"
+                         horizontal
+                         label-cols="2"
+                         breakpoint="md"
+                         description=""
+                         label=""
+                         label-for="searchString">
+               <b-form-input v-model="searchString" type="text" placeholder="Search" />
+               <b-form-select v-model="typeFilter" :options="typeOptions" class="mb-3" />
+               <b-form-select v-model="authorFilter" :options="authorOptions" class="mb-3" />
+               <b-form-select v-model="sortOrder" :options="sortOptions" class="mb-3" />
+           </b-form-group>
+            <!--
+           <div>Searched: {{ searchString }} </div>
+           <div>Type Selected: {{ typeFilter }} </div>
+           <div>Author Selected: {{authorFilter }} </div>
+           <div>Sort Selected: {{sortOrder }} </div>
+           -->
+        </div>
         <main role="main" class="with-sidebar-left col-md-12" > 
             <header>
                 <h1 class="line-behind heading-nudge-up"> Content Browser</h1>
@@ -58,6 +76,37 @@ export default  Vue.extend({
         ...mapActions('items',[
             'routeLoad'
         ])
+    },
+    data() {
+        return {
+            typeFilter: null,
+            typeOptions: [
+                {value: null, text: 'Filter by Type'},
+                {value: 'images', text: 'Images'},
+                {value: 'files', text: 'Files'},
+                {value: 'stories', text: 'Stories'},
+                {value: 'audio', text: 'Audio'},
+                {value: 'video', text: 'Video'},
+                {value: 'folders', text: 'Folders'},
+                {value: 'slideshow', text: 'Slideshows'}
+            ],
+            authorFilter: null,
+            authorOptions: [
+                {value: null, text: 'Filter by Author'},
+                {value: 'jamie', text: 'Jamie'},
+                {value: 'tim', text: 'Tim'},
+                {value: 'austn', text: 'Austin'},
+                {value: 'brad', text: 'Brad'},
+            ],
+            sortOrder: null,
+            sortOptions: [
+                {value: null, text: 'Sort Preference:'},
+                {value: 'newest', text: 'Updated: New-Old'},
+                {value: 'oldest', text: 'Updated: Old-New'},
+            ],
+            searchString: '',
+        }
+
     },
     mounted(){
         this.routeLoad({to: this.$route, site: this.currentSite});
