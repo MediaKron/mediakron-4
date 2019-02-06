@@ -21,9 +21,9 @@
 
             <div v-if="listIsLoading">Loading ...</div>
             <div v-if="listIsLoaded">
-                <div v-for="item in items" v-bind:key="item.id">
+                <span v-for="item in items" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
-                </div>
+                </span>
             </div> 
 
         </main>
