@@ -1,6 +1,6 @@
 <template>
 <div>
-    <b-card-group deck class="flex-wrap">
+    
         <b-card :title="item.title"
                 img-src="https://picsum.photos/300/300/?image=41"
                 img-alt="Img"
@@ -16,7 +16,6 @@
                 <small class="text-muted">Last updated 3 mins ago</small>
             </div>
         </b-card>
-    </b-card-group>
 </div>
 </template>
 

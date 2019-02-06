@@ -20,11 +20,11 @@
             </header>
 
             <div v-if="listIsLoading">Loading ...</div>
-            <div v-if="listIsLoaded">
+           <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
                 <span v-for="item in items" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
                 </span>
-            </div> 
+            </b-card-group>
 
         </main>
     </div>
