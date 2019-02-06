@@ -19,7 +19,7 @@
                 <h1 class="line-behind heading-nudge-up"> Content Browser</h1>
             </header>
 
-            <div v-if="listIsLoading">Loading yay ...</div>
+            <div v-if="listIsLoading">Loading ...</div>
             <div v-if="listIsLoaded">
                 <div v-for="item in items" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
