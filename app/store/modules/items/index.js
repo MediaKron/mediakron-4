@@ -7,6 +7,24 @@ export const getInitialState = (checkLocalStorage = false) => {
   return {
     tags: [],
     items: [],
+
+    // user List Statuses
+    'itemIsLoading':false,
+    'itemIsLoaded': false,
+    'itemIsError': false,
+
+    'listIsLoading': false,
+    'listIsLoaded': false,
+    'listIsError': false,
+    'listIsEmpty': false,
+
+    'pagination' : {
+      'currentPage': 1,
+      'firstPage': 1,
+      'lastPage': 1,
+      'pageSize': 10,
+      'totalItems': 10,
+    },
   };
 };
 

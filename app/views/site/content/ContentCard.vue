@@ -1,7 +1,7 @@
 <template>
 <div>
     <b-card-group deck class="flex-wrap">
-        <b-card title="Title"
+        <b-card :title="item.title"
                 img-src="https://picsum.photos/300/300/?image=41"
                 img-alt="Img"
                 img-top>
@@ -21,33 +21,12 @@
 </template>
 
 <script>
-    import { mapActions, mapState, mapGetters } from "vuex";
-    import Loader from '@/components/Loader';
+    //import { mapActions, mapState, mapGetters } from "vuex";
+    //import Loader from '@/components/Loader';
     export default {
-        components:{
-            Loader
-        },
         data() {
             return {
                 // Note 'isActive' is left out and will not appear in the rendered table
-                fields: {
-                    id: {
-                        label: "ID",
-                        sortable: true
-                    },
-                    title: {
-                        label: "Item Name",
-                        sortable: true
-                    },
-                    uri: {
-                        label: "uri",
-                        sortable: true
-                    },
-                    published: {
-                        label: "Published",
-                        sortable: false
-                    }
-
                     /*
                     id: null,
                     version: 0,
@@ -68,25 +47,23 @@
                     image: '',
                     time: false,
                     */
-                }
             };
         },
-        props: ['item'],
+        props: [ 'item' ], // Use this to get the item dets
         computed: {
-            ...mapGetters("items", ["listIsLoading", "listIsLoaded", "items", 'currentPage', "totalItems", "lastPage"]),
-            ...mapState("items", ["pagination"]),
+            //...mapGetters("items", ["listIsLoading", "listIsLoaded", "items", 'currentPage', "totalItems", "lastPage"]), nothing to get ffrom the store here
+            //...mapState("items", ["pagination"]),  Don't need pagination on the card level
         },
         methods: {
 
         },
         watch: {
             '$route.params.page': function (page) {
-                this.routeLoad({to: this.$route});
+                //this.routeLoad({to: this.$route}); Not needed because this comes from the parent
             }
         },
         mounted() {
-            console.log(this);
-            /* this.routeLoad({to: this.$route}); */
+            console.log(this.item)
         }
     };
 

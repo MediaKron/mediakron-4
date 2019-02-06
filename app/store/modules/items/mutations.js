@@ -1,6 +1,7 @@
 import { MutationTree } from 'vuex';
 import api from '@/store/utils/api';
-import { getInitialState } from '@/store/modules/users';
+import { getInitialState } from '@/store/modules/items';
+import Item from './item';
 
 export const mutations = {
     /**

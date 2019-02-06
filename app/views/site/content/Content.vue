@@ -16,13 +16,16 @@
         </div> -->
         <main role="main" class="with-sidebar-left col-md-12" > 
             <header>
-            <h1 class="line-behind heading-nudge-up"> Content Browser</h1>
-                </header>
-            <!-- div v-if="items" -->
-                <div v-for="item in items" v-bind:key="items.items.id">
+                <h1 class="line-behind heading-nudge-up"> Content Browser</h1>
+            </header>
+
+            <div v-if="listIsLoading">Loading yay ...</div>
+            <div v-if="listIsLoaded">
+                <div v-for="item in items" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
                 </div>
-            <!-- /div -->
+            </div> 
+
         </main>
     </div>
     </b-container>  
@@ -47,16 +50,17 @@ export default  Vue.extend({
         ]),
         ...mapGetters('items', [
             'listIsLoading',
-            'listLoaded',
+            'listIsLoaded',
             'items'
         ]),
     },
     methods:{
-        ...mapActions('items',['loadItems'])
+        ...mapActions('items',[
+            'routeLoad'
+        ])
     },
     mounted(){
-         this.loadItems()
-         console.log(this.items)
+        this.routeLoad({to: this.$route, site: this.currentSite});
 
     }
 });

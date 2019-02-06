@@ -5,6 +5,7 @@ export const getters = {
      * * List
     */
     items: state => state.itemList,
+
     listIsLoading: state => state.listIsLoading,
     listIsLoaded: state => state.listIsLoaded,
     listIsError: state => state.listIsError,
