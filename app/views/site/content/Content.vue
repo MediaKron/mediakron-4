@@ -21,7 +21,9 @@
                          label=""
                          label-for="searchString">
                <b-form-input v-model="searchString" type="text" placeholder="Search" />
-               <b-form-select v-model="typeFilter" :options="typeOptions" class="mb-3" />
+              <!--  <b-form-select v-model="typeFilter" :options="typeOptions" class="mb-3" /> -->
+
+               <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true"></multiselect>
                <b-form-select v-model="authorFilter" :options="authorOptions" class="mb-3" />
                <b-form-select v-model="sortOrder" :options="sortOptions" class="mb-3" />
            </b-form-group>
@@ -56,8 +58,10 @@
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import ContentCard from "./ContentCard";
+import Multiselect from 'vue-multiselect'
 export default  Vue.extend({
      components: {
+         Multiselect,
         ContentCard
     },
     computed:{
@@ -81,14 +85,10 @@ export default  Vue.extend({
         return {
             typeFilter: null,
             typeOptions: [
-                {value: null, text: 'Filter by Type'},
-                {value: 'images', text: 'Images'},
-                {value: 'files', text: 'Files'},
-                {value: 'stories', text: 'Stories'},
-                {value: 'audio', text: 'Audio'},
-                {value: 'video', text: 'Video'},
-                {value: 'folders', text: 'Folders'},
-                {value: 'slideshow', text: 'Slideshows'}
+                'Filter by Type',
+                'Images',
+                 'Files',
+                 'Stories',
             ],
             authorFilter: null,
             authorOptions: [
@@ -113,8 +113,7 @@ export default  Vue.extend({
 
     }
 });
+
 </script>
 
-<style>
-
-</style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
