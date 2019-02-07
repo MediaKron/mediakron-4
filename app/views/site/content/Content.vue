@@ -74,20 +74,10 @@ export default  Vue.extend({
             'listIsLoaded',
             'items'
         ]),
-        filteredOptions() {
-            // If there is no typeFilter, just return 
-            if (this.typeFilter == null) {
-                return this.items
-            }
-            // newItems will be the new computed array
-            var newItems = []
-            // For each item in the items list, check if it has a type tag in the multiselect
-            this.items.forEach(function(item) {
-                if (this.typeFilter.indexOf(item.type) == -1) {
-                    newItems.push(item)
-                }
+        filteredOptions() {            
+            return this.items.filter(function(item) {
+                return this.typeFilter.indexOf(item.type) == -1
             }.bind(this))
-            return newItems
         }
     },
     methods:{
@@ -97,12 +87,12 @@ export default  Vue.extend({
     },
     data() {
         return {
-            typeFilter: null,
+            typeFilter: [],
             typeOptions: [
                 'layer',
                 'image',
-                 'image-map',
-                 'folder',
+                'image-map',
+                'folder',
             ],
             authorFilter: null,
             authorOptions: [
