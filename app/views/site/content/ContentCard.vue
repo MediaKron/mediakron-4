@@ -90,10 +90,10 @@
             }
         },
         mounted() {
-            console.log(this.item);
-            console.log(this.item.created);
+            // console.log(this.item);
+            // console.log(this.item.created);
             const idx = Math.floor(Math.random() * 100);
-            console.log(idx);
+            // console.log(idx);
         }
     };
 

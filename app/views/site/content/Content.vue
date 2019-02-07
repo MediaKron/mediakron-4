@@ -41,7 +41,7 @@
 
             <div v-if="listIsLoading">Loading ...</div>
            <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
-                <span v-for="item in items" v-bind:key="item.id">
+                <span v-for="item in filteredOptions" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
                 </span>
             </b-card-group>
@@ -49,7 +49,6 @@
         </main>
     </div>
     </b-container>  
-</div>
 </div>
 
 </template>
@@ -75,20 +74,35 @@ export default  Vue.extend({
             'listIsLoaded',
             'items'
         ]),
+        filteredOptions() {
+            // If there is no typeFilter, just return 
+            if (this.typeFilter == null) {
+                return this.items
+            }
+            // newItems will be the new computed array
+            var newItems = []
+            // For each item in the items list, check if it has a type tag in the multiselect
+            this.items.forEach(function(item) {
+                if (this.typeFilter.indexOf(item.type) == -1) {
+                    newItems.push(item)
+                }
+            }.bind(this))
+            return newItems
+        }
     },
     methods:{
         ...mapActions('items',[
             'routeLoad'
-        ])
+        ]),
     },
     data() {
         return {
             typeFilter: null,
             typeOptions: [
-                'Filter by Type',
-                'Images',
-                 'Files',
-                 'Stories',
+                'layer',
+                'image',
+                 'image-map',
+                 'folder',
             ],
             authorFilter: null,
             authorOptions: [
@@ -110,7 +124,6 @@ export default  Vue.extend({
     },
     mounted(){
         this.routeLoad({to: this.$route, site: this.currentSite});
-
     }
 });
 
