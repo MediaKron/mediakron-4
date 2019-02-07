@@ -41,7 +41,7 @@
 
             <div v-if="listIsLoading">Loading ...</div>
            <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
-                <span v-for="item in filteredOptions" v-bind:key="item.id">
+                <span v-for="item in filteredItems" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
                 </span>
             </b-card-group>
@@ -74,7 +74,7 @@ export default  Vue.extend({
             'listIsLoaded',
             'items'
         ]),
-        filteredOptions() {            
+        filteredItems() {            
             return this.items.filter(function(item) {
                 return this.typeFilter.indexOf(item.type) == -1
             }.bind(this))
