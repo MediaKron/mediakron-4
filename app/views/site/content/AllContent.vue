@@ -1,14 +1,14 @@
 <template>
 <div>
     
-    <b-container fluid class=" layout-sidebar-left ">
+    <b-container fluid class="   layout-sidebar-left ">
     <div class="row">
       <!-- <div class="sidebar-left col-md-4" > -->
         
         <main role="main" class="with-sidebar-left col-md-12" > 
            
             <b-nav pills class="line-behind mb-3">
-                <b-nav-item :to="basePath + '/#'">
+                <b-nav-item :to="basePath + '/content/mycontent'">
                     <font-awesome-icon icon="user"/> 
                     <span class="optionsnav-text">My Content</span>
                 </b-nav-item> 

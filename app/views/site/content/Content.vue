@@ -1,23 +1,27 @@
 <template>
 <div>
    
-    <b-container class="mt-5 layout-sidebar-left ">
+    <b-container class="mt-3 ">
     <div class="row">
       <!-- <div class="sidebar-left col-md-4" > -->
         
-        <main role="main" class="with-sidebar-left col-md-12" > 
+  
+        <main role="main" class="col-md-12" > 
             <header>
-                <h1 class="line-behind heading-nudge-up"> Content</h1>
+                <h1 class="sr-only"> Content</h1>
             </header>
 
+            <b-alert show variant="warning">[Tim]: Working on an initial dashboard view before people hit the fill list of items. </b-alert>
+
+
             <b-nav pills class="">
-                <b-nav-item :to="basePath + '/#'">
+                <b-nav-item :to="basePath + '/content/mycontent'">
                     <font-awesome-icon icon="user"/> 
                     <span class="optionsnav-text">My Content</span>
                 </b-nav-item> 
                 <b-nav-item :to="basePath + '/content/all'">
                     <font-awesome-icon icon="th"/> 
-                    <span class="optionsnav-text">All Content</span>
+                    <span class="optionsnav-text">Site Library</span>
                 </b-nav-item> 
                 <b-nav-item :to="basePath + '/#'">
                     <font-awesome-icon icon="search"/> 
