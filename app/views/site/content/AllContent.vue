@@ -37,17 +37,17 @@
             <div id="filters" class="d-flex mb-5 p-2">
            
                 <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" />
-                <!--  <b-form-select v-model="typeFilter" :options="typeOptions" class="mb-3" /> -->
-                <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded"></multiselect>
-                <b-form-select v-model="authorFilter" :options="authorOptions" class="mr-2" />
-                <b-form-select v-model="sortOrder" :options="sortOptions" class="mr-2" />
+                <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
+                <multiselect v-model="authorFilter" :options="authorOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"/></multiselect>
+                <multiselect v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"/></multiselect>
             
                 <!--
                 <div>Searched: {{ searchString }} </div>
                 <div>Type Selected: {{ typeFilter }} </div>
                 <div>Author Selected: {{authorFilter }} </div>
                 <div>Sort Selected: {{sortOrder }} </div>
-            -->
+                -->
+
           </div>
 
             <div v-if="listIsLoading">Loading ...</div>
@@ -85,7 +85,8 @@ export default  Vue.extend({
             'listIsLoaded',
             'items'
         ]),
-        filteredItems() {            
+        filteredItems() {
+            //console.log(this.items[0].user_id)
             return this.items.filter(function(item) {
                 return this.typeFilter.indexOf(item.type) == -1
             }.bind(this))
@@ -100,22 +101,23 @@ export default  Vue.extend({
         return {
             typeFilter: [],
             typeOptions: [
-                'layer',
-                'image',
-                'image-map',
-                'folder',
+                {value:'image', text: 'Image'},
+                {value:'image-map', text: 'Image Map'},
+                {value:'folder', text: 'Folder'},
+                {value:'audio', text: 'Audio'},
+                {value:'videor', text: 'Video'},
+                {value:'story', text: 'Story'},
+                {value:'slideshow', text: 'Slideshow'},
             ],
             authorFilter: null,
             authorOptions: [
-                {value: null, text: 'Filter by Author'},
-                {value: 'jamie', text: 'Jamie'},
-                {value: 'tim', text: 'Tim'},
-                {value: 'austn', text: 'Austin'},
-                {value: 'brad', text: 'Brad'},
+                {value: 2, text: 'Jamie'},
+                {value: 1, text: 'Tim'},
+                {value: 3, text: 'Austin'},
+                {value: 0, text: 'Brad'},
             ],
             sortOrder: null,
             sortOptions: [
-                {value: null, text: 'Sort Preference:'},
                 {value: 'newest', text: 'Updated: New-Old'},
                 {value: 'oldest', text: 'Updated: Old-New'},
             ],
