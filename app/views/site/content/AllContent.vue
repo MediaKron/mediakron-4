@@ -105,7 +105,7 @@ export default  Vue.extend({
                 {value:'image-map', text: 'Image Map'},
                 {value:'folder', text: 'Folder'},
                 {value:'audio', text: 'Audio'},
-                {value:'videor', text: 'Video'},
+                {value:'video', text: 'Video'},
                 {value:'story', text: 'Story'},
                 {value:'slideshow', text: 'Slideshow'},
             ],
