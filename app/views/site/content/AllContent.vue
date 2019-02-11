@@ -35,19 +35,10 @@
             </header>
 
             <div id="filters" class="d-flex mb-5 p-2">
-           
                 <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" />
                 <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
-                <multiselect v-model="authorFilter" :options="authorOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"/></multiselect>
-                <multiselect v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"/></multiselect>
-            
-                <!--
-                <div>Searched: {{ searchString }} </div>
-                <div>Type Selected: {{ typeFilter }} </div>
-                <div>Author Selected: {{authorFilter }} </div>
-                <div>Sort Selected: {{sortOrder }} </div>
-                -->
-
+                <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
+                <multiselect v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></multiselect>
           </div>
 
             <div v-if="listIsLoading">Loading ...</div>
@@ -86,9 +77,15 @@ export default  Vue.extend({
             'items'
         ]),
         filteredItems() {
-            //console.log(this.items[0].user_id)
+            if (this.authorFilter.length == 0 && this.typeFilter.length == 0) return this.items
+
             return this.items.filter(function(item) {
-                return this.typeFilter.indexOf(item.type) == -1
+                // Filter on typeFilter
+                var typeFilterResult = this.typeFilter.find(element => element.value == item.type)
+                // Filter on authorFilter
+                var authorFilterResult = this.authorFilter.find(element => element.value == item.user_id)
+                // Return true only if the item appears meets all filter criteria 
+                return !(typeFilterResult === undefined && authorFilterResult === undefined)
             }.bind(this))
         }
     },
@@ -109,11 +106,11 @@ export default  Vue.extend({
                 {value:'story', text: 'Story'},
                 {value:'slideshow', text: 'Slideshow'},
             ],
-            authorFilter: null,
+            authorFilter: [],
             authorOptions: [
-                {value: 2, text: 'Jamie'},
+                {value: 4, text: 'Jamie'},
                 {value: 1, text: 'Tim'},
-                {value: 3, text: 'Austin'},
+                {value: 2, text: 'Austin'},
                 {value: 0, text: 'Brad'},
             ],
             sortOrder: null,
