@@ -2,7 +2,7 @@ import SiteLayout from "@/views/site/SiteLayout";
 import SettingsLayout from "@/views/site/options/settings/SettingsLayout";
 import PeopleLayout from "@/views/site/options/people/PeopleLayout";
 import HomePage from "@/views/site/homepage/Homepage";
-import ItemPage from "@/views/site/items/Item";
+import Item from "@/views/site/items/Item";
 import ContentLayout from "@/views/site/content/ContentLayout";
 import SiteOptions from "@/views/site/options/SiteOptions";
 import MenusLayout from "@/views/site/options/menus/MenusLayout";
@@ -95,12 +95,13 @@ var routes = {
         title: "SiteOptions",
         props: true,
       },
-      {
-        path: ":first/:second?/:third?",
-        name: "item",
-        component: ItemPage,
-        props: true
-      },
+        {
+            path: "item/:id",
+            name: "item",
+            component: Item,
+            props: true
+
+        },
       {
         path: "/",
         name: "homepage",
