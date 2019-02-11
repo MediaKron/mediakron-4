@@ -43,7 +43,7 @@
 
             <div v-if="listIsLoading">Loading ...</div>
            <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
-                <span v-for="item in filteredItems" v-bind:key="item.id">
+                <span v-for="item in alteredItemList" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
                 </span>
             </b-card-group>
@@ -76,10 +76,21 @@ export default  Vue.extend({
             'listIsLoaded',
             'items'
         ]),
-        filteredItems() {
-            if (this.authorFilter.length == 0 && this.typeFilter.length == 0) return this.items
+        alteredItemList() {
+            // Sort based on updated_at 
+            var sortedItems = this.items.sort(function(a, b) {
+                if (this.sortOrder.value == 'newest') {
+                    return new Date(a.updated_at) - new Date(b.updated_at);
+                } else {
+                    return new Date(b.updated_at) - new Date(a.updated_at);
+                }
+            }.bind(this))
 
-            return this.items.filter(function(item) {
+            // Return all items if no filters have been selected
+            if (this.authorFilter.length == 0 && this.typeFilter.length == 0) return sortedItems
+
+            // Filter based on type and author
+            return sortedItems.filter(function(item) {
                 // Filter on typeFilter
                 var typeFilterResult = this.typeFilter.find(element => element.value == item.type)
                 // Filter on authorFilter
@@ -113,7 +124,7 @@ export default  Vue.extend({
                 {value: 2, text: 'Austin'},
                 {value: 0, text: 'Brad'},
             ],
-            sortOrder: null,
+            sortOrder: {value: 'newest'},
             sortOptions: [
                 {value: 'newest', text: 'Updated: New-Old'},
                 {value: 'oldest', text: 'Updated: Old-New'},
