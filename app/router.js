@@ -134,7 +134,7 @@ var baseRoutes = [
           component: Help
         },
         {
-          path: '/vue-demo',
+          path: 'sandbox/vue-demo',
           name: 'vue-demo',
           component: VueDemo
         },

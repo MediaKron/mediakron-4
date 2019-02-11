@@ -48,10 +48,9 @@
 import {
         mapGetters, mapActions
     } from 'vuex';
-import { BarLoader } from '@saeris/vue-spinners'
 export default {
     components:{
-        BarLoader
+
     },
   computed:{
         ...mapGetters('users/profile', [

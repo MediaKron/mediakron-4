@@ -20,6 +20,8 @@ import * as svgicon from 'vue-svgicon';
 import './core-css/base.scss';
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import '@/assets/css/tailwind.css'
+
 
 import VeeValidate from 'vee-validate';
 import VueMoment from 'vue-moment';
