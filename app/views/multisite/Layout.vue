@@ -2,7 +2,7 @@
     <div id="mediakron">
         <div id="main-container">
             <header id="header" role="banner">
-                <div id="navbar">
+                <div id="navbar" class="fixed pin-t pin-x z-100">
                     <mediakron-menu></mediakron-menu>
                 </div>
             </header>  

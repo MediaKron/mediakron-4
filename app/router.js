@@ -44,8 +44,8 @@ import store from './store';
 import VueDemo from './sandbox/VueDemo.vue';
 
 // Style Guide
-import Guide from './guide/guide.vue';
-import IconsGuide from './guide/icons.vue';
+import Docs from './docs/DocsIndex.vue';
+import Icons from './docs/Icons.vue';
 
 Vue.use(Router);
 
@@ -139,14 +139,14 @@ var baseRoutes = [
           component: VueDemo
         },
         {
-          path: '/guide',
-          name: 'MediaKron Design Guide',
-          component: Guide
+          path: '/docs',
+          name: 'MediaKron Technical Docs and Design Guide',
+          component: Docs
         },
         {
-          path: '/guide/icons',
+          path: '/docs/icons',
           name: 'Icons',
-          component: IconsGuide
+          component: Icons
         },
       ]
     }

@@ -19,6 +19,20 @@
   * @import "tailwindcss/components";
   */
  @tailwind components;
+
+
+ /* https://github.com/tailwindcss/discuss/issues/193 */
+ @supports (position: sticky) {
+    @media (min-width: config('screens.lg')) {
+      .sticky\?lg\:h-\(screen-16\) {
+        height: calc(100vh - 4rem);
+      }
+    }
+  }
+
+  .top-16 {
+      top:3rem;
+  }
  
  /**
   * Here you would add any of your custom component classes; stuff that you'd
