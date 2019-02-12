@@ -31,7 +31,7 @@
             </b-nav>  
            
             <header class="sr-only">
-                <h1> All Content</h1>
+                <h1> My Content</h1>
             </header>
 
             <div id="filters" class="d-flex mb-5 p-2">

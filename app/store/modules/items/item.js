@@ -101,7 +101,7 @@ class Item extends Model {
         Mediakron.items.add(this);
     }
 
-    
+    */
 
     defaults() {
         return {
@@ -184,6 +184,7 @@ class Item extends Model {
             }
         };
     }
+    /*
 
     editor() {
         var editor = this.get('editor');

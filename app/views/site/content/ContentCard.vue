@@ -5,7 +5,7 @@
                 img-alt="Img"
                 img-top>
             <p class="card-text">
-            <h3><b-link to="">{{item.title}}</b-link></h3>
+            <h3><router-link :to="{ name: 'Item', params: {id} }">{{item.title}}</router-link></h3>
                 <b-dropdown id="options" dropup text="Options" variant="outline-dark" size="sm" class="bg-light mr-2 mt-2">
                     <b-dropdown-item href="#">Edit</b-dropdown-item>
                     <b-dropdown-item href="#">Delete</b-dropdown-item>
@@ -74,7 +74,8 @@
                 'https://picsum.photos/200/300?image=352',
                 'https://picsum.photos/200/300?image=323',
             ],
-            selectedImage: ''
+            selectedImage: '',
+                id: this.item.id
             }
         },
         created () {

@@ -95,13 +95,15 @@ var routes = {
         title: "SiteOptions",
         props: true,
       },
+
         {
             path: "item/:id",
-            name: "item",
+            name: "Item",
             component: Item,
             props: true
 
         },
+
       {
         path: "/",
         name: "homepage",

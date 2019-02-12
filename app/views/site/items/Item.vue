@@ -1,28 +1,20 @@
 <template>
     <div>
     <div>Mediakron Site Item</div>
-        {{ currentItem }}
+{{ currentItem }}
     </div>
 </template>
 
 <script>
 
 import Vue from 'vue';
-import { mapGetters, mapActions } from 'vuex';
-/* import ItemCard from "./ItemCard"; */
+import { mapGetters, mapState, mapActions } from 'vuex';
 
-export default Vue.extend({
-    props:[ 
-        'id'
-    ],
-    components: {
-    /* ItemCard */
-    },
-
+export default ({
     created(){
         // go fetch the items
-    var item = this.getItem(this.$route.params.id)
-        console.log(this.item)
+    item: this.getItem(this.$route.params.id)
+        console.log(item)
 
     },
     computed: {
@@ -32,6 +24,11 @@ export default Vue.extend({
         ...mapActions("items", ["getItem"]),
     },
 
+    data() {
+        return {
+            props: 'item', // Use this to get the item dets
+        }
+    }
 });
 </script>
 
