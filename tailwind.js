@@ -496,6 +496,15 @@ module.exports = {
     '32': '8rem',
     '48': '12rem',
     '64': '16rem',
+    'xs': '20rem',
+    'sm': '30rem',
+    'md': '40rem',
+    'lg': '50rem',
+    'xl': '60rem',
+    '2xl': '70rem',
+    '3xl': '80rem',
+    '4xl': '90rem',
+    '5xl': '100rem',
     '1/2': '50%',
     '1/3': '33.33333%',
     '2/3': '66.66667%',
@@ -567,6 +576,17 @@ module.exports = {
 
   minWidth: {
     '0': '0',
+    '48': '12rem',
+    '64': '16rem',
+    'xs': '20rem',
+    'sm': '30rem',
+    'md': '40rem',
+    'lg': '50rem',
+    'xl': '60rem',
+    '2xl': '70rem',
+    '3xl': '80rem',
+    '4xl': '90rem',
+    '5xl': '100rem',
     'full': '100%',
   },
 
@@ -960,8 +980,7 @@ module.exports = {
       // padding: '1rem',
     }),
   ],
-
-
+  
   /*
   |-----------------------------------------------------------------------------
   | Advanced Options         https://tailwindcss.com/docs/configuration#options

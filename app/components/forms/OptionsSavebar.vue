@@ -1,13 +1,13 @@
 <template>
 <div class="savebar bg-white">
-    <div class="savebar-inner container">
-        <div class="row">
-             <div class="col-md-4" >
-             </div>
-            <b-button-group class="savebar-buttons p-2 col-md-8">
-                <b-button type="submit" variant="primary" @click="save"><font-awesome-icon icon="check"/> Save</b-button>
-                <b-button type="reset" variant="outline-primary" @click="cancel" class="bg-light cancel-button"><font-awesome-icon icon="times"/> Cancel</b-button>
-            </b-button-group>
+    <div class="w-full max-w-xl mx-auto px-6 ">
+        <div class="flex">
+             <div class="hidden min-w-64 max-w-xs lg:block ">
+            </div>
+            <div class="savebar-buttons p-2 px-6 w-full max-w-lg">
+                <b-button type="submit" variant="primary" @click="save" class="mr-2 shadow"><font-awesome-icon icon="check"/> Save</b-button>
+                <b-button type="reset" variant="outline-primary" @click="cancel" class="bg-light cancel-button shadow"><font-awesome-icon icon="times"/> Cancel</b-button>
+            </div >
         </div>
     </div>
 </div>

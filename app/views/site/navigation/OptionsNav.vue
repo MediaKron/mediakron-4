@@ -110,13 +110,16 @@ export default  Vue.extend({
 }
 
 .optionsnav .nav-pills .nav-link.active {
-     background-color: #343a40;
+     /* background-color: #343a40; */
+         padding: 0.25rem 1rem .3rem 1rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
 }
 
-.options-sectionnav .nav-link.active,
+
 .active-section.nav-item .nav-link,
-.active-section.nav-item .nav-link.active,
-  .nav-item.show .nav-link {
+.active-section.nav-item .nav-link.active   
+ {
     background-color: #343a40;
     color: #fff;
     border-color: none;
@@ -127,12 +130,17 @@ export default  Vue.extend({
 }
 
 .options-sectionnav .nav-link.active {
-    /* padding-left:0;
+    /* 
     color: #343a40;
-    font-weight:bold;
+
     background-color:none !important; */
-    font-size: 100%;
-    padding:.1rem .5rem;
+    /* font-size: 100%;
+    padding:.1rem .5rem; */
+    font-weight:bold;
+    border-bottom: 5px solid #000;
+    padding: 0.25rem 0 0 0;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
 }
 
 .menus .optionsnav-menus {

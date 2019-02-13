@@ -9,7 +9,7 @@
  *
  * @import "tailwindcss/preflight";
  */
- @tailwind preflight;
+ /* @tailwind preflight; */
 
  /**
   * This injects any component classes registered by plugins.
@@ -22,18 +22,27 @@
 
 
  /* https://github.com/tailwindcss/discuss/issues/193 */
- @supports (position: sticky) {
-    @media (min-width: config('screens.lg')) {
+ @supports (position: sticky) { 
       .sticky\?lg\:h-\(screen-16\) {
         height: calc(100vh - 4rem);
-      }
     }
   }
 
-  .top-16 {
-      top:3rem;
+  @supports (position: sticky) { 
+    .sticky\?lg\:h-\(screen-20\) {
+      height: calc(100vh - 5rem);
   }
+}
+
+  .top-16 {
+      top:4rem;
+  }
+  .top-20 {
+    top:5rem;
+}
  
+
+
  /**
   * Here you would add any of your custom component classes; stuff that you'd
   * want loaded *before* the utilities so that the utilities could still
