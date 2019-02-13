@@ -2,11 +2,14 @@
     <div class="appearance-layout pt-4">
         <UtilityNav></UtilityNav> 
         <div id="appearance" class="layout-sidebar-left mt-5 container">  
-            <div class="row">
-                <div class="sidebar-left col-md-4" >
-                    <OptionsNav inAppearance></OptionsNav> 
+            <div class="w-full max-w-xl mx-auto px-6 mt-16 ">
+            <div class="flex">
+                <div id="sidebar" class="hidden min-w-64 max-w-xs lg:block ">
+                    <div class="lg:relative lg:sticky top-20">
+                        <OptionsNav inSettings class="sticky?lg:h-(screen-20) overflow-y-auto "></OptionsNav> 
+                    </div>
                 </div>
-                <main role="main" class="with-sidebar-left col-md-8" > 
+                <main role="main" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg"> 
                     <b-form> 
                         <header>
                             <h1 class="line-behind heading-nudge-up mb-4"><span class="mk-icon mk-settings"></span>Site Appearance Options</h1> 	
@@ -45,6 +48,7 @@
                         <OptionsSavebar></OptionsSavebar>
                     </b-form>
                 </main>
+                </div>
             </div>
         </div>
 

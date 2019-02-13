@@ -1,23 +1,22 @@
 <template>
     <div class="people-layout pt-4">
         <UtilityNav></UtilityNav> 
-        <div id="people" class="layout-sidebar-left mt-5 container">  
-            <div class="row">
-                <div class="sidebar-left col-md-4" >
-                        <OptionsNav inPeople></OptionsNav> 
+            <div class="w-full max-w-xl mx-auto px-6 mt-16 ">
+                <div class="flex">
+                    <div id="sidebar" class="hidden min-w-64 max-w-xs lg:block ">
+                        <div class="lg:relative lg:sticky top-20">
+                            <OptionsNav inPeople class="sticky?lg:h-(screen-20) overflow-y-auto "></OptionsNav> 
+                    </div>
                 </div>
-                <main role="main" class="with-sidebar-left col-md-8" > 
-                    <div class="menus">
-                        <b-nav class="mb-4 line-behind options-sectionnav ">
+                    <main role="main" id="content-wrapper" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg"> 
+                        <b-nav class="mb-4 options-sectionnav">
                             <b-nav-item :to="{ name: 'people_list' }">Users</b-nav-item>
                             <b-nav-item :to="{ name: 'groups' }">Groups</b-nav-item>
                         </b-nav>
-
                         <router-view></router-view>
-                    </div>
-                </main>
+                    </main>
+                 </div>
             </div>
-        </div>
     </div>
 </template>
 

@@ -1,17 +1,19 @@
 <template>
 <div class="menus-layout pt-4">
-        <UtilityNav></UtilityNav> 
-        <div id="menus" class="layout-sidebar-left mt-5 container">  
-            <div class="row">
-                <div class="sidebar-left col-md-4" >
-                        <OptionsNav inMenus></OptionsNav> 
+        <UtilityNav></UtilityNav>
+        <div class="w-full max-w-xl mx-auto px-6 mt-16 ">
+            <div class="flex">
+                <div id="sidebar" class="hidden min-w-64 max-w-xs lg:block ">
+                    <div class="lg:relative lg:sticky top-20">
+                        <OptionsNav inSettings class="sticky?lg:h-(screen-20) overflow-y-auto "></OptionsNav> 
+                    </div>
                 </div>
-                <main role="main" class="with-sidebar-left col-md-8" > 
-                <b-nav class="mb-4 line-behind options-sectionnav">
-                    <b-nav-item :to="{ name: 'menus' }">Manage</b-nav-item>
-                    <b-nav-item :to="{ name: 'menus_appearance' }">Appearance</b-nav-item>
-                </b-nav>
-                     <router-view></router-view>
+                <main role="main" id="content-wrapper" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg"> 
+                    <b-nav class="mb-4 options-sectionnav">
+                        <b-nav-item :to="{ name: 'menus' }">Manage</b-nav-item>
+                        <b-nav-item :to="{ name: 'menus_appearance' }">Appearance</b-nav-item>
+                    </b-nav>
+                    <router-view></router-view>
                 </main>
             </div>
         </div>
