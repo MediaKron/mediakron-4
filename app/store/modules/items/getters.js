@@ -23,6 +23,8 @@ export const getters = {
     currentPage: state => state.pagination.currentPage,
     totalItems: state => state.pagination.total,
     lastPage: state => state.pagination.lastPage,
+
+    getState: state => state,
 };
 
 export default getters;

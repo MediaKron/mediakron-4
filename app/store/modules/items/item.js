@@ -103,87 +103,87 @@ class Item extends Model {
 
     */
 
-    defaults() {
-        return {
-            id: null,
-            created: 0,
-            changed: 0,
-            version: 0,
-            published: true,
-            archived: false,
-            user: Mediakron.user,
-            editor: false,
-            template: 'default',
-            options: {},
-            uri: false,
-            time: false,
-            type: '',
-            title: '',
-            description: '',
-            transcript: '',
-            body: '',
-            caption: '',
-            image: '',
-            audio: {},
-            video: {},
-            text: {},
-            height: 0,
-            width: 0,
-            center: [0, 0],
-            size: {},
-            zoom: 2,
-            projection: 'EPSG:3857',
-            date: {
-                start: false,
-                end: false,
-            },
-            map: {
-                url: ''
-            },
-            timeline: {
-                scope: '',
-                granularity: '',
-                start: '',
-                end: '',
-            },
-            overlay: {},
-            relationships: {
-                topics: [],
-                tags: [],
-                maps: [],
-                timelines: [],
-                comparisons: [],
+    // defaults() {
+    //     return {
+    //         id: null,
+    //         created: 0,
+    //         changed: 0,
+    //         version: 0,
+    //         published: true,
+    //         archived: false,
+    //         user: Mediakron.user,
+    //         editor: false,
+    //         template: 'default',
+    //         options: {},
+    //         uri: false,
+    //         time: false,
+    //         type: '',
+    //         title: '',
+    //         description: '',
+    //         transcript: '',
+    //         body: '',
+    //         caption: '',
+    //         image: '',
+    //         audio: {},
+    //         video: {},
+    //         text: {},
+    //         height: 0,
+    //         width: 0,
+    //         center: [0, 0],
+    //         size: {},
+    //         zoom: 2,
+    //         projection: 'EPSG:3857',
+    //         date: {
+    //             start: false,
+    //             end: false,
+    //         },
+    //         map: {
+    //             url: ''
+    //         },
+    //         timeline: {
+    //             scope: '',
+    //             granularity: '',
+    //             start: '',
+    //             end: '',
+    //         },
+    //         overlay: {},
+    //         relationships: {
+    //             topics: [],
+    //             tags: [],
+    //             maps: [],
+    //             timelines: [],
+    //             comparisons: [],
 
-                events: [],
-                layers: [],
-                children: [],
-                comments: [],
-                annotations: [],
-                citations: [],
-            },
+    //             events: [],
+    //             layers: [],
+    //             children: [],
+    //             comments: [],
+    //             annotations: [],
+    //             citations: [],
+    //         },
 
-            metadata: {
-                source: "",
-                citation: "",
-                description: "",
-                published: "",
-                creator: "",
-                publisher: "",
-                contributor: "",
-                format: "",
-                identifier: "",
-                language: "",
-                relation: "",
-                coverage: "",
-                medium: "",
-                provenance: "",
-                SizeOrDuration: "",
-                subject: "",
-                location: "",
-                rights: ""
-            }
-        };
-    }
+    //         metadata: {
+    //             source: "",
+    //             citation: "",
+    //             description: "",
+    //             published: "",
+    //             creator: "",
+    //             publisher: "",
+    //             contributor: "",
+    //             format: "",
+    //             identifier: "",
+    //             language: "",
+    //             relation: "",
+    //             coverage: "",
+    //             medium: "",
+    //             provenance: "",
+    //             SizeOrDuration: "",
+    //             subject: "",
+    //             location: "",
+    //             rights: ""
+    //         }
+    //     };
+    // }
     /*
 
     editor() {

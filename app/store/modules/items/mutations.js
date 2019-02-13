@@ -78,6 +78,7 @@ export const mutations = {
      */
     itemLoad(state, data){
         state.currentItem = new Item(data);
+        console.log(state.currentItem)
     },
 
     /**
@@ -99,9 +100,9 @@ export const mutations = {
         state.itemSaveFailed = false;
     },
 
-    itemUpdate(state, data){
-        state.currentItem = new Item(data);
-    },
+    // itemUpdate(state, data){
+    //     state.currentItem = new Item(data);
+    // },
 
     itemUpdated(state){
         state.siteIsSaving = false;
