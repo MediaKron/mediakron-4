@@ -21,18 +21,18 @@
                         </div>	
                         
                         <b-form-group label="Banner background" label-for="banner-color" horizontal>
-                            <b-form-input id="banner-color" type='color' name='banner-color' v-model="localData.banner_color" ></b-form-input>
+                            <b-form-input id="banner-color" type='color' name='banner-color' v-model="localData.banner_color" @input="dataChange" ></b-form-input>
                         </b-form-group>
                     
                         <b-form-group label="Banner Link Color" label-for="banner-link-color" horizontal>
-                            <b-form-input id="banner-link-color" type='color' name='banner-link' v-model="localData.banner_link_color" ></b-form-input>
+                            <b-form-input id="banner-link-color" type='color' name='banner-link' v-model="localData.banner_link_color" @input="dataChange" ></b-form-input>
                         </b-form-group>
 
                         <h2 class="mt-5">Fonts</h2>
 
                         <div class="form-instructions mb-4">The default font style for the site.</div>	
                             <b-form-group label="Site Font" label-for="font" label-sr-only>
-                            <b-form-select id="font" v-model="selected" :options="fonts" class="mb-3" />    
+                            <b-form-select id="font" :options="fonts" class="mb-3" />    
                         </b-form-group>
          
                         <h2 class="mt-5">Logo</h2>
@@ -65,12 +65,12 @@ import OptionsNav from "./../navigation/OptionsNav";
 import OptionsSavebar from '@/components/forms/OptionsSavebar';
 // import ImageUpload from '@/components/controls/ImageUpload';
 export default  Vue.extend({
-        components: {
-            UtilityNav,
-            OptionsNav,
-            OptionsSavebar,
-            // ImageUpload
-  },
+    components: {
+        UtilityNav,
+        OptionsNav,
+        OptionsSavebar,
+        // ImageUpload
+    },
     mixins: [ data ],
     data(){
         return{
@@ -91,20 +91,11 @@ export default  Vue.extend({
     },
     methods:{
         ...mapActions('sites', [
-            'update',
-            'saveSite'
+            'update'
         ]),
-
         dataChange: _.debounce( function() {
             this.update(this.localData);
-        }, 500),
-
-        save(){
-            this.saveSite(this.localData);
-        },
-
-        cancel(){
-        }
+        }, 500)
     },
     mounted(){
         

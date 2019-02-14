@@ -5,12 +5,11 @@
             <font-awesome-icon icon="sliders-h"/> 
             <span class="optionsnav-text">Settings</span>
         </b-nav-item> 
-        <li class="nav-item" :active="inMenus">
-            <b-link class="nav-link"  v-if="canBrowse" :to="basePath + '/options/menus'">
-                <font-awesome-icon icon="sitemap"/> 
-                <span class="optionsnav-text">Menus</span>
-            </b-link> 
-        </li>
+
+        <b-nav-item :active="inMenus" v-if="canBrowse" :to="basePath + '/options/menus'">
+            <font-awesome-icon icon="sitemap"/> 
+            <span class="optionsnav-text">Menus</span>
+        </b-nav-item> 
         <b-nav-item :active="inAppearance" v-if="canBrowse" :to="basePath + '/options/appearance'">
         <font-awesome-icon icon="paint-brush"/> 
         <span class="optionsnav-text">Appearance</span>
