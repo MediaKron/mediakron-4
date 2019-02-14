@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>Mediakron Site Item</div>
-        <component :is="component" :item="first" />
+        <component v-if="itemLoaded" :is="component" :item="first" />
     </div>
 </template>
 
