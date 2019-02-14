@@ -1,29 +1,13 @@
 <template>
 <div>
-    <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-index-1 w-100" variant="primary" aria-label="site menus" >
-        <b-navbar-brand class="text-uppercase site-options-title ml-4"> <font-awesome-icon icon="th-large" class="mr-1"/>  Content</b-navbar-brand>
-        <b-navbar-nav class="ml-auto">
-            <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 ">      
-                <font-awesome-icon icon="times"/> 
-                <span class="utilitynav-text">Close</span>
-            </b-nav-item>   
-        </b-navbar-nav> 
-    </b-navbar>
-    <b-container class="mt-12 layout-sidebar-left ">
-
+    
+    <b-container fluid class="   layout-sidebar-left ">
     <div class="row">
       <!-- <div class="sidebar-left col-md-4" > -->
         
-  
-        <main role="main" class="col-md-12" > 
-            <header>
-                <h1 class="sr-only"> Content</h1>
-            </header>
-
-            <b-alert show variant="warning">[Tim]: Working on an initial dashboard view before people hit the fill list of items. </b-alert>
-
-
-            <b-nav pills class="">
+        <main role="main" class="with-sidebar-left col-md-12" > 
+           
+            <b-nav pills class="line-behind mb-3">
                 <b-nav-item :to="basePath + '/content/mycontent'">
                     <font-awesome-icon icon="user"/> 
                     <span class="optionsnav-text">My Content</span>
@@ -44,7 +28,34 @@
                     <font-awesome-icon icon="archive"/> 
                     <span class="optionsnav-text">Archived      </span>
                 </b-nav-item>  
-        </b-nav>  
+            </b-nav>  
+           
+            <header class="sr-only">
+                <h1> My Content</h1>
+            </header>
+
+            <div id="filters" class="d-flex mb-5 p-2">
+           
+                <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" />
+                <!--  <b-form-select v-model="typeFilter" :options="typeOptions" class="mb-3" /> -->
+                <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded"></multiselect>
+                <b-form-select v-model="authorFilter" :options="authorOptions" class="mr-2" />
+                <b-form-select v-model="sortOrder" :options="sortOptions" class="mr-2" />
+            
+                <!--
+                <div>Searched: {{ searchString }} </div>
+                <div>Type Selected: {{ typeFilter }} </div>
+                <div>Author Selected: {{authorFilter }} </div>
+                <div>Sort Selected: {{sortOrder }} </div>
+            -->
+          </div>
+
+            <div v-if="listIsLoading">Loading ...</div>
+           <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
+                <span v-for="item in filteredItems" v-bind:key="item.id">
+                    <content-card :item="item"></content-card>
+                </span>
+            </b-card-group>
 
         </main>
     </div>
@@ -119,4 +130,11 @@ export default  Vue.extend({
 
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css">
+
+.multiselect,
+.multiselect__tags {
+    height:35px !important;
+}
+
+</style>

@@ -2,8 +2,8 @@ import SiteLayout from "@/views/site/SiteLayout";
 import SettingsLayout from "@/views/site/options/settings/SettingsLayout";
 import PeopleLayout from "@/views/site/options/people/PeopleLayout";
 import HomePage from "@/views/site/homepage/Homepage";
-import ItemPage from "@/views/site/items/Item";
-import Content from "@/views/site/content/Content";
+import Item from "@/views/site/items/Item";
+import ContentLayout from "@/views/site/content/ContentLayout";
 import SiteOptions from "@/views/site/options/SiteOptions";
 import MenusLayout from "@/views/site/options/menus/MenusLayout";
 import Appearance from "@/views/site/options/Appearance";
@@ -14,6 +14,7 @@ import Help from "@/views/help/help";
 import settings from "./settings";
 import people from "./people";
 import menus from "./menus";
+import content from "./content";
 
 var routes = {
   default: {
@@ -37,9 +38,10 @@ var routes = {
 
       {
         path: "content",
-        component: Content,
+        component: ContentLayout,
         title: "Content",
-        props: true
+        props: true,
+        children: content
       },
 
       {
@@ -94,11 +96,24 @@ var routes = {
         props: true,
       },
       {
-        path: ":first/:second?/:third?",
-        name: "item",
-        component: ItemPage,
+        path: ":firstUri/:secondUri/:thirdUri",
+        name: "Item3",
+        component: Item,
         props: true
       },
+      {
+        path: ":firstUri/:secondUri",
+        name: "Item2",
+        component: Item,
+        props: true
+      },
+      {
+        path: ":firstUri",
+        name: "Item1",
+        component: Item,
+        props: true
+      },
+
       {
         path: "/",
         name: "homepage",
