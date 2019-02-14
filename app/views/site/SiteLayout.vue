@@ -78,7 +78,13 @@ export default {
         ])
     },
     mounted(){
-        this.getSite(this.site);
+        var parent = this;
+        this.getSite(this.site).then((site) => {
+            // console.log(parent.currentSite.title);
+            // console.log(parent.currentSite.banner_color);
+            var root = document.querySelector(':root');
+            root.style.setProperty("--primary", parent.currentSite.banner_color); 
+        });
     }
 
 }
