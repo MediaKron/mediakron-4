@@ -28,8 +28,8 @@ export const mutations = {
      * Called with the data to load as the current list
      * @param {*} state
      */
-    listLoad(state, data){
-        state.itemList = data.data.map(item => new Item(item));
+    listLoad(state, data, site){
+        state.itemList = data.data.map(item => new Item(item, site));
     },
 
     /**
@@ -76,9 +76,10 @@ export const mutations = {
      * Called with the data to load as the current list
      * @param {*} state
      */
-    itemLoad(state, data){
-        state.currentItem = new Item(data);
-        console.log(state.currentItem)
+    itemLoad(state, data, site){
+        state.first = new Item(data[0], site);
+        if(data[1]) state.second = new Item(data[1], site);
+        if(data[2]) state.third = new Item(data[2], site);
     },
 
     /**

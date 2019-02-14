@@ -1,7 +1,13 @@
 import Model from "@/store/utils/model";
 class Item extends Model {
-    constructor(data) {
+    
+    constructor(data, site) {
         super(data)
+        this.site = site
+    }
+
+    url(){
+        return this.site.uri + '/' + this.uri;
     }
     /* Render the default version of this topic */
     /*getView(template) {

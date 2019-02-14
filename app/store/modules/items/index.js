@@ -7,6 +7,9 @@ export const getInitialState = (checkLocalStorage = false) => {
   return {
     tags: [],
     items: [],
+    first: {},
+    second: {},
+    third: {},
 
     // user List Statuses
     'itemIsLoading':false,

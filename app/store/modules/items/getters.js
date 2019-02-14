@@ -5,6 +5,7 @@ export const getters = {
      * * List
     */
     items: state => state.itemList,
+    
 
     listIsLoading: state => state.listIsLoading,
     listIsLoaded: state => state.listIsLoaded,
@@ -14,7 +15,10 @@ export const getters = {
     /**
      * Current
      */
-    currentItem: state => state.currentItem,
+    first: state => state.first,
+    second: state => state.second,
+    third: state => state.third,
+    
     itemIsLoading: state => state.itemIsLoading,
     itemIsLoaded: state => state.itemIsLoaded,
     itemIsError: state => state.itemIsError,

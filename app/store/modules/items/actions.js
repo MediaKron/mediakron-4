@@ -23,8 +23,21 @@ const actions = {
           status: status || ''
         }
         dispatch('loadItems', options);
-        
-      },
+    },
+
+    /**
+     * Dispatch this action when you want to load a site list
+     * and make the site list sensitive to the query being
+     * passed in from the router
+     * @param {*} param0
+     * @param {*} param1
+     */
+    itemsRouteLoad({ commit, dispatch }, { first, second, third }){
+        console.log(first);
+        dispatch('loadMultipleItems', [
+            first, second, third
+        ]);
+    },
 
     /**
      * Load a list of items
@@ -41,12 +54,35 @@ const actions = {
         return api.get(url, options)
             .then((response) => {
                 console.log('loading item list')
-                commit("listLoad", response.data);
+                commit("listLoad", response.data, currentSite);
                 commit("listPage", response.data);
             })
             .then(() => {
                 console.log('list loaded')
                 commit("listLoaded");
+            })
+            .catch((error) => {
+                error.errorMessage = "There was an error loading the items list";
+                console.log(error);
+                return dispatch("listError", error);
+            });
+    },
+
+    /**
+     * Load a list of items
+     * @param {*} param0
+     * @param {*} options
+     */
+    loadMultipleItems({ commit, dispatch, getters, rootGetters }, keys) {
+        commit("itemLoading");
+        var currentSite = rootGetters['sites/currentSite'],
+            url = currentSite.id + '/items/multiple'
+        return api.post(url, keys)
+            .then((response) => {
+                commit("itemLoad", response.data, currentSite);
+            })
+            .then(() => {
+                commit("itemLoaded");
             })
             .catch((error) => {
                 error.errorMessage = "There was an error loading the items list";
@@ -62,16 +98,15 @@ const actions = {
      */
     getItem({ commit, dispatch }, id) {
         commit("itemLoading");
-
-        return api.get('item/'+id)
-                .then((response) => {
-                commit("itemLoad", response.data);
-        commit("itemLoaded");
-    })
-    .catch((error) => {
-            error.errorMessage = "There was an error loading the item";
-        return dispatch("itemError", error);
-    });
+            return api.get('item/'+id)
+                    .then((response) => {
+                    commit("itemLoad", response.data, currentSite);
+            commit("itemLoaded");
+        })
+        .catch((error) => {
+                error.errorMessage = "There was an error loading the item";
+            return dispatch("itemError", error);
+        });
     },
 
     /**
@@ -95,12 +130,12 @@ const actions = {
         return api.post('item/' + state.currentItem.id, state.editItem)
                 .then((response) => {
                 commit("itemUpdate", response.data);
-        commit("itemUpdated");
-    })
-    .catch((error) => {
-            error.errorMessage = "There was an error saving the item";
-        return dispatch("itemUpdateFailed", error);
-    });
+            commit("itemUpdated");
+        })
+        .catch((error) => {
+                error.errorMessage = "There was an error saving the item";
+            return dispatch("itemUpdateFailed", error);
+        });
     },
     
 }

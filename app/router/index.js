@@ -95,14 +95,24 @@ var routes = {
         title: "SiteOptions",
         props: true,
       },
-
-        {
-            path: "item/:id",
-            name: "Item",
-            component: Item,
-            props: true
-
-        },
+      {
+        path: ":firstUri/:secondUri/:thirdUri",
+        name: "Item3",
+        component: Item,
+        props: true
+      },
+      {
+        path: ":firstUri/:secondUri",
+        name: "Item2",
+        component: Item,
+        props: true
+      },
+      {
+        path: ":firstUri",
+        name: "Item1",
+        component: Item,
+        props: true
+      },
 
       {
         path: "/",

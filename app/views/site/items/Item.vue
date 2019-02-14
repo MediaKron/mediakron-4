@@ -1,26 +1,43 @@
 <template>
     <div>
-    <div>Mediakron Site Item</div>
-    {{ getState.currentItem }}
+        <div>Mediakron Site Item</div>
+        <component :is="component" :item="first" />
     </div>
 </template>
 
 <script>
 
 import { mapGetters, mapActions } from 'vuex';
-
+import Images from './Images';
+import Videos from './Videos';
 export default ({
-    created(){
+    props:[
+        'firstUri', 'secondUri', 'thirdUri'
+    ],
+    mounted(){
         // go fetch the items
-        console.log(this.getItem(this.$route.params.id))
-        console.log(this.item)
-
+        this.itemsRouteLoad({ first: this.firstUri })
     },
     computed: {
-        ...mapGetters("items", ["currentItem", "itemIsLoaded", "itemIsLoading", "getState"]),
+        ...mapGetters("items", [
+            "routeIsLoaded", 
+            "routeIsLoading",
+            "first", "second", "third"
+        ]),
+        component(){
+            switch(this.first.type){
+                case 'image':
+                    return Images;
+                case 'video':
+                    return Videos;
+            }
+            
+        }
     },
     methods: {
-        ...mapActions("items", ["getItem"]),
+        ...mapActions("items", [
+            "itemsRouteLoad"
+        ]),
     }
 });
 </script>

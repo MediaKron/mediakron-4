@@ -79,6 +79,7 @@ export default {
     },
     mounted(){
         var parent = this;
+        console.log(this.site);
         this.getSite(this.site).then((site) => {
             // console.log(parent.currentSite.title);
             // console.log(parent.currentSite.banner_color);
