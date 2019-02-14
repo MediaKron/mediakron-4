@@ -2,7 +2,7 @@
 <div class="menus">
 
         <header>
-            <h1 class="heading-nudge-up mb-4"> Manage Menus </h1>
+            <h1 class="heading-nudge-up mb-4"> Manage Menus</h1>
         </header>
 
         <OptionsSavebar></OptionsSavebar>

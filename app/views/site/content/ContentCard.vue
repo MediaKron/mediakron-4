@@ -1,7 +1,9 @@
 <template>
-<div> 
-        <b-card 
-                :img-src="selectedImage"
+<div>
+    <b-card-group deck class="flex-wrap">
+       
+      <b-card title="Title" 
+                img-src="https://picsum.photos/300/300/?image=41"
                 img-alt="Img"
                 img-top>
 
@@ -10,98 +12,91 @@
 
 
             <p class="card-text">
-            <h3><router-link :to="item.url()">{{item.title}}</router-link></h3>
-                <b-dropdown id="options" dropup text="Options" variant="outline-dark" size="sm" class="bg-light mr-2 mt-2">
-                    <b-dropdown-item href="#">Edit</b-dropdown-item>
-                    <b-dropdown-item href="#">Delete</b-dropdown-item>
-                    <b-dropdown-item href="#">Unpublish</b-dropdown-item>
-                    <b-dropdown-item href="#">Duplicate</b-dropdown-item>
-                    <b-dropdown-item href="#">Archive</b-dropdown-item>
-                    <b-dropdown-item href="#">Lock</b-dropdown-item>
-                </b-dropdown>
-                 <b-dropdown id="view-in" dropup text="View In" variant="outline-dark" size="sm" class="bg-light mt-2">
-                    <b-dropdown-item href="#">Dummy</b-dropdown-item>
-                    <b-dropdown-item href="#">Dummy</b-dropdown-item>
-                    <b-dropdown-item href="#">Dummy</b-dropdown-item>
-                </b-dropdown>
+            <b-dropdown id="ddown-lg" size="sm" text="Options" class="mr-2">
+                <b-dropdown-item-button>Action</b-dropdown-item-button>
+                <b-dropdown-item-button>Another action</b-dropdown-item-button>
+                <b-dropdown-item-button>Something else here</b-dropdown-item-button>
+            </b-dropdown>
+            <b-dropdown id="ddown-lg" size="sm" text="View In" class="">
+                <b-dropdown-item-button>Action</b-dropdown-item-button>
+                <b-dropdown-item-button>Another action</b-dropdown-item-button>
+                <b-dropdown-item-button>Something else here</b-dropdown-item-button>
+            </b-dropdown>
+
+            
             </p>
             <div slot="footer">
-                <small class="text-muted">Last updated: {{item.updated_at}}</small>
+                 <b-badge variant="success" class="mr-1">Success</b-badge>
+                <b-badge variant="warning" class="mr-1" >Warning</b-badge>
+                <small class="text-muted">Last updated 3 mins ago</small>
             </div>
         </b-card>
+  <b-card title="Title" 
+                img-src="https://picsum.photos/300/300/?image=41"
+                img-alt="Img"
+                img-top>
+
+                <div slot="header"
+                class="mb-0"> Image </div>
+
+
+            <p class="card-text">
+            <b-dropdown id="ddown-lg" size="sm" text="Options" variant="outline-dark" class="mr-2">
+                <b-dropdown-item-button>Action</b-dropdown-item-button>
+                <b-dropdown-item-button>Another action</b-dropdown-item-button>
+                <b-dropdown-item-button>Something else here</b-dropdown-item-button>
+            </b-dropdown>
+            <b-dropdown id="ddown-lg" size="sm" text="View In" class="">
+                <b-dropdown-item-button>Action</b-dropdown-item-button>
+                <b-dropdown-item-button>Another action</b-dropdown-item-button>
+                <b-dropdown-item-button>Something else here</b-dropdown-item-button>
+            </b-dropdown>
+
+            
+            </p>
+            <div slot="footer">
+                 <b-badge variant="success" class="mr-1">Success</b-badge>
+                <b-badge variant="danger"  class="mr-1">Danger</b-badge>
+                <b-badge variant="warning" class="mr-1" >Warning</b-badge>
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </b-card>
+          <b-card title="Title" 
+                img-src="https://picsum.photos/300/300/?image=41"
+                img-alt="Img"
+                img-top>
+
+                <div slot="header"
+                class="mb-0"> Image </div>
+
+
+            <p class="card-text">
+            <b-dropdown id="ddown-lg" size="sm" text="Options" class="mr-2">
+                <b-dropdown-item-button>Action</b-dropdown-item-button>
+                <b-dropdown-item-button>Another action</b-dropdown-item-button>
+                <b-dropdown-item-button>Something else here</b-dropdown-item-button>
+            </b-dropdown>
+            <b-dropdown id="ddown-lg" size="sm" text="View In" class="">
+                <b-dropdown-item-button>Action</b-dropdown-item-button>
+                <b-dropdown-item-button>Another action</b-dropdown-item-button>
+                <b-dropdown-item-button>Something else here</b-dropdown-item-button>
+            </b-dropdown>
+
+            
+            </p>
+            <div slot="footer">
+                 <b-badge variant="success" class="mr-1">Success</b-badge>
+                <b-badge variant="danger"  class="mr-1">Danger</b-badge>
+                <b-badge variant="warning" class="mr-1" >Warning</b-badge>
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </b-card>
+    </b-card-group>
 </div>
 </template>
 
 <script>
-    //import { mapActions, mapState, mapGetters } from "vuex";
-    //import Loader from '@/components/Loader';
-    export default {
-        data() {
-            return {
-                // Note 'isActive' is left out and will not appear in the rendered table
-                    /*
-                    id: null,
-                    version: 0,
-                    created: 0,
-                    changed: 0,
-                    published: true,
-                    archived: false,
-                    user: {},
-                    template: 'default',
-                    options: {},
-                    uri: false,
-                    type: '',
-                    title: '',
-                    description: '',
-                    body: '',
-                    caption: '',
-                    transcript: '',
-                    image: '',
-                    time: false,
-                    */
-            };
-        },
-        props: [ 'item' ], // Use this to get the item dets
-        computed: {
-            //...mapGetters("items", ["listIsLoading", "listIsLoaded", "items", 'currentPage', "totalItems", "lastPage"]), nothing to get ffrom the store here
-            //...mapState("items", ["pagination"]),  Don't need pagination on the card level
-        },
-        data () {
-            return {
-            images: [
-                'https://picsum.photos/300?image=342',
-                'https://picsum.photos/200?image=1074',
-                'https://picsum.photos/200/300?image=446',
-                'https://picsum.photos/300?image=973',
-                'https://picsum.photos/200/300?image=459',
-                'https://picsum.photos/200/300?image=1075',
-                'https://picsum.photos/200?image=1077',
-                'https://picsum.photos/200/300?image=352',
-                'https://picsum.photos/200/300?image=323',
-            ],
-            selectedImage: '',
-                id: this.item.id
-            }
-        },
-        created () {
-            const idx = Math.floor(Math.random() * this.images.length)
-            this.selectedImage = this.images[idx]
-        },
-        methods: {
 
-        },
-        watch: {
-            '$route.params.page': function (page) {
-                //this.routeLoad({to: this.$route}); Not needed because this comes from the parent
-            }
-        },
-        mounted() {
-            // console.log(this.item);
-            // console.log(this.item.created);
-            const idx = Math.floor(Math.random() * 100);
-            // console.log(idx);
-        }
-    };
 
 </script>
 
@@ -110,7 +105,6 @@
 .card-deck .card {
     flex: 0 0 20%;
     margin: 0 .5rem 1rem .5rem;
-    max-width: 300px;
 }
 
 </style>

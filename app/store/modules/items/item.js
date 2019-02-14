@@ -1,16 +1,114 @@
-import Model from "@/store/utils/model";
+import Model from "~/core-js/extensions/models";
 class Item extends Model {
-    
-    constructor(data, site) {
-        super(data)
-        this.site = site
-    }
+    constructor() {
+        super({
+            id: null,
+            version: 0,
+            created: 0,
+            changed: 0,
+            published: true,
+            archived: false,
+            user: {},
+            template: 'default',
+            options: {},
+            uri: false,
+            type: '',
+            title: '',
+            description: '',
+            body: '',
+            caption: '',
+            transcript: '',
+            image: '',
+            time: false,
+            audio: { /* Not empty if audio.  Contains the actual audio data */
+                type: "",
+                /* type of file.  See settings for supported audio */
+                url: "" /* the url of the audio.  Could be local, in theory.  Could also be remote */
+            },
+            video: { /* Not empty if video.  Contains the actual video data */
+                type: "",
+                /* type of file.  See settings for supported video */
+                url: "" /* the url of the video.  Could be local, in theory.  Could also be remote */
 
-    url(){
-        return this.site.uri + '/' + this.uri;
+            },
+            text: { /* Not empty if text.  Contains the actual text data */
+                type: "",
+                /* type of file.  See settings for supported text */
+                url: "" /* the url of the text.  Could be local, in theory.  Could also be remote. Could also be empty if text is just in the body field. */
+
+            },
+            overlay: {},
+            size: {},
+            height: 0,
+            width: 0,
+            center: [0, 0],
+            zoom: 2,
+            projection: 'EPSG:3857',
+            map: {
+                url: ''
+            },
+            timeline: {
+                scope: '',
+                granularity: '',
+                start: '',
+                end: '',
+            },
+
+            date: {
+                start: false,
+                end: false,
+            },
+
+            relationships: {
+                topics: [],
+                tags: [],
+                maps: [],
+                timelines: [],
+                comparisons: [],
+
+
+                children: [],
+                layers: [],
+                events: [],
+                comments: [],
+                annotations: [],
+                citations: [],
+            },
+
+            metadata: {
+                source: "",
+                citation: "",
+                description: "",
+                published: "",
+                creator: "",
+                publisher: "",
+                contributor: "",
+                format: "",
+                identifier: "",
+                language: "",
+                relation: "",
+                coverage: "",
+                medium: "",
+                provenance: "",
+                SizeOrDuration: "",
+                subject: "",
+                location: "",
+                rights: ""
+            },
+            viewObject: false,
+            // The fetch url for this model, dervived from the id
+            urlRoot: function () {
+                return base_path() + '/api/' + uri()
+            },
+            startSerial: false,
+            endSerial: false,
+            items: false,
+            sorted: false,
+            weight: 0
+        })
     }
     /* Render the default version of this topic */
-    /*getView(template) {
+    getView(template) {
         var view;
         switch (this.get('type')) {
             case 'story':
@@ -107,90 +205,89 @@ class Item extends Model {
         Mediakron.items.add(this);
     }
 
-    */
+    
 
-    // defaults() {
-    //     return {
-    //         id: null,
-    //         created: 0,
-    //         changed: 0,
-    //         version: 0,
-    //         published: true,
-    //         archived: false,
-    //         user: Mediakron.user,
-    //         editor: false,
-    //         template: 'default',
-    //         options: {},
-    //         uri: false,
-    //         time: false,
-    //         type: '',
-    //         title: '',
-    //         description: '',
-    //         transcript: '',
-    //         body: '',
-    //         caption: '',
-    //         image: '',
-    //         audio: {},
-    //         video: {},
-    //         text: {},
-    //         height: 0,
-    //         width: 0,
-    //         center: [0, 0],
-    //         size: {},
-    //         zoom: 2,
-    //         projection: 'EPSG:3857',
-    //         date: {
-    //             start: false,
-    //             end: false,
-    //         },
-    //         map: {
-    //             url: ''
-    //         },
-    //         timeline: {
-    //             scope: '',
-    //             granularity: '',
-    //             start: '',
-    //             end: '',
-    //         },
-    //         overlay: {},
-    //         relationships: {
-    //             topics: [],
-    //             tags: [],
-    //             maps: [],
-    //             timelines: [],
-    //             comparisons: [],
+    defaults() {
+        return {
+            id: null,
+            created: 0,
+            changed: 0,
+            version: 0,
+            published: true,
+            archived: false,
+            user: Mediakron.user,
+            editor: false,
+            template: 'default',
+            options: {},
+            uri: false,
+            time: false,
+            type: '',
+            title: '',
+            description: '',
+            transcript: '',
+            body: '',
+            caption: '',
+            image: '',
+            audio: {},
+            video: {},
+            text: {},
+            height: 0,
+            width: 0,
+            center: [0, 0],
+            size: {},
+            zoom: 2,
+            projection: 'EPSG:3857',
+            date: {
+                start: false,
+                end: false,
+            },
+            map: {
+                url: ''
+            },
+            timeline: {
+                scope: '',
+                granularity: '',
+                start: '',
+                end: '',
+            },
+            overlay: {},
+            relationships: {
+                topics: [],
+                tags: [],
+                maps: [],
+                timelines: [],
+                comparisons: [],
 
-    //             events: [],
-    //             layers: [],
-    //             children: [],
-    //             comments: [],
-    //             annotations: [],
-    //             citations: [],
-    //         },
+                events: [],
+                layers: [],
+                children: [],
+                comments: [],
+                annotations: [],
+                citations: [],
+            },
 
-    //         metadata: {
-    //             source: "",
-    //             citation: "",
-    //             description: "",
-    //             published: "",
-    //             creator: "",
-    //             publisher: "",
-    //             contributor: "",
-    //             format: "",
-    //             identifier: "",
-    //             language: "",
-    //             relation: "",
-    //             coverage: "",
-    //             medium: "",
-    //             provenance: "",
-    //             SizeOrDuration: "",
-    //             subject: "",
-    //             location: "",
-    //             rights: ""
-    //         }
-    //     };
-    // }
-    /*
+            metadata: {
+                source: "",
+                citation: "",
+                description: "",
+                published: "",
+                creator: "",
+                publisher: "",
+                contributor: "",
+                format: "",
+                identifier: "",
+                language: "",
+                relation: "",
+                coverage: "",
+                medium: "",
+                provenance: "",
+                SizeOrDuration: "",
+                subject: "",
+                location: "",
+                rights: ""
+            }
+        };
+    }
 
     editor() {
         var editor = this.get('editor');
@@ -364,7 +461,7 @@ class Item extends Model {
         var start = this.timeToSeconds(video.start);
         var end = this.timeToSeconds(video.end);
 
-        if (start !== false) { // if video has start/stop timecodes
+        if (start !== false) { /* if video has start/stop timecodes  */
             url = url.replace(".mp4", '');
             url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
             url = url + '.mp4';
@@ -399,7 +496,7 @@ class Item extends Model {
         var start = this.timeToSeconds(audio.start);
         var end = this.timeToSeconds(audio.end);
 
-        if (start !== false) { // if video has start/stop timecodes  
+        if (start !== false) { /* if video has start/stop timecodes  */
             url = url.replace(".mp4", '');
             url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
             url = url + '.mp4';
@@ -622,6 +719,6 @@ class Item extends Model {
             return true;
         }
         return false;
-    }*/
+    }
 }
 export default Item;
