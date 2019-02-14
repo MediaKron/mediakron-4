@@ -20,8 +20,8 @@ export default ({
     },
     computed: {
         ...mapGetters("items", [
-            "routeIsLoaded", 
-            "routeIsLoading",
+            "itemLoading", 
+            "itemLoaded",
             "first", "second", "third"
         ]),
         component(){
