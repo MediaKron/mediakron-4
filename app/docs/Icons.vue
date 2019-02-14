@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="container mt-5">
+  <div class="container mt-20">
       <h1>Icons</h1>
     <p>
       These are the icons used in MediaKron. 

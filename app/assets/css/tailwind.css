@@ -34,12 +34,23 @@
   }
 }
 
+  @supports (position: sticky) { 
+    .sticky\?lg\:h-\(screen-32\) {
+      height: calc(100vh - 8rem);
+  }
+}
+
   .top-16 {
       top:4rem;
   }
+
   .top-20 {
     top:5rem;
-}
+  }
+
+  .top-32 {
+    top:8rem;
+  }
  
 
 

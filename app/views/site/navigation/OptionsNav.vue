@@ -1,6 +1,6 @@
 <template>
   <div v-if="access('can change site siteadmin')" class="optionsnav" v-bind:class="[sectionClass]">
-    <b-nav vertical pills class="">
+    <b-nav vertical pills class=" ">
         <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings/general'">
             <font-awesome-icon icon="sliders-h"/> 
             <span class="optionsnav-text">Settings</span>
@@ -163,18 +163,6 @@ export default  Vue.extend({
     text-transform: uppercase;
     padding-left:.5em; 
 } 
-
-.dropdown-menu.expanded.show {
-    position:relative !important;
-    top:auto !important;
-    display:block !important;  
-    transform: translate3d(0px, 10px, 0px) !important;
-    border:none;
-    padding-top:0;
-    margin-top:0;   
-    background:none;
-    margin-left:1rem;
-}
 
 .optionsnav .nav-link {
  display:flex;

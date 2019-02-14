@@ -1,7 +1,7 @@
 <template>
     <div class="" >
     <header>
-        <h1 class="line-behind heading-nudge-up mb-4"> Manage Site Users</h1>
+        <h1 class="heading-nudge-up mb-4"> Manage Site Users</h1>
     </header>
     <div class="add-people">
         <b-btn v-b-toggle.collapse1 variant="primary" size="sm" class="text-uppercase"><font-awesome-icon icon="user-plus"/> Add New Users</b-btn>

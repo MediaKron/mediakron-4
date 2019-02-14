@@ -4,12 +4,12 @@
             <div class="w-full max-w-xl mx-auto px-6 mt-16 ">
                 <div class="flex">
                     <div id="sidebar" class="hidden min-w-64 max-w-xs lg:block ">
-                        <div class="lg:relative lg:sticky top-20">
-                            <OptionsNav inPeople class="sticky?lg:h-(screen-20) overflow-y-auto "></OptionsNav> 
+                        <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey-darkest border-solid mr-10">
+                            <OptionsNav inPeople class="sticky?lg:h-(screen-32) overflow-y-auto "></OptionsNav> 
                     </div>
                 </div>
                     <main role="main" id="content-wrapper" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg"> 
-                        <b-nav class="mb-4 options-sectionnav">
+                        <b-nav class="mb-4 options-sectionnav line-behind">
                             <b-nav-item :to="{ name: 'people_list' }">Users</b-nav-item>
                             <b-nav-item :to="{ name: 'groups' }">Groups</b-nav-item>
                         </b-nav>
