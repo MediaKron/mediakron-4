@@ -7,7 +7,7 @@ class Item extends Model {
     }
 
     url(){
-        return this.site.uri + '/' + this.uri;
+        return '/' + this.site.uri + '/' + this.uri;
     }
     /* Render the default version of this topic */
     /*getView(template) {
