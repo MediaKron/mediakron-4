@@ -51,9 +51,11 @@ const actions = {
         if(currentSite){
             url = currentSite.id + '/items'
         }
+        commit('setSite', currentSite)
         return api.get(url, options)
             .then((response) => {
                 console.log('loading item list')
+                console.log(currentSite)
                 commit("listLoad", response.data, currentSite);
                 commit("listPage", response.data);
             })
@@ -77,6 +79,7 @@ const actions = {
         commit("itemLoading");
         var currentSite = rootGetters['sites/currentSite'],
             url = currentSite.id + '/items/multiple'
+        commit('setSite', currentSite)
         return api.post(url, keys)
             .then((response) => {
                 commit("itemLoad", response.data, currentSite);
