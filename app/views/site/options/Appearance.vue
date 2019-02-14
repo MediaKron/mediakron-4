@@ -65,21 +65,12 @@ import OptionsNav from "./../navigation/OptionsNav";
 import OptionsSavebar from '@/components/forms/OptionsSavebar';
 // import ImageUpload from '@/components/controls/ImageUpload';
 export default  Vue.extend({
-<<<<<<< HEAD
     components: {
         UtilityNav,
         OptionsNav,
         OptionsSavebar,
         // ImageUpload
     },
-=======
-        components: {
-            UtilityNav,
-            OptionsNav,
-            OptionsSavebar,
-            // ImageUpload
-  },
->>>>>>> parent of ba65b878... Merge branch 'master' into tim-ui
     mixins: [ data ],
     data(){
         return{
