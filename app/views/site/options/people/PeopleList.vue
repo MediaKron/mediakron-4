@@ -49,8 +49,10 @@ import {
         mapGetters, mapActions
     } from 'vuex';
 export default {
-    components:{},
-    computed:{
+    components:{
+
+    },
+  computed:{
         ...mapGetters('users/profile', [
             'access'
         ]),

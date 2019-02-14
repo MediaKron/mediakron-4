@@ -3,7 +3,16 @@
 // .custom-control-label::before {
 //     background:$gray-600;
 // }
+.bg-primary {
+  background-color: var(--primary) !important;
+  background-color: #000;
+}
 
+.btn-primary {
+  background-color: var(--primary) !important;
+  border:1px solid var(--primary) !important;
+  background-color: #000;
+}
 
 /* Loading Spinner */
 
@@ -206,9 +215,9 @@
 // .nav-line-behind .nav-link.active::before,
 // .nav-line-behind .show > .nav-link::before 
   content: "";
-  height: .4rem;
+  height: .5rem;
   flex: 1 1 auto;
-  background-color: #225362;
+  background-color: #444;
   position: relative;
   width: 1rem;
 } 
@@ -403,7 +412,6 @@ height:100vh;
 
 .floating-label input:not(:placeholder-shown) {
   // border-width: 2px;
-  border: 1px solid #000;
   font-weight:500;
 }
 

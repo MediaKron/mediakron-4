@@ -1,1 +1,0 @@
-The base css files for MediaKron. CSS for components are stored with each component. 

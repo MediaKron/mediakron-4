@@ -169,7 +169,7 @@ class Site extends BaseModel
     }
 
     public function primaryMenu($data){
-        /*$menus = [];
+        $menus = [];
         $user = Auth::user();
         foreach($data as $link){
             // They're adding a 
@@ -201,7 +201,7 @@ class Site extends BaseModel
             }
 
 
-        }*/
+        }
     }
 
 

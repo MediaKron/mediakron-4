@@ -1,13 +1,13 @@
 <template>
-    <b-navbar toggleable="md" fixed="top" type="dark" class="pl-0 pr-0 py-0 z-index-1 w-100" variant="primary" aria-label="site menus" >
-    <b-navbar-brand class="text-uppercase site-options-title ml-4"> <font-awesome-icon icon="cog" class="mr-1"/>  Site Options</b-navbar-brand>
-     <b-navbar-nav class="ml-auto">
-        <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 "> 
-            <font-awesome-icon icon="times"/> 
-            <span class="utilitynav-text">Close</span>
-        </b-nav-item>   
-    </b-navbar-nav> 
-</b-navbar>
+    <b-navbar toggleable="md" fixed="top" type="dark" class="pl-0 pr-0 py-0 z-10 w-100" variant="primary" aria-label="site menus" >
+        <b-navbar-brand :to="basePath + '/options'" class="text-uppercase site-options-title ml-4"> <font-awesome-icon icon="cog" class="mr-1"/>  Site Options</b-navbar-brand>
+        <b-navbar-nav class="ml-auto">
+            <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 "> 
+                <font-awesome-icon icon="times"/> 
+                <span class="utilitynav-text">Close</span>
+            </b-nav-item>   
+        </b-navbar-nav> 
+    </b-navbar>
 </template>
 
 <script>
