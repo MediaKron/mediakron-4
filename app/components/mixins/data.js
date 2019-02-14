@@ -22,7 +22,6 @@ export const formDataMixin = {
     },
   },
   created() {
-    console.log(this.sourceData.banner_color);
     this.localData = recursiveClone(this.sourceData);
   },
 };

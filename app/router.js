@@ -35,6 +35,8 @@ import EditUser from './views/multisite/people/Edit';
 
 // Site Views
 import itemsRoutes from './router/index';
+import browseRoutes from './router/browse';
+import settingsRoutes from './router/settings';
 
 import NotFound from './views/404.vue';
 import store from './store';
@@ -42,8 +44,8 @@ import store from './store';
 import VueDemo from './sandbox/VueDemo.vue';
 
 // Style Guide
-import Guide from './guide/guide.vue';
-import IconsGuide from './guide/icons.vue';
+import Docs from './docs/DocsIndex.vue';
+import Icons from './docs/Icons.vue';
 
 Vue.use(Router);
 
@@ -132,19 +134,19 @@ var baseRoutes = [
           component: Help
         },
         {
-          path: '/vue-demo',
+          path: 'sandbox/vue-demo',
           name: 'vue-demo',
           component: VueDemo
         },
         {
-          path: '/guide',
-          name: 'MediaKron Design Guide',
-          component: Guide
+          path: '/docs',
+          name: 'MediaKron Technical Docs and Design Guide',
+          component: Docs
         },
         {
-          path: '/guide/icons',
+          path: '/docs/icons',
           name: 'Icons',
-          component: IconsGuide
+          component: Icons
         },
       ]
     }

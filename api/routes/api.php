@@ -67,7 +67,6 @@ Route::group([
     
     // Item api
     Route::get('/items', 'Api\ItemController@index');
-    Route::post('/items/multiple', 'Api\ItemController@multiple');
     Route::resource('/item', 'Api\ItemController');
 
     Route::get('/users', 'Api\SiteController@users');

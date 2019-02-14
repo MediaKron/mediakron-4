@@ -1,14 +1,16 @@
 <template>
   <div v-if="access('can change site siteadmin')" class="optionsnav" v-bind:class="[sectionClass]">
-    <b-nav vertical pills class="">
+    <b-nav vertical pills class=" ">
         <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings/general'">
             <font-awesome-icon icon="sliders-h"/> 
             <span class="optionsnav-text">Settings</span>
         </b-nav-item> 
-        <b-nav-item :active="inMenus" v-if="canBrowse" :to="basePath + '/options/menus'">
-            <font-awesome-icon icon="sitemap"/> 
-            <span class="optionsnav-text">Menus</span>
-        </b-nav-item> 
+        <li class="nav-item" :active="inMenus">
+            <b-link class="nav-link"  v-if="canBrowse" :to="basePath + '/options/menus'">
+                <font-awesome-icon icon="sitemap"/> 
+                <span class="optionsnav-text">Menus</span>
+            </b-link> 
+        </li>
         <b-nav-item :active="inAppearance" v-if="canBrowse" :to="basePath + '/options/appearance'">
         <font-awesome-icon icon="paint-brush"/> 
         <span class="optionsnav-text">Appearance</span>
@@ -83,7 +85,7 @@ export default  Vue.extend({
 /* needs to be unscoped */
 
 .optionsnav {
- max-width: 12rem;
+ max-width: 20rem;
  margin:auto;
 }
 
@@ -94,7 +96,7 @@ export default  Vue.extend({
 
 .options-sectionnav .nav-link {
     text-transform:uppercase;
-    color: #343a40;
+    color: #212529;
 }
 
 .options-sectionnav .nav-link.active {
@@ -110,13 +112,17 @@ export default  Vue.extend({
 }
 
 .optionsnav .nav-pills .nav-link.active {
-     background-color: #343a40;
+     /* background-color: #343a40; */
+         padding: 0.25rem 1rem .3rem 1rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    width:13rem;
 }
 
-.options-sectionnav .nav-link.active,
+
 .active-section.nav-item .nav-link,
-.active-section.nav-item .nav-link.active,
-  .nav-item.show .nav-link {
+.active-section.nav-item .nav-link.active   
+ {
     background-color: #343a40;
     color: #fff;
     border-color: none;
@@ -127,12 +133,18 @@ export default  Vue.extend({
 }
 
 .options-sectionnav .nav-link.active {
-    /* padding-left:0;
+    /* 
     color: #343a40;
-    font-weight:bold;
+
     background-color:none !important; */
-    font-size: 100%;
-    padding:.1rem .5rem;
+    /* font-size: 100%;
+    padding:.1rem .5rem; */
+    font-weight:bold;
+    /* border-bottom: 5px solid #000; */
+    padding: 0.25rem 0 0 0;
+
+    margin-bottom: .25rem;
+    font-size:105%
 }
 
 .menus .optionsnav-menus {
@@ -152,16 +164,33 @@ export default  Vue.extend({
     padding-left:.5em; 
 } 
 
-.dropdown-menu.expanded.show {
-    position:relative !important;
-    top:auto !important;
-    display:block !important;  
-    transform: translate3d(0px, 10px, 0px) !important;
-    border:none;
-    padding-top:0;
-    margin-top:0;   
-    background:none;
-    margin-left:1rem;
+.optionsnav .nav-link {
+ display:flex;
+ color:#333;
+}
+
+.optionsnav .nav-link.active {
+ display:flex;
+ color:#212529 !important;
+ font-weight:bold;
+ background:none !important;
+     font-size:105%
+}
+
+.optionsnav .nav-link.active svg {
+  background: #212529;
+
+}
+
+.optionsnav .nav-link svg {
+  display: flex;
+  align-items: center;
+  color: white;
+  background: #444;
+  padding: .25rem;
+  border-radius: .2rem;
+  font-size: 1.5rem;
+  width: 1.5rem;
 }
 
 

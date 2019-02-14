@@ -1,45 +1,23 @@
 <template>
-    <div>
-        <div>Mediakron Site Item</div>
-        <component v-if="itemLoaded" :is="component" :item="first" />
-    </div>
+    <div>Mediakron Site Item {{ site }} {{ first }} {{ second }} {{ third }}</div>
 </template>
 
 <script>
-
-import { mapGetters, mapActions } from 'vuex';
-import Images from './Images';
-import Videos from './Videos';
-export default ({
-    props:[
-        'firstUri', 'secondUri', 'thirdUri'
+import { mapState, mapGetters, mapActions } from 'vuex';
+export default {
+    props:[ 
+        'site', 
+        'first' , 
+        'second', 
+        'third' 
     ],
-    mounted(){
+
+    created(){
         // go fetch the items
-        this.itemsRouteLoad({ first: this.firstUri })
-    },
-    computed: {
-        ...mapGetters("items", [
-            "itemLoading", 
-            "itemLoaded",
-            "first", "second", "third"
-        ]),
-        component(){
-            switch(this.first.type){
-                case 'image':
-                    return Images;
-                case 'video':
-                    return Videos;
-            }
-            
-        }
-    },
-    methods: {
-        ...mapActions("items", [
-            "itemsRouteLoad"
-        ]),
+
     }
-});
+
+}
 </script>
 
 <style>

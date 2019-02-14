@@ -53,7 +53,7 @@ const actions = {
     getSite({ commit, dispatch }, id) {
         commit("siteLoading");
 
-        return api.get('site/' + id + '?test1')
+        return api.get('site/'+id)
           .then((response) => {
             commit("siteLoad", response.data);
             commit("siteLoaded");

@@ -1,0 +1,37 @@
+/* MK Variables */
+$primary: #000000;
+
+$light: #f2f2f2;
+
+
+$component-active-bg:   var(--primary);
+// $input-btn-focus-color:       rgba($component-active-bg, .25) !default;
+// $input-focus-border-color:              lighten($component-active-bg, 25%) !default;
+// $custom-control-indicator-active-bg:            lighten($component-active-bg, 35%) !default;
+// $custom-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
+$input-btn-focus-color:         var(--primary);
+$input-focus-border-color:                var(--primary);
+$custom-control-indicator-active-bg:              var(--primary);
+$custom-range-thumb-active-bg:                 var(--primary);
+
+
+$link-color:                              var(--primary);
+$link-decoration:                         none !default;
+$link-hover-color:                         var(--primary);
+
+
+$navbar-dark-color:                 white ;
+$navbar-dark-hover-color:           gray;
+
+$grey-on-white1: #565656;
+$grey-on-white2: #616161;
+
+
+$highlight: #fff36c !default;
+$highlight-light: #fff8aa !default;
+
+
+$nav-pills-border-radius: 0rem;
+
+/* Make input border colors accessible on white */
+$input-border-color: #616161;
