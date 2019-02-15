@@ -37,7 +37,6 @@ export const mutations = {
      * @param {*} state
      */
     setSite(state, site){
-        console.log(site);
         state.site = site;
     },
 

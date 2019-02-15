@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div>Mediakron Site Item</div>
-        <component v-if="itemLoaded" :is="component" :item="first" />
+        <ContentLayout></ContentLayout>
+        <component v-if="itemIsLoaded" :is="component" :item="first" />
     </div>
 </template>
 
@@ -10,10 +10,14 @@
 import { mapGetters, mapActions } from 'vuex';
 import Images from './Images';
 import Videos from './Videos';
+import ContentLayout from '@/views/site/content/ContentLayout';
 export default ({
     props:[
         'firstUri', 'secondUri', 'thirdUri'
     ],
+    components: {
+        ContentLayout,
+    },
     mounted(){
         // go fetch the items
         this.itemsRouteLoad({ first: this.firstUri })
@@ -21,7 +25,7 @@ export default ({
     computed: {
         ...mapGetters("items", [
             "itemLoading", 
-            "itemLoaded",
+            "itemIsLoaded",
             "first", "second", "third"
         ]),
         component(){

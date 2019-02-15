@@ -33,7 +33,6 @@ const actions = {
      * @param {*} param1
      */
     itemsRouteLoad({ commit, dispatch }, { first, second, third }){
-        console.log(first);
         dispatch('loadMultipleItems', [
             first, second, third
         ]);
@@ -54,13 +53,10 @@ const actions = {
         commit('setSite', currentSite)
         return api.get(url, options)
             .then((response) => {
-                console.log('loading item list')
-                console.log(currentSite)
                 commit("listLoad", response.data, currentSite);
                 commit("listPage", response.data);
             })
             .then(() => {
-                console.log('list loaded')
                 commit("listLoaded");
             })
             .catch((error) => {
