@@ -1,5 +1,5 @@
 <template>
-    <div class="site-options mt-20">
+    <div class="site-options pt-5">
         <UtilityNav class="hide-menus"></UtilityNav> 
         <div id="site-settings">      
             <div id="wrapper-main" class="justify-content-center" >

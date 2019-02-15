@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="container mt-20">
+    <div class="container mt-5">
         <h1>People</h1>
           <loader v-if="listIsLoading"></loader>
         <b-table v-if="listIsLoaded" striped hover :items="users" :fields="fields">

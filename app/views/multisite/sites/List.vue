@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-20">
+  <div class="container mt-5">
     <h1>Site List</h1>
          <loader v-if="listIsLoading"></loader>
 
