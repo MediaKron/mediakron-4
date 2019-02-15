@@ -2,7 +2,7 @@
     <div class="settings-general with-savebar">
 
         <header>
-             <h1 class="mb-5 " > General Site Settings</h1>
+             <h1 class="mb-5"> General Site Settings</h1>
         </header>
     
         <h2 class="mt-4">Site Title and Subtitle</h2>

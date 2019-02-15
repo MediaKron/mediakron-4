@@ -12,15 +12,12 @@ import router from './router';
 import store from './store';
 import * as svgicon from 'vue-svgicon';
 
+// import './core-css/base-styles/variables.scss'; 
+// import 'bootstrap/dist/css/bootstrap.css'
 
-// CSS ===========
-
-// import './core-css/base-styles/variables.scss';
 // import 'bootstrap/scss/bootstrap.scss'
 import './core-css/base.scss';
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-import '@/assets/css/tailwind.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
 import VeeValidate from 'vee-validate';
