@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div>
-            <b-button class="float-right" @click="isEditing = !isEditing">{{ getEditPrompt }}</b-button>
-        </div>
         <component :is="component" :item="item" :isEditing="isEditing"/>
     </div>
 </template>
@@ -11,7 +8,7 @@
 import Default from './Default'
 import Full from './Full'
 export default {
-    props: [ 'item' ],
+    props: [ 'item', 'isEditing' ],
     computed: {
         component(){
             switch(this.item.template){
@@ -22,17 +19,7 @@ export default {
             }
             
         },
-        getEditPrompt() {
-            if (this.isEditing) return 'Save'
-            return 'Edit'
-        },
-    },
-    data() {
-        return {
-            isEditing: false
-        }
-    },
-    
+    }
 }
 </script>
 

@@ -1,7 +1,10 @@
 <template>
     <div>
         <ContentLayout></ContentLayout>
-        <component v-if="itemIsLoaded" :is="component" :item="first" />
+         <div>
+            <b-button class="float-right" @click="isEditing = !isEditing">{{ getEditPrompt }}</b-button>
+        </div>
+        <component v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
     </div>
 </template>
 
@@ -17,6 +20,11 @@ export default ({
     ],
     components: {
         ContentLayout,
+    },
+    data() {
+        return {
+            isEditing: false
+        }
     },
     mounted(){
         // go fetch the items
@@ -36,7 +44,11 @@ export default ({
                     return Videos;
             }
             
-        }
+        },
+        getEditPrompt() {
+            if (this.isEditing) return 'Save'
+            return 'Edit'
+        },
     },
     methods: {
         ...mapActions("items", [

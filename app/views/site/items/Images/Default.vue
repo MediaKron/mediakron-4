@@ -4,10 +4,10 @@
             <b-form-group v-if=isEditing
                 label="Edit title"
                 label-for="title">
-                <b-input v-if="isEditing" id="title" :value="item.title"></b-input>
+                <b-input v-if="isEditing" id="title" :value="itemCopy.title"></b-input>
             </b-form-group>
             <div v-else>
-                <div>{{ item.title }}</div>
+                <div>{{ itemCopy.title }}</div>
             </div>
             <b-form-group>
 
@@ -21,7 +21,7 @@ export default {
     props: [ 'item', 'isEditing' ],
     data() {
         return {
-
+            itemCopy: Object.assign({}, this.item)
         }
     }
 }
