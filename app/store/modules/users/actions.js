@@ -33,6 +33,7 @@ const actions = {
           commit("listLoading"); 
           let url = 'users';
           var currentSite = rootGetters['sites/currentSite'];
+          console.log(currentSite);
           if(currentSite){
             url = currentSite.id + '/users'
           }
@@ -40,8 +41,6 @@ const actions = {
             .then((response) => {
               commit("listLoad", response.data);
               commit("listPage", response.data);
-            }).then(() => {
-              
               commit("listLoaded");
             })
             .catch((error) => {

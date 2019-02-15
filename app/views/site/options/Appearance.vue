@@ -13,8 +13,6 @@
                         </header>
             
                         <h2> Banner Colors</h2>
-                        <Color :color="bannerColor"></Color>
-                        {{ bannerColor }}
 
                         <div class="form-instructions mb-4">You check to make sure there's enough contrast between the background color and link color using the <a href="http://webaim.org/resources/contrastchecker/">WebAIM Color Contrast Checker.</a>  
                         </div>	
@@ -61,14 +59,12 @@ import { mapState, mapActions } from 'vuex';
 import UtilityNav from "./../navigation/UtilityNav";
 import OptionsNav from "./../navigation/OptionsNav";
 import OptionsSavebar from '@/components/forms/OptionsSavebar';
-import Color from '@/views/site/options/Color';
 // import ImageUpload from '@/components/controls/ImageUpload';
 export default  Vue.extend({
     components: {
         UtilityNav,
         OptionsNav,
         OptionsSavebar,
-        Color,
         // ImageUpload
     },
     mixins: [ data ],
@@ -81,8 +77,7 @@ export default  Vue.extend({
                 { value: 'Merriweather (serif', text: 'Merriweather (serif)' }
             ],
             counter: 45,
-            max: 100,
-            bannerColor: '#FFFFFF',
+            max: 100
         }
     },
     computed:{
@@ -99,7 +94,7 @@ export default  Vue.extend({
         }, 500)
     },
     mounted(){
-       
+        
     }
 });
 </script>
