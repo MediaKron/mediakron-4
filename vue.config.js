@@ -5,6 +5,10 @@ var childProcess = require('child_process');
 
 console.log(path.resolve(__dirname + "/app"));
 
+// import Purgecss webpack plugin and glob-all
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob-all')
+
 module.exports = {
   outputDir: 'public',
   assetsDir: 'assets',
@@ -22,7 +26,16 @@ module.exports = {
       new webpack.ProvidePlugin({
         // other modules
         introJs: ['intro.js', 'introJs']
-      })
+      }),
+      // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
+      // for more information about purgecss.
+      new PurgecssPlugin({
+        paths: glob.sync([
+          path.join(__dirname, './app/index.html'),
+          path.join(__dirname, './app/**/*.vue'),
+          path.join(__dirname, './app/**/*.js')
+        ])
+      }),
     ],
     resolve: {
         alias: {
