@@ -17,8 +17,8 @@ import * as svgicon from 'vue-svgicon';
 
 // import 'bootstrap/scss/bootstrap.scss'
 import './core-css/base.scss';
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import "./core-css/tailwind.css";
 
 import VeeValidate from 'vee-validate';
 import VueMoment from 'vue-moment';
