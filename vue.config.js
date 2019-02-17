@@ -6,7 +6,7 @@ var childProcess = require('child_process');
 console.log(path.resolve(__dirname + "/app"));
 
 module.exports = {
-  outputDir: 'public',
+  outputDir: 'public/client',
   assetsDir: 'assets',
   css: {
     sourceMap: process.env.NODE_ENV === 'development'? true: false,

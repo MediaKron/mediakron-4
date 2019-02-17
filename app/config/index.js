@@ -11,7 +11,7 @@ switch (process.env.NODE_ENV) {
         api = 'https://stage.mediakron.us/api';
     break;
   case 'production':
-        api = 'https://mediakron.bc.edu/api';
+        api = 'localhost:81/api';
     break;
 }
 
