@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="container mt-5">
       <h1>Icons</h1>
-    <p>
+    <p class="py-4">
       These are the icons used in MediaKron. 
     </p>
 <table class="table">
