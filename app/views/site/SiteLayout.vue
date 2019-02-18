@@ -1,10 +1,8 @@
 <template>
     <div id="mediakron">
         <transition  name="fade">
-        <div v-if="siteIsLoading" class="d-flex is-loading text-center">
-            <bar-loader  color="#303030" height="6" width="200" size="150" sizeUnit="px"> </bar-loader>
-            <div class="pt-3">Site Loading... </div>
-        </div>
+
+        <loader v-if="siteIsLoading" class="d-flex is-loading text-center"></loader>
          </transition>
         <div v-if="siteIsLoaded">
             <div id="site-container">                                
@@ -59,10 +57,10 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
-import { BarLoader } from '@saeris/vue-spinners'
+import Loader from '@/components/Loader';
 export default {
     components:{
-        BarLoader
+        Loader
     },
     props:['site'],
     computed:{
@@ -80,7 +78,13 @@ export default {
         ])
     },
     mounted(){
-        this.getSite(this.site);
+        var parent = this;
+        this.getSite(this.site).then((site) => {
+            // console.log(parent.currentSite.title);
+            // console.log(parent.currentSite.banner_color);
+            var root = document.querySelector(':root');
+            root.style.setProperty("--primary", parent.currentSite.banner_color); 
+        });
     }
 
 }
@@ -91,25 +95,17 @@ export default {
 .fullscreen-nav-toggle,
 #pastehelper,
 #progress-bar,
-#debug
- {
+#debug {
     display:none;
 }
 
 .is-loading {
-height: 100vh;   
-width: 100vw;
-align-items: center;
-justify-content: center;
-flex-direction: column; 
-background: #f5f5f5;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .75s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+    height: 100vh;   
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    font-size: 1.5rem;
 }
 
 </style>

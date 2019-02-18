@@ -14,22 +14,25 @@
             
                         <h2> Banner Colors</h2>
 
+                        <Color :color="bannerColor"></Color>
+                        {{ bannerColor }}
+
                         <div class="form-instructions mb-4">You check to make sure there's enough contrast between the background color and link color using the <a href="http://webaim.org/resources/contrastchecker/">WebAIM Color Contrast Checker.</a>  
                         </div>	
                         
                         <b-form-group label="Banner background" label-for="banner-color" horizontal>
-                            <b-form-input id="banner-color" type='color' name='banner-color' v-model="localData.banner_color" ></b-form-input>
+                            <b-form-input id="banner-color" type='color' name='banner-color' v-model="localData.banner_color" @input="dataChange" ></b-form-input>
                         </b-form-group>
                     
                         <b-form-group label="Banner Link Color" label-for="banner-link-color" horizontal>
-                            <b-form-input id="banner-link-color" type='color' name='banner-link' v-model="localData.banner_link_color" ></b-form-input>
+                            <b-form-input id="banner-link-color" type='color' name='banner-link' v-model="localData.banner_link_color" @input="dataChange" ></b-form-input>
                         </b-form-group>
 
                         <h2 class="mt-5">Fonts</h2>
 
                         <div class="form-instructions mb-4">The default font style for the site.</div>	
                             <b-form-group label="Site Font" label-for="font" label-sr-only>
-                            <b-form-select id="font" v-model="selected" :options="fonts" class="mb-3" />    
+                            <b-form-select id="font" :options="fonts" class="mb-3" />    
                         </b-form-group>
          
                         <h2 class="mt-5">Logo</h2>
@@ -60,13 +63,15 @@ import UtilityNav from "./../navigation/UtilityNav";
 import OptionsNav from "./../navigation/OptionsNav";
 import OptionsSavebar from '@/components/forms/OptionsSavebar';
 // import ImageUpload from '@/components/controls/ImageUpload';
+import Color from '@/views/site/options/Color';
 export default  Vue.extend({
-        components: {
-            UtilityNav,
-            OptionsNav,
-            OptionsSavebar,
-            // ImageUpload
-  },
+    components: {
+        UtilityNav,
+        OptionsNav,
+        OptionsSavebar,
+        // ImageUpload
+        Color
+    },
     mixins: [ data ],
     data(){
         return{
@@ -77,7 +82,8 @@ export default  Vue.extend({
                 { value: 'Merriweather (serif', text: 'Merriweather (serif)' }
             ],
             counter: 45,
-            max: 100
+            max: 100,
+            bannerColor: '#FFFFFF',
         }
     },
     computed:{
@@ -87,20 +93,11 @@ export default  Vue.extend({
     },
     methods:{
         ...mapActions('sites', [
-            'update',
-            'saveSite'
+            'update'
         ]),
-
         dataChange: _.debounce( function() {
             this.update(this.localData);
-        }, 500),
-
-        save(){
-            this.saveSite(this.localData);
-        },
-
-        cancel(){
-        }
+        }, 500)
     },
     mounted(){
         

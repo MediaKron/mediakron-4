@@ -34,7 +34,6 @@ export default {
   },
 
   post (url, data, cancelToken) {
-    console.log(data);
     return this.request('post', url, data, cancelToken);
   },
 

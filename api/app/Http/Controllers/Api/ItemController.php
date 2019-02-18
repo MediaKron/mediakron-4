@@ -24,7 +24,7 @@ class ItemController extends Controller
     public function index($site)
     {
         //
-        return Item::with(Item::$select_with)->paginate(50);
+        return Item::with(Item::$select_with)->where('site_id', $site)->paginate(50);
     }
 
     /**
@@ -70,6 +70,26 @@ class ItemController extends Controller
         //
         try{
             $item = Item::with(Item::$select_with)->findOrFail($id);
+            //$item->canView();
+            return $item;
+        }catch(\Exception $e){
+            // 
+            Log::info('Access denied to user when viewing item');
+            return response()->json(['error' => $e->getMessage() ]);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function multiple($site)
+    {
+        //
+        try{
+            $item = Item::with(Item::$select_with)->where('site_id', $site)->whereIn('uri', request()->all())->get();
             //$item->canView();
             return $item;
         }catch(\Exception $e){
