@@ -114,7 +114,7 @@ const actions = {
      * @param {*} id
      */
     update({ commit, state }, item) {
-        if(JSON.stringify(site) !== JSON.stringify(state.editSite)){
+        if(JSON.stringify(item) !== JSON.stringify(state.editItem)){
             commit('updateItem', item);
         }
     },

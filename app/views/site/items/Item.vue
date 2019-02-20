@@ -2,7 +2,7 @@
     <div>
         <ContentLayout></ContentLayout>
          <div>
-            <b-button class="float-right" @click="isEditing = !isEditing">{{ getEditPrompt }}</b-button>
+            <b-button class="float-right" @click="editClicked">{{ getEditPrompt }}</b-button>
         </div>
         <component v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
     </div>
@@ -14,6 +14,7 @@ import { mapGetters, mapActions } from 'vuex';
 import Images from './Images';
 import Videos from './Videos';
 import ContentLayout from '@/views/site/content/ContentLayout';
+import { circleMarker } from 'leaflet';
 export default ({
     props:[
         'firstUri', 'secondUri', 'thirdUri'
@@ -23,12 +24,13 @@ export default ({
     },
     data() {
         return {
-            isEditing: false
+            isEditing: false,
         }
     },
     mounted(){
         // go fetch the items
         this.itemsRouteLoad({ first: this.firstUri })
+        console.log(this.first)
     },
     computed: {
         ...mapGetters("items", [
@@ -51,8 +53,14 @@ export default ({
         },
     },
     methods: {
+        editClicked() {
+            this.isEditing = !this.isEditing
+            console.log("save item here")
+        },
         ...mapActions("items", [
-            "itemsRouteLoad"
+            "itemsRouteLoad",
+            "update",
+            "saveItem"
         ]),
     }
 
