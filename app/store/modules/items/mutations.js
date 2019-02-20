@@ -124,6 +124,10 @@ export const mutations = {
         state.siteIsSaved = false;
         state.siteSaveFailed = true;
 
+    },
+
+    editItemSet(state, item) {
+        state.editItem = Object.assign({}, item)
     }
 
 }

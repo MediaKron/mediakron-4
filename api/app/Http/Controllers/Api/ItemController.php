@@ -118,13 +118,13 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($site_id, $id, Request $request)
+    public function update($id, Request $request)
     {
-        //
         try{
             $item = Item::findOrFail($id);
             // Check edit permissions
-            $item->canEdit()->hydrate($request);
+            $item->fill($request->input());
+            $item->update();
             return $item;
         }catch(\Exception $e){
             // 

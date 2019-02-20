@@ -34,6 +34,12 @@ class Item extends BaseModel
         'thumbnail'
     ];
 
+    protected $fillable = [
+        'id',
+        'caption',
+        'title',
+    ];
+
     /**
      * The "booting" method of the model.
      *

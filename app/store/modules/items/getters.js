@@ -18,6 +18,8 @@ export const getters = {
     first: state => state.first,
     second: state => state.second,
     third: state => state.third,
+
+    editItem: state => (state.editItem) ? state.editItem : false,
     
     itemIsLoading: state => state.itemIsLoading,
     itemIsLoaded: state => state.itemIsLoaded,

@@ -30,7 +30,6 @@ export default ({
     mounted(){
         // go fetch the items
         this.itemsRouteLoad({ first: this.firstUri })
-        console.log(this.first)
     },
     computed: {
         ...mapGetters("items", [
@@ -55,7 +54,10 @@ export default ({
     methods: {
         editClicked() {
             this.isEditing = !this.isEditing
-            console.log("save item here")
+            // Save only if isEditing switched back to false
+            if (!this.isEditing) {
+                this.saveItem()
+            }
         },
         ...mapActions("items", [
             "itemsRouteLoad",
