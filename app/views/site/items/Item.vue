@@ -1,10 +1,10 @@
 <template>
     <div>
         <Navigation></Navigation>
-         <div class="pin-r fixed mr-3">
+         <div class="pin-r fixed mr-3 mt-8">
             <b-button class=" " variant="primary" @click="editClicked"> {{ getEditPrompt }}</b-button>        
         </div>
-        <component class="mt-5" v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
+        <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
     </div>
 </template>
 
