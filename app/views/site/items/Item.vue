@@ -1,10 +1,10 @@
 <template>
     <div>
-        <ContentLayout></ContentLayout>
-         <div>
-            <b-button class="float-right btn-primary mr-3" variant="primary" @click="editClicked"> {{ getEditPrompt }}</b-button>        
+        <Navigation></Navigation>
+         <div class="pin-r fixed mr-3">
+            <b-button class=" " variant="primary" @click="editClicked"> {{ getEditPrompt }}</b-button>        
         </div>
-        <component v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
+        <component class="mt-5" v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ import { mapGetters, mapActions } from 'vuex'
 import Images from './Images'
 import Videos from './Videos'
 import Folders from './Folders'
-import ContentLayout from '@/views/site/content/ContentLayout'
+import Navigation from '@/views/site/Navigation'
 import { circleMarker } from 'leaflet'
 
 export default {
@@ -22,7 +22,7 @@ export default {
         'firstUri', 'secondUri', 'thirdUri'
     ],
     components: {
-        ContentLayout
+        Navigation
     },
     data() {
         return {
