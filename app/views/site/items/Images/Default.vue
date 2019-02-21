@@ -1,8 +1,8 @@
 <template>
     <div class="container">
+        <ItemTitle :isEditing="isEditing"></ItemTitle>
+        <ItemDescription :isEditing="isEditing"></ItemDescription>
         <div v-if="!isEditing">
-            <h2>{{ editItem.title }}</h2>
-            <p>{{ editItem.description }}</p>
             <h5>Image File</h5>
             <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
             <p>{{ editItem.caption }}</p>
@@ -12,16 +12,6 @@
             </div>
         </div>
         <b-form class="container" v-else>
-            <b-form-group
-                label="Edit title"
-                label-for="title">
-                <b-form-input id="title" v-model="editItem.title"></b-form-input>
-            </b-form-group>
-            <b-form-group
-                label="Edit description"
-                label-for="description">
-                <b-form-textarea id="description" v-model="editItem.description" rows="3"></b-form-textarea>
-            </b-form-group>
             <b-form-group
                 label="Replace Image"
                 label-for="fileUpload">
@@ -48,12 +38,16 @@
 </template>
 
 <script>
-import 'viewerjs/dist/viewer.css'
-import Vue from 'vue'
+import ItemTitle from '@/components/items-shared/ItemTitle'
+import ItemDescription from '@/components/items-shared/ItemDescription'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     props: [ 'item', 'isEditing' ],
+    components: {
+        ItemTitle,
+        ItemDescription
+    },
     data() {
         return {
             images: [

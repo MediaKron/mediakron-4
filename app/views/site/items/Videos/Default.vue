@@ -1,29 +1,27 @@
 <template>
    <div class="container">
-       <div v-if="!isEditing">
-
-       </div>
-       <b-form-group v-else>
-           <b-form-group 
-                label="Edit title"
-                label-for="title">
-                <b-input id="title" :value="itemCopy.title"></b-input>
-            </b-form-group>
-            <div>
-                <h2>{{ itemCopy.title }}</h2>
-            </div>
-       </b-form-group>
+       <ItemTitle :isEditing="isEditing"></ItemTitle>
    </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import ItemTitle from '@/components/items-shared/ItemTitle'
+
 export default {
     props: [ 'item', 'isEditing' ],
-    data() {
-        return {
-            itemCopy: Object.assign({}, this.item)
-        }
-    }
+    components: {
+        ItemTitle
+    },
+    created() {
+        this.setEditItem(this.item)
+    },
+    computed: {
+        ...mapGetters('items', ['editItem'])
+    },
+    methods: {
+        ...mapActions('items', ['setEditItem'])
+    }  
 }
 </script>
 

@@ -7,6 +7,7 @@
 <script>
 import Default from './Default'
 import Full from './Full'
+
 export default {
     props: [ 'item', 'isEditing' ],
     computed: {
