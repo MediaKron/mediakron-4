@@ -3,7 +3,7 @@
         <b-form-group
             label="Edit Description"
             label-for="description">
-            <b-form-textarea id="description" v-model="editItem.description" :rows="3"></b-form-textarea>
+            <b-form-textarea id="description" v-model="editItem.description" :rows="3" placeholder="Add a description"></b-form-textarea>
         </b-form-group>
     </div>
     <div v-else>

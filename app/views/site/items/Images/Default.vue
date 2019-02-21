@@ -24,24 +24,11 @@
                 <p>{{ editItem.metadata.citation }}</p>
             </div>
         </div>
-        <b-form class="container" v-else>
-            <b-form-group
-                label="Replace Image"
-                label-for="fileUpload">
-                <b-form-file
-                    v-model="editItem.newImage"
-                    :state="Boolean(editItem.newImage)"
-                    placeholder="Choose a file..."
-                    drop-placeholder="Drop file here..."
-                    accept=".jpg, .png, .gif"/>
-            </b-form-group>
-            <b-form-group
-                label="Edit Citation"
-                label-for="source">
-                <b-form-textarea id="source" v-model="editItem.metadata.citation" rows="3" placeholder="Add Citation Here"></b-form-textarea>
-            </b-form-group>
-            
-        </b-form>
+        <b-form-group
+            label="Edit Citation"
+            label-for="source">
+            <b-form-textarea id="source" v-model="editItem.metadata.citation" rows="3" placeholder="Add Citation Here"></b-form-textarea>
+        </b-form-group>
     </div>
 </template>
 
