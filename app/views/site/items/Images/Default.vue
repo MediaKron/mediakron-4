@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <article class="container">
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
         <b-form-group 
@@ -18,7 +18,7 @@
             <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
         </div>
         <ItemCaption :isEditing="isEditing"></ItemCaption>
-    </div>
+    </article>
 </template>
 
 <script>

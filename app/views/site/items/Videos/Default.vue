@@ -1,9 +1,9 @@
 <template>
-   <div class="container">
+  <article class="container">
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
         <ItemCaption :isEditing="isEditing"></ItemCaption>
-   </div>
+   </article>
 </template>
 
 <script>

@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
+    <article class="container">
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemCaption :isEditing="isEditing"></ItemCaption>
         <FolderList :children="this.editItem.children"></FolderList>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
-    </div>
+    </article>
 </template>
 
 <script>
