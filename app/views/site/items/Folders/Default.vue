@@ -3,6 +3,7 @@
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
         <ItemCaption :isEditing="isEditing"></ItemCaption>
+        <FolderList :children="this.editItem.children"></FolderList>
     </div>
 </template>
 
@@ -10,6 +11,7 @@
 import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
+import FolderList from '@/components/items-shared/FolderList'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -18,7 +20,8 @@ export default {
     components: {
         ItemTitle,
         ItemDescription,
-        ItemCaption
+        ItemCaption,
+        FolderList
     },
     data() {
         return {
