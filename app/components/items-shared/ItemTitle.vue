@@ -1,12 +1,14 @@
 <template>
     <div class="item-element-title" v-if="isEditing">
+               
         <b-form-group class="floating-label">
             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>
             <label for="title">Title</label>
         </b-form-group>
+               
     </div>
     <div v-else>
-        <h2>{{ editItem.title }}</h2>
+        <h1>{{ editItem.title }}</h1>
     </div>
 </template>
 
@@ -28,4 +30,10 @@ export default {
        font-size: 2rem; 
        font-weight: 500;
     }
+    .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
