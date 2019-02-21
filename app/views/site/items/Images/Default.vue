@@ -2,10 +2,10 @@
     <div class="container">
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
+        <ItemCaption :isEditing="isEditing"></ItemCaption>
         <div v-if="!isEditing">
             <h5>Image File</h5>
             <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
-            <p>{{ editItem.caption }}</p>
             <div v-if="editItem.metadata && editItem.metadata.citation">
                 <h5>Source</h5>
                 <p>{{ editItem.metadata.citation }}</p>
@@ -23,11 +23,6 @@
                     accept=".jpg, .png, .gif"/>
             </b-form-group>
             <b-form-group
-                label="Edit Caption"
-                label-for="caption">
-                <b-form-input id="caption" v-model="editItem.caption"></b-form-input> 
-            </b-form-group>
-            <b-form-group
                 label="Edit Citation"
                 label-for="source">
                 <b-form-textarea id="source" v-model="editItem.metadata.citation" rows="3" placeholder="Add Citation Here"></b-form-textarea>
@@ -40,13 +35,16 @@
 <script>
 import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
+import ItemCaption from '@/components/items-shared/ItemCaption'
+
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     props: [ 'item', 'isEditing' ],
     components: {
         ItemTitle,
-        ItemDescription
+        ItemDescription,
+        ItemCaption
     },
     data() {
         return {
