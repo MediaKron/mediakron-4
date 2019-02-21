@@ -2,10 +2,23 @@
     <div class="container">
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
-        <ItemCaption :isEditing="isEditing"></ItemCaption>
-        <div v-if="!isEditing">
+        <b-form-group 
+            v-if="isEditing"
+            label="Replace Image"
+            label-for="fileUpload">
+            <b-form-file
+                v-model="editItem.newImage"
+                :state="Boolean(editItem.newImage)"
+                placeholder="Choose a file..."
+                drop-placeholder="Drop file here..."
+                accept=".jpg, .png, .gif"/>
+        </b-form-group>
+        <div v-else>
             <h5>Image File</h5>
             <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
+        </div>
+        <ItemCaption :isEditing="isEditing"></ItemCaption>
+        <div v-if="!isEditing">
             <div v-if="editItem.metadata && editItem.metadata.citation">
                 <h5>Source</h5>
                 <p>{{ editItem.metadata.citation }}</p>
