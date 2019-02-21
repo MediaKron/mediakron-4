@@ -12,7 +12,7 @@ General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.
 * **docker**: Contains the root Larvel application for boot and api methods
 * **public**: The public web root with any servable files and the main executable
 * **app**: Buildable code for the front-facing MediaKron JS application
-* **docs**: MediaKron technical documentation
+* **app/docs**: MediaKron technical documentation
 
 ## Local Build Requirements
 * [Docker](https://docs.docker.com/install/) 17.12+ 
@@ -26,7 +26,7 @@ General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.
 * Copy the .env.example file to .env and customize as needed
 * To start the local dev environment run `docker-compose up`
 * Go to your mediakron site at `localhost:81`
-* To install the documentation site (Catalog), go to the docs directory and run "npm install catalog". Then, to start run "npm run catalog-start"
+
 
 ## How to build
 * **Development**: `npm run mediakron:build`

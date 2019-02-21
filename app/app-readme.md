@@ -1,1 +1,1 @@
-The front-facing MediaKron app built in Backbone.js
+The front-facing MediaKron app built in Vue
