@@ -10,12 +10,14 @@
 
 <script>
 
-import { mapGetters, mapActions } from 'vuex';
-import Images from './Images';
-import Videos from './Videos';
-import ContentLayout from '@/views/site/content/ContentLayout';
-import { circleMarker } from 'leaflet';
-export default ({
+import { mapGetters, mapActions } from 'vuex'
+import Images from './Images'
+import Videos from './Videos'
+import Folders from './Folders'
+import ContentLayout from '@/views/site/content/ContentLayout'
+import { circleMarker } from 'leaflet'
+
+export default {
     props:[
         'firstUri', 'secondUri', 'thirdUri'
     ],
@@ -40,9 +42,11 @@ export default ({
         component(){
             switch(this.first.type){
                 case 'image':
-                    return Images;
+                    return Images
                 case 'video':
-                    return Videos;
+                    return Videos
+                case 'folder':
+                    return Folders
             }
             
         },
@@ -66,7 +70,7 @@ export default ({
         ]),
     }
 
-});
+}
 </script>
 
 <style>
