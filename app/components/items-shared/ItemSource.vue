@@ -1,7 +1,10 @@
 <template>
-    <div class="item-element-title" v-if="isEditing">
+    <div class="item-element-source"v-if="isEditing">
         <b-form-group class="floating-label">
             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>
+            <label for="title">Title</label>
+
+             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>
             <label for="title">Title</label>
         </b-form-group>
     </div>
@@ -23,9 +26,3 @@ export default {
 }
 </script>
 
-<style>
-    .item-element-title #title {
-       font-size: 2rem; 
-       font-weight: 500;
-    }
-</style>

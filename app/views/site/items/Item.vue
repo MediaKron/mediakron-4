@@ -2,7 +2,7 @@
     <div>
         <ContentLayout></ContentLayout>
          <div>
-            <b-button class="float-right" @click="editClicked">{{ getEditPrompt }}</b-button>
+            <b-button class="float-right btn-primary mr-3" variant="primary" @click="editClicked"> {{ getEditPrompt }}</b-button>        
         </div>
         <component v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
     </div>
@@ -20,7 +20,7 @@ export default ({
         'firstUri', 'secondUri', 'thirdUri'
     ],
     components: {
-        ContentLayout,
+        ContentLayout
     },
     data() {
         return {

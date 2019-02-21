@@ -1,10 +1,12 @@
 <template>
      <div v-if="isEditing">
         <b-form-group
-            label="Edit Description"
-            label-for="description">
+             class="floating-label">
             <b-form-textarea id="description" v-model="editItem.description" :rows="3" placeholder="Add a description"></b-form-textarea>
+             <label for="description">Description</label>
         </b-form-group>
+
+
     </div>
     <div v-else>
         <p>{{ editItem.description }}</p>
@@ -23,4 +25,5 @@ export default {
     }
 }
 </script>
+
 
