@@ -29,6 +29,7 @@ export default {
         ...mapActions('items', ['setEditItem'])
     }  
 }
+
 </script>
 
 <style>

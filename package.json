@@ -10,29 +10,27 @@
     "mediakron:build:stage": "vue-cli-service build --mode staging",
     "mediakron:build:prod": "vue-cli-service build --mode production",
     "mediakron:lint": "vue-cli-service lint",
-    "mediakron:watch": "vue-cli-service serve --mode development",
-    "mediakron:styleguide": "vue-cli-service styleguidist",
-    "mediakron:styleguide:build": "vue-cli-service styleguidist:build"
+    "mediakron:watch": "vue-cli-service serve --mode development"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.9",
     "@fortawesome/free-solid-svg-icons": "^5.6.0",
     "@fortawesome/vue-fontawesome": "^0.1.3",
-    "animate.css": "^3.7.0",
     "axios": "^0.18",
-    "bootstrap-vue": "^2.0.0-rc.11",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.12",
     "child-process-promise": "^2.2.1",
     "file-loader": "^2.0.0",
     "i": "^0.3.6",
     "npm": "^6.5.0",
     "raven-js": "^3.27.0",
     "v-viewer": "^1.4.0",
-    "vue": "^2.5.17",
+    "vue": "^2.6.6",
     "vue-color": "^2.7.0",
     "vue-moment": "^4.0.0",
     "vue-multiselect": "^2.1.3",
+    "vue-plyr": "^5.1.0",
     "vue-router": "^3.0.1",
-    "vue-styleguidist": "^2.1.1",
     "vue-svgicon": "^3.2.1",
     "vue-transmit": "^8.1.4",
     "vue2-leaflet": "^1.2.3",
@@ -45,12 +43,15 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "glob-all": "^3.1.0",
     "node-sass": "^4.9.0",
+    "purgecss-webpack-plugin": "^1.4.0",
     "sass-loader": "^7.0.1",
+    "tailwindcss": "^0.7.4",
     "vee-validate": "^2.1.4",
     "vue-cli-plugin-styleguidist": "^0.1.9",
     "vue-router-middleware": "^0.2.1",
-    "vue-template-compiler": "^2.5.17",
+    "vue-template-compiler": "^2.6.6",
     "webpack": "^4.27.1"
   },
   "eslintConfig": {
@@ -69,6 +70,7 @@
   },
   "postcss": {
     "plugins": {
+      "tailwindcss": "./app/core-css/tailwind.js",
       "autoprefixer": {}
     }
   },
