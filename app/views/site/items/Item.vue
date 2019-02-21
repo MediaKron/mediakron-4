@@ -1,10 +1,20 @@
 <template>
     <div>
         <Navigation></Navigation>
-         <div class="pin-r fixed mr-3 mt-8">
-            <b-button class=" " variant="primary" @click="editClicked"> {{ getEditPrompt }}</b-button>        
-        </div>
-        <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
+        <main>
+            <div class="pin-r fixed mr-3 mt-8">
+                <b-button class=" " variant="primary" @click="editClicked"> {{ getEditPrompt }}</b-button>       
+             <b-alert class="pin-r fixed mt-4 mr-3" :show="editAlert" variant="success">
+                <p>You are now in editing mode.</p>
+            </b-alert> 
+             <b-alert class="pin-r fixed mt-4 mr-3" :show="saveAlert" variant="success">
+                <p>Changes Saved.</p>
+            </b-alert> 
+            </div>
+
+            <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
+            
+        </main>
     </div>
 </template>
 
@@ -27,6 +37,7 @@ export default {
     data() {
         return {
             isEditing: false,
+            dismissSecs: 4,
         }
     },
     mounted(){
@@ -58,9 +69,13 @@ export default {
     methods: {
         editClicked() {
             this.isEditing = !this.isEditing
+
+               this.editAlert = this.dismissSecs 
+            
             // Save only if isEditing switched back to false
             if (!this.isEditing) {
                 this.saveItem()
+                this.saveAlert = this.dismissSecs
             }
         },
         ...mapActions("items", [
@@ -68,6 +83,7 @@ export default {
             "update",
             "saveItem"
         ]),
+
     }
 
 }
