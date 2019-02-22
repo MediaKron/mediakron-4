@@ -10,12 +10,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    props: [ 'children' ],
     data() {
         return {
             image: 'https://picsum.photos/300?image=342',
         }
+    },
+    computed: {
+        children() {
+            return this.editItem.children
+        },
+        ...mapGetters('items', ['editItem'])
     }
 }
 </script>

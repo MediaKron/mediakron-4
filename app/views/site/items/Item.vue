@@ -38,6 +38,8 @@ export default {
         return {
             isEditing: false,
             dismissSecs: 4,
+            editAlert: 0,
+            saveAlert: 0,
         }
     },
     mounted(){
@@ -69,8 +71,7 @@ export default {
     methods: {
         editClicked() {
             this.isEditing = !this.isEditing
-
-               this.editAlert = this.dismissSecs 
+            this.editAlert = this.dismissSecs 
             
             // Save only if isEditing switched back to false
             if (!this.isEditing) {

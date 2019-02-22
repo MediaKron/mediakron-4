@@ -2,7 +2,7 @@
     <article class="container">
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemCaption :isEditing="isEditing"></ItemCaption>
-        <FolderList :children="this.editItem.children"></FolderList>
+        <FolderList></FolderList>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
     </article>
 </template>
