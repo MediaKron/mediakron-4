@@ -2,7 +2,7 @@
     <article class="container">
         <ItemTitle :isEditing="isEditing"></ItemTitle>
         <ItemCaption :isEditing="isEditing"></ItemCaption>
-        <FolderList></FolderList>
+        <List></List>
         <ItemDescription :isEditing="isEditing"></ItemDescription>
     </article>
 </template>
@@ -11,7 +11,7 @@
 import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
-import FolderList from '@/components/items-shared/FolderList'
+import List from '@/components/item-lists/List'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -21,7 +21,7 @@ export default {
         ItemTitle,
         ItemDescription,
         ItemCaption,
-        FolderList
+        List
     },
     data() {
         return {
