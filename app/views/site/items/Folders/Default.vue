@@ -1,9 +1,9 @@
 <template>
     <article class="container">
-        <ItemTitle :isEditing="isEditing"></ItemTitle>
-        <ItemCaption :isEditing="isEditing"></ItemCaption>
+        <ItemTitle></ItemTitle>
+        <ItemCaption></ItemCaption>
         <List></List>
-        <ItemDescription :isEditing="isEditing"></ItemDescription>
+        <ItemDescription></ItemDescription>
     </article>
 </template>
 
@@ -29,8 +29,7 @@ export default {
         }
     },
     created() {
-        this.setEditItem(this.item)
-        console.log(this.editItem)
+
     },
     computed: {
         ...mapGetters('items', ['editItem'])

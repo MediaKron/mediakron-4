@@ -3,7 +3,7 @@
         
     </div>
     <div v-else>
-        <h2>{{ editItem.image }}</h2>
+        <h2>{{ first.image }}</h2>
     </div>
 </template>
 
@@ -11,10 +11,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing',
+            'first'
         ])
     }
 }

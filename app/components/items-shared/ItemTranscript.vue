@@ -7,7 +7,7 @@
         </b-form-group>
     </div>
     <div v-else>
-        <p>{{ editItem.transcript }}</p>
+        <p>{{ first.transcript }}</p>
     </div>
 </template>
 
@@ -15,10 +15,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing',
+            'first'
         ])
     }
 }

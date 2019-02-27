@@ -6,7 +6,7 @@
         </b-form-group>
     </div>
     <div v-else>
-        <p>{{ editItem.caption }}</p>
+        <p>{{ first.caption }}</p>
     </div>
 </template>
 
@@ -14,10 +14,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing',
+            'first'
         ])
     }
 }

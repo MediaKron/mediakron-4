@@ -1,8 +1,8 @@
 <template>
   <article class="container">
-        <ItemTitle :isEditing="isEditing"></ItemTitle>
-        <ItemDescription :isEditing="isEditing"></ItemDescription>
-        <ItemCaption :isEditing="isEditing"></ItemCaption>
+        <ItemTitle></ItemTitle>
+        <ItemDescription></ItemDescription>
+        <ItemCaption></ItemCaption>
    </article>
 </template>
 
@@ -20,13 +20,16 @@ export default {
         ItemCaption
     },
     created() {
-        this.setEditItem(this.item)
     },
     computed: {
-        ...mapGetters('items', ['editItem'])
+        ...mapGetters('items', [
+            'editItem'
+        ])
     },
     methods: {
-        ...mapActions('items', ['setEditItem'])
+        ...mapActions('items', [
+            'setEditItem'
+        ])
     }  
 }
 

@@ -38,6 +38,7 @@ class Item extends BaseModel
         'id',
         'caption',
         'title',
+        'description'
     ];
 
     /**

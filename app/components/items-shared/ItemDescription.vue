@@ -9,7 +9,7 @@
 
     </div>
     <div v-else>
-        <p>{{ editItem.description }}</p>
+        <p>{{ first.description }}</p>
     </div>
 </template>
 
@@ -17,10 +17,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing',
+            'first'
         ])
     }
 }

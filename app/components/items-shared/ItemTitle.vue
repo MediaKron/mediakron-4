@@ -8,7 +8,7 @@
                
     </header>
     <header v-else>
-        <h1>{{ editItem.title }}</h1>
+        <h1>{{ first.title }}</h1>
     </header>
 </template>
 
@@ -16,10 +16,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing',
+            'first'
         ])
     }
 }
@@ -31,9 +32,9 @@ export default {
        font-weight: 500;
     }
     .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
 </style>
