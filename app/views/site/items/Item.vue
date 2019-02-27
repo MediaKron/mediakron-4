@@ -2,6 +2,7 @@
     <div>
         <Navigation></Navigation>
         <main>
+            <div v-if="itemIsLoading">Loading Item now</div>
             <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" />
         </main>
     </div>
@@ -32,7 +33,7 @@ export default {
     },
     computed: {
         ...mapGetters("items", [
-            "itemLoading", 
+            "itemIsLoading", 
             "itemIsLoaded",
             "first", 
             "second",

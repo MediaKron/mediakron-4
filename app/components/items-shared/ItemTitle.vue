@@ -8,7 +8,7 @@
                
     </header>
     <header v-else>
-        <h1>{{ editItem.title }}</h1>
+        <h1>{{ first.title }}</h1>
     </header>
 </template>
 
@@ -19,7 +19,8 @@ export default {
     computed: {
         ...mapGetters('items', [
             'editItem',
-            'isEditing'
+            'isEditing',
+            'first'
         ])
     }
 }

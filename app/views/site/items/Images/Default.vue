@@ -24,7 +24,7 @@ export default {
         Image
     },
     created() {
-        this.setEditItem(this.item)
+
     },
     computed: {
         ...mapGetters('items', [

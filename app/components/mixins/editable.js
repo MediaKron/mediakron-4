@@ -10,9 +10,13 @@ export const editable = {
   },
   computed: {
     getEditPrompt() {
+        console.log(this.isEditing);
         if (this.isEditing) return 'Save'
         return 'Edit'
     },
+    ...mapGetters("items", [
+        "isEditing"
+    ]),
   },
   methods:{
     ...mapActions("items", [
@@ -21,13 +25,14 @@ export const editable = {
         "setEditItem"
     ]),
     editClicked() {
+        console.log('edit clicked')
+        this.setEditItem(this.item);
         this.editAlert = this.dismissSecs 
-        
-        // Save only if isEditing switched back to false
-        if (!this.isEditing) {
-            this.saveItem()
-            this.saveAlert = this.dismissSecs
-        }
+    },
+    // Save only if isEditing switched back to false
+    saveClicked() {
+        this.saveItem()
+        this.saveAlert = this.dismissSecs
     },
   },
   watch: {

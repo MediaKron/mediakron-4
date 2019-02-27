@@ -20,7 +20,6 @@ export default {
         ItemCaption
     },
     created() {
-        this.setEditItem(this.item)
     },
     computed: {
         ...mapGetters('items', [

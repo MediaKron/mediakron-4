@@ -23,7 +23,7 @@ export default {
         ItemImage
     },
     created() {
-        this.setEditItem(this.item)
+
     },
     computed: {
         ...mapGetters('items', [

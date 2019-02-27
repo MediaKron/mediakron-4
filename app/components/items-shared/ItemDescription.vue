@@ -9,7 +9,7 @@
 
     </div>
     <div v-else>
-        <p>{{ editItem.description }}</p>
+        <p>{{ first.description }}</p>
     </div>
 </template>
 
@@ -20,7 +20,8 @@ export default {
     computed: {
         ...mapGetters('items', [
             'editItem',
-            'isEditing'
+            'isEditing',
+            'first'
         ])
     }
 }

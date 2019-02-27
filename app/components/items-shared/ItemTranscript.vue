@@ -7,7 +7,7 @@
         </b-form-group>
     </div>
     <div v-else>
-        <p>{{ editItem.transcript }}</p>
+        <p>{{ first.transcript }}</p>
     </div>
 </template>
 
@@ -18,7 +18,8 @@ export default {
     computed: {
         ...mapGetters('items', [
             'editItem',
-            'isEditing'
+            'isEditing',
+            'first'
         ])
     }
 }

@@ -29,8 +29,7 @@ export default {
         }
     },
     created() {
-        this.setEditItem(this.item)
-        console.log(this.editItem)
+
     },
     computed: {
         ...mapGetters('items', ['editItem'])

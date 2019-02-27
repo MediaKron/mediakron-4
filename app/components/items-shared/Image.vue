@@ -30,7 +30,8 @@ export default {
     computed: {
         ...mapGetters('items', [
             'editItem',
-            'isEditing'
+            'isEditing',
+            'first'
         ])
     }
 }
