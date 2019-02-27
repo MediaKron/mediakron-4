@@ -146,6 +146,15 @@ const actions = {
      */
     setEditItem({ commit, state }, item) {
         commit('editItemSet', item)
+    },
+
+    /**
+     * Discard Edits
+     * @param {*} param0
+     * @param {*} item
+     */
+    discardEdits({ commit, state }) {
+        commit('discardEdit')
     }
 
     

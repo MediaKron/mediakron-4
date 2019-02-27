@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="component" :item="item" :isEditing="isEditing"/>
+        <component :is="component" :item="item" />
     </div>
 </template>
 
@@ -9,7 +9,7 @@ import Default from './Default'
 import Full from './Full'
 
 export default {
-    props: [ 'item', 'isEditing' ],
+    props: [ 'item' ],
     computed: {
         component(){
             switch(this.item.template){

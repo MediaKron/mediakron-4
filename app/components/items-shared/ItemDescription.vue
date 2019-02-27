@@ -17,10 +17,10 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing'
         ])
     }
 }

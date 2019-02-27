@@ -1,5 +1,5 @@
 <template>
-    <div class="item-element-source"v-if="isEditing">
+    <div class="item-element-source" v-if="isEditing">
         <b-form-group class="floating-label">
             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>
             <label for="title">Title</label>
@@ -17,10 +17,10 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing'
         ])
     }
 }

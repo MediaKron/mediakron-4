@@ -24,6 +24,7 @@ const actions = {
       }
       dispatch('loadSites', options);
     },
+    
     /**
      * Load a list of sites
      * @param {*} param0
@@ -39,7 +40,6 @@ const actions = {
             commit("listLoaded");
           })
           .catch((error) => {
-            console.log(error);
             error.errorMessage = "There was an error loading the site list";
             return dispatch("listError", error);
           });

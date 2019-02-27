@@ -16,10 +16,10 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    props: [ 'isEditing' ],
     computed: {
         ...mapGetters('items', [
             'editItem',
+            'isEditing'
         ])
     }
 }
@@ -31,9 +31,9 @@ export default {
        font-weight: 500;
     }
     .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
 </style>

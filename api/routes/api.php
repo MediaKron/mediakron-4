@@ -70,6 +70,8 @@ Route::group([
     Route::post('/items/multiple', 'Api\ItemController@multiple');
     Route::resource('/item', 'Api\ItemController');
 
+    Route::get('/upload/{type}', 'UploadController@upload');
+
     Route::get('/users', 'Api\SiteController@users');
 
     // Relationship api

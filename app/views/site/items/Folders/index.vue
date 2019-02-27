@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="component" :item="item" :isEditing="isEditing"/>
+        <component :is="component" :item="item" />
     </div>
 </template>
 
@@ -8,11 +8,11 @@
 import Default from './Default'
 
 export default {
-    props: [ 'item', 'isEditing' ],
+    props: [ 'item' ],
     computed: {
         component(){
             return Default
-        },
+        }
     }
 }
 </script>
