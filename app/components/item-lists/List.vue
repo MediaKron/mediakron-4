@@ -3,7 +3,7 @@
         <article class="mb-4" v-for="(child, index) in children" :key="index">
             <b-media>
                 <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
-                <h2>{{ child.title }}</h2>
+                <h2><a :href="child.uri">{{ child.title }}</a></h2>
             </b-media>
         </article>
     </div>
@@ -19,9 +19,9 @@ export default {
     },
     computed: {
         children() {
-            return this.editItem.children
+            return this.first.children
         },
-        ...mapGetters('items', ['editItem'])
+        ...mapGetters('items', ['first'])
     }
 }
 </script>

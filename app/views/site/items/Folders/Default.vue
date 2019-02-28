@@ -1,13 +1,18 @@
 <template>
-    <article class="container">
-        <ItemTitle></ItemTitle>
-        <ItemCaption></ItemCaption>
-        <List></List>
-        <ItemDescription></ItemDescription>
-    </article>
+    <div>
+        <ContextSideBar></ContextSideBar>
+        <article class="container">
+            <ItemTitle></ItemTitle>
+            <ItemCaption></ItemCaption>
+            <List></List>
+            <ItemDescription></ItemDescription>
+        </article>
+    </div>
+    
 </template>
 
 <script>
+import ContextSideBar from '@/components/folders/ContextSideBar'
 import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
@@ -21,7 +26,8 @@ export default {
         ItemTitle,
         ItemDescription,
         ItemCaption,
-        List
+        List,
+        ContextSideBar
     },
     data() {
         return {
