@@ -3,7 +3,7 @@
         <article class="mb-4" v-for="(child, index) in children" :key="index">
             <b-media>
                 <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
-                <h2><a :href="child.uri">{{ child.title }}</a></h2>
+                <h2><a :href="first.uri + '/' + child.uri">{{ child.title }}</a></h2>
             </b-media>
         </article>
     </div>
