@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h2>In {{ second.title }}</h2>
-        <b-dropdown text="Other Contexts" class="m-md-2">
+        <h2>In <b-link :to=“second.uri”>{{ second.title }}</b-link></h2>
+        <b-dropdown text="Contexts" variant="link" class="m-md-2" toggle-class="uppercase">
             <b-dropdown-item 
                 v-for="(parent, index) in this.first.parents" 
                 :key="index"
