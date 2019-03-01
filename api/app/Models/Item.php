@@ -38,7 +38,19 @@ class Item extends BaseModel
         'id',
         'caption',
         'title',
-        'description'
+        'description',
+        'updated_at',
+        'created_at'
+    ];
+    static $default_sort = 'updated_at';
+    static $sortable = [
+        'created_at',
+        'updated_at'
+    ];
+    static $default_direction = 'DESC';
+    static $directions = [
+        'ASC',
+        'DESC'
     ];
 
     /**
