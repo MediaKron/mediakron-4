@@ -1,6 +1,14 @@
 <template>
     <div>
         <h2>In {{ second.title }}</h2>
+        <b-dropdown text="Other Contexts" class="m-md-2">
+            <b-dropdown-item 
+                v-for="(parent, index) in this.first.parents" 
+                :key="index"
+                :href="parent.uri">
+                {{ parent.title }}
+            </b-dropdown-item>
+        </b-dropdown>
         <b-list-group>
             <b-list-group-item 
                 v-for="(child, index) in parentChildren" 
