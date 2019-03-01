@@ -21,10 +21,12 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($site)
+    public function index($site, Request $request)
     {
         //
-        return Item::with(Item::$select_with)->where('site_id', $site)->paginate(50);
+        $query = Item::listQuery()->with(Item::$select_with)
+            ->where('site_id', $site);
+        return $query->paginate(request('per_page', 50));
     }
 
     /**
