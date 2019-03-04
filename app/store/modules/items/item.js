@@ -1,13 +1,40 @@
 import Model from "@/store/utils/model";
 class Item extends Model {
     
+    /**
+     * 
+     * @param {*} data 
+     * @param {*} site 
+     */
     constructor(data, site) {
         super(data)
         this.site = site
     }
 
+    /**
+     * Get the url to this item
+     * @return string
+     */
     url(){
         return '/' + this.site.uri + '/' + this.uri;
+    }
+
+    /**
+     * Defining allowed types of uploadable files
+     * @return string
+     */
+    allowedTypes(){
+        switch(this.type){
+            case 'text':
+            case 'file':
+                return '.pdf, .xls, .xlsx, .txt, .ppt, .pptx, .doc, .docx, .jpg, .png, .gif';
+            case 'video':
+                return '.wmv, .mp4, .m4v, .mov';
+            case 'audio':
+                return '.mp3, .m4a';
+            default:
+                return '.jpg, .png, .gif';
+        }
     }
     /* Render the default version of this topic */
     /*getView(template) {
