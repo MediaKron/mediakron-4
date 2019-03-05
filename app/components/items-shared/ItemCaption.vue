@@ -1,7 +1,7 @@
 <template>
      <div class="item-element-caption" v-if="isEditing">
          <b-form-group class="floating-label">
-            <b-form-textarea id="caption" v-model="editItem.caption"     placeholder="Add a caption"></b-form-textarea>
+            <b-form-textarea id="caption" v-model="editItem.caption" placeholder="Add a caption"></b-form-textarea>
             <label for="caption">Caption</label>
         </b-form-group>
     </div>

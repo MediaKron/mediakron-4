@@ -90,8 +90,8 @@ export const mutations = {
     itemLoad(state, data){
         console.log('loading items')
         state.first = new Item(data[0], state.site);
-        if(data[1]) state.second = new Item(data[1], site);
-        if(data[2]) state.third = new Item(data[2], site);
+        if(data[1]) state.second = new Item(data[1], state.site);
+        if(data[2]) state.third = new Item(data[2], state.site);
     },
 
     /**

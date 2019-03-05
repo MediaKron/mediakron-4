@@ -3,15 +3,19 @@
         v-if="isEditing"
         label="Replace Image"
         label-for="fileUpload">
+        <h5>Current Image</h5>
+        <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
         <b-form-file
+            v-hide
             v-model="editItem.newImage"
             :state="Boolean(editItem.newImage)"
             placeholder="Choose a file..."
             drop-placeholder="Drop file here..."
-            accept=".jpg, .png, .gif"/>
+            :accept="first.allowedTypes()"/>
+        <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
     <div v-else>
-        <h5>Image File</h5>
+        <h5>Image File1</h5>
         <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
     </div>
 </template>
@@ -31,8 +35,13 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first'
-        ])
+            'currentItem',
+            'first',
+            'isUploading',
+            'isUploaded',
+
+        ]),
+
     }
 }
 </script>

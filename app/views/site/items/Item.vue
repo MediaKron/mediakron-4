@@ -29,7 +29,7 @@ export default {
     
     mounted(){
         // go fetch the items
-        this.itemsRouteLoad({ first: this.firstUri })
+        this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri })
     },
     computed: {
         ...mapGetters("items", [
