@@ -13,6 +13,7 @@ import {
     faChevronUp,
     faCog,
     faCogs, /* Manage */
+    faEdit,
     faEllipsisV,
     faExpandArrowsAlt,
     faHome, /* Home */
@@ -58,6 +59,7 @@ export default function initializeIcons(){
         faChevronUp,
         faCog, 
         faCogs, /* Manage */
+        faEdit,
         faEllipsisV,
         faExpandArrowsAlt,
         faHome, /* Home */

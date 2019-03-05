@@ -33,24 +33,67 @@ class BaseModel extends Model
     public $addToArray = [];
 
     static $filterable = [];
-    static $sortable = [];
+    static $default_sort = 'updated_at';
+    static $sortable = [
+        'created_at',
+        'updated_at'
+    ];
+    static $default_direction = 'DESC';
+    static $directions = [
+        'ASC',
+        'DESC'
+    ];
     static $per_page = 10;
 
+    /**
+     * Build a basic list query with filerable and sortable arrays
+     *
+     * @param boolean $query
+     * @return \Illuminate\Database\Query\Builder
+     */
     static function listQuery($query = false){
         if(!$query) $query = static::query();
         // Get an array of possible filters
         $filters = request(static::$filterable, []); 
-        // fetch a string of the column to sort on, assuming created_at if not specified
-        $sort = request('sort', 'created_at');
-        // Get the sort direction, assume ASC unless provided
-        $direction = request('direction', 'ASC');
-
+        //Filter by everything we can filter by
         foreach($filters as $key => $filter){
-            $query->where($key, $filter);
+            if(in_array($key, static::$filterable) && !empty($filter)){
+                $query->where($key, $filter);
+            }
         }
+
+        // fetch a string of the column to sort on, assuming created_at if not specified
+        $sort = static::allowedSort(request('sort', static::$default_sort));
+        // Get the sort direction, assume ASC unless provided
+        $direction = static::allowedDirection(request('direction', static::$default_direction));
 
         $query->orderBy($sort, $direction);
         return $query;
+    }
+
+    /**
+     * Given a sort string, validate that we can sort on it,
+     * or return the default
+     *
+     * @param string $sort
+     * @return string
+     */
+    static function allowedSort($sort){
+        if(in_array($sort, static::$sortable)) return $sort;
+        return static::$default_sort;
+    }
+
+
+    /**
+     * Given a sort string, validate that we can sort on it,
+     * or return the default
+     *
+     * @param string $sort
+     * @return string
+     */
+    static function allowedDirection($direction){
+        if(in_array($direction, static::$directions)) return $direction;
+        return static::$default_direction;
     }
 
 

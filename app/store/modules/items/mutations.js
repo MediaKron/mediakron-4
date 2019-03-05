@@ -75,6 +75,7 @@ export const mutations = {
      * @param {*} state
      */
     itemLoaded(state){
+        console.log('items loaded')
         state.itemIsLoading = false;
         state.itemIsLoaded = true;
         state.itemIsFailed = false;
@@ -82,12 +83,15 @@ export const mutations = {
 
     /**
      * Called with the data to load as the current list
+     * 
+     * TODO: This will need to handle single item and multiple items.  Right now it doesn't handle the single case well
      * @param {*} state
      */
     itemLoad(state, data){
+        console.log('loading items')
         state.first = new Item(data[0], state.site);
-        if(data[1]) state.second = new Item(data[1], site);
-        if(data[2]) state.third = new Item(data[2], site);
+        if(data[1]) state.second = new Item(data[1], state.site);
+        if(data[2]) state.third = new Item(data[2], state.site);
     },
 
     /**
@@ -117,6 +121,7 @@ export const mutations = {
         state.siteIsSaving = false;
         state.siteIsSaved = true;
         state.siteSaveFailed = false;
+        state.isEditing = false;
     },
 
     siteUpdateFailed(state, error){
@@ -124,6 +129,16 @@ export const mutations = {
         state.siteIsSaved = false;
         state.siteSaveFailed = true;
 
+    },
+
+    editItemSet(state, item) {
+        state.isEditing = true;
+        state.editItem = Object.assign({}, item)
+    },
+
+    editCancel(state, item) {
+        state.isEditing = false;
+        state.editItem = {}
     }
 
 }

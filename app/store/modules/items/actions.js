@@ -114,7 +114,7 @@ const actions = {
      * @param {*} id
      */
     update({ commit, state }, item) {
-        if(JSON.stringify(site) !== JSON.stringify(state.editSite)){
+        if(JSON.stringify(item) !== JSON.stringify(state.editItem)){
             commit('updateItem', item);
         }
     },
@@ -126,16 +126,37 @@ const actions = {
      */
     saveItem({ commit, state }) {
         commit("itemSaving");
-        return api.post('item/' + state.currentItem.id, state.editItem)
-                .then((response) => {
-                commit("itemUpdate", response.data);
+        console.log(state.editItem.id)
+        return api.put('item/' + state.editItem.id, state.editItem).then((response) => {
+            console.log(response)
+            commit("updateItem", response.data);
             commit("itemUpdated");
         })
         .catch((error) => {
-                error.errorMessage = "There was an error saving the item";
+            error.errorMessage = "There was an error saving the item";
             return dispatch("itemUpdateFailed", error);
         });
     },
+
+
+    /**
+     * Set editSite safe copy in state
+     * @param {*} param0
+     * @param {*} item
+     */
+    setEditItem({ commit, state }, item) {
+        commit('editItemSet', item)
+    },
+
+    /**
+     * Discard Edits
+     * @param {*} param0
+     * @param {*} item
+     */
+    discardEdits({ commit, state }) {
+        commit('discardEdit')
+    }
+
     
 }
 export default actions;

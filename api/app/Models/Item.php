@@ -34,6 +34,25 @@ class Item extends BaseModel
         'thumbnail'
     ];
 
+    protected $fillable = [
+        'id',
+        'caption',
+        'title',
+        'description',
+        'updated_at',
+        'created_at'
+    ];
+    static $default_sort = 'updated_at';
+    static $sortable = [
+        'created_at',
+        'updated_at'
+    ];
+    static $default_direction = 'DESC';
+    static $directions = [
+        'ASC',
+        'DESC'
+    ];
+
     /**
      * The "booting" method of the model.
      *

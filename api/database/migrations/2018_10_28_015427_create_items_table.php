@@ -34,10 +34,10 @@ class CreateItemsTable extends Migration
             $table->string('title')->length(1001);
 
             // Long text fields
-            $table->longtext('description');
-            $table->longtext('transcript');
+            $table->longtext('description')->nullable();
+            $table->longtext('transcript')->nullable();
             $table->longtext('body')->nullable();
-            $table->longtext('caption');
+            $table->longtext('caption')->nullable();
             $table->longtext('options');
             $table->longtext('overlay')->nullable();
 

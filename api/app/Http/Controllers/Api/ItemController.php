@@ -21,10 +21,12 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($site)
+    public function index($site, Request $request)
     {
         //
-        return Item::with(Item::$select_with)->where('site_id', $site)->paginate(50);
+        $query = Item::listQuery()->with(Item::$select_with)
+            ->where('site_id', $site);
+        return $query->paginate(request('per_page', 50));
     }
 
     /**
@@ -118,13 +120,13 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($site_id, $id, Request $request)
+    public function update($id, Request $request)
     {
-        //
         try{
             $item = Item::findOrFail($id);
             // Check edit permissions
-            $item->canEdit()->hydrate($request);
+            $item->fill($request->input());
+            $item->update();
             return $item;
         }catch(\Exception $e){
             // 
