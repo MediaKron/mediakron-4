@@ -1,18 +1,20 @@
 <template>
     <div class="settings-layout pt-4">
         <UtilityNav></UtilityNav> 
-        <div id="site-settings" class="layout-sidebar-left mt-5 container">  
-            <div class="row">
-                <div class="sidebar-left col-md-4" >
-                        <OptionsNav inSettings></OptionsNav> 
+        <div class="w-full max-w-xl mx-auto px-6 mt-16 ">
+            <div class="flex">
+                <div id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
+                    <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey-darkest border-solid mr-10 ">
+                        <OptionsNav inSettings class="sticky?lg:h-(screen-32) overflow-y-auto "></OptionsNav> 
+                    </div>
                 </div>
-                <main role="main" class="with-sidebar-left col-md-8" > 
-                    <b-nav class="mb-4 line-behind options-sectionnav">
+                <main role="main" id="content-wrapper" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg"> 
+                    <b-nav class="mb-4 options-sectionnav line-behind">
                         <b-nav-item :to="basePath + '/options/settings/general'">General</b-nav-item>
                         <b-nav-item :to="basePath + '/options/settings/canvas'">Canvas</b-nav-item>
                         <b-nav-item :to="basePath + '/options/settings/searchsettings'" >Search Settings</b-nav-item>
                     </b-nav>
-                     <router-view></router-view>
+                    <router-view></router-view>
                 </main>
             </div>
         </div>
