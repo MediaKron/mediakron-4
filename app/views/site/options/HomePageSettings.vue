@@ -1,16 +1,18 @@
 <template>
-       <div class="homepage-settings pt-4">
-        <UtilityNav></UtilityNav> 
-        <div id="appearance" class="layout-sidebar-left mt-5 container">  
-            <div class="row">
-                <div class="sidebar-left col-md-4" >
-                    <OptionsNav inHomepage></OptionsNav> 
+    <div class="homepage-settings pt-4">
+        <UtilityNav></UtilityNav>
+        <div class="w-full max-w-xl mx-auto px-6 mt-16 ">
+            <div class="flex">
+                <div id="sidebar" class="hidden min-w-64 max-w-xs lg:block ">
+                    <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey-darkest border-solid mr-10">
+                        <OptionsNav inSettings class="sticky?lg:h-(screen-32) overflow-y-auto "></OptionsNav> 
+                    </div>
                 </div>
-                <main role="main" class="with-sidebar-left col-md-8" > 
-                <header>
-                    <h1 class="line-behind heading-nudge-up mb-4"> Homepage Settings</h1>
-                </header>
-                    <b-form class="layout">
+                <main role="main" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg">
+                    <header>
+                        <h1 class="line-behind heading-nudge-up mb-4"> Homepage Settings</h1>
+                    </header>
+                    <b-form>
                         <h2>Introduction</h2>
                         <b-form-group label="Description" label-for="description">
                             <b-form-textarea id="description" :rows="3"></b-form-textarea>
@@ -30,15 +32,17 @@
                                         <div class="radio-description">
                                             <p class="font-weight-bold mb-0">Menu Banner</p>
                                             <p>Menus display as thumbnails</p>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </b-form-radio>
                                 <b-form-radio value="menu-half">
                                     <div>
                                         <img src="@/core-css/img/layout-icons/menu-half.png" alt="" class="radio-image">
                                         <div class="radio-description">
-                                            <p class="font-weight-bold mb-0">Half-page intro banner with thumbnail menus</p>
-                                            <p>Background image or solid theme color (if no image); Menu items included as thumbnails below</p>
+                                            <p class="font-weight-bold mb-0">Half-page intro banner with thumbnail
+                                                menus</p>
+                                            <p>Background image or solid theme color (if no image); Menu items included
+                                                as thumbnails below</p>
                                         </div>
                                     </div>
                                 </b-form-radio>
@@ -47,7 +51,8 @@
                                         <img src="@/core-css/img/layout-icons/homepage-centered.png" alt="" class="radio-image">
                                         <div class="radio-description">
                                             <p class="font-weight-bold mb-0">Centered</p>
-                                            <p>Centered layout with subtitle at the top, followed by an image, if present, and then a description.</p>
+                                            <p>Centered layout with subtitle at the top, followed by an image, if
+                                                present, and then a description.</p>
                                         </div>
                                     </div>
                                 </b-form-radio>
@@ -55,8 +60,10 @@
                                     <div>
                                         <img src="@/core-css/img/layout-icons/homepage-full.png" alt="" class="radio-image">
                                         <div class="radio-description">
-                                            <p class="font-weight-bold mb-0">Full-page Banner with background image/theme color </p>
-                                            <p>Centered title and subtitle over background image. Site description displays below, if present.</p>
+                                            <p class="font-weight-bold mb-0">Full-page Banner with background
+                                                image/theme color </p>
+                                            <p>Centered title and subtitle over background image. Site description
+                                                displays below, if present.</p>
                                         </div>
                                     </div>
                                 </b-form-radio>
@@ -64,44 +71,47 @@
                                     <div>
                                         <img src="@/core-css/img/layout-icons/homepage-half.png" alt="" class="radio-image">
                                         <div class="radio-description">
-                                            <p class="font-weight-bold mb-0">Half-page Banner with background image/theme color </p>
-                                            <p>Centered title and subtitle over background image. Site description displays below, if present.</p>
+                                            <p class="font-weight-bold mb-0">Half-page Banner with background
+                                                image/theme color </p>
+                                            <p>Centered title and subtitle over background image. Site description
+                                                displays below, if present.</p>
                                         </div>
                                     </div>
                                 </b-form-radio>
-                                    <b-form-radio value="homepage-right">
-                                        <div>
-                                            <img src="@/core-css/img/layout-icons/homepage-right.png" alt="" class="radio-image">
-                                            <div class="radio-description">
-                                                <p class="font-weight-bold mb-0">Right</p>
-                                                <p>Image on right, subtitle/description on left.</p>
-                                            </div>
+                                <b-form-radio value="homepage-right">
+                                    <div>
+                                        <img src="@/core-css/img/layout-icons/homepage-right.png" alt="" class="radio-image">
+                                        <div class="radio-description">
+                                            <p class="font-weight-bold mb-0">Right</p>
+                                            <p>Image on right, subtitle/description on left.</p>
                                         </div>
-                                    </b-form-radio>
-                                    <b-form-radio value="homepage-left">
-                                        <div>
-                                            <img src="@/core-css/img/layout-icons/homepage-left.png" alt="" class="radio-image">
-                                            <div class="radio-description">
-                                                <p class="font-weight-bold mb-0">Left</p>
-                                                <p>Image on left, subtitle/description on right.</p>
-                                            </div>
+                                    </div>
+                                </b-form-radio>
+                                <b-form-radio value="homepage-left">
+                                    <div>
+                                        <img src="@/core-css/img/layout-icons/homepage-left.png" alt="" class="radio-image">
+                                        <div class="radio-description">
+                                            <p class="font-weight-bold mb-0">Left</p>
+                                            <p>Image on left, subtitle/description on right.</p>
                                         </div>
-                                    </b-form-radio>
-                                    <b-form-radio value="updates-basic">
-                                        <div>
-                                            <img src="@/core-css/img/layout-icons/homepage-centered.png" alt="" class="radio-image">
-                                            <div class="radio-description">
-                                                <p class="font-weight-bold mb-0">Updates Basic</p>
-                                                <p>List of new and updated content</p>
-                                            </div>
+                                    </div>
+                                </b-form-radio>
+                                <b-form-radio value="updates-basic">
+                                    <div>
+                                        <img src="@/core-css/img/layout-icons/homepage-centered.png" alt="" class="radio-image">
+                                        <div class="radio-description">
+                                            <p class="font-weight-bold mb-0">Updates Basic</p>
+                                            <p>List of new and updated content</p>
                                         </div>
-                                    </b-form-radio>
+                                    </div>
+                                </b-form-radio>
                                 <b-form-radio value="updates-half">
                                     <div>
                                         <img src="@/core-css/img/layout-icons/homepage-half.png" alt="" class="radio-image">
                                         <div class="radio-description">
                                             <p class="font-weight-bold mb-0">Half-page Banner with Updates </p>
-                                            <p>Background image or solid theme color (if no image); List of new and updated content below</p>
+                                            <p>Background image or solid theme color (if no image); List of new and
+                                                updated content below</p>
                                         </div>
                                     </div>
                                 </b-form-radio>
@@ -110,7 +120,8 @@
                                         <img src="@/core-css/img/layout-icons/homepage-full.png" alt="" class="radio-image">
                                         <div class="radio-description">
                                             <p class="font-weight-bold mb-0">Full-page Banner with Updates</p>
-                                            <p>Background image or solid theme color (if no image); List of new and updated content below</p>
+                                            <p>Background image or solid theme color (if no image); List of new and
+                                                updated content below</p>
                                         </div>
                                     </div>
                                 </b-form-radio>
@@ -119,7 +130,8 @@
                                         <img src="@/core-css/img/layout-icons/homepage-none.png" alt="" class="radio-image">
                                         <div class="radio-description">
                                             <p class="font-weight-bold mb-0">No introduction</p>
-                                            <p>Choose this if you plan to use only a content item as the home page (see below).</p>
+                                            <p>Choose this if you plan to use only a content item as the home page (see
+                                                below).</p>
                                         </div>
                                     </div>
                                 </b-form-radio>
@@ -127,54 +139,55 @@
                         </b-form-group>
                         <h2>Home Page Content</h2>
                         <b-button variant="primary">Choose Content</b-button>
+
+                                <OptionsSavebar></OptionsSavebar>
                     </b-form>
 
                 </main>
             </div>
         </div>
-        <OptionsSavebar></OptionsSavebar>
+
     </div>
 </template>
 
 <script>
-import UtilityNav from "./../navigation/UtilityNav";
-import OptionsNav from "./../navigation/OptionsNav";
-import OptionsSavebar from '@/components/forms/OptionsSavebar';
-export default {
-    components: {
-        UtilityNav,
-        OptionsNav,
-        OptionsSavebar
-    },
-    data() {
-        return {
-            selected: 'menu-banner'
+    import UtilityNav from "./../navigation/UtilityNav";
+    import OptionsNav from "./../navigation/OptionsNav";
+    import OptionsSavebar from '@/components/forms/OptionsSavebar';
+    export default {
+        components: {
+            UtilityNav,
+            OptionsNav,
+            OptionsSavebar
+        },
+        data() {
+            return {
+                selected: 'menu-banner'
+            }
         }
-    }
-};
+    };
 </script>
 
 <style>
+    .layout {
+        width: 1000px;
 
-.layout{
-   width:1000px;
+    }
 
-}
-b-form-radio {
-    margin-top:1.4em;
-}
+    b-form-radio {
+        margin-top: 1.4em;
+    }
 
-.radio-image {
-    display: inline-block;
-    float: left;
-}
+    .radio-image {
+        display: inline-block;
+        float: left;
+    }
 
-.radio-description {
-    display: inline-block;
-    float: right;
-    padding: 0px 50px 0px 15px;
-    width:600px;
+    .radio-description {
+        display: inline-block;
+        float: right;
+        padding: 0px 50px 0px 15px;
+        width: 600px;
 
-}
-
+    }
 </style>

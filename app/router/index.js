@@ -2,19 +2,20 @@ import SiteLayout from "@/views/site/SiteLayout";
 import SettingsLayout from "@/views/site/options/settings/SettingsLayout";
 import PeopleLayout from "@/views/site/options/people/PeopleLayout";
 import HomePage from "@/views/site/homepage/Homepage";
-import Item from "@/views/site/items/Item";
-import ContentLayout from "@/views/site/content/ContentLayout";
+import ItemPage from "@/views/site/items/Item";
+import Content from "@/views/site/content/Content";
 import SiteOptions from "@/views/site/options/SiteOptions";
 import MenusLayout from "@/views/site/options/menus/MenusLayout";
 import Appearance from "@/views/site/options/Appearance";
 import HomePageSettings from "@/views/site/options/HomePageSettings";
 import Profile from "@/views/site/options/Profile";
 import Help from "@/views/help/help";
+import Search from "@/views/site/search/Search";
+import Tags from "@/views/site/tags/Tags";
 
 import settings from "./settings";
 import people from "./people";
 import menus from "./menus";
-import content from "./content";
 
 var routes = {
   default: {
@@ -35,13 +36,24 @@ var routes = {
         title: "Help",
         props: true
       },
+      {
+        path: "search",
+        component: Search,
+        title: "Search",
+        props: true
+      },
+      {
+        path: "tags",
+        component: Tags,
+        title: "Tags",
+        props: true
+      },
 
       {
         path: "content",
-        component: ContentLayout,
+        component: Content,
         title: "Content",
-        props: true,
-        children: content
+        props: true
       },
 
       {
@@ -96,24 +108,11 @@ var routes = {
         props: true,
       },
       {
-        path: ":firstUri/:secondUri/:thirdUri",
-        name: "Item3",
-        component: Item,
+        path: ":first/:second?/:third?",
+        name: "item",
+        component: ItemPage,
         props: true
       },
-      {
-        path: ":firstUri/:secondUri",
-        name: "Item2",
-        component: Item,
-        props: true
-      },
-      {
-        path: ":firstUri",
-        name: "Item1",
-        component: Item,
-        props: true
-      },
-
       {
         path: "/",
         name: "homepage",
