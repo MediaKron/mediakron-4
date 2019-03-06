@@ -2,8 +2,8 @@
 <!-- import Loader from '@/components/Loader'; -->
 
 <template>
-    <div class="loader bg-light px-2 py-2 mb-3"> 
-        <span class="d-inline-block pl-3 font-weight-bold">Loading </span> 
+    <div class="loader py-2 mb-3"> 
+        <span class="d-inline-block font-weight-bold">Loading </span> 
         <span icon="dots" class="spinner-dark spinner spinner-dots">
             <svg viewBox="0 0 64 64"><g>
                 <circle cx="16" cy="32" stroke-width="0">

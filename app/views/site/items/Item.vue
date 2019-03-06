@@ -2,7 +2,7 @@
     <div>
         <Navigation></Navigation>
         <main>
-            <div v-if="itemIsLoading">Loading Item now</div>
+            <loader v-if="itemIsLoading"></loader>
             <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" />
         </main>
     </div>
@@ -16,7 +16,7 @@ import Videos from './Videos'
 import Folders from './Folders'
 import Navigation from '@/views/site/Navigation'
 import { circleMarker } from 'leaflet'
-
+import Loader from '@/components/Loader';
 export default {
     props:[
         'firstUri', 
@@ -24,7 +24,8 @@ export default {
         'thirdUri'
     ],
     components: {
-        Navigation
+        Navigation,
+        Loader
     },
     
     mounted(){
