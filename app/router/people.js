@@ -1,7 +1,7 @@
 
 import PeopleList from '@/views/site/options/people/PeopleList';
 import PeopleAdd from '@/views/site/options/people/PeopleAdd';
-import Groups from '@/views/site/options/people/Groups';
+import Groups from '@/views/site/options/people/PeopleGroups';
 
 export default [
       {
