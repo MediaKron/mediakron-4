@@ -6,7 +6,7 @@
         </b-form-group>
     </div>
     <div v-else>
-        <p>{{ first.caption }}</p>
+        <p v-html="first.caption"></p>
     </div>
 </template>
 
