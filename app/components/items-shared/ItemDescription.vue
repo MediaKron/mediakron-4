@@ -5,11 +5,9 @@
             <b-form-textarea id="description" v-model="editItem.description" placeholder="Add a description"></b-form-textarea>
              <label for="description">Description</label>
         </b-form-group>
-
-
     </div>
     <div v-else>
-        <p>{{ first.description }}</p>
+        <p v-html="first.description"></p>
     </div>
 </template>
 
