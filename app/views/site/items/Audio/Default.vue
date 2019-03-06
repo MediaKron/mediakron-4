@@ -1,39 +1,42 @@
 <template>
-  <article class="container">
+    <article class="container">
         <ItemTitle></ItemTitle>
         <ItemCaption></ItemCaption>
         <ItemDescription></ItemDescription>
-
-   </article>
+    </article>
 </template>
 
 <script>
 import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
-import { mapActions, mapGetters } from 'vuex'
+import ItemImage from '@/components/items-shared/Image'
+
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-    props: [ 'item', 'isEditing' ],
+    props: [ 'item' ],
     components: {
         ItemTitle,
         ItemDescription,
-        ItemCaption
+        ItemCaption,
+        ItemImage
     },
     created() {
+
     },
     computed: {
         ...mapGetters('items', [
-            'editItem'
+            'editItem',
+            'isEditing'
         ])
     },
     methods: {
         ...mapActions('items', [
-            'setEditItem'
+            'setEditItem',
         ])
-    }  
+    }
 }
-
 </script>
 
 <style>

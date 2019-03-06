@@ -17,7 +17,6 @@
 
 <script>
 import Default from './Default'
-import Full from './Full'
 import editable from '~/components/mixins/editable';
 import { mapGetters, mapActions } from 'vuex'
 export default {
@@ -30,8 +29,6 @@ export default {
     computed: {
         component(){
             switch(this.item.template){
-                case 'full':
-                    return Full;
                 default:
                     return Default;
             }

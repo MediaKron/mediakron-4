@@ -14,6 +14,10 @@ import { mapGetters, mapActions } from 'vuex'
 import Images from './Images'
 import Videos from './Videos'
 import Folders from './Folders'
+import Files from './Files'
+import Audio from './Audio'
+import Timelines from './Timelines'
+import Maps from './Maps'
 import Navigation from '@/views/site/Navigation'
 import { circleMarker } from 'leaflet'
 
@@ -48,6 +52,12 @@ export default {
                     return Videos
                 case 'folder':
                     return Folders
+                case 'file':
+                    return Files
+                case 'audio':
+                    return Audio
+                case 'timeline':
+                    return Timelines
             }
             
         },
