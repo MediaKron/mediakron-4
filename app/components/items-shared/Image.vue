@@ -16,12 +16,18 @@
     </b-form-group>
     <div v-else>
         <h5>Image File1</h5>
-        <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
+        <viewer :images="images">
+            <img :src="this.images[0]" >
+        </viewer>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+import Vue from 'vue'
+Vue.use(Viewer)
 
 export default {
     data() {
