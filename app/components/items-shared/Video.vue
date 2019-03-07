@@ -14,13 +14,13 @@
         <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
     <div v-else>
-        <h5>Video File1</h5>
         <vue-plyr>
-            <video poster="poster.png" src="video.mp4">
-                <source src="video-720p.mp4" type="video/mp4" size="720">
-                <source src="video-1080p.mp4" type="video/mp4" size="1080">
-                <track kind="captions" label="English" srclang="en" src="captions-en.vtt" default>
-            </video>
+           <div class="plyr__video-embed">
+                <iframe
+                src="https://www.youtube.com/embed/bTqVqk7FSmY?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
+                allowfullscreen allowtransparency allow="autoplay">
+                </iframe>
+            </div>
         </vue-plyr>
     </div>
 </template>
@@ -37,11 +37,6 @@
         mounted() {
             console.log(this.player)
         },
-        computed: {
-            player() {
-                return this.$refs.plyr.player
-            }
-        },
         data() {
             return {
 
@@ -49,6 +44,9 @@
             }
         },
         computed: {
+            player() {
+                return this.$refs.plyr.player
+            },
             ...mapGetters('items', [
                 'editItem',
                 'isEditing',
