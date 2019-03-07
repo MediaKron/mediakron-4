@@ -13,7 +13,7 @@
                 :accept="first.allowedTypes()"/>
         <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
-    <div v-else>
+    <div v-else class="audio-player">
         <vue-plyr>
             <audio crossorigin playsinline>
                 <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mp3">
@@ -60,5 +60,20 @@
 </script>
 
 <style>
+
+.audio-player .plyr--audio .plyr__controls{
+    background:#eee;
+    border-radius:.25rem;
+    border:1px solid #ccc;  
+}
+
+.audio-player .plyr--full-ui input[type="range"] {
+ color:#000;
+}
+
+.plyr--audio .plyr__control.plyr__tab-focus, .plyr--audio .plyr__control:hover, .plyr--audio .plyr__control[aria-expanded="true"] {
+    background: #000;
+    color: #fff;
+}
 
 </style>

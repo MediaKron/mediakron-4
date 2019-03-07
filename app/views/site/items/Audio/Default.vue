@@ -1,5 +1,5 @@
 <template>
-  <article class="container">
+  <article class="container max-w-lg mx-auto">
         <ItemTitle></ItemTitle>
         <ItemCaption></ItemCaption>
         <Audio></Audio>
