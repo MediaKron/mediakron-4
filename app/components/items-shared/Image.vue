@@ -15,9 +15,8 @@
         <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
     <div v-else>
-        <h5>Image File1</h5>
         <viewer :images="images">
-            <img :src="this.images[0]" >
+            <img class="image-frame invisible" :src="this.images[0]" >
         </viewer>
     </div>
 </template>
@@ -27,13 +26,36 @@ import { mapGetters } from 'vuex'
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import Vue from 'vue'
-Vue.use(Viewer)
-
+Vue.use(Viewer, {
+  defaultOptions: {
+   inline:true,
+   backdrop:false,
+   title:false,
+   navbar:false,
+   button:false,
+   toolbar: {
+    zoomIn: 4,
+    zoomOut: 4,
+    oneToOne: 4,
+    reset: 4,
+    prev: 0,
+    play: {
+      show: 4,
+      size: 'large',
+    },
+    next: 0,
+    rotateLeft: 4,
+    rotateRight: 4,
+    flipHorizontal: 0,
+    flipVertical: 0,
+  },
+  }
+})
 export default {
     data() {
         return {
             images: [
-                'https://picsum.photos/300?image=342',
+                'https://picsum.photos/1000/1000/?random',
             ],
         }
     },
@@ -53,5 +75,9 @@ export default {
 </script>
 
 <style>
+
+.image-frame {
+    max-height: calc(100vh - 10rem);
+}
 
 </style>
