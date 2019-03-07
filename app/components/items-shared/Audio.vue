@@ -1,9 +1,9 @@
 <template>
     <b-form-group
             v-if="isEditing"
-            label="Replace Video"
+            label="Replace Audio"
             label-for="fileUpload">
-        <h5>Current Video</h5>
+        <h5>Current Audio</h5>
         <b-form-file
                 v-hide
                 v-model="editItem.newImage"
@@ -13,14 +13,12 @@
                 :accept="first.allowedTypes()"/>
         <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
-    <div v-else>
+    <div v-else class="audio-player">
         <vue-plyr>
-           <div class="plyr__video-embed">
-                <iframe
-                src="https://www.youtube.com/embed/bTqVqk7FSmY?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
-                allowfullscreen allowtransparency allow="autoplay">
-                </iframe>
-            </div>
+            <audio crossorigin playsinline>
+                <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mp3">
+                <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.ogg" type="audio/ogg">
+            </audio>
         </vue-plyr>
     </div>
 </template>
@@ -33,7 +31,6 @@
     Vue.use(VuePlyr)
 
     export default {
-        name: 'Component',
         mounted() {
             console.log(this.player)
         },
@@ -44,7 +41,7 @@
             }
         },
         computed: {
-            player() {
+             player() {
                 return this.$refs.plyr.player
             },
             ...mapGetters('items', [
@@ -63,5 +60,20 @@
 </script>
 
 <style>
+
+.audio-player .plyr--audio .plyr__controls{
+    background:#eee;
+    border-radius:.25rem;
+    border:1px solid #ccc;  
+}
+
+.audio-player .plyr--full-ui input[type="range"] {
+ color:#000;
+}
+
+.plyr--audio .plyr__control.plyr__tab-focus, .plyr--audio .plyr__control:hover, .plyr--audio .plyr__control[aria-expanded="true"] {
+    background: #000;
+    color: #fff;
+}
 
 </style>

@@ -16,7 +16,7 @@ import ItemImage from '@/components/items-shared/Image'
 
 import { mapGetters, mapActions } from 'vuex'
 
-export default {
+export default { 
     props: [ 'item' ],
     components: {
         ItemTitle,
