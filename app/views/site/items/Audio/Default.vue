@@ -1,42 +1,42 @@
 <template>
-    <article class="container">
+  <article class="container">
         <ItemTitle></ItemTitle>
         <ItemCaption></ItemCaption>
+        <Audio></Audio>
         <ItemDescription></ItemDescription>
-    </article>
+
+   </article>
 </template>
 
 <script>
 import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
-import ItemImage from '@/components/items-shared/Image'
-
-import { mapGetters, mapActions } from 'vuex'
+import Audio from '@/components/items-shared/Audio'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-    props: [ 'item' ],
+    props: [ 'item', 'isEditing' ],
     components: {
         ItemTitle,
         ItemDescription,
         ItemCaption,
-        ItemImage
+        Audio
     },
     created() {
-
     },
     computed: {
         ...mapGetters('items', [
-            'editItem',
-            'isEditing'
+            'editItem'
         ])
     },
     methods: {
         ...mapActions('items', [
-            'setEditItem',
+            'setEditItem'
         ])
-    }
+    }  
 }
+
 </script>
 
 <style>
