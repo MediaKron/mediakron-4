@@ -139,6 +139,15 @@ export const mutations = {
     editCancel(state, item) {
         state.isEditing = false;
         state.editItem = {}
+    },
+
+    uploading(state, item) {
+        state.isEditing = false;
+        state.editItem = {}
+    },
+    uploaded(state, item) {
+        state.isEditing = false;
+        state.editItem = {}
     }
 
 }

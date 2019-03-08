@@ -11,7 +11,7 @@
                 placeholder="Choose a file..."
                 drop-placeholder="Drop file here..."
                 :accept="first.allowedTypes()"/>
-        <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
+        <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
     <div v-else>
         <vue-plyr>
@@ -39,8 +39,6 @@
         },
         data() {
             return {
-
-
             }
         },
         computed: {

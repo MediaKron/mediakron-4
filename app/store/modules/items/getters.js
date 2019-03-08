@@ -12,6 +12,9 @@ export const getters = {
     listIsError: state => state.listIsError,
     listIsEmpty: state => !(state.itemList && state.itemList.length > 0 && state.listIsLoading)? true : false,
 
+    isUploading: state => state.isUploading,
+    isUploaded: state => state.isUploaded,
+
     /**
      * Current
      */
