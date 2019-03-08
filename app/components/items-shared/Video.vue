@@ -14,24 +14,13 @@
         <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
     <div v-else>
-        <vue-plyr>
-           <div class="plyr__video-embed">
-                <iframe
-                src="https://www.youtube.com/embed/bTqVqk7FSmY?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
-                allowfullscreen allowtransparency allow="autoplay">
-                </iframe>
-            </div>
-        </vue-plyr>
+        <component :is="player"></component>
     </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex'
-    import VuePlyr from 'vue-plyr'
-    import 'vue-plyr/dist/vue-plyr.css' // only if your build system can import css, otherwise import it wherever you would import your css.
-    import Vue from 'vue'
-    Vue.use(VuePlyr)
-
+    import Youtube from '@/components/players/Youtube'
     export default {
         name: 'Component',
         mounted() {
@@ -42,8 +31,11 @@
             }
         },
         computed: {
-            player() {
-                return this.$refs.plyr.player
+            player(){
+                switch(this.first.video.type){
+                    case 'youtube':
+                        return Youtube
+                }
             },
             ...mapGetters('items', [
                 'editItem',
