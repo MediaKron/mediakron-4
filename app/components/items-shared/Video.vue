@@ -22,7 +22,6 @@
     import { mapGetters } from 'vuex'
     import Youtube from '@/components/players/Youtube'
     export default {
-        name: 'Component',
         mounted() {
             console.log(this.player)
         },
