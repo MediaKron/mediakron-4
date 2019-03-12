@@ -18,9 +18,9 @@ Vue.use(VuePlyr)
 export default {
     computed: {
         YoutubeUrl(){
-            var unsafeUrl = this.first.video.url;
+            //var unsafeUrl = this.first.video.url;
             // TODO: Sanitize this
-            /*
+
             var url = this.first.video.url;
             var youtube = '//www.youtube.com/embed/';
 
@@ -35,9 +35,9 @@ export default {
                     url = url.replace("&feature=youtu.be", '');
                     url = url.replace("&feature=plcp", '');
                     url = youtube + url;
-
-                    var start = this.timeToSeconds(video.start);
-                    var end = this.timeToSeconds(video.end);
+/*
+                    var start = this.first.timeToSeconds(video.start);
+                    var end = this.first.timeToSeconds(video.end);
 
                     if (start !== false) {
                         url = url + '?start=' + start;
@@ -47,8 +47,9 @@ export default {
                     } else {
                         return '';
                     }
-                    */
-                    return unsafeUrl;
+*/
+                    return url
+                }
         },
         player() {
             return this.$refs.plyr.player

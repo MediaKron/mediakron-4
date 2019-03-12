@@ -1,8 +1,10 @@
 <template>
     <vue-plyr>
-        <div class="plyr__video-embed">
-
-        </div>
+            <video poster="poster.png" src="">
+                <source :src="Mp4Url" type="video/mp4" size="720">
+                <source :src="Mp4Url" type="video/mp4" size="1080">
+                <track kind="captions" label="English" srclang="en" src="" default>
+            </video>
     </vue-plyr>
 </template>
 
@@ -15,34 +17,11 @@ Vue.use(VuePlyr)
 
 export default {
     computed: {
-        PanoptoUrl(){
-            var embed =''
+        Mp4Url(){
             var url = this.first.video.url;
             // TODO: Sanitize this
-            url = url.replace("http://", 'https://');
 
-            var start = this.timeToSeconds(video.start);
-            var end = this.timeToSeconds(video.end);
-
-            if (start !== false) { /* if video has start/stop timecodes  */
-                url = url.replace(".mp4", '');
-                url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
-                url = url + '.mp4';
-
-                url = url + '#t=' + start;
-                if (end !== false) url = url + ',' + end;
-
-                embed = '<video class="panopto-video" src="' + url + ' " controls>Sorry, you will need to update your browser to view this video. </video>'
-                return embed;
-            } else {
-
-                url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=');
-
-                embed = '<div class="panopto-container"><iframe src="' + url + '" width="100%" height="100%" style="padding: 0px; border: 1px solid #464646;" frameborder="0"></iframe></div>';
-                return embed;
-            }
-
-            return embed;
+            return url;
         },
         player() {
             return this.$refs.plyr.player
@@ -56,7 +35,9 @@ export default {
             'isUploaded',
 
         ]),
+
         methods: {
+            /*
             timeToSeconds: function (time) {
                 if (time) {
                     if (time !== '') {
@@ -84,6 +65,7 @@ export default {
                 }
                 return false;
             }
+         */
         },
     }
 }
