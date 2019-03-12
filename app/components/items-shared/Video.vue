@@ -2,29 +2,18 @@
     <div>
         <b-form-group 
             v-if="isEditing"
-            label="Video Source"
-            label-for="multiselect">
-            <vue-multiselect
-                    v-model="typeFormat"
-                    selected="selected"
-                    :options="typeOptions"
-                    class="mr-2 border border-dark rounded"
-                    track-by="value" label="text"
-                    placeholder="Choose Video Format:">
-            </vue-multiselect>
-        </b-form-group>
-        <b-form-group 
-            v-if="isEditing"
-            label="Video URL: "
+            label="Video URL: (YouTube, Vimeo, Google,"
             label-for="url">
-            <b-form-input id="url" v-model="editItem.video.url" type="text" placeholder="video url" />
+            <b-form-input id="url" v-model="editItem.video.url" type="text" placeholder="video url" @input="urlChanged" aria-describedby="inputFormatterHelp"/>
+            <b-form-text id="inputFormatterHelp" v-if="!isValidUrl">
+                Video url not recognized or not supported
+            </b-form-text>
         </b-form-group>
         <b-form-group
                 v-if="isEditing"
                 label="Video File"
                 label-for="fileUpload">
             <b-form-file
-                    v-hide
                     v-model="editItem.newImage"
                     :state="Boolean(editItem.newImage)"
                     placeholder="Choose a file..."
@@ -33,6 +22,7 @@
                     <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
         </b-form-group>
         <div v-else>
+            {{ first.video.type }}
             <component :is="player"></component>
         </div>
     </div>
@@ -48,7 +38,8 @@
         components: {VueMultiselect},
         name: 'Component',
         mounted() {
-
+            const type = this.first.video.type
+            this.typeFormat = { "value": type, "text": type.charAt(0).toUpperCase() + type.slice(1) }
         },
         data() {
             return {
@@ -59,6 +50,7 @@
                     {value:'panopto', text: 'Panopto'},
                     {value:'vimeo', text: 'Vimeo'},
                 ],
+                isValidUrl: true,
             }
         },
         computed: {
@@ -81,8 +73,23 @@
                 'isUploaded',
 
             ]),
+        },
+        methods: {
+            urlChanged() {
+                const url = this.editItem.video.url
+                this.isValidUrl = true
 
-
+                if (url.includes('https://www.youtube.com', 0)) {
+                    this.editItem.video.type = 'youtube'
+                    return Youtube
+                } else if (url.includes('https://www.vimeo.com', 0)) {
+                    this.editItem.video.type = 'vimeo'
+                    return 'asdf'
+                } else {
+                    this.isValidUrl = false
+                }
+                
+            }
         }
     }
 </script>
