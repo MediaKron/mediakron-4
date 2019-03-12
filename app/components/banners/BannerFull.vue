@@ -15,5 +15,11 @@ export default {
     .banner-full {
         height: 90vh;
     }
+
+    .banner-full input, label {
+        position:relative;
+        z-index:1; /* make sure fields are visible above darkening layer */
+    }
+
 </style>
 
