@@ -2,8 +2,7 @@
     <vue-plyr>
         <div class="plyr__video-embed">
             <iframe
-                :src="url"
-                allowfullscreen allowtransparency allow="autoplay">
+                allowfullscreen allowtransparency allow="autoplay" :src="YoutubeUrl">
             </iframe>
         </div>
     </vue-plyr>
@@ -18,10 +17,38 @@ Vue.use(VuePlyr)
 
 export default {
     computed: {
-        url(){
+        YoutubeUrl(){
             var unsafeUrl = this.first.video.url;
             // TODO: Sanitize this
-            return unsafeUrl;
+            /*
+            var url = this.first.video.url;
+            var youtube = '//www.youtube.com/embed/';
+
+                if (url) {
+                    url = url.replace("https://", '');
+                    url = url.replace("http://", '');
+                    url = url.replace("//", '');
+                    url = url.replace("www.", '');
+                    url = url.replace("youtu.be/", '');
+                    url = url.replace("youtube.com/embed/", '');
+                    url = url.replace("youtube.com/watch?v=", '');
+                    url = url.replace("&feature=youtu.be", '');
+                    url = url.replace("&feature=plcp", '');
+                    url = youtube + url;
+
+                    var start = this.timeToSeconds(video.start);
+                    var end = this.timeToSeconds(video.end);
+
+                    if (start !== false) {
+                        url = url + '?start=' + start;
+                        if (end !== false) url = url + '&end=' + end;
+                    }
+                    return url;
+                    } else {
+                        return '';
+                    }
+                    */
+                    return unsafeUrl;
         },
         player() {
             return this.$refs.plyr.player
