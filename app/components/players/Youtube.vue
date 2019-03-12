@@ -2,6 +2,7 @@
     <vue-plyr>
         <div class="plyr__video-embed">
             <iframe
+                :src="url"
                 allowfullscreen allowtransparency allow="autoplay">
             </iframe>
         </div>
