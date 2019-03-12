@@ -1,42 +1,40 @@
 <template>
     <div>
-    <b-form-group v-if="isEditing"
-                  label="Video Source"
-                  label-for="multiselect">
-        <vue-multiselect
-                v-model="typeFormat"
-                selected="selected"
-                :options="typeOptions"
-                class="mr-2 border border-dark rounded"
-                track-by="value" label="text"
-                placeholder="Choose Video Format:">
-        </vue-multiselect>
-        <b-label>Url</b-label>
-        <b-form-input v-model="editItem.url" type="text" placeholder="video url" />
-        <div class="mt-2">Current Url: {{ editItem.url }}</div>
-    </b-form-group>
-
-    <div v-else>
-        {{ this.first.video.type }}
-    </div>
-    <b-form-group
+        <b-form-group 
             v-if="isEditing"
-            label="Video File"
-            label-for="fileUpload">
-        <b-form-file
-                v-hide
-                v-model="editItem.newImage"
-                :state="Boolean(editItem.newImage)"
-                placeholder="Choose a file..."
-                drop-placeholder="Drop file here..."
-                :accept="first.allowedTypes()"/>
-
-                <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
-    </b-form-group>
-
+            label="Video Source"
+            label-for="multiselect">
+            <vue-multiselect
+                    v-model="typeFormat"
+                    selected="selected"
+                    :options="typeOptions"
+                    class="mr-2 border border-dark rounded"
+                    track-by="value" label="text"
+                    placeholder="Choose Video Format:">
+            </vue-multiselect>
+        </b-form-group>
+        <b-form-group 
+            v-if="isEditing"
+            label="Video URL: "
+            label-for="url">
+            <b-form-input id="url" v-model="editItem.video.url" type="text" placeholder="video url" />
+        </b-form-group>
+        <b-form-group
+                v-if="isEditing"
+                label="Video File"
+                label-for="fileUpload">
+            <b-form-file
+                    v-hide
+                    v-model="editItem.newImage"
+                    :state="Boolean(editItem.newImage)"
+                    placeholder="Choose a file..."
+                    drop-placeholder="Drop file here..."
+                    :accept="first.allowedTypes()"/>
+                    <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
+        </b-form-group>
         <div v-else>
-        <component :is="player"></component>
-    </div>
+            <component :is="player"></component>
+        </div>
     </div>
 
 </template>
@@ -50,7 +48,7 @@
         components: {VueMultiselect},
         name: 'Component',
         mounted() {
-            console.log(this.player)
+
         },
         data() {
             return {
