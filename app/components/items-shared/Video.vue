@@ -1,9 +1,28 @@
 <template>
+    <div>
+    <b-form-group v-if="isEditing"
+                  label="Video Source"
+                  label-for="multiselect">
+        <vue-multiselect
+                v-model="typeFormat"
+                selected="selected"
+                :options="typeOptions"
+                class="mr-2 border border-dark rounded"
+                track-by="value" label="text"
+                placeholder="Choose Video Format:">
+        </vue-multiselect>
+        <b-label>Url</b-label>
+        <b-form-input v-model="editItem.url" type="text" placeholder="video url" />
+        <div class="mt-2">Current Url: {{ editItem.url }}</div>
+    </b-form-group>
+
+    <div v-else>
+        {{ this.first.video.type }}
+    </div>
     <b-form-group
             v-if="isEditing"
-            label="Replace Video"
+            label="Video File"
             label-for="fileUpload">
-        <h5>Current Video</h5>
         <b-form-file
                 v-hide
                 v-model="editItem.newImage"
@@ -13,14 +32,13 @@
                 :accept="first.allowedTypes()"/>
 
                 <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
-
-        <vue-multiselect  v-model="typeFormat" :options="typeOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Choose Video Format:">
-        </vue-multiselect>
     </b-form-group>
 
         <div v-else>
         <component :is="player"></component>
     </div>
+    </div>
+
 </template>
 
 <script>
