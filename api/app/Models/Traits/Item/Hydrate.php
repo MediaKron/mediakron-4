@@ -8,14 +8,21 @@ use App\Models\Site;
 
 trait Hydrate
 {
-    /**
-     * Undocumented function
-     *
-     * @param [type] $request
-     * @return void
-     */
     public function buildItem($request){
-        $this->fill($request);
+        $this->fill($request->get([
+            'active',
+            'published',
+            'locked',
+            'type',
+            'template',
+            'title',
+            'description',
+            'transcript',
+            'body',
+            'caption',
+            'options',
+            'overlay'
+        ]));
     }
 
     /**

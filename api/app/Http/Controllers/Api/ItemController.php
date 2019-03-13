@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use App\Models\Site;
 use App\Models\User;
-use App\Http\Requests\Admin\ItemRequest; 
+use App\Http\Requests\Item as ItemRequest; 
 
 use Log;
 
@@ -46,7 +46,7 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($site_id, ItemRequest $request)
+    public function store($site_id, Request $request)
     {
         //
         try{
@@ -133,7 +133,7 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($site_id, $id, ItemRequest $request)
+    public function update($site_id, $id, Request $request)
     {
         try{
             // You can only create items in a site context, so find the site
