@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use App\Models\Site;
 use App\Models\User;
-use App\Http\Requests\Admin\ItemRequest; 
+use App\Http\Requests\Item as ItemRequest; 
 
 use Log;
 
@@ -46,17 +46,30 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($site_id, ItemRequest $request)
+    public function store($site_id, Request $request)
     {
         //
         try{
+            // You can only create items in a site context, so find the site
+            $site = Site::findOrFail($site_id);
+
+            // Create a new item
             $item = new Item();
+
             // Check edit permissions
-            $item->canCreate()->hydrate($request);
-            return $item;
+            $item->canCreate()
+                ->buildItem($request) // Hydrate the item from the request
+                //->setOwner()
+                //->setEditor()
+                ->setSite($site);
+            // TODO: Handle inbound relationship mapinog
+            // TODO: Handle metadata fields
+            // TODO: Handle audio, video, images and text fields
+            $item->save();
+            return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
-            Log::info('Access denied to user when creating item.' . $e->getMessage());
+            Log::info('Error when creating item. ' . $e->getMessage());
             return response()->json(['error' => $e->getMessage() ]);
         }
     }
@@ -97,7 +110,8 @@ class ItemController extends Controller
         }catch(\Exception $e){
             // 
             Log::info('Access denied to user when viewing item');
-            return response()->json(['error' => $e->getMessage() ]);
+            throw $e;
+            //return response()->json(['error' => $e->getMessage() ]);
         }
     }
 
@@ -120,18 +134,29 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update($site_id, $id, Request $request)
     {
         try{
+            // You can only create items in a site context, so find the site
+            $site = Site::findOrFail($site_id);
+
+            // Create a new item
             $item = Item::findOrFail($id);
-            // Check edit permissions
-            $item->fill($request->input());
-            $item->update();
-            return $item;
+            $item->canUpdate()
+                ->buildItem($request) // Hydrate the item from the request
+                //->setOwner()
+                //->setEditor()
+                ->setSite($site);
+            // TODO: Handle inbound relationship mapinog
+            // TODO: Handle metadata fields
+            // TODO: Handle audio, video, images and text fields
+            $item->save();
+            return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
             Log::info('Access denied to user when editing item');
-            return response()->json(['error' => $e->getMessage() ]);
+            throw $e;
+            //return response()->json(['error' => $e->getTraceAsString() ]);
         }
         
     }
