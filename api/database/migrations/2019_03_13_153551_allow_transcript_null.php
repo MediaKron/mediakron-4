@@ -16,6 +16,7 @@ class AllowTranscriptNull extends Migration
         //
         Schema::table('items', function ($table) {
             $table->text('transcript')->change()->nullable();
+            $table->text('caption')->change()->nullable();
         });
     }
 

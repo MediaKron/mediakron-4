@@ -66,7 +66,7 @@ class ItemController extends Controller
             // TODO: Handle metadata fields
             // TODO: Handle audio, video, images and text fields
             $item->save();
-            return $item;
+            return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
             Log::info('Error when creating item. ' . $e->getMessage());
@@ -151,6 +151,7 @@ class ItemController extends Controller
             // TODO: Handle metadata fields
             // TODO: Handle audio, video, images and text fields
             $item->save();
+            return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
             Log::info('Access denied to user when editing item');
