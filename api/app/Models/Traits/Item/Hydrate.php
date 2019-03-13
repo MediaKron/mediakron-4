@@ -9,7 +9,7 @@ use App\Models\Site;
 trait Hydrate
 {
     public function buildItem($request){
-        $this->fill($request->get([
+        $this->fill(request([
             'active',
             'published',
             'locked',
@@ -23,6 +23,7 @@ trait Hydrate
             'options',
             'overlay'
         ]));
+        return $this;
     }
 
     /**

@@ -110,7 +110,8 @@ class ItemController extends Controller
         }catch(\Exception $e){
             // 
             Log::info('Access denied to user when viewing item');
-            return response()->json(['error' => $e->getMessage() ]);
+            throw $e;
+            //return response()->json(['error' => $e->getMessage() ]);
         }
     }
 
@@ -153,7 +154,8 @@ class ItemController extends Controller
         }catch(\Exception $e){
             // 
             Log::info('Access denied to user when editing item');
-            return response()->json(['error' => $e->getMessage() ]);
+            throw $e;
+            //return response()->json(['error' => $e->getTraceAsString() ]);
         }
         
     }

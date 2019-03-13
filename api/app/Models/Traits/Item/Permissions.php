@@ -21,7 +21,7 @@ trait Permissions
      *
      * @return Model
      */
-    public function canEdit(){
+    public function canUpdate(){
         // TODO: Define can edit actions
         return $this;
     }
