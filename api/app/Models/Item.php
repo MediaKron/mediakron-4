@@ -14,7 +14,9 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Item extends BaseModel
 {
-    use \App\Models\Traits\Item\Import;
+    use \App\Models\Traits\Item\Import,
+        \App\Models\Traits\Item\Permissions,
+        \App\Models\Traits\Item\Hydrate;
 
     static $select_with = [
         'metadata', 
@@ -35,13 +37,20 @@ class Item extends BaseModel
     ];
 
     protected $fillable = [
-        'id',
-        'caption',
+        'active',
+        'published',
+        'locked',
+        'type',
+        'template',
         'title',
         'description',
-        'updated_at',
-        'created_at'
+        'transcript',
+        'body',
+        'caption',
+        'options',
+        'overlay'
     ];
+
     static $default_sort = 'updated_at';
     static $sortable = [
         'created_at',
