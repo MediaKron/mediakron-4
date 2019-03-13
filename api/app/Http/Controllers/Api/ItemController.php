@@ -59,8 +59,8 @@ class ItemController extends Controller
             // Check edit permissions
             $item->canCreate()
                 ->buildItem($request) // Hydrate the item from the request
-                ->setOwner()
-                ->setEditor()
+                //->setOwner()
+                //->setEditor()
                 ->setSite($site);
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields
@@ -144,8 +144,8 @@ class ItemController extends Controller
             $item = Item::findOrFail($id);
             $item->canUpdate()
                 ->buildItem($request) // Hydrate the item from the request
-                ->setOwner()
-                ->setEditor()
+                //->setOwner()
+                //->setEditor()
                 ->setSite($site);
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields
