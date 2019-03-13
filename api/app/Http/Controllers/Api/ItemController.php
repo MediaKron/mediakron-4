@@ -58,7 +58,7 @@ class ItemController extends Controller
 
             // Check edit permissions
             $item->canCreate()
-                ->hydrate($request) // Hydrate the item from the request
+                ->buildItem($request) // Hydrate the item from the request
                 ->setOwner()
                 ->setEditor()
                 ->setSite($site);
@@ -133,7 +133,7 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($site_id, $id, Request $request)
+    public function update($site_id, $id, ItemRequest $request)
     {
         try{
             // You can only create items in a site context, so find the site
@@ -142,7 +142,7 @@ class ItemController extends Controller
             // Create a new item
             $item = Item::findOrFail($id);
             $item->canUpdate()
-                ->hydrate($request) // Hydrate the item from the request
+                ->buildItem($request) // Hydrate the item from the request
                 ->setOwner()
                 ->setEditor()
                 ->setSite($site);
