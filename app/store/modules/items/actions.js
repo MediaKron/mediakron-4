@@ -124,11 +124,11 @@ const actions = {
      * @param {*} param0
      * @param {*} id
      */
-    saveItem({ commit, state }) {
+    saveItem({ commit, dispatch, state, getters, rootGetters }) {
         commit("itemSaving");
         var currentSite = rootGetters['sites/currentSite'],
-            url = currentSite.id + '/items';
-        if(state.editItem.id)  url = url + state.editItem.id;
+            url = currentSite.id + '/item';
+        if(state.editItem.id)  url = url + '/' + state.editItem.id;
         return api.put(url, state.editItem).then((response) => {
             console.log(response)
             commit("updateItem", response.data);
