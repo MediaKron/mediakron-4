@@ -2,7 +2,7 @@
     <div>
         <b-form-group 
             v-if="isEditing"
-            label="Video URL: (YouTube, Vimeo, Google,"
+            label="Video URL: (YouTube, Vimeo, Google, Panopto...)"
             label-for="url">
             <b-form-input id="url" v-model="editItem.video.url" type="text" placeholder="video url" @input="urlChanged" aria-describedby="inputFormatterHelp"/>
             <b-form-text id="inputFormatterHelp" v-if="!isValidUrl">
@@ -32,7 +32,9 @@
 <script>
     import { mapGetters } from 'vuex'
     import Youtube from '@/components/players/Youtube'
-    import Multiselect from 'vue-multiselect'
+    import GoogleVideo from '@/components/players/GoogleVideo'
+    import PanoptoVideo from '@/components/players/PanoptoVideo'
+    import Mp4 from '@/components/players/Mp4'
     import VueMultiselect from "../../../node_modules/vue-multiselect/src/Multiselect";
     export default {
         components: {VueMultiselect},
@@ -49,6 +51,7 @@
                     {value:'google', text: 'Google'},
                     {value:'panopto', text: 'Panopto'},
                     {value:'vimeo', text: 'Vimeo'},
+                    {value:'mp4', text: 'Mp4'}
                 ],
                 isValidUrl: true,
             }
@@ -59,9 +62,13 @@
                     case 'youtube':
                         return Youtube
                     case 'google':
-                        return Google
+                        return GoogleVideo
+                    case 'vimeo':
+                        return Vimeo
                     case 'panopto':
-                        return Panopto
+                        return PanoptoVideo
+                    case 'mp4':
+                        return Mp4
                 }
             },
             ...mapGetters('items', [
@@ -79,12 +86,24 @@
                 const url = this.editItem.video.url
                 this.isValidUrl = true
 
-                if (url.includes('https://www.youtube.com', 0)) {
+                if (url.includes('https://www.youtube.com')) {
                     this.editItem.video.type = 'youtube'
                     return Youtube
-                } else if (url.includes('https://www.vimeo.com', 0)) {
+                } else if (url.includes('https://www.vimeo.com')) {
                     this.editItem.video.type = 'vimeo'
-                    return 'asdf'
+                    return 'Vimeo'
+                } else if (url.includes('https://drive.google.com' || 'https://docs.google.com')) {
+                    this.editItem.video.type = 'google'
+                    return 'GoogleVideo'
+                } else if (url.includes('https://bc.hosted.panopto.com')) {
+                    this.editItem.video.type = 'panopto'
+                    return 'PanoptoVideo'
+                } else if (url.includes('/files/')) {
+                    if (url.includes('.mp4')){
+                        this.editItem.video.type = 'mp4'
+                        return 'Mp4'
+                    }
+
                 } else {
                     this.isValidUrl = false
                 }

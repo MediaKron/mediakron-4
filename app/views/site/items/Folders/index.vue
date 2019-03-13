@@ -16,14 +16,23 @@
 
 <script>
 import Default from './Default'
+import ListFull from './ListFull'
+import ListHalf from './ListHalf'
 import editable from '~/components/mixins/editable'
 export default {
     props: [ 'item' ],
     mixins: [ editable ],
     computed: {
         component(){
-            return Default
-        }
+            switch(this.item.template){
+                case 'list-full':
+                    return ListFull;
+                case 'list-half':
+                    return ListHalf;
+                default:
+                    return Default;
+                }
+            }
     }
 }
 </script>
