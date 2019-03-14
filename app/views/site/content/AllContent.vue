@@ -70,7 +70,8 @@ export default  Vue.extend({
         ...mapGetters('sites', [
             'siteIsLoading',
             'siteIsLoaded',
-            'basePath'
+            'basePath',
+            'currentSite'
         ]),
         ...mapGetters('items', [
             'listIsLoading',
@@ -107,7 +108,7 @@ export default  Vue.extend({
     },
     methods:{
         linkGen (pageNum) {
-            return '/' + currentSite + '/content/all/' + pageNum
+            return '/' + this.currentSite.url + '/content/all/' + pageNum
         },
         ...mapActions('items',[
             'routeLoad'
