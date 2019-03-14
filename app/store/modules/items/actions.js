@@ -120,17 +120,33 @@ const actions = {
     },
 
     /**
+     * Create an empty item
+     * @param {*} param0
+     * @param {*} id
+     */
+    create({ commit, state }, type) {
+        commit('createItem', type)
+    },
+
+    /**
      * Update an item
      * @param {*} param0
      * @param {*} id
      */
     saveItem({ commit, dispatch, state, getters, rootGetters }) {
         commit("itemSaving");
+        // Get the current site
         var currentSite = rootGetters['sites/currentSite'],
-            url = currentSite.id + '/item';
-        if(state.editItem.id)  url = url + '/' + state.editItem.id;
-        return api.put(url, state.editItem).then((response) => {
-            console.log(response)
+            // Set the normal item create url
+            url = currentSite.id + '/item',
+            action = 'post';
+
+        // If our item has an id, we're updating an existing item
+        if(state.editItem.id){
+            url = url + '/' + state.editItem.id;
+            action = 'put';
+        }  
+        return api[action](url, state.editItem).then((response) => {
             commit("updateItem", response.data);
             commit("itemUpdated");
         })

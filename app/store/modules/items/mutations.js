@@ -131,6 +131,19 @@ export const mutations = {
 
     },
 
+    /**
+     * Instantate an empty item for "editing"
+     */
+    createEmptyItem(state, type){
+        var item = new Item({
+            id: false,
+            uri: false,
+            type: type
+        }, state.site);
+        state.isEditing = true;
+        state.editItem = Object.assign({}, item)
+    },
+
     editItemSet(state, item) {
         state.isEditing = true;
         state.editItem = Object.assign({}, item)
