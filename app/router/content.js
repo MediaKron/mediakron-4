@@ -10,7 +10,7 @@ export default [
         props: true
     },
     {
-        path: "all",
+        path: "all/:page?",
         name: 'allcontent',
         component: AllContent,
         props: true
