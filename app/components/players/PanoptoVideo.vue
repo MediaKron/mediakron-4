@@ -24,9 +24,9 @@ export default {
             url = url.replace("http://", 'https://');
 
             var start = this.first.video.start
-            var end = this.first.video.end
+            var end = this.first.video.stop
 
-            if (start !== false) {
+            if (start !== null && start !== undefined) {
                 /* if video has start/stop timecodes  */
                 url = url.replace(".mp4", '');
                 url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
@@ -35,13 +35,10 @@ export default {
                 url = url + '#t=' + start;
                 if (end !== false) url = url + ',' + end;
 
-                //embed = '<video class="panopto-video" src="' + url + ' " controls>Sorry, you will need to update your browser to view this video. </video>'
                 return url;
             } else {
 
                 url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=');
-
-                //embed = '<div class="panopto-container"><iframe src="' + url + '" width="100%" height="100%" style="padding: 0px; border: 1px solid #464646;" frameborder="0"></iframe></div>';
                 return url;
             }
 
