@@ -97,7 +97,7 @@ class Item extends Model {
             },
 
             metadata: {
-                source: "",
+                source: "source",
                 citation: "",
                 description: "",
                 published: "",

@@ -102,7 +102,7 @@ export const mutations = {
 
     updateItem(state, data){
         state.editPending = true;
-        state.editItem = data;
+        state.first = new Item(data, state.site);
     },
 
     itemSaving(state){

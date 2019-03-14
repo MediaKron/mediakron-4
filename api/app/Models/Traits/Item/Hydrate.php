@@ -6,6 +6,7 @@ use Auth;
 use App\Models\Site;
 use Illuminate\Support\Str;
 use App\Models\Item;
+use App\Models\Attributes\Metadata;
 
 trait Hydrate
 {
@@ -50,6 +51,28 @@ trait Hydrate
             $i++;
         }
         $this->uri = $slug;
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function updateMetadata(){
+        //
+        if(!$this->metadata){
+            $metadata = new Metadata();
+        }else{
+            $metadata = $this->metadata;
+        }
+
+        $fill = request(['metadata']);
+
+        $metadata->fill($fill['metadata']);
+        $metadata->item_id = $this->id;
+        $metadata->save();
+        
         return $this;
     }
 

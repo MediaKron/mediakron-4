@@ -149,8 +149,6 @@ const actions = {
         return api[action](url, state.editItem).then((response) => {
             commit("updateItem", response.data);
             commit("itemUpdated");
-            console.log(response.data.uri);
-            console.log(action);
             if(action == 'post'){
                 router.push({ path: '/' + currentSite.uri + '/' + response.data.uri })
             }
