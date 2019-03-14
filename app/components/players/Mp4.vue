@@ -35,39 +35,38 @@ export default {
             'isUploaded',
 
         ]),
+    },
+    methods: {
+        /*
+        timeToSeconds: function (time) {
+            if (time) {
+                if (time !== '') {
+                    if (time.indexOf(':') > -1) {
+                        var split = time.split(':'),
+                            hour = 0,
+                            min = 0,
+                            sec = 0,
+                            timecode = 0;
 
-        methods: {
-            /*
-            timeToSeconds: function (time) {
-                if (time) {
-                    if (time !== '') {
-                        if (time.indexOf(':') > -1) {
-                            var split = time.split(':'),
-                                hour = 0,
-                                min = 0,
-                                sec = 0,
-                                timecode = 0;
-
-                            if (split.length == 3) {
-                                hour = parseInt(split[0], 10);
-                                min = parseInt(split[1], 10);
-                                sec = parseInt(split[2], 10);
-                            } else if (split.length == 2) {
-                                min = parseInt(split[0], 10);
-                                sec = parseInt(split[1], 10);
-                            }
-                            timecode = (hour * 60 * 60) + (min * 60) + sec;
-                            return timecode;
-                        } else {
-                            return parseInt(time, 10);
+                        if (split.length == 3) {
+                            hour = parseInt(split[0], 10);
+                            min = parseInt(split[1], 10);
+                            sec = parseInt(split[2], 10);
+                        } else if (split.length == 2) {
+                            min = parseInt(split[0], 10);
+                            sec = parseInt(split[1], 10);
                         }
+                        timecode = (hour * 60 * 60) + (min * 60) + sec;
+                        return timecode;
+                    } else {
+                        return parseInt(time, 10);
                     }
                 }
-                return false;
             }
-         */
-        },
-    }
+            return false;
+        }
+        */
+    },
 }
 </script>
 
