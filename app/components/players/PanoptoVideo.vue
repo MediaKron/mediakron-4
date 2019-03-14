@@ -1,9 +1,13 @@
 <template>
     <vue-plyr>
         <div class="plyr__video-embed">
-                <iframe
-                        allowfullscreen allowtransparency allow=“autoplay” :src="PanoptoUrl" width="100%" height="1000">
-                </iframe>
+                <b-embed
+                    allowfullscreen 
+                    allowtransparency 
+                    allow=“autoplay” 
+                    :src="PanoptoUrl" 
+                    >
+                </b-embed>
         </div>
     </vue-plyr>
 </template>
