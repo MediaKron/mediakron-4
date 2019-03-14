@@ -1,9 +1,13 @@
 <template>
     <vue-plyr>
         <div class="plyr__video-embed">
-                <iframe
-                        allowfullscreen allowtransparency allow=“autoplay” :src="PanoptoUrl" width="100%" height="1000">
-                </iframe>
+                <b-embed
+                    allowfullscreen 
+                    allowtransparency 
+                    allow=“autoplay” 
+                    :src="PanoptoUrl" 
+                    >
+                </b-embed>
         </div>
     </vue-plyr>
 </template>
@@ -23,28 +27,25 @@ export default {
             // TODO: Sanitize this
             url = url.replace("http://", 'https://');
 
-            //var start = this.timeToSeconds(video.start);
-            //var end = this.timeToSeconds(video.end);
+            var start = this.first.video.start
+            var end = this.first.video.stop
 
-           // if (start !== false) {
-//                /* if video has start/stop timecodes  */
-//                url = url.replace(".mp4", '');
-//                url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
-//                url = url + '.mp4';
-//
-//                url = url + '#t=' + start;
-//                if (end !== false) url = url + ',' + end;
-//
-//                embed = '<video class="panopto-video" src="' + url + ' " controls>Sorry, you will need to update your browser to view this video. </video>'
-//                return embed;
-//            } else {
-//
-//                url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=');
-//
-//                embed = '<div class="panopto-container"><iframe src="' + url + '" width="100%" height="100%" style="padding: 0px; border: 1px solid #464646;" frameborder="0"></iframe></div>';
-//                return embed;
-//            }
-//
+            if (start !== null && start !== undefined) {
+                /* if video has start/stop timecodes  */
+                url = url.replace(".mp4", '');
+                url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
+                url = url + '.mp4';
+
+                url = url + '#t=' + start;
+                if (end !== false) url = url + ',' + end;
+
+                return url;
+            } else {
+
+                url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=');
+                return url;
+            }
+
             return url;
         },
         player() {
@@ -61,7 +62,33 @@ export default {
         ]),
     },
     methods: {
-            
+        timeToSeconds: function(time) {
+            if (time) {
+                if (time !== '') {
+                    if (time.indexOf(':') > -1) {
+                        var split = time.split(':'),
+                            hour = 0,
+                            min = 0,
+                            sec = 0,
+                            timecode = 0;
+
+                        if (split.length == 3) {
+                            hour = parseInt(split[0], 10);
+                            min = parseInt(split[1], 10);
+                            sec = parseInt(split[2], 10);
+                        } else if (split.length == 2) {
+                            min = parseInt(split[0], 10);
+                            sec = parseInt(split[1], 10);
+                        }
+                        timecode = (hour * 60 * 60) + (min * 60) + sec;
+                        return timecode;
+                    } else {
+                        return parseInt(time, 10);
+                    }
+                }
+            }
+            return false;
+        },
     },
 }
 </script>

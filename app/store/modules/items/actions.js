@@ -85,7 +85,6 @@ const actions = {
             })
             .catch((error) => {
                 error.errorMessage = "There was an error loading the items list";
-                console.log(error);
                 return dispatch("listError", error);
             });
     },
@@ -124,7 +123,8 @@ const actions = {
      * @param {*} param0
      * @param {*} id
      */
-    create({ commit, state }, type) {
+    createItem({ commit, state }, type) {
+        commit("itemLoading");
         commit('createItem', type)
     },
 
@@ -149,9 +149,15 @@ const actions = {
         return api[action](url, state.editItem).then((response) => {
             commit("updateItem", response.data);
             commit("itemUpdated");
+            console.log(response.data.uri);
+            console.log(action);
+            if(action == 'post'){
+                router.push({ path: '/' + currentSite.uri + '/' + response.data.uri })
+            }
         })
         .catch((error) => {
             error.errorMessage = "There was an error saving the item";
+            console.log(error)
             return dispatch("itemUpdateFailed", error);
         });
     },

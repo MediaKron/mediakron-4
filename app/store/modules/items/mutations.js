@@ -75,7 +75,6 @@ export const mutations = {
      * @param {*} state
      */
     itemLoaded(state){
-        console.log('items loaded')
         state.itemIsLoading = false;
         state.itemIsLoaded = true;
         state.itemIsFailed = false;
@@ -88,7 +87,6 @@ export const mutations = {
      * @param {*} state
      */
     itemLoad(state, data){
-        console.log('loading items')
         state.first = new Item(data[0], state.site);
         if(data[1]) state.second = new Item(data[1], state.site);
         if(data[2]) state.third = new Item(data[2], state.site);
@@ -134,7 +132,7 @@ export const mutations = {
     /**
      * Instantate an empty item for "editing"
      */
-    createEmptyItem(state, type){
+    createItem(state, type){
         var item = new Item({
             id: false,
             uri: false,
@@ -142,8 +140,18 @@ export const mutations = {
         }, state.site);
         state.isEditing = true;
         state.editItem = Object.assign({}, item)
+        state.first = item;
+        state.itemIsLoading = false;
+        state.itemIsLoaded = true;
+        state.itemIsFailed = false;
     },
 
+    /**
+     * Given an item, set the edit state to that item
+     * and engage editing mode
+     * @param {*} state 
+     * @param {*} item 
+     */
     editItemSet(state, item) {
         state.isEditing = true;
         state.editItem = Object.assign({}, item)

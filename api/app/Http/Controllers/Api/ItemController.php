@@ -55,13 +55,15 @@ class ItemController extends Controller
 
             // Create a new item
             $item = new Item();
-
+            $item->version_id = 0;
             // Check edit permissions
             $item->canCreate()
                 ->buildItem($request) // Hydrate the item from the request
-                //->setOwner()
-                //->setEditor()
+                ->getUri()
+                ->setOwner()
+                ->setEditor()
                 ->setSite($site);
+                
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields
             // TODO: Handle audio, video, images and text fields
@@ -70,7 +72,7 @@ class ItemController extends Controller
         }catch(\Exception $e){
             // 
             Log::info('Error when creating item. ' . $e->getMessage());
-            return response()->json(['error' => $e->getMessage() ]);
+            throw $e;
         }
     }
 
@@ -144,8 +146,9 @@ class ItemController extends Controller
             $item = Item::findOrFail($id);
             $item->canUpdate()
                 ->buildItem($request) // Hydrate the item from the request
-                //->setOwner()
-                //->setEditor()
+                ->setOwner()
+                ->setEditor()
+
                 ->setSite($site);
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields
