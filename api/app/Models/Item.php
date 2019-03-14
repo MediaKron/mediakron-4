@@ -93,6 +93,26 @@ class Item extends BaseModel
     }
 
     /**
+     * Set options attribute
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function setOverlayAttribute($value){
+        $this->attributes['overlay'] = json_encode($value);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function getOverlayAttribute($value){
+        return json_decode($value);
+    }
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
