@@ -1,9 +1,8 @@
 <template>
     <div>
-        <Navigation></Navigation>
         <main>
             <loader v-if="itemIsLoading"></loader>
-            <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" />
+            <component class="mt-1" v-if="itemIsLoaded" :is="component" :item="first" />
         </main>
     </div>
 </template>
