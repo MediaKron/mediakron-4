@@ -4,6 +4,7 @@
         <ItemCaption></ItemCaption>
         <Audio></Audio>
         <ItemDescription></ItemDescription>
+        <ItemMetadata></ItemMetadata>
 
    </article>
 </template>
@@ -13,6 +14,7 @@ import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
 import Audio from '@/components/items-shared/Audio'
+import ItemMetadata from '@/components/items-shared/ItemMetadata'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -21,7 +23,8 @@ export default {
         ItemTitle,
         ItemDescription,
         ItemCaption,
-        Audio
+        Audio,
+        ItemMetadata
     },
     created() {
     },
