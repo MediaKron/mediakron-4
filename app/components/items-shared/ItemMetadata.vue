@@ -1,6 +1,6 @@
 <template>
     <div class="item-element-metadata" v-if="isEditing">
-        <b-button v-b-toggle.metadataCollapse class="mb-3">Add Metadata</b-button>
+        <b-button @click="isEditingMetadata=!isEditingMetadata" v-b-toggle.metadataCollapse class="mb-3"> {{ metadataButton }}</b-button>
         <b-collapse id="metadataCollapse" >
             <b-form-group class="">
                 <label for="source">Source</label>
@@ -91,12 +91,24 @@ import BCollapse from "bootstrap-vue/src/components/collapse/collapse";
 export default {
     components: {BCollapse},
     computed: {
+        metadataButton(){
+            if (this.isEditingMetadata) {
+                return 'Collapse Metadata'
+            }
+            return 'Edit Metadata'
+        },
         ...mapGetters('items', [
             'editItem',
             'isEditing',
             'first'
         ])
     },
+    data(){
+        return {
+            isEditingMetadata: false
+        }
+    },
+
     mounted(){
         console.log(this.metadata)
     }
