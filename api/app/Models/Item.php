@@ -26,6 +26,7 @@ class Item extends BaseModel
         'text', 
         'timeline', 
         'map', 
+        'tags',
         'children', 
         'children.child', 
         'parents', 
@@ -110,6 +111,16 @@ class Item extends BaseModel
      */
     public function getOverlayAttribute($value){
         return json_decode($value);
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Attributes\Tag');
     }
 
     /**

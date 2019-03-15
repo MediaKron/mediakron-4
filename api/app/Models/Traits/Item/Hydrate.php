@@ -7,6 +7,7 @@ use App\Models\Site;
 use Illuminate\Support\Str;
 use App\Models\Item;
 use App\Models\Attributes\Metadata;
+use App\Models\Attributes\Tag;
 
 trait Hydrate
 {
@@ -73,6 +74,35 @@ trait Hydrate
         $metadata->item_id = $this->id;
         $metadata->save();
         
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function addTags(){
+        //
+        $tags = request(['tags']);
+        $sync = [];
+        foreach($tags['tags'] as $tag){
+            $save = false;
+            if(isset($tag['id'])){
+                $save = Tag::find($tag['id']);
+            }
+            if(!$save && isset($tag['title'])){
+                // Try to find a matching tag by Title
+                $save = Tag::where('title', $tag['title'])->first();
+            }
+            if(!$save) $save = new Tag();
+            $save->title = $tag['title'];
+            $save->uri = Str::slug($tag['title']);
+            $save->site_id = 0;
+            $save->save();
+            $sync[] = $save->id;
+        }
+        $this->tags()->sync($sync);
         return $this;
     }
 

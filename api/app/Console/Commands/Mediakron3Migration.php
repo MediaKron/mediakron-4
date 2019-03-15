@@ -7,6 +7,7 @@ use DB;
 use App\Models\Site;
 use App\Models\User;
 use App\Models\Item;
+use App\Models\Attributes\Tag;
 use App\Models\Relationship;
 
 class Mediakron3Migration extends Command
@@ -62,7 +63,11 @@ class Mediakron3Migration extends Command
                 $items = DB::connection('mediakron_v3')->table($id)->get();
                 $new_items = [];
                 foreach($items as $item){
-                    $new_items[$item->uri] = Item::mediakron_v3($item, $site->id, $new_users);
+                    if($item->type == 'tag'){
+                        $tags[$item->uri] = Tag::mediakron_v3($item, $site->id, $new_users);
+                    }else{
+                        $new_items[$item->uri] = Item::mediakron_v3($item, $site->id, $new_users);
+                    }
                 }
 
                 // Fetch Relationships
@@ -70,22 +75,34 @@ class Mediakron3Migration extends Command
                     ->get();
 
                 foreach($relationships as $import){
-                    $relationship = new Relationship();
-                    if(!isset($new_items[$import->parent]) || !isset($new_items[$import->child])) continue;
-                    $relationship->parent_id = $new_items[$import->parent]->id;
-                    $relationship->child_id = $new_items[$import->child]->id;
-                    if(isset($new_items[$import->attachment])){
-                        $relationship->attachment_id = $new_items[$import->attachment]->id;
+                    if(isset($tags[$import->parent])){
+                        // The child here should have this tag
+                        $tag = $tags[$import->parent];
+                        $item = $new_items[$import->child];
+                        if($item) $item->tags()->attach($tag);
+                    }elseif(isset($tags[$import->child])){
+                        // The parent here should have this tag 
+                        $tag = $tags[$import->child];
+                        $item = $new_items[$import->parent];
+                        if($item) $item->tags()->attach($tag);
                     }else{
-                        $relationship->attachment_id = 0;
+                        $relationship = new Relationship();
+                        if(!isset($new_items[$import->parent]) || !isset($new_items[$import->child])) continue;
+                        $relationship->parent_id = $new_items[$import->parent]->id;
+                        $relationship->child_id = $new_items[$import->child]->id;
+                        if(isset($new_items[$import->attachment])){
+                            $relationship->attachment_id = $new_items[$import->attachment]->id;
+                        }else{
+                            $relationship->attachment_id = 0;
+                        }
+                        $relationship->site_id = $site->id;
+                        $relationship->active = $import->active;
+                        $relationship->type = $import->type;
+                        $relationship->weight = $import->weight;
+                        $relationship->user_id = (isset($new_users[$import->user_id])) ? $new_users[$import->user_id] : 0;
+                        $relationship->data = json_encode(unserialize($import->data));
+                        $relationship->save();
                     }
-                    $relationship->site_id = $site->id;
-                    $relationship->active = $import->active;
-                    $relationship->type = $import->type;
-                    $relationship->weight = $import->weight;
-                    $relationship->user_id = (isset($new_users[$import->user_id])) ? $new_users[$import->user_id] : 0;
-                    $relationship->data = json_encode(unserialize($import->data));
-                    $relationship->save();
                 }
             }
         }

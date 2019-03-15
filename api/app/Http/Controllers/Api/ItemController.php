@@ -68,7 +68,8 @@ class ItemController extends Controller
             // TODO: Handle metadata fields
             // TODO: Handle audio, video, images and text fields
             $item->save();
-            $item->updateMetadata();
+            $item->updateMetadata()
+                ->addTags();
             return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
@@ -150,7 +151,8 @@ class ItemController extends Controller
                 ->setOwner()
                 ->setEditor()
                 ->setSite($site)
-                ->updateMetadata();
+                ->updateMetadata()
+                ->addTags();
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields
             // TODO: Handle audio, video, images and text fields
