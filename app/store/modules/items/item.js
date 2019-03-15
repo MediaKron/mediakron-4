@@ -81,6 +81,7 @@ class Item extends Model {
                 end: '',
             },
             overlay: {},
+            tags: [],
             relationships: {
                 topics: [],
                 tags: [],
