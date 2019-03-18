@@ -17,13 +17,11 @@
 <script>
     import Vue from 'vue';
     import {
-        mapGetters
+        mapGetters, mapState
     } from 'vuex';
     export default Vue.extend({
         computed: {
-            basePath() {
-                return this.currentSite.uri;
-            },
+
             hasItems() {
                 return this.items.length > 0;
             },
@@ -31,15 +29,22 @@
                 console.log(this.currentSite.primary);
                 return this.currentSite.primary;
             },
+            ...mapState('sites', [
+            'currentSite'
+             ]),
             ...mapGetters('sites', [
                 'currentSite',
-                'siteIsLoaded'
+                'siteIsLoaded',
+                'basepath'
             ]),
             ...mapGetters('users/profile', [
                 'isGuest',
                 'isAdmin',
-                'access'
-            ])
+                'access',
+            ]),
+            ...mapGetters('items', [
+            'tags'
+        ]),
         }
     });
 </script>

@@ -28,11 +28,17 @@
      }
    }
  
-   @supports (position: sticky) { 
+@supports (position: sticky) { 
      .sticky\?lg\:h-\(screen-20\) {
        height: calc(100vh - 5rem);
    }
  }
+
+ @supports (position: sticky) { 
+  .sticky\?lg\:h-\(screen-8\) {
+    height: calc(100vh - 5rem);
+}
+}
  
    @supports (position: sticky) { 
      .sticky\?lg\:h-\(screen-32\) {

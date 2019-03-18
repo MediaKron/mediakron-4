@@ -1,10 +1,20 @@
 <template>
     <b-navbar-nav class="secondarynav ml-3">
         
-        <b-nav-item v-if="canBrowse" :to="basePath + '/content'" class="bg-dark">
+        <!-- <b-nav-item v-if="canBrowse" :to="basePath + '/content'" class="bg-dark">
             <font-awesome-icon icon="th-large"/> 
             <span class="item-text">Content</span>
-        </b-nav-item>
+        </b-nav-item> -->
+
+          <b-nav-item-dropdown no-caret right v-if="currentSite.user && isGuest" extra-toggle-classes="text-uppercase bg-dark" extra-menu-classes="content-dropdown" >
+            <template slot="button-content" >
+                <font-awesome-icon icon="th-large"/> 
+                <span class="item-text">Content</span>
+            </template>
+            <b-dropdown-item :to="basePath + '/content/mycontent'">My Content</b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/content/all'">Site Library</b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/content/deleted'">Trash Can</b-dropdown-item>
+        </b-nav-item-dropdown>
 
          <b-nav-item class="bg-dark" :to="basePath + '/profile'"> 
         <font-awesome-icon icon="user"/> 
@@ -89,14 +99,12 @@ export default  Vue.extend({
         ...mapGetters('sites', [
             'siteIsLoading',
             'siteIsLoaded',
+            'currentSite',
             'basePath'
         ]),
         ...mapState('items', [
             'changed',
             'changeCount'
-        ]),
-        ...mapGetters('items', [
-            'tags'
         ]),
     },
     mounted(){
