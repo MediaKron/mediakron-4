@@ -1,46 +1,53 @@
 <template>
 <div>
-    
-    <b-container fluid class="   layout-sidebar-left ">
-    <div class="row">
-      <!-- <div class="sidebar-left col-md-4" > -->
-        
-        <main role="main" class="with-sidebar-left col-md-12" > 
-           
-            <b-nav pills class="line-behind mb-3">
-                <b-nav-item :to="basePath + '/content/mycontent'">
-                    <font-awesome-icon icon="user"/> 
-                    <span class="optionsnav-text">My Content</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/content/all'">
-                    <font-awesome-icon icon="th"/> 
-                    <span class="optionsnav-text">Site Library</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="search"/> 
-                    <span class="optionsnav-text">Search</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="trash-alt"/> 
-                    <span class="optionsnav-text">Deleted</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="archive"/> 
-                    <span class="optionsnav-text">Archived      </span>
-                </b-nav-item>  
-            </b-nav>  
-           
-            <header class="sr-only">
-                <h1> All Content</h1>
-            </header>
+    <div class="w-full mx-auto px-6">
+        <div class="flex">
+            <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
+                <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 ">
+                    <div class="sticky?lg:h-(screen-32) overflow-y-auto pr-4">
+                     <b-nav pills vertical>
+                        <b-nav-item :to="basePath + '/content/mycontent'">
+                            <font-awesome-icon icon="user"/> 
+                            <span class="optionsnav-text">My Content</span>
+                        </b-nav-item> 
+                        <b-nav-item :to="basePath + '/content/all'">
+                            <font-awesome-icon icon="th"/> 
+                            <span class="optionsnav-text">Site Library</span>
+                        </b-nav-item> 
+                        <b-nav-item :to="basePath + '/#'">
+                            <font-awesome-icon icon="trash-alt"/> 
+                            <span class="optionsnav-text">Deleted</span>
+                        </b-nav-item> 
+                        <b-nav-item :to="basePath + '/#'">
+                            <font-awesome-icon icon="archive"/> 
+                            <span class="optionsnav-text">Archived      </span>
+                        </b-nav-item>  
+                        <b-nav-item :to="basePath + '/#'">
+                            <font-awesome-icon icon="search"/> 
+                            <span class="optionsnav-text">Search</span>
+                        </b-nav-item> 
+                        <b-nav-item >
+                        <b-button variant="primary" :to="basePath + '/#'"><font-awesome-icon icon="plus-square"/> 
+                            <span class="optionsnav-text">Add</span>
+                            </b-button>
+                            
+                        </b-nav-item> 
+                     </b-nav>  
+                     <div id="filters" class="mb-5 p-2">
+                        <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2 block mb-2" />
+                        <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
+                        <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
+                        <multiselect v-model="sortOrder" :options="sortOptions" class="block mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></multiselect>
+                    </div>
+                </div>
+                </div>
+            </aside>
+            <main class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
+                <header class="line-behind mt-4 mb-4">
+                <h1> My Content</h1>
+                  </header>
 
-            <div id="filters" class="d-flex mb-5 p-2">
-                <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" />
-                <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
-                <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
-                <multiselect v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></multiselect>
-          </div>
-
+            
             <div v-if="listIsLoading">Loading ...</div>
            <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
                 <span v-for="item in alteredItemList" v-bind:key="item.id">
@@ -48,10 +55,12 @@
                 </span>
             </b-card-group>
             <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
-
-        </main>
+            </main>
+         </div>
     </div>
-    </b-container>  
+    
+           
+        
 </div>
 
 </template>

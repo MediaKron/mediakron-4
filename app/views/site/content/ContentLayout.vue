@@ -9,9 +9,9 @@
             </b-nav-item>   
         </b-navbar-nav> 
     </b-navbar>
-    <b-container fluid class="mt-5 layout-sidebar-left ">
+    <b-container fluid class="">
     <div class="row">
-      <!-- <div class="sidebar-left col-md-4" > -->
+     
     <router-view></router-view>   
       
     </div>
