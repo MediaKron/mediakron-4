@@ -16,24 +16,20 @@
                         </b-nav-item> 
                         <b-nav-item :to="basePath + '/#'">
                             <font-awesome-icon icon="trash-alt"/> 
-                            <span class="optionsnav-text">Deleted</span>
+                            <span class="optionsnav-text">Trash Can</span>
                         </b-nav-item> 
-                        <b-nav-item :to="basePath + '/#'">
-                            <font-awesome-icon icon="archive"/> 
-                            <span class="optionsnav-text">Archived      </span>
-                        </b-nav-item>  
                         <b-nav-item :to="basePath + '/#'">
                             <font-awesome-icon icon="search"/> 
                             <span class="optionsnav-text">Search</span>
                         </b-nav-item> 
                         <b-nav-item >
-                        <b-button variant="primary" :to="basePath + '/#'"><font-awesome-icon icon="plus-square"/> 
-                            <span class="optionsnav-text">Add</span>
-                            </b-button>
+                             <b-button variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
+                            <span class="optionsnav-text">Add Content</span>
+                        </b-button>
                             
                         </b-nav-item> 
                      </b-nav>  
-                     <div id="filters" class="mb-5 p-2">
+                     <div id="filters" class="mt-4 p-2">
                         <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2 block mb-2" />
                         <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
                         <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
@@ -43,12 +39,13 @@
                 </div>
             </aside>
             <main class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
-                <header class="line-behind mt-4 mb-4">
+                <header class="line-behind mt-4 mb-4 pr-4">
                 <h1> My Content</h1>
                   </header>
 
             
-            <div v-if="listIsLoading">Loading ...</div>
+            <loader v-if="listIsLoading">Loading...</loader>
+
            <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
                 <span v-for="item in alteredItemList" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
@@ -70,10 +67,12 @@ import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import ContentCard from "./ContentCard";
 import Multiselect from 'vue-multiselect'
+import Loader from '@/components/Loader';
 export default  Vue.extend({
      components: {
-         Multiselect,
-        ContentCard
+        Multiselect,
+        ContentCard,
+        Loader
     },
     computed:{
         ...mapGetters('sites', [

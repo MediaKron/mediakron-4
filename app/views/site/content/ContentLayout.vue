@@ -9,13 +9,9 @@
             </b-nav-item>   
         </b-navbar-nav> 
     </b-navbar>
-    <b-container fluid class="">
-    <div class="row">
-     
-    <router-view></router-view>   
-      
-    </div>
-    </b-container>  
+    <div class="w-100"> 
+         <router-view></router-view>   
+    </div>  
 </div>
 
 </template>
