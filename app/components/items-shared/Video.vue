@@ -1,51 +1,85 @@
 <template>
-    <b-form-group
+    <div>
+        <b-form-group 
             v-if="isEditing"
-            label="Replace Video"
+            label="Video URL: (YouTube, Vimeo, Google, Panopto...)"
+            label-for="url">
+            <b-button v-if="editItem.video.type == 'mp4'" v-b-toggle.urlCollapse class="mb-3">
+                Add Video As Link
+            </b-button>
+            <b-collapse id="urlCollapse" :visible="editItem.video.type != 'mp4'">
+                <b-form-input id="url" v-model="editItem.video.url" type="text" placeholder="video url" @input="urlChanged" aria-describedby="inputFormatterHelp"/>
+                <b-form-text id="inputFormatterHelp" v-if="!isValidUrl">
+                    Video url not recognized or not supported
+                </b-form-text>
+            </b-collapse>
+        </b-form-group>
+        <b-form-group
+            v-if="isEditing"
+            label="Video File"
             label-for="fileUpload">
-        <h5>Current Video</h5>
-        <b-form-file
-                v-hide
-                v-model="editItem.newImage"
-                :state="Boolean(editItem.newImage)"
-                placeholder="Choose a file..."
-                drop-placeholder="Drop file here..."
-                :accept="first.allowedTypes()"/>
-        <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
-    </b-form-group>
-    <div v-else>
-        <vue-plyr>
-           <div class="plyr__video-embed">
-                <iframe
-                src="https://www.youtube.com/embed/bTqVqk7FSmY?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
-                allowfullscreen allowtransparency allow="autoplay">
-                </iframe>
-            </div>
-        </vue-plyr>
+            <b-button v-if="editItem.video.type != 'mp4'" v-b-toggle.mp4Collapse class="mb-3">
+                Add Video As Mp4
+            </b-button>
+            <b-collapse id="mp4Collapse" :visible="editItem.video.type == 'mp4'">
+                 <b-form-file
+                    v-model="editItem.newImage"
+                    :state="Boolean(editItem.newImage)"
+                    placeholder="Choose a file..."
+                    drop-placeholder="Drop file here..."
+                    :accept="first.allowedTypes()"/>
+                <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
+            </b-collapse>
+        </b-form-group>
+        <div v-else>
+            {{ first.video.type }}
+            <component :is="player"></component>
+        </div>
     </div>
+
 </template>
 
 <script>
     import { mapGetters } from 'vuex'
-    import VuePlyr from 'vue-plyr'
-    import 'vue-plyr/dist/vue-plyr.css' // only if your build system can import css, otherwise import it wherever you would import your css.
-    import Vue from 'vue'
-    Vue.use(VuePlyr)
-
+    import Youtube from '@/components/players/Youtube'
+    import GoogleVideo from '@/components/players/GoogleVideo'
+    import PanoptoVideo from '@/components/players/PanoptoVideo'
+    import Mp4 from '@/components/players/Mp4'
+    import VueMultiselect from "../../../node_modules/vue-multiselect/src/Multiselect";
     export default {
+        components: {VueMultiselect},
         name: 'Component',
         mounted() {
-            console.log(this.player)
+            const type = this.first.video.type
+            this.typeFormat = { "value": type, "text": type.charAt(0).toUpperCase() + type.slice(1) }
         },
         data() {
             return {
-
-
+                typeFormat: [],
+                typeOptions: [
+                    {value:'youtube', text: 'Youtube'},
+                    {value:'google', text: 'Google'},
+                    {value:'panopto', text: 'Panopto'},
+                    {value:'vimeo', text: 'Vimeo'},
+                    {value:'mp4', text: 'Mp4'}
+                ],
+                isValidUrl: true,
             }
         },
         computed: {
-            player() {
-                return this.$refs.plyr.player
+            player(){
+                switch(this.first.video.type){
+                    case 'youtube':
+                        return Youtube
+                    case 'google':
+                        return GoogleVideo
+                    case 'vimeo':
+                        return Vimeo
+                    case 'panopto':
+                        return PanoptoVideo
+                    case 'mp4':
+                        return Mp4
+                }
             },
             ...mapGetters('items', [
                 'editItem',
@@ -56,8 +90,35 @@
                 'isUploaded',
 
             ]),
+        },
+        methods: {
+            urlChanged() {
+                const url = this.editItem.video.url
+                this.isValidUrl = true
 
+                if (url.includes('https://www.youtube.com')) {
+                    this.editItem.video.type = 'youtube'
+                    return Youtube
+                } else if (url.includes('https://www.vimeo.com')) {
+                    this.editItem.video.type = 'vimeo'
+                    return 'Vimeo'
+                } else if (url.includes('https://drive.google.com' || 'https://docs.google.com')) {
+                    this.editItem.video.type = 'google'
+                    return 'GoogleVideo'
+                } else if (url.includes('https://bc.hosted.panopto.com')) {
+                    this.editItem.video.type = 'panopto'
+                    return PanoptoVideo
+                } else if (url.includes('/files/')) {
+                    if (url.includes('.mp4')){
+                        this.editItem.video.type = 'mp4'
+                        return 'Mp4'
+                    }
 
+                } else {
+                    this.isValidUrl = false
+                }
+                
+            }
         }
     }
 </script>

@@ -85,7 +85,6 @@ const actions = {
             })
             .catch((error) => {
                 error.errorMessage = "There was an error loading the items list";
-                console.log(error);
                 return dispatch("listError", error);
             });
     },
@@ -120,20 +119,43 @@ const actions = {
     },
 
     /**
-     * Load a single site
+     * Create an empty item
      * @param {*} param0
      * @param {*} id
      */
-    saveItem({ commit, state }) {
+    createItem({ commit, state }, type) {
+        commit("itemLoading");
+        commit('createItem', type)
+    },
+
+    /**
+     * Update an item
+     * @param {*} param0
+     * @param {*} id
+     */
+    saveItem({ commit, dispatch, state, getters, rootGetters }) {
         commit("itemSaving");
-        console.log(state.editItem.id)
-        return api.put('item/' + state.editItem.id, state.editItem).then((response) => {
-            console.log(response)
+        // Get the current site
+        var currentSite = rootGetters['sites/currentSite'],
+            // Set the normal item create url
+            url = currentSite.id + '/item',
+            action = 'post';
+
+        // If our item has an id, we're updating an existing item
+        if(state.editItem.id){
+            url = url + '/' + state.editItem.id;
+            action = 'put';
+        }  
+        return api[action](url, state.editItem).then((response) => {
             commit("updateItem", response.data);
             commit("itemUpdated");
+            if(action == 'post'){
+                router.push({ path: '/' + currentSite.uri + '/' + response.data.uri })
+            }
         })
         .catch((error) => {
             error.errorMessage = "There was an error saving the item";
+            console.log(error)
             return dispatch("itemUpdateFailed", error);
         });
     },

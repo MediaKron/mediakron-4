@@ -54,6 +54,7 @@ Route::group([
 
 
 Route::resource('item', 'Api\ItemController');
+Route::post('/item/{id}', 'Api\ItemController@update');
 Route::get('/items', 'Api\ItemController@index');
 
 
@@ -68,6 +69,7 @@ Route::group([
     // Item api
     Route::get('/items', 'Api\ItemController@index');
     Route::post('/items/multiple', 'Api\ItemController@multiple');
+    Route::post('/item/{id}', 'Api\ItemController@update');
     Route::resource('/item', 'Api\ItemController');
 
     Route::get('/upload/{type}', 'UploadController@upload');

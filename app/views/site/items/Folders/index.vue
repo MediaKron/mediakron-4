@@ -1,7 +1,7 @@
 <template>
     <div>
         <component :is="component" :item="item"/>
-        <div class="pin-r fixed mr-3 mt-8">
+        <div class="pin-r pin-t fixed mr-4 mt-20">
             <b-button v-if="!isEditing" class=" " variant="primary" @click="editClicked"> Edit</b-button>  
             <b-button v-if="isEditing" class=" " variant="primary" @click="saveClicked"> Save </b-button>       
             <b-alert class="pin-r fixed mt-4 mr-3" :show="editAlert" variant="success">
@@ -16,14 +16,23 @@
 
 <script>
 import Default from './Default'
+import ListFull from './ListFull'
+import ListHalf from './ListHalf'
 import editable from '~/components/mixins/editable'
 export default {
     props: [ 'item' ],
     mixins: [ editable ],
     computed: {
         component(){
-            return Default
-        }
+            switch(this.item.template){
+                case 'list-full':
+                    return ListFull;
+                case 'list-half':
+                    return ListHalf;
+                default:
+                    return Default;
+                }
+            }
     }
 }
 </script>
