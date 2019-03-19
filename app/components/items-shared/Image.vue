@@ -1,14 +1,13 @@
 <template>
     <b-form-group 
         v-if="isEditing"
-        label="Replace Image"
+        label="Current Image"
         label-for="fileUpload">
-        <h5>Current Image</h5>
         <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
         <b-form-file
             v-model="editItem.newImage"
             :state="Boolean(editItem.newImage)"
-            placeholder="Choose a file..."
+            placeholder="Replace Image (choose a file)..."
             drop-placeholder="Drop file here..."
             :accept="first.allowedTypes()"/>
         <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />

@@ -14,6 +14,7 @@
                 <List class="px-6 max-w-xl mx-auto"></List>
                 <ItemDescription></ItemDescription>
                 <ItemMetadata></ItemMetadata>
+                <ItemTags></ItemTags>
             </article>
          </div>
     </div>
@@ -28,6 +29,7 @@ import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
 import List from '@/components/item-lists/List'
 import ItemMetadata from '@/components/items-shared/ItemMetadata'
+import ItemMetadata from '@/components/items-shared/ItemTags'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -40,7 +42,8 @@ export default {
         ItemCaption,
         List,
         ContextSideBar,
-        ItemMetadata
+        ItemMetadata,
+        ItemTags
     },
     data() {
         return {
