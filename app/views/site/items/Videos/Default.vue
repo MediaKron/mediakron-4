@@ -5,6 +5,7 @@
         <item-video></item-video>
         <ItemDescription></ItemDescription>
         <ItemMetadata></ItemMetadata>
+        <ItemTags></ItemTags>
 
    </article>
 </template>
@@ -15,6 +16,7 @@ import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
 import ItemVideo from '@/components/items-shared/Video'
 import ItemMetadata from '@/components/items-shared/ItemMetadata'
+import ItemTags from '@/components/items-shared/ItemTags'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -24,7 +26,8 @@ export default {
         ItemDescription,
         ItemCaption,
         ItemVideo,
-        ItemMetadata
+        ItemMetadata,
+        ItemTags
     },
     created() {
     },

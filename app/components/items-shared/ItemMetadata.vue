@@ -86,7 +86,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import BCollapse from "bootstrap-vue/src/components/collapse/collapse";
+import BCollapse from "bootstrap-vue/src/components/collapse/collapse"
 
 export default {
     components: {BCollapse},
@@ -110,7 +110,7 @@ export default {
     },
 
     mounted(){
-        console.log(this.metadata)
+        console.log(this.first.metadata)
     }
 }
 </script>
