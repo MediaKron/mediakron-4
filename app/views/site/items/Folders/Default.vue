@@ -29,7 +29,7 @@ import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
 import List from '@/components/item-lists/List'
 import ItemMetadata from '@/components/items-shared/ItemMetadata'
-import ItemMetadata from '@/components/items-shared/ItemTags'
+import ItemTags from '@/components/items-shared/ItemTags'
 
 import { mapGetters, mapActions } from 'vuex'
 
