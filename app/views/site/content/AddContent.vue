@@ -3,8 +3,8 @@
     <div class="w-full mx-auto px-6">
         <div class="flex">
             <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
-                <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 ">
-                    <div class="sticky?lg:h-(screen-32) overflow-y-auto pr-4">
+                <div class="lg:relative lg:sticky pin-t border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
+                    <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
                      <b-nav pills vertical>
                         <b-nav-item :to="basePath + '/content/mycontent'">
                             <font-awesome-icon icon="user"/> 
@@ -28,7 +28,7 @@
                 </div>
             </aside>
             <main class="min-h-screen w-full max-w-md lg:static lg:max-h-full lg:overflow-visible "> 
-                <header class="line-behind mt-4 mb-4">
+                <header class="line-behind mt-16 mb-4">
                 <h1>Create Content</h1>
                   </header>
                 <h2>Content Organizers</h2>
