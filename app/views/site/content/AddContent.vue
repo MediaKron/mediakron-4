@@ -3,8 +3,8 @@
     <div class="w-full mx-auto px-6">
         <div class="flex">
             <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
-                <div class="lg:relative lg:sticky pin-t border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-8 ">
-                    <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
+                <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 ">
+                    <div class="sticky?lg:h-(screen-32) overflow-y-auto pr-4">
                      <b-nav pills vertical>
                         <b-nav-item :to="basePath + '/content/mycontent'">
                             <font-awesome-icon icon="user"/> 
@@ -22,37 +22,31 @@
                             <font-awesome-icon icon="search"/> 
                             <span class="optionsnav-text">Search</span>
                         </b-nav-item> 
-                        <b-nav-item >
-                        <b-button variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
-                            <span class="optionsnav-text">Add Content</span>
-                        </b-button>
-                            
-                        </b-nav-item> 
                      </b-nav>  
-                     <div id="filters" class="mt-4 p-2">
-                        <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2 block mb-2" />
-                        <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
-                        <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
-                        <multiselect v-model="sortOrder" :options="sortOptions" class="block mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></multiselect>
-                    </div>
+                   
                 </div>
                 </div>
             </aside>
-            <main class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
-                <header class="line-behind mt-4 mb-4 pr-4">
-                <h1> Site Library</h1>
+            <main class="min-h-screen w-full max-w-md lg:static lg:max-h-full lg:overflow-visible "> 
+                <header class="line-behind mt-4 mb-4">
+                <h1>Create Content</h1>
                   </header>
-
-             <loader v-if="listIsLoading">Loading...</loader>
-
-           <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
-                <span v-for="item in alteredItemList" v-bind:key="item.id">
-                    <content-card :item="item"></content-card>
-                </span>
-            </b-card-group>
-            <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
-            </main>
-         </div>
+                <h2>Content Organizers</h2>
+                <b-list-group class="mb-5">
+                    <b-list-group-item :to="basePath + '/content/add/folder'">Collection</b-list-group-item>
+                    <b-list-group-item :to="basePath + '/content/add/story'">Story</b-list-group-item>
+                    <b-list-group-item :to="basePath + '/content/add/map'">Map</b-list-group-item>
+                    <b-list-group-item :to="basePath + '/content/add/timeline'">Timeline</b-list-group-item>
+                </b-list-group>  
+                <h2>Individual Media</h2>
+                <b-list-group class="mb-5">
+                    <b-list-group-item :to="basePath + '/content/add/image'">Image</b-list-group-item>
+                    <b-list-group-item :to="basePath + '/content/add/file'">File</b-list-group-item>
+                    <b-list-group-item :to="basePath + '/content/add/video'">Video</b-list-group-item>
+                    <b-list-group-item :to="basePath + '/content/add/audio'">Audio</b-list-group-item>
+                </b-list-group>  
+                </main>
+            </div>
     </div>
     
            
@@ -66,12 +60,10 @@ import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import ContentCard from "./ContentCard";
 import Multiselect from 'vue-multiselect'
-import Loader from '@/components/Loader';
 export default  Vue.extend({
      components: {
-        Multiselect,
-        ContentCard,
-        Loader
+         Multiselect,
+        ContentCard
     },
     computed:{
         ...mapGetters('sites', [
