@@ -13,6 +13,8 @@
                 <ItemCaption></ItemCaption>
                 <List class="px-6 max-w-xl mx-auto"></List>
                 <ItemDescription></ItemDescription>
+                <ItemMetadata></ItemMetadata>
+                <ItemTags></ItemTags>
             </article>
          </div>
     </div>
@@ -26,6 +28,8 @@ import BannerHalf from '@/components/banners/BannerHalf'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
 import List from '@/components/item-lists/List'
+import ItemMetadata from '@/components/items-shared/ItemMetadata'
+import ItemTags from '@/components/items-shared/ItemTags'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -37,7 +41,9 @@ export default {
         ItemDescription,
         ItemCaption,
         List,
-        ContextSideBar
+        ContextSideBar,
+        ItemMetadata,
+        ItemTags
     },
     data() {
         return {

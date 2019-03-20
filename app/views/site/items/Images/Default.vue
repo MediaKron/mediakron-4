@@ -4,7 +4,8 @@
         <ItemCaption></ItemCaption>
         <item-image></item-image>
         <ItemDescription></ItemDescription>
-
+        <ItemMetadata></ItemMetadata>
+        <ItemTags></ItemTags>
     </article>
 </template>
 
@@ -13,6 +14,8 @@ import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
 import ItemImage from '@/components/items-shared/Image'
+import ItemMetadata from '@/components/items-shared/ItemMetadata'
+import ItemTags from '@/components/items-shared/ItemTags'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -22,7 +25,9 @@ export default {
         ItemTitle,
         ItemDescription,
         ItemCaption,
-        ItemImage
+        ItemImage,
+        ItemMetadata,
+        ItemTags
     },
     created() {
 
