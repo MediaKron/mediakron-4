@@ -1,0 +1,40 @@
+- hosts: dev
+
+  remote_user: ubuntu
+  become: true
+  become_user: root
+
+  vars_files:
+    #- vars/firewall.yml
+    #- vars/security.yml
+    - vars/nginx.yml
+    #- vars/node.yml
+    - vars/php.yml
+    #- vars/java.yml
+    - vars/filebeats.yml
+    - vars/logstash.yml
+    #- vars/supervisor.yml
+  roles:
+    # Provision the users we want
+    #- users
+    # Install some basics
+    #- geerlingguy.ntp
+    #- geerlingguy.pip
+    #- geerlingguy.git
+    #- geerlingguy.nodejs
+    # Configure A firewall
+    #- geerlingguy.firewall
+    # Install fail2ban, disable password logins, 
+    #  Enable security updates, Notify the ops channel on update
+    #- geerlingguy.security
+    # Install and configure nginx
+    #- geerlingguy.nginx
+    # Php
+    - geerlingguy.php
+    # Ship logs to S3
+    #- geerlingguy.java
+    #- logstash
+    #- logstash-s3
+    #- geerlingguy.filebeat
+    #- geerlingguy.supervisor
+    

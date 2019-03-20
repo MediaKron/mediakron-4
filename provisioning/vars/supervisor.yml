@@ -1,0 +1,20 @@
+supervisor_started: true
+supervisor_enabled: true
+
+supervisor_log_dir: /var/log/supervisor
+  
+supervisor_programs:
+  - name: 'laravel-api'
+    command: php /var/www/mediakron/current/artisan queue:work database --sleep=3 --tries=3 --queue=api
+    state: present
+    configuration: |
+      autostart=true
+      autorestart=true
+      startretries=1
+      startsecs=1
+      redirect_stderr=true
+      stderr_logfile=/var/log/mediakron-queue-err.log
+      stdout_logfile=/var/log/mediakron-queue-out.log
+      user=www-data
+      killasgroup=true
+      stopasgroup=true

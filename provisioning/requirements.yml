@@ -1,0 +1,38 @@
+# First require some basic boring stuff
+# Install time checking to let us set and manage timezones in server vars
+- src: geerlingguy.ntp
+  version: 1.6.2
+# Make sure git is installed
+- src: geerlingguy.git
+  version: 2.0.4
+# Add pip for installing stuff later
+- src: geerlingguy.pip
+  version: 1.3.0
+
+# Node JS 
+- src: geerlingguy.nodejs
+  version: 5.0.0
+# Add a simple filewall
+- src: geerlingguy.firewall
+  version: 2.4.1
+# Add the security role
+- src: geerlingguy.security
+  version: 1.8.0
+# Install nginx maintained nginx package
+- src: geerlingguy.nginx
+  version: 2.6.2
+# Add PHP FPM
+- src: geerlingguy.php
+  version: 3.7.0
+# Add Filebeats
+- src: geerlingguy.java
+  version: 1.9.5
+- src: geerlingguy.filebeat
+  version: 2.0.0
+- src: geerlingguy.logstash
+  version: 4.0.0
+# Add Supervisor
+- src: geerlingguy.supervisor
+  version: 2.0.2
+- src: geerlingguy.certbot
+  version: 3.0.2
