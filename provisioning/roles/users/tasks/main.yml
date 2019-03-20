@@ -37,3 +37,57 @@
     key: "{{ lookup('file', 'brad.pub') }}" 
     state: present 
     manage_dir: yes
+
+- name: "Create a new user: tim"
+  user: 
+    name: tim
+    state: present
+    group: mediakron
+    groups: wheel
+    append: yes
+    create_home: yes
+    comment: "lindgret@bc.edu"
+        
+# installing remote keys for ansible users
+- name: "Add ssh key for: tim"
+  authorized_key: 
+    user: tim 
+    key: "{{ lookup('file', 'tim.pub') }}" 
+    state: present 
+    manage_dir: yes
+
+- name: "Create a new user: jamie"
+  user: 
+    name: jamie
+    state: present
+    group: mediakron
+    groups: wheel
+    append: yes
+    create_home: yes
+    comment: "walkerjj@bc.edu"
+        
+# installing remote keys for ansible users
+- name: "Add ssh key for: jamie"
+  authorized_key: 
+    user: jamie 
+    key: "{{ lookup('file', 'jamie.pub') }}" 
+    state: present 
+    manage_dir: yes
+
+- name: "Create a new user: austin"
+  user: 
+    name: austin
+    state: present
+    group: mediakron
+    groups: wheel
+    append: yes
+    create_home: yes
+    comment: "baileyau@bc.edu"
+        
+# installing remote keys for ansible users
+- name: "Add ssh key for: austin"
+  authorized_key: 
+    user: austin 
+    key: "{{ lookup('file', 'austin.pub') }}" 
+    state: present 
+    manage_dir: yes
