@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import Vue from 'vue'
