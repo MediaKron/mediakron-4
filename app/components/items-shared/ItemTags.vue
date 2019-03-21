@@ -4,7 +4,17 @@
         <b-collapse id="tagsCollapse" >
         <b-form-group class="">
             <label for="tag_names">Create tags</label>
-            <b-form-input id="tag_names" v-model="editItem.tags.title" placeholder="Add tags. Example: One, Two, Three" ></b-form-input>
+            <multiselect 
+                v-model="editItem.tags" 
+                tag-placeholder="Add this as new tag" 
+                placeholder="Search or add a tag" 
+                label="title" 
+                track-by="id" 
+                :options="options" 
+                :multiple="true" 
+                :taggable="true" 
+                @tag="addTag"></multiselect>
+
         </b-form-group>
         </b-collapse>
     </div>
@@ -20,9 +30,32 @@
 <script>
 import { mapGetters } from 'vuex'
 import BCollapse from "bootstrap-vue/src/components/collapse/collapse";
+import Multiselect from 'vue-multiselect'
 
 export default {
-    components: {BCollapse},
+    components: {
+        BCollapse, 
+        Multiselect
+    },
+    data () {
+        return {
+            isEditingTags: false,
+            options: [
+                { title: 'Vue.js', id: '1' },
+                { title: 'Javascript', id: '2' },
+                { title: 'Open Source', id: '3' }
+            ]
+        }
+    },
+    methods: {
+        addTag(newTag) {
+            const tag = {
+                title: newTag
+            }
+            this.options.push(tag)
+            this.editItem.tags.push(tag)
+        }
+    },
     computed: {
         tagsButton(){
             if (this.isEditingTags) {
@@ -35,11 +68,6 @@ export default {
             'isEditing',
             'first'
         ])
-    },
-    data() {
-        return {
-            isEditingTags: false
-        }
     },
     mounted(){
         console.log(this.first.tags)
