@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File;
-
+use App\Models\Site;
 class UploadController extends Controller
 {
     //
@@ -23,3 +23,4 @@ class UploadController extends Controller
         return $file;
     }
 }
+ 

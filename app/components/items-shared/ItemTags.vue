@@ -3,7 +3,7 @@
         <b-button @click="isEditingTags=!isEditingTags" v-b-toggle.tagsCollapse class="mb-3"> {{ tagsButton }}</b-button>
         <b-collapse id="tagsCollapse" >
         <b-form-group class="">
-            <label for="tag_names">Add tags</label>
+            <label for="tag_names">Create tags</label>
             <b-form-input id="tag_names" v-model="editItem.tags.title" placeholder="Add tags. Example: One, Two, Three" ></b-form-input>
         </b-form-group>
         </b-collapse>
@@ -40,6 +40,9 @@ export default {
         return {
             isEditingTags: false
         }
+    },
+    mounted(){
+        console.log(this.first.tags)
     }
 }
 </script>
