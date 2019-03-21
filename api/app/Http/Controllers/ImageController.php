@@ -68,7 +68,7 @@ class ImageController extends Controller
         }
 
         // See if we have the source image here
-        $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
+        $pathToOriginal = env('AWS_BUCKET_ENV', 'dev') . '/' . $site->uri . DIRECTORY_SEPARATOR . $image;
         if (!Storage::disk('public')->exists($pathToOriginal)){
             // we didn't find it.  It might be on S3
             //dd($pathToOriginal);
