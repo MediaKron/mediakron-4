@@ -11,7 +11,7 @@
     #- vars/node.yml
     - vars/php.yml
     #- vars/java.yml
-    - vars/filebeats.yml
+    #- vars/filebeats.yml
     - vars/logstash.yml
     #- vars/supervisor.yml
   roles:
@@ -31,6 +31,7 @@
     #- geerlingguy.nginx
     # Php
     - geerlingguy.php
+    - geerlingguy.composer
     # Ship logs to S3
     #- geerlingguy.java
     #- logstash

@@ -1,8 +1,8 @@
 output {
   if [type] == "nginx" {
     s3{
-      access_key_id => "AKIAIRXTWJCAE5PAR6WA"             
-      secret_access_key => "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"
+      access_key_id => ""             
+      secret_access_key => ""
       region => "us-east-1"
       bucket => "mediakron-application-logs"
       prefix => "{{ env }}/{{inventory_hostname}}/nginx/"
@@ -14,8 +14,8 @@ output {
   }
   if [app] == "mediakron-api" {
     s3{
-      access_key_id => "AKIAIRXTWJCAE5PAR6WA"             
-      secret_access_key => "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"
+      access_key_id => ""             
+      secret_access_key => ""
       region => "us-east-1"
       bucket => "mediakron-application-logs"
       prefix => "{{ env }}/{{inventory_hostname}}/mediakron/"

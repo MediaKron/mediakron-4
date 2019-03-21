@@ -24,6 +24,8 @@
 # Add PHP FPM
 - src: geerlingguy.php
   version: 3.7.0
+- src: geerlingguy.composer
+  version: 1.7.3
 # Add Filebeats
 - src: geerlingguy.java
   version: 1.9.5

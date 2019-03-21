@@ -3,6 +3,7 @@ php_webserver_daemon: "nginx"
 
 php_packages:
   - php
+  - php-fpm
   - php-cli
   - php-common
   - php-gd
@@ -12,6 +13,7 @@ php_packages:
   - php-opcache
   - php-zip
   - php-soap
+  - php-apcu
 
 php_install_recommends: true
 
