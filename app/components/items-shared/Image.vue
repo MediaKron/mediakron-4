@@ -69,8 +69,11 @@ export default {
         ]),
 
     },
-    methods(){
-        'upload'
+    methods: {
+        ...mapActions('items',[
+            'upload'
+        ])
+        
     }
 }
 </script>
