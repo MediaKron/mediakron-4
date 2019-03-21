@@ -65,14 +65,14 @@ Route::group([
     ],
     'prefix' => '{site}'
 ], function ($router) {
-    
+     
     // Item api
     Route::get('/items', 'Api\ItemController@index');
     Route::post('/items/multiple', 'Api\ItemController@multiple');
     Route::post('/item/{id}', 'Api\ItemController@update');
     Route::resource('/item', 'Api\ItemController');
 
-    Route::get('/upload/{type}', 'UploadController@upload');
+    Route::post('/upload/{type}', 'UploadController@upload');
 
     Route::get('/users', 'Api\SiteController@users');
 
