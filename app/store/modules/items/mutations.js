@@ -169,7 +169,18 @@ export const mutations = {
     uploaded(state, item) {
         state.isEditing = false;
         state.editItem = {}
-    }
+    },
+    tagsLoading(state) {
+        state.tagsLoading = true;
+        state.tagsLoaded = false;
+    },
+    tagsLoad(state, tags) {
+        state.tags = tags;
+    },
+    tagsLoaded(state) {
+        state.tagsLoading = false;
+        state.tagsLoaded = true;
+    },
 
 }
 

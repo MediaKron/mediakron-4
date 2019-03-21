@@ -35,7 +35,7 @@
             ...mapGetters('sites', [
                 'currentSite',
                 'siteIsLoaded',
-                'basepath'
+                'basePath'
             ]),
             ...mapGetters('users/profile', [
                 'isGuest',

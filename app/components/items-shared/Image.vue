@@ -9,7 +9,8 @@
             :state="Boolean(editItem.newImage)"
             placeholder="Replace Image (choose a file)..."
             drop-placeholder="Drop file here..."
-            :accept="first.allowedTypes()"/>
+            :accept="first.allowedTypes()"
+            @change="upload" />
         <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
     <div v-else>
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import Vue from 'vue'
@@ -65,9 +66,14 @@ export default {
             'first',
             'isUploading',
             'isUploaded',
-
         ]),
 
+    },
+    methods: {
+        ...mapActions('items',[
+            'upload'
+        ])
+        
     }
 }
 </script>

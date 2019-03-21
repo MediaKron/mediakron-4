@@ -24,18 +24,23 @@
 </template>
 
 <script>
-    import {
+import editable from '~/components/mixins/editable';
+import {
         mapActions,
         mapState,
         mapGetters
     } from 'vuex';
-    export default {
-        computed: {
-            ...mapGetters('sites', [
-                'currentSite'
-            ]),
-        }
+export default {
+    mixins: [ editable ],
+    computed: {
+        ...mapGetters('sites', [
+            'currentSite'
+        ]),
+        ...mapGetters('items', [
+            'isEditing'
+        ]),
     }
+}
 </script>
 
 <style>
