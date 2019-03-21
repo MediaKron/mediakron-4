@@ -112,6 +112,24 @@ const actions = {
      * @param {*} param0
      * @param {*} id
      */
+    getTags({ commit, dispatch }) {
+        commit("tagsLoading");
+            return api.get('tags')
+                .then((response) => {
+                    commit("tagsLoad", response.data);
+            commit("tagsLoaded");
+        })
+        .catch((error) => {
+                error.errorMessage = "There was an error loading the item";
+            return dispatch("itemError", error);
+        });
+    },
+
+    /**
+     * Load a single item
+     * @param {*} param0
+     * @param {*} id
+     */
     update({ commit, state }, item) {
         if(JSON.stringify(item) !== JSON.stringify(state.editItem)){
             commit('updateItem', item);
@@ -177,7 +195,16 @@ const actions = {
      */
     discardEdits({ commit, state }) {
         commit('discardEdit')
-    }
+    },
+
+    /**
+     * Upload an image
+     * @param {*} param0
+     * @param {*} id
+     */
+    upload({ commit, state }, file) {
+        console.log(file);
+    },
 
     
 }

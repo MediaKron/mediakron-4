@@ -9,7 +9,8 @@
             :state="Boolean(editItem.newImage)"
             placeholder="Replace Image (choose a file)..."
             drop-placeholder="Drop file here..."
-            :accept="first.allowedTypes()"/>
+            :accept="first.allowedTypes()"
+            @change="upload" />
         <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
     </b-form-group>
     <div v-else>
@@ -65,9 +66,11 @@ export default {
             'first',
             'isUploading',
             'isUploaded',
-
         ]),
 
+    },
+    methods(){
+        'upload'
     }
 }
 </script>

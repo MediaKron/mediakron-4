@@ -66,6 +66,8 @@ Route::group([
     'prefix' => '{site}'
 ], function ($router) {
      
+    // Tags
+    Route::get('/tags', 'Api\TagController@index');
     // Item api
     Route::get('/items', 'Api\ItemController@index');
     Route::post('/items/multiple', 'Api\ItemController@multiple');
