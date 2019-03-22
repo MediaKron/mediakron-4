@@ -1,21 +1,42 @@
 <template>
     <div>
+        <div class="w-100 flex flex-col items-center">
 
-        <ul>
-            <li></li>
-        </ul>
+             <BannerHalf class="w-100" style="background-image: url('https://picsum.photos/1000/1000/?random')">
+                     <h1 class="mt-12"> <span class="sr-only"> Site Homepage:</span>{{ currentSite.title }}</h1>
+                    <h2 class="">{{ currentSite.subtitle }}</h2>
+            </BannerHalf>
+
+            <div class="max-w-md mt-4" v-html="currentSite.description"></div>
+    
+         </div>
+
+        <div id="homepage-content"> </div>
+
+        <b-button v-if="!isEditing" class="fixed pin-t pin-r mt-16 mr-8" variant="primary" @click="editClicked"> Edit Homepage</b-button>  
+         
     </div>
 </template>
 
 <script>
-
-export default {
-    components:{
-
+    import {
+        mapActions,
+        mapState,
+        mapGetters
+    } from 'vuex';
+    import BannerHalf from '@/components/banners/BannerHalf'
+    export default {
+        components: {
+        BannerHalf
+        },
+        computed: {
+            ...mapGetters('sites', [
+                'currentSite'
+            ]),
+        }
     }
-}
 </script>
 
 <style>
-
+    
 </style>

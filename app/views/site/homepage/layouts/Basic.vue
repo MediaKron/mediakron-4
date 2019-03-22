@@ -6,6 +6,8 @@
 
             <h2 class="">{{ currentSite.subtitle }}</h2>
 
+            {{ currentSite.layout }}
+
             <div class="home-image">
                 <b-img src="https://picsum.photos/1000/1000/?random" fluid alt="Responsive image" />
             </div>
