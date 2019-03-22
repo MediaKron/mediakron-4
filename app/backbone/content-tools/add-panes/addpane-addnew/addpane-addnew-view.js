@@ -62,7 +62,6 @@ export default class AddPaneNew extends MediakronView {
       var $target = $('.btn', $(e.currentTarget)),
         type = $target.attr('item-attr'),
         build = this;
-        console.log(type);
         var view = new Mediakron.Admin.AddContentPage({
           type: type,
           edit: false,

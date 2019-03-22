@@ -68,13 +68,14 @@ class ImageController extends Controller
         }
 
         // See if we have the source image here
-        $pathToOriginal = env('AWS_BUCKET_ENV', 'dev') . '/' . $site->uri . DIRECTORY_SEPARATOR . $image;
+        $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
         if (!Storage::disk('public')->exists($pathToOriginal)){
             // we didn't find it.  It might be on S3
             //dd($pathToOriginal);
-            if (Storage::disk('s3')->exists($pathToOriginal)){
+            $pathToS3 = env('AWS_BUCKET_ENV', 'dev') . '/' . $pathToOriginal;
+            if (Storage::disk('s3')->exists($pathToS3)){
                 // clone the file down to the local disk
-                $contents = Storage::disk('s3')->get($pathToOriginal);
+                $contents = Storage::disk('s3')->get($pathToS3);
                 Storage::disk('public')->put($pathToOriginal, $contents);
             }
         }
@@ -118,10 +119,10 @@ class ImageController extends Controller
             
             // we didn't find it.  It might be on S3
             //dd($pathToOriginal);
-            if (Storage::disk('s3')->exists($pathToOriginal)){
-                dd('file not found on remote');
+            $pathToS3 = env('AWS_BUCKET_ENV', 'dev') . '/' . $pathToOriginal;
+            if (Storage::disk('s3')->exists($pathToS3)){
                 // clone the file down to the local disk
-                $contents = Storage::disk('s3')->get($pathToOriginal);
+                $contents = Storage::disk('s3')->get($pathToS3);
                 Storage::disk('public')->put($pathToOriginal, $contents);
             }
         }

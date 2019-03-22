@@ -3,19 +3,18 @@
         v-if="isEditing"
         label="Current Image"
         label-for="fileUpload">
-        <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
+        <b-img :src="image" fluid thumbnail alt="Responsive image"/>
         <b-form-file
             v-model="editItem.newImage"
             :state="Boolean(editItem.newImage)"
             placeholder="Replace Image (choose a file)..."
             drop-placeholder="Drop file here..."
             :accept="first.allowedTypes()"
-            @change="upload" />
-        <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
+            @change="change" />
     </b-form-group>
     <div v-else>
-        <viewer :images="images">
-            <img class="image-frame invisible" :src="this.images[0]" >
+        <viewer :images="image">
+            <img class="image-frame invisible" :src="image" >
         </viewer>
     </div>
 </template>
@@ -25,6 +24,7 @@ import { mapActions, mapGetters } from 'vuex'
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import Vue from 'vue'
+import imageSizeMixin from '@/components/mixins/ImageSize'
 Vue.use(Viewer, {
   defaultOptions: {
    inline:true,
@@ -51,14 +51,24 @@ Vue.use(Viewer, {
   }
 })
 export default {
+    mixins:[
+        imageSizeMixin
+    ],
     data() {
         return {
-            images: [
-                'https://picsum.photos/1000/1000/?random',
-            ],
-        }
+            tempImage: false
+        }        
     },
     computed: {
+        image(){
+            if(this.isEditing){
+                if(this.tempImage){
+                    return this.tempImage;
+                }
+                return 'https://picsum.photos/1000/1000/?random';
+            }
+            return [ 'https://picsum.photos/1000/1000/?random' ];
+        },
         ...mapGetters('items', [
             'editItem',
             'isEditing',
@@ -72,7 +82,17 @@ export default {
     methods: {
         ...mapActions('items',[
             'upload'
-        ])
+        ]),
+        change(event){
+            let reader = new FileReader(),
+                parent = this;
+            reader.onload = function(){
+                let dataURL = reader.result;
+                parent.tempImage = dataURL;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+            return this.upload(event)
+        }
         
     }
 }

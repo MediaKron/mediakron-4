@@ -70,7 +70,7 @@ export default {
         ])
     },
     mounted(){
-        console.log(this.first.tags)
+
     }
 }
 </script>

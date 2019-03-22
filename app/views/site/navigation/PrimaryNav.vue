@@ -26,7 +26,6 @@
                 return this.items.length > 0;
             },
             items() {
-                console.log(this.currentSite.primary);
                 return this.currentSite.primary;
             },
             ...mapState('sites', [

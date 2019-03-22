@@ -69,10 +69,11 @@ trait Hydrate
         }
 
         $fill = request(['metadata']);
-
-        $metadata->fill($fill['metadata']);
-        $metadata->item_id = $this->id;
-        $metadata->save();
+        if(isset($fill['metadata'])){
+            $metadata->fill($fill['metadata']);
+            $metadata->item_id = $this->id;
+            $metadata->save();
+        }
         
         return $this;
     }
@@ -106,6 +107,7 @@ trait Hydrate
         return $this;
     }
 
+   
 
     /**
      * Set the current user as the owner of the record

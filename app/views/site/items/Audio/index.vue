@@ -24,7 +24,7 @@ export default {
     props: [ 'item' ],
     methods:{},
     mounted(){
-        console.log(this.item.title)
+
     },
     computed: {
         component(){

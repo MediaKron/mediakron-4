@@ -19,7 +19,9 @@ const state = {
   version: config.BUILD,
   errors: [],
   events: [],
-  loadProgress: 0,
+  queries: {},
+  progress: 0,
+  loadTotal: 0,
   modal: {
     open: false,
     contents: ''

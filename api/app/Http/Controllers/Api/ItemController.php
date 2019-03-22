@@ -152,7 +152,8 @@ class ItemController extends Controller
                 ->setEditor()
                 ->setSite($site)
                 ->updateMetadata()
-                ->addTags();
+                ->addTags()
+                ->upload();
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields
             // TODO: Handle audio, video, images and text fields

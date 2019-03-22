@@ -202,8 +202,18 @@ const actions = {
      * @param {*} param0
      * @param {*} id
      */
-    upload({ commit, state }, file) {
-        console.log(file);
+    upload({ commit, dispatch, state, getters, rootGetters }, event) {
+        commit("uploading");
+
+        // Get the current site
+        let currentSite = rootGetters['sites/currentSite'],
+            type = state.editItem.type,
+            // Set the normal item create url
+            url = currentSite.id + '/upload/' + type,
+            file = event.target.files[0];
+        api.upload(url, file, type).then((response) => {
+            commit("upload", response.data);
+        });
     },
 
     

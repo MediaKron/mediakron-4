@@ -102,15 +102,10 @@ class BaseModel extends Model
      *
      * @return void
      */
-    public function upload($request){
+    public function upload(){
+        $request = request();
+
         foreach($this->uploadable as $key){
-            $file = $request->file($key);
-            if($file){
-                $upload = File::handleUpload($this->getTable(), $request);
-                $this->{$key}()->save($upload);
-            }
-
-
             if($request->has($key)){
                 // Load File
                 $file = $request->get($key);

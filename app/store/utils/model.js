@@ -13,7 +13,6 @@ export default class Model {
         });
 
         // Load data from parent
-        console.log(data);
         Object.keys(data).map((key) => {
             target[key] = data[key];
         });
