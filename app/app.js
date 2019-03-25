@@ -12,16 +12,10 @@ import router from './router';
 import store from './store';
 import * as svgicon from 'vue-svgicon';
 
-
-// CSS ===========
-
-// import './core-css/base-styles/variables.scss';
-// import 'bootstrap/scss/bootstrap.scss'
+// CSS
 import './core-css/base.scss';
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-import '@/assets/css/tailwind.css'
-
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import "./core-css/tailwind.css";
 
 import VeeValidate from 'vee-validate';
 import VueMoment from 'vue-moment';
@@ -76,7 +70,6 @@ new Vue({
  * 
  * 
  */
-console.log(process.env)
 if (process.env.VUE_APP_MODE !== 'development') {
   Raven.config('https://a33196655ca34c068578612debf5f473@sentry.io/1334871', {
         release: config.BUILD,

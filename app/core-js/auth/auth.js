@@ -36,7 +36,6 @@ class Auth{
         var auth = new Auth().getSession();
         $.ajaxSetup({
             beforeSend: function (xhr) {
-                console.log(auth);
                 if(auth.access_token){
                     xhr.setRequestHeader("Authorization", "Bearer " + auth.access_token);
                 }

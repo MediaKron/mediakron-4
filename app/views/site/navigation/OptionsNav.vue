@@ -99,9 +99,16 @@ export default  Vue.extend({
     color: #212529;
 }
 
+.options-sectionnav .nav-link:first-child {
+    padding-left:0;
+    padding-right:1.5rem;
+}
+
 .options-sectionnav .nav-link.active {
     margin-right: .5rem;
 }
+
+
 
 .options-sectionnav .nav-link:hover {
     text-decoration:underline;

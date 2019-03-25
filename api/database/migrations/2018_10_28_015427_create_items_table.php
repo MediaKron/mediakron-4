@@ -17,28 +17,28 @@ class CreateItemsTable extends Migration
             // Ids
             $table->increments('id');
             $table->integer('site_id');
-            $table->integer('version_id');
+            $table->integer('version_id')->default(1);
             $table->integer('user_id');
             $table->integer('editor_id')->nullable();
 
             // booleans
-            $table->boolean('active');
-            $table->boolean('published');
-            $table->boolean('archived');
-            $table->boolean('locked');
+            $table->boolean('active')->default(1);
+            $table->boolean('published')->default(1);
+            $table->boolean('archived')->default(0);
+            $table->boolean('locked')->default(0);
 
             // Basic record data
             $table->string('uri')->length(255);
             $table->string('type');
-            $table->string('template');
+            $table->string('template')->default('default');
             $table->string('title')->length(1001);
 
             // Long text fields
-            $table->longtext('description');
-            $table->longtext('transcript');
+            $table->longtext('description')->nullable();
+            $table->longtext('transcript')->nullable();
             $table->longtext('body')->nullable();
-            $table->longtext('caption');
-            $table->longtext('options');
+            $table->longtext('caption')->nullable();
+            $table->longtext('options')->nullable();;
             $table->longtext('overlay')->nullable();
 
             // Timestamps

@@ -3,13 +3,13 @@
         <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-index-1 w-100" variant="primary" aria-label="site menus" >
     <b-navbar-brand class="text-uppercase site-options-title ml-4"> <font-awesome-icon icon="question-circle" class="mr-1"/>  Help</b-navbar-brand>
      <b-navbar-nav class="ml-auto">
-        <b-list-group-item :to="basePath + '/'" class="admin-close ml-auto mr-2 "> 
+        <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 "> 
             <font-awesome-icon icon="times"/> 
             <span class="utilitynav-text">Close</span>
-        </b-list-group-item>   
+        </b-nav-item>   
     </b-navbar-nav> 
 </b-navbar>
-<b-container class="mt-12 layout-sidebar-left ">
+<b-container class="mt-5 layout-sidebar-left ">
 
     <div class="row">
                 <!-- <div class="sidebar-left col-md-4" >
@@ -49,7 +49,7 @@
                 <b-list-group-item :to="basePath + '/help/site-administration/menu-overview'">Adding Menus</b-list-group-item>
                 <b-list-group-item :to="basePath + '/help/site-administration/site-appearance'">Changing site colors/logo</b-list-group-item>
                 <b-list-group-item :to="basePath + '/help/site-administration/mediakron-to-canvas-overview'">Integrating MediaKron with Canvas</b-list-group-item>
-            </b-list-group  class="mb-5">         
+            </b-list-group>         
                 </main>
     </div>
  </b-container>   

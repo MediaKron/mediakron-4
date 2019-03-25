@@ -54,6 +54,7 @@ Route::group([
 
 
 Route::resource('item', 'Api\ItemController');
+Route::post('/item/{id}', 'Api\ItemController@update');
 Route::get('/items', 'Api\ItemController@index');
 
 
@@ -64,10 +65,16 @@ Route::group([
     ],
     'prefix' => '{site}'
 ], function ($router) {
-    
+     
+    // Tags
+    Route::get('/tags', 'Api\TagController@index');
     // Item api
     Route::get('/items', 'Api\ItemController@index');
+    Route::post('/items/multiple', 'Api\ItemController@multiple');
+    Route::post('/item/{id}', 'Api\ItemController@update');
     Route::resource('/item', 'Api\ItemController');
+
+    Route::post('/upload/{type}', 'UploadController@upload');
 
     Route::get('/users', 'Api\SiteController@users');
 
