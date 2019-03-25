@@ -17,6 +17,7 @@ import {
     faEllipsisV,
     faExpandArrowsAlt,
     faHome, /* Home */
+    faImage,
     faInfoCircle,
     faList,
     faPaintBrush, /* Appearance */
@@ -42,6 +43,7 @@ import {
     faUserEdit,
     faUserPlus,
     faUsers,
+    faVolumeUp,
     faWindowClose /* close square */ 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -64,6 +66,7 @@ export default function initializeIcons(){
         faEllipsisV,
         faExpandArrowsAlt,
         faHome, /* Home */
+        faImage,
         faInfoCircle,
         faList,
         faPaintBrush, /* Appearance */
@@ -89,6 +92,7 @@ export default function initializeIcons(){
         faUserEdit,
         faUserPlus,
         faUsers,
+        faVolumeUp,
         faWindowClose, /* close square */ 
     );
 }
