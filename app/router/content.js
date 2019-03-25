@@ -1,7 +1,9 @@
 import Content from '@/views/site/content/Content';
 import MyContent from '@/views/site/content/MyContent';
 import AllContent from '@/views/site/content/AllContent';
+import AddContent from '@/views/site/content/AddContent';
 import CreateContent from '@/views/site/items/Create';
+import Library from '@/views/site/content/Library';
 
 export default [
     {
@@ -11,9 +13,21 @@ export default [
         props: true
     },
     {
+        path: "library",
+        name: 'library',
+        component: MyContent,
+        props: true
+    },
+    {
         path: "all/:page?",
         name: 'allcontent',
         component: AllContent,
+        props: true
+    },
+    {
+        path: "add",
+        name: 'add',
+        component: AddContent,
         props: true
     },
     {
