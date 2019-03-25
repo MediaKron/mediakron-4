@@ -3,6 +3,7 @@ import MyContent from '@/views/site/content/MyContent';
 import AllContent from '@/views/site/content/AllContent';
 import AddContent from '@/views/site/content/AddContent';
 import Authors from '@/views/site/content/Authors';
+import Deleted from '@/views/site/content/Deleted';
 import CreateContent from '@/views/site/items/Create';
 
 
@@ -23,6 +24,12 @@ export default [
         path: "authors",
         name: 'authors',
         component: Authors,
+        props: true
+    },
+    {
+        path: "deleted",
+        name: 'deleted',
+        component: Deleted,
         props: true
     },
     {

@@ -18,9 +18,17 @@
                         <b-button class="mt-10 mx-2" variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
                             <span class="optionsnav-text">Add Content</span>
                         </b-button>
-                        <b-button class="mt-1" variant="primary-outline" ><font-awesome-icon icon="trash-alt"/> 
+                        <b-button class="mt-2 mx-2" variant="outline-primary" :to="basePath + '/content/deleted'"><font-awesome-icon icon="trash-alt"/> 
                             <span class="optionsnav-text">Restore Deleted</span>
-                        </b-button>      
+                        </b-button>  
+                        <b-dropdown class="mt-2 mx-2" variant="outline-primary">
+                            <template slot="button-content" >
+                               <font-awesome-icon icon="cogs"/> <span class="optionsnav-text">Actions</span>
+                            </template>
+                            <b-dropdown-item href="#">Delete</b-dropdown-item>
+                            <b-dropdown-item href="#">Publish</b-dropdown-item>
+                            <b-dropdown-item href="#">Unpublish</b-dropdown-item>
+                        </b-dropdown>       
                      </b-nav>
                 </div>
                 </div>
