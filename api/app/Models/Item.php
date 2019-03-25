@@ -63,6 +63,10 @@ class Item extends BaseModel
         'DESC'
     ];
 
+    public $uploadable = [
+        'image'
+    ];
+
     /**
      * The "booting" method of the model.
      *

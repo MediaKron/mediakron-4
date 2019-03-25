@@ -1,28 +1,22 @@
 // Reusable size/crop imgix parameters
-
+let baseurl = "http://localhost:81/storage/"
 export const imageSizeMixin = {
     methods: {
-      imageThumbnail(url) {
-        return url + '?fit=facearea&facepad=10&w=150&h=150'; 
+      imageThumbnail(site, url) {
+        return site + '/thumbnail/' + url; 
       },
       imageSmall(url) {
-        return url + '?fit=facearea&w=800&h=400&facepad=10&q=20'; 
+        return site + '/small/' + url; 
       },
       imageMedium(url) {
-        return url + '?fit=crop&w=800&h=400&q=20'; 
+        return site + '/medium/' + url; 
       },
       imageLarge(url) {
-        return url + '?fit=facearea&facepad=3&w=150&h=150'; 
+        return site + '/large/' + url; 
       },
       imageDouble(url) {
-        return url + '?w=480&h=660&fit=crop&crop=focalpoint&fp-x=0&fp-y=0';
-      },
-      imageSquareSmall(url) {
-        return url + '?w=480&h=660&fit=crop&crop=focalpoint&fp-x=0&fp-y=0';
-      },
-      imageSquareLarge(url) {
-        return url + '?w=480&h=660&fit=crop&crop=focalpoint&fp-x=0&fp-y=0';
-      },
+        return site + '/double/' + url; 
+      }
     }
   };
   

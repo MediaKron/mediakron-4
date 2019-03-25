@@ -112,6 +112,24 @@ const actions = {
      * @param {*} param0
      * @param {*} id
      */
+    getTags({ commit, dispatch }) {
+        commit("tagsLoading");
+            return api.get('tags')
+                .then((response) => {
+                    commit("tagsLoad", response.data);
+            commit("tagsLoaded");
+        })
+        .catch((error) => {
+                error.errorMessage = "There was an error loading the item";
+            return dispatch("itemError", error);
+        });
+    },
+
+    /**
+     * Load a single item
+     * @param {*} param0
+     * @param {*} id
+     */
     update({ commit, state }, item) {
         if(JSON.stringify(item) !== JSON.stringify(state.editItem)){
             commit('updateItem', item);
@@ -177,7 +195,26 @@ const actions = {
      */
     discardEdits({ commit, state }) {
         commit('discardEdit')
-    }
+    },
+
+    /**
+     * Upload an image
+     * @param {*} param0
+     * @param {*} id
+     */
+    upload({ commit, dispatch, state, getters, rootGetters }, event) {
+        commit("uploading");
+
+        // Get the current site
+        let currentSite = rootGetters['sites/currentSite'],
+            type = state.editItem.type,
+            // Set the normal item create url
+            url = currentSite.id + '/upload/' + type,
+            file = event.target.files[0];
+        api.upload(url, file, type).then((response) => {
+            commit("upload", response.data);
+        });
+    },
 
     
 }

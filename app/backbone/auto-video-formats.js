@@ -252,7 +252,6 @@
             // construct URL format required by Sound Cloud oEmbed
             var soundcloud = 'https://soundcloud.com/oembed?format=json&url=https%3A//';
             var soundcloudURL = soundcloud + url + "&color=666666";
-            console.log(soundcloudURL);
 
             // extract the iframe embed snippet from the oembed JSON
             var soundcloudEmbed = false;

@@ -8,7 +8,7 @@
                 Add Video As Link
             </b-button>
             <b-collapse id="urlCollapse" :visible="editItem.video.type != 'mp4'">
-                <b-form-input id="url" v-model="editItem.video.url" type="text" placeholder="video url" @input="urlChanged" aria-describedby="inputFormatterHelp"/>
+                <b-form-input id="url" v-model="editItem.video.url" type="text" :placeholder=editItem.video.url @input="urlChanged" aria-describedby="inputFormatterHelp"/>
                 <b-form-text id="inputFormatterHelp" v-if="!isValidUrl">
                     Video url not recognized or not supported
                 </b-form-text>
@@ -25,7 +25,7 @@
                  <b-form-file
                     v-model="editItem.newImage"
                     :state="Boolean(editItem.newImage)"
-                    placeholder="Choose a file..."
+                    :placeholder= editItem.video.url
                     drop-placeholder="Drop file here..."
                     :accept="first.allowedTypes()"/>
                 <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
