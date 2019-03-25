@@ -6,11 +6,15 @@
                     <ContextSideBar class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></ContextSideBar>
                 </div>
             </aside>
-            <article class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-xl mx-auto"> 
-                <ItemTitle></ItemTitle>
+            <article class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
+                <BannerHalf style="background-image: url('https://picsum.photos/1000/1000/?random')">
+                    <ItemTitle></ItemTitle>
+                </BannerHalf>
                 <ItemCaption></ItemCaption>
-                <List></List>
+                <List class="px-6 max-w-xl mx-auto"></List>
                 <ItemDescription></ItemDescription>
+                <ItemMetadata></ItemMetadata>
+                <ItemTags></ItemTags>
             </article>
          </div>
     </div>
@@ -20,9 +24,12 @@
 <script>
 import ContextSideBar from '@/components/folders/ContextSideBar'
 import ItemTitle from '@/components/items-shared/ItemTitle'
+import BannerHalf from '@/components/banners/BannerHalf'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
 import List from '@/components/item-lists/List'
+import ItemMetadata from '@/components/items-shared/ItemMetadata'
+import ItemTags from '@/components/items-shared/ItemTags'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -30,10 +37,13 @@ export default {
     props: [ 'item', 'isEditing' ],
     components: {
         ItemTitle,
+        BannerHalf,
         ItemDescription,
         ItemCaption,
         List,
-        ContextSideBar
+        ContextSideBar,
+        ItemMetadata,
+        ItemTags
     },
     data() {
         return {

@@ -10,6 +10,8 @@ import Appearance from "@/views/site/options/Appearance";
 import HomePageSettings from "@/views/site/options/HomePageSettings";
 import Profile from "@/views/site/options/Profile";
 import Help from "@/views/help/help";
+import Tags from "@/views/site/tags/Tags";
+import Search from "@/views/site/search/Search";
 
 import settings from "./settings";
 import people from "./people";
@@ -33,6 +35,18 @@ var routes = {
         path: "help",
         component: Help,
         title: "Help",
+        props: true
+      },
+      {
+        path: "tags",
+        component: Tags,
+        title: "Tags",
+        props: true
+      },
+      {
+        path: "search",
+        component: Search,
+        title: "Search",
         props: true
       },
 

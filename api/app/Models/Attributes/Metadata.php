@@ -13,6 +13,14 @@ class Metadata extends BaseModel
         'relation', 'coverage', 'rights'
     ];
 
+    /**
+     * Get the user that owns the phone.
+     */
+    public function item()
+    {
+        return $this->belongsTo('App\Models\Item');
+    }
+
     static function mediakron_v3($data, $item_id){
         $metadata = new static();
         $metadata->fill((array) $data);

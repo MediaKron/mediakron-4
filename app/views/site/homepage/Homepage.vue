@@ -3,9 +3,9 @@
         <navigation></navigation> 
         <div id="homepage container">         
             <div id="wrapper-main" class="justify-content-center row" >
-                 <main role="main" > 
-                            <h1 class="mt-5"> Site Homepage </h1>
-                         <component :is="dynamicComponent"></component>
+                 <main role="main" class="w-100"> 
+                    
+                    <component :is="dynamicComponent"></component>
                  </main>
              </div>
         </div>
@@ -31,6 +31,8 @@ export default {
             switch(this.template){
                 case 'full':
                     return 'full';
+                case 'half':
+                    return 'half';
                 case 'basic':
                     return 'basic';
                 default:

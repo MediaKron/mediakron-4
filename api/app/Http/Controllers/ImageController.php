@@ -71,9 +71,11 @@ class ImageController extends Controller
         $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
         if (!Storage::disk('public')->exists($pathToOriginal)){
             // we didn't find it.  It might be on S3
-            if (Storage::disk('s3')->exists($pathToOriginal)){
+            //dd($pathToOriginal);
+            $pathToS3 = env('AWS_BUCKET_ENV', 'dev') . '/' . $pathToOriginal;
+            if (Storage::disk('s3')->exists($pathToS3)){
                 // clone the file down to the local disk
-                $contents = Storage::disk('s3')->get($pathToOriginal);
+                $contents = Storage::disk('s3')->get($pathToS3);
                 Storage::disk('public')->put($pathToOriginal, $contents);
             }
         }
@@ -92,5 +94,39 @@ class ImageController extends Controller
         $image = Image::make('/app/api/storage/app/public/' . $pathToOriginal)->resize($style['height'], $style['height']);
         $image->save('/app/api/storage/app/public/' . $pathToNew);
         return $image->response('jpg');
+    }
+
+    /**
+     * Style an uploaded file on first request
+     *
+     * @param [type] $site
+     * @param [type] $style
+     * @param Request $request
+     * @return void
+     */
+    public function cache($site, $image, Request $request){
+        $site = Site::byUri($site);
+        if(!$site) abort(404, 'Site Not Found');
+
+        // Make sure the site folder exists
+        if(!Storage::disk('public')->exists($site->uri)){
+            Storage::disk('public')->makeDirectory($site->uri);
+        }
+
+        // See if we have the source image here
+        $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
+        if (!Storage::disk('public')->exists($pathToOriginal)){
+            
+            // we didn't find it.  It might be on S3
+            //dd($pathToOriginal);
+            $pathToS3 = env('AWS_BUCKET_ENV', 'dev') . '/' . $pathToOriginal;
+            if (Storage::disk('s3')->exists($pathToS3)){
+                // clone the file down to the local disk
+                $contents = Storage::disk('s3')->get($pathToS3);
+                Storage::disk('public')->put($pathToOriginal, $contents);
+            }
+        }
+
+        return response()->file(Storage::disk('public')->getAdapter()->getPathPrefix() . $pathToOriginal);
     }
 }

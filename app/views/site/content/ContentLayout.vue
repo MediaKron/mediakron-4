@@ -1,6 +1,6 @@
 <template>
 <div>
-    <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-index-1 w-100" variant="primary" aria-label="site menus" >
+    <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-3 w-100" fixed="top" variant="primary" aria-label="site menus" >
         <b-navbar-brand class="text-uppercase site-options-title ml-4" :to="basePath + '/content'"> <font-awesome-icon icon="th-large" class="mr-1" />  Content</b-navbar-brand>
         <b-navbar-nav class="ml-auto">
             <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 ">      
@@ -9,13 +9,9 @@
             </b-nav-item>   
         </b-navbar-nav> 
     </b-navbar>
-    <b-container fluid class="mt-5 layout-sidebar-left ">
-    <div class="row">
-      <!-- <div class="sidebar-left col-md-4" > -->
-    <router-view></router-view>   
-      
-    </div>
-    </b-container>  
+    <div class="w-100"> 
+         <router-view></router-view>   
+    </div>  
 </div>
 
 </template>

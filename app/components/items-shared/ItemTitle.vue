@@ -1,5 +1,5 @@
 <template>
-    <header class="item-element-title" v-if="isEditing">
+    <header class="item-element-title w-75" v-if="isEditing">
                
         <b-form-group class="floating-label">
             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>

@@ -27,6 +27,12 @@ export const getInitialState = (checkLocalStorage = false) => {
     'listIsError': false,
     'listIsEmpty': false,
 
+    'tagsLoading': false,
+    'tagsLoaded': false,
+
+    'isUploading': false,
+    'isUploaded': false,
+
     'pagination' : {
       'currentPage': 1,
       'firstPage': 1,

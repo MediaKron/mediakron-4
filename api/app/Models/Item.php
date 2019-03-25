@@ -14,7 +14,9 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Item extends BaseModel
 {
-    use \App\Models\Traits\Item\Import;
+    use \App\Models\Traits\Item\Import,
+        \App\Models\Traits\Item\Permissions,
+        \App\Models\Traits\Item\Hydrate;
 
     static $select_with = [
         'metadata', 
@@ -24,6 +26,7 @@ class Item extends BaseModel
         'text', 
         'timeline', 
         'map', 
+        'tags',
         'children', 
         'children.child', 
         'parents', 
@@ -35,13 +38,20 @@ class Item extends BaseModel
     ];
 
     protected $fillable = [
-        'id',
-        'caption',
+        'active',
+        'published',
+        'locked',
+        'type',
+        'template',
         'title',
         'description',
-        'updated_at',
-        'created_at'
+        'transcript',
+        'body',
+        'caption',
+        'options',
+        'overlay'
     ];
+
     static $default_sort = 'updated_at';
     static $sortable = [
         'created_at',
@@ -51,6 +61,10 @@ class Item extends BaseModel
     static $directions = [
         'ASC',
         'DESC'
+    ];
+
+    public $uploadable = [
+        'image'
     ];
 
     /**
@@ -81,6 +95,36 @@ class Item extends BaseModel
      */
     public function getOptionsAttribute($value){
         return json_decode($value);
+    }
+
+    /**
+     * Set options attribute
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function setOverlayAttribute($value){
+        $this->attributes['overlay'] = json_encode($value);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function getOverlayAttribute($value){
+        return json_decode($value);
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Attributes\Tag');
     }
 
     /**

@@ -1,56 +1,62 @@
 <template>
 <div>
-    
-    <b-container fluid class="   layout-sidebar-left ">
-    <div class="row">
-      <!-- <div class="sidebar-left col-md-4" > -->
-        
-        <main role="main" class="with-sidebar-left col-md-12" > 
-           
-            <b-nav pills class="line-behind mb-3">
-                <b-nav-item :to="basePath + '/content/mycontent'">
-                    <font-awesome-icon icon="user"/> 
-                    <span class="optionsnav-text">My Content</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/content/all'">
-                    <font-awesome-icon icon="th"/> 
-                    <span class="optionsnav-text">Site Library</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="search"/> 
-                    <span class="optionsnav-text">Search</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="trash-alt"/> 
-                    <span class="optionsnav-text">Deleted</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="archive"/> 
-                    <span class="optionsnav-text">Archived      </span>
-                </b-nav-item>  
-            </b-nav>  
-           
-            <header class="sr-only">
-                <h1> All Content</h1>
-            </header>
+    <div class="w-full mx-auto px-6">
+        <div class="flex">
+            <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
+                <div class="lg:relative lg:sticky pin-t border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
+                    <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
+                     <b-nav pills vertical>
+                        <b-nav-item :to="basePath + '/content/mycontent'">
+                            <font-awesome-icon icon="user"/> 
+                            <span class="optionsnav-text">My Content</span>
+                        </b-nav-item> 
+                        <b-nav-item :to="basePath + '/content/all'">
+                            <font-awesome-icon icon="th"/> 
+                            <span class="optionsnav-text">Site Library</span>
+                        </b-nav-item> 
+                        <b-nav-item :to="basePath + '/#'">
+                            <font-awesome-icon icon="trash-alt"/> 
+                            <span class="optionsnav-text">Trash Can</span>
+                        </b-nav-item> 
+                        <b-nav-item :to="basePath + '/#'">
+                            <font-awesome-icon icon="search"/> 
+                            <span class="optionsnav-text">Search</span>
+                        </b-nav-item> 
+                        <b-nav-item >
+                        <b-button variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
+                            <span class="optionsnav-text">Add Content</span>
+                        </b-button>
+                            
+                        </b-nav-item> 
+                     </b-nav>  
+                     <div id="filters" class="mt-4 p-2">
+                        <b-form-input v-model="searchString" type="text" placeholder="Filter by Title" class="mr-2 block mb-2" />
+                        <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
+                        <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="block mr-2 border border-dark rounded mb-2" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
+                        <multiselect v-model="sortOrder" :options="sortOptions" class="block mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></multiselect>
+                    </div>
+                </div>
+                </div>
+            </aside>
+            <main class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
+                <header class="line-behind mt-16 mb-4 pr-4">
+                <h1> Site Library</h1>
+                  </header>
 
-            <div id="filters" class="d-flex mb-5 p-2">
-                <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" />
-                <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
-                <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
-                <multiselect v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></multiselect>
-          </div>
+             <loader v-if="listIsLoading">Loading...</loader>
 
-            <div v-if="listIsLoading">Loading ...</div>
            <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
                 <span v-for="item in alteredItemList" v-bind:key="item.id">
                     <content-card :item="item"></content-card>
                 </span>
             </b-card-group>
-
-        </main>
+            <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
+            </main>
+         </div>
     </div>
-    </b-container>  
+    
+           
+        
 </div>
 
 </template>
@@ -60,21 +66,28 @@ import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import ContentCard from "./ContentCard";
 import Multiselect from 'vue-multiselect'
+import Loader from '@/components/Loader';
 export default  Vue.extend({
      components: {
-         Multiselect,
-        ContentCard
+        Multiselect,
+        ContentCard,
+        Loader
     },
     computed:{
         ...mapGetters('sites', [
             'siteIsLoading',
             'siteIsLoaded',
-            'basePath'
+            'basePath',
+            'currentSite'
         ]),
         ...mapGetters('items', [
             'listIsLoading',
             'listIsLoaded',
-            'items'
+            'items',
+            'currentPage',
+            'totalItems',
+            'lastPage'
+
         ]),
         alteredItemList() {
             // Sort based on updated_at 
@@ -101,6 +114,9 @@ export default  Vue.extend({
         }
     },
     methods:{
+        linkGen (pageNum) {
+            return '/' + this.currentSite.url + '/content/all/' + pageNum
+        },
         ...mapActions('items',[
             'routeLoad'
         ]),
@@ -132,6 +148,11 @@ export default  Vue.extend({
             searchString: '',
         }
 
+    },
+    watch: {
+        '$route.params.page': function (page) {
+            this.routeLoad({to: this.$route});
+        }
     },
     mounted(){
         this.routeLoad({to: this.$route, site: this.currentSite});

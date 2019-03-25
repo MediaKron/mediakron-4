@@ -36,6 +36,89 @@ class Item extends Model {
                 return '.jpg, .png, .gif';
         }
     }
+    
+    defaults(){
+        return {
+            id: null,
+            created: 0,
+            changed: 0,
+            version: 0,
+            published: true,
+            archived: false,
+            user: 0,
+            editor: false,
+            template: 'default',
+            options: {},
+            uri: false,
+            time: false,
+            type: '',
+            title: '',
+            description: '',
+            transcript: '',
+            body: '',
+            caption: '',
+            image: '',
+            audio: {},
+            video: {},
+            text: {},
+            height: 0,
+            width: 0,
+            center: [0, 0],
+            size: {},
+            zoom: 2,
+            projection: 'EPSG:3857',
+            date: {
+                start: false,
+                end: false,
+            },
+            map: {
+                url: ''
+            },
+            timeline: {
+                scope: '',
+                granularity: '',
+                start: '',
+                end: '',
+            },
+            overlay: {},
+            tags: [],
+            relationships: {
+                topics: [],
+                tags: [],
+                maps: [],
+                timelines: [],
+                comparisons: [],
+
+                events: [],
+                layers: [],
+                children: [],
+                comments: [],
+                annotations: [],
+                citations: [],
+            },
+
+            metadata: {
+                source: "source",
+                citation: "",
+                description: "",
+                published: "",
+                creator: "",
+                publisher: "",
+                contributor: "",
+                format: "",
+                identifier: "",
+                language: "",
+                relation: "",
+                coverage: "",
+                medium: "",
+                provenance: "",
+                SizeOrDuration: "",
+                subject: "",
+                location: "",
+                rights: ""
+            },
+        }
+    }
     /* Render the default version of this topic */
     /*getView(template) {
         var view;
@@ -104,7 +187,7 @@ class Item extends Model {
     }
 
     changedSince(time) {
-        // get changed
+         get changed
         var changed = this.get('changed');
         if (!time) time = Mediakron.user.lastVisit();
         if (time < changed) return true;
@@ -119,7 +202,7 @@ class Item extends Model {
     }
 
     isUpdated(time) {
-        // get changed
+         get changed
         var changed = this.get('changed');
         if (Mediakron.user.lastVisit() < changed) return true;
         return false;
@@ -134,90 +217,89 @@ class Item extends Model {
         Mediakron.items.add(this);
     }
 
-    */
 
-    // defaults() {
-    //     return {
-    //         id: null,
-    //         created: 0,
-    //         changed: 0,
-    //         version: 0,
-    //         published: true,
-    //         archived: false,
-    //         user: Mediakron.user,
-    //         editor: false,
-    //         template: 'default',
-    //         options: {},
-    //         uri: false,
-    //         time: false,
-    //         type: '',
-    //         title: '',
-    //         description: '',
-    //         transcript: '',
-    //         body: '',
-    //         caption: '',
-    //         image: '',
-    //         audio: {},
-    //         video: {},
-    //         text: {},
-    //         height: 0,
-    //         width: 0,
-    //         center: [0, 0],
-    //         size: {},
-    //         zoom: 2,
-    //         projection: 'EPSG:3857',
-    //         date: {
-    //             start: false,
-    //             end: false,
-    //         },
-    //         map: {
-    //             url: ''
-    //         },
-    //         timeline: {
-    //             scope: '',
-    //             granularity: '',
-    //             start: '',
-    //             end: '',
-    //         },
-    //         overlay: {},
-    //         relationships: {
-    //             topics: [],
-    //             tags: [],
-    //             maps: [],
-    //             timelines: [],
-    //             comparisons: [],
 
-    //             events: [],
-    //             layers: [],
-    //             children: [],
-    //             comments: [],
-    //             annotations: [],
-    //             citations: [],
-    //         },
+     defaults() {
+         return {
+             id: null,
+             created: 0,
+             changed: 0,
+             version: 0,
+             published: true,
+             archived: false,
+             user: Mediakron.user,
+             editor: false,
+             template: 'default',
+             options: {},
+             uri: false,
+             time: false,
+             type: '',
+             title: '',
+             description: '',
+             transcript: '',
+             body: '',
+             caption: '',
+             image: '',
+             audio: {},
+             video: {},
+             text: {},
+             height: 0,
+             width: 0,
+             center: [0, 0],
+             size: {},
+             zoom: 2,
+             projection: 'EPSG:3857',
+             date: {
+                 start: false,
+                 end: false,
+             },
+             map: {
+                 url: ''
+             },
+             timeline: {
+                 scope: '',
+                 granularity: '',
+                 start: '',
+                 end: '',
+             },
+             overlay: {},
+             relationships: {
+                 topics: [],
+                 tags: [],
+                 maps: [],
+                 timelines: [],
+                 comparisons: [],
 
-    //         metadata: {
-    //             source: "",
-    //             citation: "",
-    //             description: "",
-    //             published: "",
-    //             creator: "",
-    //             publisher: "",
-    //             contributor: "",
-    //             format: "",
-    //             identifier: "",
-    //             language: "",
-    //             relation: "",
-    //             coverage: "",
-    //             medium: "",
-    //             provenance: "",
-    //             SizeOrDuration: "",
-    //             subject: "",
-    //             location: "",
-    //             rights: ""
-    //         }
-    //     };
-    // }
-    /*
+                 events: [],
+                 layers: [],
+                 children: [],
+                 comments: [],
+                 annotations: [],
+                 citations: [],
+             },
+
+             metadata: {
+                 source: "",
+                 citation: "",
+                 description: "",
+                 published: "",
+                 creator: "",
+                 publisher: "",
+                 contributor: "",
+                 format: "",
+                 identifier: "",
+                 language: "",
+                 relation: "",
+                 coverage: "",
+                 medium: "",
+                 provenance: "",
+                 SizeOrDuration: "",
+                 subject: "",
+                 location: "",
+                 rights: ""
+             }
+         };
+     }
 
     editor() {
         var editor = this.get('editor');
@@ -227,7 +309,7 @@ class Item extends Model {
         return '';
     }
 
-    // get the proper url to this item.  Either type/uri, item/uri, type/id, item/id in that order
+     get the proper url to this item.  Either type/uri, item/uri, type/id, item/id in that order
     getURL() {
         var url = '',
             type = this.get('type'),
@@ -304,12 +386,12 @@ class Item extends Model {
     getYouTubeUrl() {
         var video = this.get('video'),
             url = video.url,
-            youtube = '//www.youtube.com/embed/';
+            youtube = 'www.youtube.com/embed/';
 
         if (url) {
-            url = url.replace("https://", '');
-            url = url.replace("http://", '');
-            url = url.replace("//", '');
+            url = url.replace("https:", '');
+            url = url.replace("http:", '');
+            url = url.replace("", '');
             url = url.replace("www.", '');
             url = url.replace("youtu.be/", '');
             url = url.replace("youtube.com/embed/", '');
@@ -331,17 +413,17 @@ class Item extends Model {
         }
 
     }
-    //https://drive.google.com/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/view?usp=sharing
-    //https://drive.google.com/open?id=0B36LdKxiyL7fSW9FMkhNQ2JKQnc&authuser=0
-    //https://drive.google.com/a/bc.edu/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/edit
+    https:drive.google.com/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/view?usp=sharing
+    https:drive.google.com/open?id=0B36LdKxiyL7fSW9FMkhNQ2JKQnc&authuser=0
+    https:drive.google.com/a/bc.edu/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/edit
     getGoogleUrl() {
         var video = this.get('video'),
             url = video.url,
-            google = 'https://docs.google.com/';
+            google = 'https:docs.google.com/';
         if (url) {
-            url = url.replace("https://", '');
-            url = url.replace("http://", '');
-            url = url.replace("//", '');
+            url = url.replace("https:", '');
+            url = url.replace("http:", '');
+            url = url.replace("", '');
             url = url.replace("/preview", '');
             url = url.replace("/view", '');
             url = url.replace("/edit", '');
@@ -371,11 +453,11 @@ class Item extends Model {
     getVimeoUrl() {
         var video = this.get('video'),
             url = video.url,
-            vimeo = '//player.vimeo.com/video/';
+            vimeo = 'player.vimeo.com/video/';
         url = url.replace("player.vimeo.com/video/", '');
-        url = url.replace("https://", '');
-        url = url.replace("http://", '');
-        url = url.replace("//", '');
+        url = url.replace("https:", '');
+        url = url.replace("http:", '');
+        url = url.replace("", '');
         url = url.replace("www.", '');
         url = url.replace("vimeo.com/", '');
 
@@ -386,12 +468,12 @@ class Item extends Model {
     getPanoptoUrl() {
         var video = this.get('video'),
             url = video.url;
-        url = url.replace("http://", 'https://');
+        url = url.replace("http:", 'https:');
 
         var start = this.timeToSeconds(video.start);
         var end = this.timeToSeconds(video.end);
 
-        if (start !== false) { // if video has start/stop timecodes
+        if (start !== false) {  if video has start/stop timecodes
             url = url.replace(".mp4", '');
             url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
             url = url + '.mp4';
@@ -413,7 +495,7 @@ class Item extends Model {
     getKanopyUrl() {
         var video = this.get('video'),
             url = video.url;
-        url = url.replace("http://", 'https://');
+        url = url.replace("http:", 'https:');
         url = url.replace("bc-kanopystreaming-com.proxy.bc.edu/playlist/", 'bc.kanopystreaming.com/embed/');
         return url;
     }
@@ -421,12 +503,12 @@ class Item extends Model {
     getPanoptoAudioUrl() {
         var audio = this.get('audio'),
             url = audio.url;
-        url = url.replace("http://", 'https://');
+        url = url.replace("http:", 'https:');
 
         var start = this.timeToSeconds(audio.start);
         var end = this.timeToSeconds(audio.end);
 
-        if (start !== false) { // if video has start/stop timecodes  
+        if (start !== false) {  if video has start/stop timecodes  
             url = url.replace(".mp4", '');
             url = url.replace("bc.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=", 'bc.hosted.panopto.com/Panopto/Podcast/Stream/');
             url = url + '.mp4';
@@ -446,11 +528,11 @@ class Item extends Model {
     getGoogleUrlAudio() {
         var audio = this.get('audio'),
             url = audio.url,
-            google = 'https://docs.google.com/';
+            google = 'https:docs.google.com/';
         if (url) {
-            url = url.replace("https://", '');
-            url = url.replace("http://", '');
-            url = url.replace("//", '');
+            url = url.replace("https:", '');
+            url = url.replace("http:", '');
+            url = url.replace("", '');
             url = url.replace("/preview", '');
             url = url.replace("/view", '');
             url = url.replace("/edit", '');
@@ -473,7 +555,7 @@ class Item extends Model {
             width = $('iframe').width(),
             height = $('iframe').height();
 
-        url = url.replace("http://", 'https://');
+        url = url.replace("http:", 'https:');
         var start = this.timeToSeconds(video.start);
         var end = this.timeToSeconds(video.end);
 
@@ -624,7 +706,7 @@ class Item extends Model {
     }
 
     
-    // Check to see if this item has a particular topic or tag
+     Check to see if this item has a particular topic or tag
     hasTopicOrTag(top, tag) {
         var tid = this.get('tid'),
             tags = this.get('tags'),
