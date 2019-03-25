@@ -6,13 +6,13 @@
                 <div class="lg:relative lg:sticky pin-t border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
                     <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
                      <b-nav pills vertical>
-                        <b-nav-item class="text-xl">
+                        <b-nav-item class="text-xl" :to="basePath + '/content/mycontent'">
                             <span class="optionsnav-text">My Content</span>
                         </b-nav-item> 
                         <b-nav-item class="text-xl" :to="basePath + '/content/all'">
                             <span class="optionsnav-text">Site Library</span>
                         </b-nav-item> 
-                        <b-nav-item class="text-xl" :to="basePath + '/content/authors'">
+                        <b-nav-item class="text-xl">
                             <span class="optionsnav-text">Authors</span>
                         </b-nav-item> 
                         <b-button class="mt-10 mx-2" variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
@@ -27,7 +27,7 @@
             </aside>
             <main class="min-h-screen w-full lg:static lg:max-h-full max-w-4xl mx-auto lg:overflow-visible "> 
                 <header class="line-behind mt-20 mb-4">
-                <h1> My Content</h1>
+                <h1> Authors</h1>
                   </header>
 
             <b-input-group class="mb-3">
@@ -38,7 +38,7 @@
             </b-input-group>
 
             <loader v-if="listIsLoading">Loading...</loader>
-           <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+           <b-table v-if="listIsLoaded"  :busy="isBusy" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
                 <template slot="title" slot-scope="items">
                     <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" /> <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}</router-link> 
                 </template>

@@ -27,7 +27,6 @@ export default {
     data() {
       return {
         fields: {
-          
           icon: {
           label: "Icon",
             sortable: true
@@ -44,7 +43,7 @@ export default {
             label: "Font-Awesome Name",
             sortable: true
           },
-       },
+        },
         items: [
           {faname: 'Archive', icon: 'archive', code: 'archive', mkname:'Archive'},
           {faname: 'Arrow Down', icon: 'arrow-down', code: 'arrow-down', mkname:'Arrow Down'},

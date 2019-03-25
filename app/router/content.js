@@ -1,8 +1,8 @@
 import Content from '@/views/site/content/Content';
 import MyContent from '@/views/site/content/MyContent';
 import AllContent from '@/views/site/content/AllContent';
-import AllContentTable from '@/views/site/content/AllContentTable';
 import AddContent from '@/views/site/content/AddContent';
+import Authors from '@/views/site/content/Authors';
 import CreateContent from '@/views/site/items/Create';
 
 
@@ -20,9 +20,9 @@ export default [
         props: true
     },
     {
-        path: "alltable/:page?",
-        name: 'allcontenttable',
-        component: AllContentTable,
+        path: "authors",
+        name: 'authors',
+        component: Authors,
         props: true
     },
     {
