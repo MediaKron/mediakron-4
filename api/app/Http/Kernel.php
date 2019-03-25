@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\AcceptsJson::class,
         \App\Http\Middleware\Cors::class
+        //\App\Http\Middleware\ContentLength::class
     ];
 
     /**

@@ -1,15 +1,37 @@
 <template>
     <b-navbar-nav class="secondarynav ml-3">
         
-        <b-nav-item v-if="canBrowse" :to="basePath + '/content'" class="bg-dark">
+        <!-- <b-nav-item v-if="canBrowse" :to="basePath + '/content'" class="bg-dark">
             <font-awesome-icon icon="th-large"/> 
             <span class="item-text">Content</span>
-        </b-nav-item>
+        </b-nav-item> -->
 
-         <b-nav-item class="bg-dark" :to="basePath + '/profile'"> 
+          <b-nav-item-dropdown no-caret right v-if="currentSite.user && isGuest" extra-toggle-classes="text-uppercase bg-dark" extra-menu-classes="content-dropdown" >
+            <template slot="button-content" >
+                <font-awesome-icon icon="th-large"/> 
+                <span class="item-text">Content</span>
+            </template>
+            <b-dropdown-item :to="basePath + '/content/mycontent'"><font-awesome-icon icon="user"/> <span class="pl-1">My Content</span></b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/content/all'"> <font-awesome-icon icon="th"/> <span class="pl-1">Site Library</span></b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/content/deleted'"><font-awesome-icon icon="trash-alt"/><span class="pl-1">Trash Can</span></b-dropdown-item>
+        </b-nav-item-dropdown>
+
+         <!-- <b-nav-item class="bg-dark" :to="basePath + '/profile'"> 
         <font-awesome-icon icon="user"/> 
         <span class="item-text">Profile</span>
-        </b-nav-item >
+        </b-nav-item > -->
+
+         <li class="bg-dark nav-item"> 
+            <b-dropdown variant="link" no-caret right toggle-class="nav-link border-0">
+                <template slot="button-content">
+                    <font-awesome-icon icon="user"/><span class="item-text">Profile</span>
+                </template>
+                <b-dropdown-text>Logged in as: {{ user.name }}</b-dropdown-text>
+                <b-dropdown-text>My Role: {{ user.role }}</b-dropdown-text>
+                <b-dropdown-item :to="basePath + '/logout'">Sign Out</b-dropdown-item>
+            </b-dropdown>
+
+        </li>
 
         <!-- <b-nav-item-dropdown no-caret right v-if="currentSite.user && isGuest" extra-toggle-classes="text-uppercase bg-dark px-3" extra-menu-classes="users-dropdown" >
             <template slot="button-content" >
@@ -89,14 +111,12 @@ export default  Vue.extend({
         ...mapGetters('sites', [
             'siteIsLoading',
             'siteIsLoaded',
+            'currentSite',
             'basePath'
         ]),
         ...mapState('items', [
             'changed',
             'changeCount'
-        ]),
-        ...mapGetters('items', [
-            'tags'
         ]),
     },
     mounted(){

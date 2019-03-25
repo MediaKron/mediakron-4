@@ -26,7 +26,7 @@
 
 <script>
 import Vue from 'vue';
-import { mapState, mapGetters } from 'vuex';
+import { mapActions, mapState, mapGetters } from 'vuex';
 export default  Vue.extend({
     computed:{
         ...mapState('sites', [
@@ -39,14 +39,21 @@ export default  Vue.extend({
         ]),
         ...mapState('items', [
             'changed',
-            'changeCount'
+            'changeCount',
+            'tagsLoading',
+            'tagsLoaded'
         ]),
         ...mapGetters('items', [
             'tags'
         ]),
     },
+    methods: {
+        ...mapActions('items', [
+            'getTags'
+        ])
+    },
     mounted(){
-        
+        this.getTags();
     }
 });
 </script>

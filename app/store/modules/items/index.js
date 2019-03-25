@@ -27,6 +27,9 @@ export const getInitialState = (checkLocalStorage = false) => {
     'listIsError': false,
     'listIsEmpty': false,
 
+    'tagsLoading': false,
+    'tagsLoaded': false,
+
     'isUploading': false,
     'isUploaded': false,
 

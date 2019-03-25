@@ -20,6 +20,7 @@ import {
     faInfoCircle,
     faList,
     faPaintBrush, /* Appearance */
+    faPlus,
     faPlusSquare,
     faQuestionCircle,
     faSearch,
@@ -66,6 +67,7 @@ export default function initializeIcons(){
         faInfoCircle,
         faList,
         faPaintBrush, /* Appearance */
+        faPlus,
         faPlusSquare, 
         faQuestionCircle,
         faSearch, 

@@ -50,7 +50,7 @@ const actions = {
        * @param {*} param0
        * @param {*} id
        */
-    getSite({ commit, dispatch }, id) {
+    loadSite({ commit, dispatch }, id) {
         commit("siteLoading");
 
         return api.get('site/'+id)

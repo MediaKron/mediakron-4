@@ -69,10 +69,11 @@ trait Hydrate
         }
 
         $fill = request(['metadata']);
-
-        $metadata->fill($fill['metadata']);
-        $metadata->item_id = $this->id;
-        $metadata->save();
+        if(isset($fill['metadata'])){
+            $metadata->fill($fill['metadata']);
+            $metadata->item_id = $this->id;
+            $metadata->save();
+        }
         
         return $this;
     }
@@ -82,7 +83,7 @@ trait Hydrate
      *
      * @return App\Models\User
      */
-    public function addTags(){
+    public function addTags($site){
         //
         $tags = request(['tags']);
         $sync = [];
@@ -98,7 +99,7 @@ trait Hydrate
             if(!$save) $save = new Tag();
             $save->title = $tag['title'];
             $save->uri = Str::slug($tag['title']);
-            $save->site_id = 0;
+            $save->site_id = $site;
             $save->save();
             $sync[] = $save->id;
         }
@@ -106,6 +107,7 @@ trait Hydrate
         return $this;
     }
 
+   
 
     /**
      * Set the current user as the owner of the record
