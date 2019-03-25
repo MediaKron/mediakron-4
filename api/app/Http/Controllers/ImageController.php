@@ -58,8 +58,6 @@ class ImageController extends Controller
         $site = Site::byUri($site);
         if(!$site) abort(404, 'Site Not Found');
 
-
-
         // if the request style doesn't exist abort
         if(!isset($this->styles[$style])) abort(404, 'Style Not Found');
         $style = $this->styles[$style];
@@ -69,8 +67,17 @@ class ImageController extends Controller
             Storage::disk('public')->makeDirectory($site->uri);
         }
 
-        $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
-        if (!Storage::disk('public')->exists($pathToOriginal)) abort(404, 'Image Not Found');
+        // See if we have the source image here
+        $pathToOriginal = env('AWS_BUCKET_ENV', 'dev') . '/' . $site->uri . DIRECTORY_SEPARATOR . $image;
+        if (!Storage::disk('public')->exists($pathToOriginal)){
+            // we didn't find it.  It might be on S3
+            //dd($pathToOriginal);
+            if (Storage::disk('s3')->exists($pathToOriginal)){
+                // clone the file down to the local disk
+                $contents = Storage::disk('s3')->get($pathToOriginal);
+                Storage::disk('public')->put($pathToOriginal, $contents);
+            }
+        }
 
         if (!Storage::disk('public')->exists($site->uri . '/styles/')) {
             Storage::disk('public')->makeDirectory($site->uri . '/styles/');
@@ -83,9 +90,42 @@ class ImageController extends Controller
         }
 
         $pathToNew = $pathToStyle . DIRECTORY_SEPARATOR . $image;
-
-        $image = Image::make(public_path('storage/' . $pathToOriginal))->resize($style['height'], $style['height']);
-        $image->save($pathToNew);
+        $image = Image::make('/app/api/storage/app/public/' . $pathToOriginal)->resize($style['height'], $style['height']);
+        $image->save('/app/api/storage/app/public/' . $pathToNew);
         return $image->response('jpg');
+    }
+
+    /**
+     * Style an uploaded file on first request
+     *
+     * @param [type] $site
+     * @param [type] $style
+     * @param Request $request
+     * @return void
+     */
+    public function cache($site, $image, Request $request){
+        $site = Site::byUri($site);
+        if(!$site) abort(404, 'Site Not Found');
+
+        // Make sure the site folder exists
+        if(!Storage::disk('public')->exists($site->uri)){
+            Storage::disk('public')->makeDirectory($site->uri);
+        }
+
+        // See if we have the source image here
+        $pathToOriginal = $site->uri . DIRECTORY_SEPARATOR . $image;
+        if (!Storage::disk('public')->exists($pathToOriginal)){
+            
+            // we didn't find it.  It might be on S3
+            //dd($pathToOriginal);
+            if (Storage::disk('s3')->exists($pathToOriginal)){
+                dd('file not found on remote');
+                // clone the file down to the local disk
+                $contents = Storage::disk('s3')->get($pathToOriginal);
+                Storage::disk('public')->put($pathToOriginal, $contents);
+            }
+        }
+
+        return response()->file(Storage::disk('public')->getAdapter()->getPathPrefix() . $pathToOriginal);
     }
 }

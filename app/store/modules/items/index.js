@@ -8,12 +8,16 @@ export const getInitialState = (checkLocalStorage = false) => {
     site: {},
     
     tags: [],
+
     items: [],
     first: {},
     second: {},
     third: {},
 
-    // user List Statuses
+    isEditing: false,
+    editItem: {},
+
+    // Item List Statuses
     'itemIsLoading':false,
     'itemIsLoaded': false,
     'itemIsError': false,
@@ -22,6 +26,9 @@ export const getInitialState = (checkLocalStorage = false) => {
     'listIsLoaded': false,
     'listIsError': false,
     'listIsEmpty': false,
+
+    'isUploading': false,
+    'isUploaded': false,
 
     'pagination' : {
       'currentPage': 1,

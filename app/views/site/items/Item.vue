@@ -1,62 +1,78 @@
 <template>
     <div>
-        <ContentLayout></ContentLayout>
-         <div>
-            <b-button class="float-right" @click="isEditing = !isEditing">{{ getEditPrompt }}</b-button>
-        </div>
-        <component v-if="itemIsLoaded" :is="component" :item="first" :isEditing="isEditing"/>
+        <Navigation></Navigation>
+        <main>
+            <loader v-if="itemIsLoading"></loader>
+            <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" />
+        </main>
     </div>
 </template>
 
 <script>
 
-import { mapGetters, mapActions } from 'vuex';
-import Images from './Images';
-import Videos from './Videos';
-import ContentLayout from '@/views/site/content/ContentLayout';
-export default ({
+import { mapGetters, mapActions } from 'vuex'
+import Images from './Images'
+import Videos from './Videos'
+import Folders from './Folders'
+import Files from './Files'
+import Audio from './Audio'
+import Timelines from './Timelines'
+import Maps from './Maps'
+import Navigation from '@/views/site/Navigation'
+import { circleMarker } from 'leaflet'
+import Loader from '@/components/Loader';
+export default {
     props:[
-        'firstUri', 'secondUri', 'thirdUri'
+        'firstUri', 
+        'secondUri', 
+        'thirdUri'
     ],
     components: {
-        ContentLayout,
+        Navigation,
+        Loader
     },
-    data() {
-        return {
-            isEditing: false
-        }
-    },
+    
     mounted(){
         // go fetch the items
-        this.itemsRouteLoad({ first: this.firstUri })
+        this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri })
     },
     computed: {
         ...mapGetters("items", [
-            "itemLoading", 
+            "itemIsLoading", 
             "itemIsLoaded",
-            "first", "second", "third"
+            "first", 
+            "second",
+            "third",
+            "isEditing"
         ]),
         component(){
             switch(this.first.type){
                 case 'image':
-                    return Images;
+                    return Images
                 case 'video':
-                    return Videos;
+                    return Videos
+                case 'folder':
+                    return Folders
+                case 'file':
+                    return Files
+                case 'audio':
+                    return Audio
+                case 'timeline':
+                    return Timelines
             }
             
         },
-        getEditPrompt() {
-            if (this.isEditing) return 'Save'
-            return 'Edit'
-        },
+        
     },
     methods: {
         ...mapActions("items", [
-            "itemsRouteLoad"
+            "itemsRouteLoad",
+            "update",
+            "saveItem",
+            "setEditItem"
         ]),
     }
-
-});
+}
 </script>
 
 <style>

@@ -12,12 +12,18 @@ export const getters = {
     listIsError: state => state.listIsError,
     listIsEmpty: state => !(state.itemList && state.itemList.length > 0 && state.listIsLoading)? true : false,
 
+    isUploading: state => state.isUploading,
+    isUploaded: state => state.isUploaded,
+
     /**
      * Current
      */
     first: state => state.first,
     second: state => state.second,
     third: state => state.third,
+
+    isEditing: state => (state.isEditing) ? state.isEditing : false,
+    editItem: state => (state.editItem) ? state.editItem : false,
     
     itemIsLoading: state => state.itemIsLoading,
     itemIsLoaded: state => state.itemIsLoaded,

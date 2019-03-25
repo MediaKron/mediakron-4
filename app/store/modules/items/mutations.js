@@ -82,12 +82,14 @@ export const mutations = {
 
     /**
      * Called with the data to load as the current list
+     * 
+     * TODO: This will need to handle single item and multiple items.  Right now it doesn't handle the single case well
      * @param {*} state
      */
     itemLoad(state, data){
         state.first = new Item(data[0], state.site);
-        if(data[1]) state.second = new Item(data[1], site);
-        if(data[2]) state.third = new Item(data[2], site);
+        if(data[1]) state.second = new Item(data[1], state.site);
+        if(data[2]) state.third = new Item(data[2], state.site);
     },
 
     /**
@@ -100,7 +102,7 @@ export const mutations = {
 
     updateItem(state, data){
         state.editPending = true;
-        state.editItem = data;
+        state.first = new Item(data, state.site);
     },
 
     itemSaving(state){
@@ -117,6 +119,7 @@ export const mutations = {
         state.siteIsSaving = false;
         state.siteIsSaved = true;
         state.siteSaveFailed = false;
+        state.isEditing = false;
     },
 
     siteUpdateFailed(state, error){
@@ -124,6 +127,48 @@ export const mutations = {
         state.siteIsSaved = false;
         state.siteSaveFailed = true;
 
+    },
+
+    /**
+     * Instantate an empty item for "editing"
+     */
+    createItem(state, type){
+        var item = new Item({
+            id: false,
+            uri: false,
+            type: type
+        }, state.site);
+        state.isEditing = true;
+        state.editItem = Object.assign({}, item)
+        state.first = item;
+        state.itemIsLoading = false;
+        state.itemIsLoaded = true;
+        state.itemIsFailed = false;
+    },
+
+    /**
+     * Given an item, set the edit state to that item
+     * and engage editing mode
+     * @param {*} state 
+     * @param {*} item 
+     */
+    editItemSet(state, item) {
+        state.isEditing = true;
+        state.editItem = Object.assign({}, item)
+    },
+
+    editCancel(state, item) {
+        state.isEditing = false;
+        state.editItem = {}
+    },
+
+    uploading(state, item) {
+        state.isEditing = false;
+        state.editItem = {}
+    },
+    uploaded(state, item) {
+        state.isEditing = false;
+        state.editItem = {}
     }
 
 }

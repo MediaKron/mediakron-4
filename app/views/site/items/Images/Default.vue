@@ -1,66 +1,44 @@
 <template>
-    <div>
-        <b-form class="container">
-            <b-form-group v-if=isEditing
-                label="Edit title"
-                label-for="title">
-                <b-input v-if="isEditing" id="title" :value="itemCopy.title"></b-input>
-            </b-form-group>
-            <div v-else>
-                <div>{{ itemCopy.title }}</div>
-            </div>
-            <b-form-group v-if=isEditing
-                          label="Edit description"
-                          label-for="description">
-                <b-input v-if="isEditing" id="description" :value="itemCopy.description"></b-input>
-            </b-form-group>
-            <div v-else>
-                <div>{{ itemCopy.description }}</div>
-            </div>
-            <b-form-group v-if=isEditing
-                          label="replace image file"
-                          label-for="fileUpload">
-                <b-form-file
-                        v-model="file"
-                        :state="Boolean(file)"
-                        placeholder="Choose a file..."
-                        drop-placeholder="Drop file here..."
-                />
-            </b-form-group>
-            <div v-else>
-                <viewer :images="images">
-                    <img v-for="src in images" :src="src" :key="src">
-                </viewer>
-                <div>{{ itemCopy.uri }}</div>
-            </div>
-        </b-form>
-    </div>
+    <article class="container">
+        <ItemTitle></ItemTitle>
+        <ItemCaption></ItemCaption>
+        <item-image></item-image>
+        <ItemDescription></ItemDescription>
+        <ItemMetadata></ItemMetadata>
+    </article>
 </template>
 
 <script>
-    import 'viewerjs/dist/viewer.css'
-    import Viewer from 'v-viewer'
-    import Vue from 'vue'
-    Vue.use(Viewer)
-export default {
-    components: {
-        Viewer
-    },
-    props: [ 'item', 'isEditing' ],
-    data() {
-        return {
-        images: ['https://picsum.photos/300?image=342',
-            'https://picsum.photos/200?image=1074',
-            'https://picsum.photos/200/300?image=446',
-            'https://picsum.photos/300?image=973',
-            'https://picsum.photos/200/300?image=459',
-            'https://picsum.photos/200/300?image=1075',
-            'https://picsum.photos/200?image=1077',
-            'https://picsum.photos/200/300?image=352',
-            'https://picsum.photos/200/300?image=323',],
+import ItemTitle from '@/components/items-shared/ItemTitle'
+import ItemDescription from '@/components/items-shared/ItemDescription'
+import ItemCaption from '@/components/items-shared/ItemCaption'
+import ItemImage from '@/components/items-shared/Image'
+import ItemMetadata from '@/components/items-shared/ItemMetadata'
 
-            itemCopy: Object.assign({}, this.item)
-        }
+import { mapGetters, mapActions } from 'vuex'
+
+export default { 
+    props: [ 'item' ],
+    components: {
+        ItemTitle,
+        ItemDescription,
+        ItemCaption,
+        ItemImage,
+        ItemMetadata
+    },
+    created() {
+
+    },
+    computed: {
+        ...mapGetters('items', [
+            'editItem',
+            'isEditing'
+        ])
+    },
+    methods: {
+        ...mapActions('items', [
+            'setEditItem',
+        ])
     }
 }
 </script>

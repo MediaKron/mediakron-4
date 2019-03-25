@@ -47,6 +47,7 @@
                     <content-card :item="item"></content-card>
                 </span>
             </b-card-group>
+            <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
 
         </main>
     </div>
@@ -69,12 +70,17 @@ export default  Vue.extend({
         ...mapGetters('sites', [
             'siteIsLoading',
             'siteIsLoaded',
-            'basePath'
+            'basePath',
+            'currentSite'
         ]),
         ...mapGetters('items', [
             'listIsLoading',
             'listIsLoaded',
-            'items'
+            'items',
+            'currentPage',
+            'totalItems',
+            'lastPage'
+
         ]),
         alteredItemList() {
             // Sort based on updated_at 
@@ -101,6 +107,9 @@ export default  Vue.extend({
         }
     },
     methods:{
+        linkGen (pageNum) {
+            return '/' + this.currentSite.url + '/content/all/' + pageNum
+        },
         ...mapActions('items',[
             'routeLoad'
         ]),
@@ -132,6 +141,11 @@ export default  Vue.extend({
             searchString: '',
         }
 
+    },
+    watch: {
+        '$route.params.page': function (page) {
+            this.routeLoad({to: this.$route});
+        }
     },
     mounted(){
         this.routeLoad({to: this.$route, site: this.currentSite});

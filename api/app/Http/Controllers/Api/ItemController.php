@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use App\Models\Site;
 use App\Models\User;
-use App\Http\Requests\Admin\ItemRequest; 
+use App\Http\Requests\Item as ItemRequest; 
 
 use Log;
 
@@ -21,10 +21,12 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($site)
+    public function index($site, Request $request)
     {
         //
-        return Item::with(Item::$select_with)->where('site_id', $site)->paginate(50);
+        $query = Item::listQuery()->with(Item::$select_with)
+            ->where('site_id', $site);
+        return $query->paginate(request('per_page', 50));
     }
 
     /**
@@ -44,18 +46,35 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($site_id, ItemRequest $request)
+    public function store($site_id, Request $request)
     {
         //
         try{
+            // You can only create items in a site context, so find the site
+            $site = Site::findOrFail($site_id);
+
+            // Create a new item
             $item = new Item();
+            $item->version_id = 0;
             // Check edit permissions
-            $item->canCreate()->hydrate($request);
-            return $item;
+            $item->canCreate()
+                ->buildItem($request) // Hydrate the item from the request
+                ->getUri()
+                ->setOwner()
+                ->setEditor()
+                ->setSite($site);
+                
+            // TODO: Handle inbound relationship mapinog
+            // TODO: Handle metadata fields
+            // TODO: Handle audio, video, images and text fields
+            $item->save();
+            $item->updateMetadata()
+                ->addTags();
+            return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
-            Log::info('Access denied to user when creating item.' . $e->getMessage());
-            return response()->json(['error' => $e->getMessage() ]);
+            Log::info('Error when creating item. ' . $e->getMessage());
+            throw $e;
         }
     }
 
@@ -95,7 +114,8 @@ class ItemController extends Controller
         }catch(\Exception $e){
             // 
             Log::info('Access denied to user when viewing item');
-            return response()->json(['error' => $e->getMessage() ]);
+            throw $e;
+            //return response()->json(['error' => $e->getMessage() ]);
         }
     }
 
@@ -120,16 +140,29 @@ class ItemController extends Controller
      */
     public function update($site_id, $id, Request $request)
     {
-        //
         try{
+            // You can only create items in a site context, so find the site
+            $site = Site::findOrFail($site_id);
+
+            // Create a new item
             $item = Item::findOrFail($id);
-            // Check edit permissions
-            $item->canEdit()->hydrate($request);
-            return $item;
+            $item->canUpdate()
+                ->buildItem($request) // Hydrate the item from the request
+                ->setOwner()
+                ->setEditor()
+                ->setSite($site)
+                ->updateMetadata()
+                ->addTags();
+            // TODO: Handle inbound relationship mapinog
+            // TODO: Handle metadata fields
+            // TODO: Handle audio, video, images and text fields
+            $item->save();
+            return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
             Log::info('Access denied to user when editing item');
-            return response()->json(['error' => $e->getMessage() ]);
+            throw $e;
+            //return response()->json(['error' => $e->getTraceAsString() ]);
         }
         
     }

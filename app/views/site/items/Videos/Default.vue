@@ -1,68 +1,43 @@
 <template>
-   <div>
-      <b-form class="container">
-         <b-form-group v-if=isEditing
-                       label="Edit title"
-                       label-for="title">
-            <b-input v-if="isEditing" id="title" :value="itemCopy.title"></b-input>
-         </b-form-group>
-         <div v-else>
-            <div>{{ itemCopy.title }}</div>
-         </div>
-         <b-form-group v-if=isEditing
-                       label="Edit description"
-                       label-for="description">
-            <b-input v-if="isEditing" id="description" :value="itemCopy.description"></b-input>
-         </b-form-group>
-         <div v-else>
-            <div>{{ itemCopy.description }}</div>
-         </div>
-         <b-form-group v-if=isEditing
-                       label="replace video file"
-                       label-for="fileUpload">
-            <b-form-file
-                    v-model="file"
-                    :state="Boolean(file)"
-                    placeholder="Choose a file..."
-                    drop-placeholder="Drop file here..."
-            />
-         </b-form-group>
-         <div v-else>
-            <vue-plyr>
-               <video poster="poster.png" src="video.mp4">
-                  <source src="video-720p.mp4" type="video/mp4" size="720">
-                  <source src="video-1080p.mp4" type="video/mp4" size="1080">
-                  <track kind="captions" label="English" srclang="en" src="captions-en.vtt" default>
-               </video>
-            </vue-plyr>
-            <div>{{ itemCopy.uri }}</div>
-         </div>
-      </b-form>
-   </div>
+  <article class="container">
+        <ItemTitle></ItemTitle>
+        <ItemCaption></ItemCaption>
+        <item-video></item-video>
+        <ItemDescription></ItemDescription>
+        <ItemMetadata></ItemMetadata>
+
+   </article>
 </template>
 
 <script>
-    import Vue from 'vue'
-    import VuePlyr from 'vue-plyr'
-    import 'vue-plyr/dist/vue-plyr.css' // only if your build system can import css, otherwise import it wherever you would import your css.
+import ItemTitle from '@/components/items-shared/ItemTitle'
+import ItemDescription from '@/components/items-shared/ItemDescription'
+import ItemCaption from '@/components/items-shared/ItemCaption'
+import ItemVideo from '@/components/items-shared/Video'
+import ItemMetadata from '@/components/items-shared/ItemMetadata'
+import { mapActions, mapGetters } from 'vuex'
 
-    Vue.use(VuePlyr)
 export default {
-    props: ['item', 'isEditing'],
-    name: 'Component',
-    mounted() {
-        console.log(this.player)
+    props: [ 'item', 'isEditing' ],
+    components: {
+        ItemTitle,
+        ItemDescription,
+        ItemCaption,
+        ItemVideo,
+        ItemMetadata
+    },
+    created() {
     },
     computed: {
-        player() {
-            return this.$refs.plyr.player
-        }
+        ...mapGetters('items', [
+            'editItem'
+        ])
     },
-    data() {
-        return {
-            itemCopy: Object.assign({}, this.item)
-        }
-    }
+    methods: {
+        ...mapActions('items', [
+            'setEditItem'
+        ])
+    }  
 }
 
 </script>

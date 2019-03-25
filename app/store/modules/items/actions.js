@@ -85,7 +85,6 @@ const actions = {
             })
             .catch((error) => {
                 error.errorMessage = "There was an error loading the items list";
-                console.log(error);
                 return dispatch("listError", error);
             });
     },
@@ -114,28 +113,72 @@ const actions = {
      * @param {*} id
      */
     update({ commit, state }, item) {
-        if(JSON.stringify(site) !== JSON.stringify(state.editSite)){
+        if(JSON.stringify(item) !== JSON.stringify(state.editItem)){
             commit('updateItem', item);
         }
     },
 
     /**
-     * Load a single site
+     * Create an empty item
      * @param {*} param0
      * @param {*} id
      */
-    saveItem({ commit, state }) {
+    createItem({ commit, state }, type) {
+        commit("itemLoading");
+        commit('createItem', type)
+    },
+
+    /**
+     * Update an item
+     * @param {*} param0
+     * @param {*} id
+     */
+    saveItem({ commit, dispatch, state, getters, rootGetters }) {
         commit("itemSaving");
-        return api.post('item/' + state.currentItem.id, state.editItem)
-                .then((response) => {
-                commit("itemUpdate", response.data);
+        // Get the current site
+        var currentSite = rootGetters['sites/currentSite'],
+            // Set the normal item create url
+            url = currentSite.id + '/item',
+            action = 'post';
+
+        // If our item has an id, we're updating an existing item
+        if(state.editItem.id){
+            url = url + '/' + state.editItem.id;
+            action = 'put';
+        }  
+        return api[action](url, state.editItem).then((response) => {
+            commit("updateItem", response.data);
             commit("itemUpdated");
+            if(action == 'post'){
+                router.push({ path: '/' + currentSite.uri + '/' + response.data.uri })
+            }
         })
         .catch((error) => {
-                error.errorMessage = "There was an error saving the item";
+            error.errorMessage = "There was an error saving the item";
+            console.log(error)
             return dispatch("itemUpdateFailed", error);
         });
     },
+
+
+    /**
+     * Set editSite safe copy in state
+     * @param {*} param0
+     * @param {*} item
+     */
+    setEditItem({ commit, state }, item) {
+        commit('editItemSet', item)
+    },
+
+    /**
+     * Discard Edits
+     * @param {*} param0
+     * @param {*} item
+     */
+    discardEdits({ commit, state }) {
+        commit('discardEdit')
+    }
+
     
 }
 export default actions;
