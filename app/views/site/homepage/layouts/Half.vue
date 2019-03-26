@@ -13,7 +13,7 @@
 
         <div id="homepage-content"> </div>
 
-        <b-button v-if="!isEditing" class="fixed pin-t pin-r mt-16 mr-8" variant="primary" @click="editClicked"> Edit Homepage</b-button>  
+        <b-button v-if="!isEditing" class="fixed top-0 right-0 mt-16 mr-8" variant="primary" @click="editClicked"> Edit Homepage</b-button>  
          
     </div>
 </template>

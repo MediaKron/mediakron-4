@@ -1,5 +1,5 @@
 <template>
-<div class="savebar sticky pin-b pin-r bg-white pt-3 pb-12 mt-12 ">
+<div class="savebar sticky pin-b right-0 bg-white pt-3 pb-12 mt-12 ">
     <div class="w-full ">
         <div class="flex">
             <div class="savebar-buttons  ">
