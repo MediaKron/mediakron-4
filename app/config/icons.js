@@ -11,15 +11,22 @@ import {
     faChevronLeft,
     faChevronRight,
     faChevronUp,
+    faClock,
     faCog,
-    faCogs, /* Manage */
+    faCogs, 
     faEdit,
     faEllipsisV,
     faExpandArrowsAlt,
-    faHome, /* Home */
+    faFile,
+    faFileAlt,
+    faFolder,
+    faHome, 
+    faImage,
     faInfoCircle,
     faList,
-    faPaintBrush, /* Appearance */
+    faMapMarkerAlt, 
+    faPaintBrush,
+    faPlus,
     faPlusSquare,
     faQuestionCircle,
     faSearch,
@@ -41,6 +48,8 @@ import {
     faUserEdit,
     faUserPlus,
     faUsers,
+    faVideo,
+    faVolumeUp,
     faWindowClose /* close square */ 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -57,15 +66,22 @@ export default function initializeIcons(){
         faChevronLeft,
         faChevronRight,
         faChevronUp,
+        faClock,
         faCog, 
-        faCogs, /* Manage */
+        faCogs, 
         faEdit,
         faEllipsisV,
         faExpandArrowsAlt,
-        faHome, /* Home */
+        faFile,
+        faFileAlt,
+        faFolder,
+        faHome,
+        faImage,
         faInfoCircle,
         faList,
-        faPaintBrush, /* Appearance */
+        faMapMarkerAlt, 
+        faPaintBrush, 
+        faPlus,
         faPlusSquare, 
         faQuestionCircle,
         faSearch, 
@@ -87,6 +103,8 @@ export default function initializeIcons(){
         faUserEdit,
         faUserPlus,
         faUsers,
-        faWindowClose, /* close square */ 
+        faVideo,
+        faVolumeUp,
+        faWindowClose, 
     );
 }

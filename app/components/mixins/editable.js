@@ -25,7 +25,6 @@ export const editable = {
         "setEditItem"
     ]),
     editClicked() {
-        console.log('edit clicked')
         this.setEditItem(this.item);
         this.editAlert = this.dismissSecs 
     },

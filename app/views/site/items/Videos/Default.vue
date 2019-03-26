@@ -1,8 +1,12 @@
 <template>
   <article class="container">
         <ItemTitle></ItemTitle>
-        <ItemDescription></ItemDescription>
         <ItemCaption></ItemCaption>
+        <item-video></item-video>
+        <ItemDescription></ItemDescription>
+        <ItemMetadata></ItemMetadata>
+        <ItemTags></ItemTags>
+
    </article>
 </template>
 
@@ -10,6 +14,9 @@
 import ItemTitle from '@/components/items-shared/ItemTitle'
 import ItemDescription from '@/components/items-shared/ItemDescription'
 import ItemCaption from '@/components/items-shared/ItemCaption'
+import ItemVideo from '@/components/items-shared/Video'
+import ItemMetadata from '@/components/items-shared/ItemMetadata'
+import ItemTags from '@/components/items-shared/ItemTags'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -17,7 +24,10 @@ export default {
     components: {
         ItemTitle,
         ItemDescription,
-        ItemCaption
+        ItemCaption,
+        ItemVideo,
+        ItemMetadata,
+        ItemTags
     },
     created() {
     },

@@ -1,65 +1,67 @@
 <template>
 <div>
-    
-    <b-container fluid class="   layout-sidebar-left ">
-    <div class="row">
-      <!-- <div class="sidebar-left col-md-4" > -->
-        
-        <main role="main" class="with-sidebar-left col-md-12" > 
-           
-            <b-nav pills class="line-behind mb-3">
-                <b-nav-item :to="basePath + '/content/mycontent'">
-                    <font-awesome-icon icon="user"/> 
-                    <span class="optionsnav-text">My Content</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/content/all'">
-                    <font-awesome-icon icon="th"/> 
-                    <span class="optionsnav-text">Site Library</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="search"/> 
-                    <span class="optionsnav-text">Search</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="trash-alt"/> 
-                    <span class="optionsnav-text">Deleted</span>
-                </b-nav-item> 
-                <b-nav-item :to="basePath + '/#'">
-                    <font-awesome-icon icon="archive"/> 
-                    <span class="optionsnav-text">Archived      </span>
-                </b-nav-item>  
-            </b-nav>  
-           
-            <header class="sr-only">
+    <div class="w-full mx-auto px-6">
+        <div class="flex">
+            <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
+                <div class="lg:relative lg:sticky pin-t border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
+                    <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
+                     <b-nav pills vertical>
+                        <b-nav-item class="text-xl">
+                            <span class="optionsnav-text">My Content</span>
+                        </b-nav-item> 
+                        <b-nav-item class="text-xl" :to="basePath + '/content/all'">
+                            <span class="optionsnav-text">Site Library</span>
+                        </b-nav-item> 
+                        <b-nav-item class="text-xl" :to="basePath + '/content/authors'">
+                            <span class="optionsnav-text">Authors</span>
+                        </b-nav-item> 
+                        <b-button class="mt-10 mx-2" variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
+                            <span class="optionsnav-text">Add Content</span>
+                        </b-button>
+                        <b-button class="mt-2 mx-2" variant="outline-primary" :to="basePath + '/content/deleted'"><font-awesome-icon icon="trash-alt"/> 
+                            <span class="optionsnav-text">Restore Deleted</span>
+                        </b-button>  
+                        <b-dropdown class="mt-2 mx-2" variant="outline-primary">
+                            <template slot="button-content" >
+                               <font-awesome-icon icon="cogs"/> <span class="optionsnav-text">Actions</span>
+                            </template>
+                            <b-dropdown-item href="#">Delete</b-dropdown-item>
+                            <b-dropdown-item href="#">Publish</b-dropdown-item>
+                            <b-dropdown-item href="#">Unpublish</b-dropdown-item>
+                        </b-dropdown>       
+                     </b-nav>
+                </div>
+                </div>
+            </aside>
+            <main class="min-h-screen w-full lg:static lg:max-h-full max-w-4xl mx-auto lg:overflow-visible "> 
+                <header class="line-behind mt-20 mb-4">
                 <h1> My Content</h1>
-            </header>
+                  </header>
 
-            <div id="filters" class="d-flex mb-5 p-2">
-           
-                <b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" />
-                <!--  <b-form-select v-model="typeFilter" :options="typeOptions" class="mb-3" /> -->
-                <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded"></multiselect>
-                <b-form-select v-model="authorFilter" :options="authorOptions" class="mr-2" />
-                <b-form-select v-model="sortOrder" :options="sortOptions" class="mr-2" />
-            
-                <!--
-                <div>Searched: {{ searchString }} </div>
-                <div>Type Selected: {{ typeFilter }} </div>
-                <div>Author Selected: {{authorFilter }} </div>
-                <div>Sort Selected: {{sortOrder }} </div>
-            -->
-          </div>
+            <b-input-group class="mb-3">
+                <b-form-input v-model="filter" placeholder="Type to Search" />
+                <b-input-group-append>
+                    <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                </b-input-group-append>
+            </b-input-group>
 
-            <div v-if="listIsLoading">Loading ...</div>
-           <b-card-group deck class="flex-wrap" v-if="listIsLoaded">
-                <span v-for="item in filteredItems" v-bind:key="item.id">
-                    <content-card :item="item"></content-card>
-                </span>
-            </b-card-group>
+            <loader v-if="listIsLoading">Loading...</loader>
+           <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+                <template slot="title" slot-scope="items">
+                    <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" /> <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}</router-link> 
+                </template>
+                <template slot="type" slot-scope="items">
+                    {{ items.item.type}} 
+                </template>
+            </b-table>
 
-        </main>
+            <!-- b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router / -->
+            </main>
+         </div>
     </div>
-    </b-container>  
+    
+           
+        
 </div>
 
 </template>
@@ -67,61 +69,62 @@
 <script>
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
-import ContentCard from "./ContentCard";
-import Multiselect from 'vue-multiselect'
+import Loader from '@/components/Loader';
 export default  Vue.extend({
      components: {
-         Multiselect,
-        ContentCard
+        Loader
     },
     computed:{
         ...mapGetters('sites', [
             'siteIsLoading',
             'siteIsLoaded',
-            'basePath'
+            'basePath',
+            'currentSite'
         ]),
         ...mapGetters('items', [
             'listIsLoading',
             'listIsLoaded',
-            'items'
+            'items',
+            'currentPage',
+            'totalItems',
+            'lastPage'
         ]),
-        filteredItems() {            
-            return this.items.filter(function(item) {
-                return this.typeFilter.indexOf(item.type) == -1
-            }.bind(this))
-        }
     },
     methods:{
+        linkGen (pageNum) {
+            return '/' + this.currentSite.url + '/content/alltable/' + pageNum
+        },
         ...mapActions('items',[
             'routeLoad'
         ]),
     },
     data() {
         return {
-            typeFilter: [],
-            typeOptions: [
-                'layer',
-                'image',
-                'image-map',
-                'folder',
-            ],
-            authorFilter: null,
-            authorOptions: [
-                {value: null, text: 'Filter by Author'},
-                {value: 'jamie', text: 'Jamie'},
-                {value: 'tim', text: 'Tim'},
-                {value: 'austn', text: 'Austin'},
-                {value: 'brad', text: 'Brad'},
-            ],
-            sortOrder: null,
-            sortOptions: [
-                {value: null, text: 'Sort Preference:'},
-                {value: 'newest', text: 'Updated: New-Old'},
-                {value: 'oldest', text: 'Updated: Old-New'},
-            ],
-            searchString: '',
+            fields: {
+
+                title: {
+                    label: "Title",
+                    sortable: true
+                    }, 
+                type: {
+                    label: "Type",
+                    sortable: true
+                },
+                updated_at: {
+                    label: "Updated",
+                    sortable: true
+                    },
+            },
+            filter: null,
+            placeholderImage: { blank: true, width: 50, height: 50, class: 'mr-2' },
+            isBusy: false,
         }
 
+    },
+    watch: {
+        '$route.params.page': function (page) {
+            this.routeLoad({to: this.$route});
+        }
     },
     mounted(){
         this.routeLoad({to: this.$route, site: this.currentSite});
@@ -130,11 +133,6 @@ export default  Vue.extend({
 
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css">
-
-.multiselect,
-.multiselect__tags {
-    height:35px !important;
-}
+<style>
 
 </style>

@@ -4,7 +4,7 @@
         :img-src="selectedImage"
         img-alt="Img"
         img-top>
-        <h3><router-link :to="item.url()">{{ item.title }}</router-link></h3>
+        <h3><router-link :to="item.url()">{{ item.title }}</router-link> ({{ item.type }})</h3>
         <p class="card-text">
             <b-dropdown id="options" dropup text="Options" variant="outline-dark" size="sm" class="bg-light mr-2 mt-2">
                 <b-dropdown-item href="#">Edit</b-dropdown-item>

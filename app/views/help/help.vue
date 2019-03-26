@@ -49,7 +49,7 @@
                 <b-list-group-item :to="basePath + '/help/site-administration/menu-overview'">Adding Menus</b-list-group-item>
                 <b-list-group-item :to="basePath + '/help/site-administration/site-appearance'">Changing site colors/logo</b-list-group-item>
                 <b-list-group-item :to="basePath + '/help/site-administration/mediakron-to-canvas-overview'">Integrating MediaKron with Canvas</b-list-group-item>
-            </b-list-group  class="mb-5">         
+            </b-list-group>         
                 </main>
     </div>
  </b-container>   

@@ -1,9 +1,9 @@
 <template>
     <div id="mediakron">
+        <b-progress v-if="isProgressing" class="progress" height=".15rem" :value="progress" animated/>
         <transition  name="fade">
-
-        <loader v-if="siteIsLoading" class="d-flex is-loading text-center"></loader>
-         </transition>
+            <loader v-if="siteIsLoading" class="d-flex is-loading text-center"></loader>
+        </transition>
         <div v-if="siteIsLoaded">
             <div id="site-container">                                
                 <router-view></router-view>   
@@ -29,12 +29,7 @@
             
             <div id="pastehelper" contenteditable=true>PASTE HELPER</div>
                     
-            <div id="progress-bar" class="site-loader">
-                <div class="progress active">
-                    <div class="progress-bar" style="width: 0%"></div>
-                </div>
-                <div id="progress-text"></div>
-            </div>
+            
                     
             <div id="messages">
                 <div id="message-top"></div>
@@ -64,22 +59,29 @@ export default {
     },
     props:['site'],
     computed:{
+        ...mapState([
+            'progress'
+        ]),
         ...mapState('sites', [
             'currentSite'
         ]),
         ...mapGetters('sites', [
             'siteIsLoaded',
             'siteIsLoading'
-        ])
+        ]),
+        isProgressing() {
+            console.log(this.progress)
+            return this.progress > 0 && this.progress < 100? true : false;
+        }
     },
     methods:{
         ...mapActions('sites', [
-            'getSite'
+            'loadSite'
         ])
     },
     mounted(){
         var parent = this;
-        this.getSite(this.site).then((site) => {
+        this.loadSite(this.site).then((site) => {
             // console.log(parent.currentSite.title);
             // console.log(parent.currentSite.banner_color);
             var root = document.querySelector(':root');
@@ -97,6 +99,15 @@ export default {
 #progress-bar,
 #debug {
     display:none;
+}
+
+.progress{
+    height: .50rem;
+    border-radius: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 5;
 }
 
 .is-loading {

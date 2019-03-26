@@ -12,6 +12,9 @@ export const getters = {
     listIsError: state => state.listIsError,
     listIsEmpty: state => !(state.itemList && state.itemList.length > 0 && state.listIsLoading)? true : false,
 
+    isUploading: state => state.isUploading,
+    isUploaded: state => state.isUploaded,
+
     /**
      * Current
      */
@@ -26,12 +29,17 @@ export const getters = {
     itemIsLoaded: state => state.itemIsLoaded,
     itemIsError: state => state.itemIsError,
     itemIsEmpty: state => !(state.currentItem && state.itemIsLoading)? true : false,
+    getState: state => state,
+    tagsLoading: state => state.tagsLoading,
+    tagsLoaded: state => state.tagsLoaded,
+
 
     currentPage: state => state.pagination.currentPage,
     totalItems: state => state.pagination.total,
     lastPage: state => state.pagination.lastPage,
+    tags: state => state.tags,
 
-    getState: state => state,
+
 };
 
 export default getters;

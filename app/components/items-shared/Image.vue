@@ -1,37 +1,74 @@
 <template>
     <b-form-group 
         v-if="isEditing"
-        label="Replace Image"
+        label="Current Image"
         label-for="fileUpload">
-        <h5>Current Image</h5>
-        <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
+        <b-img :src="image" fluid thumbnail alt="Responsive image"/>
         <b-form-file
-            v-hide
             v-model="editItem.newImage"
             :state="Boolean(editItem.newImage)"
-            placeholder="Choose a file..."
+            placeholder="Replace Image (choose a file)..."
             drop-placeholder="Drop file here..."
-            :accept="first.allowedTypes()"/>
-        <b-progress height="2rem" v-if="uploading" :value="counter" :max="max" show-progress animated />
+            :accept="first.allowedTypes()"
+            @change="change" />
     </b-form-group>
     <div v-else>
-        <h5>Image File1</h5>
-        <b-img :src="this.images[0]" fluid thumbnail alt="Responsive image"/>
+        <viewer :images="image">
+            <img class="image-frame invisible" :src="image" >
+        </viewer>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
+import { mapActions, mapGetters } from 'vuex'
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+import Vue from 'vue'
+import imageSizeMixin from '@/components/mixins/ImageSize'
+Vue.use(Viewer, {
+  defaultOptions: {
+   inline:true,
+   backdrop:false,
+   title:false,
+   navbar:false,
+   button:false,
+   toolbar: {
+    zoomIn: 4,
+    zoomOut: 4,
+    oneToOne: 4,
+    reset: 4,
+    prev: 0,
+    play: {
+      show: 4,
+      size: 'large',
+    },
+    next: 0,
+    rotateLeft: 4,
+    rotateRight: 4,
+    flipHorizontal: 0,
+    flipVertical: 0,
+  },
+  }
+})
 export default {
+    mixins:[
+        imageSizeMixin
+    ],
     data() {
         return {
-            images: [
-                'https://picsum.photos/300?image=342',
-            ],
-        }
+            tempImage: false
+        }        
     },
     computed: {
+        image(){
+            if(this.isEditing){
+                if(this.tempImage){
+                    return this.tempImage;
+                }
+                return 'https://picsum.photos/1000/1000/?random';
+            }
+            return [ 'https://picsum.photos/1000/1000/?random' ];
+        },
         ...mapGetters('items', [
             'editItem',
             'isEditing',
@@ -39,13 +76,32 @@ export default {
             'first',
             'isUploading',
             'isUploaded',
-
         ]),
 
+    },
+    methods: {
+        ...mapActions('items',[
+            'upload'
+        ]),
+        change(event){
+            let reader = new FileReader(),
+                parent = this;
+            reader.onload = function(){
+                let dataURL = reader.result;
+                parent.tempImage = dataURL;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+            return this.upload(event)
+        }
+        
     }
 }
 </script>
 
 <style>
+
+.image-frame {
+    max-height: calc(100vh - 10rem);
+}
 
 </style>
