@@ -38,7 +38,7 @@
             </b-input-group>
 
             <loader v-if="listIsLoading">Loading...</loader>
-           <b-table v-if="listIsLoaded"  :busy="isBusy" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+           <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
                 <template slot="title" slot-scope="items">
                     <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" /> <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}</router-link> 
                 </template>
@@ -109,7 +109,6 @@ export default  Vue.extend({
             },
             filter: null,
             placeholderImage: { blank: true, width: 50, height: 50, class: 'mr-2' },
-            isBusy: false,
         }
 
     },
