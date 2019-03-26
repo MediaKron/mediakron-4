@@ -35,7 +35,6 @@ import EditUser from './views/multisite/people/Edit';
 
 // Site Views
 import itemsRoutes from './router/index';
-import browseRoutes from './router/browse';
 import settingsRoutes from './router/settings';
 
 import NotFound from './views/404.vue';

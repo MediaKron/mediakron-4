@@ -12,7 +12,7 @@
                         <b-nav-item class="text-xl" :to="basePath + '/content/all'">
                             <span class="optionsnav-text">Site Library</span>
                         </b-nav-item> 
-                        <b-nav-item class="text-xl" :to="basePath + '/content/authors'">
+                        <b-nav-item class="text-xl">
                             <span class="optionsnav-text">Authors</span>
                         </b-nav-item> 
                         <b-button class="mt-10 mx-2" variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
@@ -20,22 +20,14 @@
                         </b-button>
                         <b-button class="mt-2 mx-2" variant="outline-primary" :to="basePath + '/content/deleted'" ><font-awesome-icon icon="trash-alt"/> 
                             <span class="optionsnav-text">Restore Deleted</span>
-                        </b-button>   
-                        <b-dropdown class="mt-2 mx-2" variant="outline-primary">
-                            <template slot="button-content" >
-                               <font-awesome-icon icon="cogs"/> <span class="optionsnav-text">Actions</span>
-                            </template>
-                            <b-dropdown-item href="#">Delete</b-dropdown-item>
-                            <b-dropdown-item href="#">Publish</b-dropdown-item>
-                            <b-dropdown-item href="#">Unpublish</b-dropdown-item>
-                        </b-dropdown>   
+                        </b-button>    
                      </b-nav>
                 </div>
                 </div>
             </aside>
             <main class="min-h-screen w-full lg:static lg:max-h-full max-w-4xl mx-auto lg:overflow-visible "> 
                 <header class="line-behind mt-20 mb-4">
-                <h1> Site Library</h1>
+                <h1> Authors</h1>
                   </header>
 
             <b-input-group class="mb-3">
@@ -46,7 +38,7 @@
             </b-input-group>
 
             <loader v-if="listIsLoading">Loading...</loader>
-           <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+           <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
                 <template slot="title" slot-scope="items">
                     <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" /> <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}</router-link> 
                 </template>
@@ -117,7 +109,6 @@ export default  Vue.extend({
             },
             filter: null,
             placeholderImage: { blank: true, width: 50, height: 50, class: 'mr-2' },
-            isBusy: false,
         }
 
     },

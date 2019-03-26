@@ -107,7 +107,27 @@ trait Hydrate
         return $this;
     }
 
-   
+    public function attach(){
+        // switch for type
+        switch($this->type){
+            default:
+                // always attach an image
+                $this->attachImage();
+              break;
+        }
+    }
+
+   public function attachImage(){
+       // check to see if there is an iamge
+       $image = request('image');
+       if(isset($image['file'])){
+        $file = File::find(['file']['id']);
+        if($file){
+            // TODO: Attach image here
+        }
+       }
+       
+   }
 
     /**
      * Set the current user as the owner of the record

@@ -208,6 +208,9 @@ class User extends Authenticatable implements JWTSubject
         $resource = str_singular($table) . '/';
         return [
             'id' => $this->id,
+            'display_name' => $this->display_name,
+            'email' => $this->email,
+            'role' => 'user',
             'path' => $this->api_path . $resource . $this->id
         ];
     }

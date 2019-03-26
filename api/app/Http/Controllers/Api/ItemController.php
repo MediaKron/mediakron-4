@@ -69,7 +69,7 @@ class ItemController extends Controller
             // TODO: Handle audio, video, images and text fields
             $item->save();
             $item->updateMetadata()
-                ->addTags();
+                ->addTags($site_id);
             return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
