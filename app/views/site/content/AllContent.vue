@@ -2,7 +2,7 @@
 <div>
     <div class="w-full mx-auto px-6">
         <div class="flex">
-            <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
+            <aside id="sidebar" class="hidden min-w-15 max-w-xs lg:block pb-12">
                 <div class="lg:relative lg:sticky top-0 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
                     <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
                      <b-nav pills vertical>
@@ -16,35 +16,37 @@
                             <span class="optionsnav-text">Authors</span>
                         </b-nav-item> 
                         <b-button class="mt-10 mx-2" variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
-                            <span class="optionsnav-text">Add Content</span>
+                            <span class="optionsnav-text">Add</span>
                         </b-button>
                         <b-button class="mt-2 mx-2" variant="outline-primary" :to="basePath + '/content/deleted'" ><font-awesome-icon icon="trash-alt"/> 
-                            <span class="optionsnav-text">Restore Deleted</span>
+                            <span class="optionsnav-text">Deleted</span>
                         </b-button>   
-                        <b-dropdown class="mt-2 mx-2" variant="outline-primary">
-                            <template slot="button-content" >
-                               <font-awesome-icon icon="cogs"/> <span class="optionsnav-text">Actions</span>
-                            </template>
-                            <b-dropdown-item href="#">Delete</b-dropdown-item>
-                            <b-dropdown-item href="#">Publish</b-dropdown-item>
-                            <b-dropdown-item href="#">Unpublish</b-dropdown-item>
-                        </b-dropdown>   
+                         
                      </b-nav>
                 </div>
                 </div>
             </aside>
-            <main class="min-h-screen w-full lg:static lg:max-h-full max-w-4xl mx-auto lg:overflow-visible "> 
+            <main class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible "> 
                 <header class="line-behind mt-20 mb-4">
                 <h1> Site Library</h1>
                   </header>
-
-            <b-input-group class="mb-3">
+            <div class="flex flex-no-wrap mt-4">
+            <b-input-group class="mb-3 w-30">
                 <b-form-input v-model="filter" placeholder="Type to Search" />
                 <b-input-group-append>
                     <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
                 </b-input-group-append>
             </b-input-group>
 
+            <b-dropdown class="mt-2 mx-2" variant="outline-primary">
+                            <template slot="button-content" >
+                               <font-awesome-icon icon="cogs"/> <span class="optionsnav-text">Actions</span>
+                            </template>
+                            <b-dropdown-item href="#">Delete</b-dropdown-item>
+                            <b-dropdown-item href="#">Publish</b-dropdown-item>
+                            <b-dropdown-item href="#">Unpublish</b-dropdown-item>
+            </b-dropdown>  
+            </div>
             <loader v-if="listIsLoading">Loading...</loader>
            <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
                 <template slot="title" slot-scope="items">
