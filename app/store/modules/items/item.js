@@ -117,7 +117,6 @@ class Item extends Model {
                 location: "",
                 rights: ""
             },
-            tags: [],
         }
     }
     /* Render the default version of this topic */

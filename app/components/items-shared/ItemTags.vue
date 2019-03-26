@@ -70,7 +70,9 @@ export default {
         ])
     },
     mounted(){
-
+        return {
+            isEditingTags: false,
+        }
     }
 }
 </script>

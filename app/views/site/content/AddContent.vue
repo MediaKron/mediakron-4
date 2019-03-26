@@ -5,30 +5,23 @@
             <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
                 <div class="lg:relative lg:sticky pin-t border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
                     <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
-                     <b-nav pills vertical>
-                        <b-nav-item :to="basePath + '/content/mycontent'">
-                            <font-awesome-icon icon="user"/> 
+                      <b-nav pills vertical>
+                        <b-nav-item class="text-xl" :to="basePath + '/content/mycontent'">
                             <span class="optionsnav-text">My Content</span>
                         </b-nav-item> 
-                        <b-nav-item :to="basePath + '/content/all'">
-                            <font-awesome-icon icon="th"/> 
+                        <b-nav-item class="text-xl" :to="basePath + '/content/all'">
                             <span class="optionsnav-text">Site Library</span>
                         </b-nav-item> 
-                        <b-nav-item :to="basePath + '/#'">
-                            <font-awesome-icon icon="trash-alt"/> 
-                            <span class="optionsnav-text">Trash Can</span>
+                        <b-nav-item class="text-xl" :to="basePath + '/content/authors'">
+                            <span class="optionsnav-text">Authors</span>
                         </b-nav-item> 
-                        <b-nav-item :to="basePath + '/#'">
-                            <font-awesome-icon icon="search"/> 
-                            <span class="optionsnav-text">Search</span>
-                        </b-nav-item> 
-                     </b-nav>  
+                     </b-nav>
                    
                 </div>
                 </div>
             </aside>
-            <main class="min-h-screen w-full max-w-md lg:static lg:max-h-full lg:overflow-visible "> 
-                <header class="line-behind mt-16 mb-4">
+            <main class="min-h-screen w-full max-w-md lg:static mx-auto lg:max-h-full lg:overflow-visible "> 
+                <header class="line-behind mt-20 mb-4">
                 <h1>Create Content</h1>
                   </header>
                 <h2>Content Organizers</h2>

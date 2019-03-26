@@ -83,7 +83,7 @@ trait Hydrate
      *
      * @return App\Models\User
      */
-    public function addTags(){
+    public function addTags($site){
         //
         $tags = request(['tags']);
         $sync = [];
@@ -99,7 +99,7 @@ trait Hydrate
             if(!$save) $save = new Tag();
             $save->title = $tag['title'];
             $save->uri = Str::slug($tag['title']);
-            $save->site_id = 0;
+            $save->site_id = $site;
             $save->save();
             $sync[] = $save->id;
         }

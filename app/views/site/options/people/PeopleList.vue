@@ -32,14 +32,23 @@
 
     </div>
     <h2 class="mt-4"> Current Users</h2>
-        <loader v-if="listIsLoading"></loader>
-        <ul class="loading" v-if="listIsLoaded">
-            <li v-for="user in users" v-bind:key="user.id">
-                <strong>{{ user.username }}</strong> Role: {{ user.pivot.role }}
-            </li>
-        </ul>
+       
+        <b-input-group class="my-3">
+            <b-form-input v-model="filter" placeholder="Type to Search" />
+            <b-input-group-append>
+                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+            </b-input-group-append>
+        </b-input-group>
 
-       [load table here]
+        <loader v-if="listIsLoading">Loading...</loader>
+        <b-table v-if="listIsLoaded" :items="users" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+            <!-- <template slot="username" slot-scope="users">
+                {{ users.username }}
+            </template>
+            <template slot="email" slot-scope="users">
+                {{ users.email }}
+            </template> -->
+        </b-table>
     </div>
 
 </template>
@@ -71,6 +80,26 @@ export default {
         ...mapActions("users", [
             "routeLoad"
         ])
+    },
+    data() {
+        return {
+            fields: {
+                username: {
+                    label: "Name",
+                    sortable: true
+                    }, 
+                email: {
+                    label: "email",
+                    sortable: true
+                },
+                role: {
+                    label: "role",
+                    sortable: true
+                },
+            },
+            filter: null,
+        }
+
     },
     watch: {
         '$route.params.page': function (page) {
