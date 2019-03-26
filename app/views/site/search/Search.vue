@@ -1,19 +1,18 @@
 <template>
-<div class="search">
-        <Navigation></Navigation>
-<b-container class="mt-12 layout-sidebar-left ">
+    <div class="search">
+            <Navigation></Navigation>
 
-    <div class="row">
-
-                <main role="main" class="with-sidebar-left col-md-12" > 
-                   <header>
+            <main role="main" class="container mx-auto mt-10 max-w-2xl" > 
+                <header>
                     <h1 class=" heading-nudge-up line-behind">Search</h1>
-                     </header>
-   
-                </main>
+                </header>
+
+                <b-nav-form class="flex-no-wrap mt-4" >
+                    <b-form-input size="lg" class="w-100" type="text" placeholder="Enter a search term" />
+                    <b-button size="lg" class="ml-2" type="submit">Search</b-button>
+                </b-nav-form>
+            </main>
     </div>
- </b-container>   
-</div>
 </template>
 
 <script>
@@ -40,9 +39,6 @@ export default  Vue.extend({
         ...mapGetters('items', [
             'tags'
         ]),
-    },
-    mounted(){
-        
     }
 });
 </script>
