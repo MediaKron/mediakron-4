@@ -12,7 +12,7 @@
             <div class="w-full px-6">
                 <div class="flex">
                     <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
-                        <div class="lg:relative lg:sticky pin-t border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
+                        <div class="lg:relative lg:sticky top-0 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
                             <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
                                     <OptionsSidebar inPeople class="sticky?lg:h-(screen-32) overflow-y-auto "></OptionsSidebar> 
                             </div>
