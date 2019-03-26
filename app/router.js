@@ -35,7 +35,6 @@ import EditUser from './views/multisite/people/Edit';
 
 // Site Views
 import itemsRoutes from './router/index';
-import settingsRoutes from './router/settings';
 
 import NotFound from './views/404.vue';
 import store from './store';
@@ -154,7 +153,6 @@ var baseRoutes = [
   // Get the item routes
   //baseRoutes.push(browseRoutes);
   //baseRoutes.push(settingsRoutes);
-  //baseRoutes.push(itemsRoutes.settings);
   baseRoutes.push(itemsRoutes.default);
 
 

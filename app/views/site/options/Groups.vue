@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <h1 class=" heading-nudge-up mb-4"> Manage Groups</h1>
+      <h1 class="line-behind heading-nudge-up mb-4">Groups</h1>
     </header>
 
     <div class="add-groups">
@@ -34,8 +34,6 @@
         </b-collapse>
 
     </div>
-
-    <h2 class="mt-4">Active Groups</h2>
     <p> No groups have been added.</p>
     
 
