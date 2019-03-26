@@ -30,7 +30,9 @@ class Item extends BaseModel
         'children', 
         'children.child', 
         'parents', 
-        'parents.parent'
+        'parents.parent',
+        'user',
+        'editor'
     ];
 
     protected $appends = [
