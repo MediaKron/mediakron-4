@@ -1,41 +1,72 @@
 
-import General from '@/views/site/options/settings/General';
-import SearchSettings from '@/views/site/options/settings/SearchSettings';
-import Canvas from '@/views/site/options/settings/Canvas';
-import SettingsIndex from "@/views/site/options/settings/SettingsIndex";
+
+import Settings from '@/views/site/options/Settings';
+import Menus from "@/views/site/options/Menus";
+import Appearance from "@/views/site/options/Appearance";
+import HomePageSettings from "@/views/site/options/HomePageSettings";
+import People from "@/views/site/options/People";
+import Groups from "@/views/site/options/Groups";
 
 export default [
       {
-        path: 'general',
-        name: 'general_settings',
-        component: General,
+        path: 'settings',
+        name: 'settings',
+        component: Settings,
         meta:{
           inSettings: true,
           sectionClass: "section-settings"
         }
       },
       {
-        path: 'searchsettings',
-        name: 'search_settings',
-        component: SearchSettings,
+        path: "people",
+        component: People,
+        title: "People",
         meta:{
-          inSettings: true,
+          inPeople: true,
           sectionClass: "section-settings"
         }
       },
       {
-        path: 'canvas',
-        name: 'canvas_settings',
-        component: Canvas,
+        path: "groups",
+        component: Groups,
+        title: "Groups",
         meta:{
-          inSettings: true,
+          inGroups: true,
           sectionClass: "section-settings"
         }
       },
+      {
+        path: "menus",
+        component: Menus,
+        title: "Menus",
+        meta:{
+          inMenus: true,
+          sectionClass: "section-settings"
+        }
+      },
+      {
+        path: "appearance",
+        component: Appearance,
+        title: "Appearance",
+        props: true,
+        meta:{
+          inAppearance: true
+        }
+      },
+      {
+        path: "homepage",
+        component: HomePageSettings,
+        title: "Homepage Settings",
+        props: true,
+        meta:{
+          inHomepage: true
+        }
+      },
+
       {
         path: "/",
-        component: SettingsIndex,
-        title: "setting_index",
+        component: Settings,
+        title: "Settings",
         props: true,
         meta:{
           inSettings: true,

@@ -1,16 +1,14 @@
 <template>
   <div v-if="access('can change site siteadmin')" class="optionsnav" v-bind:class="[sectionClass]">
     <b-nav vertical pills class=" ">
-        <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings/general'">
+        <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings'">
             <font-awesome-icon icon="sliders-h"/> 
             <span class="optionsnav-text">Settings</span>
         </b-nav-item> 
-        <li class="nav-item" :active="inMenus">
-            <b-link class="nav-link"  v-if="canBrowse" :to="basePath + '/options/menus'">
-                <font-awesome-icon icon="sitemap"/> 
-                <span class="optionsnav-text">Menus</span>
-            </b-link> 
-        </li>
+        <b-nav-item class="nav-item" :active="inMenus" v-if="canBrowse" :to="basePath + '/options/menus'">
+            <font-awesome-icon icon="sitemap"/> 
+            <span class="optionsnav-text">Menus</span>
+        </b-nav-item>
         <b-nav-item :active="inAppearance" v-if="canBrowse" :to="basePath + '/options/appearance'">
         <font-awesome-icon icon="paint-brush"/> 
         <span class="optionsnav-text">Appearance</span>
@@ -19,8 +17,11 @@
         <font-awesome-icon icon="home"/> 
         <span class="optionsnav-text">Homepage</span>
         </b-nav-item> 
-        <b-nav-item :active="inPeople"  :to="basePath + '/options/people/list'"><font-awesome-icon icon="user-cog"/> 
+        <b-nav-item :active="inPeople"  :to="basePath + '/options/people'"><font-awesome-icon icon="user-cog"/> 
         <span class="optionsnav-text">People</span>
+        </b-nav-item >
+        <b-nav-item :active="inGroups"  :to="basePath + '/options/groups'"><font-awesome-icon icon="users"/> 
+        <span class="optionsnav-text">Groups</span>
         </b-nav-item >
       </b-nav>  
     </div>   
@@ -49,6 +50,9 @@ export default  Vue.extend({
         },
         inPeople(){
             return this.$route.meta.inPeople;
+        },
+        inGroups(){
+            return this.$route.meta.inGroups;
         },
         ...mapGetters('users/profile', [
             'user',

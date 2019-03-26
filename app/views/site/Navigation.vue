@@ -21,12 +21,10 @@ import Vue from "vue";
 import { mapState, mapGetters } from "vuex";
 import Primarynav from "./navigation/PrimaryNav";
 import Secondarynav from "./navigation/SecondaryNav";
-import Utilitynav from "./navigation/UtilityNav";
 export default Vue.extend({
   components: {
     Primarynav,
-    Secondarynav,
-    Utilitynav
+    Secondarynav
   },
   computed: {
     ...mapState("sites", ["currentSite"]),
