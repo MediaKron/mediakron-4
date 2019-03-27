@@ -9,7 +9,7 @@
                    <header>
                     <h1 class=" heading-nudge-up line-behind">Tags</h1>
                      </header>
-                    <b-table v-if="tagsLoaded" :items="items.item.tags"  sortBy="updated_at" sort-desc="true" stacked="md">
+                    <b-table v-if="tagsLoaded" :items="tags"  sortBy="updated_at" :sort-desc="true" stacked="md">
                     </b-table>
 
 
@@ -26,6 +26,10 @@ import Navigation from '@/views/site/Navigation';
 export default  Vue.extend({
     components: {
         Navigation,
+    },
+
+    created() {
+      console.log(this.tags)  
     },
 
     computed:{

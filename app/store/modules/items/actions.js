@@ -119,12 +119,14 @@ const actions = {
             url = currentSite.id + '/tags';
             return api.get(url)
                 .then((response) => {
+                    console.log(response)
                     commit("tagsLoad", response.data);
             commit("tagsLoaded");
         })
         .catch((error) => {
-                error.errorMessage = "There was an error loading the item";
-            return dispatch("itemError", error);
+            console.log(error)
+            error.errorMessage = "There was an error loading the item";
+            //return dispatch("itemError", error);
         });
     },
 
