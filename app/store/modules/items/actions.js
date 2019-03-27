@@ -112,9 +112,12 @@ const actions = {
      * @param {*} param0
      * @param {*} id
      */
-    getTags({ commit, dispatch }) {
+    getTags({ commit, dispatch, rootGetters }) {
         commit("tagsLoading");
-            return api.get('tags')
+        var currentSite = rootGetters['sites/currentSite'],
+            // Set the normal item create url
+            url = currentSite.id + '/tags';
+            return api.get(url)
                 .then((response) => {
                     commit("tagsLoad", response.data);
             commit("tagsLoaded");
