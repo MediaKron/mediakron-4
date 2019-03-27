@@ -9,7 +9,10 @@
                    <header>
                     <h1 class=" heading-nudge-up line-behind">Tags</h1>
                      </header>
-   
+                    <b-table v-if="tagsLoaded" :items="items.item.tags"  sortBy="updated_at" sort-desc="true" stacked="md">
+                    </b-table>
+
+
                 </main>
     </div>
  </b-container>   
@@ -24,6 +27,7 @@ export default  Vue.extend({
     components: {
         Navigation,
     },
+
     computed:{
         ...mapState('sites', [
             'currentSite'
@@ -46,10 +50,15 @@ export default  Vue.extend({
     methods: {
         ...mapActions('items', [
             'getTags'
-        ])
+        ]),
     },
+
     mounted(){
-        this.getTags();
+        this.getTags()
+        /* return {
+            tags
+        }
+        */
     }
 });
 </script>
