@@ -2,6 +2,7 @@ import { MutationTree } from 'vuex';
 import api from '@/store/utils/api';
 import { getInitialState } from '@/store/modules/items';
 import Item from './item';
+import Tag from './tag';
 
 export const mutations = {
     /**
@@ -174,12 +175,13 @@ export const mutations = {
         state.isUploading = false;
         state.isUploaded = true;
     },
+
     tagsLoading(state) {
         state.tagsLoading = true;
         state.tagsLoaded = false;
     },
     tagsLoad(state, tags) {
-        state.tags = tags;
+        state.tags = data.data.map(tag => new Tag(tag));
     },
     tagsLoaded(state) {
         state.tagsLoading = false;
