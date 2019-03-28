@@ -70,6 +70,7 @@ export default {
           {faname: 'Image ', icon: 'image', code: 'image', mkname:'Item: Image '}, 
           {faname: 'InfoCircle, ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'Map Marker Alt, ', icon: 'map-marker-alt', code: 'map-marker-alt', mkname:'Item: Map '},
+          {faname: 'Link ', icon: 'link', code: 'link', mkname:'Link'},
           {faname: 'List ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'PaintBrush ', icon: 'paint-brush', code: 'paint-brush', mkname:'Appearance '}, 
           {faname: 'Plus', icon: 'plus', code: 'plus', mkname:'Add'},
