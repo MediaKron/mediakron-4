@@ -2,10 +2,10 @@
     <div class="menus">
         <main role="main" class="px-6 min-h-screen w-full max-w-50 mx-auto lg:static lg:max-h-full lg:overflow-visible">
             <header>
-                <h1 class="line-behind heading-nudge-up mb-4"> Menus</h1>
+                <h1 class="line-behind heading-nudge-up mb-4"><font-awesome-icon icon="sitemap" class="mr-2 text-3sxl"/> Menus</h1>
             </header>
 
-            <h2 class="mb-4">Manage Menus</h2>
+            <h2 class="mb-4"> Manage Menus</h2>
 
             <b-form-group label-sr-only label="Display Options" class="border border-grey-darker rounded p-3">
                 <div class="flex mb-3">
