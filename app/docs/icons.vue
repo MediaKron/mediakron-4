@@ -51,6 +51,7 @@ export default {
           {faname: 'Arrow Right', icon: 'arrow-right', code: 'arrow-right', mkname:'Arrow Right'},
           {faname: 'Arrow Up', icon: 'arrow-up', code: 'arrow-up', mkname:'Arrow Up'},
           {faname: 'Asterisk', icon: 'asterisk', code: 'asterisk', mkname:'Asterisk'},
+          {faname: 'Bars', icon: 'bars', code: 'bars', mkname:'Menu'},
           {faname: 'Check', icon: 'check', code: 'check', mkname:'Save'},
           {faname: 'Chevron Down', icon: 'chevron-down', code: 'chevron-down', mkname:'Chevron Down'},
           {faname: 'Chevron Left', icon: 'chevron-left', code: 'chevron-left', mkname:'Chevron Left '},
