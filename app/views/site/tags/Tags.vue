@@ -28,11 +28,6 @@ export default  Vue.extend({
     components: {
         Navigation,
     },
-
-    created() {
-      console.log(this.tags)  
-    },
-
     computed:{
         ...mapState('sites', [
             'currentSite'
@@ -60,10 +55,6 @@ export default  Vue.extend({
 
     mounted(){
         this.getTags()
-        /* return {
-            tags
-        }
-        */
     }
 });
 </script>

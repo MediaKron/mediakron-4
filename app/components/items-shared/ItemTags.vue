@@ -10,7 +10,7 @@
                 placeholder="Search or add a tag" 
                 label="title" 
                 track-by="id" 
-                :options="options" 
+                :options="tags"
                 :multiple="true" 
                 :taggable="true" 
                 @tag="addTag"></multiselect>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import BCollapse from "bootstrap-vue/src/components/collapse/collapse";
 import Multiselect from 'vue-multiselect'
 
@@ -40,11 +40,14 @@ export default {
     data () {
         return {
             isEditingTags: false,
+            /*
             options: [
                 { title: 'Vue.js', id: '1' },
                 { title: 'Javascript', id: '2' },
                 { title: 'Open Source', id: '3' }
             ]
+            */
+            options: this.getTags()
         }
     },
     methods: {
@@ -54,7 +57,10 @@ export default {
             }
             this.options.push(tag)
             this.editItem.tags.push(tag)
-        }
+        },
+        ...mapActions('items', [
+            'getTags'
+        ]),
     },
     computed: {
         tagsButton(){
@@ -67,13 +73,16 @@ export default {
             'editItem',
             'isEditing',
             'first'
-        ])
+        ]),
+        ...mapGetters('items', [
+            'tags'
+        ]),
     },
     mounted(){
-        return {
             isEditingTags: false,
-        }
+            this.getTags()
     }
+
 }
 </script>
 
