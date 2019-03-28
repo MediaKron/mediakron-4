@@ -33,7 +33,6 @@ const actions = {
           commit("listLoading"); 
           let url = 'users';
           var currentSite = rootGetters['sites/currentSite'];
-          console.log(currentSite);
           if(currentSite){
             url = currentSite.id + '/users'
           }

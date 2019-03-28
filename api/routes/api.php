@@ -58,6 +58,9 @@ Route::post('/item/{id}', 'Api\ItemController@update');
 Route::get('/items', 'Api\ItemController@index');
 
 
+/**
+ * These are the api endpoints for a site
+ */
 Route::group([
     'middleware' => [
         //'auth:api',
@@ -76,6 +79,7 @@ Route::group([
 
     Route::post('/upload/{type}', 'UploadController@upload');
 
+    // url/site_id/users
     Route::get('/users', 'Api\SiteController@users');
 
     // Relationship api
