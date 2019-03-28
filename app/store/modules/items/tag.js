@@ -6,20 +6,9 @@ class Tag extends Model {
      * @param {*} data 
      * @param {*} site 
      */
-    constructor(data, site) {
+    constructor(data) {
         super(data)
-        this.site = site
     }
-
-    /**
-     * Get the url to this item
-     * @return string
-     */
-    url(){
-        return '/' + this.site.uri + '/' + this.uri;
-    }
-
-    
     defaults(){
         return {
             id: null,
@@ -31,3 +20,4 @@ class Tag extends Model {
         }
     }
 }
+export default Tag;

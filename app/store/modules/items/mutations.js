@@ -181,7 +181,7 @@ export const mutations = {
         state.tagsLoaded = false;
     },
     tagsLoad(state, tags) {
-        state.tags = tags
+        state.tags = tags.map(tag => new Tag(tag));
     },
     tagsLoaded(state) {
         state.tagsLoading = false;

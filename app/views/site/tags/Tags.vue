@@ -7,9 +7,10 @@
 
                 <main role="main" class="with-sidebar-left col-md-12" > 
                    <header>
-                    <h1 class=" heading-nudge-up line-behind">Tags</h1>
-                     </header>
+                        <h1 class=" heading-nudge-up line-behind">Tags</h1>
+                    </header>
                     <b-table v-if="tagsLoaded" :items="tags"  sortBy="updated_at" :sort-desc="true" stacked="md">
+                    
                     </b-table>
 
 

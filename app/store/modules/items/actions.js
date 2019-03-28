@@ -96,11 +96,11 @@ const actions = {
      */
     getItem({ commit, dispatch }, id) {
         commit("itemLoading");
-            return api.get('item/'+id)
-                    .then((response) => {
+        return api.get('item/'+id)
+                .then((response) => {
                     commit("itemLoad", response.data, currentSite);
-            commit("itemLoaded");
-        })
+                    commit("itemLoaded");
+                })
         .catch((error) => {
                 error.errorMessage = "There was an error loading the item";
             return dispatch("itemError", error);
@@ -115,17 +115,18 @@ const actions = {
     getTags({ commit, dispatch, rootGetters }) {
         commit("tagsLoading");
         var currentSite = rootGetters['sites/currentSite'],
-            // Set the normal item create url
-            url = currentSite.id + '/tags';
-            return api.get(url)
-                .then((response) => {
-                    console.log(response)
-                    commit("tagsLoad", response.data);
-            commit("tagsLoaded");
+        // Set the normal item create url
+        url = currentSite.id + '/tags';
+        return api.get(url)
+            .then((response) => {
+                console.log(response)
+                commit("tagsLoad", response.data);
+                commit("tagsLoaded");
         })
         .catch((error) => {
             console.log(error)
             error.errorMessage = "There was an error loading the item";
+            throw error
             //return dispatch("itemError", error);
         });
     },
