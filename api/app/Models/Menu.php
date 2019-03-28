@@ -54,8 +54,10 @@ class Menu extends BaseModel
         ];
         if($this->item_id > 0){
             $data['title'] = $this->item->title;
+            $data['external'] = 0;
         }elseif(isset($this->title)){
             $data['title'] = $this->title;
+            $data['external'] = 1;
         };
         foreach($this->addToArray as $key){
             $data[$key] = $this->{$key};
