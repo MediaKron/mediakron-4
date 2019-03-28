@@ -22,7 +22,6 @@ const actions = {
           status: status || ''
         }
         dispatch('loadUsers', options);
-        
       },
       /**
        * Load a list of sites
@@ -38,6 +37,7 @@ const actions = {
           }
           return api.get(url, options)
             .then((response) => {
+              console.log(response.data);
               commit("listLoad", response.data);
               commit("listPage", response.data);
               commit("listLoaded");

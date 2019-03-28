@@ -18,7 +18,7 @@ export default [
         }
       },
       {
-        path: "people",
+        path: "people/:page?",
         component: People,
         title: "People",
         meta:{
