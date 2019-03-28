@@ -18,7 +18,7 @@
                             </div>
                         </div>  
                     </aside>
-                    <main role="main" id="content-wrapper" class=" min-h-screen w-full max-w-2xl mx-auto lg:static lg:max-h-full lg:overflow-visible px-6 mt-20"> 
+                    <main role="main" id="content-wrapper" class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-6 mt-20"> 
                         <router-view></router-view>
                     </main>
                  </div>
