@@ -53,7 +53,6 @@
             :fields="fields" 
             :filter="filter" 
             sortBy="updated_at" 
-            sort-desc="true" 
             no-local-sorting
             @sort-changed="sortBy"
             stacked="md">
@@ -63,6 +62,7 @@
             <template slot="email" slot-scope="data">
                 {{ data.item.email }}
             </template>
+
         </b-table>
         <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
         </main>
