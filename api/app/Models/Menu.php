@@ -27,4 +27,39 @@ class Menu extends BaseModel
     {
         return $this->belongsTo('App\Models\Site');
     }
+
+    /**
+     * Practices can have multiple products
+     *
+     * @return void
+     */
+    public function item()
+    {
+        return $this->belongsTo('App\Models\Item');
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function toRelationshipArray()
+    {
+        
+        $table = $this->getTable();
+        $resource = str_singular($table) . '/';
+        $data = [ 
+            'id' => $this->id,
+            'url' => $this->url,
+        ];
+        if($this->item_id > 0){
+            $data['title'] = $this->item->title;
+        }elseif(isset($this->title)){
+            $data['title'] = $this->title;
+        };
+        foreach($this->addToArray as $key){
+            $data[$key] = $this->{$key};
+        }
+        return $data;
+    }
 }
