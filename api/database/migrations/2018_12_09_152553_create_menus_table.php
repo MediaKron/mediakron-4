@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
             $table->integer('site_id')->default(0);
             $table->integer('user_id')->default(0);
             $table->integer('parent_id')->default(0);
+            $table->integer('weight')->default(0);
 
             $table->string('title')->default('')->nullable();
             $table->string('url')->default('')->nullable();
