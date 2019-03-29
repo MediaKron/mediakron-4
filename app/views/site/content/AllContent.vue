@@ -1,29 +1,35 @@
 <template>
     <div>
-        <div class="w-full mx-auto px-6">
+        <div class="w-full mx-auto ">
             <div class="flex">
-                <aside id="sidebar" class="hidden min-w-15 max-w-xs lg:block pb-12">
-                    <div
-                        class="lg:relative lg:sticky top-0 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 pt-16 ">
-                        <div class="sticky?lg:h-(screen-8) overflow-y-auto pr-4">
-                            <b-nav pills vertical>
-                                <b-nav-item class="text-xl" :to="basePath + '/content/mycontent'">
-                                    <span class="optionsnav-text">My Content</span>
-                                </b-nav-item>
-                                <b-nav-item class="text-xl" :to="basePath + '/content/all'">
-                                    <span class="optionsnav-text">Site Library</span>
-                                </b-nav-item>
-                                <b-nav-item class="text-xl" :to="basePath + '/content/authors'">
-                                    <span class="optionsnav-text">Authors</span>
-                                </b-nav-item>
-                                <b-button class="mt-4 mx-2" variant="primary" :to="basePath + '/content/add'">
-                                    <font-awesome-icon icon="plus-square" />
-                                    <span class="optionsnav-text">Add Content</span>
-                                </b-button>
+                <aside id="sidebar" class="hidden max-w-xs lg:block pb-12 pl-2 bg-dark">
+                        <div class="bg-dark text-white mt-3 mr-12 mb-0 ml-4 pb-2 uppercase text-lg border-t-0 border-l-0 border-b-1 border-r-0 border-gray-100 border-solid"><font-awesome-icon icon="th-large" class="mr-1 ml-4" />  Content</div>
+                        <b-button variant="link" :to="basePath + '/'" class="bg-white text-black fixed top-0 right-0 ml-auto uppercase flex flex-column content-center justify-center rounded-none mt-3 mr-3"> 
+                            <font-awesome-icon icon="times" class="w-auto text-2xl"/> 
+                            <span class="text-xs"> Close</span>
+                         </b-button>   
+                        <div class="lg:relative lg:sticky top-0 pt-2 pl-2 ">
+                            <div class="sticky?lg:h-(screen-8) overflow-y-auto">
+                                  
+                                     <b-nav pills vertical class="sticky?lg:h-(screen-32) overflow-y-auto ">
+                                        <b-nav-item class="text-xl" :to="basePath + '/content/mycontent'">
+                                            <span class="optionsnav-text">My Content</span>
+                                        </b-nav-item>
+                                        <b-nav-item class="text-xl" :to="basePath + '/content/all'">
+                                            <span class="optionsnav-text">Site Library</span>
+                                        </b-nav-item>
+                                        <b-nav-item class="text-xl" :to="basePath + '/content/authors'">
+                                            <span class="optionsnav-text">Authors</span>
+                                        </b-nav-item>
+                                        <b-button class="mt-4 mx-2" variant="primary" :to="basePath + '/content/add'">
+                                            <font-awesome-icon icon="plus-square" />
+                                            <span class="optionsnav-text">Add Content</span>
+                                        </b-button>
                             </b-nav>
-                        </div>
-                    </div>
+                            </div>
+                        </div>  
                 </aside>
+               
                 <main class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
                     <header class="line-behind mt-20 mb-4">
                         <h1> Site Library</h1>
