@@ -15,12 +15,10 @@
                         <b-nav-item class="text-xl">
                             <span class="optionsnav-text">Authors</span>
                         </b-nav-item> 
-                        <b-button class="mt-10 mx-2" variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
+                        <b-button class="mt-4 mx-2" variant="primary" :to="basePath + '/content/add'"><font-awesome-icon icon="plus-square"/> 
                             <span class="optionsnav-text">Add Content</span>
                         </b-button>
-                        <b-button class="mt-2 mx-2" variant="outline-primary" :to="basePath + '/content/deleted'" ><font-awesome-icon icon="trash-alt"/> 
-                            <span class="optionsnav-text">Restore Deleted</span>
-                        </b-button>    
+                        
                      </b-nav>
                 </div>
                 </div>
