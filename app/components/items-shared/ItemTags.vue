@@ -39,7 +39,7 @@ export default {
     },
     data () {
         return {
-            isEditingTags: false,
+           // this.isEditingTags: false,
             /*
             options: [
                 { title: 'Vue.js', id: '1' },
@@ -47,15 +47,17 @@ export default {
                 { title: 'Open Source', id: '3' }
             ]
             */
-            options: this.getTags()
+            options: this.getTags(),
+            isEditingTags: false
         }
+
     },
     methods: {
         addTag(newTag) {
             const tag = {
                 title: newTag
             }
-            this.options.push(tag)
+            //this.options.push(tag)
             this.editItem.tags.push(tag)
         },
         ...mapActions('items', [
@@ -64,10 +66,12 @@ export default {
     },
     computed: {
         tagsButton(){
-            if (this.isEditingTags) {
-                return 'Collapse Tags'
-            }
-            return 'Edit Tags'
+                if (this.isEditingTags) {
+                    return 'Collapse Tags'
+                }
+                    return 'Edit Tags'
+
+
         },
         ...mapGetters('items', [
             'editItem',
@@ -79,7 +83,6 @@ export default {
         ]),
     },
     mounted(){
-            isEditingTags: false,
             this.getTags()
     }
 
