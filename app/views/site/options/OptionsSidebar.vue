@@ -1,5 +1,6 @@
 <template>
   <div v-if="access('can change site siteadmin')" class="optionsnav" v-bind:class="[sectionClass]">
+   
     <b-nav vertical pills class=" ">
         <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings'">
             <font-awesome-icon icon="sliders-h"/> 
@@ -100,7 +101,7 @@ export default  Vue.extend({
 
 .options-sectionnav .nav-link {
     text-transform:uppercase;
-    color: #212529;
+    color:  #fff;
 }
 
 .options-sectionnav .nav-link:first-child {
@@ -177,27 +178,27 @@ export default  Vue.extend({
 
 .optionsnav .nav-link {
  display:flex;
- color:#333;
+ color:#ddd;
 }
 
 .optionsnav .nav-link.active {
  display:flex;
- color:#212529 !important;
+ color:#fff !important;
  font-weight:bold;
  background:none !important;
      font-size:105%
 }
 
 .optionsnav .nav-link.active svg {
-  background: #212529;
+  background: #fff;
 
 }
 
 .optionsnav .nav-link svg {
   display: flex;
   align-items: center;
-  color: white;
-  background: #444;
+  color: #333   ;
+  background: #ddd;
   padding: .25rem;
   border-radius: .2rem;
   font-size: 1.5rem;

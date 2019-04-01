@@ -1,6 +1,6 @@
 <template>
     <div class="homepage-settings">
-        <main role="main" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg">
+        <main role="main" class="px-6 min-h-screen w-full max-w-50 mx-auto lg:static lg:max-h-full lg:overflow-visible">
             <header>
                 <h1 class="line-behind heading-nudge-up mb-4"> Homepage Settings</h1>
             </header>

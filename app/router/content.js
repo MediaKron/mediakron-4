@@ -40,7 +40,7 @@ export default [
     },
     {
         path: "add/:type",
-        name: 'add',
+        name: 'additem',
         component: CreateContent,
         props: true
     },

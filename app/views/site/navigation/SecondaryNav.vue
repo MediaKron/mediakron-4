@@ -11,9 +11,9 @@
                 <font-awesome-icon icon="th-large"/> 
                 <span class="item-text">Content</span>
             </template>
-            <b-dropdown-item :to="basePath + '/content/mycontent'">My Content</span></b-dropdown-item>
-            <b-dropdown-item :to="basePath + '/content/all'"> Site Library</span></b-dropdown-item>
-            <b-dropdown-item :to="basePath + '/content/deleted'">Authors</span></b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/content/mycontent'">My Content</b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/content/all'"> Site Library</b-dropdown-item>
+            <b-dropdown-item :to="basePath + '/content/deleted'">Authors</b-dropdown-item>
         </b-nav-item-dropdown>
 
          <!-- <b-nav-item class="bg-dark" :to="basePath + '/profile'"> 

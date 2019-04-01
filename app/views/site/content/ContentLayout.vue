@@ -1,17 +1,38 @@
 <template>
 <div>
-    <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-3 w-100" fixed="top" variant="dark" aria-label="site menus" >
-        <b-navbar-brand class="text-uppercase site-options-title ml-4" :to="basePath + '/content'"> <font-awesome-icon icon="th-large" class="mr-1 ml-4" />  Content</b-navbar-brand>
-        <b-navbar-nav class="ml-auto">
-            <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 ">      
-                <font-awesome-icon icon="times"/> 
-                <span class="utilitynav-text"> Close</span>
-            </b-nav-item>   
-        </b-navbar-nav> 
-    </b-navbar>
-    <div class="w-100"> 
-         <router-view></router-view>   
-    </div>  
+    <div class="w-full">
+        <div class="flex">
+            <Sidebar>
+                <h2 class="bg-dark text-white mt-3 mr-12 mb-3 ml-3 pb-2 text-lg uppercase">
+                    <font-awesome-icon icon="th-large" /> Content
+                </h2>
+                <b-nav pills vertical class="sticky?lg:h-(screen-32) overflow-y-auto ">
+                    <b-nav-item class="text-xl" :to="basePath + '/content/mycontent'">
+                        <span class="optionsnav-text">My Content</span>
+                    </b-nav-item>
+                    <b-nav-item class="text-xl" :to="basePath + '/content/all'">
+                        <span class="optionsnav-text">Site Library</span>
+                    </b-nav-item>
+                    <b-nav-item class="text-xl" :to="basePath + '/content/authors'">
+                        <span class="optionsnav-text">Authors</span>
+                    </b-nav-item>
+                    <b-button class="mt-4 mx-2" variant="primary" :to="basePath + '/content/add'">
+                        <font-awesome-icon icon="plus-square" />
+                        <span class="optionsnav-text">Add Content</span>
+                    </b-button>
+                 </b-nav>
+                <b-button variant="link" :to="basePath + '/'"
+                    class="bg-white text-black fixed top-0 right-0 ml-auto uppercase flex flex-column content-center justify-center rounded-none mt-3 mr-3">
+                    <font-awesome-icon icon="times" class="w-auto text-2xl" />
+                    <span class="text-xs"> Close</span>
+                </b-button>
+            </Sidebar>
+            <main role="main" id="content-wrapper"
+                class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-6 mt-16   ">
+                <router-view></router-view>
+            </main>
+        </div>
+    </div>
 </div>
 
 </template>
@@ -20,10 +41,12 @@
 import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import ContentCard from "./ContentCard";
+import Sidebar from "@/components/Sidebar";
 import Multiselect from 'vue-multiselect'
 export default  Vue.extend({
      components: {
-         Multiselect,
+        Multiselect,
+        Sidebar,
         ContentCard
     },
     computed:{

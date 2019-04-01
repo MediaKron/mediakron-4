@@ -28,10 +28,10 @@ export const mutations = {
      * Called with the data to load as the current list
      * @param {*} state
      */
-    listLoad(state, data){
-        state.userList = data.data.map(user => new User(user));
+    listLoad(state, body){
+        state.userList = body.data.map(user => new User(user));
     },
-
+    
     /**
      * List Page.  Set the pager information from the request
      * @param {*} state
