@@ -6,7 +6,7 @@
             </header>
             <div class="flex items-center">
 
-                <b-input-group class="my-3 max-w-sm">
+                <b-input-group class="my-3 max-w-sm mr-auto">
                     <b-form-input v-model="filter" placeholder="Type to Search" />
                     <b-input-group-append>
                         <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
@@ -14,7 +14,7 @@
                 </b-input-group>
 
                 <div class="add-people ml-3">
-                    <b-btn v-b-modal.add-people-form variant="primary" class="text-uppercase">
+                    <b-btn v-b-modal.add-people-form variant="dark" class="text-uppercase">
                         <font-awesome-icon icon="user-plus" /> Add New Users</b-btn>
                     <b-modal id="add-people-form" centered title="Add People">
                         <b-form @submit.prevent="updateUser">

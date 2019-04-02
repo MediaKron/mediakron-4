@@ -17,19 +17,16 @@
                     <b-nav-item  :to="basePath + '/content/authors'">
                         <span class="uppercase whitespace-no-wrap">Authors</span>
                     </b-nav-item>
-                    <b-button class="mt-4 mx-2 whitespace-no-wrap" variant="primary" :to="basePath + '/content/add'">
+                    <b-button class="mt-4 mx-2 whitespace-no-wrap" variant="light" :to="basePath + '/content/add'">
                         <font-awesome-icon icon="plus-square" />
                         <span class="pl-1 uppercase">Add</span>
                     </b-button>
                  </b-nav>
-                <!-- <b-button variant="link" :to="basePath + '/'"
-                    class="bg-white text-black fixed top-0 right-0 ml-auto uppercase flex flex-column content-center justify-center rounded-none mt-3 mr-3 ">
-                    <font-awesome-icon icon="times" class="w-auto text-2xl" />
-                    <span class="text-xs"> Close</span>
-                </b-button> -->
             </Sidebar>
             <main role="main" id="content-wrapper" class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-6 mt-24   ">
+                <transition name="fade">
                 <router-view></router-view>
+                </transition>
             </main>
         </div>
     </div>
@@ -107,4 +104,11 @@ export default  Vue.extend({
 
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>

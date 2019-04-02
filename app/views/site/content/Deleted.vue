@@ -1,11 +1,11 @@
 <template>
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
 
-        <header class="line-behind mt-8 mb-4">
+        <header class="line-behind mb-4">
             <h1> Deleted Content</h1>
         </header>
 
-        <b-input-group class="mb-3">
+        <b-input-group class="mb-3 my-3 max-w-sm">
             <b-form-input v-model="filter" placeholder="Type to Search" />
             <b-input-group-append>
                 <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>

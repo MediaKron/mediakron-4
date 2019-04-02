@@ -1,13 +1,9 @@
 <template>
     <div class="help">
-        <b-button variant="link" :to="basePath + '/'"
-            class="bg-white text-black fixed top-0 right-0 ml-auto uppercase flex flex-column content-center justify-center rounded-none mt-3 mr-3">
-            <font-awesome-icon icon="times" class="w-auto text-2xl" />
-            <span class="text-xs"> Close</span>
-        </b-button>
-        <main role="main" class="w-100 max-w-2xl mx-auto mt-16">
+        <Navigation class="fixed top-0 w-100 z-10"></Navigation>
+        <main role="main" class="w-100 max-w-lg mx-auto ">
             <header>
-                <h1 class="line-behind heading-nudge-up mb-4"> Ways to Get Help </h1>
+                <h1 class="line-behind heading-nudge-up mt-24 mb-4"> Ways to Get Help </h1>
             </header>
 
             <h2>MediaKron Support</h2>
@@ -56,11 +52,15 @@
 
 <script>
     import Vue from 'vue';
+    import Navigation from '@/views/site/Navigation'
     import {
         mapState,
         mapGetters
     } from 'vuex';
     export default Vue.extend({
+        components: {
+            Navigation,
+        },
         computed: {
             ...mapGetters('users/profile', [
                 'user',

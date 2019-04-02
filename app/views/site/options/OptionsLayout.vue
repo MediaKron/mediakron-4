@@ -14,7 +14,9 @@
                 </Sidebar>
                 <main role="main" id="content-wrapper"
                     class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-6 mt-24   ">
-                    <router-view></router-view>
+                    <transition name="fade">
+                     <router-view></router-view>
+                    </transition>
                 </main>
             </div>
     </div>
@@ -46,5 +48,10 @@
 </script>
 
 <style>
-
+    .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    }
 </style>
