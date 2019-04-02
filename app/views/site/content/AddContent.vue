@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
-        <header class="line-behind mt-8 mb-4">
+        <header class="line-behind mb-4">
             <h1>Create Content</h1>
         </header>
         <h2>Content Organizers</h2>

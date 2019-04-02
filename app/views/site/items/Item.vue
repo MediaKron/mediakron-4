@@ -1,9 +1,8 @@
 <template>
     <div>
-        <Navigation></Navigation>
         <main>
-            <loader v-if="itemIsLoading"></loader>
-            <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" />
+            <loader v-if="itemIsLoading" class="flex justify-center mt-8"></loader>
+            <component v-if="itemIsLoaded" :is="component" :item="first" />
         </main>
     </div>
 </template>
@@ -62,6 +61,9 @@ export default {
             }
             
         },
+        sitenav() {
+             return this.$route.meta.siteNav;
+            },
         
     },
     methods: {

@@ -1,16 +1,11 @@
 <template>
     <div class="help">
-        <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-index-1 w-100" variant="dark" aria-label="site menus">
-            <b-navbar-brand class="text-uppercase site-options-title ml-4">
-                <font-awesome-icon icon="question-circle" class="mr-1" /> Help</b-navbar-brand>
-            <b-navbar-nav class="ml-auto">
-                <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 ">
-                    <font-awesome-icon icon="times" />
-                    <span class="utilitynav-text"> Close</span>
-                </b-nav-item>
-            </b-navbar-nav>
-        </b-navbar>
-        <main role="main" class="w-100 max-w-lg mx-auto mt-12">
+        <b-button variant="link" :to="basePath + '/'"
+            class="bg-white text-black fixed top-0 right-0 ml-auto uppercase flex flex-column content-center justify-center rounded-none mt-3 mr-3">
+            <font-awesome-icon icon="times" class="w-auto text-2xl" />
+            <span class="text-xs"> Close</span>
+        </b-button>
+        <main role="main" class="w-100 max-w-2xl mx-auto mt-16">
             <header>
                 <h1 class="line-behind heading-nudge-up mb-4"> Ways to Get Help </h1>
             </header>

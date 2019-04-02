@@ -55,19 +55,28 @@ var routes = {
         path: ":firstUri/:secondUri/:thirdUri",
         name: "Item3",
         component: Item,
-        props: true
+        props: true,
+        meta:{
+          siteNav: true,
+        }
       },
       {
         path: ":firstUri/:secondUri",
         name: "Item2",
         component: Item,
-        props: true
+        props: true,
+        meta:{
+          siteNav: true,
+        }
       },
       {
         path: ":firstUri",
         name: "Item1",
         component: Item,
-        props: true
+        props: true, 
+        meta:{
+          siteNav: true,
+        }
       },
 
       {

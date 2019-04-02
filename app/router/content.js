@@ -1,11 +1,10 @@
-import Content from '@/views/site/content/Content';
 import MyContent from '@/views/site/content/MyContent';
 import AllContent from '@/views/site/content/AllContent';
 import AddContent from '@/views/site/content/AddContent';
 import Authors from '@/views/site/content/Authors';
 import Deleted from '@/views/site/content/Deleted';
 import CreateContent from '@/views/site/items/Create';
-
+import Item from "@/views/site/items/Item";
 
 export default [
     {
@@ -45,9 +44,15 @@ export default [
         props: true
     },
     {
+        path: ":firstUri",
+        name: "Item1",
+        component: Item,
+        props: true,
+      },
+    {
         path: "/",
         name: 'content',
-        component: Content,
+        component: AllContent,
         props: true
     }
 ]

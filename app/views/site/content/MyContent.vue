@@ -36,7 +36,7 @@
             @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="title" slot-scope="items">
                 <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" />
-                <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}
+                <router-link :to="items.item.uri" class="font-bold text-1xl">{{ items.item.title }}
                 </router-link>
             </template>
             <template slot="type" slot-scope="items">
