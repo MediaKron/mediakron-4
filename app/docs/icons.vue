@@ -66,6 +66,7 @@ export default {
           {faname: 'ExpandArrowsAlt ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'File', icon: 'file', code: 'file', mkname:'Item: File '},
           {faname: 'File Alt', icon: 'file-alt', code: 'file-alt', mkname:'Item: Story'},
+          {faname: 'Grip Lines', icon: 'grip-lines', code: 'grip-lines', mkname:'Drag Handles'},
           {faname: 'Home ', icon: ' ', code: ' ', mkname:' '}, 
           {faname: 'Image ', icon: 'image', code: 'image', mkname:'Item: Image '}, 
           {faname: 'InfoCircle, ', icon: ' ', code: ' ', mkname:' '},
@@ -87,7 +88,7 @@ export default {
           {faname: 'Th ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'ThList ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'ThLarge', icon: ' ', code: ' ', mkname:' '},
-          {faname: 'Times ', icon: ' ', code: ' ', mkname:' '},
+          {faname: 'Times ', icon: 'times', code: 'times', mkname:'Close'},
           {faname: 'TrashAlt ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'User ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'UserCircle ', icon: ' ', code: ' ', mkname:' '},
@@ -97,7 +98,7 @@ export default {
           {faname: 'Users ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'Video', icon: 'video', code: 'video', mkname:'Item: Video'},
           {faname: 'Volume Up', icon: 'volume-up', code: 'volume-up', mkname:'Item: Audio'},
-          {faname: 'WindowClose ', icon: 'window-close', code: 'window-close ', mkname:'Close square '}
+          {faname: 'WindowClose ', icon: 'window-close', code: 'window-close ', mkname:'Remove'}
         ],
         filter: null,
 
