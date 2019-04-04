@@ -32,8 +32,8 @@
     # Php
     - geerlingguy.php
     # Ship logs to S3
-    - geerlingguy.java
-    - geerlingguy.filebeat
-    - logstash
+  #  - geerlingguy.java
+   # - geerlingguy.filebeat
+   # - logstash
     - geerlingguy.supervisor
-    - logstash-s3
+   # - logstash-s3

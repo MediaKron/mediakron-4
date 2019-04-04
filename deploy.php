@@ -1,7 +1,7 @@
 <?php
 namespace Deployer;
 
-require 'recipe/laravel.php';
+require 'provisioning/recipe/mediakron.php';
 
 // Project name
 set('application', 'Mediakron');
@@ -28,7 +28,7 @@ set('allow_anonymous_stats', false);
 
 // Hosts
 
-host('ec2-34-207-229-205.compute-1.amazonaws.com')
+host('ec2-52-90-188-176.compute-1.amazonaws.com')
     ->stage('dev')
     ->user('ubuntu')
     ->set('branch', 'master')

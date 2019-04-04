@@ -7,12 +7,12 @@
   vars_files:
     #- vars/firewall.yml
     #- vars/security.yml
-    - vars/nginx.yml
+    #- vars/nginx.yml
     #- vars/node.yml
     - vars/php.yml
     #- vars/java.yml
     #- vars/filebeats.yml
-    - vars/logstash.yml
+    #- vars/logstash.yml
     #- vars/supervisor.yml
   roles:
     # Provision the users we want
