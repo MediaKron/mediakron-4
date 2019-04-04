@@ -7,7 +7,7 @@
   vars_files:
     #- vars/firewall.yml
     #- vars/security.yml
-    #- vars/nginx.yml
+    - vars/nginx.yml
     #- vars/node.yml
     - vars/php.yml
     #- vars/java.yml
@@ -28,10 +28,10 @@
     #  Enable security updates, Notify the ops channel on update
     #- geerlingguy.security
     # Install and configure nginx
-    #- geerlingguy.nginx
+    - geerlingguy.nginx
     # Php
-    - geerlingguy.php
-    - geerlingguy.composer
+    #- geerlingguy.php
+    #- geerlingguy.composer
     # Ship logs to S3
     #- geerlingguy.java
     #- logstash

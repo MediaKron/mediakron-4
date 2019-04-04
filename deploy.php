@@ -45,13 +45,13 @@ after('deploy:failed', 'deploy:unlock');
 //before('deploy:symlink', 'artisan:migrate');
 
 task('artisan:opcache:clear', function () {
-    run('{{bin/php}} {{release_path}}/src/artisan opcache:clear');
-    run('{{bin/php}} {{release_path}}/src/artisan opcache:optimize');
+    run('{{bin/php}} {{release_path}}/api/artisan opcache:clear');
+    run('{{bin/php}} {{release_path}}/api/artisan opcache:optimize');
 });
 
 task('artisan:config:clear', function () {
-    run('{{bin/php}} {{release_path}}/src/artisan config:clear');
-    run('{{bin/php}} {{release_path}}/src/artisan config:cache');
+    run('{{bin/php}} {{release_path}}/api/artisan config:clear');
+    run('{{bin/php}} {{release_path}}/api/artisan config:cache');
 });
 
 task('restart:supervisor', function () {
@@ -64,7 +64,7 @@ task('vue:build', function () {
 
 before('deploy:symlink', 'artisan:config:clear');
 before('deploy:symlink', 'vue:build');
-after('deploy:symlink', 'artisan:opcache:clear');
+//after('deploy:symlink', 'artisan:opcache:clear');
 after('deploy:symlink', 'restart:supervisor');
 
 

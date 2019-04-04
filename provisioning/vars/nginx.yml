@@ -9,36 +9,30 @@ nginx_vhosts:
     server_name: "{{ url }} _"
     #server_name_redirect: "www.example.com"
     root: "/var/www/mediakron/current/public"
-    index: "index.php index.html index.htm"
+    index: "index.html index.php"
     error_log: "/var/log/nginx/{{ url }}.error.log"
     access_log: "/var/log/nginx/{{ url }}.access.log combined"
     state: "present"
     template: "{{ nginx_vhost_template }}"
     filename: "{{ url }}.conf"
     extra_parameters: |
-      location / {
-          try_files $uri $uri/ /index.php$is_args$args;
-      }
-      location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        # With php7.2-fpm:
-        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-      }
       location /api {
           alias /var/www/mediakron/current/public;
           try_files $uri $uri/ @api;
 
-            location ~ \.php$ {
-              include snippets/fastcgi-php.conf;
-              fastcgi_param SCRIPT_FILENAME $request_filename;
-              fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-            }
+          location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_param SCRIPT_FILENAME $request_filename;
+            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+          }
       }
 
-      location @api {
-          rewrite /api/(.*)$ /api/index.php?/$1 last;
+      location / {
+        try_files $uri $uri/ @rewrites;
+      }
+
+      location @rewrites {
+        rewrite ^(.+)$ /index.html last;
       }
 
       location @api {
@@ -59,3 +53,15 @@ nginx_vhosts:
       ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
       ssl_protocols       TLSv1.1 TLSv1.2;
       ssl_ciphers         HIGH:!aNULL:!MD5;
+
+  - listen: "80"
+    server_name: "{{ url }} _"
+    root: "/var/www/mediakron/current/public"
+    index: "index.php index.html index.htm"
+    error_log: "/var/log/nginx/{{ url }}.http.error.log"
+    access_log: "/var/log/nginx/{{ url }}.http.access.log combined"
+    state: "present"
+    template: "{{ nginx_vhost_template }}"
+    filename: "{{ url }}.http.conf"
+    extra_parameters: |
+      return 301 https://$host$request_uri;
