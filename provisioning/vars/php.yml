@@ -15,6 +15,7 @@ php_packages:
   - php-soap
   - php-apcu
   - php-curl
+  - php-ldap
 
 php_install_recommends: true
 

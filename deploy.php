@@ -17,7 +17,7 @@ add('shared_files', [
     '.env'
 ]);
 add('shared_dirs', [
-    'storage'
+    'api/storage'
 ]);
 
 // Writable dirs by web server 
@@ -45,20 +45,25 @@ after('deploy:failed', 'deploy:unlock');
 //before('deploy:symlink', 'artisan:migrate');
 
 task('artisan:opcache:clear', function () {
-    run('{{bin/php}} {{release_path}}/artisan opcache:clear');
-    run('{{bin/php}} {{release_path}}/artisan opcache:optimize');
+    run('{{bin/php}} {{release_path}}/src/artisan opcache:clear');
+    run('{{bin/php}} {{release_path}}/src/artisan opcache:optimize');
 });
 
 task('artisan:config:clear', function () {
-    run('{{bin/php}} {{release_path}}/artisan config:clear');
-    run('{{bin/php}} {{release_path}}/artisan config:cache');
+    run('{{bin/php}} {{release_path}}/src/artisan config:clear');
+    run('{{bin/php}} {{release_path}}/src/artisan config:cache');
 });
 
 task('restart:supervisor', function () {
     run('sudo service supervisord restart', ['timeout' => null, 'tty' => true]);
 });
 
+task('vue:build', function () {
+    run('cd {{release_path}} && npm install && npm run mediakron:build:dev');
+});
+
 before('deploy:symlink', 'artisan:config:clear');
+before('deploy:symlink', 'vue:build');
 after('deploy:symlink', 'artisan:opcache:clear');
 after('deploy:symlink', 'restart:supervisor');
 
