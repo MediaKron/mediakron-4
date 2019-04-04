@@ -22,7 +22,7 @@ add('shared_dirs', [
 
 // Writable dirs by web server 
 add('writable_dirs', [
-    'storage'
+    'api/storage'
 ]);
 set('allow_anonymous_stats', false);
 
