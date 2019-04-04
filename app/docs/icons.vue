@@ -50,6 +50,7 @@ export default {
           {faname: 'Arrow Left', icon: 'arrow-left', code: 'arrow-left', mkname:'Arrow Left'},
           {faname: 'Arrow Right', icon: 'arrow-right', code: 'arrow-right', mkname:'Arrow Right'},
           {faname: 'Arrow Up', icon: 'arrow-up', code: 'arrow-up', mkname:'Arrow Up'},
+          {faname: 'Arrows Alt-V', icon: 'arrows-alt-v', code: 'arrows-alt-v', mkname:'Organize'},
           {faname: 'Asterisk', icon: 'asterisk', code: 'asterisk', mkname:'Asterisk'},
           {faname: 'Bars', icon: 'bars', code: 'bars', mkname:'Menu'},
           {faname: 'Check', icon: 'check', code: 'check', mkname:'Save'},
