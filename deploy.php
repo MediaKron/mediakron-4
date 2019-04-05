@@ -1,10 +1,10 @@
 <?php
 namespace Deployer;
 
-require 'recipe/laravel.php';
+require 'provisioning/recipe/mediakron.php';
 
 // Project name
-set('application', 'my_project');
+set('application', 'Mediakron');
 
 // Project repository
 set('repository', 'git@github.com:MediaKron/mediakron-4.git');
@@ -14,31 +14,57 @@ set('git_tty', true);
 
 // Shared files/dirs between deploys 
 add('shared_files', [
-    'env'
+    '.env'
 ]);
 add('shared_dirs', [
-    'storage'
+    'api/storage'
 ]);
 
 // Writable dirs by web server 
-add('writable_dirs', []);
-
+add('writable_dirs', [
+    'api/storage'
+]);
+set('allow_anonymous_stats', false);
 
 // Hosts
 
-host('project.com')
-    ->set('deploy_path', '~/{{application}}');    
-    
-// Tasks
+host('ec2-52-90-188-176.compute-1.amazonaws.com')
+    ->stage('dev')
+    ->user('ubuntu')
+    ->set('branch', 'master')
+    ->set('deploy_path', '/var/www/mediakron');
 
-task('build', function () {
-    run('cd {{release_path}} && build');
-});
+
+// [Optional] if deploy fails automatically unlock.
+after('deploy:failed', 'deploy:unlock');
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
+//before('deploy:symlink', 'artisan:migrate');
 
-before('deploy:symlink', 'artisan:migrate');
+task('artisan:opcache:clear', function () {
+    run('{{bin/php}} {{release_path}}/api/artisan opcache:clear');
+    run('{{bin/php}} {{release_path}}/api/artisan opcache:optimize');
+});
+
+task('artisan:config:clear', function () {
+    run('{{bin/php}} {{release_path}}/api/artisan config:clear');
+    run('{{bin/php}} {{release_path}}/api/artisan config:cache');
+});
+
+task('restart:supervisor', function () {
+    run('sudo service supervisord restart', ['timeout' => null, 'tty' => true]);
+});
+
+task('vue:build', function () {
+    run('cd {{release_path}} && npm install && npm run mediakron:build:dev');
+});
+
+before('deploy:symlink', 'artisan:config:clear');
+before('deploy:symlink', 'vue:build');
+//after('deploy:symlink', 'artisan:opcache:clear');
+after('deploy:symlink', 'restart:supervisor');
+
 

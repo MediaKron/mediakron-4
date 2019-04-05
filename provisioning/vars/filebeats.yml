@@ -1,0 +1,13 @@
+filebeat_prospectors:
+  - input_type: log
+    type: nginx
+    paths:
+      - "/var/log/nginx/*.log"
+  - input_type: log
+    type: laravel
+    app: mediakron
+    paths:
+      - "/var/www/mediakron/shared/storage/logs/*.log"
+filebeat_output_logstash_enabled: true
+filebeat_output_logstash_hosts:
+  - "localhost:5044"

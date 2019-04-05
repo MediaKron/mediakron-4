@@ -1,0 +1,234 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Metadata:
+  License: Apache-2.0
+
+Description: "This recipe builds out a mediakron production stack"
+
+Parameters:
+  # Define the enviornment name, lets you set 
+  EnvironmentName:
+    Description: An environment name that will be prefixed to resource names
+    Type: String
+    Default: 'Production'
+
+  # Define the vpc that we should define the objects in
+  VPC:
+    Type: AWS::EC2::VPC::Id
+    Description: Choose which VPC the Application Load Balancer should be deployed to
+    Default: 'vpc-9bda7bfc'
+
+  # Define the subnets
+  Subnets:
+    Description: Choose which subnets the Application Load Balancer should be deployed to
+    Type: List<AWS::EC2::Subnet::Id>
+    Default: 'subnet-50ac3035'
+
+  # Define the subnets
+  SecurityGroupIpCidr:
+    Description: Define an ip that 
+    Type: List<AWS::EC2::Subnet::Id>
+    Default: "54.85.108.139/32"
+
+  # Provide an SSL Cert ARN.  The cert must already exist
+  SSLCert:
+    Description: An SSL Cert for the ELB
+    Default: "arn:aws:acm:us-east-1:895341121180:certificate/c990c886-7125-47d8-be72-a2456445364f"
+
+Resources:
+
+  # Add an application load balencer in two subnet groups
+  LoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: 'Me'
+      Subnets: ['subnet-8ec37b82', 'subnet-50ac3035']
+      SecurityGroups: 
+        - Fn::GetAtt:
+          - ELBSecurityGroup
+          - GroupId
+      Tags:
+        - 
+          Key: Name
+          Value: 
+            Ref: EnvironmentName
+
+  # Build out a listner on 443
+  LoadBalancerListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: 
+        Ref: LoadBalancer
+      Certificates: 
+        - CertificateArn: 
+          Ref: SSLCert
+      Port: 443
+      Protocol: HTTPS
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: 
+            Ref: DefaultTargetGroup
+
+  # Add all the instances to a port 80 target group
+  DefaultTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: 'Mediakron-Group'
+      HealthCheckIntervalSeconds: 30
+      HealthCheckProtocol: HTTPS
+      HealthCheckTimeoutSeconds: 10
+      HealthyThresholdCount: 4
+      UnhealthyThresholdCount: 3
+      Matcher:
+        HttpCode: '200'
+      VpcId: 
+        Ref: VPC
+      Port: 80
+      Protocol: HTTPS
+      Targets:
+      - Id:
+          Ref: mediakron1
+        Port: 80
+      - Id:
+          Ref: mediakron2
+        Port: 80
+
+  # Provision two m5 large instances in the region
+  # Name them with the stack name and an integer
+
+  # Mediakron 1
+  mediakron1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: m5.large
+      SecurityGroups: 
+        - Ref: "InstanceSecurityGroup"
+      KeyName: 'Mediakron'
+      ImageId: ami-0a313d6098716f372
+      Tags:
+        - 
+          Key: "Name"
+          Value: 
+            Fn::Join: ['-', [ !Ref 'AWS::StackName', '1' ]]
+        - 
+          Key: "Description"
+          Value: "Mediakron Service"
+        - 
+          Key: "Environment"
+          Value: 
+            Ref: EnvironmentName
+  # Mediakron 2
+  mediakron2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: m5.large
+      SecurityGroups: 
+        - Ref: "InstanceSecurityGroup"
+      KeyName: 'Mediakrong'
+      ImageId: ami-0a313d6098716f372
+      Tags:
+        - 
+          Key: "Name"
+          Value: 
+            Fn::Join: ['-', [ !Ref 'AWS::StackName', '2' ]]
+        - 
+          Key: "Description"
+          Value: "Mediakron Service"
+        - 
+          Key: "Environment"
+          Value: 
+            Ref: EnvironmentName
+
+  # A security group for the instances
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: Mediakron Private
+      GroupDescription: Allow access to servers from 22
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        Description: Convertiv VPN SSH
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 
+          Ref: SecurityGroupIpCidr
+      - IpProtocol: tcp
+        Description: Allow the ELB to access these instances over HTTP
+        FromPort: 80
+        ToPort: 80
+        SourceSecurityGroupId: 
+          Fn::GetAtt:
+            - ELBSecurityGroup
+            - GroupId
+      - IpProtocol: tcp
+        Description: Allow the ELB to access these instances over HTTPS
+        FromPort: 443
+        ToPort: 443
+        SourceSecurityGroupId: 
+          Fn::GetAtt:
+            - ELBSecurityGroup
+            - GroupId
+      Tags:
+        - 
+          Key: "Name"
+          Value: 
+            Fn::Join: [' ', [ !Ref 'AWS::StackName', 'Public' ]]
+
+  # A security group for the server
+  ELBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP/HTTPS
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        Description: Allow public access to this instance over 443 for ipv4
+        FromPort: 443
+        ToPort: 443
+        CidrIp: '0.0.0.0/0'
+      - IpProtocol: tcp
+        Description: Allow public access to this instance over 443 for ipv6
+        FromPort: 443
+        ToPort: 443
+        CidrIpv6: '::/0'
+      Tags:
+        - 
+          Key: "Name"
+          Value: 
+            Fn::Join: [' ', [ !Ref 'AWS::StackName', 'Public' ]]
+
+
+Outputs:
+  InstanceId:
+    Description: InstanceId of the newly created EC2 instance
+    Value:
+      Ref: "mediakron1"
+      
+  AZ:
+    Description: Availability Zone of the newly created EC2 instance
+    Value: 
+      Fn::GetAtt: [ "mediakron1", AvailabilityZone ]
+
+  PublicDNS:
+    Description: Public DNSName of the newly created EC2 instance
+    Value: 
+      Fn::GetAtt: [ "mediakron1", PublicDnsName ]
+
+  PublicIP:
+    Description: Public IP address of the newly created EC2 instance
+    Value: 
+      Fn::GetAtt: [ "mediakron1", PublicIp ]
+
+  LoadBalancer:
+    Description: A reference to the Application Load Balancer
+    Value: 
+      Ref: LoadBalancer
+
+  LoadBalancerUrl:
+    Description: The URL of the ALB
+    Value: 
+      Fn::GetAtt: LoadBalancer.DNSName
+
+  Listener:
+    Description: A reference to a port 80 listener
+    Value: 
+      Ref: LoadBalancerListener
