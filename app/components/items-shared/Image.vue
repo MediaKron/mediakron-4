@@ -66,9 +66,9 @@ export default {
                 if(this.tempImage){
                     return this.tempImage;
                 }
-                return 'https://picsum.photos/1000/1000/?random';
+                return this.first.imageUrl('large');
             }
-            return [ 'https://picsum.photos/1000/1000/?random' ];
+            return [ this.first.imageUrl('large') ];
         },
         ...mapGetters('items', [
             'editItem',

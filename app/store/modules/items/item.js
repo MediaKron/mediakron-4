@@ -1,4 +1,5 @@
 import Model from "@/store/utils/model";
+import config from '@/config';
 class Item extends Model {
     
     /**
@@ -37,6 +38,18 @@ class Item extends Model {
         }
     }
     
+    imageUrl(style){
+        if(!this.thumbnail || this.thumnbail == ''){
+            // TODO: Insert thumbnails here
+            return 'https://picsum.photos/50/50/?image=54';
+        } 
+        var url = config.STORAGE_PUBLIC + '/' + this.site.uri;
+        if(style){
+            url += '/styles/' + style; 
+        }
+        return url + '/' + this.thumbnail;
+    }
+
     defaults(){
         return {
             id: null,
@@ -66,6 +79,7 @@ class Item extends Model {
             center: [0, 0],
             size: {},
             zoom: 2,
+            thumbnail: false,
             projection: 'EPSG:3857',
             date: {
                 start: false,
