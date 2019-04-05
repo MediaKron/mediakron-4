@@ -19,11 +19,12 @@
         </b-collapse>
     </div>
     <div v-else>
-        <h2>Tags</h2>
-        <ul>
-            <li v-for="tag in first.tags">{{ tag.id }} - {{ tag.title }} </li>
-        </ul>
-        {{ first.tags }}
+        <div v-if="first.tags.length > 0">
+            <h2>Tags</h2>
+            <ul>
+                <li v-for="tag in first.tags">{{ tag.id }} - {{ tag.title }} </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -39,7 +40,6 @@ export default {
     },
     data () {
         return {
-           // this.isEditingTags: false,
             /*
             options: [
                 { title: 'Vue.js', id: '1' },
@@ -66,7 +66,7 @@ export default {
     },
     computed: {
         tagsButton(){
-                if (this.isEditingTags) {
+                if (this.isEditing && this.isEditingTags) {
                     return 'Collapse Tags'
                 }
                     return 'Edit Tags'

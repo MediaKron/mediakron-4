@@ -121,6 +121,7 @@ export const mutations = {
         state.siteIsSaved = true;
         state.siteSaveFailed = false;
         state.isEditing = false;
+        state.isEditingTags = false;
     },
 
     siteUpdateFailed(state, error){
