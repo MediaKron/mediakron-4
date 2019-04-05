@@ -1,0 +1,6 @@
+# The defaults provided by this role are specific to each distribution.
+java_packages:
+  - openjdk-8-jdk
+  - openjdk-8-jdk-headless
+  - openjdk-8-jre
+  - openjdk-8-jre-headless

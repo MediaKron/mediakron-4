@@ -1,0 +1,47 @@
+php_default_version_debian: "7.2"
+php_webserver_daemon: "nginx"
+
+php_packages:
+  - php
+  - php-fpm
+  - php-cli
+  - php-common
+  - php-gd
+  - php-mbstring
+  - php-pdo
+  - php-xml
+  - php-opcache
+  - php-zip
+  - php-soap
+  - php-apcu
+  - php-curl
+  - php-ldap
+
+php_install_recommends: true
+
+php_enable_php_fpm: true
+
+php_fpm_listen: "/run/php/php7.2-fpm.sock"
+php_fpm_listen_allowed_clients: "127.0.0.1"
+php_fpm_pm_max_children: 75
+php_fpm_pm_start_servers: 20
+php_fpm_pm_min_spare_servers: 10
+php_fpm_pm_max_spare_servers: 20
+
+
+php_memory_limit: "1024M"
+php_max_execution_time: "90"
+php_upload_max_filesize: "256M"
+
+
+php_opcache_zend_extension: "opcache.so"
+php_opcache_enable: "1"
+php_opcache_enable_cli: "0"
+php_opcache_memory_consumption: "96"
+php_opcache_interned_strings_buffer: "16"
+php_opcache_max_accelerated_files: "4096"
+php_opcache_max_wasted_percentage: "5"
+php_opcache_validate_timestamps: "1"
+php_opcache_revalidate_path: "0"
+php_opcache_revalidate_freq: "2"
+php_opcache_max_file_size: "0"

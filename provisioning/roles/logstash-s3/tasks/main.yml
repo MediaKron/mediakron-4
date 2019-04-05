@@ -1,0 +1,22 @@
+# Add the laravel logstash filter
+- name: Create Logstash filters.
+  copy:
+    src: "filters/{{ item }}"
+    dest: "/etc/logstash/conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 16-laravel.conf
+  notify: restart logstash
+
+- name: Create Logstash configuration files.
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/logstash/conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 31-s3-output.conf
+  notify: restart logstash
