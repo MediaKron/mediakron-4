@@ -44,6 +44,8 @@ trait Import
         $item->caption = $record->caption;
 
         $item->options = unserialize($record->options);
+        if(isset($item->options->color)) $item->color = $item->options->color;
+        if(isset($item->options->icon)) $item->color = $item->options->icon;
         
         $item->overlay = $record->overlay;
 

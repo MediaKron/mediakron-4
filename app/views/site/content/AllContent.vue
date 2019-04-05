@@ -38,7 +38,7 @@
                 </router-link>
             </template>
             <template slot="type" slot-scope="items">
-                {{ items.item.type}}
+                {{ items.item.type }}
             </template>
         </b-table>
 

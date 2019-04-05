@@ -50,6 +50,13 @@ class Item extends Model {
         return url + '/' + this.thumbnail;
     }
 
+    color(){
+        if(!this.color){
+            return this.site.banner_color;
+        }
+        return this.color;
+    }
+
     defaults(){
         return {
             id: null,
