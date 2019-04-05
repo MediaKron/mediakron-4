@@ -48,7 +48,7 @@
     import { mapActions, mapState, mapGetters } from "vuex";
     export default {
         created() {
-            this.getSite(this.$route.params.id)
+            this.loadSite(this.$route.params.id)
         },
         computed: {
             ...mapGetters("sites", ["currentSite"]),
@@ -58,7 +58,7 @@
                 this.update()
                 this.saveSite()
             },
-            ...mapActions("sites", ["getSite", "update", "saveSite"]),
+            ...mapActions("sites", ["loadSite", "update", "saveSite"]),
         },
     }
 </script>

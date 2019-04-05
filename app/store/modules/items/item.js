@@ -81,6 +81,7 @@ class Item extends Model {
                 end: '',
             },
             overlay: {},
+            tags: [],
             relationships: {
                 topics: [],
                 tags: [],
@@ -115,7 +116,7 @@ class Item extends Model {
                 subject: "",
                 location: "",
                 rights: ""
-            }
+            },
         }
     }
     /* Render the default version of this topic */

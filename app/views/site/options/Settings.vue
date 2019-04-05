@@ -1,8 +1,8 @@
 <template>
     <div class="settings-general with-savebar">
-
+        <main role="main" class="px-6 min-h-screen w-full max-w-50 mx-auto lg:static lg:max-h-full lg:overflow-visible">
         <header>
-             <h1 class="mb-5 " > General Site Settings</h1>
+             <h1 class="line-behind heading-nudge-up mb-4 " > General Site Settings</h1>
         </header>
     
         <h2 class="mt-4">Site Title and Subtitle</h2>
@@ -115,6 +115,7 @@
 
         <OptionsSavebar 
         ></OptionsSavebar>
+        </main>
     </div>
 </template>
 

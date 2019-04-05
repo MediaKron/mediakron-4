@@ -26,7 +26,13 @@ export default {
       level: 'info'
     });
 
-    return axios.request({ url, data, method, params, cancelToken });
+    return axios.request({ 
+      url: url, 
+      data: data, 
+      method: method, 
+      params: params, 
+      cancelToken: cancelToken
+    });
   },
 
   get (url, params, cancelToken) {
@@ -35,6 +41,29 @@ export default {
 
   post (url, data, cancelToken) {
     return this.request('post', url, data, cancelToken);
+  },
+
+  /**
+   * Upload a file to a site
+   * @param {*} url 
+   * @param {*} file 
+   * @param {*} type 
+   */
+  upload(url, file, type) {
+    store.dispatch('progressReset')
+    let formData = new FormData();
+    formData.append(type, file);
+    return axios.request({ 
+      url: url, 
+      data: formData, 
+      method: 'post', 
+      headers: { 'Content-Type': 'multipart/form-data' },
+      // `onUploadProgress` allows handling of progress events for uploads
+      onUploadProgress: function (progressEvent) {
+        // Do whatever you want with the native progress event
+        store.dispatch('uploadProgress', progressEvent)
+      }
+    });
   },
 
   /**

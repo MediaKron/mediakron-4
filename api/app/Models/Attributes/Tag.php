@@ -9,7 +9,7 @@ class Tag extends BaseModel
     //
 
     public $fillable = [
-        'uri', 'title'
+        'uri', 'title', 'site_id'
     ];
 
     static function mediakron_v3($record, $site_id, $users){
@@ -43,7 +43,8 @@ class Tag extends BaseModel
         $data = [ 
             'id' => $this->id,
             'uri' => $this->uri,
-            'title' => $this->title
+            'title' => $this->title,
+            'site_id' => $this->site_id
         ];
         return $data;
     }

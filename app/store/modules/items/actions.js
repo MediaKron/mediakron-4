@@ -96,14 +96,38 @@ const actions = {
      */
     getItem({ commit, dispatch }, id) {
         commit("itemLoading");
-            return api.get('item/'+id)
-                    .then((response) => {
+        return api.get('item/'+id)
+                .then((response) => {
                     commit("itemLoad", response.data, currentSite);
-            commit("itemLoaded");
-        })
+                    commit("itemLoaded");
+                })
         .catch((error) => {
                 error.errorMessage = "There was an error loading the item";
             return dispatch("itemError", error);
+        });
+    },
+
+    /**
+     * Load a single item
+     * @param {*} param0
+     * @param {*} id
+     */
+    getTags({ commit, dispatch, rootGetters }) {
+        commit("tagsLoading");
+        var currentSite = rootGetters['sites/currentSite'],
+        // Set the normal item create url
+        url = currentSite.id + '/tags';
+        return api.get(url)
+            .then((response) => {
+                console.log(response)
+                commit("tagsLoad", response.data);
+                commit("tagsLoaded");
+        })
+        .catch((error) => {
+            console.log(error)
+            error.errorMessage = "There was an error loading the item";
+            throw error
+            //return dispatch("itemError", error);
         });
     },
 
@@ -177,7 +201,26 @@ const actions = {
      */
     discardEdits({ commit, state }) {
         commit('discardEdit')
-    }
+    },
+
+    /**
+     * Upload an image
+     * @param {*} param0
+     * @param {*} id
+     */
+    upload({ commit, dispatch, state, getters, rootGetters }, event) {
+        commit("uploading");
+
+        // Get the current site
+        let currentSite = rootGetters['sites/currentSite'],
+            type = state.editItem.type,
+            // Set the normal item create url
+            url = currentSite.id + '/upload/' + type,
+            file = event.target.files[0];
+        api.upload(url, file, type).then((response) => {
+            commit("upload", response.data);
+        });
+    },
 
     
 }

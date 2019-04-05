@@ -35,8 +35,6 @@ import EditUser from './views/multisite/people/Edit';
 
 // Site Views
 import itemsRoutes from './router/index';
-import browseRoutes from './router/browse';
-import settingsRoutes from './router/settings';
 
 import NotFound from './views/404.vue';
 import store from './store';
@@ -155,7 +153,6 @@ var baseRoutes = [
   // Get the item routes
   //baseRoutes.push(browseRoutes);
   //baseRoutes.push(settingsRoutes);
-  //baseRoutes.push(itemsRoutes.settings);
   baseRoutes.push(itemsRoutes.default);
 
 
@@ -185,58 +182,27 @@ const actionableName = (name) => {
 
 /**
  * Global navigation guard to present the login for unauthenticated users
-
+ */
 router.beforeEach(async (to, from, routerNext) => {
-  store.dispatch(RootActions.CLEAR_ERRORS);
-  store.dispatch(RootActions.LOAD_PROGRESS_RESET);
+  store.dispatch('clearErrors');
+  store.dispatch('progressReset');
 
   const next = (nextTo) => {
-    store.dispatch(RootActions.LOAD_PROGRESS_COMPLETE);
-    window.loader(false); // make sure we hide the global loader
-
+    store.dispatch('progressComplete');
+    //window.loader(false); // make sure we hide the global loader
     routerNext(nextTo);
   };
-
+  next();
+  /*
   if (store.getters['user/isLoggedIn'] || to.name === 'login' || to.name === 'reset' || to.name === 'confirm') {
-    const fromName = from.name? actionableName(from.name) : 'DIRECT';
-    const toName = to.name? actionableName(to.name) : 'ROOT';
-
-    if(from.name) {
-      window.loader(false); // if its not a direct request we can hide the global loader earlier
-    }
-
-    const enterFrom = await store.dispatch('DISPATCH_ROUTER_ACTION', {actionName: 'ROUTE_ENTER_FROM_' + fromName, to, from});
-
-    if (enterFrom && enterFrom.next) {
-      next(enterFrom.next);
-
-      return Promise.resolve();
-    }
-
-    const enterToFrom = await store.dispatch('DISPATCH_ROUTER_ACTION', {actionName: 'ROUTE_ENTER_' + toName + '_FROM_' + fromName, to, from});
-
-    if (enterToFrom && enterToFrom.next) {
-      next(enterToFrom.next);
-
-      return Promise.resolve();
-    }
-
-    const enterTo = await store.dispatch('DISPATCH_ROUTER_ACTION', {actionName: 'ROUTE_ENTER_' + toName, to, from});
-
-    if (enterTo && enterTo.next) {
-      next(enterTo.next);
-
-      return Promise.resolve();
-    }
-
     next();
     return Promise.resolve();
   } else {
     routerNext('login');
     return Promise.resolve();
-  }
+  }*/
 });
-*/
+
 export default router;
 
 

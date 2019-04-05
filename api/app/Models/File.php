@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\BaseModel;
-use App\Http\Middleware\TimeBasedAccessMiddleware;
+//use App\Http\Middleware\TimeBasedAccessMiddleware;
 use Auth;
 use Log;
 class File extends BaseModel
@@ -86,7 +86,7 @@ class File extends BaseModel
         $table = $this->getTable();
         $resource = str_singular($table) . '/';
         // Time based access key
-        $key = TimeBasedAccessMiddleware::getKey();
+        $key = "key!"; //TimeBasedAccessMiddleware::getKey();
 
         return $this->api_path . $resource . $this->id . '/download?key=' . $key;
     }
@@ -233,7 +233,7 @@ class File extends BaseModel
         }
 
         $save = new static();
-        $save->site_id = $site;
+        $save->site_id = $site->id;
         $save->mime = $file->getMimeType();
         $save->size = $file->getSize();
         $save->name = process_filename($file->getClientOriginalName());
@@ -242,7 +242,7 @@ class File extends BaseModel
             $save->title = $request->get('title');
         }
 
-        $save->uri = 's3://' . $file->store($type, 's3');
+        $save->uri = 's3://' . $file->store(env('AWS_BUCKET_ENV', 'dev') . '/' . $site->uri, 's3');
         $save->save();
         $file = static::find($save->id);
 

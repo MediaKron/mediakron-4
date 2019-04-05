@@ -69,7 +69,7 @@ class ItemController extends Controller
             // TODO: Handle audio, video, images and text fields
             $item->save();
             $item->updateMetadata()
-                ->addTags();
+                ->addTags($site_id);
             return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
             // 
@@ -143,7 +143,6 @@ class ItemController extends Controller
         try{
             // You can only create items in a site context, so find the site
             $site = Site::findOrFail($site_id);
-
             // Create a new item
             $item = Item::findOrFail($id);
             $item->canUpdate()
@@ -152,7 +151,8 @@ class ItemController extends Controller
                 ->setEditor()
                 ->setSite($site)
                 ->updateMetadata()
-                ->addTags();
+                ->addTags($site_id)
+                ->upload();
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields
             // TODO: Handle audio, video, images and text fields

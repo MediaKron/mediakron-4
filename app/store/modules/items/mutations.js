@@ -2,6 +2,7 @@ import { MutationTree } from 'vuex';
 import api from '@/store/utils/api';
 import { getInitialState } from '@/store/modules/items';
 import Item from './item';
+import Tag from './tag';
 
 export const mutations = {
     /**
@@ -162,14 +163,30 @@ export const mutations = {
         state.editItem = {}
     },
 
-    uploading(state, item) {
-        state.isEditing = false;
-        state.editItem = {}
+    uploading(state) {
+        state.isUploading = true;
+        state.isUploaded = false;
     },
-    uploaded(state, item) {
-        state.isEditing = false;
-        state.editItem = {}
-    }
+    upload(state, item) {
+        // do something with the file
+        state.editItem.image = item;
+    },
+    uploaded(state) {
+        state.isUploading = false;
+        state.isUploaded = true;
+    },
+
+    tagsLoading(state) {
+        state.tagsLoading = true;
+        state.tagsLoaded = false;
+    },
+    tagsLoad(state, tags) {
+        state.tags = tags.map(tag => new Tag(tag));
+    },
+    tagsLoaded(state) {
+        state.tagsLoading = false;
+        state.tagsLoaded = true;
+    },
 
 }
 

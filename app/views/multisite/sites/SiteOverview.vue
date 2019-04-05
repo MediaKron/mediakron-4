@@ -36,11 +36,11 @@ export default {
         ...mapGetters("users", ["users"]),
     },
     methods: {
-        ...mapActions("sites", ["getSite"]),
+        ...mapActions("sites", ["loadSite"]),
         ...mapActions("users", ["loadUsers"]),
     },
     created() {
-        this.getSite(this.$route.params.uri)
+        this.loadSite(this.$route.params.uri)
         this.loadUsers()
         console.log(this.users)
     },

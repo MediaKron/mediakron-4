@@ -3,8 +3,6 @@ var path = require('path');
 var webpack = require('webpack');
 var childProcess = require('child_process');
 
-console.log(path.resolve(__dirname + "/app"));
-
 // import Purgecss webpack plugin and glob-all
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob-all')

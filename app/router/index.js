@@ -1,20 +1,15 @@
 import SiteLayout from "@/views/site/SiteLayout";
-import SettingsLayout from "@/views/site/options/settings/SettingsLayout";
-import PeopleLayout from "@/views/site/options/people/PeopleLayout";
-import HomePage from "@/views/site/homepage/Homepage";
-import Item from "@/views/site/items/Item";
-import ContentLayout from "@/views/site/content/ContentLayout";
-import SiteOptions from "@/views/site/options/SiteOptions";
-import MenusLayout from "@/views/site/options/menus/MenusLayout";
-import Appearance from "@/views/site/options/Appearance";
-import HomePageSettings from "@/views/site/options/HomePageSettings";
-import Profile from "@/views/site/options/Profile";
-import Help from "@/views/help/help";
 
-import settings from "./settings";
-import people from "./people";
-import menus from "./menus";
+import OptionsLayout from "@/views/site/options/OptionsLayout";
+import ContentLayout from "@/views/site/content/ContentLayout";
+import Item from "@/views/site/items/Item";
+import Help from "@/views/help/help";
+import Tags from "@/views/site/tags/Tags";
+import Search from "@/views/site/search/Search";
+import HomePage from "@/views/site/homepage/Homepage";
+
 import content from "./content";
+import siteoptions from "./siteoptions";
 
 var routes = {
   default: {
@@ -24,15 +19,21 @@ var routes = {
     props: true,
     children: [
       {
-        path: "profile",
-        component: Profile,
-        title: "Profile",
-        props: true
-      },
-      {
         path: "help",
         component: Help,
         title: "Help",
+        props: true
+      },
+      {
+        path: "tags",
+        component: Tags,
+        title: "Tags",
+        props: true
+      },
+      {
+        path: "search",
+        component: Search,
+        title: "Search",
         props: true
       },
 
@@ -43,57 +44,12 @@ var routes = {
         props: true,
         children: content
       },
-
-      {
-        path: "options/settings",
-        component: SettingsLayout,
-        title: "Site Settings",
-        props: true,
-        children: settings
-      },
-      {
-        path: "options/appearence",
-        component: SettingsLayout,
-        title: "Site Settings",
-        props: true
-      },
-      {
-        path: "options/people",
-        component: PeopleLayout,
-        title: "People",
-        props: true,
-        children: people
-      },
-      {
-        path: "options/menus",
-        component: MenusLayout,
-        title: "Menus",
-        props: true,
-        children: menus
-      },
-      {
-        path: "options/appearance",
-        component: Appearance,
-        title: "Appearance",
-        props: true,
-        meta:{
-          inAppearance: true
-        }
-      },
-      {
-        path: "options/homepage",
-        component: HomePageSettings,
-        title: "Homepage Settings",
-        props: true,
-        meta:{
-          inHomepage: true
-        }
-      },
       {
         path: "options",
-        component: SiteOptions,
+        component: OptionsLayout,
         title: "SiteOptions",
         props: true,
+        children: siteoptions
       },
       {
         path: ":firstUri/:secondUri/:thirdUri",
