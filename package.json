@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "deploy": "vue-cli-service s3-deploy",
+    "mediakron:deploy:dev": "npm run mediakron:build:dev && vue-cli-service s3-deploy",
+    "debug": "node provisioning/debug.js",
     "mediakron:build": "vue-cli-service build",
-    "mediakron:build:dev": "vue-cli-service build --mode remotedev",
-    "mediakron:build:local": "vue-cli-service build --mode development",
-    "mediakron:build:prod": "vue-cli-service build --mode production",
-    "mediakron:build:stage": "vue-cli-service build --mode staging",
+    "mediakron:build:dev": "vue-cli-service build --mode remotedev --no-clean",
+    "mediakron:build:local": "vue-cli-service build --mode development --no-clean",
+    "mediakron:build:prod": "vue-cli-service build --mode production --no-clean",
+    "mediakron:build:stage": "vue-cli-service build --mode staging --no-clean",
     "mediakron:install": "node build/install.js",
     "mediakron:lint": "vue-cli-service lint",
     "mediakron:watch": "vue-cli-service serve --mode development"

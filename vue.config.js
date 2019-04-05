@@ -94,7 +94,7 @@ module.exports = {
 
   pluginOptions: {
     s3Deploy: {
-      awsProfile: 'mediakron',
+      awsProfile: 'default',
       region: 'us-east-1',
       bucket: 'mediakron.us',
       createBucket: false,
@@ -102,7 +102,7 @@ module.exports = {
       staticIndexPage: 'index.html',
       staticErrorPage: 'index.html',
       assetPath: 'public',
-      assetMatch: '**',
+      assetMatch: ['**/*', '!storage', '!*.php'],
       deployPath: '/',
       acl: 'public-read',
       pwa: true,
