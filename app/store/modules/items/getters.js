@@ -23,6 +23,7 @@ export const getters = {
     third: state => state.third,
 
     isEditing: state => (state.isEditing) ? state.isEditing : false,
+    isCreating: state => (state.isCreating) ? state.isCreating : false,
     editItem: state => (state.editItem) ? state.editItem : false,
     
     itemIsLoading: state => state.itemIsLoading,

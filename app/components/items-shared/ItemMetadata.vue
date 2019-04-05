@@ -59,11 +59,11 @@
         </b-collapse>
     </div>
     <div v-else>
-        <div v-if="first.metadata">
+        <div v-if="metadata.id">
             <b-collapse id="urlCollapse" visible >
             <h2>Metadata</h2>
                 <ul>
-                    <li v-for="(value, key) in first.metadata" v-if="value">{{ key }} : {{ value }} </li>
+                    <li v-for="(value, key) in metadata" v-bind:key="key">{{ key }} : {{ value }} </li>
                 </ul>
             </b-collapse>
         </div>
@@ -77,6 +77,13 @@ import BCollapse from "bootstrap-vue/src/components/collapse/collapse"
 export default {
     components: {BCollapse},
     computed: {
+        metadata(){
+            var cache = {};
+            for(var key in this.first.metadata){
+                if(this.first.metadata[key] != null) cache[key] = this.first.metadata[key];
+            };
+            return cache;
+        },
         metadataButton(){
             if (this.isEditingMetadata) {
                 return 'Collapse Metadata'
@@ -86,7 +93,8 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first'
+            'first',
+            'itemIsLoaded'
         ])
     },
     data(){

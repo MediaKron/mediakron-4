@@ -122,6 +122,7 @@ export const mutations = {
         state.siteSaveFailed = false;
         state.isEditing = false;
         state.isEditingTags = false;
+        state.isCreating = false;
     },
 
     siteUpdateFailed(state, error){
@@ -141,6 +142,7 @@ export const mutations = {
             type: type
         }, state.site);
         state.isEditing = true;
+        state.isCreating = true;
         state.editItem = Object.assign({}, item)
         state.first = item;
         state.itemIsLoading = false;
