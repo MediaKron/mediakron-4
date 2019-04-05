@@ -13,15 +13,16 @@ const actions = {
         console.log(credentials)
         return api.post('auth/login', credentials)
           .then((response) => {
-            console.log(response)
-            //commit("login", response.data);
-            //commit("loginSuccess");
+            commit('setToken', response.data.access_token)
+            commit("login", response.data);
+            commit("loginSuccess");
           })
           .then(() => {
             // TODO: dispatch event action
+            // Dispatch notifications
           })
           .then(() => {
-            //return router.push({ name: 'homepage' });
+            return router.push({ name: 'homepage' });
           })
           .catch((error) => {
             console.log(error);
@@ -32,5 +33,3 @@ const actions = {
       },
 }
 export default actions;
-
-//amertz@bouldermedicalcenter.com
