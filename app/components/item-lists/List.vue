@@ -6,7 +6,7 @@
                 <div>
                     <b-button class="mr-2" variant="outline-dark" v-b-modal.organize-modal><font-awesome-icon icon="arrows-alt-v" /> Organize Items</b-button>
                     <!-- Modal Component -->
-                    <b-modal size="lg" centered lazy id="organize-modal" title="Organize Items">
+                    <b-modal size="lg" centered lazy id="organize-modal" ok-title="Save" title="Organize Items">
                         <Organize></Organize>
                     </b-modal>
                 </div>

@@ -1,14 +1,11 @@
 <template>
     <div class="folder-list mt-3"> 
-        <b-button variation="dark" class="mr-auto">
-               <font-awesome-icon icon="check" /> Save
-            </b-button>
-        <ul class="mb-4" v-for="(child, index) in children" :key="index">
-            <li>
+        <ul class="mt-3" v-for="(child, index) in children" :key="index">
+            <li class="list-none border-gray-100">
                 <font-awesome-icon icon="grip-lines" /> 
-                <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
-                <span class="title">{{ child.title }} </span>
-                <b-button><font-awesome-icon icon="window-close " />  Remove </b-button>
+                <b-img slot="aside" src="https://picsum.photos/40?image=342" fluid alt="Responsive image" class="mx-2"/>
+                <span class="font-bold">{{ child.title }} </span>
+                <b-button variant="danger" size="sm"><font-awesome-icon icon="window-close" /><span class="sr-only">Remove</span> </b-button>
             </li>
         </ul>
     </div>
