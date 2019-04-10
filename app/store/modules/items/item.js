@@ -41,7 +41,26 @@ class Item extends Model {
     imageUrl(style){
         if(!this.thumbnail || this.thumnbail == ''){
             // TODO: Insert thumbnails here
-            return 'https://picsum.photos/50/50/?image=54';
+            //global assetPath=''
+            switch(this.type){
+                case 'image':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return "require('@/assets/item-icons/image.svg')";
+                case 'text':
+                case 'file':
+                   // return 'https://picsum.photos/50/50/?image=54';
+                    return "require('@/assets/item-icons/file.svg')";
+                case 'video':
+                   // return 'https://picsum.photos/50/50/?image=55';
+                    return "require('@/assets/item-icons/video.svg')";
+                case 'audio':
+                   // return 'https://picsum.photos/50/50/?image=56';
+                    return "require('@/assets/item-icons/audio.svg')";
+                default:
+                   // return 'https://picsum.photos/50/50/?image=57';
+                    return "require('@/assets/item-icons/image.svg')";
+            }
+            //return 'https://picsum.photos/50/50/?image=54';
         } 
         var url = config.STORAGE_PUBLIC + '/' + this.site.uri;
         if(style){
