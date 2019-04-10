@@ -25,10 +25,24 @@ export default {
     computed: {
         component(){
             switch(this.item.template){
-                case 'list-full':
-                    return ListFull;
+                case 'list-simple':
+                    return ListSimple;
                 case 'list-half':
                     return ListHalf;
+                case 'list-full':
+                    return ListFull;
+                case 'grid-simple':
+                    return GridSimple;
+                case 'grid':
+                    return GridHalf;
+                case 'grid-full':
+                    return GridFull;
+                case 'journal':
+                    return Journal;
+                case 'folder-mosaic':
+                    return Mosaic;
+                case 'table':
+                    return Table;
                 default:
                     return Default;
                 }

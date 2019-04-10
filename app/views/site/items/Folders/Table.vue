@@ -7,8 +7,9 @@
                 </div>
             </aside>
             <article class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
-                
-                <ItemTitle></ItemTitle>
+                <BannerHalf style="background-image: url('https://picsum.photos/1000/1000/?random')">
+                    <ItemTitle></ItemTitle>
+                </BannerHalf>
                 <ItemCaption></ItemCaption>
                 <List class="px-6 max-w-xl mx-auto"></List>
                 <ItemDescription></ItemDescription>
