@@ -33,7 +33,7 @@
         <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
             @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="title" slot-scope="items">
-                <b-img :src="items.item.imageUrl('small')" blank-color="#777" alt="Placeholder Image" />
+                <b-img :src="items.item.imageUrl('small')" blank-color="#777" alt="" class="h-10 mx-auto pr-2"/>
                 <router-link :to="items.item.uri" class="font-bold text-1xl">{{ items.item.title }}
                 </router-link>
             </template>
