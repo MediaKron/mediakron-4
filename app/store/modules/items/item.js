@@ -1,5 +1,8 @@
 import Model from "@/store/utils/model";
 import config from '@/config';
+
+import ImageIcon from "@/assets/item-icons/image.svg";
+import FileIcon from "@/assets/item-icons/file.svg";
 class Item extends Model {
     
     /**
@@ -45,11 +48,11 @@ class Item extends Model {
             switch(this.type){
                 case 'image':
                     // return 'https://picsum.photos/50/50/?image=56';
-                    return "require('@/assets/item-icons/image.svg')";
+                    return ImageIcon;
                 case 'text':
                 case 'file':
                    // return 'https://picsum.photos/50/50/?image=54';
-                    return "require('@/assets/item-icons/file.svg')";
+                    return FileIcon;
                 case 'video':
                    // return 'https://picsum.photos/50/50/?image=55';
                     return "require('@/assets/item-icons/video.svg')";
