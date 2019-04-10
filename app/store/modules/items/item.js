@@ -3,6 +3,10 @@ import config from '@/config';
 
 import ImageIcon from "@/assets/item-icons/image.svg";
 import FileIcon from "@/assets/item-icons/file.svg";
+import AudioIcon from "@/assets/item-icons/audio.svg";
+import VideoIcon from "@/assets/item-icons/video.svg";
+import MapIcon from "@/assets/item-icons/map.svg";
+import StoryIcon from "@/assets/item-icons/story.svg";
 class Item extends Model {
     
     /**
@@ -54,14 +58,20 @@ class Item extends Model {
                    // return 'https://picsum.photos/50/50/?image=54';
                     return FileIcon;
                 case 'video':
-                   // return 'https://picsum.photos/50/50/?image=55';
-                    return "require('@/assets/item-icons/video.svg')";
+                // return 'https://picsum.photos/50/50/?image=55';
+                    return VideoIcon;
                 case 'audio':
-                   // return 'https://picsum.photos/50/50/?image=56';
-                    return "require('@/assets/item-icons/audio.svg')";
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return AudioIcon;
+                case 'story':
+                    // return 'https://picsum.photos/50/50/?image=55';
+                    return StoryIcon;
+                case 'map':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return MapIcon;
                 default:
                    // return 'https://picsum.photos/50/50/?image=57';
-                    return "require('@/assets/item-icons/image.svg')";
+                    return ImageIcon;
             }
             //return 'https://picsum.photos/50/50/?image=54';
         } 
