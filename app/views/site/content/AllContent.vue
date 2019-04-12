@@ -17,9 +17,9 @@
                         <template slot="button-content" class="px-4">
                             <span class="text-uppercase ml-1 px-1 ">Select Author</span>
                         </template>
-                        <b-dropdown-item href="#">Delete</b-dropdown-item>
-                        <b-dropdown-item href="#">Publish</b-dropdown-item>
-                        <b-dropdown-item href="#">Unpublish</b-dropdown-item>
+                        <b-dropdown-item href="#">Jamie Walker <b-badge variant="light">15</b-badge></b-dropdown-item>
+                        <b-dropdown-item href="#">Tim Lindgren <b-badge variant="light">2</b-badge></b-dropdown-item>
+                        <b-dropdown-item href="#">Brad Mering <b-badge variant="light">1</b-badge></b-dropdown-item>
                     </b-dropdown>
                 </b-button-group>
             </b-button-toolbar>
@@ -58,17 +58,17 @@
             <b-button-toolbar key-nav aria-label="Toolbar with button groups" class="mr-auto">
                 <b-input-group size="sm" class="w-16">
                     <b-input-group-text slot="prepend" class="bg-dark text-white uppercase">
-                        <font-awesome-icon icon="search" class="mr-2 uppercase" />Search</b-input-group-text>
+                        <font-awesome-icon icon="search" class="uppercase" /><span class="sr-only">Search</span></b-input-group-text>
                     <b-form-input variant="outline-dark" v-model="filter" placeholder="Type to Search" size="sm" />
                     <b-input-group-append>
-                        <b-button :disabled="!filter" @click="filter = ''" size="sm" class="uppercase">Clear</b-button>
+                        <b-button variant="outline-dark" :disabled="!filter" @click="filter = ''" size="sm" class="uppercase">x </b-button>
                     </b-input-group-append>
                 </b-input-group>
 
                 <b-dropdown class="ml-2" size="sm" variant="outline-dark" right>
                     <template slot="button-content" class="px-4">
                         <span class="text-uppercase ml-1 px-1 ">
-                            <font-awesome-icon icon="cogs" /> Bulk Actions</span>
+                            <font-awesome-icon icon="cogs" /> Actions</span>
                     </template>
                     <b-dropdown-item href="#">Delete</b-dropdown-item>
                     <b-dropdown-item href="#">Publish</b-dropdown-item>
@@ -84,7 +84,7 @@
 
         </div>
         <loader v-if="listIsLoading">Loading...</loader>
-        <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
+        <b-table class="mt-4" v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
             @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="title" slot-scope="items">
                 <b-img :src="items.item.imageUrl('small')" blank-color="#777" alt="" class="h-10 mx-auto pr-2" />
