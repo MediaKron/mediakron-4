@@ -1,18 +1,9 @@
 <template>
     <div class="help">
-        <b-navbar toggleable="md" type="dark" class="pl-0 pr-0 py-0 z-index-1 w-100" variant="dark" aria-label="site menus">
-            <b-navbar-brand class="text-uppercase site-options-title ml-4">
-                <font-awesome-icon icon="question-circle" class="mr-1" /> Help</b-navbar-brand>
-            <b-navbar-nav class="ml-auto">
-                <b-nav-item :to="basePath + '/'" class="admin-close ml-auto mr-2 ">
-                    <font-awesome-icon icon="times" />
-                    <span class="utilitynav-text"> Close</span>
-                </b-nav-item>
-            </b-navbar-nav>
-        </b-navbar>
-        <main role="main" class="w-100 max-w-lg mx-auto mt-12">
+        <Navigation class="fixed top-0 w-100 z-10"></Navigation>
+        <main role="main" class="w-100 max-w-lg mx-auto ">
             <header>
-                <h1 class="line-behind heading-nudge-up mb-4"> Ways to Get Help </h1>
+                <h1 class="line-behind heading-nudge-up mt-24 mb-4"> Ways to Get Help </h1>
             </header>
 
             <h2>MediaKron Support</h2>
@@ -61,11 +52,15 @@
 
 <script>
     import Vue from 'vue';
+    import Navigation from '@/views/site/Navigation'
     import {
         mapState,
         mapGetters
     } from 'vuex';
     export default Vue.extend({
+        components: {
+            Navigation,
+        },
         computed: {
             ...mapGetters('users/profile', [
                 'user',

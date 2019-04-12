@@ -1,4 +1,12 @@
 import Model from "@/store/utils/model";
+import config from '@/config';
+
+import ImageIcon from "@/assets/item-icons/image.svg";
+import FileIcon from "@/assets/item-icons/file.svg";
+import AudioIcon from "@/assets/item-icons/audio.svg";
+import VideoIcon from "@/assets/item-icons/video.svg";
+import MapIcon from "@/assets/item-icons/map.svg";
+import StoryIcon from "@/assets/item-icons/story.svg";
 class Item extends Model {
     
     /**
@@ -37,6 +45,50 @@ class Item extends Model {
         }
     }
     
+    imageUrl(style){
+        if(!this.thumbnail || this.thumnbail == ''){
+            // TODO: Insert thumbnails here
+            //global assetPath=''
+            switch(this.type){
+                case 'image':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return ImageIcon;
+                case 'text':
+                case 'file':
+                   // return 'https://picsum.photos/50/50/?image=54';
+                    return FileIcon;
+                case 'video':
+                // return 'https://picsum.photos/50/50/?image=55';
+                    return VideoIcon;
+                case 'audio':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return AudioIcon;
+                case 'story':
+                    // return 'https://picsum.photos/50/50/?image=55';
+                    return StoryIcon;
+                case 'map':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return MapIcon;
+                default:
+                   // return 'https://picsum.photos/50/50/?image=57';
+                    return ImageIcon;
+            }
+            //return 'https://picsum.photos/50/50/?image=54';
+        } 
+        var url = config.STORAGE_PUBLIC + '/' + this.site.uri;
+        if(style){
+            url += '/styles/' + style; 
+        }
+        return url + '/' + this.thumbnail;
+    }
+
+    color(){
+        if(!this.color){
+            return this.site.banner_color;
+        }
+        return this.color;
+    }
+
     defaults(){
         return {
             id: null,
@@ -66,6 +118,7 @@ class Item extends Model {
             center: [0, 0],
             size: {},
             zoom: 2,
+            thumbnail: false,
             projection: 'EPSG:3857',
             date: {
                 start: false,

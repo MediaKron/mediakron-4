@@ -3,8 +3,8 @@
     <div class="w-full ">
         <div class="flex">
             <div class="savebar-buttons  ">
-                <b-button type="submit" variant="primary" @click="save" class="mr-2 shadow"><font-awesome-icon icon="check"/> Save</b-button>
-                <b-button type="reset" variant="outline-primary" @click="cancel" class="bg-light cancel-button shadow"><font-awesome-icon icon="times"/> Cancel</b-button>
+                <b-button type="submit" variant="dark" @click="save" class="mr-2 shadow"><font-awesome-icon icon="check"/> Save</b-button>
+                <b-button type="reset" variant="outline-dark" @click="cancel" class="bg-light cancel-button shadow"><font-awesome-icon icon="times"/> Cancel</b-button>
             </div >
         </div>
     </div>

@@ -15,6 +15,7 @@ export const getInitialState = (checkLocalStorage = false) => {
     third: {},
 
     isEditing: false,
+    isCreating: false,
     editItem: {},
 
     // Item List Statuses

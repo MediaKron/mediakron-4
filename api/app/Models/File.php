@@ -27,7 +27,7 @@ class File extends BaseModel
 
     protected $appends = [
         's3',
-        'thumbnail'
+        'filename'
     ];
 
     /**
@@ -110,24 +110,9 @@ class File extends BaseModel
      * @param string $value
      * @return string
      */
-    public function getThumbnailAttribute($value)
+    public function getFilenameAttribute($value)
     {
-        $value = $this->getOriginal('uri');
-
-        switch ($this->mime) {
-            case 'image/jpeg':
-            case 'image/png':
-            case 'image/jpg':
-            case 'image/gif':
-            case 'application/pdf':
-                if (strpos($value, 's3://') !== false) $value = str_replace('s3://', env('IMGIX_URL'), $value);
-                if (strpos($value, env('AWS_URL')) !== false) $value = str_replace(env('AWS_URL'), env('IMGIX_URL'), $value);
-                break;
-            default:
-                $value = '';
-                break;
-        }
-
+        $value = basename($this->getOriginal('uri'));
         return $value;
     }
 
@@ -270,7 +255,7 @@ class File extends BaseModel
             'title' => $this->title,
             'alt' => $this->alt,
             's3' => $this->s3,
-            'thumbnail' => $this->thumbnail,
+            'filename' => $this->thumbnail,
             'path' => $this->api_path . $resource . $this->id,
             'created_at' => (string) $this->created_at
         ];

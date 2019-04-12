@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
-        <header class="line-behind mt-8 mb-4">
+        <header class="line-behind mb-4">
             <h1> Site Library</h1>
         </header>
         <div class="flex mt-4 mb-2">
@@ -33,12 +33,12 @@
         <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
             @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="title" slot-scope="items">
-                <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" />
-                <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}
+                <b-img :src="items.item.imageUrl('small')" blank-color="#777" alt="" class="h-10 mx-auto pr-2"/>
+                <router-link :to="items.item.uri" class="font-bold text-1xl">{{ items.item.title }}
                 </router-link>
             </template>
             <template slot="type" slot-scope="items">
-                {{ items.item.type}}
+                {{ items.item.type }}
             </template>
         </b-table>
 
@@ -128,5 +128,5 @@
 </script>
 
 <style>
-
+.thumb {width:75px; height:75px;}
 </style>

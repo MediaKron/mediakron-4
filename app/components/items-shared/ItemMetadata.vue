@@ -59,28 +59,14 @@
         </b-collapse>
     </div>
     <div v-else>
-        <b-collapse id="urlCollapse" visible>
-        <h2>Metadata</h2>
-            <ul>
-                <li>Source: {{ first.metadata.source }}</li>
-                <li>Citation: {{ first.metadata.citation }}</li>
-                <li>Description: {{ first.metadata.description }}</li>
-                <li>Published: {{ first.metadata.published }}</li>
-                <li>Creator: {{ first.metadata.creator }}</li>
-                <li>Publisher: {{ first.metadata.publisher }}</li>
-                <li>Contributor: {{ first.metadata.contributor }}</li>
-                <li>Format: {{ first.metadata.format }}</li>
-                <li>Identifier: {{ first.metadata.identifier }}</li>
-                <li>Language: {{ first.metadata.language }}</li>
-                <li>Relation: {{ first.metadata.relation }}</li>
-                <li>Coverage: {{ first.metadata.coverage }}</li>
-                <li>Rights: {{ first.metadata.rights }}</li>
-                <li>Created at: {{ first.metadata.created_at }}</li>
-                <li>Updated at: {{ first.metadata.updated_at }}</li>
-            </ul>
-
-
-        </b-collapse>
+        <div v-if="metadata.id">
+            <b-collapse id="urlCollapse" visible >
+            <h2>Metadata</h2>
+                <ul>
+                    <li v-for="(value, key) in metadata" v-bind:key="key">{{ key }} : {{ value }} </li>
+                </ul>
+            </b-collapse>
+        </div>
     </div>
 </template>
 
@@ -91,6 +77,13 @@ import BCollapse from "bootstrap-vue/src/components/collapse/collapse"
 export default {
     components: {BCollapse},
     computed: {
+        metadata(){
+            var cache = {};
+            for(var key in this.first.metadata){
+                if(this.first.metadata[key] != null) cache[key] = this.first.metadata[key];
+            };
+            return cache;
+        },
         metadataButton(){
             if (this.isEditingMetadata) {
                 return 'Collapse Metadata'
@@ -100,7 +93,8 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first'
+            'first',
+            'itemIsLoaded'
         ])
     },
     data(){

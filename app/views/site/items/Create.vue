@@ -38,7 +38,8 @@ export default {
             "itemIsLoading", 
             "itemIsLoaded",
             "first", 
-            "isEditing"
+            "isEditing",
+            "isCreating"
         ]),
         component(){
             switch(this.first.type){

@@ -1,6 +1,6 @@
 <template>
 <div class="editbutton">
-    <b-button variant="primary" @click=""> <font-awesome-icon icon="Edit"/> Edit</b-button>
+    <b-button variant="dark" @click=""> <font-awesome-icon icon="Edit"/> Edit</b-button>
 </div>
 </template>
 

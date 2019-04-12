@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <b-form-group 
-            v-if="isEditing"
+    <div v-if="isEditing">
+        <b-form-group
             label="Video URL: (YouTube, Vimeo, Google, Panopto...)"
             label-for="url">
             <b-button v-if="editItem.video.type == 'mp4'" v-b-toggle.urlCollapse class="mb-3">
@@ -15,7 +14,6 @@
             </b-collapse>
         </b-form-group>
         <b-form-group
-            v-if="isEditing"
             label="Video File"
             label-for="fileUpload">
             <b-button v-if="editItem.video.type != 'mp4'" v-b-toggle.mp4Collapse class="mb-3">
@@ -31,12 +29,11 @@
                 <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
             </b-collapse>
         </b-form-group>
-        <div v-else>
-            {{ first.video.type }}
-            <component :is="player"></component>
-        </div>
     </div>
-
+    <div v-else>
+        {{ first.video.type }}
+        <component :is="player"></component>
+    </div>
 </template>
 
 <script>

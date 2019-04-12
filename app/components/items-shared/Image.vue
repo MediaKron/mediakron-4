@@ -29,22 +29,23 @@ Vue.use(Viewer, {
   defaultOptions: {
    inline:true,
    backdrop:false,
+   zoomRatio: 0.000000001,
    title:false,
    navbar:false,
    button:false,
    toolbar: {
-    zoomIn: 4,
-    zoomOut: 4,
-    oneToOne: 4,
-    reset: 4,
+    zoomIn: 2,
+    zoomOut: 2,
+    oneToOne: 0,
+    reset: 2,
     prev: 0,
     play: {
-      show: 4,
+      show: 0,
       size: 'large',
     },
     next: 0,
-    rotateLeft: 4,
-    rotateRight: 4,
+    rotateLeft: 2,
+    rotateRight: 2,
     flipHorizontal: 0,
     flipVertical: 0,
   },
@@ -65,9 +66,9 @@ export default {
                 if(this.tempImage){
                     return this.tempImage;
                 }
-                return 'https://picsum.photos/1000/1000/?random';
+                return this.first.imageUrl('large');
             }
-            return [ 'https://picsum.photos/1000/1000/?random' ];
+            return [ this.first.imageUrl('large') ];
         },
         ...mapGetters('items', [
             'editItem',

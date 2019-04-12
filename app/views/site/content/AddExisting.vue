@@ -1,30 +1,44 @@
 <template>
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
-        <header class="line-behind mb-4">
-            <h1> Authors</h1>
-        </header>
-
-        <b-input-group class="my-3 mb-3 max-w-sm">
-            <b-form-input v-model="filter" placeholder="Type to Search" />
-            <b-input-group-append>
-                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-            </b-input-group-append>
-        </b-input-group>
-
+        <div class="flex mt-4 mb-2">
+            <b-button variation="dark" class="mr-auto">
+               <font-awesome-icon icon="check" /> Add Selected
+            </b-button>
+            <b-input-group class="w-20">
+                <b-form-input v-model="filter" placeholder="Type to Search" />
+                <b-input-group-append>
+                    <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </div>
         <loader v-if="listIsLoading">Loading...</loader>
-        <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at"
-            sort-desc="true" stacked="md">
+        <b-table 
+            v-if="listIsLoaded" 
+            :items="items" 
+            :fields="fields" 
+            :filter="filter"
+            @filtered="onFiltered" 
+            sortBy="updated_at" 
+            sort-desc="true" 
+            stacked="md"
+            selectable
+            select-mode="multi">
+             <template slot="add" slot-scope="items">
+              <font-awesome-icon icon="plus-square" /> Add
+            </template>
             <template slot="title" slot-scope="items">
                 <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" />
-                <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}
-                </router-link>
+                items.item.title
             </template>
             <template slot="type" slot-scope="items">
                 {{ items.item.type}}
             </template>
         </b-table>
+
         <!-- b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router / -->
+
     </div>
+
 </template>
 
 <script>
@@ -65,17 +79,16 @@
         data() {
             return {
                 fields: {
-
+                    add: {
+                        label: "Add",
+                        sortable: false
+                    },
                     title: {
                         label: "Title",
                         sortable: true
                     },
                     type: {
                         label: "Type",
-                        sortable: true
-                    },
-                    updated_at: {
-                        label: "Updated",
                         sortable: true
                     },
                 },
@@ -86,6 +99,7 @@
                     height: 50,
                     class: 'mr-2'
                 },
+                isBusy: false,
             }
 
         },
