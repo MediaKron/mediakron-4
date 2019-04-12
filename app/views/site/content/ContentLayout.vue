@@ -17,6 +17,11 @@
                     <b-nav-item  :to="basePath + '/content/authors'">
                         <span class="uppercase whitespace-no-wrap">Authors</span>
                     </b-nav-item>
+
+                     <b-nav-item  :to="basePath + '/content/deleted'">
+                        <span class="whitespace-no-wrap">Deleted Items</span>
+                    </b-nav-item>
+
                     <b-button class="mt-4 mx-2 whitespace-no-wrap" variant="light" :to="basePath + '/content/add'">
                         <font-awesome-icon icon="plus-square" />
                         <span class="pl-1 uppercase">Add</span>
