@@ -43,12 +43,12 @@ export default [
         component: CreateContent,
         props: true
     },
-    {
-        path: ":firstUri",
-        name: "Item1",
-        component: Item,
-        props: true,
-      },
+    // {
+    //     path: ":firstUri",
+    //     name: "Item1",
+    //     component: Item,
+    //     props: true,
+    //   },
     {
         path: "/",
         name: 'content',
