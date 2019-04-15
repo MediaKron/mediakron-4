@@ -1,9 +1,10 @@
 <template>
     <b-form-group 
         v-if="isEditing"
-        label="Current Image"
+        v-bind:style="{ backgroundImage: 'url(' + image + ')' }" 
+        class="h-64 px-4 max-w-40 mx-auto background-image  bg-cover flex flex-col justify-center text-white"
+        label="Add/Edit Image"
         label-for="fileUpload">
-        <b-img :src="image" fluid thumbnail alt="Responsive image"/>
         <b-form-file
             v-model="editItem.newImage"
             :state="Boolean(editItem.newImage)"
@@ -11,10 +12,11 @@
             drop-placeholder="Drop file here..."
             :accept="first.allowedTypes()"
             @change="change" />
-    </b-form-group>
-    <div v-else>
-        <viewer :images="image">
-            <img class="image-frame invisible" :src="image" >
+        
+        </b-form-group>
+    <div v-else >
+        <viewer :images="image" class="image-viewer flex">
+            <b-img :tabindex="0" class="mx-auto" :src="image" fluid v-b-tooltip.hover title="Click to Zoom Image" ></b-img>
         </viewer>
     </div>
 </template>
@@ -27,12 +29,12 @@ import Vue from 'vue'
 import imageSizeMixin from '@/components/mixins/ImageSize'
 Vue.use(Viewer, {
   defaultOptions: {
-   inline:true,
-   backdrop:false,
-   zoomRatio: 0.000000001,
-   title:false,
+   inline:false,
+//    backdrop:false,
+//    zoomRatio: 0.000000001,
+   title:true,
    navbar:false,
-   button:false,
+   button:true,
    toolbar: {
     zoomIn: 2,
     zoomOut: 2,
@@ -48,7 +50,7 @@ Vue.use(Viewer, {
     rotateRight: 2,
     flipHorizontal: 0,
     flipVertical: 0,
-  },
+  }
   }
 })
 export default {
@@ -66,9 +68,9 @@ export default {
                 if(this.tempImage){
                     return this.tempImage;
                 }
-                return this.first.imageUrl('large');
+                return this.first.imageUrl('double');
             }
-            return [ this.first.imageUrl('large') ];
+            return [ this.first.imageUrl('double') ];
         },
         ...mapGetters('items', [
             'editItem',
@@ -100,9 +102,18 @@ export default {
 </script>
 
 <style>
-
+/* 
 .image-frame {
     max-height: calc(100vh - 10rem);
+} */
+
+.image-viewer img {
+    cursor:zoom-in; 
+     max-height: calc(100vh - 15rem);
+}
+
+.viewer-backdrop {
+    background-color: rgba(0, 0, 0, .8) !important;
 }
 
 </style>
