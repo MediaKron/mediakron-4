@@ -2,7 +2,7 @@
     <b-form-group 
         v-if="isEditing"
         v-bind:style="{ backgroundImage: 'url(' + image + ')' }" 
-        class="h-64 px-4 max-w-40 mx-auto background-image  bg-cover flex flex-col justify-center text-white"
+        class="h-64 px-4 max-w-40 mt-4 mx-auto background-image  bg-cover flex flex-col justify-center text-white"
         label="Add/Edit Image"
         label-for="fileUpload">
         <b-form-file

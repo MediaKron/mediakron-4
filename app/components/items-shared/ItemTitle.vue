@@ -1,14 +1,15 @@
 <template>
     <header class="item-element-title w-75" v-if="isEditing">
-               
-        <b-form-group class="floating-label">
-            <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>
-            <label for="title">Title</label>
-        </b-form-group>
+            <b-input-group>
+             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" class="border-dashed"></b-form-input>
+            <b-input-group-text for="title" slot="append" tag="label" class="items-center flex-col align text-sm bg-white w-24 border-dashed">
+                <span class="font-bold">Item Title</span>
+            </b-input-group-text>
+        </b-input-group>
                
     </header>
     <header v-else>
-        <h1>{{ first.title }}</h1>
+        <h1 class="item-title">{{ first.title }}</h1>
     </header>
 </template>
 

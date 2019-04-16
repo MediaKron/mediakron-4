@@ -1,6 +1,6 @@
 <template>
     <article>
-        <ItemTitle class="max-w-40 item-title mx-auto"></ItemTitle>
+        <ItemTitle class="max-w-40 mx-auto"></ItemTitle>
         <ItemCaption class="py-2 max-w-40 mx-auto" ></ItemCaption>
         <item-image class="mx-auto"></item-image>
         <ItemDescription class="max-w-40 mx-auto text-xl py-3"></ItemDescription>
