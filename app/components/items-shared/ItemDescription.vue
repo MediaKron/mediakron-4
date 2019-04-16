@@ -2,7 +2,7 @@
     <div v-if="isEditing">
         <b-input-group>
             <b-form-textarea id="description" v-model="editItem.description" placeholder="Add a description" rows="2"
-                max-rows="100" class="border-dashed"></b-form-textarea>
+                max-rows="100" class="border-dashed text-black"></b-form-textarea>
             <b-input-group-text for="description" slot="append" tag="label" size="sm" class="items-center flex-col align text-sm bg-white w-24 border-dashed font-bold"> Description
                 <b-button v-b-modal.help-description variant="link" size="sm"><font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About Descriptions</span></b-button>
             </b-input-group-text>

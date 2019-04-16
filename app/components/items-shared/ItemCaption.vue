@@ -2,7 +2,7 @@
     <div class="item-element-caption" v-if="isEditing">
         <b-input-group>
             <b-form-textarea id="caption" v-model="editItem.caption" placeholder="Add a caption" rows="2"
-                max-rows="100" class="border-dashed"></b-form-textarea>
+                max-rows="100" class="border-dashed text-black"></b-form-textarea>
             <b-input-group-text for="caption" slot="append" tag="label" class="items-center flex-col align text-sm bg-white w-24 border-dashed">
                 <span class="font-bold">Caption</span>
                 <b-button v-b-modal.help-caption variant="link" size="sm" class="text-black">
