@@ -4,7 +4,7 @@
             <h1>Content</h1>
         </header>
 
-        <b-button-toolbar class="mb-4 items-center">
+        <b-button-toolbar class="mb-2 items-center">
              <b-input-group size="sm" class="w-12 mb-2 mr-4 ">
                 <b-input-group-text slot="prepend" class="bg-dark text-white uppercase">
                     <font-awesome-icon icon="search" class="uppercase" />
@@ -23,7 +23,7 @@
                     <font-awesome-icon icon="map-marker-alt" /><span class="pr-2"> TYPE: Map</span><font-awesome-icon icon="times" />
                 </b-button>
                 </div> -->
-             <b-button variant="primary" size="sm" :to="basePath + '/content/add'">
+             <b-button variant="primary" size="sm" :to="basePath + '/content/add'" class="mb-2">
                 <font-awesome-icon icon="plus" />
                 <span class="ml-2 uppercase">Add Content</span>
             </b-button>
