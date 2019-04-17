@@ -1,15 +1,17 @@
 <template>
-    <div class="item-element-source" v-if="isEditing">
-        <b-form-group class="floating-label">
-            <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>
-            <label for="title">Title</label>
-
-             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" ></b-form-input>
-            <label for="title">Title</label>
-        </b-form-group>
-    </div>
-    <div v-else>
-        <h2>{{ first.title }}</h2>
+    <div>
+        <div class="item-element-source" v-if="isEditing">
+            <b-form-group class="">
+                <label for="reference">Reference</label>
+                <b-form-input id="reference" v-model="editItem.reference" placeholder="Provide a refference/citation for this item" ></b-form-input>
+                <label for="referenceUrl">Url</label>
+                <b-form-input id="referenceUrl" v-model="editItem.referenceUrl" placeholder="http://www..." ></b-form-input>
+            </b-form-group>
+        </div>
+        <div v-else>
+            <h1>Source</h1>
+            <h2>{{ first.title }}</h2>
+        </div>
     </div>
 </template>
 
