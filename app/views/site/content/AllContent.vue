@@ -29,6 +29,7 @@
                 <span class="ml-1">Trash</span>
             </b-button>
         </div>
+        <ItemFilter></ItemFilter>
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
             @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
@@ -55,9 +56,11 @@
         mapActions
     } from 'vuex';
     import Loader from '@/components/Loader';
+    import ItemFilter from '@/views/site/options/ItemFilter'
     export default Vue.extend({
         components: {
-            Loader
+            Loader,
+            ItemFilter
         },
         computed: {
             ...mapGetters('sites', [
