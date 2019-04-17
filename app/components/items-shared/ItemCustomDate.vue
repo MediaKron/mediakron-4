@@ -9,7 +9,7 @@
             </b-form-group>
         </div>
         <div v-else>
-            <h1>Source</h1>
+            <h1>Custom Date</h1>
             <h2>{{ first.title }}</h2>
         </div>
     </div>
@@ -28,4 +28,3 @@ export default {
     }
 }
 </script>
-
