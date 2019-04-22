@@ -59,6 +59,8 @@ export default {
                     return Audio
                 case 'timeline':
                     return Timelines
+                case 'map':
+                    return Maps
             }
             
         },

@@ -17,6 +17,8 @@ class Item extends Model {
     constructor(data, site) {
         super(data)
         this.site = site
+        console.log(this)
+        return this;
     }
 
     /**
@@ -88,6 +90,26 @@ class Item extends Model {
         }
         return this.color;
     }
+
+    zoom(){
+        return 1;
+    }
+    maxZoom(){
+        return 1;
+    }
+    minZoom(){
+        return 1;
+    }
+    center(){
+        return { lat: 51.505, lng: -0.09 };
+    }
+    tiles(){
+        return 'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
+    }
+    attribution(){
+      return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+    }
+
 
     defaults(){
         return {
