@@ -2,8 +2,8 @@
     <div>
         <component :is="component" :item="item"/>
         <div class="right-0 top-0 fixed mr-4 mt-20">
-            <b-button v-if="!isEditing" class=" " variant="primary" @click="editClicked"> Edit</b-button>  
-            <b-button v-if="isEditing" class=" " variant="primary" @click="saveClicked"> Save </b-button>       
+            <b-button v-if="!isEditing" class="uppercase" variant="outline-dark" size="sm" @click="editClicked"><font-awesome-icon icon="edit" /> Edit</b-button>  
+            <b-button v-if="isEditing" class="uppercase" variant="outline-dark" size="sm" @click="saveClicked"> <font-awesome-icon icon="check" /> Save </b-button>       
             <b-alert class="right-0 fixed mt-4 mr-3" :show="editAlert" variant="success">
                 <p>You are now in editing mode.</p>
             </b-alert> 

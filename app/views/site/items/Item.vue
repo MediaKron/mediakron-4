@@ -1,8 +1,9 @@
 <template>
     <div>
+         <Navigation class=""></Navigation>
         <main>
             <loader v-if="itemIsLoading" class="flex justify-center mt-8"></loader>
-            <component v-if="itemIsLoaded" :is="component" :item="first" />
+            <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="first" />
         </main>
     </div>
 </template>

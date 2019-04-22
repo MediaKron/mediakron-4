@@ -1,11 +1,12 @@
 <template>
-    <article class="container">
-        <ItemTitle></ItemTitle>
-        <ItemCaption></ItemCaption>
-        <item-image></item-image>
-        <ItemDescription></ItemDescription>
-        <ItemMetadata></ItemMetadata>
-        <ItemTags></ItemTags>
+    <article>
+        <ItemTitle class="max-w-40 mx-auto"></ItemTitle>
+        <ItemCaption class="py-2 max-w-40 mx-auto" ></ItemCaption>
+        <item-image class="mx-auto"></item-image>
+        <ItemCustomDate class="py-2 max-w-40 mx-auto" ></ItemCustomDate>
+        <ItemDescription class="max-w-40 mx-auto text-xl py-3"></ItemDescription>
+        <ItemMetadata class="max-w-40 mx-auto"></ItemMetadata>
+        <ItemTags class="max-w-40 mx-auto"></ItemTags>
     </article>
 </template>
 
@@ -16,6 +17,7 @@ import ItemCaption from '@/components/items-shared/ItemCaption'
 import ItemImage from '@/components/items-shared/Image'
 import ItemMetadata from '@/components/items-shared/ItemMetadata'
 import ItemTags from '@/components/items-shared/ItemTags'
+import ItemCustomDate from '@/components/items-shared/ItemCustomDate'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -27,7 +29,8 @@ export default {
         ItemCaption,
         ItemImage,
         ItemMetadata,
-        ItemTags
+        ItemTags,
+        ItemCustomDate
     },
     created() {
 
