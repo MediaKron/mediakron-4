@@ -1,26 +1,26 @@
 <template>
   <article class="container">
-        <ItemTitle></ItemTitle>
-        <ItemCaption></ItemCaption>
+        <m-title></m-title>
+        <m-caption></m-caption>
         <item-video></item-video>
-        <ItemDescription></ItemDescription>
+       m-description></m-description>
 
    </article>
 </template>
 
 <script>
-import ItemTitle from '@/components/items-shared/ItemTitle'
-import ItemDescription from '@/components/items-shared/ItemDescription'
-import ItemCaption from '@/components/items-shared/ItemCaption'
+import Title from '@/components/items-shared/Title'
+import Description from '@/components/items-shared/Description'
+import Caption from '@/components/items-shared/Caption'
 import Audio from '@/components/items-shared/Audio'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
     props: [ 'item', 'isEditing' ],
     components: {
-        ItemTitle,
-        ItemDescription,
-        ItemCaption,
+        Title,
+        Description,
+        Caption,
         Audio
     },
     created() {

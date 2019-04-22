@@ -57,6 +57,7 @@
         mixins: [
             imageSizeMixin
         ],
+        name: 'MImage',
         data() {
             return {
                 tempImage: false
