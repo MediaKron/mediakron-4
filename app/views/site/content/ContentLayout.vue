@@ -37,13 +37,12 @@
                             <h3 class="uppercase text-lg sr-only">Content</h3>
                             <div>
                                 <div class="mb-3 flex flex-col" vertical>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3"
-                                        pressed="true">
+                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3" pressed="true" @clicked="event">
                                         <font-awesome-icon icon="th-large" /><span class="mr-auto ml-2 flex items-center">All Item Types</span> <b-badge variant="light" class="top-0">400
                                         </b-badge>
                                     </b-button>
-                                    <b-button variant="dark" size="sm" class=" text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="folder" /><span class="mr-auto ml-2"> Collections</span> <b-badge variant="light">12
+                                    <b-button v-if="counts.collections > 0" variant="dark" size="sm" class=" text-left mb-1 flex items-center px-3" >
+                                        <font-awesome-icon icon="folder" /><span class="mr-auto ml-2"> Collections</span> <b-badge variant="light">{{counts.collections}}
                                         </b-badge>
                                     </b-button>
                                     <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
@@ -58,11 +57,11 @@
                                         <font-awesome-icon icon="clock" /><span class="mr-auto ml-2"> Timelines</span> <b-badge variant="light">1
                                         </b-badge>
                                     </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon=image /><span class="mr-auto ml-2"> Images</span> <b-badge variant="light">12</b-badge>
+                                    <b-button v-if="counts.images > 0" variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
+                                        <font-awesome-icon icon=image /><span class="mr-auto ml-2"> Images</span> <b-badge variant="light">{{ counts.images }}</b-badge>
                                     </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="video" /> <span class="mr-auto ml-2">Videos</span> <b-badge variant="light">4</b-badge>
+                                    <b-button v-if="counts.videos > 0" variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
+                                        <font-awesome-icon icon="video" /> <span class="mr-auto ml-2">Videos</span> <b-badge variant="light">{{ counts.videos }}</b-badge>
                                     </b-button>
                                     <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
                                         <font-awesome-icon icon="file" /><span class="mr-auto ml-2"> Files</span> <b-badge variant="light">2</b-badge>
@@ -113,6 +112,7 @@
             Navigation
         },
         computed: {
+
             ...mapGetters('sites', [
                 'siteIsLoading',
                 'siteIsLoaded',
@@ -121,7 +121,8 @@
             ...mapGetters('items', [
                 'listIsLoading',
                 'listIsLoaded',
-                'items'
+                'items',
+                'counts'
             ]),
             filteredItems() {
                 return this.items.filter(function (item) {
@@ -130,6 +131,9 @@
             }
         },
         methods: {
+            event(){
+                console.log('my event')
+            },
             ...mapActions('items', [
                 'routeLoad'
             ]),

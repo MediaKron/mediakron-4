@@ -41,6 +41,12 @@ export const getInitialState = (checkLocalStorage = false) => {
       'pageSize': 10,
       'totalItems': 10,
     },
+
+    'count': {
+      'collections': 0,
+      'images': 0,
+      'video': 0
+    }
   };
 };
 

@@ -40,6 +40,8 @@ export const getters = {
     lastPage: state => state.pagination.lastPage,
     tags: state => state.tags,
 
+    counts: state => state.count,
+
 
 };
 

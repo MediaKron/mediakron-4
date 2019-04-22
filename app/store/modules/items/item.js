@@ -44,6 +44,7 @@ class Item extends Model {
                 return '.jpg, .png, .gif';
         }
     }
+
     
     imageUrl(style){
         if(!this.thumbnail || this.thumnbail == ''){
@@ -87,6 +88,10 @@ class Item extends Model {
             return this.site.banner_color;
         }
         return this.color;
+    }
+
+    hasTags(){
+        return this.tags.length > 0;
     }
 
     defaults(){
