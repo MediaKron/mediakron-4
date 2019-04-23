@@ -3,18 +3,18 @@
         <div class="flex">
             <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
                 <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 ">
-                    <ContextSideBar class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></ContextSideBar>
+                    <m-context-sidebar class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-context-sidebar>
                 </div>
             </aside>
             <article class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
-                <BannerHalf style="background-image: url('https://picsum.photos/1000/1000/?random')">
-                    <ItemTitle></ItemTitle>
-                </BannerHalf>
-                <ItemCaption></ItemCaption>
-                <List class="px-6 max-w-xl mx-auto"></List>
-                <ItemDescription></ItemDescription>
-                <ItemMetadata></ItemMetadata>
-                <ItemTags></ItemTags>
+                <m-banner-half style="background-image: url('https://picsum.photos/1000/1000/?random')">
+                    <m-title></m-title>
+                </m-banner-half>
+                <m-caption></m-caption>
+                <m-list  class="px-6 max-w-xl mx-auto"></m-list>
+                <m-description></m-description>
+                <m-metadata></m-metadata>
+                <m-tags></m-tags>
             </article>
          </div>
     </div>
@@ -22,28 +22,31 @@
 </template>
 
 <script>
-import ContextSideBar from '@/components/folders/ContextSideBar'
-import ItemTitle from '@/components/items-shared/ItemTitle'
-import BannerHalf from '@/components/banners/BannerHalf'
-import ItemDescription from '@/components/items-shared/ItemDescription'
-import ItemCaption from '@/components/items-shared/ItemCaption'
-import List from '@/components/item-lists/List'
-import ItemMetadata from '@/components/items-shared/ItemMetadata'
-import ItemTags from '@/components/items-shared/ItemTags'
+import MTitle from '@/components/items-shared/Title'
+import MDescription from '@/components/items-shared/Description'
+import MCaption from '@/components/items-shared/Caption'
+import MMetadata from '@/components/items-shared/Metadata'
+import MTags from '@/components/items-shared/Tags'
+import MCustomDate from '@/components/items-shared/CustomDate'
+import MImage from '@/components/items-shared/Image'
+
+import MList from '@/components/item-lists/List'
+import MContextSidebar from '@/components/folders/ContextSidebar'
 
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     props: [ 'item', 'isEditing' ],
     components: {
-        ItemTitle,
-        BannerHalf,
-        ItemDescription,
-        ItemCaption,
-        List,
-        ContextSideBar,
-        ItemMetadata,
-        ItemTags
+        MTitle,
+        MDescription,
+        MCaption,
+        MImage,
+        MMetadata,
+        MTags,
+        MCustomDate,
+        MList,
+        MContextSidebar
     },
     data() {
         return {

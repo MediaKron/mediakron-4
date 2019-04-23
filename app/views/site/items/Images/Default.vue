@@ -1,36 +1,36 @@
 <template>
     <article>
-        <ItemTitle class="max-w-40 mx-auto"></ItemTitle>
-        <ItemCaption class="py-2 max-w-40 mx-auto" ></ItemCaption>
-        <item-image class="mx-auto"></item-image>
-        <ItemCustomDate class="py-2 max-w-40 mx-auto" ></ItemCustomDate>
-        <ItemDescription class="max-w-40 mx-auto text-xl py-3"></ItemDescription>
-        <ItemMetadata class="max-w-40 mx-auto"></ItemMetadata>
-        <ItemTags class="max-w-40 mx-auto"></ItemTags>
+        <m-title class="max-w-40 mx-auto"></m-title>
+        <m-caption class="py-2 max-w-40 mx-auto" ></m-caption>
+        <m-image class="mx-auto"></m-image>
+        <m-custom-date class="py-2 max-w-40 mx-auto" ></m-custom-date>
+        <m-description class="max-w-40 mx-auto text-xl py-3"></m-description>
+        <m-metadata class="max-w-40 mx-auto"></m-metadata>
+        <m-tags class="max-w-40 mx-auto"></m-tags>
     </article>
 </template>
 
 <script>
-import ItemTitle from '@/components/items-shared/ItemTitle'
-import ItemDescription from '@/components/items-shared/ItemDescription'
-import ItemCaption from '@/components/items-shared/ItemCaption'
-import ItemImage from '@/components/items-shared/Image'
-import ItemMetadata from '@/components/items-shared/ItemMetadata'
-import ItemTags from '@/components/items-shared/ItemTags'
-import ItemCustomDate from '@/components/items-shared/ItemCustomDate'
+import MTitle from '@/components/items-shared/Title'
+import MDescription from '@/components/items-shared/Description'
+import MCaption from '@/components/items-shared/Caption'
+import MMetadata from '@/components/items-shared/Metadata'
+import MTags from '@/components/items-shared/Tags'
+import MCustomDate from '@/components/items-shared/CustomDate'
+import MImage from '@/components/items-shared/Image'
 
 import { mapGetters, mapActions } from 'vuex'
 
 export default { 
     props: [ 'item' ],
     components: {
-        ItemTitle,
-        ItemDescription,
-        ItemCaption,
-        ItemImage,
-        ItemMetadata,
-        ItemTags,
-        ItemCustomDate
+        MTitle,
+        MDescription,
+        MCaption,
+        MImage,
+        MMetadata,
+        MTags,
+        MCustomDate
     },
     created() {
 

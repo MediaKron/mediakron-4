@@ -2,10 +2,10 @@
     <div>
         <div class="w-100 flex flex-col items-center">
 
-             <BannerHalf class="w-100" style="background-image: url('https://picsum.photos/1000/1000/?random')">
+             <m-banner-half class="w-100" style="background-image: url('https://picsum.photos/1000/1000/?random')">
                      <h1 class="mt-12"> <span class="sr-only"> Site Homepage:</span>{{ currentSite.title }}</h1>
                     <h2 class="">{{ currentSite.subtitle }}</h2>
-            </BannerHalf>
+            </m-banner-half>
 
             <div class="max-w-md mt-4" v-html="currentSite.description"></div>
     
