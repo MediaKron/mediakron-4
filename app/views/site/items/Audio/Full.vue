@@ -3,7 +3,7 @@
         <m-title></m-title>
         <m-caption></m-caption>
         <item-video></item-video>
-       m-description></m-description>
+        <m-description></m-description>
 
    </article>
 </template>
