@@ -10,6 +10,7 @@
             <b-alert class="right-0 fixed mt-4 mr-3" :show="saveAlert" variant="success">
                 <p>Changes Saved.</p>
             </b-alert> 
+            <m-options></m-options>
         </div>
         
     </div>
@@ -18,8 +19,12 @@
 <script>
 import Default from './Default'
 import editable from '~/components/mixins/editable';
+import MOptions from '@/components/items-shared/Options'
 import { mapGetters, mapActions } from 'vuex'
 export default {
+    components: {
+        MOptions
+    },
     mixins: [ editable ],
     props: [ 'item' ],
     methods:{},
