@@ -56,7 +56,7 @@
 
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table class="mt-1 border border-grey rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
-            @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+            sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
                 </b-form-checkbox>
@@ -87,7 +87,7 @@
             </template>
         </b-table>
 
-        <!-- b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router / -->
+        <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
 
     </div>
 

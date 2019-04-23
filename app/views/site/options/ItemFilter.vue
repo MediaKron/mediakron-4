@@ -1,27 +1,33 @@
 <template>
     <div id="filters" class="d-flex mb-5 p-2">
-        <span> {{ imageCount }}</span>
+        <span> </span>
 
         <!-- b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" / -->
-        <multiselect v-model="typeFilter" :options="typeOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Type:"></multiselect>
-        <multiselect v-model="authorFilter" :options="authorOptions" :multiple="true" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"></multiselect>
-        <multiselect v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></multiselect>
+        <b-form-select v-model="typeFilter" :options="typeOptions"  class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Type:"></b-form-select>
+        <b-form-select v-model="authorFilter" :options="authorOptions"  class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"></b-form-select>
+        <b-form-select v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></b-form-select>
     </div>
 
 
 </template>
 
 <script>
+    import {
+        mapGetters,
+        mapActions
+    } from 'vuex';
+
     export default {
 
     computed: {
-        /*
+     /*
     ...mapGetters('sites', [
             'siteIsLoading',
             'siteIsLoaded',
             'basePath',
             'currentSite'
         ]),
+        */
     ...mapGetters('items', [
             'listIsLoading',
             'listIsLoaded',
@@ -30,7 +36,7 @@
             'totalItems',
             'lastPage'
         ]),
-        */
+
 
         filteredItems() {
             if (this.typeFilter.length == 0) return this.items
@@ -66,6 +72,11 @@
                 {value:'story', text: 'Story'},
                 {value:'slideshow', text: 'Slideshow'},
             ],
+            sortOrder: [],
+            sortOptions: [
+                {value:'ASC', text: 'oldest to recent'},
+                {value:'DESC', text: 'recent to oldest'},
+            ],
             authorFilter: [],
             authorOptions: [
                 {value: 4, text: 'Jamie'},
@@ -98,19 +109,6 @@
             isBusy: false,
         }
 
-    },
-    watch: {
-        '$route.params.page': function (page) {
-            this.routeLoad({
-                to: this.$route
-            });
-        }
-    },
-    mounted() {
-        this.routeLoad({
-            to: this.$route,
-            site: this.currentSite
-        });
     },
 
 }
