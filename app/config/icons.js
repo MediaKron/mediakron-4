@@ -1,6 +1,10 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
     faArchive,
+    faAngleDown,
+    faAngleLeft,
+    faAngleRight,
+    faAngleUp,
     faArrowDown,
     faArrowLeft,
     faArrowRight,
@@ -8,6 +12,10 @@ import {
     faArrowsAltV,
     faAsterisk,
     faBars,
+    faCaretDown,
+    faCaretLeft,
+    faCaretRight,
+    faCaretUp,
     faCheck,
     faChevronDown,
     faChevronLeft,
@@ -67,6 +75,10 @@ import {
 export default function initializeIcons(){
     library.add(
         faArchive,
+        faAngleDown,
+        faAngleLeft,
+        faAngleRight,
+        faAngleUp,
         faArrowDown,
         faArrowLeft,
         faArrowRight,
@@ -74,6 +86,10 @@ export default function initializeIcons(){
         faArrowsAltV,
         faAsterisk,
         faBars,
+        faCaretDown,
+        faCaretLeft,
+        faCaretRight,
+        faCaretUp,
         faCheck,
         faChevronDown,
         faChevronLeft,
