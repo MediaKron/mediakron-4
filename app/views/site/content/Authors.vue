@@ -25,7 +25,6 @@
             <template slot="last_login" slot-scope="user">
                 {{ user.item.last_login }}
             </template>
-
         </b-table>
         <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
     </div>
