@@ -18,17 +18,12 @@
                                         <font-awesome-icon icon="user" /> <span class="mr-auto ml-2">My Content Only</span> <b-badge variant="light">30
                                         </b-badge>
                                     </b-button>
-                                    <b-dropdown size="sm" variant="dark" right toggle-class="text-left">
+                                    <b-dropdown size="sm" variant="dark" right toggle-class="text-left" v-model="authorFilter" :options="authorOptions">
                                         <template slot="button-content" class="px-2 text-left">
                                             <span class=" ml-1 px-1">
                                                 <font-awesome-icon icon="user-check" /> Filter By Author</span>
                                         </template>
-                                        <b-dropdown-item href="#">Jamie Walker <b-badge variant="light">15</b-badge>
-                                        </b-dropdown-item>
-                                        <b-dropdown-item href="#">Tim Lindgren <b-badge variant="light">2</b-badge>
-                                        </b-dropdown-item>
-                                        <b-dropdown-item href="#">Brad Mering <b-badge variant="light">1</b-badge>
-                                        </b-dropdown-item>
+
                                     </b-dropdown>
                                   
                                 <!-- <multiselect v-model="authorFilter" :options="authorOptions" class="border border-dark rounded z-10 uppercase text-black text-sm" track-by="value" label="text" placeholder="Select Author" selectLabel="Select" deselectLabel="Remove"/> -->
@@ -123,6 +118,11 @@
                 'listIsLoaded',
                 'items',
                 'counts'
+            ]),
+            ...mapGetters('users', [
+                'listIsLoading',
+                'listIsLoaded',
+                'users'
             ]),
             filteredItems() {
                 return this.items.filter(function (item) {
