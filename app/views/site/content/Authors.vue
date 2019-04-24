@@ -13,19 +13,18 @@
         </b-input-group>
 
         <loader v-if="listIsLoading">Loading...</loader>
-        <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" :users="users" sortBy="last_login" sort-desc="true" stacked="md">
-            <template slot="email" slot-scope="users">
-                {{ users.user.email }}
+        <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" :items="users" sortBy="last_login" stacked="md">
+            <template slot="email" slot-scope="user">
+                {{ user.item.email }}
             </template>
 
-            <template slot="username" slot-scope="users">
-            {{ users.user.username }}
+            <template slot="username" slot-scope="user">
+            {{ user.item.username }}
             </template>
 
-            <template slot="last_login" slot-scope="users">
-                {{ users.user.last_login }}
+            <template slot="last_login" slot-scope="user">
+                {{ user.item.last_login }}
             </template>
-
         </b-table>
         <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
     </div>
