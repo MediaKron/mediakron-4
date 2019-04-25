@@ -17,7 +17,7 @@
             </flat-pickr>
         </b-input-group>
 
-        <b-input-group prepend="End  " class="mt-3">
+        <b-input-group prepend="End" class="mt-3 mb-3">
             <label for="published" class="sr-only">End Year</label>
             <b-form-input id="end_year" v-model="editItem.endDateYear" placeholder="Year(YYYY)"></b-form-input>
             <label for="creator" class="sr-only">End Month</label>
