@@ -16,8 +16,15 @@
 
 <script>
 import Default from './Default'
-import ListFull from './ListFull'
+import ListSimple from './ListSimple'
 import ListHalf from './ListHalf'
+import ListFull from './ListFull'
+import GridSimple from './GridSimple'
+import GridHalf from './GridHalf'
+import GridFull from './GridFull'
+import Journal from './Journal'
+import Mosaic from './Mosaic'
+import Table from './Table'
 import editable from '~/components/mixins/editable'
 export default {
     props: [ 'item' ],

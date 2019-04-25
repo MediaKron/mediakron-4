@@ -1,10 +1,10 @@
 <template>
 
-<b-navbar toggleable="md" type="dark" class="px-2 py-0" variant="primary">
+<b-navbar toggleable="md" type="dark" class="px-3 py-0" variant="primary">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-  <b-navbar-brand href="/" class="text-uppercase">MediaKron</b-navbar-brand>
+  <b-navbar-brand href="/" class="text-uppercase text-2xl my-1">MediaKron</b-navbar-brand>
 
   <b-collapse is-nav id="nav_collapse">
 
