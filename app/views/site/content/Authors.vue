@@ -11,7 +11,6 @@
                 <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
             </b-input-group-append>
         </b-input-group>
-
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" :items="users" sortBy="last_login" stacked="md">
             <template slot="email" slot-scope="user">
@@ -19,7 +18,7 @@
             </template>
 
             <template slot="username" slot-scope="user">
-            {{ user.item.username }}
+                {{ user.item.username }}
             </template>
 
             <template slot="last_login" slot-scope="user">
@@ -58,8 +57,20 @@
                 'lastPage'
             ]),
 
+            objList() {
+                return this.users.map((item) => Object.values(item))
+            },
 
+            keyValuePair() {
+                return this.users.map((item) => {
+                    return Object.keys(item).reduce((acc, curr) => {
+                        acc.push(`${curr} - ${item[curr]}`)
+                        return acc
+                    }, [])
+                })
+            }
         },
+
         methods: {
             linkGen(pageNum) {
                 return '/' + this.currentSite.url + '/content/authors/' + pageNum
@@ -85,6 +96,20 @@
                     },
                 },
                 filter: null,
+                list: [
+                    /*
+                    {
+                        foo: 'value1',
+                        bar: 'value2',
+                        baz: 'value3'
+                    },
+                    {
+                        foo: 'value4',
+                        bar: 'value5',
+                        baz: 'value6'
+                    }
+                    */
+                ],
             }
 
         },

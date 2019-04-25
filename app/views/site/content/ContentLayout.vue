@@ -18,13 +18,13 @@
                                         <font-awesome-icon icon="user" /> <span class="mr-auto ml-2">My Content Only</span> <b-badge variant="light">30
                                         </b-badge>
                                     </b-button>
-                                    <b-dropdown size="sm" variant="dark" right toggle-class="text-left" v-model="authorFilter" :options="authorOptions">
-                                        <template slot="button-content" class="px-2 text-left">
-                                            <span class=" ml-1 px-1">
-                                                <font-awesome-icon icon="user-check" /> Filter By Author</span>
-                                        </template>
 
-                                    </b-dropdown>
+                                    <select v-model="authorList">
+                                        <option v-for="user in users" v-bind:value="user.id" @click="userFilter">
+                                            {{ user.email }}
+                                        </option>
+                                    </select>
+
                                   
                                 <!-- <multiselect v-model="authorFilter" :options="authorOptions" class="border border-dark rounded z-10 uppercase text-black text-sm" track-by="value" label="text" placeholder="Select Author" selectLabel="Select" deselectLabel="Remove"/> -->
                                </div>    
@@ -128,8 +128,42 @@
                 return this.items.filter(function (item) {
                     return this.typeFilter.indexOf(item.type) == -1
                 }.bind(this))
-            }
+            },
+            userFilter: function () {
+                /*
+                var vm = this;
+                return function (keyname) {
+                    var output = [];
+                    var keys   = [];
+
+                    vm.users.forEach(function (user) {
+                        var key = user[keyname];
+
+                        if (keys.indexOf(key) === -1) {
+                            keys.push(key);
+                            output.push(user);
+                        }
+                    });
+                    */
+
+                    return true
+                //}
+            },
+
+            objList() {
+                return this.list.map((item) => Object.keys(item))
+            },
+
+            keyValuePair() {
+                    return this.list.map((item) => {
+                        return Object.keys(item).reduce((acc, curr) => {
+                            acc.push(`${curr} - ${item[curr]}`)
+                            return acc
+                        }, [])
+                    })
+                }
         },
+
         methods: {
             event(){
                 console.log('my event')
@@ -148,6 +182,7 @@
                     'folder',
                 ],
                 authorFilter: null,
+                /* to do: get the list of authors from userList */
                 authorOptions: [{
                         value: null,
                         text: 'Select Author'
@@ -168,6 +203,7 @@
                         value: 'brad',
                         text: 'Brad'
                     },
+                    users,
                 ],
 
                 sortOrder: null,
