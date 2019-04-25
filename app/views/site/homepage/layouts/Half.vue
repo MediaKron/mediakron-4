@@ -13,17 +13,14 @@
 
         <div id="homepage-content"> </div>
 
-        <b-button v-if="!isEditing" class="fixed top-0 right-0 mt-16 mr-8" variant="primary" @click="editClicked"> Edit Homepage</b-button>  
+        <b-button class="fixed top-0 right-0 mt-16 mr-8 bg-white hover:text-black" variant="outline-dark" :to="basePath + '/homesettings'"><font-awesome-icon icon="edit" />  Edit Homepage</b-button>  
          
     </div>
 </template>
 
 <script>
-    import {
-        mapActions,
-        mapState,
-        mapGetters
-    } from 'vuex';
+
+import { mapActions, mapState, mapGetters } from 'vuex';
     import MBannerHalf from '@/components/banners/BannerHalf'
     export default {
         components: {
@@ -31,7 +28,8 @@
         },
         computed: {
             ...mapGetters('sites', [
-                'currentSite'
+                'currentSite',
+                 'basePath'
             ]),
         }
     }

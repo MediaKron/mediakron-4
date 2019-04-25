@@ -102,7 +102,7 @@ export default {
           {faname: 'Tags', icon: 'tags', code: 'tags', mkname:'Tags'},
           {faname: 'Th ', icon: ' ', code: ' ', mkname:' '},
           {faname: 'ThList ', icon: ' ', code: ' ', mkname:' '},
-          {faname: 'ThLarge', icon: ' ', code: ' ', mkname:' '},
+          {faname: 'ThLarge', icon: 'th-large', code: 'th-large', mkname:'Content'},
           {faname: 'Times ', icon: 'times', code: 'times', mkname:'Close'},
           {faname: 'TrashAlt ', icon: 'trash-alt', code: 'trash-alt', mkname:'Delete'},
           {faname: 'User ', icon: 'user', code: 'user', mkname:'User'},
