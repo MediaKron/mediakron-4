@@ -13,7 +13,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import Images from './Images'
 import Videos from './Videos'
-import Folders from './Folders'
+import Collections from './Collections'
 import Files from './Files'
 import Audio from './Audio'
 import Timelines from './Timelines'
@@ -52,7 +52,7 @@ export default {
                 case 'video':
                     return Videos
                 case 'folder':
-                    return Folders
+                    return Collections
                 case 'file':
                     return Files
                 case 'audio':

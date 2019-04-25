@@ -3,14 +3,15 @@
         <div class="flex">
             <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
                 <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 ">
-                    <m-context-sidebar class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-context-sidebar>
+                    <m-collection-sidebar class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-collection-sidebar>
                 </div>
             </aside>
             <article class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
-                
-                <m-title></m-title>
+                <m-banner-half style="background-image: url('https://picsum.photos/1000/1000/?random')">
+                    <m-title></m-title>
+                </m-banner-half>
                 <m-caption></m-caption>
-                <m-list class="px-6 max-w-xl mx-auto"></m-list>
+                <m-list  class="px-6 max-w-xl mx-auto"></m-list>
                 <m-description></m-description>
                 <m-metadata></m-metadata>
                 <m-tags></m-tags>
@@ -30,7 +31,7 @@ import MCustomDate from '@/components/items-shared/CustomDate'
 import MImage from '@/components/items-shared/Image'
 
 import MList from '@/components/item-lists/List'
-import MContextSidebar from '@/components/folders/ContextSidebar'
+import MCollectionSidebar from '@/components/collections/CollectionSidebar'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -45,7 +46,7 @@ export default {
         MTags,
         MCustomDate,
         MList,
-        MContextSidebar
+        MCollectionSidebar
     },
     data() {
         return {

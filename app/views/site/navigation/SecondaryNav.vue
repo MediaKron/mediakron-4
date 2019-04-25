@@ -72,10 +72,6 @@
                 <font-awesome-icon icon="paint-brush"/> 
                 <span class="utilitynav-text"> Appearance</span>
             </b-dropdown-item> 
-            <b-dropdown-item v-if="canBrowse" :to="basePath + '/options/homepage'">
-                <font-awesome-icon icon="home"/> 
-                <span class="utilitynav-text"> Homepage</span>
-            </b-dropdown-item> 
             <b-dropdown-item :to="basePath + '/options/people'"><font-awesome-icon icon="user-cog"/> 
             <span class="utilitynav-text"> People</span>
             </b-dropdown-item>
