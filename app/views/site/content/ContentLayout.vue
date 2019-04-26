@@ -3,7 +3,7 @@
         <div class="w-full">
             <div class="flex">
                 <Navigation class="fixed top w-100 z-10"></Navigation>
-                <aside class="content-sidebar hidden lg:block pb-16 w-15 bg-dark">
+                <!-- <aside class="content-sidebar hidden lg:block pb-16 w-15 bg-dark">
                     <div class="lg:relative lg:sticky top-0 pt-16">
                         <div class="sticky?lg:h-(screen-8) overflow-y-auto">
                             <h3 class="uppercase text-lg mb-4 text-white pl-3 mt-1 ">Filters</h3>
@@ -29,10 +29,10 @@
                                         </b-dropdown-item>
                                         <b-dropdown-item href="#">Brad Mering <b-badge variant="light">1</b-badge>
                                         </b-dropdown-item>
-                                    </b-dropdown>
+                                    </b-dropdown> -->
                                   
                                 <!-- <multiselect v-model="authorFilter" :options="authorOptions" class="border border-dark rounded z-10 uppercase text-black text-sm" track-by="value" label="text" placeholder="Select Author" selectLabel="Select" deselectLabel="Remove"/> -->
-                               </div>    
+                               <!-- </div>    
                             </div>
                             <h3 class="uppercase text-lg sr-only">Content</h3>
                             <div>
@@ -80,7 +80,7 @@
                             </b-button>
                         </div>
                     </div>
-                </aside>
+                </aside> -->
 
                 <main role="main" id="content-wrapper"
                     class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-8 mt-20">
