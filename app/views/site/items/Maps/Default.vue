@@ -1,6 +1,7 @@
 <template>
     <article class="container">
         <m-title></m-title>
+        <m-map></m-map>
         <m-description></m-description>
         <m-caption></m-caption>
         <m-metadata></m-metadata>
@@ -16,6 +17,7 @@ import MMetadata from '@/components/items-shared/Metadata'
 import MTags from '@/components/items-shared/Tags'
 import MCustomDate from '@/components/items-shared/CustomDate'
 import MImage from '@/components/items-shared/Image'
+import MMap from '@/components/items-shared/Map'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -28,7 +30,8 @@ export default {
         MImage,
         MMetadata,
         MTags,
-        MCustomDate
+        MCustomDate,
+        MMap
     },
     created() {
 
