@@ -124,7 +124,7 @@
         },
         methods: {
             linkGen(pageNum) {
-                return '/' + this.currentSite.url + '/content/alltable/' + pageNum
+                return '/' + this.currentSite.uri + '/content/all/' + pageNum
             },
             ...mapActions('items', [
                 'routeLoad'

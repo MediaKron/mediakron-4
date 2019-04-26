@@ -14,7 +14,7 @@
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" :items="users" sortBy="last_login" stacked="md">
             <template slot="email" slot-scope="user">
-                {{ user.item.email }}
+                <router-link :to="'/release33/content/mycontent?user_id=' + user.item.id ">{{ user.item.email }}</router-link >
             </template>
 
             <template slot="username" slot-scope="user">
