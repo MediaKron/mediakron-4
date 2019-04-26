@@ -38,10 +38,11 @@ class AuthController extends Controller
                     'error' => 'Unauthorized.  No Email.'
                 ], 401);
             }
-            $username = 
             $user = User::where('email', $credentials['email'])
                 ->orWhere('username', $credentials['email'])->first();
+
             // Can we find a user?
+            // This matches the old symfony password structure
             if ($user) {
                 $password = $credentials['password'];
                 $merged = $password . '{' . $user->salt . '}';

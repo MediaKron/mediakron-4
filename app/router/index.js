@@ -2,6 +2,7 @@ import SiteLayout from "@/views/site/SiteLayout";
 
 import OptionsLayout from "@/views/site/options/OptionsLayout";
 import ContentLayout from "@/views/site/content/ContentLayout";
+import AuthLayout from "@/views/auth/Layout";
 import Item from "@/views/site/items/Item";
 import Help from "@/views/help/help";
 import Tags from "@/views/site/tags/Tags";
@@ -10,6 +11,7 @@ import HomePage from "@/views/site/homepage/Homepage";
 import HomeSettings from "@/views/site/homepage/HomeSettings";
 import content from "./content";
 import siteoptions from "./siteoptions";
+import auth from "./auth";
 
 var routes = {
   default: {
@@ -42,7 +44,13 @@ var routes = {
         title: "Search",
         props: true
       },
-
+      {
+        path: "auth",
+        component: AuthLayout,
+        title: "Auth",
+        props: true,
+        children: auth
+      },
       {
         path: "content",
         component: ContentLayout,

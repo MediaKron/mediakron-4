@@ -1,5 +1,6 @@
 <template>
     <div id="mediakron">
+        <!-- Multisite layout -->
         <div id="main-container">
             <header id="header" role="banner">
                 <div id="navbar">

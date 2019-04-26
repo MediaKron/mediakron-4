@@ -17,23 +17,23 @@
       </div>
 
         <div class="form-item form-type-textfield form-item-name">
-          <label class="sr-only" for="username">Username
+          <label class="sr-only" for="email">BC Username or Email
             <span class="form-required" title="This field is required.">*</span>
           </label>
-          <b-form-input v-model="username"
+          <b-form-input v-model="email"
                   type="text"
-                  id="username"
-                  name="name"
+                  id="email"
+                  name="email"
                   value
                   class="form-text required"
-                  placeholder="Username"
+                  placeholder="BC Username or Email"
                   v-validate="'required'"></b-form-input>
                   
-          <span>{{ errors.first('username') }}</span>
+
 
           <div
             class="login-instructions"
-          >If you are a BC user, please use your basic BC ID as username. Otherwise, use your email address.</div>
+          >If you are a BC user1, please use your basic BC ID as username. Otherwise, use your email address.</div>
         </div>
         <div class="form-item form-type-password form-item-pass">
           <label class="sr-only" for="password">Password
@@ -42,12 +42,12 @@
           <b-form-input v-model="password"
                   type="password"
                   id="password"
-                  name="name"
+                  name="password"
                   value
                   class="form-text required"
                   placeholder="Password"
                   v-validate="'required'"></b-form-input>
-            <span>{{ errors.first('password') }}</span>
+
           <div class="login-instructions"></div>
         </div>
         <input type="hidden" name="form_id" value="user_login">
@@ -67,8 +67,9 @@
 export default {
   data(){
     return {
-      username: '',
-      password: ''
+      email: '',
+      password: '',
+      errors: []
     }
   },
   computed:{
@@ -86,7 +87,7 @@ export default {
       'login'
     ]),
     fireLogin(){
-      this.login({ username: this.username, password: this.password});
+      this.login({ email: this.email, password: this.password});
     }
   }
 };

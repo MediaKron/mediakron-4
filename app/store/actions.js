@@ -3,6 +3,9 @@ import router from '@/router';
 
 
 const actions = {
+    event({ commit, state }, event ){
+        commit('event', event);
+    },
     uploadProgress({ commit, state }, progressEvent){
         let loaded = progressEvent.loaded | 1,
             total = progressEvent.total | 1;

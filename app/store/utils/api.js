@@ -103,7 +103,6 @@ export default {
         if (!axios.isCancel(error)) {
           //store.dispatch('ERROR', error);
         }
-        console.log(error)
         return Promise.reject(error);
       }
     );
