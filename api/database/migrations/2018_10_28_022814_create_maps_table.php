@@ -18,9 +18,9 @@ class CreateMapsTable extends Migration
             $table->integer('item_id');
             $table->string('url')->nullable();
             $table->string('type')->nullable();
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-            $table->string('zoom')->nullable();
+            $table->decimal('latitude', 10, 6)->default(0);
+            $table->decimal('longitude', 10, 6)->default(0);
+            $table->integer('zoom')->default(1);
             $table->timestamps();
             $table->index('item_id');
         });

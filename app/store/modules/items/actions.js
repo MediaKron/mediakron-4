@@ -89,6 +89,10 @@ const actions = {
             });
     },
 
+    listError({}, error){
+        console.log(error);
+    },
+
     /**
      * Load a single item
      * @param {*} param0

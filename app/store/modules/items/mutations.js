@@ -92,7 +92,10 @@ export const mutations = {
      * @param {*} state
      */
     itemLoad(state, data){
+        console.log('item loaded')
         state.first = new Item(data[0], state.site);
+        console.log(state.first)
+        console.log(state.first.zoom);
         if(data[1]) state.second = new Item(data[1], state.site);
         if(data[2]) state.third = new Item(data[2], state.site);
     },
