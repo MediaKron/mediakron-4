@@ -1,55 +1,101 @@
 <template>
-    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
-        <header class="line-behind mb-3">
-            <h1>Content</h1>
+    <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
+
+        <header class="line-behind mb-4 mt-4">
+            <h1>My Content</h1>
         </header>
 
-        <b-button-toolbar class="mb-4 items-center">
-             <b-input-group size="sm" class="w-12 mb-2 mr-4 ">
-                <b-input-group-text slot="prepend" class="bg-dark text-white uppercase">
-                    <font-awesome-icon icon="search" class="uppercase" />
-                </b-input-group-text>
-                <b-form-input variant="outline-dark" v-model="filter" placeholder="Quick Search" size="sm" />
-                <b-input-group-append>
-                    <b-button :disabled="!filter" @click="filter = ''" size="sm" class="uppercase">Clear</b-button>
-                </b-input-group-append>
-            </b-input-group>
-            <div class="active-filters inline-block mr-auto mb-2">
-                <span class="pr-2">Active Filters:</span>
-                <b-button variant="dark" size="sm" class="text-left mr-2">
-                    <font-awesome-icon icon="user" /><span class="pr-2"> AUTHOR: My Content</span> <font-awesome-icon icon="times" />
-                </b-button>
-                <b-button variant="dark" size="sm" class="text-left mr-2">
-                    <font-awesome-icon icon="map-marker-alt" /><span class="pr-2"> TYPE: Map</span><font-awesome-icon icon="times" />
-                </b-button>
-                </div>
-             <b-button variant="primary" size="sm" :to="basePath + '/content/add'">
-                <font-awesome-icon icon="plus" />
-                <span class="ml-2 uppercase">Add Content</span>
-            </b-button>
-        </b-button-toolbar>
-        
-        <b-button-toolbar key-nav aria-label="Toolbar with button groups" class="">
-            <b-form-checkbox v-model="selectAll" class="mr-2 text-sm text-black" button button-variant="link":tabindex="0">
-                <span v-if="selectAll"><font-awesome-icon icon="times" class="pr-1"/>Unselect all  </span> <span v-else class="text-black"><font-awesome-icon icon="check" class="pr-1"/>Select All</span>
-                <b-badge variant="light" class="top-0 ml-2">400</b-badge>
-            </b-form-checkbox>
+        <div class="pb-2">
 
-            <b-dropdown class="border-none" size="sm" variant="link" right>
-                <template slot="button-content" class="px-4">
-                    <span class="text-uppercase ml-1 px-1 text-black">
-                        <font-awesome-icon icon="cogs" /> Bulk Actions</span>
-                </template>
-                <b-dropdown-item href="#">Delete</b-dropdown-item>
-                <b-dropdown-item href="#">Publish</b-dropdown-item>
-                <b-dropdown-item href="#">Unpublish</b-dropdown-item>
-            </b-dropdown>
+            <b-button-toolbar key-nav aria-label="Toolbar with button groups" class="">
 
-        </b-button-toolbar>
+                <b-input-group size="sm" class="w-12 mb-2 mr-1">
+                    <b-input-group-text slot="prepend" class="bg-white text-black uppercase">
+                        <font-awesome-icon icon="search" class="uppercase" />
+                    </b-input-group-text>
+                    <b-form-input variant="outline-dark" v-model="filter" placeholder="Quick Search" size="sm" />
+                    <b-input-group-append>
+                        <b-button :disabled="!filter" @click="filter = ''" size="sm" class="uppercase">Clear</b-button>
+                    </b-input-group-append>
+                </b-input-group>
+
+                <b-button v-b-toggle.types size="sm" variant="outline-dark" class="mb-2 mr-auto">
+                    <font-awesome-icon icon="filter" /> Filter By Type</b-button>
+
+                <b-dropdown class="border-none mb-2 mx-2" size="sm" variant="outline-dark" right>
+                    <template slot="button-content" class="px-4">
+                        <span class="text-uppercase ml-1 px-1 text-black">
+                            <font-awesome-icon icon="cogs" /> Bulk Actions</span>
+                    </template>
+                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                    <b-dropdown-item href="#">Publish</b-dropdown-item>
+                    <b-dropdown-item href="#">Unpublish</b-dropdown-item>
+                </b-dropdown>
+
+                <b-form-checkbox v-model="selectAll" size="sm" class="mr-2 mb-2 text-sm text-black" button
+                    button-variant="outline-dark" :tabindex="0">
+                    <span v-if="selectAll">
+                        <font-awesome-icon icon="times" class="pr-1" />Unselect all </span> <span v-else
+                        class="text-black">
+                        <font-awesome-icon icon="check" class="pr-1" />Select All</span>
+                    <b-badge variant="light" class="top-0 ml-2">400</b-badge>
+                </b-form-checkbox>
+
+            </b-button-toolbar>
+            <b-collapse id="types" class="mt-2 mb-2">
+                <b-button-group class="flex flex-wrap xl:flex-no-wrap">
+                    <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Collections">
+                        <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
+                        <b-badge variant="light" class="ml-1 bg-white "> {{ counts.collections }}
+                        </b-badge>
+                    </b-button>
+                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Stories">
+                        <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-1"> Stories</span>
+                        <b-badge variant="light" class="ml-1 bg-white ">4
+                        </b-badge>
+                    </b-button>
+                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Maps">
+                        <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-1"> Maps</span>
+                        <b-badge variant="light" class="ml-1 bg-white ">2
+                        </b-badge>
+                    </b-button>
+                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Timelines">
+                        <font-awesome-icon icon="clock" /><span class="mr-auto ml-1"> Timelines</span>
+                        <b-badge variant="light" class="ml-1 bg-white ">1
+                        </b-badge>
+                    </b-button>
+                    <b-button v-if="counts.images > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Images">
+                        <font-awesome-icon icon=image /><span class="mr-auto ml-1"> Images</span>
+                        <b-badge variant="light" class="ml-1 bg-white ">{{ counts.images }}</b-badge>
+                    </b-button>
+                    <b-button v-if="counts.videos > 0"variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Videos">
+                        <font-awesome-icon icon="video" /> <span class="mr-auto ml-1">Videos</span>
+                        <b-badge variant="light" class="ml-1 bg-white ">{{ counts.videos }}</b-badge>
+                    </b-button>
+                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Files">
+                        <font-awesome-icon icon="file" /><span class="mr-auto ml-1"> Files</span>
+                        <b-badge variant="light" class="ml-1 bg-white ">2</b-badge>
+                    </b-button>
+                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover title="Click to filter by Audio">
+                        <font-awesome-icon icon="volume-up" /><span class="mr-auto ml-1"> Audio</span>
+                        <b-badge variant="light" class="ml-1 bg-white ">1
+                        </b-badge>
+                    </b-button>
+                </b-button-group>
+            </b-collapse>
+        </div>
 
         <loader v-if="listIsLoading">Loading...</loader>
-        <b-table class="mt-1 border border-grey rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
-            @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+        <b-table class="mt-1 border border-grey bg-light rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
+            :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
                 </b-form-checkbox>
@@ -66,17 +112,17 @@
                 author
             </template>
             <template slot="details" slot-scope="items">
-                <b-dropdown variant="outline-dark" size="sm" right>
+                <b-dropdown variant="link" size="sm" right>
                     <template slot="button-content">
-                         <font-awesome-icon icon="info-circle" /> Details
+                        <font-awesome-icon icon="info-circle" /> Details
                     </template>
                     <b-dropdown-text href="#">Created: {{ items.item.updated_at }}</b-dropdown-text>
                     <b-dropdown-text href="#">Another item</b-dropdown-text>
                 </b-dropdown>
-        
+
             </template>
             <template slot="status" slot-scope="items">
-        
+
             </template>
         </b-table>
 
@@ -93,9 +139,11 @@
         mapActions
     } from 'vuex';
     import Loader from '@/components/Loader';
+    import Multiselect from 'vue-multiselect'
     export default Vue.extend({
         components: {
-            Loader
+            Loader,
+            Multiselect
         },
         computed: {
             ...mapGetters('sites', [
@@ -110,9 +158,16 @@
                 'items',
                 'currentPage',
                 'totalItems',
-                'lastPage'
+                'lastPage',
+                'counts'
+            ]),
+            ...mapGetters('users', [
+                'listIsLoading',
+                'listIsLoaded',
+                'users'
             ]),
         },
+
         methods: {
             linkGen(pageNum) {
                 return '/' + this.currentSite.url + '/content/alltable/' + pageNum
@@ -120,15 +175,13 @@
             ...mapActions('items', [
                 'routeLoad'
             ]),
+            nameWithLang ({ name, language }) {
+      return `${name}`
+    }
         },
         data() {
             return {
                 fields: {
-                    select: {
-                        label: "Select",
-                        sortable: false,
-                        class: 'text-center'
-                    },
                     title: {
                         label: "Title",
                         sortable: true
@@ -153,10 +206,41 @@
                         label: "Status",
                         sortable: false
                     },
+                    select: {
+                        label: "Select",
+                        sortable: false,
+                        class: 'text-center'
+                    },
                 },
                 filter: null,
                 isBusy: false,
-                selectAll: false
+                selectAll: false,
+                value: {
+                    name: 'Authors',
+                    language: 'JavaScript'
+                },
+                options: [{
+                        name: 'Tim Lindgren',
+                        language: 'JavaScript'
+                    },
+                    {
+                        name: 'Jamie Walker',
+                        language: 'Ruby'
+                    },
+                    {
+                        name: 'Brad Mering',
+                        language: 'Ruby'
+                    },
+                    {
+                        name: 'Joe Smith',
+                        language: 'PHP'
+                    },
+                    {
+                        name: 'Sally',
+                        language: 'Elixir'
+                    }
+                ]
+            
             }
 
         },
@@ -180,5 +264,30 @@
     .thumb {
         width: 75px;
         height: 75px;
+    }
+
+    .content .add-content-btn {
+        background-color: #0d5e93;
+        border-color: #0d5e93;
+    }
+
+    .content .multiselect__tags {
+        border:none;
+        padding-top:2px;
+        padding-bottom:0;
+        min-height:0 !important;
+        margin-left:-1rem;
+    }
+     .content .multiselect,
+     .content .multiselect__select {
+         min-height:0 !important
+    }
+
+     .content .multiselect__select {
+         height: 1.5rem; 
+     }
+
+    .content .multiselect__single {
+        margin-bottom:0;
     }
 </style>

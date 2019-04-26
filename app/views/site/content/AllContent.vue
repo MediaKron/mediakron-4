@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
         <header class="line-behind mb-3">
-            <h1>Content</h1>
+            <h1>Site Library</h1>
         </header>
 
         <b-button-toolbar class="mb-2 items-center">
@@ -44,12 +44,19 @@
                 <b-dropdown-item href="#">Publish</b-dropdown-item>
                 <b-dropdown-item href="#">Unpublish</b-dropdown-item>
             </b-dropdown>
-
+            <b-button class="flex items-center ml-2 text-uppercase " variant="outline-dark"
+                :to="basePath + '/content/deleted'" size="sm">
+                <font-awesome-icon icon="trash-alt" />
+                <span class="ml-1">Trash</span>
+            </b-button>
         </b-button-toolbar>
+        <ItemFilter></ItemFilter>
+
+        
 
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table class="mt-1 border border-grey rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
-            @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+            sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
                 </b-form-checkbox>
@@ -80,7 +87,7 @@
             </template>
         </b-table>
 
-        <!-- b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router / -->
+        <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
 
     </div>
 
@@ -93,9 +100,11 @@
         mapActions
     } from 'vuex';
     import Loader from '@/components/Loader';
+    import ItemFilter from '@/views/site/options/ItemFilter'
     export default Vue.extend({
         components: {
-            Loader
+            Loader,
+            ItemFilter
         },
         computed: {
             ...mapGetters('sites', [

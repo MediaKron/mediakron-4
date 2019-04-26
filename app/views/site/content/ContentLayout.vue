@@ -2,8 +2,8 @@
     <div>
         <div class="w-full">
             <div class="flex">
-                <Navigation class="fixed top w-100 z-10"></Navigation>
-                <aside class="content-sidebar hidden lg:block pb-16 w-15 bg-dark">
+                <Navigation class="fixed top-0 w-100 z-10"></Navigation>
+                <!-- <aside class="content-sidebar hidden lg:block pb-16 w-15 bg-dark">
                     <div class="lg:relative lg:sticky top-0 pt-16">
                         <div class="sticky?lg:h-(screen-8) overflow-y-auto">
                             <h3 class="uppercase text-lg mb-4 text-white pl-3 mt-1 ">Filters</h3>
@@ -29,21 +29,27 @@
                                         </b-dropdown-item>
                                         <b-dropdown-item href="#">Brad Mering <b-badge variant="light">1</b-badge>
                                         </b-dropdown-item>
-                                    </b-dropdown>
-                                  
-                                <!-- <multiselect v-model="authorFilter" :options="authorOptions" class="border border-dark rounded z-10 uppercase text-black text-sm" track-by="value" label="text" placeholder="Select Author" selectLabel="Select" deselectLabel="Remove"/> -->
-                               </div>    
+                                    </b-dropdown> -->
+
+                <!-- <select v-model="authorList">
+                                        <option v-for="user in users" v-bind:value="user.id" @click="userFilter">
+                                            {{ user.email }}
+                                        </option>
+                                    </select> -->
+
+
+                <!-- <multiselect v-model="authorFilter" :options="authorOptions" class="border border-dark rounded z-10 uppercase text-black text-sm" track-by="value" label="text" placeholder="Select Author" selectLabel="Select" deselectLabel="Remove"/> -->
+                <!-- </div>    
                             </div>
                             <h3 class="uppercase text-lg sr-only">Content</h3>
                             <div>
                                 <div class="mb-3 flex flex-col" vertical>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3"
-                                        pressed="true">
+                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3" pressed="true" @clicked="event">
                                         <font-awesome-icon icon="th-large" /><span class="mr-auto ml-2 flex items-center">All Item Types</span> <b-badge variant="light" class="top-0">400
                                         </b-badge>
                                     </b-button>
-                                    <b-button variant="dark" size="sm" class=" text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="folder" /><span class="mr-auto ml-2"> Collections</span> <b-badge variant="light">12
+                                    <b-button v-if="counts.collections > 0" variant="dark" size="sm" class=" text-left mb-1 flex items-center px-3" >
+                                        <font-awesome-icon icon="folder" /><span class="mr-auto ml-2"> Collections</span> <b-badge variant="light">{{counts.collections}}
                                         </b-badge>
                                     </b-button>
                                     <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
@@ -58,11 +64,11 @@
                                         <font-awesome-icon icon="clock" /><span class="mr-auto ml-2"> Timelines</span> <b-badge variant="light">1
                                         </b-badge>
                                     </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon=image /><span class="mr-auto ml-2"> Images</span> <b-badge variant="light">12</b-badge>
+                                    <b-button v-if="counts.images > 0" variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
+                                        <font-awesome-icon icon=image /><span class="mr-auto ml-2"> Images</span> <b-badge variant="light">{{ counts.images }}</b-badge>
                                     </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="video" /> <span class="mr-auto ml-2">Videos</span> <b-badge variant="light">4</b-badge>
+                                    <b-button v-if="counts.videos > 0" variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
+                                        <font-awesome-icon icon="video" /> <span class="mr-auto ml-2">Videos</span> <b-badge variant="light">{{ counts.videos }}</b-badge>
                                     </b-button>
                                     <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
                                         <font-awesome-icon icon="file" /><span class="mr-auto ml-2"> Files</span> <b-badge variant="light">2</b-badge>
@@ -81,10 +87,35 @@
                             </b-button>
                         </div>
                     </div>
-                </aside>
+                </aside> -->
 
                 <main role="main" id="content-wrapper"
                     class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-8 mt-20">
+                    <b-nav tabs class="mb-3 mt-2 max-w-70 mx-auto" >
+                        <b-nav-item active-class="active" :to="basePath + '/content/mycontent'" class="uppercase">My Content </b-nav-item>
+                        <b-nav-item active-class="active" :to="basePath + '/content/all'" class="uppercase">Site Library</b-nav-item>
+                        <b-nav-item active-class="active" :to="basePath + '/content/authors'" class="uppercase mr-auto">Authors</b-nav-item>
+                        <!-- <b-nav-item class="mr-2 uppercase">
+                            <multiselect v-model="value" :options="options" placeholder="Select one"
+                                :custom-label="nameWithLang" label="name" track-by="name">
+
+                            </multiselect>
+                        </b-nav-item> -->
+                        <b-nav-item active-class="active" :to="basePath + '/content/deleted'" class="">
+                            <font-awesome-icon icon="trash-alt" /> Trash</b-nav-item>
+                        <b-nav-item active-class="active" :to="basePath + '/content/archived'" class=" ">
+                            <font-awesome-icon icon="archive" /> Archived</b-nav-item>
+                        <b-nav-item active-class="active" :to="basePath + '/content/import'" class="">
+                            <font-awesome-icon icon="cloud-upload-alt" /> Import</b-nav-item>
+                        <b-nav-item active-class="active" :to="basePath + '/content/export'" class=" mr-auto ">
+                            <font-awesome-icon icon="cloud-download-alt" /> Export</b-nav-item>
+                        <b-nav-item active-class="active" class="-mt-2 -mr-2 p-0">
+                            <b-button variant="primary" size="sm" class="max-w-10" :to="basePath + '/content/add'">
+                                <font-awesome-icon icon="plus" />
+                                <span class="ml-2 uppercase">Add Content</span>
+                            </b-button>
+                        </b-nav-item>
+                    </b-nav>
                     <transition name="fade">
                         <router-view></router-view>
                     </transition>
@@ -113,6 +144,7 @@
             Navigation
         },
         computed: {
+
             ...mapGetters('sites', [
                 'siteIsLoading',
                 'siteIsLoaded',
@@ -121,15 +153,58 @@
             ...mapGetters('items', [
                 'listIsLoading',
                 'listIsLoaded',
-                'items'
+                'items',
+                'counts'
+            ]),
+            ...mapGetters('users', [
+                'listIsLoading',
+                'listIsLoaded',
+                'users'
             ]),
             filteredItems() {
                 return this.items.filter(function (item) {
                     return this.typeFilter.indexOf(item.type) == -1
                 }.bind(this))
+            },
+            userFilter: function () {
+                /*
+                var vm = this;
+                return function (keyname) {
+                    var output = [];
+                    var keys   = [];
+
+                    vm.users.forEach(function (user) {
+                        var key = user[keyname];
+
+                        if (keys.indexOf(key) === -1) {
+                            keys.push(key);
+                            output.push(user);
+                        }
+                    });
+                    */
+
+                return true
+                //}
+            },
+
+            objList() {
+                return this.list.map((item) => Object.keys(item))
+            },
+
+            keyValuePair() {
+                return this.list.map((item) => {
+                    return Object.keys(item).reduce((acc, curr) => {
+                        acc.push(`${curr} - ${item[curr]}`)
+                        return acc
+                    }, [])
+                })
             }
         },
+
         methods: {
+            event() {
+                console.log('my event')
+            },
             ...mapActions('items', [
                 'routeLoad'
             ]),
@@ -144,6 +219,7 @@
                     'folder',
                 ],
                 authorFilter: null,
+                /* to do: get the list of authors from userList */
                 authorOptions: [{
                         value: null,
                         text: 'Select Author'
@@ -203,22 +279,22 @@
         margin-bottom: 0;
     }
 
-    .content-sidebar .btn-dark:not(:disabled):not(.disabled):active, 
-    .content-sidebar .btn-dark:not(:disabled):not(.disabled).active, 
-    .content-sidebar .show > .btn-dark.dropdown-toggle {
+    .content-sidebar .btn-dark:not(:disabled):not(.disabled):active,
+    .content-sidebar .btn-dark:not(:disabled):not(.disabled).active,
+    .content-sidebar .show>.btn-dark.dropdown-toggle {
         background: #fff;
-        color:#000;
-        border:none;
-        border-radius:0;
-        text-transform:uppercase;
+        color: #000;
+        border: none;
+        border-radius: 0;
+        text-transform: uppercase;
     }
 
     .content-sidebar .btn .badge {
         background: #000;
-        color:#fff;
-        top:1px;
+        color: #fff;
+        top: 1px;
     }
-    
+
 
     .fade-enter-active,
     .fade-leave-active {

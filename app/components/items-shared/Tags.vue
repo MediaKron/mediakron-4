@@ -1,30 +1,28 @@
 <template>
-    <div class="item-element-tags" v-if="isEditing">
-        <b-button @click="isEditingTags=!isEditingTags" v-b-toggle.tagsCollapse variant="outline-dark" class="mb-3 text-black w-100 border-dashed text-left"> 
-            <span class="when-opened"><span class="sr-only">Close</span><font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span class="sr-only">Open</span><font-awesome-icon icon="caret-down" /> </span> Tags
-        </b-button>
-        <b-collapse id="tagsCollapse" >
-        <b-form-group class="">
-            <label for="tag_names">Create tags</label>
-            <multiselect 
-                v-model="editItem.tags" 
-                tag-placeholder="Add this as new tag" 
-                placeholder="Search or add a tag" 
-                label="title" 
-                track-by="id" 
-                :options="tags"
-                :multiple="true" 
-                :taggable="true" 
-                @tag="addTag"></multiselect>
+    <div class="item-element-tags" v-if="isEditing" v-bind:class="{ isVisible: 'NewClass' }">
+        <b-button @click="isEditingTags=!isEditingTags" v-b-toggle.tagsCollapse class="mb-3"> {{ tagsButton }}</b-button>
+        <b-collapse id="tagsCollapse" @show="collapseShow">
+            <b-form-group class="">
+                <label for="tag_names">Create tags</label>
+                <multiselect 
+                    v-model="editItem.tags" 
+                    tag-placeholder="Add this as new tag" 
+                    placeholder="Search or add a tag" 
+                    label="title" 
+                    track-by="id" 
+                    :options="tags"
+                    :multiple="true" 
+                    :taggable="true" 
+                    @tag="addTag"></multiselect>
 
-        </b-form-group>
+            </b-form-group>
         </b-collapse>
     </div>
     <div v-else>
         <div v-if="first.tags.length > 0">
             <h2>Tags</h2>
             <ul>
-                <li v-for="tag in first.tags">{{ tag.id }} - {{ tag.title }} </li>
+                <li v-for="tag in first.tags" v-bind:key="tag.id">{{ tag.id }} - {{ tag.title }} </li>
             </ul>
         </div>
     </div>
@@ -42,6 +40,7 @@ export default {
     },
     data () {
         return {
+            isVisible: false,
             /*
             options: [
                 { title: 'Vue.js', id: '1' },
@@ -55,6 +54,10 @@ export default {
 
     },
     methods: {
+        collapseShow(){
+            console.log('Shown')
+            this.isVisible = true;
+        },
         addTag(newTag) {
             const tag = {
                 title: newTag

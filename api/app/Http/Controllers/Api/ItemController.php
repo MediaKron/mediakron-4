@@ -26,7 +26,14 @@ class ItemController extends Controller
         //
         $query = Item::listQuery()->with(Item::$select_with)
             ->where('site_id', $site);
-        return $query->paginate(request('per_page', 50));
+        $data = $query->paginate(request('per_page', 50));
+        $custom = collect([
+            'collections' => Item::listQuery()->where('site_id', $site)->where('type', 'collection')->count(),
+            'images' => Item::listQuery()->where('site_id', $site)->where('type', 'image')->count(),
+            'videos' => Item::listQuery()->where('site_id', $site)->where('type', 'video')->count(),
+        ]);
+        $data = $custom->merge($data);
+        return $data;
     }
 
     /**

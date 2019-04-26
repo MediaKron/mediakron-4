@@ -46,6 +46,7 @@ class Item extends Model {
                 return '.jpg, .png, .gif';
         }
     }
+
     
     imageUrl(style){
         if(!this.thumbnail || this.thumnbail == ''){
@@ -89,6 +90,10 @@ class Item extends Model {
             return this.site.banner_color;
         }
         return this.color;
+    }
+
+    hasTags(){
+        return this.tags.length > 0;
     }
 
     getZoom(){
@@ -146,7 +151,6 @@ class Item extends Model {
                 return 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
             }
     }
-
 
     defaults(){
         return {

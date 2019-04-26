@@ -51,6 +51,10 @@ export const mutations = {
         state.pagination.lastPage = data.last_page;
         state.pagination.pageSize = data.per_page;
         state.pagination.totalItems = data.total;
+
+        state.count.collections = data.collections | 0;
+        state.count.videos = data.videos | 0;
+        state.count.images = data.collections | 0;
     },
 
     /**

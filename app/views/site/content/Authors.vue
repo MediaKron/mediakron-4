@@ -2,6 +2,7 @@
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
         <header class="line-behind mb-4">
             <h1> Authors</h1>
+            <span> {{ }}</span>
         </header>
 
         <b-input-group class="my-3 mb-3 max-w-sm">
@@ -10,20 +11,21 @@
                 <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
             </b-input-group-append>
         </b-input-group>
-
         <loader v-if="listIsLoading">Loading...</loader>
-        <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at"
-            sort-desc="true" stacked="md">
-            <template slot="title" slot-scope="items">
-                <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" />
-                <router-link :to="items.item.url()" class="font-bold text-1xl">{{ items.item.title }}
-                </router-link>
+        <b-table v-if="listIsLoaded" :fields="fields" :filter="filter" :items="users" sortBy="last_login" stacked="md">
+            <template slot="email" slot-scope="user">
+                {{ user.item.email }}
             </template>
-            <template slot="type" slot-scope="items">
-                {{ items.item.type}}
+
+            <template slot="username" slot-scope="user">
+                {{ user.item.username }}
+            </template>
+
+            <template slot="last_login" slot-scope="user">
+                {{ user.item.last_login }}
             </template>
         </b-table>
-        <!-- b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router / -->
+        <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
     </div>
 </template>
 
@@ -45,47 +47,69 @@
                 'basePath',
                 'currentSite'
             ]),
-            ...mapGetters('items', [
+
+            ...mapGetters('users', [
                 'listIsLoading',
                 'listIsLoaded',
-                'items',
+                'users',
                 'currentPage',
                 'totalItems',
                 'lastPage'
             ]),
+
+            objList() {
+                return this.users.map((item) => Object.values(item))
+            },
+
+            keyValuePair() {
+                return this.users.map((item) => {
+                    return Object.keys(item).reduce((acc, curr) => {
+                        acc.push(`${curr} - ${item[curr]}`)
+                        return acc
+                    }, [])
+                })
+            }
         },
+
         methods: {
             linkGen(pageNum) {
-                return '/' + this.currentSite.url + '/content/alltable/' + pageNum
+                return '/' + this.currentSite.url + '/content/authors/' + pageNum
             },
-            ...mapActions('items', [
+            ...mapActions('users', [
                 'routeLoad'
             ]),
         },
         data() {
             return {
                 fields: {
-
-                    title: {
-                        label: "Title",
+                    email: {
+                        label: "Email",
                         sortable: true
                     },
-                    type: {
-                        label: "Type",
+                    username: {
+                        label: "Username",
                         sortable: true
                     },
-                    updated_at: {
-                        label: "Updated",
+                    last_login: {
+                        label: "last login",
                         sortable: true
                     },
                 },
                 filter: null,
-                placeholderImage: {
-                    blank: true,
-                    width: 50,
-                    height: 50,
-                    class: 'mr-2'
-                },
+                list: [
+                    /*
+                    {
+                        foo: 'value1',
+                        bar: 'value2',
+                        baz: 'value3'
+                    },
+                    {
+                        foo: 'value4',
+                        bar: 'value5',
+                        baz: 'value6'
+                    }
+                    */
+                ],
             }
 
         },
