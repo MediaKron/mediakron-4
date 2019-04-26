@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-40 mx-auto lg:overflow-visible ">
         <header class="line-behind mb-4">
-            <h1>Create Content</h1>
+            <h1>Add Content</h1>
         </header>
         <h2 class="mb-4">Content Organizers</h2>
          <b-button-group class="flex mb-3">
