@@ -17,7 +17,6 @@ class Item extends Model {
     constructor(data, site) {
         super(data)
         this.site = site
-        console.log(this)
         return this;
     }
 
