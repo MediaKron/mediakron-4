@@ -93,7 +93,7 @@
                     class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-8 mt-20">
                     <b-nav tabs class="mb-3 mt-2 max-w-70 mx-auto" >
                         <b-nav-item active-class="active" :to="basePath + '/content/mycontent'" class="uppercase">My Content </b-nav-item>
-                        <b-nav-item active-class="active":to="basePath + '/content/all'" class="uppercase">Site Library</b-nav-item>
+                        <b-nav-item active-class="active" :to="basePath + '/content/all'" class="uppercase">Site Library</b-nav-item>
                         <b-nav-item active-class="active" :to="basePath + '/content/authors'" class="uppercase mr-auto">Authors</b-nav-item>
                         <!-- <b-nav-item class="mr-2 uppercase">
                             <multiselect v-model="value" :options="options" placeholder="Select one"
