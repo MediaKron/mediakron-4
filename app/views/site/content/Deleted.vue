@@ -1,37 +1,6 @@
 <template>
     <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
 
-        <b-nav tabs class="mb-3 mt-2">
-            <b-nav-item  class="text-black weight-bold uppercase">My Content </b-nav-item>
-            <b-nav-item :to="basePath + '/content/all'" class="uppercase">Site Library</b-nav-item>
-            <!-- <b-nav-item :to="basePath + '/content/authors'" class="mr-auto">Authors</b-nav-item> -->
-            <b-nav-item class="mr-2 uppercase">
-                <multiselect 
-                v-model="value"
-                :options="options"
-                placeholder="Select one"
-                :custom-label="nameWithLang"
-    label="name"
-    track-by="name">
-
-            </multiselect>
-            </b-nav-item>
-            <b-nav-item active :to="basePath + '/content/deleted'" class="">
-                <font-awesome-icon icon="trash-alt" /> Trash</b-nav-item>
-            <b-nav-item :to="basePath + '/content/archived'" class=" ">
-                <font-awesome-icon icon="archive" /> Archived</b-nav-item>
-            <b-nav-item :to="basePath + '/content/import'" class="">
-                <font-awesome-icon icon="cloud-upload-alt" /> Import</b-nav-item>
-            <b-nav-item :to="basePath + '/content/export'" class=" mr-auto ">
-                <font-awesome-icon icon="cloud-download-alt" /> Export</b-nav-item>
-            <b-nav-item class="-mt-2 -mr-2 p-0">
-                <b-button variant="primary" size="sm" class="max-w-10" :to="basePath + '/content/add'">
-                    <font-awesome-icon icon="plus" />
-                    <span class="ml-2 uppercase">Add Content</span>
-                </b-button>
-            </b-nav-item>
-        </b-nav>
-
         <header class="line-behind mb-4 mt-4">
             <h1>Trash</h1>
         </header>

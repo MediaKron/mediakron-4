@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
         <header class="line-behind mb-3">
-            <h1>Content</h1>
+            <h1>Site Library</h1>
         </header>
 
         <b-button-toolbar class="mb-2 items-center">
