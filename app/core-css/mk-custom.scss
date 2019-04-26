@@ -4,6 +4,13 @@
 //     background:$gray-600;
 // }
 
+/* Collapse Arrows */
+
+.collapsed > .when-opened,
+:not(.collapsed) > .when-closed {
+  display: none;
+}
+
 
 /* Loading Spinner */
 

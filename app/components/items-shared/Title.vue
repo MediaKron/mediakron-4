@@ -1,10 +1,12 @@
 <template>
     <header class="item-element-title w-75" v-if="isEditing">
             <b-input-group>
-             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" class="border-dashed text-black text-4xl"></b-form-input>
-            <b-input-group-text for="title" slot="append" tag="label" class="items-center flex-col align text-sm bg-white w-24 border-dashed">
+                <b-input-group-text for="title" slot="prepend" tag="label" class="items-center align text-sm bg-white w-24 border-dashed">
                 <span class="font-bold">Item Title</span>
             </b-input-group-text>
+             <b-form-textarea id="title" v-model="editItem.title" placeholder="Add a title" class="border-dashed text-black text-4xl" rows="1"
+                max-rows="100"></b-form-textarea>
+            
         </b-input-group>
                
     </header>

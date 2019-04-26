@@ -4,7 +4,7 @@
       <b-navbar-toggle target="nav_collapse" class="order-2 pl-3 border-0 navbar-toggle">
       </b-navbar-toggle>
 
-      <b-navbar-brand :to="'/' + currentSite.uri" class="text-uppercase">{{ currentSite.title }}</b-navbar-brand>
+      <b-navbar-brand :to="'/' + currentSite.uri" class="text-uppercase text-2xl ">{{ currentSite.title }}</b-navbar-brand>
 
       <b-collapse is-nav id="nav_collapse">
         <!-- Right aligned nav items -->

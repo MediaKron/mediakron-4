@@ -13,10 +13,6 @@
                 <font-awesome-icon icon="paint-brush" />
                 <span class="pl-2 uppercase">Appearance</span>
             </b-nav-item>
-            <b-nav-item :active="inHomepage" v-if="canBrowse" :to="basePath + '/options/homepage'">
-                <font-awesome-icon icon="home" />
-                <span class="pl-2 uppercase">Homepage</span>
-            </b-nav-item>
             <b-nav-item :active="inPeople" :to="basePath + '/options/people'">
                 <font-awesome-icon icon="user-cog" />
                 <span class="pl-2 uppercase">People</span>

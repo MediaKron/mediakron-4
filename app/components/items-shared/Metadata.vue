@@ -1,6 +1,8 @@
 <template>
     <div class="item-element-metadata" v-if="isEditing">
-        <b-button @click="isEditingMetadata=!isEditingMetadata" v-b-toggle.metadataCollapse class="mb-3"> {{ metadataButton }}</b-button>
+        <b-button v-b-toggle.metadataCollapse variant="outline-dark" class="mb-3 text-black w-100 border-dashed text-left">
+           <span class="when-opened"><span class="sr-only">Close</span><font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span class="sr-only">Open</span><font-awesome-icon icon="caret-down" /> </span> Metadata
+        </b-button>
         <b-collapse id="metadataCollapse" >
             <b-form-group class="">
                 <label for="source">Source</label>

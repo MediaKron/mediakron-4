@@ -7,7 +7,7 @@ import Help from "@/views/help/help";
 import Tags from "@/views/site/tags/Tags";
 import Search from "@/views/site/search/Search";
 import HomePage from "@/views/site/homepage/Homepage";
-
+import HomeSettings from "@/views/site/homepage/HomeSettings";
 import content from "./content";
 import siteoptions from "./siteoptions";
 
@@ -23,6 +23,12 @@ var routes = {
         component: Help,
         title: "Help",
         props: true
+      },
+      {
+        path: "homesettings",
+        component: HomeSettings,
+        title: "Homepage Settings",
+        props: true,
       },
       {
         path: "tags",
@@ -78,13 +84,17 @@ var routes = {
           siteNav: true,
         }
       },
+      
 
       {
         path: "/",
         name: "homepage",
         component: HomePage,
         props: true
-      }
+      },
+      
+
+
     ]
   }
 };
