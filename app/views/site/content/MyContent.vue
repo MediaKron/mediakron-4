@@ -75,10 +75,10 @@
             </b-button-toolbar>
             <b-collapse id="types" class="mt-2 mb-2">
                 <b-button-group class="flex flex-wrap xl:flex-no-wrap">
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Collections">
                         <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">3
+                        <b-badge variant="light" class="ml-1 bg-white "> {{ counts.collections }}
                         </b-badge>
                     </b-button>
                     <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
@@ -99,15 +99,15 @@
                         <b-badge variant="light" class="ml-1 bg-white ">1
                         </b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button v-if="counts.images > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Images">
                         <font-awesome-icon icon=image /><span class="mr-auto ml-1"> Images</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">4</b-badge>
+                        <b-badge variant="light" class="ml-1 bg-white ">{{ counts.images }}</b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button v-if="counts.videos > 0"variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Videos">
                         <font-awesome-icon icon="video" /> <span class="mr-auto ml-1">Videos</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">11</b-badge>
+                        <b-badge variant="light" class="ml-1 bg-white ">{{ counts.videos }}</b-badge>
                     </b-button>
                     <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Files">
@@ -189,7 +189,13 @@
                 'items',
                 'currentPage',
                 'totalItems',
-                'lastPage'
+                'lastPage',
+                'counts'
+            ]),
+            ...mapGetters('users', [
+                'listIsLoading',
+                'listIsLoaded',
+                'users'
             ]),
         },
 
