@@ -240,7 +240,6 @@
                         value: 'brad',
                         text: 'Brad'
                     },
-                    users,
                 ],
 
                 sortOrder: null,
