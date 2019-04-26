@@ -13,9 +13,9 @@
                     <b-input-group-text slot="prepend" class="bg-white text-black uppercase">
                         <font-awesome-icon icon="search" class="uppercase" />
                     </b-input-group-text>
-                    <b-form-input variant="outline-dark" v-model="filter" placeholder="Quick Search" size="sm" />
+                    <b-form-input variant="outline-dark" v-model="search" @keyup.13="doSearch" placeholder="Quick Search" size="sm" />
                     <b-input-group-append>
-                        <b-button :disabled="!filter" @click="filter = ''" size="sm" class="uppercase">Clear</b-button>
+                        <b-button :disabled="!search" @click="search = ''" size="sm" class="uppercase">Clear</b-button>
                     </b-input-group-append>
                 </b-input-group>
 
@@ -47,7 +47,7 @@
                     <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Collections">
                         <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
-                        <b-badge variant="light" class="ml-1 bg-white "> {{ counts.collections }}
+                        <b-badge variant="light" class="ml-1 bg-white" > {{ counts.collections }}
                         </b-badge>
                     </b-button>
                     <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
@@ -57,7 +57,7 @@
                         </b-badge>
                     </b-button>
                     <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Maps">
+                        v-b-tooltip.hover title="Click to filter by Maps" :to="addFilter({'type': 'map'})">
                         <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-1"> Maps</span>
                         <b-badge variant="light" class="ml-1 bg-white ">2
                         </b-badge>
@@ -69,11 +69,11 @@
                         </b-badge>
                     </b-button>
                     <b-button v-if="counts.images > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Images">
+                        v-b-tooltip.hover title="Click to filter by Images" :to="addFilter({'type': 'image'})">
                         <font-awesome-icon icon=image /><span class="mr-auto ml-1"> Images</span>
                         <b-badge variant="light" class="ml-1 bg-white ">{{ counts.images }}</b-badge>
                     </b-button>
-                    <b-button v-if="counts.videos > 0"variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button v-if="counts.videos > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Videos">
                         <font-awesome-icon icon="video" /> <span class="mr-auto ml-1">Videos</span>
                         <b-badge variant="light" class="ml-1 bg-white ">{{ counts.videos }}</b-badge>
@@ -95,7 +95,7 @@
 
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table class="mt-1 border border-grey bg-light rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
-            :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
+            :fields="fields" sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
                 </b-form-checkbox>
@@ -169,18 +169,41 @@
         },
 
         methods: {
+            doSearch(){
+                var search = this.search;
+                var to = this.$route,
+                    path = to.path,
+                    query = {};
+                Object.assign(query, to.query)
+                query.title = search;
+                this.$router.push({
+                    path: path,
+                    query: query
+                });
+            },
             linkGen(pageNum) {
                 return '/' + this.currentSite.url + '/content/alltable/' + pageNum
             },
             ...mapActions('items', [
                 'routeLoad'
             ]),
+            addFilter(options){
+                var to = this.$route,
+                    path = to.path,
+                    query = {};
+                Object.assign(query, to.query);
+                Object.keys(options).forEach((key) =>{
+                    query[key] = options[key]; 
+                });
+                return { path: path, query: query}
+            },
             nameWithLang ({ name, language }) {
-      return `${name}`
-    }
+                return `${name}`
+            }
         },
         data() {
             return {
+                search:'',
                 fields: {
                     title: {
                         label: "Title",
@@ -246,6 +269,11 @@
         },
         watch: {
             '$route.params.page': function (page) {
+                this.routeLoad({
+                    to: this.$route
+                });
+            },
+            '$route.query': function (page) {
                 this.routeLoad({
                     to: this.$route
                 });

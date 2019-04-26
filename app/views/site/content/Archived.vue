@@ -99,6 +99,7 @@
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
                 </b-form-checkbox>
+                <m-row-actions :item="items.item"></m-row-actions>
             </template>
             <template slot="title" slot-scope="items">
                 <b-img :src="items.item.imageUrl('small')" blank-color="#777" alt="" class="h-16 mx-auto pr-2" />
@@ -140,10 +141,13 @@
     } from 'vuex';
     import Loader from '@/components/Loader';
     import Multiselect from 'vue-multiselect'
+    import MRowActions from '@/components/controls/RowActions';
     export default Vue.extend({
+
         components: {
             Loader,
-            Multiselect
+            Multiselect,
+            MRowActions
         },
         computed: {
             ...mapGetters('sites', [
@@ -247,7 +251,7 @@
         },
         mounted() {
             this.routeLoad({
-                to: this.$route,
+                to: tdhis.$route,
                 site: this.currentSite
             });
         }
