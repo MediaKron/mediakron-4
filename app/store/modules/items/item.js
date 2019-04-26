@@ -91,23 +91,60 @@ class Item extends Model {
         return this.color;
     }
 
-    zoom(){
+    getZoom(){
+        console.log(this.map)
+        return this.map.zoom;
+    }
+    getMaxZoom(){
         return 1;
     }
-    maxZoom(){
+    getMinZoom(){
         return 1;
     }
-    minZoom(){
-        return 1;
+    getCenter(){
+        return this.map.center;
     }
-    center(){
-        return { lat: 51.505, lng: -0.09 };
+    getTiles(){
+        switch (this.map.type){
+            case 'osm':
+                return 'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
+            case 'carto-voyager':
+                return 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png';
+            case 'stamen-light':
+                return 'https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png';
+            case 'stamen-watercolor':
+                return 'https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png';
+            case 'Esri_WorldStreetMap':
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
+            case 'Esri_DeLorme':
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}';
+            case 'Esri_NatGeoWorldMap':
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}';
+            case 'Esri_WorldImagery': 
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+            default: 
+                return 'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
+        }
     }
-    tiles(){
-        return 'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
-    }
-    attribution(){
-      return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+    getAttribution(){
+        switch (this.map.type){
+            case 'osm':
+                return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+            case 'carto-voyager':
+                return 'Copyright Carto. Data by OpenStreetMap';
+            case 'stamen-light':
+                return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+            case 'stamen-watercolor':
+                return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+            case 'Esri_WorldStreetMap':
+                return 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012e';
+            case 'Esri_DeLorme':
+                return 'Tiles &copy; Esri &mdash; Copyright: &copy;2012 DeLorme';
+            case 'Esri_NatGeoWorldMap':
+                return 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC';
+            case 'Esri_WorldImagery': 
+                return 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+            }
     }
 
 

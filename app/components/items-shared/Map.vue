@@ -1,16 +1,17 @@
 <template>
     <div v-if="itemIsLoaded">
         <l-map
-        :zoom.sync="first.zoom()"
-        :center="first.center()"
-        :options="option1"
-        :bounds="first.bounds()"
-        :min-zoom="first.minZoom()"
-        :max-zoom="first.maxZoom()"
-        style="height: 45%">
+         style="min-height:500px; height: 100%; width: 100%"
+        :zoom.sync="first.getZoom()"
+        :center="first.getCenter()"
+        :options="{zoomControl: true}">
             <l-tile-layer
-                :url="first.tiles()"
-                :attribution="first.attribution()" />
+                :url="first.getTiles()"
+                :attribution="first.getAttribution()" />
+
+            <l-marker v-for="marker in first.children" v-bind:key="marker.id" :lat-lng="marker.coordinate">
+                <l-popup>{{ marker.title }}</l-popup>
+            </l-marker>
         </l-map>
     </div>
 </template>
@@ -22,7 +23,9 @@ import {
         LMarker,
         LPolyline,
         LPolygon,
-        LLayerGroup
+        LLayerGroup,
+        LPopup
+        
     } from 'vue2-leaflet'
 import { mapGetters } from 'vuex'
 
@@ -32,7 +35,8 @@ export default {
         LTileLayer,
         LMarker,
         LPolyline,
-        LLayerGroup
+        LLayerGroup,
+        LPopup
     },
     computed: {
         ...mapGetters('items', [
@@ -47,6 +51,12 @@ export default {
     },
     mounted(){
         console.log(this.first)
+    },
+    methods: {
+        openPopUp (latLng, caller) {
+            this.caller = caller;
+            this.$refs.features.mapObject.openPopup(latLng);
+        }
     }
 }
 </script>

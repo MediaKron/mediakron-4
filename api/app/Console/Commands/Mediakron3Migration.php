@@ -104,6 +104,16 @@ class Mediakron3Migration extends Command
                         $relationship->save();
                     }
                 }
+                // Improve menus with titles and ids
+                foreach($site->primary as $menu){
+                    if(isset($menu->url)){
+                        if(isset($new_items[$menu->url])){
+                            $menu->item_id = $new_items[$menu->url]->id;
+                            $menu->title = $new_items[$menu->url]->title;
+                            $menu->save();
+                        }
+                    }
+                }
             }
         }
         $access = DB::connection('mediakron_v3')->table('SiteAccess')->get();
