@@ -1,6 +1,8 @@
 <template>
     <div class="item-element-tags" v-if="isEditing">
-        <b-button @click="isEditingTags=!isEditingTags" v-b-toggle.tagsCollapse class="mb-3"> {{ tagsButton }}</b-button>
+        <b-button @click="isEditingTags=!isEditingTags" v-b-toggle.tagsCollapse variant="outline-dark" class="mb-3 text-black w-100 border-dashed text-left"> 
+            <span class="when-opened"><span class="sr-only">Close</span><font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span class="sr-only">Open</span><font-awesome-icon icon="caret-down" /> </span> Tags
+        </b-button>
         <b-collapse id="tagsCollapse" >
         <b-form-group class="">
             <label for="tag_names">Create tags</label>

@@ -2,10 +2,10 @@
     <div>
         <div class="w-100 flex flex-col items-center">
 
-             <BannerHalf class="w-100" style="background-image: url('https://picsum.photos/1000/1000/?random')">
-                     <h1 class="mt-12"> <span class="sr-only"> Site Homepage:</span>{{ currentSite.title }}</h1>
-                    <h2 class="">{{ currentSite.subtitle }}</h2>
-            </BannerHalf>
+             <m-banner-half class="w-100" style="background-image: url('https://picsum.photos/1000/1000/?random')">
+                <h1 class="mt-12"> <span class="sr-only"> Site Homepage:</span>{{ currentSite.title }}</h1>
+                <h2 class="">{{ currentSite.subtitle }}</h2>
+            </m-banner-half>
 
             <div class="max-w-md mt-4" v-html="currentSite.description"></div>
     
@@ -13,25 +13,23 @@
 
         <div id="homepage-content"> </div>
 
-        <b-button v-if="!isEditing" class="fixed top-0 right-0 mt-16 mr-8" variant="primary" @click="editClicked"> Edit Homepage</b-button>  
+        <b-button class="fixed top-0 right-0 mt-16 mr-8 bg-white hover:text-black" variant="outline-dark" :to="basePath + '/homesettings'"><font-awesome-icon icon="edit" />  Edit Homepage</b-button>  
          
     </div>
 </template>
 
 <script>
-    import {
-        mapActions,
-        mapState,
-        mapGetters
-    } from 'vuex';
-    import BannerHalf from '@/components/banners/BannerHalf'
+
+import { mapActions, mapState, mapGetters } from 'vuex';
+    import MBannerHalf from '@/components/banners/BannerHalf'
     export default {
         components: {
-        BannerHalf
+            MBannerHalf
         },
         computed: {
             ...mapGetters('sites', [
-                'currentSite'
+                'currentSite',
+                 'basePath'
             ]),
         }
     }

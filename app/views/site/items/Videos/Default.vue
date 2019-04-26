@@ -1,33 +1,40 @@
 <template>
   <article class="container">
-        <ItemTitle></ItemTitle>
-        <ItemCaption></ItemCaption>
-        <item-video></item-video>
-        <ItemDescription></ItemDescription>
-        <ItemMetadata></ItemMetadata>
-        <ItemTags></ItemTags>
+        <m-title class="max-w-40 mx-auto"></m-title>
+        <m-caption class="py-2 max-w-40 mx-auto" ></m-caption>
+        <m-video class="mx-auto"></m-video>
+        <m-custom-date class="py-2 max-w-40 mx-auto" ></m-custom-date>
+        <m-description class="max-w-40 mx-auto text-xl py-3"></m-description>
+        <m-metadata class="max-w-40 mx-auto"></m-metadata>
+        <m-tags class="max-w-40 mx-auto"></m-tags>
 
    </article>
 </template>
 
 <script>
-import ItemTitle from '@/components/items-shared/ItemTitle'
-import ItemDescription from '@/components/items-shared/ItemDescription'
-import ItemCaption from '@/components/items-shared/ItemCaption'
-import ItemVideo from '@/components/items-shared/Video'
-import ItemMetadata from '@/components/items-shared/ItemMetadata'
-import ItemTags from '@/components/items-shared/ItemTags'
+import MTitle from '@/components/items-shared/Title'
+import MDescription from '@/components/items-shared/Description'
+import MCaption from '@/components/items-shared/Caption'
+import MImage from '@/components/items-shared/Image'
+import MMetadata from '@/components/items-shared/Metadata'
+import MTags from '@/components/items-shared/Tags'
+import MCustomDate from '@/components/items-shared/CustomDate'
+
+import MVideo from '@/components/items-shared/Video'
+
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
     props: [ 'item', 'isEditing' ],
     components: {
-        ItemTitle,
-        ItemDescription,
-        ItemCaption,
-        ItemVideo,
-        ItemMetadata,
-        ItemTags
+        MTitle,
+        MDescription,
+        MCaption,
+        MImage,
+        MMetadata,
+        MTags,
+        MCustomDate,
+        MVideo
     },
     created() {
     },

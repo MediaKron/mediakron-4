@@ -16,9 +16,9 @@
                 v-model="localData.title" 
                 @input="dataChange"
                 type="text"
-                placeholder="Site Information">
+                placeholder="Site Title">
             </b-form-input>
-            <label for="site-information-field">Site Information</label>
+            <label for="site-information-field">Site Title</label>
         </b-form-group>
 
         <b-form-group
