@@ -92,7 +92,7 @@
                 </b-button-group>
             </b-collapse>
         </div>
-test {{ listIsLoaded }}
+
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table class="mt-1 border border-grey bg-light rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
             :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
