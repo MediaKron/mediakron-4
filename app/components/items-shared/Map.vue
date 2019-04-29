@@ -1,5 +1,5 @@
 <template>
-    <div v-if="itemIsLoaded">
+    <div class="mk-map" v-if="itemIsLoaded">
         <l-map
          style="min-height:500px; height: 100%; width: 100%"
         :zoom.sync="first.getZoom()"
@@ -10,7 +10,7 @@
                 :attribution="first.getAttribution()" />
 
             <l-marker v-for="marker in first.children" v-bind:key="marker.id" :lat-lng="marker.coordinate">
-                <l-popup>{{ marker.title }}</l-popup>
+                <l-popup>{{ marker.title }} </l-popup>
             </l-marker>
         </l-map>
     </div>
@@ -62,5 +62,18 @@ export default {
 </script>
 
 <style>
+
+.mk-map .leaflet-popup-content-wrapper, 
+.mk-map .leaflet-popup-tip {
+    border-radius: .25rem;
+}
+
+.mk-map .leaflet-container a.leaflet-popup-close-button {
+    color: #565656;
+}
+
+.mk-map .leaflet-pane {
+    z-index:0; 
+}
 
 </style>

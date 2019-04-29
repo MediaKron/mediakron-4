@@ -1,11 +1,15 @@
 <template>
-    <article class="container">
-        <m-title></m-title>
-        <m-map></m-map>
-        <m-description></m-description>
-        <m-caption></m-caption>
-        <m-metadata></m-metadata>
-        <m-tags></m-tags>
+    <article class="w-100">
+        <m-title class="px-4"></m-title>
+        <div class="map-container relative">
+            <m-map class="mx-4"></m-map>
+            <aside class="absolute right-0 top-0 px-3 bg-white mr-3 border">
+                <m-description></m-description>
+                <m-caption></m-caption>
+                <m-metadata></m-metadata>
+                <m-tags></m-tags>
+            </aside>
+        </div>
     </article>
 </template>
 
