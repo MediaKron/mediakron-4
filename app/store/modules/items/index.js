@@ -9,7 +9,7 @@ export const getInitialState = (checkLocalStorage = false) => {
     
     tags: [],
 
-    items: [],
+    itemList: [],
     first: {},
     second: {},
     third: {},
