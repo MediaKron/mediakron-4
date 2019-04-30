@@ -19,9 +19,8 @@
                     </b-input-group-append>
                 </b-input-group>
 
-                <b-button size="sm" variant="outline-dark" class="mb-2 mr-auto">
+                <b-button v-b-toggle.types size="sm" variant="outline-dark" class="mb-2 mr-auto">
                     <font-awesome-icon icon="filter" /> Filter By Type</b-button>
-                <b-button :disabled="!addFilter" :to="addFilter({'type': 'all'})" size="sm" class="mb-2 mr-auto">Reset Filter</b-button>
 
                 <b-dropdown class="border-none mb-2 mx-2" size="sm" variant="outline-dark" right>
                     <template slot="button-content" class="px-4">
@@ -123,7 +122,6 @@
 
             </template>
             <template slot="status" slot-scope="items">
-                <span v-if="items.item.published == 1">Published</span>
 
             </template>
         </b-table>
