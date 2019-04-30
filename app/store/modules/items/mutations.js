@@ -55,6 +55,11 @@ export const mutations = {
         state.count.collections = data.collections | 0;
         state.count.videos = data.videos | 0;
         state.count.images = data.collections | 0;
+        state.count.audio = data.audio | 0;
+        state.count.files = data.files | 0;
+        state.count.maps = data.maps | 0;
+        state.count.timelines = data.timelines | 0;
+        state.count.stories = data.stories | 0;
     },
 
     /**

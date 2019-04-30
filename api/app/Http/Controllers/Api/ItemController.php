@@ -31,6 +31,11 @@ class ItemController extends Controller
             'collections' => Item::listQuery()->where('site_id', $site)->where('type', 'collection')->count(),
             'images' => Item::listQuery()->where('site_id', $site)->where('type', 'image')->count(),
             'videos' => Item::listQuery()->where('site_id', $site)->where('type', 'video')->count(),
+            'audio' => Item::listQuery()->where('site_id', $site)->where('type', 'audio')->count(),
+            'maps' => Item::listQuery()->where('site_id', $site)->where('type', 'map')->count(),
+            'stories' => Item::listQuery()->where('site_id', $site)->where('type', 'story')->count(),
+            'files' => Item::listQuery()->where('site_id', $site)->where('type', 'file')->count(),
+            'timelines' => Item::listQuery()->where('site_id', $site)->where('type', 'timeline')->count(),
         ]);
         $data = $custom->merge($data);
         return $data;
