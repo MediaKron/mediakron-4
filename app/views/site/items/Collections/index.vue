@@ -25,6 +25,9 @@ import GridFull from './GridFull'
 import Journal from './Journal'
 import Mosaic from './Mosaic'
 import Table from './Table'
+import Slideshow from './Slideshow'
+import Comparison from './Comparison'
+import Progression from './Progression'
 import editable from '~/components/mixins/editable'
 export default {
     props: [ 'item' ],
@@ -50,6 +53,12 @@ export default {
                     return Mosaic;
                 case 'table':
                     return Table;
+                case 'slideshow':
+                    return Slideshow;
+                case 'comparison':
+                    return Comparison;
+                case 'progression':
+                    return Progression;
                 default:
                     return Default;
                 }

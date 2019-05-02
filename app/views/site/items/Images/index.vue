@@ -1,22 +1,11 @@
 <template>
     <div>
         <component :is="component" :item="item"/>
-        <div class="right-0 top-0 fixed mr-4 mt-20">
-            <b-button v-if="!isEditing" class="uppercase" variant="outline-dark" size="sm" @click="editClicked"><font-awesome-icon icon="edit" /> Edit</b-button>  
-            <b-button v-if="isEditing" class="uppercase" variant="outline-dark" size="sm" @click="saveClicked"> <font-awesome-icon icon="check" /> Save </b-button>       
-            
-            <!-- <b-toast id="save-message" variant="success" solid toaster="b-toaster-top-right" no-close-button="true">
-                <div slot="default">
-                     <font-awesome-icon icon="check" /> Changes Saved.
-                </div>
-            </b-toast>
-            <b-toast id="editing-message" variant="warning" solid toaster="b-toaster-top-right" no-close-button=true>
-                <div slot="default">
-                     You are now in editing mode..
-                </div>
-            </b-toast> -->
-        
+        <div class="right-0 top-0 fixed mr-4 mt-20 flex flex-column ">
+            <b-button v-if="!isEditing" class="uppercase mb-2 flex flex-column items-center bg-light border-none item-button " variant="outline-dark" size="sm" @click="editClicked"><font-awesome-icon icon="edit" class="text-lg mt-1"/> <span class="text-xs mt-1">Edit</span></b-button>  
+            <b-button v-if="isEditing" class="uppercase mb-2 flex flex-column items-center border-none item-button " variant="primary" size="lg" @click="saveClicked"> <font-awesome-icon icon="check" class="text-lg mt-1"/> <span class="text-xs mt-1">Save </span></b-button>       
             <m-options></m-options>
+
         </div>
         
     </div>
@@ -49,5 +38,8 @@ export default {
 </script>
 
 <style>
-
+.btn.item-button {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
 </style>
