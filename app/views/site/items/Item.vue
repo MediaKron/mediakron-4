@@ -51,7 +51,7 @@ export default {
                     return Images
                 case 'video':
                     return Videos
-                case 'folder':
+                case 'collection':
                     return Collections
                 case 'file':
                     return Files
