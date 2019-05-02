@@ -38,12 +38,14 @@
                         <font-awesome-icon icon="times" class="pr-1" />Unselect all </span> <span v-else
                         class="text-black">
                         <font-awesome-icon icon="check" class="pr-1" />Select All</span>
-                    <b-badge variant="light" class="top-0 ml-2"> 400</b-badge>
+                    <b-badge variant="light" class="top-0 ml-2"> {{ totalItems }}</b-badge>
                 </b-form-checkbox>
 
             </b-button-toolbar>
             <b-collapse id="types" class="mt-2 mb-2">
                 <b-button-group class="flex flex-wrap xl:flex-no-wrap">
+                    <ItemFilter></ItemFilter> n
+                    <!--
                     <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Collections"  :to="addFilter({'type': 'collection'})">
                         <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
@@ -89,13 +91,14 @@
                         <b-badge variant="light" class="ml-1 bg-white ">{{ counts.audio }}
                         </b-badge>
                     </b-button>
+                    -->
                 </b-button-group>
             </b-collapse>
         </div>
 
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table class="mt-1 border border-grey bg-light rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
-            :fields="fields" sortBy="updated_at" sort-desc="true" stacked="md">
+            :fields="fields" sortBy="updated_at" :sort-desc="sortOrder" stacked="md">
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
                 </b-form-checkbox>
@@ -139,11 +142,13 @@
         mapActions
     } from 'vuex';
     import Loader from '@/components/Loader';
-    import Multiselect from 'vue-multiselect'
+    import Multiselect from 'vue-multiselect';
+    import ItemFilter from '../options/ItemFilter';
     export default Vue.extend({
         components: {
             Loader,
-            Multiselect
+            Multiselect,
+            ItemFilter
         },
         computed: {
             ...mapGetters('sites', [
@@ -166,7 +171,6 @@
                 'userListIsLoaded',
                 'users'
             ]),
-
         },
 
         methods: {
@@ -188,6 +192,7 @@
             ...mapActions('items', [
                 'routeLoad'
             ]),
+            /*
             addFilter(options){
                 var to = this.$route,
                     path = to.path,
@@ -198,9 +203,12 @@
                 });
                 return { path: path, query: query}
             },
+            */
             nameWithLang ({ name, language }) {
                 return `${name}`
-            }
+            },
+
+
         },
         data() {
             return {
@@ -236,6 +244,11 @@
                         class: 'text-center'
                     },
                 },
+                sortOrder: '',
+                sortOptions: [
+                    {value:'ASC', text: 'oldest to recent'},
+                    {value:'DESC', text: 'recent to oldest'},
+                ],
                 filter: null,
                 isBusy: false,
                 selectAll: false,

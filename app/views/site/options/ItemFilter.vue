@@ -1,14 +1,54 @@
 <template>
-    <div id="filters" class="d-flex mb-5 p-2">
-        <span> </span>
+    <b-collapse id="types" class="mt-2 mb-2">
+        <b-button-group class="flex flex-wrap xl:flex-no-wrap">
+            <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Stories" :to="addFilter({'type': 'collection'})">
+                <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
+                <b-badge variant="light" class="ml-1 bg-white" > {{ counts.collections }}
+                </b-badge>
+            </b-button>
+            <b-button v-if="counts.stories > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Stories"  :to="addFilter({'type': 'story'})">
+                <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-1"> Stories</span>
+                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.stories }}
+                </b-badge>
+            </b-button>
+            <b-button v-if="counts.maps > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Maps" :to="addFilter({'type': 'map'})">
+                <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-1"> Maps</span>
+                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.maps }}
+                </b-badge>
+            </b-button>
+            <b-button v-if="counts.timelines > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Timelines"  :to="addFilter({'type': 'timeline'})">
+                <font-awesome-icon icon="clock" /><span class="mr-auto ml-1"> Timelines</span>
+                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.timelines }}
+                </b-badge>
+            </b-button>
+            <b-button v-if="counts.images > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Images" :to="addFilter({'type': 'image'})">
+                <font-awesome-icon icon=image /><span class="mr-auto ml-1"> Images</span>
+                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.images }}</b-badge>
+            </b-button>
+            <b-button v-if="counts.videos > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Videos"  :to="addFilter({'type': 'video'})">
+                <font-awesome-icon icon="video" /> <span class="mr-auto ml-1">Videos</span>
+                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.videos }}</b-badge>
+            </b-button>
+            <b-button v-if="counts.files > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Files"  :to="addFilter({'type': 'file'})">
+                <font-awesome-icon icon="file" /><span class="mr-auto ml-1"> Files</span>
+                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.files }}</b-badge>
+            </b-button>
+            <b-button v-if="counts.audio > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                      v-b-tooltip.hover title="Click to filter by Audio"  :to="addFilter({'type': 'audio'})">
+                <font-awesome-icon icon="volume-up" /><span class="mr-auto ml-1"> Audio</span>
+                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.audio }}
+                </b-badge>
+            </b-button>
+        </b-button-group>
 
-        <!-- b-form-input v-model="searchString" type="text" placeholder="Search" class="mr-2" / -->
-        <b-form-select v-model="typeFilter" :options="typeOptions"  class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Type:"></b-form-select>
-        <b-form-select v-model="authorFilter" :options="authorOptions"  class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Filter by Author:"></b-form-select>
-        <b-form-select v-model="sortOrder" :options="sortOptions" class="mr-2 border border-dark rounded" track-by="value" label="text" placeholder="Sort:"></b-form-select>
-    </div>
-
-
+    </b-collapse>
 </template>
 
 <script>
@@ -19,25 +59,24 @@
 
     export default {
 
-    computed: {
-     /*
-    ...mapGetters('sites', [
-            'siteIsLoading',
-            'siteIsLoaded',
-            'basePath',
-            'currentSite'
-        ]),
-        */
-    ...mapGetters('items', [
-            'listIsLoading',
-            'listIsLoaded',
-            'items',
-            'currentPage',
-            'totalItems',
-            'lastPage'
-        ]),
-
-
+        computed: {
+            ...mapGetters('sites', [
+                'siteIsLoading',
+                'siteIsLoaded',
+                'basePath',
+                'currentSite'
+            ]),
+            ...mapGetters('items', [
+                'listIsLoading',
+                'listIsLoaded',
+                'items',
+                'currentPage',
+                'totalItems',
+                'lastPage',
+                'counts'
+            ]),
+        },
+/*
         filteredItems() {
             if (this.typeFilter.length == 0) return this.items
             return this.items.filter(function(item) {
@@ -49,16 +88,29 @@
                 return !(typeFilterResult === undefined)
             }.bind(this))
         },
-    },
+        */
+
     methods: {
         linkGen(pageNum) {
-            return '/' + this.currentSite.url + '/content/alltable/' + pageNum
+            return '/' + this.currentSite.url + '/content/myContent/' + pageNum
         },
-        /*
-    ...mapActions('items', [
+        ...mapActions('items', [
             'routeLoad'
         ]),
-        */
+        addFilter(options){
+            var to = this.$route,
+                path = to.path,
+                query = {};
+            Object.assign(query, to.query);
+            Object.keys(options).forEach((key) =>{
+                query[key] = options[key];
+            });
+            return {
+                path: path,
+                query: query,
+                filtered:true
+            }
+        },
     },
     data() {
         return {
@@ -100,6 +152,7 @@
                 },
             },
             filter: null,
+            filtered: null,
             placeholderImage: {
                 blank: true,
                 width: 50,
