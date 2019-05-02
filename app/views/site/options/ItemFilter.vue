@@ -1,14 +1,15 @@
 <template>
     <b-collapse id="types" class="mt-2 mb-2">
+        <span></span>
         <b-button-group class="flex flex-wrap xl:flex-no-wrap">
             <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Stories" :to="addFilter({'type': 'collection'})">
+                      v-b-tooltip.hover title="Click to filter by Stories" :to="addFilter({'type': 'collection'})" v-on:click.native="toggleFilter()">
                 <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
                 <b-badge variant="light" class="ml-1 bg-white" > {{ counts.collections }}
                 </b-badge>
             </b-button>
             <b-button v-if="counts.stories > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Stories"  :to="addFilter({'type': 'story'})">
+                      v-b-tooltip.hover title="Click to filter by Stories"  :to="addFilter({'type': 'story'})" v-on:click.native="toggleFilter()">
                 <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-1"> Stories</span>
                 <b-badge variant="light" class="ml-1 bg-white ">{{ counts.stories }}
                 </b-badge>
@@ -107,10 +108,13 @@
             });
             return {
                 path: path,
-                query: query,
-                filtered:true
+                query: query
             }
         },
+        toggleFilter(){
+            console.log('filter:' + this.filtered)
+            filtered:true
+        }
     },
     data() {
         return {
