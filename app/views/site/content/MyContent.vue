@@ -37,7 +37,7 @@
                 </b-form-checkbox>
 
             </b-button-toolbar>
-            <b-collapse id="types" class="mt-2 mb-2">
+            <b-collapse id="types" class="mt-2 mb-2"  >
                 <b-button-group class="flex flex-wrap xl:flex-no-wrap">
                     <ItemFilter></ItemFilter>
                 </b-button-group>

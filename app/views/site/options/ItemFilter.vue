@@ -2,51 +2,15 @@
     <b-collapse id="types" class="mt-2 mb-2">
         <span></span>
         <b-button-group class="flex flex-wrap xl:flex-no-wrap">
-            <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Stories" :to="addFilter({'type': 'collection'})" v-on:click.native="toggleFilter()">
-                <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
-                <b-badge variant="light" class="ml-1 bg-white" > {{ counts.collections }}
-                </b-badge>
-            </b-button>
-            <b-button v-if="counts.stories > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Stories"  :to="addFilter({'type': 'story'})" v-on:click.native="toggleFilter()">
-                <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-1"> Stories</span>
-                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.stories }}
-                </b-badge>
-            </b-button>
-            <b-button v-if="counts.maps > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Maps" :to="addFilter({'type': 'map'})">
-                <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-1"> Maps</span>
-                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.maps }}
-                </b-badge>
-            </b-button>
-            <b-button v-if="counts.timelines > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Timelines"  :to="addFilter({'type': 'timeline'})">
-                <font-awesome-icon icon="clock" /><span class="mr-auto ml-1"> Timelines</span>
-                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.timelines }}
-                </b-badge>
-            </b-button>
-            <b-button v-if="counts.images > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Images" :to="addFilter({'type': 'image'})">
-                <font-awesome-icon icon=image /><span class="mr-auto ml-1"> Images</span>
-                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.images }}</b-badge>
-            </b-button>
-            <b-button v-if="counts.videos > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Videos"  :to="addFilter({'type': 'video'})">
-                <font-awesome-icon icon="video" /> <span class="mr-auto ml-1">Videos</span>
-                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.videos }}</b-badge>
-            </b-button>
-            <b-button v-if="counts.files > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Files"  :to="addFilter({'type': 'file'})">
-                <font-awesome-icon icon="file" /><span class="mr-auto ml-1"> Files</span>
-                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.files }}</b-badge>
-            </b-button>
-            <b-button v-if="counts.audio > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                      v-b-tooltip.hover title="Click to filter by Audio"  :to="addFilter({'type': 'audio'})">
-                <font-awesome-icon icon="volume-up" /><span class="mr-auto ml-1"> Audio</span>
-                <b-badge variant="light" class="ml-1 bg-white ">{{ counts.audio }}
-                </b-badge>
-            </b-button>
+            <span v-for="type in types" v-bind:key="type">
+                <b-button v-if="counts[type] > 0 && test(type)" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover :title="'Click to filter by ' + type_settings[type].name" :to="addFilter(type)" v-on:click.native="toggleFilter()">
+                    <font-awesome-icon :icon="type_settings[type].icon" /><span class="mr-auto ml-1"> {{ type_settings[type].name }}</span>
+                    <b-badge variant="light" class="ml-1 bg-white" > {{ counts[type] }}
+                    </b-badge>
+                </b-button>
+            </span>
+
         </b-button-group>
 
     </b-collapse>
@@ -55,12 +19,16 @@
 <script>
     import {
         mapGetters,
-        mapActions
+        mapActions,
+        mapState
     } from 'vuex';
-
+    import config from '@/config';
     export default {
 
         computed: {
+            ...mapState('items', [
+                'count'
+            ]),
             ...mapGetters('sites', [
                 'siteIsLoading',
                 'siteIsLoaded',
@@ -98,14 +66,19 @@
         ...mapActions('items', [
             'routeLoad'
         ]),
-        addFilter(options){
+        addFilter(value){
             var to = this.$route,
                 path = to.path,
-                query = {};
+                query = {},
+                type = to.query.type || false;
+            
             Object.assign(query, to.query);
-            Object.keys(options).forEach((key) =>{
-                query[key] = options[key];
-            });
+
+            if(!type || type != value){
+                query.type = value;
+            }else{
+                delete query.type;
+            }
             return {
                 path: path,
                 query: query
@@ -116,8 +89,13 @@
             filtered:true
         }
     },
+    mounted(){
+        console.log(config)
+    },
     data() {
         return {
+            types: config.CONTENT_TYPES.list,
+            type_settings: config.CONTENT_TYPES.settings,
             typeFilter: [],
             typeOptions: [
                 {value:'image', text: 'Image'},

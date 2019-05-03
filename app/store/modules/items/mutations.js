@@ -52,14 +52,14 @@ export const mutations = {
         state.pagination.pageSize = data.per_page;
         state.pagination.totalItems = data.total;
 
-        state.count.collections = data.collections | 0;
-        state.count.videos = data.videos | 0;
-        state.count.images = data.collections | 0;
+        state.count.collection = data.collection | 0;
+        state.count.video = data.video | 0;
+        state.count.image = data.image | 0;
         state.count.audio = data.audio | 0;
-        state.count.files = data.files | 0;
-        state.count.maps = data.maps | 0;
-        state.count.timelines = data.timelines | 0;
-        state.count.stories = data.stories | 0;
+        state.count.file = data.file | 0;
+        state.count.map = data.map | 0;
+        state.count.timeline = data.timeline | 0;
+        state.count.story = data.story | 0;
     },
 
     /**

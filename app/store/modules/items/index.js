@@ -43,9 +43,14 @@ export const getInitialState = (checkLocalStorage = false) => {
     },
 
     'count': {
-      'collections': 0,
-      'images': 0,
-      'video': 0
+      'collection': 0,
+      'image': 0,
+      'video': 0,
+      'audio': 0,
+      'map': 0,
+      'timeline': 0,
+      'story': 0,
+      'file': 0
     }
   };
 };
