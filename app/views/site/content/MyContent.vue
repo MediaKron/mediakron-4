@@ -200,31 +200,6 @@
                 filter: null,
                 isBusy: false,
                 selectAll: false,
-                value: {
-                    name: 'Authors',
-                    language: 'JavaScript'
-                },
-                options: [{
-                        name: 'Tim Lindgren',
-                        language: 'JavaScript'
-                    },
-                    {
-                        name: 'Jamie Walker',
-                        language: 'Ruby'
-                    },
-                    {
-                        name: 'Brad Mering',
-                        language: 'Ruby'
-                    },
-                    {
-                        name: 'Joe Smith',
-                        language: 'PHP'
-                    },
-                    {
-                        name: 'Sally',
-                        language: 'Elixir'
-                    }
-                ],
             
             }
 

@@ -1,59 +1,47 @@
 <template>
-    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
-        <header class="line-behind mb-3">
+    <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
+        <header class="line-behind mb-4 mt-4">
             <h1>Site Library</h1>
         </header>
+        <div class="pb-2">
+            <b-button-toolbar key-nav aria-label="Toolbar with button groups" class="">
+                <b-input-group size="sm" class="w-12 mb-2 mr-1">
+                    <b-input-group-text slot="prepend" class="bg-white text-black uppercase">
+                        <font-awesome-icon icon="search" class="uppercase" />
+                    </b-input-group-text>
+                    <b-form-input variant="outline-dark" v-model="search" @keyup.13="doSearch" placeholder="Quick Search" size="sm" />
+                    <b-input-group-append>
+                        <b-button :disabled="!search" @click="search = ''" size="sm" class="uppercase">Clear</b-button>
+                    </b-input-group-append>
+                </b-input-group>
+                <b-button v-b-toggle.types size="sm" variant="outline-dark" class="mb-2 mr-auto">
+                    <font-awesome-icon icon="filter" /> Filter By Type</b-button>
 
-        <b-button-toolbar class="mb-2 items-center">
-             <b-input-group size="sm" class="w-12 mb-2 mr-4 ">
-                <b-input-group-text slot="prepend" class="bg-dark text-white uppercase">
-                    <font-awesome-icon icon="search" class="uppercase" />
-                </b-input-group-text>
-                <b-form-input variant="outline-dark" v-model="filter" placeholder="Quick Search" size="sm" />
-                <b-input-group-append>
-                    <b-button :disabled="!filter" @click="filter = ''" size="sm" class="uppercase">Clear</b-button>
-                </b-input-group-append>
-            </b-input-group>
-            <!-- <div class="active-filters inline-block mr-auto mb-2">
-                <span class="pr-2">Active Filters:</span>
-                <b-button variant="dark" size="sm" class="text-left mr-2">
-                    <font-awesome-icon icon="user" /><span class="pr-2"> AUTHOR: My Content</span> <font-awesome-icon icon="times" />
-                </b-button>
-                <b-button variant="dark" size="sm" class="text-left mr-2">
-                    <font-awesome-icon icon="map-marker-alt" /><span class="pr-2"> TYPE: Map</span><font-awesome-icon icon="times" />
-                </b-button>
-                </div> -->
-             <b-button variant="primary" size="sm" :to="basePath + '/content/add'" class="mb-2">
-                <font-awesome-icon icon="plus" />
-                <span class="ml-2 uppercase">Add Content</span>
-            </b-button>
-        </b-button-toolbar>
-        
-        <b-button-toolbar key-nav aria-label="Toolbar with button groups" class="">
-            <b-form-checkbox v-model="selectAll" class="mr-2 text-sm text-black" button button-variant="link":tabindex="0">
-                <span v-if="selectAll"><font-awesome-icon icon="times" class="pr-1"/>Unselect all  </span> <span v-else class="text-black"><font-awesome-icon icon="check" class="pr-1"/>Select All</span>
-                <b-badge variant="light" class="top-0 ml-2">400</b-badge>
-            </b-form-checkbox>
+                <b-dropdown class="border-none mb-2 mx-2" size="sm" variant="outline-dark" right>
+                    <template slot="button-content" class="px-4">
+                        <span class="text-uppercase ml-1 px-1 text-black">
+                            <font-awesome-icon icon="cogs" /> Bulk Actions</span>
+                    </template>
+                    <b-dropdown-item href="#">Delete</b-dropdown-item>
+                    <b-dropdown-item href="#">Publish</b-dropdown-item>
+                    <b-dropdown-item href="#">Unpublish</b-dropdown-item>
+                </b-dropdown>
 
-            <b-dropdown class="border-none" size="sm" variant="link" right>
-                <template slot="button-content" class="px-4">
-                    <span class="text-uppercase ml-1 px-1 text-black">
-                        <font-awesome-icon icon="cogs" /> Bulk Actions</span>
-                </template>
-                <b-dropdown-item href="#">Delete</b-dropdown-item>
-                <b-dropdown-item href="#">Publish</b-dropdown-item>
-                <b-dropdown-item href="#">Unpublish</b-dropdown-item>
-            </b-dropdown>
-            <b-button class="flex items-center ml-2 text-uppercase " variant="outline-dark"
-                :to="basePath + '/content/deleted'" size="sm">
-                <font-awesome-icon icon="trash-alt" />
-                <span class="ml-1">Trash</span>
-            </b-button>
-        </b-button-toolbar>
-        <ItemFilter></ItemFilter>
+                <b-form-checkbox v-model="selectAll" size="sm" class="mr-2 mb-2 text-sm text-black" button
+                                 button-variant="outline-dark" :tabindex="0">
+                    <span v-if="selectAll">
+                        <font-awesome-icon icon="times" class="pr-1" />Unselect all </span> <span v-else class="text-black">
+                        <font-awesome-icon icon="check" class="pr-1" />Select All</span>
+                    <b-badge variant="light" class="top-0 ml-2"> {{ this.items.length }}</b-badge>
+                </b-form-checkbox>
 
-        
-
+            </b-button-toolbar>
+            <b-collapse id="types" class="mt-2 mb-2"  >
+                <b-button-group class="flex flex-wrap xl:flex-no-wrap">
+                    <ItemFilter></ItemFilter>
+                </b-button-group>
+            </b-collapse>
+        </div>
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table class="mt-1 border border-grey rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
             sortBy="updated_at" sort-desc="true" stacked="md">
@@ -70,7 +58,7 @@
                 {{ items.item.type }}
             </template>
             <template slot="author" slot-scope="items">
-                author
+                {{ items.item.user.display_name }}
             </template>
             <template slot="details" slot-scope="items">
                 <b-dropdown variant="outline-dark" size="sm" right>
@@ -87,7 +75,7 @@
             </template>
         </b-table>
 
-        <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
+        <!-- b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router / -->
 
     </div>
 
@@ -100,10 +88,12 @@
         mapActions
     } from 'vuex';
     import Loader from '@/components/Loader';
-    import ItemFilter from '@/views/site/options/ItemFilter'
+    import Multiselect from 'vue-multiselect';
+    import ItemFilter from '../options/ItemFilter';
     export default Vue.extend({
         components: {
             Loader,
+            Multiselect,
             ItemFilter
         },
         computed: {
@@ -119,10 +109,28 @@
                 'items',
                 'currentPage',
                 'totalItems',
-                'lastPage'
+                'lastPage',
+                'counts'
+            ]),
+            ...mapGetters('users', [
+                'userListIsLoading',
+                'userListIsLoaded',
+                'users'
             ]),
         },
         methods: {
+            doSearch(){
+                var search = this.search;
+                var to = this.$route,
+                    path = to.path,
+                    query = {};
+                Object.assign(query, to.query)
+                query.title = search;
+                this.$router.push({
+                    path: path,
+                    query: query
+                });
+            },
             linkGen(pageNum) {
                 return '/' + this.currentSite.uri + '/content/all/' + pageNum
             },
@@ -163,6 +171,11 @@
                         sortable: false
                     },
                 },
+                sortOrder: '',
+                sortOptions: [
+                    {value:'ASC', text: 'oldest to recent'},
+                    {value:'DESC', text: 'recent to oldest'},
+                ],
                 filter: null,
                 isBusy: false,
                 selectAll: false
@@ -171,6 +184,11 @@
         },
         watch: {
             '$route.params.page': function (page) {
+                this.routeLoad({
+                    to: this.$route
+                });
+            },
+            '$route.query': function (page) {
                 this.routeLoad({
                     to: this.$route
                 });

@@ -3,8 +3,8 @@
         <span></span>
         <b-button-group class="flex flex-wrap xl:flex-no-wrap">
             <span v-for="type in types" v-bind:key="type">
-                <b-button v-if="counts[type] > 0 && test(type)" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover :title="'Click to filter by ' + type_settings[type].name" :to="addFilter(type)" v-on:click.native="toggleFilter()">
+                <b-button v-if="counts[type] > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                        v-b-tooltip.hover :title="buttonAction + type_settings[type].name" :to="addFilter(type)">
                     <font-awesome-icon :icon="type_settings[type].icon" /><span class="mr-auto ml-1"> {{ type_settings[type].name }}</span>
                     <b-badge variant="light" class="ml-1 bg-white" > {{ counts[type] }}
                     </b-badge>
@@ -76,7 +76,9 @@
 
             if(!type || type != value){
                 query.type = value;
+                this.buttonAction = 'Filter content by '
             }else{
+                this.buttonAction = 'Remove filter by ';
                 delete query.type;
             }
             return {
@@ -84,10 +86,6 @@
                 query: query
             }
         },
-        toggleFilter(){
-            console.log('filter:' + this.filtered)
-            filtered:true
-        }
     },
     mounted(){
         console.log(config)
@@ -135,6 +133,7 @@
             },
             filter: null,
             filtered: null,
+            buttonAction: 'Filter content by ',
             placeholderImage: {
                 blank: true,
                 width: 50,
