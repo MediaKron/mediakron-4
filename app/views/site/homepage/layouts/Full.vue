@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="w-100 flex flex-col items-center">
+        <div class="w-full flex flex-col items-center">
 
-             <m-banner-full class="w-100" style="background-image: url('https://picsum.photos/1000/1000/?random')">
+             <m-banner-full class="w-full" style="background-image: url('https://picsum.photos/1000/1000/?random')">
                 <h1 class="mt-12"> <span class="sr-only"> Site Homepage:</span>{{ currentSite.title }}</h1>
                 <h2 class="">{{ currentSite.subtitle }}</h2>
             </m-banner-full>

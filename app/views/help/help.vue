@@ -1,7 +1,7 @@
 <template>
     <div class="help">
-        <Navigation class="fixed top-0 w-100 z-10"></Navigation>
-        <main role="main" class="w-100 max-w-lg mx-auto ">
+        <Navigation class="fixed top-0 w-full z-10"></Navigation>
+        <main role="main" class="w-full max-w-lg mx-auto ">
             <header>
                 <h1 class="line-behind heading-nudge-up mt-24 mb-4"> Ways to Get Help </h1>
             </header>

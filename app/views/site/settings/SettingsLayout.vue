@@ -1,6 +1,6 @@
 <template>
     <div class="options-layout">
-            <Navigation class="fixed top w-100 z-10"></Navigation>
+            <Navigation class="fixed top w-full z-10"></Navigation>
             <div class="flex">
                 <Sidebar>
                     <h2 class="bg-dark text-white mt-3 mb-3 ml-3 pb-2 text-lg uppercase">
