@@ -14,9 +14,9 @@
                 </b-input-group>
 
                 <div class="add-people ml-3">
-                    <b-btn v-b-modal.add-people-form variant="dark" class="text-uppercase">
+                    <b-btn v-b-modal.add-people-form variant="primary" class="text-uppercase">
                         <font-awesome-icon icon="user-plus" /> Add New Users</b-btn>
-                    <b-modal id="add-people-form" centered title="Add People">
+                    <b-modal id="add-people-form" centered title="Add People" ok-title="Save">
                         <b-form @submit.prevent="updateUser">
 
                             <b-form-group label="Add Users"
