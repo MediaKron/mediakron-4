@@ -118,7 +118,7 @@ export default {
           {faname: 'Users ', icon: 'users', code: 'users', mkname:'People/Groups'},
           {faname: 'Video', icon: 'video', code: 'video', mkname:'Item: Video'},
           {faname: 'Volume Up', icon: 'volume-up', code: 'volume-up', mkname:'Item: Audio'},
-          {faname: 'WindowClose ', icon: 'window-close', code: 'window-close ', mkname:'Remove'}
+          {faname: 'WindowClose ', icon: 'window-close', code: 'window-close', mkname:'Remove'}
         ],
         filter: null,
 

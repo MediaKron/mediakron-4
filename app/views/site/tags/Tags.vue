@@ -1,11 +1,11 @@
 <template>
 <div class="tags">
     <Navigation></Navigation>
-    <b-container class="mt-12 layout-sidebar-left ">
+    <b-container class="mt-12 w-full max-w-70 mx-auto ">
 
     <div class="row">
 
-                <main role="main" class="with-sidebar-left col-md-12" > 
+                <main role="main" > 
                    <header>
                         <h1 class=" heading-nudge-up line-behind">Tags</h1>
                     </header>
