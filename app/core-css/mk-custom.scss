@@ -4,6 +4,13 @@
 //     background:$gray-600;
 // }
 
+/* Collapse Arrows */
+
+.collapsed > .when-opened,
+:not(.collapsed) > .when-closed {
+  display: none;
+}
+
 
 /* Loading Spinner */
 
@@ -176,6 +183,13 @@
 //   left: 50%;
 // }
 
+
+/* Item title */
+
+.item-title {
+border-bottom: 1px solid #565656;
+padding-bottom: .5rem; 
+}
 
 /* Header with line behind */
 

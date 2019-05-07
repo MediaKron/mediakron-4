@@ -1,0 +1,93 @@
+---
+# Example group command from Ansible Playbooks
+- name: "Create a Mediakron group"
+  group: 
+    name: mediakron 
+    state: present
+
+- name: Make sure we have a 'wheel' group
+  group:
+    name: wheel
+    state: present
+
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+
+# Create the required users
+- name: "Create a new user: brad"
+  user: 
+    name: brad
+    state: present
+    group: mediakron
+    groups: wheel
+    append: yes
+    create_home: yes
+    comment: "brad.mering@gmail.com"
+        
+# installing remote keys for ansible users
+- name: "Add ssh key for: brad"
+  authorized_key: 
+    user: brad 
+    key: "{{ lookup('file', 'brad.pub') }}" 
+    state: present 
+    manage_dir: yes
+
+- name: "Create a new user: tim"
+  user: 
+    name: tim
+    state: present
+    group: mediakron
+    groups: wheel
+    append: yes
+    create_home: yes
+    comment: "lindgret@bc.edu"
+        
+# installing remote keys for ansible users
+- name: "Add ssh key for: tim"
+  authorized_key: 
+    user: tim 
+    key: "{{ lookup('file', 'tim.pub') }}" 
+    state: present 
+    manage_dir: yes
+
+- name: "Create a new user: jamie"
+  user: 
+    name: jamie
+    state: present
+    group: mediakron
+    groups: wheel
+    append: yes
+    create_home: yes
+    comment: "walkerjj@bc.edu"
+        
+# installing remote keys for ansible users
+- name: "Add ssh key for: jamie"
+  authorized_key: 
+    user: jamie 
+    key: "{{ lookup('file', 'jamie.pub') }}" 
+    state: present 
+    manage_dir: yes
+
+- name: "Create a new user: austin"
+  user: 
+    name: austin
+    state: present
+    group: mediakron
+    groups: wheel
+    append: yes
+    create_home: yes
+    comment: "baileyau@bc.edu"
+        
+# installing remote keys for ansible users
+- name: "Add ssh key for: austin"
+  authorized_key: 
+    user: austin 
+    key: "{{ lookup('file', 'austin.pub') }}" 
+    state: present 
+    manage_dir: yes

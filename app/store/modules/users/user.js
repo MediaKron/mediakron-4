@@ -62,7 +62,7 @@ class User extends Model {
    * Is the user a member of the current site
    */
   isMember() {
-    if (this.get("role") == "member") {
+    if (this.pivot.role == "member") {
       return true;
     }
     return false;

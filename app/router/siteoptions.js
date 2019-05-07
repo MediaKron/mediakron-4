@@ -3,7 +3,6 @@
 import Settings from '@/views/site/options/Settings';
 import Menus from "@/views/site/options/Menus";
 import Appearance from "@/views/site/options/Appearance";
-import HomePageSettings from "@/views/site/options/HomePageSettings";
 import People from "@/views/site/options/People";
 import Groups from "@/views/site/options/Groups";
 
@@ -18,7 +17,7 @@ export default [
         }
       },
       {
-        path: "people",
+        path: "people/:page?",
         component: People,
         title: "People",
         meta:{
@@ -53,16 +52,6 @@ export default [
           inAppearance: true
         }
       },
-      {
-        path: "homepage",
-        component: HomePageSettings,
-        title: "Homepage Settings",
-        props: true,
-        meta:{
-          inHomepage: true
-        }
-      },
-
       {
         path: "/",
         component: Settings,

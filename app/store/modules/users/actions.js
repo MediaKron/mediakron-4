@@ -22,7 +22,6 @@ const actions = {
           status: status || ''
         }
         dispatch('loadUsers', options);
-        
       },
       /**
        * Load a list of sites
@@ -33,12 +32,12 @@ const actions = {
           commit("listLoading"); 
           let url = 'users';
           var currentSite = rootGetters['sites/currentSite'];
-          console.log(currentSite);
           if(currentSite){
             url = currentSite.id + '/users'
           }
           return api.get(url, options)
             .then((response) => {
+              console.log(response.data);
               commit("listLoad", response.data);
               commit("listPage", response.data);
               commit("listLoaded");

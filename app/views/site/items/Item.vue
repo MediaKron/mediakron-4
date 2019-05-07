@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Navigation></Navigation>
+         <Navigation class=""></Navigation>
         <main>
-            <loader v-if="itemIsLoading"></loader>
-            <component class="mt-8" v-if="itemIsLoaded" :is="component" :item="first" />
+            <loader v-if="itemIsLoading" class="flex justify-center mt-8"></loader>
+            <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="first" />
         </main>
     </div>
 </template>
@@ -13,7 +13,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import Images from './Images'
 import Videos from './Videos'
-import Folders from './Folders'
+import Collections from './Collections'
 import Files from './Files'
 import Audio from './Audio'
 import Timelines from './Timelines'
@@ -52,16 +52,21 @@ export default {
                 case 'video':
                     return Videos
                 case 'folder':
-                    return Folders
+                    return Collections
                 case 'file':
                     return Files
                 case 'audio':
                     return Audio
                 case 'timeline':
                     return Timelines
+                case 'map':
+                    return Maps
             }
             
         },
+        sitenav() {
+             return this.$route.meta.siteNav;
+            },
         
     },
     methods: {

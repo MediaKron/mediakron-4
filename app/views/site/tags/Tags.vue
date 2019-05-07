@@ -7,9 +7,13 @@
 
                 <main role="main" class="with-sidebar-left col-md-12" > 
                    <header>
-                    <h1 class=" heading-nudge-up line-behind">Tags</h1>
-                     </header>
-   
+                        <h1 class=" heading-nudge-up line-behind">Tags</h1>
+                    </header>
+                    <b-table v-if="tagsLoaded" :items="tags"  sortBy="updated_at" :sort-desc="true" stacked="md">
+                    
+                    </b-table>
+
+
                 </main>
     </div>
  </b-container>   
@@ -46,10 +50,11 @@ export default  Vue.extend({
     methods: {
         ...mapActions('items', [
             'getTags'
-        ])
+        ]),
     },
+
     mounted(){
-        this.getTags();
+        this.getTags()
     }
 });
 </script>

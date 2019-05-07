@@ -1,29 +1,34 @@
 <template>
   <article class="container">
-        <ItemTitle></ItemTitle>
-        <ItemCaption></ItemCaption>
-        <ItemDescription></ItemDescription>
-        <ItemMetadata></ItemMetadata>
-      <ItemTags></ItemTags>
+        <m-title></m-title>
+        <m-caption></m-caption>
+        <m-description></m-description>
+        <m-metadata></m-metadata>
+      <m-tags></m-tags>
    </article>
 </template>
 
 <script>
-import ItemTitle from '@/components/items-shared/ItemTitle'
-import ItemDescription from '@/components/items-shared/ItemDescription'
-import ItemCaption from '@/components/items-shared/ItemCaption'
-import ItemMetadata from '@/components/items-shared/ItemMetadata'
-import ItemTags from '@/components/items-shared/ItemTags'
+import MTitle from '@/components/items-shared/Title'
+import MDescription from '@/components/items-shared/Description'
+import MCaption from '@/components/items-shared/Caption'
+import MMetadata from '@/components/items-shared/Metadata'
+import MTags from '@/components/items-shared/Tags'
+import MCustomDate from '@/components/items-shared/CustomDate'
+import MImage from '@/components/items-shared/Image'
+
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
     props: [ 'item', 'isEditing' ],
     components: {
-        ItemTitle,
-        ItemDescription,
-        ItemCaption,
-        ItemMetadata,
-        ItemTags
+        MTitle,
+        MDescription,
+        MCaption,
+        MImage,
+        MMetadata,
+        MTags,
+        MCustomDate,
     },
     created() {
     },

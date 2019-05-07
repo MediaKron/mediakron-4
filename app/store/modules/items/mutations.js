@@ -2,6 +2,7 @@ import { MutationTree } from 'vuex';
 import api from '@/store/utils/api';
 import { getInitialState } from '@/store/modules/items';
 import Item from './item';
+import Tag from './tag';
 
 export const mutations = {
     /**
@@ -50,6 +51,10 @@ export const mutations = {
         state.pagination.lastPage = data.last_page;
         state.pagination.pageSize = data.per_page;
         state.pagination.totalItems = data.total;
+
+        state.count.collections = data.collections | 0;
+        state.count.videos = data.videos | 0;
+        state.count.images = data.collections | 0;
     },
 
     /**
@@ -87,7 +92,10 @@ export const mutations = {
      * @param {*} state
      */
     itemLoad(state, data){
+        console.log('item loaded')
         state.first = new Item(data[0], state.site);
+        console.log(state.first)
+        console.log(state.first.zoom);
         if(data[1]) state.second = new Item(data[1], state.site);
         if(data[2]) state.third = new Item(data[2], state.site);
     },
@@ -120,6 +128,8 @@ export const mutations = {
         state.siteIsSaved = true;
         state.siteSaveFailed = false;
         state.isEditing = false;
+        state.isEditingTags = false;
+        state.isCreating = false;
     },
 
     siteUpdateFailed(state, error){
@@ -139,6 +149,7 @@ export const mutations = {
             type: type
         }, state.site);
         state.isEditing = true;
+        state.isCreating = true;
         state.editItem = Object.assign({}, item)
         state.first = item;
         state.itemIsLoading = false;
@@ -174,12 +185,13 @@ export const mutations = {
         state.isUploading = false;
         state.isUploaded = true;
     },
+
     tagsLoading(state) {
         state.tagsLoading = true;
         state.tagsLoaded = false;
     },
     tagsLoad(state, tags) {
-        state.tags = tags;
+        state.tags = tags.map(tag => new Tag(tag));
     },
     tagsLoaded(state) {
         state.tagsLoading = false;

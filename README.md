@@ -35,3 +35,19 @@ General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.
 
 ## PHP MyAdmin 
 You can access phpmyadmin at `http://localhost:8080`
+
+
+## Provisioning
+Provisioning is done by ansible.  You must have python 2.7 or greater and ansible 2.4 installed, and having installed the libraries from ansible galaxy.  To install the requirements, run `ansible-galaxy install -r provisioning\requirements.yml`
+
+You can provision a server by running the playbooks on particular hosts or host groups.  Set provision.yml to point at the host group you want to provision and then run `ansible-playbook provisioning/provision.yml`
+
+To add new hosts, add them to provisoning/hosts.yml
+
+Changes to roles should be done in the provisioning/vars folder.  New roles can be added in provisioning/roles, though you should check to see if a good role exists in the galaxy before building one from scratch.  geerlingguy is especially good at building roles.
+
+## Deployment
+To deploy code to api, install Deployer.php and run `dep deploy {stage}` 
+where stage is dev, staging or prod
+
+To deploy frontend app, `run npm mediakron:deploy:{stage}` w

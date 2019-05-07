@@ -268,6 +268,16 @@ module.exports = {
       '4/5': '80%',
       '1/6': '16.66667%',
       '5/6': '83.33333%',
+      '10': '10rem', /* [added] */
+      '15': '15rem', /* [added] */
+      '20': '20rem', /* [added] */
+      '30': '30rem', /* [added] */
+      '40': '40rem', /* [added] */
+      '50': '50rem', /* [added] */
+      '60': '60rem', /* [added] */
+      '70': '70rem', /* [added] */
+      '80': '80rem', /* [added] */
+      '90': '90rem', /* [added] */
       full: '100%',
       screen: '100vw',
     }),
@@ -280,6 +290,22 @@ module.exports = {
     minWidth: {
       '0': '0',
       full: '100%',
+      xs: '20rem', /* [added] */
+      sm: '24rem', /* [added] */
+      md: '28rem', /* [added] */
+      lg: '32rem', /* [added] */
+      xl: '36rem', /* [added] */
+      '10': '10rem', /* [added] */
+      '15': '15rem', /* [added] */
+      '20': '20rem', /* [added] */
+      '30': '30rem', /* [added] */
+      '40': '40rem', /* [added] */
+      '50': '50rem', /* [added] */
+      '60': '60rem', /* [added] */
+      '70': '70rem', /* [added] */
+      '80': '80rem', /* [added] */
+      '90': '90rem', /* [added] */
+      '100': '100rem', /* [added] */
     },
     minHeight: {
       '0': '0',
@@ -297,6 +323,17 @@ module.exports = {
       '4xl': '56rem',
       '5xl': '64rem',
       '6xl': '72rem',
+      '10': '10rem', /* [added] */
+      '15': '15rem', /* [added] */
+      '20': '20rem', /* [added] */
+      '30': '30rem', /* [added] */
+      '40': '40rem', /* [added] */
+      '50': '50rem', /* [added] */
+      '60': '60rem', /* [added] */
+      '70': '70rem', /* [added] */
+      '80': '80rem', /* [added] */
+      '90': '90rem', /* [added] */
+      '100': '100rem', /* [added] */
       full: '100%',
     },
     maxHeight: {

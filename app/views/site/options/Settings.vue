@@ -1,6 +1,6 @@
 <template>
     <div class="settings-general with-savebar">
-        <main role="main" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-lg">
+        <main role="main" class="px-6 min-h-screen w-full max-w-50 mx-auto lg:static lg:max-h-full lg:overflow-visible">
         <header>
              <h1 class="line-behind heading-nudge-up mb-4 " > General Site Settings</h1>
         </header>
@@ -16,9 +16,9 @@
                 v-model="localData.title" 
                 @input="dataChange"
                 type="text"
-                placeholder="Site Information">
+                placeholder="Site Title">
             </b-form-input>
-            <label for="site-information-field">Site Information</label>
+            <label for="site-information-field">Site Title</label>
         </b-form-group>
 
         <b-form-group

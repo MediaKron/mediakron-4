@@ -1,119 +1,156 @@
 <template>
-    <div class="" >
-    <main role="main" class="px-6 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible max-w-2xl">
-    <header>
-        <h1 class="line-behind heading-nudge-up mb-4">People</h1>
-    </header>
-    <div class="flex">
-        <div class="add-people">
-            <b-btn v-b-toggle.collapse1 variant="primary" size="sm" class="text-uppercase"><font-awesome-icon icon="user-plus"/> Add New Users</b-btn>
-            <b-collapse id="collapse1" class="mt-3">
-            
-                <b-form @submit.prevent="updateUser">
-        
-                    <b-form-group
-                        label="Add Users"
-                        description="One per row. For Boston College users, add a username or email address. NOTE: BC emails must be the username version (e.g. doeja@bc.edu), not the longer version (e.g. jane.doe@bc.edu). For non-BC users, just add an email address"
-                        >
-                            <b-form-textarea
-                            id="textarea1"
-                            v-model="text"
-                            placeholder="baileyau@bc.edu"
-                            :rows="3"
-                            :max-rows="6"
-                            ></b-form-textarea>
-                    </b-form-group>
+    <div class="people">
+        <main role="main" class="px-6 min-h-screen w-full max-w-60 mx-auto lg:static lg:max-h-full lg:overflow-visible">
+            <header>
+                <h1 class="line-behind heading-nudge-up mb-4">People</h1>
+            </header>
+            <div class="flex items-center">
 
-                    <b-form-group label="Role">
-                        <b-form-select v-model="newUserType" :options="options" class="mb-3"></b-form-select>
-                    </b-form-group>
+                <b-input-group class="my-3 max-w-sm mr-auto">
+                    <b-form-input v-model="filter" placeholder="Type to Search" />
+                    <b-input-group-append>
+                        <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                    </b-input-group-append>
+                </b-input-group>
 
-                    <b-button type="submit" variant="primary" size="sm" class="text-uppercase"><font-awesome-icon icon="check"/> Add</b-button>
-            </b-form>
-            </b-collapse>
+                <div class="add-people ml-3">
+                    <b-btn v-b-modal.add-people-form variant="dark" class="text-uppercase">
+                        <font-awesome-icon icon="user-plus" /> Add New Users</b-btn>
+                    <b-modal id="add-people-form" centered title="Add People">
+                        <b-form @submit.prevent="updateUser">
 
-        </div>
-       
-            <b-input-group class="my-3 max-w-sm">
-                <b-form-input v-model="filter" placeholder="Type to Search" />
-                <b-input-group-append>
-                    <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-                </b-input-group-append>
-            </b-input-group>
-    </div>
+                            <b-form-group label="Add Users"
+                                description="One per row. For Boston College users, add a username or email address. NOTE: BC emails must be the username version (e.g. doeja@bc.edu), not the longer version (e.g. jane.doe@bc.edu). For non-BC users, just add an email address">
+                                <b-form-textarea id="textarea1" v-model="newUserList" placeholder="baileyau@bc.edu"
+                                    :rows="3" :max-rows="6"></b-form-textarea>
+                            </b-form-group>
 
-        <loader v-if="listIsLoading">Loading...</loader>
-        <b-table v-if="listIsLoaded" :items="users" :fields="fields" :filter="filter" @filtered="onFiltered" sortBy="updated_at" sort-desc="true" stacked="md">
-            <!-- <template slot="username" slot-scope="users">
-                {{ users.username }}
-            </template>
-            <template slot="email" slot-scope="users">
-                {{ users.email }}
-            </template> -->
-        </b-table>
+                            <b-form-group label="Role">
+                                <b-form-select v-model="newUserType" :options="options" class="mb-3"></b-form-select>
+                            </b-form-group>
+
+                            <b-button type="submit" variant="primary" size="sm" class="text-uppercase">
+                                <font-awesome-icon icon="check" /> Add</b-button>
+                        </b-form>
+                    </b-modal>
+                </div>
+
+            </div>
+
+            <loader v-if="listIsLoading">Loading...</loader>
+
+            <b-table v-if="listIsLoaded" :items="users" :fields="fields" :filter="filter" sortBy="updated_at"
+                sort-desc="true" no-local-sorting @sort-changed="sortBy" stacked="md">
+                <template slot="username" slot-scope="data">
+                    {{ data.item.username }}
+                </template>
+                <template slot="email" slot-scope="data">
+                    {{ data.item.email }}
+                </template>
+            </b-table>
+            <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
         </main>
     </div>
 
 </template>
 
 <script>
-import {
-        mapGetters, mapActions
+    import Loader from '@/components/Loader';
+    import {
+        mapGetters,
+        mapActions
     } from 'vuex';
-export default {
-    components:{},
-    computed:{
-        ...mapGetters('users/profile', [
-            'access'
-        ]),
-        ...mapGetters('users', [
-            'users',
-            'listIsLoading',
-            'listIsLoaded'
-        ]),
-        ...mapGetters('sites', [
-            'currentSite',
-            'basePath'
-        ])
-    },
-    methods: {
-        linkGen (pageNum) {
-            return '/admin/sites/' + pageNum
+    export default {
+        components: {
+            Loader
         },
-        ...mapActions("users", [
-            "routeLoad"
-        ])
-    },
-    data() {
-        return {
-            fields: {
-                username: {
-                    label: "Name",
-                    sortable: true
-                    }, 
-                email: {
-                    label: "email",
-                    sortable: true
-                },
-                role: {
-                    label: "role",
-                    sortable: true
-                },
+        computed: {
+            ...mapGetters('users/profile', [
+                'access'
+            ]),
+            ...mapGetters('users', [
+                'users',
+                'listIsLoading',
+                'listIsLoaded',
+                'lastPage',
+                'currentPage'
+            ]),
+            ...mapGetters('sites', [
+                'currentSite',
+                'basePath'
+            ])
+        },
+        methods: {
+            linkGen(pageNum) {
+                return '/' + this.currentSite.uri + '/options/people/' + pageNum
             },
-            filter: null,
-        }
+            ...mapActions("users", [
+                "routeLoad"
+            ]),
+            sortBy(sort) {
+                var direction = 'ASC';
+                if (sort.sortDesc) direction = 'DESC'
+                this.$router.push({
+                    query: {
+                        sort: 'users.' + sort.sortBy,
+                        direction: direction
+                    }
+                });
+            }
+        },
+        data() {
+            return {
+                fields: {
+                    username: {
+                        label: "Name",
+                        sortable: true
+                    },
+                    email: {
+                        label: "email",
+                        sortable: true
+                    },
+                    role: {
+                        label: "role",
+                        sortable: true
+                    },
+                },
+                filter: null,
+                newUserType: '',
+                newUserList: '',
+                options: [
+                    'member',
+                    'administrator'
+                ]
+            }
 
-    },
-    watch: {
-        '$route.params.page': function (page) {
-            this.routeLoad({to: this.$route, site: this.currentSite });
+        },
+        watch: {
+            '$route.params.page': function (page) {
+                this.routeLoad({
+                    to: this.$route,
+                    site: this.currentSite
+                });
+            },
+            '$route.query.sort': function (page) {
+                this.routeLoad({
+                    to: this.$route,
+                    site: this.currentSite
+                });
+            },
+            '$route.query.direction': function (page) {
+                this.routeLoad({
+                    to: this.$route,
+                    site: this.currentSite
+                });
+            }
+        },
+        mounted() {
+            this.routeLoad({
+                to: this.$route,
+                site: this.currentSite
+            });
         }
-    },
-    mounted() {
-        console.log('mounting')
-        this.routeLoad({to: this.$route, site: this.currentSite});
     }
-}
 </script>
 
 <style>

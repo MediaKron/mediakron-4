@@ -12,7 +12,16 @@ const actions = {
      */
     routeLoad({ commit, dispatch }, { to }){
         const { page } = to.params;
-        const { search, sort, direction, status } = to.query;
+        const { 
+            search, 
+            sort, 
+            direction, 
+            status, archived, 
+            type, 
+            title,
+            user_id,
+            editor_id
+        } = to.query;
 
         //
         var options = {
@@ -20,7 +29,12 @@ const actions = {
           search: search || '',
           sort: sort || 'id',
           direction: direction || 'ASC',
-          status: status || ''
+          status: status || '',
+          archived: archived || '',
+          type: type || '',
+          title: title || '',
+          editor_id: editor_id || '',
+          user_id: user_id || ''
         }
         dispatch('loadItems', options);
     },
@@ -89,6 +103,10 @@ const actions = {
             });
     },
 
+    listError({}, error){
+        console.log(error);
+    },
+
     /**
      * Load a single item
      * @param {*} param0
@@ -96,11 +114,11 @@ const actions = {
      */
     getItem({ commit, dispatch }, id) {
         commit("itemLoading");
-            return api.get('item/'+id)
-                    .then((response) => {
+        return api.get('item/'+id)
+                .then((response) => {
                     commit("itemLoad", response.data, currentSite);
-            commit("itemLoaded");
-        })
+                    commit("itemLoaded");
+                })
         .catch((error) => {
                 error.errorMessage = "There was an error loading the item";
             return dispatch("itemError", error);
@@ -112,16 +130,22 @@ const actions = {
      * @param {*} param0
      * @param {*} id
      */
-    getTags({ commit, dispatch }) {
+    getTags({ commit, dispatch, rootGetters }) {
         commit("tagsLoading");
-            return api.get('tags')
-                .then((response) => {
-                    commit("tagsLoad", response.data);
-            commit("tagsLoaded");
+        var currentSite = rootGetters['sites/currentSite'],
+        // Set the normal item create url
+        url = currentSite.id + '/tags';
+        return api.get(url)
+            .then((response) => {
+                console.log(response)
+                commit("tagsLoad", response.data);
+                commit("tagsLoaded");
         })
         .catch((error) => {
-                error.errorMessage = "There was an error loading the item";
-            return dispatch("itemError", error);
+            console.log(error)
+            error.errorMessage = "There was an error loading the item";
+            throw error
+            //return dispatch("itemError", error);
         });
     },
 

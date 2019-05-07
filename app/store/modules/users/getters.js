@@ -7,6 +7,8 @@ export const getters = {
   users: state => state.userList,
   listIsLoading: state => state.listIsLoading,
   listIsLoaded: state => state.listIsLoaded,
+  userListIsLoading: state => state.listIsLoading,
+  userListIsLoaded: state => state.listIsLoaded,
   listIsError: state => state.listIsError,
   listIsEmpty: state => !(state.userList && state.userList.length > 0 && state.listIsLoading)? true : false,
 

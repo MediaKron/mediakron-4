@@ -1,11 +1,13 @@
-import Content from '@/views/site/content/Content';
 import MyContent from '@/views/site/content/MyContent';
 import AllContent from '@/views/site/content/AllContent';
 import AddContent from '@/views/site/content/AddContent';
 import Authors from '@/views/site/content/Authors';
 import Deleted from '@/views/site/content/Deleted';
+import Archived from '@/views/site/content/Archived';
+import Import from '@/views/site/content/Import';
+import Export from '@/views/site/content/Export';
 import CreateContent from '@/views/site/items/Create';
-
+import Item from "@/views/site/items/Item";
 
 export default [
     {
@@ -33,6 +35,24 @@ export default [
         props: true
     },
     {
+        path: "archived",
+        name: 'Archived',
+        component: Archived,
+        props: true
+    },
+    {
+        path: "import",
+        name: 'Import',
+        component: Import,
+        props: true
+    },
+    {
+        path: "export",
+        name: 'export',
+        component: Export,
+        props: true
+    },
+    {
         path: "add",
         name: 'add',
         component: AddContent,
@@ -40,14 +60,20 @@ export default [
     },
     {
         path: "add/:type",
-        name: 'add',
+        name: 'additem',
         component: CreateContent,
         props: true
     },
+    // {
+    //     path: ":firstUri",
+    //     name: "Item1",
+    //     component: Item,
+    //     props: true,
+    //   },
     {
         path: "/",
         name: 'content',
-        component: Content,
+        component: AllContent,
         props: true
     }
 ]

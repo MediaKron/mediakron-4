@@ -1,4 +1,12 @@
 import Model from "@/store/utils/model";
+import config from '@/config';
+
+import ImageIcon from "@/assets/item-icons/image.svg";
+import FileIcon from "@/assets/item-icons/file.svg";
+import AudioIcon from "@/assets/item-icons/audio.svg";
+import VideoIcon from "@/assets/item-icons/video.svg";
+import MapIcon from "@/assets/item-icons/map.svg";
+import StoryIcon from "@/assets/item-icons/story.svg";
 class Item extends Model {
     
     /**
@@ -9,6 +17,7 @@ class Item extends Model {
     constructor(data, site) {
         super(data)
         this.site = site
+        return this;
     }
 
     /**
@@ -36,7 +45,112 @@ class Item extends Model {
                 return '.jpg, .png, .gif';
         }
     }
+
     
+    imageUrl(style){
+        if(!this.thumbnail || this.thumnbail == ''){
+            // TODO: Insert thumbnails here
+            //global assetPath=''
+            switch(this.type){
+                case 'image':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return ImageIcon;
+                case 'text':
+                case 'file':
+                   // return 'https://picsum.photos/50/50/?image=54';
+                    return FileIcon;
+                case 'video':
+                // return 'https://picsum.photos/50/50/?image=55';
+                    return VideoIcon;
+                case 'audio':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return AudioIcon;
+                case 'story':
+                    // return 'https://picsum.photos/50/50/?image=55';
+                    return StoryIcon;
+                case 'map':
+                    // return 'https://picsum.photos/50/50/?image=56';
+                    return MapIcon;
+                default:
+                   // return 'https://picsum.photos/50/50/?image=57';
+                    return ImageIcon;
+            }
+            //return 'https://picsum.photos/50/50/?image=54';
+        } 
+        var url = config.STORAGE_PUBLIC + '/' + this.site.uri;
+        if(style){
+            url += '/styles/' + style; 
+        }
+        return url + '/' + this.thumbnail;
+    }
+
+    color(){
+        if(!this.color){
+            return this.site.banner_color;
+        }
+        return this.color;
+    }
+
+    hasTags(){
+        return this.tags.length > 0;
+    }
+
+    getZoom(){
+        console.log(this.map)
+        return this.map.zoom;
+    }
+    getMaxZoom(){
+        return 1;
+    }
+    getMinZoom(){
+        return 1;
+    }
+    getCenter(){
+        return this.map.center;
+    }
+    getTiles(){
+        switch (this.map.type){
+            case 'osm':
+                return 'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
+            case 'carto-voyager':
+                return 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png';
+            case 'stamen-light':
+                return 'https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png';
+            case 'stamen-watercolor':
+                return 'https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png';
+            case 'Esri_WorldStreetMap':
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
+            case 'Esri_DeLorme':
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}';
+            case 'Esri_NatGeoWorldMap':
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}';
+            case 'Esri_WorldImagery': 
+                return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+            default: 
+                return 'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
+        }
+    }
+    getAttribution(){
+        switch (this.map.type){
+            case 'osm':
+                return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+            case 'carto-voyager':
+                return 'Copyright Carto. Data by OpenStreetMap';
+            case 'stamen-light':
+                return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+            case 'stamen-watercolor':
+                return 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.';
+            case 'Esri_WorldStreetMap':
+                return 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012e';
+            case 'Esri_DeLorme':
+                return 'Tiles &copy; Esri &mdash; Copyright: &copy;2012 DeLorme';
+            case 'Esri_NatGeoWorldMap':
+                return 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC';
+            case 'Esri_WorldImagery': 
+                return 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+            }
+    }
+
     defaults(){
         return {
             id: null,
@@ -66,6 +180,7 @@ class Item extends Model {
             center: [0, 0],
             size: {},
             zoom: 2,
+            thumbnail: false,
             projection: 'EPSG:3857',
             date: {
                 start: false,
