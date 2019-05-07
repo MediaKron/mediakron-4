@@ -14,9 +14,9 @@
                 </b-input-group>
 
                 <div class="add-people ml-3">
-                    <b-btn v-b-modal.add-people-form variant="dark" class="text-uppercase">
+                    <b-btn v-b-modal.add-people-form variant="primary" class="text-uppercase">
                         <font-awesome-icon icon="user-plus" /> Add New Users</b-btn>
-                    <b-modal id="add-people-form" centered title="Add People">
+                    <b-modal id="add-people-form" centered title="Add People" ok-title="Save">
                         <b-form @submit.prevent="updateUser">
 
                             <b-form-group label="Add Users"
@@ -46,6 +46,9 @@
                 </template>
                 <template slot="email" slot-scope="data">
                     {{ data.item.email }}
+                </template>
+                 <template slot="remove" slot-scope="data">
+                    <b-button class="bg-none"><font-awesome-icon icon="window-close" /><span class="sr-only">Remove {{ data.item.username }}</span> </b-button>
                 </template>
             </b-table>
             <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
@@ -106,11 +109,15 @@
                         sortable: true
                     },
                     email: {
-                        label: "email",
+                        label: "Email",
                         sortable: true
                     },
                     role: {
-                        label: "role",
+                        label: "Role",
+                        sortable: true
+                    },
+                    remove: {
+                        label: "Remove",
                         sortable: true
                     },
                 },

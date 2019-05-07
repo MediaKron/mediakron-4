@@ -6,9 +6,9 @@
       </header>
 
       <div class="add-groups">
-        <b-btn v-b-toggle.collapse1 variant="primary" size="sm" class="text-uppercase">
+        <b-btn v-b-modal.add-group-form variant="primary" class="text-uppercase">
           <font-awesome-icon icon="user-plus" /> Add Groups</b-btn>
-        <b-collapse id="collapse1" class="mt-3">
+        <b-modal id="add-group-form" centered title="Add Groups" ok-title="Save">
           <b-form @submit.prevent="updateUser">
 
             <b-form-group class="mt-2 floating-label" label-for="groupid"
@@ -21,15 +21,14 @@
             <b-form-group label="Role" class="mt-3">
               <b-form-select v-model="newUserType" :options="options" class="mb-3"></b-form-select>
             </b-form-group>
-
-            <b-button type="submit" variant="primary" size="sm" class="text-uppercase">
-              <font-awesome-icon icon="check" /> Add </b-button>
+            <template slot="modal-ok">
+                  ok
+                </template>
           </b-form>
-
-        </b-collapse>
-
+        </b-modal>
       </div>
-      <p> No groups have been added.</p>
+
+      <p class="mt-3"> No groups have been added.</p>
     </main>
   </div>
 </template>
