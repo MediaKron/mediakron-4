@@ -1,23 +1,23 @@
 <template>
     <div v-if="access('can change site siteadmin')">
         <b-nav vertical pills>
-            <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/options/settings'">
+            <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/settings/general'">
                 <font-awesome-icon icon="sliders-h" />
-                <span class="pl-2 uppercase">Settings</span>
+                <span class="pl-2 uppercase">General</span>
             </b-nav-item>
-            <b-nav-item class="nav-item" :active="inMenus" v-if="canBrowse" :to="basePath + '/options/menus'">
+            <b-nav-item class="nav-item" :active="inMenus" v-if="canBrowse" :to="basePath + '/settings/menus'">
                 <font-awesome-icon icon="sitemap" />
                 <span class="pl-2 uppercase">Menus</span>
             </b-nav-item>
-            <b-nav-item :active="inAppearance" v-if="canBrowse" :to="basePath + '/options/appearance'">
+            <b-nav-item :active="inAppearance" v-if="canBrowse" :to="basePath + '/settings/appearance'">
                 <font-awesome-icon icon="paint-brush" />
                 <span class="pl-2 uppercase">Appearance</span>
             </b-nav-item>
-            <b-nav-item :active="inPeople" :to="basePath + '/options/people'">
+            <b-nav-item :active="inPeople" :to="basePath + '/settings/people'">
                 <font-awesome-icon icon="user-cog" />
                 <span class="pl-2 uppercase">People</span>
             </b-nav-item>
-            <b-nav-item :active="inGroups" :to="basePath + '/options/groups'">
+            <b-nav-item :active="inGroups" :to="basePath + '/settings/groups'">
                 <font-awesome-icon icon="users" />
                 <span class="pl-2 uppercase">Groups</span>
             </b-nav-item>
