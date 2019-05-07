@@ -2,7 +2,7 @@
     <div>
         <div class="w-full">
             <div class="flex">
-                <Navigation class="fixed top-0 w-100 z-10"></Navigation>
+                <Navigation class="fixed top-0 w-full z-10"></Navigation>
                 <!-- <aside class="content-sidebar hidden lg:block pb-16 w-15 bg-dark">
                     <div class="lg:relative lg:sticky top-0 pt-16">
                         <div class="sticky?lg:h-(screen-8) overflow-y-auto">

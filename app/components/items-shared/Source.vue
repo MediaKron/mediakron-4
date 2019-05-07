@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="item-element-source" v-if="isEditing">
-            <b-button v-b-toggle.sourceCollapse variant="outline-dark" class="mb-3 text-black w-100 border-dashed text-left">
+            <b-button v-b-toggle.sourceCollapse variant="outline-dark" class="mb-3 text-black w-full border-dashed text-left">
                  <span class="when-opened"><span class="sr-only">Close</span><font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span class="sr-only">Open</span><font-awesome-icon icon="caret-down" /> </span> Source
            </b-button>
         <b-collapse id="sourceCollapse" >
