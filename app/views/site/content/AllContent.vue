@@ -100,7 +100,7 @@
         mapActions
     } from 'vuex';
     import Loader from '@/components/Loader';
-    import ItemFilter from '@/views/site/options/ItemFilter'
+    import ItemFilter from '@/views/site/settings/ItemFilter'
     export default Vue.extend({
         components: {
             Loader,

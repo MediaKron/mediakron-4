@@ -1,6 +1,6 @@
 import SiteLayout from "@/views/site/SiteLayout";
 
-import OptionsLayout from "@/views/site/options/OptionsLayout";
+import SettingsLayout from "@/views/site/settings/SettingsLayout";
 import ContentLayout from "@/views/site/content/ContentLayout";
 import Item from "@/views/site/items/Item";
 import Help from "@/views/help/help";
@@ -9,7 +9,7 @@ import Search from "@/views/site/search/Search";
 import HomePage from "@/views/site/homepage/Homepage";
 import HomeSettings from "@/views/site/homepage/HomeSettings";
 import content from "./content";
-import siteoptions from "./siteoptions";
+import settings from "./settings";
 
 var routes = {
   default: {
@@ -51,11 +51,11 @@ var routes = {
         children: content
       },
       {
-        path: "options",
-        component: OptionsLayout,
-        title: "SiteOptions",
+        path: "settings",
+        component: SettingsLayout,
+        title: "Settings",
         props: true,
-        children: siteoptions
+        children: settings
       },
       {
         path: ":firstUri/:secondUri/:thirdUri",

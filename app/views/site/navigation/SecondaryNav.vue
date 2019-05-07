@@ -58,24 +58,24 @@
         <b-nav-item-dropdown right no-caret extra-toggle-classes="manage-button text-uppercase bg-dark" extra-menu-classes="manage-dropdown">
             <template slot="button-content">
                 <font-awesome-icon icon="cog"/> 
-                <span class="item-text">Options</span>
+                <span class="item-text">Settings</span>
             </template>
-            <b-dropdown-item v-if="access('can create content') || access('can archive content') || access('can import')" :to="basePath + '/options/settings'"> 
+            <b-dropdown-item v-if="access('can create content') || access('can archive content') || access('can import')" :to="basePath + '/settings/general'"> 
                 <font-awesome-icon icon="sliders-h"/> 
-                <span class="utilitynav-text"> Settings</span>
+                <span class="utilitynav-text"> General</span>
             </b-dropdown-item >  
-            <b-dropdown-item v-if="canBrowse" :to="basePath + '/options/menus'">
+            <b-dropdown-item v-if="canBrowse" :to="basePath + '/settings/menus'">
                 <font-awesome-icon icon="sitemap"/> 
                 <span class="utilitynav-text"> Menus</span>
             </b-dropdown-item> 
-            <b-dropdown-item v-if="canBrowse" :to="basePath + '/options/appearance'">
+            <b-dropdown-item v-if="canBrowse" :to="basePath + '/settings/appearance'">
                 <font-awesome-icon icon="paint-brush"/> 
                 <span class="utilitynav-text"> Appearance</span>
             </b-dropdown-item> 
-            <b-dropdown-item :to="basePath + '/options/people'"><font-awesome-icon icon="user-cog"/> 
+            <b-dropdown-item :to="basePath + '/settings/people'"><font-awesome-icon icon="user-cog"/> 
             <span class="utilitynav-text"> People</span>
             </b-dropdown-item>
-            <b-dropdown-item :to="basePath + '/options/groups'"><font-awesome-icon icon="users"/> 
+            <b-dropdown-item :to="basePath + '/settings/groups'"><font-awesome-icon icon="users"/> 
                 <span class="utilitynav-text"> Groups</span>
                 </b-dropdown-item >
         </b-nav-item-dropdown>
