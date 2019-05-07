@@ -47,6 +47,9 @@
                 <template slot="email" slot-scope="data">
                     {{ data.item.email }}
                 </template>
+                 <template slot="remove" slot-scope="data">
+                    <b-button class="bg-none"><font-awesome-icon icon="window-close" /><span class="sr-only">Remove {{ data.item.username }}</span> </b-button>
+                </template>
             </b-table>
             <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
         </main>
@@ -106,11 +109,15 @@
                         sortable: true
                     },
                     email: {
-                        label: "email",
+                        label: "Email",
                         sortable: true
                     },
                     role: {
-                        label: "role",
+                        label: "Role",
+                        sortable: true
+                    },
+                    remove: {
+                        label: "Remove",
                         sortable: true
                     },
                 },
