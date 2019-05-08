@@ -1,7 +1,8 @@
 <template>
     <div v-if="access('can change site siteadmin')">
-        <b-nav vertical pills>
-            <b-nav-item :active="inSettings" v-if="canBrowse" :to="basePath + '/settings/general'">
+    <b-navbar toggleable="lg" variant="dark" class="settings-nav w-full mb-4 pb-0 pt-16">
+        <b-nav variant="dark" class="w-full mx-auto max-w-60" tabs>
+            <b-nav-item  :active="inSettings" v-if="canBrowse" :to="basePath + '/settings/general'">
                 <font-awesome-icon icon="sliders-h" />
                 <span class="pl-2 uppercase">General</span>
             </b-nav-item>
@@ -22,6 +23,7 @@
                 <span class="pl-2 uppercase">Groups</span>
             </b-nav-item>
         </b-nav>
+    </b-navbar>
     </div>
 </template>
 
@@ -85,5 +87,11 @@
 </script>
 
 <style>
-  
+ .settings-nav .nav-tabs .nav-link {
+     color:#fff;
+  }
+
+.settings-nav .nav-tabs {
+    border-bottom:none;
+}
 </style>

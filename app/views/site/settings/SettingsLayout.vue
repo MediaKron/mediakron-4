@@ -1,52 +1,96 @@
 <template>
     <div class="options-layout">
-            <Navigation class="fixed top w-full z-10"></Navigation>
-            <div class="flex">
-                <Sidebar>
-                    <h2 class="bg-dark text-white mt-3 mb-3 ml-3 pb-2 text-lg uppercase">
-                        <font-awesome-icon icon="cog" /> Site Options</h2>
-                    <SettingsSidebar></SettingsSidebar>
-                </Sidebar>
-                <main role="main" id="content-wrapper"
-                    class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-6 mt-24   ">
-                    <transition name="fade">
-                     <router-view></router-view>
-                    </transition>
-                </main>
-            </div>
-    </div>
+        <Navigation class="w-full"></Navigation>
+            <b-navbar class="settings-nav bg-dark w-full mb-4 pb-0 pt-2">
+                <b-nav class=" w-full mx-auto max-w-60" tabs>
+                    <b-nav-item active-class="active" v-if="canBrowse" :to="basePath + '/settings/general'">
+                        <font-awesome-icon icon="sliders-h" />
+                        <span class="pl-2 uppercase">General</span>
+                    </b-nav-item>
+                    <b-nav-item class="nav-item" active-class="active" v-if="canBrowse" :to="basePath + '/settings/menus'">
+                        <font-awesome-icon icon="sitemap" />
+                        <span class="pl-2 uppercase">Menus</span>
+                    </b-nav-item>
+                    <b-nav-item active-class="active" v-if="canBrowse" :to="basePath + '/settings/appearance'">
+                        <font-awesome-icon icon="paint-brush" />
+                        <span class="pl-2 uppercase">Appearance</span>
+                    </b-nav-item>
+                    <b-nav-item active-class="active" :to="basePath + '/settings/people'">
+                        <font-awesome-icon icon="user-cog" />
+                        <span class="pl-2 uppercase">People</span>
+                    </b-nav-item>
+                    <b-nav-item active-class="active" :to="basePath + '/settings/groups'">
+                        <font-awesome-icon icon="users" />
+                        <span class="pl-2 uppercase">Groups</span>
+                    </b-nav-item>
+                </b-nav>
+            </b-navbar>
+            <main role="main" id="content-wrapper"
+                class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-6 mt-10  ">
+                <transition name="fade">
+                    <router-view></router-view>
+                </transition>
+            </main>
+        </div>
 </template>
 
 <script>
-    import Sidebar from "@/components/Sidebar";
-    import SettingsSidebar from "./SettingsSidebar";
     import Navigation from '@/views/site/Navigation'
     import {
+        mapState,
         mapGetters
     } from 'vuex';
     export default {
         components: {
-            Sidebar,
-            SettingsSidebar, 
             Navigation
         },
         computed: {
             ...mapGetters('users/profile', [
+                'user',
+                'isGuest',
+                'isAdmin',
+                'isMember',
+                'canBrowse',
                 'access'
             ]),
+            ...mapState('sites', [
+                'currentSite'
+            ]),
             ...mapGetters('sites', [
-                'currentSite',
+                'siteIsLoading',
+                'siteIsLoaded',
                 'basePath'
-            ])
+            ]),
+            ...mapState('items', [
+                'changed',
+                'changeCount'
+            ]),
+            ...mapGetters('items', [
+                'tags'
+            ]),
         }
     };
 </script>
 
 <style>
-    .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s;
     }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+
+    .fade-enter,
+    .fade-leave-to
+
+    /* .fade-leave-active below version 2.1.8 */
+        {
+        opacity: 0;
+    }
+
+     .settings-nav .nav-tabs .nav-link {
+     color:#fff;
+  }
+
+    .settings-nav .nav-tabs {
+        border-bottom:none;
     }
 </style>

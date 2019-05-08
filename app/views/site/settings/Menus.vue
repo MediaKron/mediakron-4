@@ -1,6 +1,6 @@
 <template>
-    <div class="menus">
-        <main role="main" class="px-6 min-h-screen w-full max-w-50 mx-auto lg:static lg:max-h-full lg:overflow-visible">
+    <div class="menus w-full mx-auto max-w-60">
+        <main role="main" class="max-w-50">
             <header>
                 <h1 class="line-behind heading-nudge-up mb-4">Menus</h1>
             </header>

@@ -26,3 +26,15 @@ $nav-pills-border-radius: 0rem;
 
 /* Make input border colors accessible on white */
 $input-border-color: #616161;
+
+$ziggy: red; 
+
+$theme-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "ziggy":      $ziggy
+  ),
+  $theme-colors
+);
