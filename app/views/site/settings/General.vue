@@ -1,6 +1,6 @@
 <template>
-    <div class="settings-general with-savebar">
-        <main role="main" class="px-6 min-h-screen w-full max-w-50 mx-auto lg:static lg:max-h-full lg:overflow-visible">
+    <div class="settings-general w-full mx-auto max-w-60 ">
+        <main role="main" class=" max-w-40 ">
         <header>
              <h1 class="line-behind heading-nudge-up mb-4 " > General Site Settings</h1>
         </header>
