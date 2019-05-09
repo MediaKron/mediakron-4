@@ -3,119 +3,31 @@
         <div class="w-full">
             <div class="flex">
                 <Navigation class="fixed top-0 w-full z-10"></Navigation>
-                <!-- <aside class="content-sidebar hidden lg:block pb-16 w-15 bg-dark">
-                    <div class="lg:relative lg:sticky top-0 pt-16">
-                        <div class="sticky?lg:h-(screen-8) overflow-y-auto">
-                            <h3 class="uppercase text-lg mb-4 text-white pl-3 mt-1 ">Filters</h3>
-                            <div>
-                                <div class="mb-10 flex flex-col">
-                                    <b-button variant="dark" size="sm" pressed="true"
-                                        class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="users" /><span class="mr-auto ml-2"> All Authors</span> <b-badge variant="light">400
-                                        </b-badge>
-                                    </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="user" /> <span class="mr-auto ml-2">My Content Only</span> <b-badge variant="light">30
-                                        </b-badge>
-                                    </b-button>
-                                    <b-dropdown size="sm" variant="dark" right toggle-class="text-left">
-                                        <template slot="button-content" class="px-2 text-left">
-                                            <span class=" ml-1 px-1">
-                                                <font-awesome-icon icon="user-check" /> Filter By Author</span>
-                                        </template>
-                                        <b-dropdown-item href="#">Jamie Walker <b-badge variant="light">15</b-badge>
-                                        </b-dropdown-item>
-                                        <b-dropdown-item href="#">Tim Lindgren <b-badge variant="light">2</b-badge>
-                                        </b-dropdown-item>
-                                        <b-dropdown-item href="#">Brad Mering <b-badge variant="light">1</b-badge>
-                                        </b-dropdown-item>
-                                    </b-dropdown> -->
-
-                <!-- <select v-model="authorList">
-                                        <option v-for="user in users" v-bind:value="user.id" @click="userFilter">
-                                            {{ user.email }}
-                                        </option>
-                                    </select> -->
-
-
-                <!-- <multiselect v-model="authorFilter" :options="authorOptions" class="border border-dark rounded z-10 uppercase text-black text-sm" track-by="value" label="text" placeholder="Select Author" selectLabel="Select" deselectLabel="Remove"/> -->
-                <!-- </div>    
-                            </div>
-                            <h3 class="uppercase text-lg sr-only">Content</h3>
-                            <div>
-                                <div class="mb-3 flex flex-col" vertical>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3" pressed="true" @clicked="event">
-                                        <font-awesome-icon icon="th-large" /><span class="mr-auto ml-2 flex items-center">All Item Types</span> <b-badge variant="light" class="top-0">400
-                                        </b-badge>
-                                    </b-button>
-                                    <b-button v-if="counts.collections > 0" variant="dark" size="sm" class=" text-left mb-1 flex items-center px-3" >
-                                        <font-awesome-icon icon="folder" /><span class="mr-auto ml-2"> Collections</span> <b-badge variant="light">{{counts.collections}}
-                                        </b-badge>
-                                    </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-2"> Stories</span><b-badge variant="light">4
-                                        </b-badge>
-                                    </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-2"> Maps</span> <b-badge variant="light">2
-                                        </b-badge>
-                                    </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="clock" /><span class="mr-auto ml-2"> Timelines</span> <b-badge variant="light">1
-                                        </b-badge>
-                                    </b-button>
-                                    <b-button v-if="counts.images > 0" variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon=image /><span class="mr-auto ml-2"> Images</span> <b-badge variant="light">{{ counts.images }}</b-badge>
-                                    </b-button>
-                                    <b-button v-if="counts.videos > 0" variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="video" /> <span class="mr-auto ml-2">Videos</span> <b-badge variant="light">{{ counts.videos }}</b-badge>
-                                    </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="file" /><span class="mr-auto ml-2"> Files</span> <b-badge variant="light">2</b-badge>
-                                    </b-button>
-                                    <b-button variant="dark" size="sm" class="text-left mb-1 flex items-center px-3">
-                                        <font-awesome-icon icon="volume-up" /><span class="mr-auto ml-2"> Audio</span><b-badge variant="light">1
-                                        </b-badge>
-                                    </b-button>
-                                </div>
-                            </div>
-
-                            <b-button class="flex items-center inline-block text-left flex items-center px-3 " variant="dark"
-                                :to="basePath + '/content/deleted'" size="sm">
-                                <font-awesome-icon icon="trash-alt" />
-                                <span class="mr-auto ml-2">Trash</span> <b-badge variant="light">34</b-badge>
-                            </b-button>
-                        </div>
-                    </div>
-                </aside> -->
-
-                <main role="main" id="content-wrapper"
-                    class=" min-h-screen w-full mx-auto lg:static lg:max-h-full lg:overflow-visible px-8 mt-20">
-                    <b-nav tabs class="mb-3 mt-2 max-w-70 mx-auto" >
-                        <b-nav-item active-class="active" :to="basePath + '/content/mycontent'" class="uppercase">My Content </b-nav-item>
-                        <b-nav-item active-class="active" :to="basePath + '/content/all'" class="uppercase">Site Library</b-nav-item>
-                        <b-nav-item active-class="active" :to="basePath + '/content/authors'" class="uppercase mr-auto">Authors</b-nav-item>
-                        <!-- <b-nav-item class="mr-2 uppercase">
-                            <multiselect v-model="value" :options="options" placeholder="Select one"
-                                :custom-label="nameWithLang" label="name" track-by="name">
-
-                            </multiselect>
-                        </b-nav-item> -->
-                        <b-nav-item active-class="active" :to="basePath + '/content/deleted'" class="">
-                            <font-awesome-icon icon="trash-alt" /> Trash</b-nav-item>
-                        <b-nav-item active-class="active" :to="basePath + '/content/archived'" class=" ">
-                            <font-awesome-icon icon="archive" /> Archived</b-nav-item>
-                        <b-nav-item active-class="active" :to="basePath + '/content/import'" class="">
-                            <font-awesome-icon icon="cloud-upload-alt" /> Import</b-nav-item>
-                        <b-nav-item active-class="active" :to="basePath + '/content/export'" class=" mr-auto ">
-                            <font-awesome-icon icon="cloud-download-alt" /> Export</b-nav-item>
-                        <b-nav-item active-class="active" class="-mt-2 -mr-2 p-0">
-                            <b-button variant="primary" size="sm" class="max-w-10" :to="basePath + '/content/add'">
-                                <font-awesome-icon icon="plus" />
-                                <span class="ml-2 uppercase">Add Content</span>
-                            </b-button>
-                        </b-nav-item>
-                    </b-nav>
+                <main role="main" id="content-wrapper" class=" min-h-screen w-full mx-auto mt-10">
+                    <b-navbar variant="light" class="section-nav w-full mb-8 pb-0 pt-4">
+                        <b-nav tabs class="mt-2 max-w-70 mx-auto">
+                            <b-nav-item active-class="active" :to="basePath + '/content/mycontent'" class="uppercase">My
+                                Content </b-nav-item>
+                            <b-nav-item active-class="active" :to="basePath + '/content/all'" class="uppercase">Site
+                                Library</b-nav-item>
+                            <b-nav-item active-class="active" :to="basePath + '/content/authors'"
+                                class="uppercase mr-4">Authors</b-nav-item>
+                            <b-nav-item active-class="active" :to="basePath + '/content/deleted'" class="">
+                                <font-awesome-icon icon="trash-alt" /> Trash</b-nav-item>
+                            <b-nav-item active-class="active" :to="basePath + '/content/archived'" class=" ">
+                                <font-awesome-icon icon="archive" /> Archived</b-nav-item>
+                            <b-nav-item active-class="active" :to="basePath + '/content/import'" class="">
+                                <font-awesome-icon icon="cloud-upload-alt" /> Import</b-nav-item>
+                            <b-nav-item active-class="active" :to="basePath + '/content/export'" class="mr-4 ">
+                                <font-awesome-icon icon="cloud-download-alt" /> Export</b-nav-item>
+                            <b-nav-item active-class="active" class="-mt-2 -mr-2 p-0">
+                                <b-button variant="primary" size="sm" class="max-w-10" :to="basePath + '/content/add'">
+                                    <font-awesome-icon icon="plus" />
+                                    <span class="ml-2 uppercase">Add Content</span>
+                                </b-button>
+                            </b-nav-item>
+                        </b-nav>
+                    </b-navbar>
                     <transition name="fade">
                         <router-view></router-view>
                     </transition>

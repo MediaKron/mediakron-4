@@ -1,7 +1,7 @@
 <template>
     <div class="options-layout">
         <Navigation class="w-full"></Navigation>
-            <b-navbar class="settings-nav bg-dark w-full mb-4 pb-0 pt-2">
+            <b-navbar class="section-nav bg-light w-full mb-8 pb-0 pt-4">
                 <b-nav class=" w-full mx-auto max-w-60" tabs>
                     <b-nav-item active-class="active" v-if="canBrowse" :to="basePath + '/settings/general'">
                         <font-awesome-icon icon="sliders-h" />
@@ -86,11 +86,23 @@
         opacity: 0;
     }
 
-     .settings-nav .nav-tabs .nav-link {
-     color:#fff;
-  }
-
-    .settings-nav .nav-tabs {
+.section-nav .nav-tabs {
         border-bottom:none;
     }
+
+.section-nav .nav-tabs .nav-link.active, 
+    .settings-nav .nav-tabs .nav-item.show .nav-link {
+        border-color: #949494 #949494 #fff;
+}
+
+.section-nav .nav-tabs .nav-link:hover {
+    border-color: #949494;
+    background-color:#fff;
+}
+
+.section-nav {
+    border-bottom: 1px solid #949494;
+}
+
+
 </style>

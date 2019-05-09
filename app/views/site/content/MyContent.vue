@@ -45,7 +45,7 @@
         </div>
 
         <loader v-if="listIsLoading">Loading...</loader>
-        <b-table class="mt-1 border border-grey bg-light rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
+        <b-table class="mt-1 border border-grey rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
             :fields="fields" sortBy="updated_at" :sort-desc="sortOrder" stacked="md">
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
