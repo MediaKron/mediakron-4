@@ -1,14 +1,10 @@
 <template>
     <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
-
         <header class="line-behind mb-4 mt-4">
             <h1>My Content</h1>
         </header>
-
         <div class="pb-2">
-
             <b-button-toolbar key-nav aria-label="Toolbar with button groups" class="">
-
                 <b-input-group size="sm" class="w-12 mb-2 mr-1">
                     <b-input-group-text slot="prepend" class="bg-white text-black uppercase">
                         <font-awesome-icon icon="search" class="uppercase" />
@@ -18,7 +14,6 @@
                         <b-button :disabled="!search" @click="search = ''" size="sm" class="uppercase">Clear</b-button>
                     </b-input-group-append>
                 </b-input-group>
-
                 <b-button v-b-toggle.types size="sm" variant="outline-dark" class="mb-2 mr-auto">
                     <font-awesome-icon icon="filter" /> Filter By Type</b-button>
 
@@ -38,64 +33,20 @@
                         <font-awesome-icon icon="times" class="pr-1" />Unselect all </span> <span v-else
                         class="text-black">
                         <font-awesome-icon icon="check" class="pr-1" />Select All</span>
-                    <b-badge variant="light" class="top-0 ml-2">400</b-badge>
+                    <b-badge variant="light" class="top-0 ml-2"> {{ this.items.length }}</b-badge>
                 </b-form-checkbox>
 
             </b-button-toolbar>
-            <b-collapse id="types" class="mt-2 mb-2">
+            <b-collapse id="types" class="mt-2 mb-2"  >
                 <b-button-group class="flex flex-wrap xl:flex-no-wrap">
-                    <b-button v-if="counts.collections > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Collections">
-                        <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
-                        <b-badge variant="light" class="ml-1 bg-white" > {{ counts.collections }}
-                        </b-badge>
-                    </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Stories">
-                        <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-1"> Stories</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">4
-                        </b-badge>
-                    </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Maps" :to="addFilter({'type': 'map'})">
-                        <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-1"> Maps</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">2
-                        </b-badge>
-                    </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Timelines">
-                        <font-awesome-icon icon="clock" /><span class="mr-auto ml-1"> Timelines</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">1
-                        </b-badge>
-                    </b-button>
-                    <b-button v-if="counts.images > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Images" :to="addFilter({'type': 'image'})">
-                        <font-awesome-icon icon=image /><span class="mr-auto ml-1"> Images</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">{{ counts.images }}</b-badge>
-                    </b-button>
-                    <b-button v-if="counts.videos > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Videos">
-                        <font-awesome-icon icon="video" /> <span class="mr-auto ml-1">Videos</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">{{ counts.videos }}</b-badge>
-                    </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Files">
-                        <font-awesome-icon icon="file" /><span class="mr-auto ml-1"> Files</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">2</b-badge>
-                    </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
-                        v-b-tooltip.hover title="Click to filter by Audio">
-                        <font-awesome-icon icon="volume-up" /><span class="mr-auto ml-1"> Audio</span>
-                        <b-badge variant="light" class="ml-1 bg-white ">1
-                        </b-badge>
-                    </b-button>
+                    <ItemFilter></ItemFilter>
                 </b-button-group>
             </b-collapse>
         </div>
 
         <loader v-if="listIsLoading">Loading...</loader>
         <b-table class="mt-1 border border-grey bg-light rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
-            :fields="fields" sortBy="updated_at" sort-desc="true" stacked="md">
+            :fields="fields" sortBy="updated_at" :sort-desc="sortOrder" stacked="md">
             <template slot="select" slot-scope="items">
                 <b-form-checkbox>
                 </b-form-checkbox>
@@ -109,7 +60,7 @@
                 {{ items.item.type }}
             </template>
             <template slot="author" slot-scope="items">
-                author
+                {{ items.item.user.display_name }}
             </template>
             <template slot="details" slot-scope="items">
                 <b-dropdown variant="link" size="sm" right>
@@ -139,11 +90,13 @@
         mapActions
     } from 'vuex';
     import Loader from '@/components/Loader';
-    import Multiselect from 'vue-multiselect'
+    import Multiselect from 'vue-multiselect';
+    import ItemFilter from '../options/ItemFilter';
     export default Vue.extend({
         components: {
             Loader,
-            Multiselect
+            Multiselect,
+            ItemFilter
         },
         computed: {
             ...mapGetters('sites', [
@@ -182,11 +135,12 @@
                 });
             },
             linkGen(pageNum) {
-                return '/' + this.currentSite.url + '/content/alltable/' + pageNum
+                return '/' + this.currentSite.uri + '/content/mycontent/' + pageNum
             },
             ...mapActions('items', [
                 'routeLoad'
             ]),
+            /*
             addFilter(options){
                 var to = this.$route,
                     path = to.path,
@@ -197,9 +151,12 @@
                 });
                 return { path: path, query: query}
             },
+            */
             nameWithLang ({ name, language }) {
                 return `${name}`
-            }
+            },
+
+
         },
         data() {
             return {
@@ -235,34 +192,14 @@
                         class: 'text-center'
                     },
                 },
+                sortOrder: '',
+                sortOptions: [
+                    {value:'ASC', text: 'oldest to recent'},
+                    {value:'DESC', text: 'recent to oldest'},
+                ],
                 filter: null,
                 isBusy: false,
                 selectAll: false,
-                value: {
-                    name: 'Authors',
-                    language: 'JavaScript'
-                },
-                options: [{
-                        name: 'Tim Lindgren',
-                        language: 'JavaScript'
-                    },
-                    {
-                        name: 'Jamie Walker',
-                        language: 'Ruby'
-                    },
-                    {
-                        name: 'Brad Mering',
-                        language: 'Ruby'
-                    },
-                    {
-                        name: 'Joe Smith',
-                        language: 'PHP'
-                    },
-                    {
-                        name: 'Sally',
-                        language: 'Elixir'
-                    }
-                ]
             
             }
 

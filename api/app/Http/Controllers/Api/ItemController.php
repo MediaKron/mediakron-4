@@ -28,9 +28,14 @@ class ItemController extends Controller
             ->where('site_id', $site);
         $data = $query->paginate(request('per_page', 50));
         $custom = collect([
-            'collections' => Item::listQuery()->where('site_id', $site)->where('type', 'collection')->count(),
-            'images' => Item::listQuery()->where('site_id', $site)->where('type', 'image')->count(),
-            'videos' => Item::listQuery()->where('site_id', $site)->where('type', 'video')->count(),
+            'collection' => Item::listQuery()->where('site_id', $site)->where('type', 'collection')->count(),
+            'image' => Item::listQuery()->where('site_id', $site)->where('type', 'image')->count(),
+            'video' => Item::listQuery()->where('site_id', $site)->where('type', 'video')->count(),
+            'audio' => Item::listQuery()->where('site_id', $site)->where('type', 'audio')->count(),
+            'map' => Item::listQuery()->where('site_id', $site)->where('type', 'map')->count(),
+            'story' => Item::listQuery()->where('site_id', $site)->where('type', 'story')->count(),
+            'file' => Item::listQuery()->where('site_id', $site)->where('type', 'file')->count(),
+            'timeline' => Item::listQuery()->where('site_id', $site)->where('type', 'timeline')->count(),
         ]);
         $data = $custom->merge($data);
         return $data;

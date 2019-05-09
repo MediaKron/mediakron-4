@@ -1,4 +1,5 @@
 let api = '';
+import types from './types';
 
 switch (process.env.NODE_ENV) {
   case 'development':
@@ -19,4 +20,5 @@ export default {
     API_HOSTNAME: api + 'api',
     STORAGE_PUBLIC: api + 'storage',
     BUILD: process.env.APP_BUILD? process.env.APP_BUILD : '0',
+    CONTENT_TYPES: types
 };

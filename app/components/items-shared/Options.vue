@@ -1,7 +1,7 @@
 <template>
-    <b-dropdown class="item-options ml-2" variant="outline-dark" size="sm" right>
+    <b-dropdown variant="outline-dark" size="lg" right no-caret toggle-class="flex flex-column items-center bg-light border-none item-button ">
         <template slot="button-content">
-           <font-awesome-icon icon="ellipsis-v" class="mr-1" /><span class="uppercase">Options</span>
+           <font-awesome-icon icon="ellipsis-h" class="mr-1" /><span class="uppercase options">Options</span>
         </template>
         <b-dropdown-item href="#">
             <font-awesome-icon icon="retweet" class="mr-1"/><span class="button-text">Revisions </span>
@@ -32,5 +32,7 @@
 </script>
 
 <style>
-
+.options {
+    font-size: .5rem;
+}
 </style>

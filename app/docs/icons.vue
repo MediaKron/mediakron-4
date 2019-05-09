@@ -76,6 +76,7 @@ export default {
           {faname: 'Cloud Upload Alt', icon: 'cloud-upload-alt', code: 'cloud-upload-alt', mkname:'Import'},
           {faname: 'Filter', icon: 'filter', code: 'filter', mkname:'filter'},
           {faname: 'Folder', icon: 'folder', code: 'folder', mkname:'Item: Folder (Collection)'},
+          {faname: 'EllipsisH ', icon: 'ellipsis-h', code: 'ellipsis-h', mkname:'Options - Horizontal'},
           {faname: 'EllipsisV ', icon: 'ellipsis-v', code: 'ellipsis-v', mkname:'Options'},
           {faname: 'ExpandArrowsAlt ', icon: 'expand-arrows-alt', code: 'expand-arrows-alt', mkname:' '},
           {faname: 'File', icon: 'file', code: 'file', mkname:'Item: File '},
