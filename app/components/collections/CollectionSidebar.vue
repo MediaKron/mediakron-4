@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <b-dropdown text="Contexts" variant="link" class="" toggle-class="p-0 text-lg" >
+        <b-dropdown text="Contexts" variant="link" class="" toggle-class="p-0 text-lg">
             <b-dropdown-item 
                 v-for="(item_parent, index) in current.parents" 
                 :key="index"
@@ -9,7 +9,7 @@
                 {{ item_parent.title }}
             </b-dropdown-item>
         </b-dropdown>
-        <div class="mt-2" >Current Context: <b-link :to="basePath + '/' + parent.uri">{{ parent.title }}</b-link></div>
+        <div class="mt-2">Current Context: <b-link :to="basePath + '/' + parent.uri">{{ parent.title }}</b-link></div>
         <ul class="pl-2 pt-3 list-none">
             <li v-for="(child, index) in parentChildren" :key="index" class="joined-list" :class="{ 'active' : child.title == current.title}" >
                 <b-link :to="child.uri" > {{ child.title  }}</b-link>
@@ -29,7 +29,7 @@ export default {
             if (this.current.parents.length != 0) return true
         },
         parentChildren() {
-            if (Object.keys(this.current).length != 0) return this.current.children
+            if (Object.keys(this.parent).length != 0) return this.parent.children
             else return false
         },
         ...mapGetters('items', [
