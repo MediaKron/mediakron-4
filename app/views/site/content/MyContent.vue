@@ -47,7 +47,6 @@
         </div>
 
         <loader v-if="listIsLoading">Loading...</loader>
-        <h2> {{ selected }}</h2>
         <b-table class="mt-1 border border-grey bg-light rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy"
             :fields="fields" sortBy="updated_at" :sort-desc="sortOrder" stacked="md">
             <template slot="select" slot-scope="items">
@@ -150,8 +149,7 @@
             selectAll(){
                     this.selected = [];
                         for (let i in this.items) {
-                            console.log(i);
-                            this.selected.push(i);
+                            this.selected.push(this.items[i].id);
                         }
                        return this.allSelected='true';
 
