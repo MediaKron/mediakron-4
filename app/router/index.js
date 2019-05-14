@@ -10,7 +10,7 @@ import Search from "@/views/site/search/Search";
 import HomePage from "@/views/site/homepage/Homepage";
 import HomeSettings from "@/views/site/homepage/HomeSettings";
 import content from "./content";
-import siteoptions from "./siteoptions";
+//import siteoptions from "./siteoptions";
 import auth from "./auth";
 import settings from "./settings";
 

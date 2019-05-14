@@ -53,6 +53,7 @@ export const mutations = {
      * @param {*} state 
      */
     login(state, data){
+        console.log(data);
         state.user = data.user.map(user => new User(user));
     },
 }

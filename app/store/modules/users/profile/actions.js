@@ -20,6 +20,7 @@ const actions = {
           .then(() => {
             // TODO: dispatch event action
             // Dispatch notifications
+            console.log('logged in')
           })
           .then(() => {
             return router.push({ name: 'homepage' });

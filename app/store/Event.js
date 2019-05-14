@@ -21,4 +21,4 @@ class Event extends Model {
 
 }
 
-export default User;
+export default Event;
