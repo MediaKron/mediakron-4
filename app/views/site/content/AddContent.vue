@@ -94,12 +94,10 @@
         mapGetters,
         mapActions
     } from 'vuex';
-    import ContentCard from "./ContentCard";
     import Multiselect from 'vue-multiselect'
     export default Vue.extend({
         components: {
             Multiselect,
-            ContentCard
         },
         computed: {
             ...mapGetters('sites', [

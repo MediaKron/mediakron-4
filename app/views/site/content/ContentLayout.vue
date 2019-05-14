@@ -44,7 +44,6 @@
         mapGetters,
         mapActions
     } from 'vuex';
-    import ContentCard from "./ContentCard";
     import Sidebar from "@/components/Sidebar";
     import Multiselect from 'vue-multiselect';
     import Navigation from '@/views/site/Navigation';
@@ -52,7 +51,6 @@
         components: {
             Multiselect,
             Sidebar,
-            ContentCard,
             Navigation
         },
         computed: {

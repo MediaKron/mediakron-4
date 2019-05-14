@@ -124,7 +124,7 @@ export const mutations = {
 
     updateItem(state, data){
         state.editPending = true;
-        state.first = new Item(data, state.site);
+        state.current = new Item(data, state.site);
     },
 
     itemSaving(state){
@@ -165,7 +165,7 @@ export const mutations = {
         state.isEditing = true;
         state.isCreating = true;
         state.editItem = Object.assign({}, item)
-        state.first = item;
+        state.current = item;
         state.itemIsLoading = false;
         state.itemIsLoaded = true;
         state.itemIsFailed = false;
