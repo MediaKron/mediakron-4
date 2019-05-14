@@ -25,13 +25,13 @@
                     :state="Boolean(editItem.newImage)"
                     :placeholder= editItem.video.url
                     drop-placeholder="Drop file here..."
-                    :accept="first.allowedTypes()"/>
+                    :accept="current.allowedTypes()"/>
                 <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
             </b-collapse>
         </b-form-group>
     </div>
     <div v-else>
-        {{ first.video.type }}
+        {{ current.video.type }}
         <component :is="player"></component>
     </div>
 </template>
@@ -47,7 +47,7 @@
         components: {VueMultiselect},
         name: 'Component',
         mounted() {
-            const type = this.first.video.type
+            const type = this.current.video.type
             this.typeFormat = { "value": type, "text": type.charAt(0).toUpperCase() + type.slice(1) }
         },
         data() {
@@ -65,7 +65,7 @@
         },
         computed: {
             player(){
-                switch(this.first.video.type){
+                switch(this.current.video.type){
                     case 'youtube':
                         return Youtube
                     case 'google':
@@ -82,7 +82,7 @@
                 'editItem',
                 'isEditing',
                 'currentItem',
-                'first',
+                'current',
                 'isUploading',
                 'isUploaded',
 

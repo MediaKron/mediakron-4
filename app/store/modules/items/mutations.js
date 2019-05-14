@@ -97,24 +97,20 @@ export const mutations = {
      * @param {*} state
      */
     itemLoad(state, data){
-        state.first = new Item(data[0], state.site);
-        if(data[1]){
-            state.second = new Item(data[1], state.site);
-        }else{
-            state.second = false;
+        if(data[2]){
+            state.current = new Item(data[2], state.site);
+            state.parent = new Item(data[1], state.site);
+            state.grandparent = new Item(data[0], state.site);
+        }else if(data[1]){
+            state.current = new Item(data[1], state.site);
+            state.parent = new Item(data[0], state.site);
+            state.grandparent = false;
+        }else if(data[0]){
+            state.current = new Item(data[0], state.site);
+            state.parent = false;
+            state.grandparent = false;
         }
-        if(data[2]){    
-            state.third = new Item(data[2], state.site);
-        }else{
-            state.third = false;
-        }
-        if(state.third){
-            state.current = state.third;
-        }else if(state.second){
-            state.current = state.second;
-        }else{
-            state.current = state.first;
-        }
+
         
     },
 

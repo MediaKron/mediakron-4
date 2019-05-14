@@ -11,9 +11,8 @@ export const getInitialState = (checkLocalStorage = false) => {
 
     itemList: [],
     current: {},
-    first: {},
-    second: {},
-    third: {},
+    parent: {},
+    grandparent: {},
 
     isEditing: false,
     isCreating: false,

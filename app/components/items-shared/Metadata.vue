@@ -81,8 +81,8 @@ export default {
     computed: {
         metadata(){
             var cache = {};
-            for(var key in this.first.metadata){
-                if(this.first.metadata[key] != null) cache[key] = this.first.metadata[key];
+            for(var key in this.current.metadata){
+                if(this.current.metadata[key] != null) cache[key] = this.current.metadata[key];
             };
             return cache;
         },
@@ -95,7 +95,7 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first',
+            'current',
             'itemIsLoaded'
         ])
     },

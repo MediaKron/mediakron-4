@@ -74,7 +74,7 @@
             ...mapGetters('items', [
                 'editItem',
                 'isEditing',
-                'first'
+                'current'
             ]),
             customStartDate: function () {
                 return this.StartDate

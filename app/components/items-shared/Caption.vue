@@ -21,7 +21,7 @@
 
     </div>
     <div v-else>
-        <p v-html="first.caption"></p>
+        <p v-html="current.caption"></p>
     </div>
 </template>
 
@@ -35,7 +35,7 @@
             ...mapGetters('items', [
                 'editItem',
                 'isEditing',
-                'first'
+                'current'
             ])
         }
     }

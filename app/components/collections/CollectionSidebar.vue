@@ -3,16 +3,16 @@
         
         <b-dropdown text="Contexts" variant="link" class="" toggle-class="p-0 text-lg" v-if="hasParent">
             <b-dropdown-item 
-                v-for="(parent, index) in this.first.parents" 
+                v-for="(item_parent, index) in current.parents" 
                 :key="index"
-                :href="parent.uri">
-                {{ parent.title }}
+                :href="item_parent.uri">
+                {{ item_parent.title }}
             </b-dropdown-item>
         </b-dropdown>
-        <div class="mt-2" v-if="hasParent">Current Context: <b-link :to="basePath + '/' + second.uri">{{ second.title }}</b-link></div>
+        <div class="mt-2" v-if="hasParent">Current Context: <b-link :to="basePath + '/' + parent.uri">{{ parent.title }}</b-link></div>
         <ul class="pl-2 pt-3 list-none">
             <li v-for="(child, index) in parentChildren" :key="index" class="joined-list">
-                <b-link to="child.uri" :active="child.title == first.title"> {{ child.title  }}</b-link>
+                <b-link to="child.uri" :active="child.title == current.title"> {{ child.title  }}</b-link>
             </li>
         </ul>
     </div>
@@ -22,20 +22,20 @@
 import { mapGetters } from 'vuex'
 export default {
     mounted() {
-        console.log(Object.keys(this.third).length != 0)
+        console.log(Object.keys(this.grandparent).length != 0)
     },
     computed: {
         hasParent() {
-            if (this.first.parents.length != 0) return true
+            if (this.current.parents.length != 0) return true
         },
         parentChildren() {
-            if (Object.keys(this.second).length != 0) return this.second.children
+            if (Object.keys(this.parent).length != 0) return this.parent.children
             else return false
         },
         ...mapGetters('items', [
-            'first',
-            'second',
-            'third'
+            'current',
+            'parent',
+            'grandparent'
         ]),
         ...mapGetters('sites', [
             'basePath'

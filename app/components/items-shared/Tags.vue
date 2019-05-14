@@ -19,10 +19,10 @@
         </b-collapse>
     </div>
     <div v-else>
-        <div v-if="first.tags.length > 0">
+        <div v-if="current.tags.length > 0">
             <h2>Tags</h2>
             <ul>
-                <li v-for="tag in first.tags" v-bind:key="tag.id">{{ tag.id }} - {{ tag.title }} </li>
+                <li v-for="tag in current.tags" v-bind:key="tag.id">{{ tag.id }} - {{ tag.title }} </li>
             </ul>
         </div>
     </div>
@@ -81,7 +81,7 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first'
+            'current'
         ]),
         ...mapGetters('items', [
             'tags'

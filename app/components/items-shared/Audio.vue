@@ -25,13 +25,13 @@
                 :state="Boolean(editItem.newImage)"
                 :placeholder= editItem.audio.url
                 drop-placeholder="Drop file here..."
-                :accept="first.allowedTypes()"/>
+                :accept="current.allowedTypes()"/>
         <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
     </b-collapse>
     </b-form-group>
     </div>
     <div v-else class="audio-player">
-        {{ first.audio.type }}
+        {{ current.audio.type }}
         <vue-plyr>
             <component :is="player"></component>
 
@@ -56,10 +56,10 @@
 
     export default {
         mounted() {
-            const type = this.first.audio.type
+            const type = this.current.audio.type
             this.typeFormat = { "value": type, "text": type.charAt(0).toUpperCase() + type.slice(1) }
-            const url = this.first.audio.url
-             console.log(this.first.audio)
+            const url = this.current.audio.url
+             console.log(this.current.audio)
         },
         data() {
             return {
@@ -76,7 +76,7 @@
         },
         computed: {
             player(){
-                switch(this.first.audio.type){
+                switch(this.current.audio.type){
                     case 'youtube':
                         return Youtube
                     case 'google':
@@ -95,7 +95,7 @@
                 'editItem',
                 'isEditing',
                 'currentItem',
-                'first',
+                'current',
                 'isUploading',
                 'isUploaded',
 

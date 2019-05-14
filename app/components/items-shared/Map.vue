@@ -2,14 +2,14 @@
     <div v-if="itemIsLoaded">
         <l-map
          style="min-height:500px; height: 100%; width: 100%"
-        :zoom.sync="first.getZoom()"
-        :center="first.getCenter()"
+        :zoom.sync="current.getZoom()"
+        :center="current.getCenter()"
         :options="{zoomControl: true}">
             <l-tile-layer
-                :url="first.getTiles()"
-                :attribution="first.getAttribution()" />
+                :url="current.getTiles()"
+                :attribution="current.getAttribution()" />
 
-            <l-marker v-for="marker in first.children" v-bind:key="marker.id" :lat-lng="marker.coordinate">
+            <l-marker v-for="marker in current.children" v-bind:key="marker.id" :lat-lng="marker.coordinate">
                 <l-popup>{{ marker.title }}</l-popup>
             </l-marker>
         </l-map>
@@ -43,14 +43,14 @@ export default {
             'editItem',
             'isEditing',
             'itemIsLoaded',
-            'first'
+            'current'
         ]),
         options(){
             return {};
         },
     },
     mounted(){
-        console.log(this.first)
+        console.log(this.current)
     },
     methods: {
         openPopUp (latLng, caller) {

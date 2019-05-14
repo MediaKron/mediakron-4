@@ -3,7 +3,7 @@
         <b-form-group label="Add/Edit Image" label-sr-only label-for="fileUpload" class="max-w-40 mx-auto">
             <b-form-file v-model="editItem.newImage" :state="Boolean(editItem.newImage)"
                 placeholder="Replace Image (choose a file)..." drop-placeholder="Drop file here..."
-                :accept="first.allowedTypes()" @change="change" />
+                :accept="current.allowedTypes()" @change="change" />
         </b-form-group>
         <viewer :images="image" class="image-editing image-viewer flex">
             <b-img :tabindex="0" class="mx-auto" :src="image" fluid v-b-tooltip.hover title="Click to Zoom Image">
@@ -69,15 +69,15 @@
                     if (this.tempImage) {
                         return this.tempImage;
                     }
-                    return this.first.imageUrl('double');
+                    return this.current.imageUrl('double');
                 }
-                return [this.first.imageUrl('double')];
+                return [this.current.imageUrl('double')];
             },
             ...mapGetters('items', [
                 'editItem',
                 'isEditing',
                 'currentItem',
-                'first',
+                'current',
                 'isUploading',
                 'isUploaded',
             ]),

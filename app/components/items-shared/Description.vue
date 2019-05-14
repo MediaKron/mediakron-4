@@ -15,7 +15,7 @@
         </b-modal>
     </div>
     <div v-else>
-        <p v-html="first.description"></p>
+        <p v-html="current.description"></p>
     </div>
 </template>
 
@@ -29,7 +29,7 @@
             ...mapGetters('items', [
                 'editItem',
                 'isEditing',
-                'first'
+                'current'
             ])
         }
     }

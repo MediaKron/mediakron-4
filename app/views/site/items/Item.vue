@@ -3,7 +3,19 @@
          <Navigation class=""></Navigation>
         <main>
             <loader v-if="itemIsLoading" class="flex justify-center mt-8"></loader>
-            <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="first" />
+            <div class="w-full mx-auto px-6 mt-16 ">
+                <div class="flex">
+                    <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
+                        <div class="lg:relative lg:sticky top-20  mr-10 ">
+                            {{ parent.title }}
+                            <m-collection-sidebar v-if="parentType && parentType != 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-collection-sidebar>
+                            <m-map-sidebar v-if="parentType && parentType == 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-map-sidebar>
+                        </div>
+                    </aside>
+                    <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="current" />
+                    <m-left-right v-if="parentType && parentType == 'collection'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-left-right>
+                </div>
+            </div>
         </main>
     </div>
 </template>
@@ -21,6 +33,8 @@ import Maps from './Maps'
 import Navigation from '@/views/site/Navigation'
 import { circleMarker } from 'leaflet'
 import Loader from '@/components/Loader';
+
+import MCollectionSidebar from '@/components/collections/CollectionSidebar'
 export default {
     props:[
         'firstUri', 
@@ -29,7 +43,8 @@ export default {
     ],
     components: {
         Navigation,
-        Loader
+        Loader,
+        MCollectionSidebar
     },
     
     mounted(){
@@ -40,13 +55,14 @@ export default {
         ...mapGetters("items", [
             "itemIsLoading", 
             "itemIsLoaded",
-            "first", 
-            "second",
-            "third",
+            "current",
+            "parent", 
+            "grandparent",
+            "parentType",
             "isEditing"
         ]),
         component(){
-            switch(this.first.type){
+            switch(this.current.type){
                 case 'image':
                     return Images
                 case 'video':

@@ -15,7 +15,7 @@
         </div>
         <div v-else>
             <h1>Source</h1>
-            <h2>{{ first.title }}</h2>
+            <h2>{{ current.title }}</h2>
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first'
+            'current'
         ])
     }
 }

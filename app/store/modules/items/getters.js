@@ -19,9 +19,10 @@ export const getters = {
      * Current
      */
     current: state => state.current,
-    first: state => state.first,
-    second: state => state.second,
-    third: state => state.third,
+    parent: state => state.parent,
+    grandparent: state => state.grandparent,
+    parentType: state => (state.parent) ? state.parent.type : false,
+    grandParentType: state => (state.grandparent) ? state.grandparent.type : false,
 
     isEditing: state => (state.isEditing) ? state.isEditing : false,
     isCreating: state => (state.isCreating) ? state.isCreating : false,

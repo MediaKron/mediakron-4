@@ -10,7 +10,7 @@
         </b-input-group>
     </div>
     <div v-else>
-        <p>{{ first.transcript }}</p>
+        <p>{{ current.transcript }}</p>
     </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first'
+            'current'
         ])
     }
 }
