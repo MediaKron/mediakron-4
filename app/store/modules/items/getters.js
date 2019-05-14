@@ -18,6 +18,7 @@ export const getters = {
     /**
      * Current
      */
+    current: state => state.current,
     first: state => state.first,
     second: state => state.second,
     third: state => state.third,
