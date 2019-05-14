@@ -12,7 +12,16 @@ const actions = {
      */
     routeLoad({ commit, dispatch }, { to }){
         const { page } = to.params;
-        const { search, sort, direction, status } = to.query;
+        const { 
+            search, 
+            sort, 
+            direction, 
+            status, archived, 
+            type, 
+            title,
+            user_id,
+            editor_id
+        } = to.query;
 
         //
         var options = {
@@ -20,7 +29,12 @@ const actions = {
           search: search || '',
           sort: sort || 'id',
           direction: direction || 'ASC',
-          status: status || ''
+          status: status || '',
+          archived: archived || '',
+          type: type || '',
+          title: title || '',
+          editor_id: editor_id || '',
+          user_id: user_id || ''
         }
         dispatch('loadItems', options);
     },
@@ -87,6 +101,10 @@ const actions = {
                 error.errorMessage = "There was an error loading the items list";
                 return dispatch("listError", error);
             });
+    },
+
+    listError({}, error){
+        console.log(error);
     },
 
     /**

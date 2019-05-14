@@ -36,14 +36,54 @@ trait Import
 
         // Main Record
         $item->title = substr($record->title, 0, 1000);
-        $item->type = $record->type;
+        $map_type = false;
+        switch($record->type){
+            case 'map':
+            case 'image-map':
+            case 'Esri_WorldStreetMap':
+            case 'Esri_DeLorme':
+            case 'Esri_NatGeoWorldMap':
+            case 'Esri_WorldImagery':
+            case 'stamen-lite':
+            case 'physical':
+            case 'stamen-light':
+            case 'stamen-watercolor':
+            case 'osm':
+            case 'cartodb':
+                $item->type = 'map';
+                $item->template = $record->template;
+                $map_type = $record->type;
+                break;
+            case 'comparison':
+                $item->type = 'collection';
+                $item->template = 'comparison';
+                break;
+            case 'progression':
+                $item->type = 'collection';
+                $item->template = 'progression';
+                break;
+            case 'slideshow':
+                $item->type = 'collection';
+                $item->template = 'slideshow';
+                break;
+            case 'folder':
+                $item->type = 'collection';
+                $item->template = $record->template;
+                break;
+            default:
+                $item->template = $record->template;
+                $item->type = $record->type;
+        }
+        
         $item->uri = $record->uri;
-        $item->template = $record->template;
+        
         $item->description = $record->description;
         $item->transcript = $record->transcript;
         $item->caption = $record->caption;
 
         $item->options = unserialize($record->options);
+        if(isset($item->options->color)) $item->color = $item->options->color;
+        if(isset($item->options->icon)) $item->color = $item->options->icon;
         
         $item->overlay = $record->overlay;
 
@@ -79,9 +119,12 @@ trait Import
         if(!empty($date)){
             Timeline::mediakron_v3($data['timeline'], $date, $item->id);
         } 
-        if(isset($data['map'])){
-            if(!empty($data['map'])) Map::mediakron_v3($data['map'], $item->id);
-        }
+
+        if($map_type){
+            Map::mediakron_v3($data, $item->id, $map_type);
+        }elseif(isset($data['map'])){
+            if(!empty($data['map'])) Map::mediakron_v3($data, $item->id, false);
+        } 
         return $item;
         //$item->save();
     }

@@ -38,8 +38,10 @@ class CreateItemsTable extends Migration
             $table->longtext('transcript')->nullable();
             $table->longtext('body')->nullable();
             $table->longtext('caption')->nullable();
-            $table->longtext('options')->nullable();;
+            $table->longtext('options')->nullable();
             $table->longtext('overlay')->nullable();
+            $table->string('color')->default('#000000');
+            $table->string('icon')->default('');
 
             // Timestamps
             $table->timestamp('last_login')->nullable();

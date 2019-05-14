@@ -39,6 +39,15 @@ class Item extends BaseModel
         'thumbnail'
     ];
 
+    static $filterable = [
+        'archived',
+        'status',
+        'type',
+        'title',
+        'user_id',
+        'editor_id'
+    ];
+
     protected $fillable = [
         'active',
         'published',

@@ -51,6 +51,15 @@ export const mutations = {
         state.pagination.lastPage = data.last_page;
         state.pagination.pageSize = data.per_page;
         state.pagination.totalItems = data.total;
+
+        state.count.collection = data.collection | 0;
+        state.count.video = data.video | 0;
+        state.count.image = data.image | 0;
+        state.count.audio = data.audio | 0;
+        state.count.file = data.file | 0;
+        state.count.map = data.map | 0;
+        state.count.timeline = data.timeline | 0;
+        state.count.story = data.story | 0;
     },
 
     /**
@@ -88,7 +97,10 @@ export const mutations = {
      * @param {*} state
      */
     itemLoad(state, data){
+        console.log('item loaded')
         state.first = new Item(data[0], state.site);
+        console.log(state.first)
+        console.log(state.first.zoom);
         if(data[1]) state.second = new Item(data[1], state.site);
         if(data[2]) state.third = new Item(data[2], state.site);
     },
@@ -121,6 +133,8 @@ export const mutations = {
         state.siteIsSaved = true;
         state.siteSaveFailed = false;
         state.isEditing = false;
+        state.isEditingTags = false;
+        state.isCreating = false;
     },
 
     siteUpdateFailed(state, error){
@@ -140,6 +154,7 @@ export const mutations = {
             type: type
         }, state.site);
         state.isEditing = true;
+        state.isCreating = true;
         state.editItem = Object.assign({}, item)
         state.first = item;
         state.itemIsLoading = false;

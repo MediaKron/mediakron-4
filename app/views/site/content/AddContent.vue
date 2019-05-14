@@ -1,22 +1,89 @@
 <template>
-    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
-        <header class="line-behind mt-8 mb-4">
-            <h1>Create Content</h1>
+    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-40 mx-auto lg:overflow-visible ">
+        <header class="line-behind mb-4">
+            <h1>Add Content</h1>
         </header>
-        <h2>Content Organizers</h2>
-        <b-list-group class="mb-5">
-            <b-list-group-item :to="basePath + '/content/add/folder'">Collection</b-list-group-item>
-            <b-list-group-item :to="basePath + '/content/add/story'">Story</b-list-group-item>
-            <b-list-group-item :to="basePath + '/content/add/map'">Map</b-list-group-item>
-            <b-list-group-item :to="basePath + '/content/add/timeline'">Timeline</b-list-group-item>
-        </b-list-group>
-        <h2>Individual Media</h2>
-        <b-list-group class="mb-5">
-            <b-list-group-item :to="basePath + '/content/add/image'">Image</b-list-group-item>
-            <b-list-group-item :to="basePath + '/content/add/file'">File</b-list-group-item>
-            <b-list-group-item :to="basePath + '/content/add/video'">Video</b-list-group-item>
-            <b-list-group-item :to="basePath + '/content/add/audio'">Audio</b-list-group-item>
-        </b-list-group>
+        <h2 class="mb-4">Content Organizers</h2>
+         <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full" :to="basePath + '/content/add/folder'">
+                <font-awesome-icon icon="folder" /><span class="mr-auto ml-2"> Collections</span>
+            </b-button>
+            <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+        <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full" :to="basePath + '/content/add/story'">
+                <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-2"> Stories</span>
+            </b-button>
+            <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+
+        <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full" :to="basePath + '/content/add/map'">
+                <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-2"> Maps</span>
+            </b-button>
+            <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+
+        <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full" :to="basePath + '/content/add/timeline'">
+                <font-awesome-icon icon="clock" /><span class="mr-auto ml-2"> Timelines</span>
+            </b-button>
+            <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+        <h2 class="mt-5 mb-4">Individual Media</h2>
+         <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full" :to="basePath + '/content/add/image'">
+                <font-awesome-icon icon=image /><span class="mr-auto ml-2"> Images</span>
+
+            </b-button>
+                        <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+
+        <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full" :to="basePath + '/content/add/video'">
+                <font-awesome-icon icon="video" /> <span class="mr-auto ml-2">Videos</span>
+
+            </b-button>
+            <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+
+        <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full" :to="basePath + '/content/add/video'">
+                <font-awesome-icon icon="file" /><span class="mr-auto ml-2"> Files</span>
+
+            </b-button>
+            <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+
+        <b-button-group class="flex mb-3">
+            <b-button variant="outline-dark" size="lg" class="text-left flex-1 w-full"
+                :to="basePath + '/content/add/audio'">
+                <font-awesome-icon icon="volume-up" /><span class="mr-auto ml-2"> Audio</span>
+
+            </b-button>
+            <b-button variant="outline-dark" size="lg">
+                <font-awesome-icon icon="question-circle" /><span class="sr-only"></span>
+            </b-button>
+        </b-button-group>
+
+
+       
+
+       
     </div>
 
 </template>

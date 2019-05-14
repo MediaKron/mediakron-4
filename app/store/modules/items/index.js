@@ -9,12 +9,13 @@ export const getInitialState = (checkLocalStorage = false) => {
     
     tags: [],
 
-    items: [],
+    itemList: [],
     first: {},
     second: {},
     third: {},
 
     isEditing: false,
+    isCreating: false,
     editItem: {},
 
     // Item List Statuses
@@ -40,6 +41,17 @@ export const getInitialState = (checkLocalStorage = false) => {
       'pageSize': 10,
       'totalItems': 10,
     },
+
+    'count': {
+      'collection': 0,
+      'image': 0,
+      'video': 0,
+      'audio': 0,
+      'map': 0,
+      'timeline': 0,
+      'story': 0,
+      'file': 0
+    }
   };
 };
 

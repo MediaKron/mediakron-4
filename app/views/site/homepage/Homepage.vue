@@ -3,7 +3,7 @@
         <navigation></navigation> 
         <div id="homepage container">         
             <div id="wrapper-main" class="justify-content-center row" >
-                 <main role="main" class="w-100"> 
+                 <main role="main" class="w-full"> 
                     
                     <component :is="dynamicComponent"></component>
                  </main>

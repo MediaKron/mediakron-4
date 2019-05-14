@@ -84,13 +84,15 @@ trait Import
                     $menu->weight = $i;
                     $menu->save();
                 }else{
-                    $menu = new Menu();
-                    $menu->url = $link['url'];
-                    $menu->title = $link['title'];
-                    $menu->site_id = $site->id;
-                    $menu->weight = $i;
-                    $menu->external = true;
-                    $menu->save();
+                    if(!empty($link['url'])){
+                        $menu = new Menu();
+                        $menu->url = $link['url'];
+                        $menu->title = $link['title'];
+                        $menu->site_id = $site->id;
+                        $menu->weight = $i;
+                        $menu->external = true;
+                        $menu->save();
+                    }
                 }
                 $i++;
             }

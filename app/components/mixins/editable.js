@@ -27,11 +27,27 @@ export const editable = {
     editClicked() {
         this.setEditItem(this.item);
         this.editAlert = this.dismissSecs 
+        // this.$bvToast.show('editing-message')
+        this.$bvToast.toast(`You are now in editing mode`, {
+          toaster: "b-toaster-top-right",
+          variant: "warning",
+          solid: true,
+          noCloseButton: true,
+          bodyClass: "text-center"
+        }) 
     },
     // Save only if isEditing switched back to false
     saveClicked() {
         this.saveItem()
         this.saveAlert = this.dismissSecs
+        // this.$bvToast.show('save-message')
+        this.$bvToast.toast(`Changes Saved`, {
+          toaster: "b-toaster-top-right",
+          variant: "success",
+          solid: true,
+          noCloseButton: true,
+          bodyClass: "text-center"
+        }) 
     },
   },
   watch: {

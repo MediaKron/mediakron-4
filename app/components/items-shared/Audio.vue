@@ -1,7 +1,6 @@
 <template>
-    <div>
+    <div v-if="isEditing">
     <b-form-group
-            v-if="isEditing"
             label="Audio URL"
             label-for="url">
         <b-button v-if="editItem.audio.type == 'mp3'" v-b-toggle.urlCollapse class="mb-3">
@@ -15,12 +14,11 @@
         </b-collapse>
     </b-form-group>
         <b-form-group
-                v-if="isEditing"
                 label="Audio File"
                 label-for="fileUpload">
-    <b-button v-if="editItem.audio.type != 'mp3'" v-b-toggle.mp4Collapse class="mb-3">
-        Add Audio As Mp3
-    </b-button>
+            <b-button v-if="editItem.audio.type != 'mp3'" v-b-toggle.mp4Collapse class="mb-3">
+            Add Audio As Mp3
+            </b-button>
     <b-collapse id="mp3Collapse" :visible="editItem.audio.type == 'mp3'">
         <b-form-file
                 v-model="editItem.newImage"
@@ -31,13 +29,13 @@
         <b-progress height="2rem" v-if="isUploading" :value="counter" :max="max" show-progress animated />
     </b-collapse>
     </b-form-group>
+    </div>
     <div v-else class="audio-player">
         {{ first.audio.type }}
         <vue-plyr>
             <component :is="player"></component>
 
         </vue-plyr>
-    </div>
     </div>
 
 </template>
@@ -48,6 +46,12 @@
     import 'vue-plyr/dist/vue-plyr.css' // only if your build system can import css, otherwise import it wherever you would import your css.
     import Vue from 'vue'
     import Mp3 from '@/components/players/Mp3'
+    import Mp4 from '@/components/players/Mp4'
+    import PanoptoVideo from '@/components/players/PanoptoVideo'
+    import GoogleVideo from '@/components/players/GoogleVideo'
+    import Vimeo from '@/components/players/Vimeo'
+    import Youtube from '@/components/players/Youtube'
+
     Vue.use(VuePlyr)
 
     export default {

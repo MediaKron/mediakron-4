@@ -1,8 +1,20 @@
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight:700;
+}
+
+
 /* radio disabled color */
 // .custom-control-label::before {
 //     background:$gray-600;
 // }
+
+/* Collapse Arrows */
+
+.collapsed > .when-opened,
+:not(.collapsed) > .when-closed {
+  display: none;
+}
 
 
 /* Loading Spinner */
@@ -59,164 +71,53 @@
 
 
 
-/* Animated toggle hamburger menu  */
-/* https://julienmelissas.com/animated-x-icon-for-the-bootstrap-navbar-toggle/ */
 
-.navbar-toggler {
-  border: none;
-  background: transparent !important;
 
-  &:hover {
-    background: transparent !important;
-  }
+/* Item title */
 
-  .icon-bar {
-    width: 22px;
-    transition: all 0.2s;
-    background-color: #fff;
-    display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
-  }
-  .top-bar {
-    transform: rotate(45deg);
-    transform-origin: 10% 10%;
-  }
-  .middle-bar {
-    opacity: 0;
-  }
-  .bottom-bar {
-    transform: rotate(-45deg);
-    transform-origin: 10% 90%;
-  }
+.item-title {
+border-bottom: 1px solid #565656;
+padding-bottom: .5rem; 
 }
-
-.navbar-toggle .icon-bar + .icon-bar {
-  margin-top: 4px;
-}
-
-.navbar-toggler[aria-expanded="false"] {
-
-  height:100%;
-  top:0; 
-
-  .top-bar {
-    transform: rotate(0);
-  }
-  .middle-bar {
-    opacity: 1;
-  }
-  .bottom-bar {
-    transform: rotate(0);
-  }
-}
-
-
-
-
-
-// * {
-//   margin: 0;
-//   padding: 0; 
-// }
-
-// /* Icon 1 */
-
-// .navbar-toggler {
-//   width: 36px;
-//   height: 36px;
-//   transition: .5s ease-in-out;
-//   cursor: pointer;
-// } 
-
-// .navbar-toggler span {
-//   display: block;
-//   position: absolute;
-//   height: 4px;
-//   width: 100%;
-//   background: #fff;
-//   border-radius: 9px;
-//   opacity: 1;
-//   left: 0;
-//   transition: .25s ease-in-out;
-// }
-
-// /* Icon 3 */
-
-// .navbar-toggler span:nth-child(1) {
-//   top: 0px;
-// }
-
-// .navbar-toggler span:nth-child(2), .navbar-toggler span:nth-child(3) {
-//   top: 8px;
-// }
-
-// .navbar-toggler span:nth-child(4) {
-//   top:16px;
-// }
-
-// .navbar-toggler[aria-expanded="true"] span:nth-child(1) {
-//   top: 16px;
-//   width: 0%;
-//   left: 50%;
-// }
-
-// .navbar-toggler[aria-expanded="true"] span:nth-child(2) {
-//   transform: rotate(45deg);
-// }
-
-// .navbar-toggler[aria-expanded="true"] span:nth-child(3) {
-//   transform: rotate(-45deg);
-// }
-
-// .navbar-toggler[aria-expanded="true"] span:nth-child(4) {
-//   top: 16px;
-//   width: 0%;
-//   left: 50%;
-// }
-
 
 /* Header with line behind */
 
-.line-behind {
-  display: flex;
-  align-items: center;
-}
+// .line-behind {
+//   display: flex;
+//   align-items: center;
+// }
 
-.line-behind::after {
-  content: "";
-  height: .5rem;
-  flex: 1 1 auto;
-  margin-left: 1rem;
-  background-color: #343a40;
-  position:relative;
-  top:.1rem;
-} 
+// .line-behind::after {
+//   content: "";
+//   height: .5rem;
+//   flex: 1 1 auto;
+//   margin-left: 1rem;
+//   background-color: #343a40;
+//   position:relative;
+//   top:.1rem;
+// } 
 
 
-.nav-line-behind .nav-link.active, 
-.nav-line-behind .show > .nav-link {
-  display: flex;
-  align-items: center;
-}
+// .nav-line-behind .nav-link.active, 
+// .nav-line-behind .show > .nav-link {
+//   display: flex;
+//   align-items: center;
+// }
 
-.nav-line-behind .nav-link.active::after,
-.nav-line-behind .show > .nav-link::after { 
-// .nav-line-behind .nav-link.active::before,
-// .nav-line-behind .show > .nav-link::before 
-  content: "";
-  height: .4rem;
-  flex: 1 1 auto;
-  background-color: #225362;
-  position: relative;
-  width: 1rem;
-} 
+// .nav-line-behind .nav-link.active::after,
+// .nav-line-behind .show > .nav-link::after { 
+//   content: "";
+//   height: .4rem;
+//   flex: 1 1 auto;
+//   background-color: #225362;
+//   position: relative;
+//   width: 1rem;
+// } 
 
-.nav-line-behind .nav-link.active::after,
-.nav-line-behind .show > .nav-link::after {
-  margin-left: .5rem;
-}
+// .nav-line-behind .nav-link.active::after,
+// .nav-line-behind .show > .nav-link::after {
+//   margin-left: .5rem;
+// }
 
 // .nav-line-behind .nav-link.active::before,
 // .nav-line-behind .show > .nav-link::before {
