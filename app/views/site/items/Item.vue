@@ -12,7 +12,10 @@
                         </div>
                     </aside>
                     <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="current" />
-                    <!-- <m-left-right v-if="parentType && parentType == 'collection'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-left-right> -->
+                   <div v-if="parentType && parentType == 'collection'" class="fixed flex bottom-0 left-0 bg-white w-full justify-center px-4 py-2">
+                       <previous class="mr-4"></previous>
+                       <next class="ml-4"></next>
+                    </div> 
                 </div>
             </div>
         </main>
@@ -32,6 +35,8 @@ import Maps from './Maps'
 import Navigation from '@/views/site/Navigation'
 import { circleMarker } from 'leaflet'
 import Loader from '@/components/Loader';
+import Next from '@/components/collections/Next';
+import Previous from '@/components/collections/Previous';
 
 import MCollectionSidebar from '@/components/collections/CollectionSidebar'
 export default {
@@ -43,7 +48,9 @@ export default {
     components: {
         Navigation,
         Loader,
-        MCollectionSidebar
+        MCollectionSidebar, 
+        Next,
+        Previous
     },
     
     mounted(){
