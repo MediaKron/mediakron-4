@@ -46,7 +46,8 @@
         <ul class="collection-grid mb-4" >
                     <li v-for="(child, index) in children" :key="index" class="collection-grid-item">
                         <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
-                        <a :href="current.uri + '/' + child.uri">{{ child.title }}</a>
+                        <a :href="child.uri">{{ child.title }}</a>
+                        <!-- <a :href="current.uri + '/' + child.uri">{{ child.title }}</a> -->
                     </li>
                 </ul>
         </div>
@@ -80,6 +81,12 @@
                 'current'
             ])
         },
+        methods: {
+            linkGen() {
+                return '/' + this.child.uri
+            },
+
+        }
     }
 </script>
 

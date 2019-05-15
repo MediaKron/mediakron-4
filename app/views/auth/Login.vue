@@ -40,6 +40,7 @@
             <span class="form-required" title="This field is required.">*</span>
           </label>
           <b-form-input v-model="password"
+
                   type="password"
                   id="password"
                   name="name"
