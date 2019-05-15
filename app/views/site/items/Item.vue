@@ -84,6 +84,20 @@ export default {
             },
         
     },
+    watch: {
+        '$route.params.first': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        },
+        '$route.params.second': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        },
+        '$route.params.third': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        },
+        '$route.query': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        }
+    },
     methods: {
         ...mapActions("items", [
             "itemsRouteLoad",

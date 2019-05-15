@@ -72,6 +72,22 @@ Vue.use(VueTransmit);
 
 Vue.use(BootstrapVue);
 
+Vue.mixin({
+  methods: {
+    mLink(...args) {
+      var path = [];
+      var currentSite = this.$store.getters['sites/currentSite'];
+      if(currentSite){
+        path.push(currentSite.uri);
+      }
+      args.forEach((uri) => {
+        path.push(uri);
+      })
+      return '/' + path.join('/');
+    }
+  }
+})
+
 //Vue.use(VueIntro);
 //import 'intro.js/introjs.css';
 

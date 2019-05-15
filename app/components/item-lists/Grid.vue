@@ -37,7 +37,7 @@
             <ul class="collection-grid mb-4">
                 <li v-for="(child, index) in children" :key="index" class="collection-grid-item">
                     <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
-                    <a :href="current.uri + '/' + child.uri">{{ child.title }}</a>
+                    <router-link :to="mLink(current.uri, child.uri)">{{ child.title }}</router-link>
                 </li>
             </ul>
 
@@ -46,7 +46,7 @@
         <ul class="collection-grid mb-4" >
                     <li v-for="(child, index) in children" :key="index" class="collection-grid-item">
                         <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
-                        <a :href="current.uri + '/' + child.uri">{{ child.title }}</a>
+                        <router-link :to="mLink(current.uri, child.uri)">{{ child.title }}</router-link>
                         <!-- <a :href="current.uri + '/' + child.uri">{{ child.title }}</a> -->
                     </li>
                 </ul>

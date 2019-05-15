@@ -97,6 +97,8 @@ export const mutations = {
      * @param {*} state
      */
     itemLoad(state, data){
+        console.log(data);
+        console.log(data[1])
         if(data[2]){
             state.current = new Item(data[2], state.site);
             state.parent = new Item(data[1], state.site);
@@ -110,6 +112,7 @@ export const mutations = {
             state.parent = false;
             state.grandparent = false;
         }
+        console.log(state.current)
     },
 
     /**
