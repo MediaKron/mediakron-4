@@ -7,13 +7,12 @@
                 <div class="flex">
                     <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
                         <div class="lg:relative lg:sticky top-20  mr-10 ">
-                            {{ parent.title }}
                             <m-collection-sidebar v-if="parentType && parentType != 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-collection-sidebar>
-                            <m-map-sidebar v-if="parentType && parentType == 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-map-sidebar>
+                            <!-- <m-map-sidebar v-if="parentType && parentType == 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-map-sidebar> -->
                         </div>
                     </aside>
                     <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="current" />
-                    <m-left-right v-if="parentType && parentType == 'collection'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-left-right>
+                    <!-- <m-left-right v-if="parentType && parentType == 'collection'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-left-right> -->
                 </div>
             </div>
         </main>

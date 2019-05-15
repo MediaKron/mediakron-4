@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <b-dropdown text="Contexts" variant="link" class="" toggle-class="p-0 text-lg" v-if="hasParent">
+        <b-dropdown text="Contexts" variant="link" class="" toggle-class="p-0 text-lg">
             <b-dropdown-item 
                 v-for="(item_parent, index) in current.parents" 
                 :key="index"
@@ -9,10 +9,10 @@
                 {{ item_parent.title }}
             </b-dropdown-item>
         </b-dropdown>
-        <div class="mt-2" v-if="hasParent">Current Context: <b-link :to="basePath + '/' + parent.uri">{{ parent.title }}</b-link></div>
+        <div class="mt-2">Current Context: <b-link :to="basePath + '/' + parent.uri">{{ parent.title }}</b-link></div>
         <ul class="pl-2 pt-3 list-none">
-            <li v-for="(child, index) in parentChildren" :key="index" class="joined-list">
-                <b-link to="child.uri" :active="child.title == current.title"> {{ child.title  }}</b-link>
+            <li v-for="(child, index) in parentChildren" :key="index" class="joined-list" :class="{ 'active' : child.title == current.title}" >
+                <b-link :to="child.uri" > {{ child.title  }}</b-link>
             </li>
         </ul>
     </div>
@@ -80,7 +80,7 @@ export default {
 }
 
 /* Large bullet for the first list item */
-.joined-list::after a.active {
+.joined-list.active::after {
   content: '';
   width: 16px;
   height: 16px;
