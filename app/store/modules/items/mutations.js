@@ -110,8 +110,6 @@ export const mutations = {
             state.parent = false;
             state.grandparent = false;
         }
-
-        
     },
 
     /**
