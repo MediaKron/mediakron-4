@@ -1,5 +1,6 @@
 <template>
-    <div class="folder-list mt-3"> 
+    <div class="folder-list mt-3">
+        <h1>Child items to organize:</h1>
         <ul class="mt-3" v-for="(child, index) in children" :key="index">
             <li class="list-none border-gray-100">
                 <font-awesome-icon icon="grip-lines" /> 
@@ -28,10 +29,17 @@ export default {
         ...mapGetters('items', ['first'])
     },
     mounted() {
+        this.setState({
+            dragonDrop: new DragonDrop(this.dragon)
+        });
+
 
     },
     updated(){
-
+        const { dragonDrop } = this.state;
+        // this public method allows dragon drop to
+        // reassess the updated items and handles
+        dragonDrop.initElements(this.dragon);
     },
 
 }
