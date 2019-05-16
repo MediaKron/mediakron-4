@@ -1,12 +1,15 @@
 <template>
-    <div v-if="isEditing">
-        <b-input-group>
+    <div v-if="isEditing" class="flex justify-center mt-8">
+        <b-form-group class="floating-label flex-1">
             <b-form-textarea id="description" v-model="editItem.description" placeholder="Add a description" rows="2"
-                max-rows="100" class="border-dashed text-black"></b-form-textarea>
-            <b-input-group-text for="description" slot="prepend" tag="label" size="sm" class="text-sm bg-white w-auto border-dashed font-bold"> Description
-                <b-button v-b-modal.help-description variant="link" size="sm" class="pl-1"><font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About Descriptions</span></b-button>
-            </b-input-group-text>
-        </b-input-group>
+                max-rows="100" class="input-dashed text-black"></b-form-textarea>
+            <label for="Description"> Description</label>
+        </b-form-group>
+        <div class="items-center align text-sm pl-2">
+            <b-button v-b-modal.help-description variant="link" size="sm" class="pl-1">
+                <font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About
+                    Descriptions</span></b-button>
+        </div>
         <!-- Help Modal Window -->
         <b-modal id="help-description" centered title="About Descriptions">
             <p> The description field is the the main explanatory text for a content item.</p>
