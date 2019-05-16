@@ -1,6 +1,6 @@
 <template>
-    <div class="folder-list mt-3"> 
-        <ul class="mt-3" v-for="(child, index) in children" :key="index">
+    <div class="folder-list mt-3">
+        <ul class="dragon" v-for="(child, index) in this.children" :key="index" :model="dragon">
             <li class="list-none border-gray-100">
                 <font-awesome-icon icon="grip-lines" /> 
                 <b-img slot="aside" src="https://picsum.photos/40?image=342" fluid alt="Responsive image" class="mx-2"/>
@@ -13,6 +13,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import DragonDrop from 'drag-on-drop';
 export default {
     data() {
         return {
@@ -21,9 +22,19 @@ export default {
     },
     computed: {
         children() {
-            return this.first.children
+            return this.current.children
         },
-        ...mapGetters('items', ['first'])
+        ...mapGetters('items', [
+            'editItem',
+            'isEditing',
+            'current'
+        ])
+    },
+    mounted(){
+        dragonDrop: new DragonDrop(this.dragon)
+    },
+    updated(){
+        dragonDrop.initElements(this.dragon);
     }
 }
 </script>
