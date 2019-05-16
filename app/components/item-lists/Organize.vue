@@ -1,7 +1,6 @@
 <template>
     <div class="folder-list mt-3">
-<<<<<<< HEAD
-        <ul class="dragon" v-for="(child, index) in this.children" :key="index" :model="dragon">
+        <ul class="dragon" v-for="(child, index) in this.children" :key="index" :model="dragonDrop">
             <li class="list-none border-gray-100">
                 <font-awesome-icon icon="grip-lines" /> 
                 <b-img slot="aside" src="https://picsum.photos/40?image=342" fluid alt="Responsive image" class="mx-2"/>
