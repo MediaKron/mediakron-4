@@ -3,7 +3,7 @@
     <h1>Site List</h1>
          <loader v-if="listIsLoading"></loader>
 
-    <b-table v-if="listIsLoaded" striped hover :items="sites" :fields="fields">
+    <b-table v-if="listIsLoaded" :items="sites" :fields="fields" class="border-solid border-gray-400" outlined>
       <template slot="title" slot-scope="site">
         <router-link :to="{ name: 'homepage', params: { site: site.item.uri } }">{{ site.item.title }}</router-link>
       </template>

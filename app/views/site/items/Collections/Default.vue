@@ -1,8 +1,8 @@
 <template>
-    <article class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
+    <article class="mx-auto max-w-40"> 
         <m-title></m-title>
         <m-caption></m-caption>
-        <m-list class="px-6 max-w-xl mx-auto"></m-list>
+        <m-list class="mt-10 mb-8"></m-list>
         <m-description></m-description>
         <m-metadata></m-metadata>
         <m-tags></m-tags>

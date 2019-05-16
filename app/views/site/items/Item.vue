@@ -11,9 +11,10 @@
                             <!-- <m-map-sidebar v-if="parentType && parentType == 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-map-sidebar> -->
                         </div>
                     </aside>
-                    <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="current" />
+                    <component class="w-full" v-if="itemIsLoaded" :is="component" :item="current" />
                    <div v-if="parentType && parentType == 'collection'" class="fixed flex bottom-0 left-0 bg-white w-full justify-center px-4 py-2">
                        <previous class="mr-4"></previous>
+                       <b-link class="text-lg"> Title of current folder </b-link>
                        <next class="ml-4"></next>
                     </div> 
                 </div>
