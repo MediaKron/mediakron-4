@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="container mt-5">
+    <div class="container mx-auto mt-5">
          <h1>User Profile: {{ user.name }}</h1>
          <h2>Details</h2>
          <b-form-group id="exampleInputGroup1"
