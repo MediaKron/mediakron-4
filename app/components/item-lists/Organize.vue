@@ -1,5 +1,6 @@
 <template>
     <div class="folder-list mt-3">
+<<<<<<< HEAD
         <ul class="dragon" v-for="(child, index) in this.children" :key="index" :model="dragon">
             <li class="list-none border-gray-100">
                 <font-awesome-icon icon="grip-lines" /> 
@@ -14,6 +15,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import DragonDrop from 'drag-on-drop';
+
 export default {
     data() {
         return {
@@ -35,6 +37,6 @@ export default {
     },
     updated(){
         dragonDrop.initElements(this.dragon);
-    }
+    },
 }
 </script>

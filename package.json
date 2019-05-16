@@ -22,6 +22,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.19",
     "child-process-promise": "^2.2.1",
+    "drag-on-drop": "^3.3.2",
     "file-loader": "^2.0.0",
     "i": "^0.3.6",
     "lodash": "^4.17.11",
