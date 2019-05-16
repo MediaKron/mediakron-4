@@ -13,6 +13,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import DragonDrop from 'drag-on-drop';
+
 export default {
     data() {
         return {
@@ -24,6 +26,13 @@ export default {
             return this.first.children
         },
         ...mapGetters('items', ['first'])
-    }
+    },
+    mounted() {
+
+    },
+    updated(){
+
+    },
+
 }
 </script>
