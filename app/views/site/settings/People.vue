@@ -1,5 +1,5 @@
 <template>
-    <div class="people max-w-60 mx-auto">
+    <div class="people max-w-5xl mx-auto">
         <main role="main" class="">
             <header>
                 <h1 class="line-behind heading-nudge-up mb-4">People</h1>

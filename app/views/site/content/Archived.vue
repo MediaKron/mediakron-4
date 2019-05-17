@@ -1,5 +1,5 @@
 <template>
-    <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
+    <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-6xl mx-auto lg:overflow-visible ">
 
         <header class="line-behind mb-4 mt-4">
             <h1>Archived</h1>
@@ -44,46 +44,46 @@
             </b-button-toolbar>
             <b-collapse id="types" class="mt-2 mb-2">
                 <b-button-group class="flex flex-wrap xl:flex-no-wrap">
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Collections">
                         <font-awesome-icon icon="folder" /><span class="mr-auto ml-1"> Collections</span>
                         <b-badge variant="light" class="ml-1 bg-white ">3
                         </b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Stories">
                         <font-awesome-icon icon="file-alt" /><span class="mr-auto ml-1"> Stories</span>
                         <b-badge variant="light" class="ml-1 bg-white ">4
                         </b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Maps">
                         <font-awesome-icon icon="map-marker-alt" /><span class="mr-auto ml-1"> Maps</span>
                         <b-badge variant="light" class="ml-1 bg-white ">2
                         </b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Timelines">
                         <font-awesome-icon icon="clock" /><span class="mr-auto ml-1"> Timelines</span>
                         <b-badge variant="light" class="ml-1 bg-white ">1
                         </b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Images">
                         <font-awesome-icon icon=image /><span class="mr-auto ml-1"> Images</span>
                         <b-badge variant="light" class="ml-1 bg-white ">4</b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Videos">
                         <font-awesome-icon icon="video" /> <span class="mr-auto ml-1">Videos</span>
                         <b-badge variant="light" class="ml-1 bg-white ">11</b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Files">
                         <font-awesome-icon icon="file" /><span class="mr-auto ml-1"> Files</span>
                         <b-badge variant="light" class="ml-1 bg-white ">2</b-badge>
                     </b-button>
-                    <b-button variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                    <b-button variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover title="Click to filter by Audio">
                         <font-awesome-icon icon="volume-up" /><span class="mr-auto ml-1"> Audio</span>
                         <b-badge variant="light" class="ml-1 bg-white ">1

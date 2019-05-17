@@ -2,7 +2,7 @@
     <div class="homepage-settings">
         <navigation></navigation>
         <main role="main"
-            class=" mt-10 px-6 min-h-screen w-full max-w-50 mx-auto lg:static lg:max-h-full lg:overflow-visible">
+            class=" mt-10 px-6 min-h-screen w-full max-w-4xl mx-auto lg:static lg:max-h-full lg:overflow-visible">
             <header>
                 <h1 class="line-behind heading-nudge-up mb-4"> Homepage Settings</h1>
             </header>

@@ -29,9 +29,10 @@ export const editable = {
         this.editAlert = this.dismissSecs 
         // this.$bvToast.show('editing-message')
         this.$bvToast.toast(`You are now in editing mode`, {
-          toaster: "b-toaster-top-right",
+          toaster: "b-toaster-top-full",
           variant: "warning",
           solid: true,
+          autoHideDelay: 2500,
           noCloseButton: true,
           bodyClass: "text-center"
         }) 

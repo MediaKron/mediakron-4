@@ -2,7 +2,7 @@
     <div class="search">
         <Navigation></Navigation>
 
-        <main role="main" class="container mx-auto mt-10 max-w-70">
+        <main role="main" class="container mx-auto mt-10 max-w-6xl">
             <header>
                 <h1 class=" heading-nudge-up line-behind">Search</h1>
             </header>

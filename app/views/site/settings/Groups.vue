@@ -1,5 +1,5 @@
 <template>
-  <div class="groups w-full mx-auto max-w-60">
+  <div class="groups w-full mx-auto max-w-5xl">
     <main role="main" class="">
       <header>
         <h1 class="line-behind heading-nudge-up mb-4">Groups</h1>

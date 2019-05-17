@@ -1,6 +1,6 @@
 <template>
     <div v-if="isEditing" class="relative mt-16">
-        <b-form-group label="Add/Edit Image" label-sr-only label-for="fileUpload" class="max-w-40 mx-auto">
+        <b-form-group label="Add/Edit Image" label-sr-only label-for="fileUpload" class="max-w-2xl mx-auto">
             <b-form-file v-model="editItem.newImage" :state="Boolean(editItem.newImage)"
                 placeholder="Replace Image (choose a file)..." drop-placeholder="Drop file here..."
                 :accept="current.allowedTypes()" @change="change" />
