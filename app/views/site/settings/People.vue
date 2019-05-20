@@ -40,7 +40,7 @@
             <loader v-if="listIsLoading">Loading...</loader>
 
             <b-table v-if="listIsLoaded" :items="users" :fields="fields" :filter="filter" sortBy="updated_at"
-                sort-desc="true" no-local-sorting @sort-changed="sortBy" stacked="md">
+                sort-desc="true" no-local-sorting @sort-changed="sortBy" stacked="md" class="mt-4 mb-8 table-bordered">
                 <template slot="username" slot-scope="data">
                     {{ data.item.username }}
                 </template>
@@ -51,7 +51,7 @@
                     <b-button class="bg-none"><font-awesome-icon icon="window-close" /><span class="sr-only">Remove {{ data.item.username }}</span> </b-button>
                 </template>
             </b-table>
-            <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
+            <b-pagination-nav v-if="listIsLoaded" :link-gen="linkGen" :number-of-pages="lastPage" use-router />
         </main>
     </div>
 

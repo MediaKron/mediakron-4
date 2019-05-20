@@ -1,9 +1,9 @@
 <template>
-    <div v-if="isEditing" class="flex justify-center mt-8">
-        <b-form-group class="floating-label flex-1">
+    <div v-if="isEditing" class="flex justify-center">
+        <b-form-group class="floating-label flex-1 mb-2">
             <b-form-textarea id="description" v-model="editItem.description" placeholder="Add a description" rows="2"
                 max-rows="100" class="input-dashed text-black"></b-form-textarea>
-            <label for="Description"> Description</label>
+            <label for="Description" class="text-base"> Description</label>
         </b-form-group>
         <div class="items-center align text-sm pl-2">
             <b-button v-b-modal.help-description variant="link" size="sm" class="pl-1">
