@@ -1,10 +1,10 @@
 <template>
     <div class="folder-list mt-3">
         <h1>Child items to organize:</h1>
-        <draggable v-model="myArray">
+        <draggable v-model="children">
             <transition-group>
-                <div v-for="element in myArray" :key="element.id">
-                    {{element.name}}
+                <div v-for="(child, index) in this.children">
+                    {{child.title}}
                 </div>
             </transition-group>
         </draggable>
@@ -29,7 +29,7 @@ export default {
     },
     computed: {
         children() {
-            return this.first.children
+            return this.current.children
         },
         ...mapGetters('items', ['first'])
     },
