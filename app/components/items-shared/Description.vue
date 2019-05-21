@@ -3,8 +3,8 @@
         <b-form-group class="floating-label flex-1 mb-2">
             <b-form-textarea id="description" v-model="editItem.description" placeholder="Add a description" rows="2"
                 max-rows="100" class="input-dashed text-black"></b-form-textarea>
-            <label for="Description" class="text-base"> Description  <b-button v-b-modal.help-description variant="link" size="sm" class="pl-1">
-                <font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About
+            <label for="Description" class="text-base"> Description <b-button v-b-modal.help-description variant="link" class="pl-1">
+                <font-awesome-icon icon="question-circle" class="text-mk-gray-1" /> <span class="sr-only"> About
                     Descriptions</span></b-button></label>
         </b-form-group>
         <!-- Help Modal Window -->

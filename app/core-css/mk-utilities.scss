@@ -83,6 +83,14 @@
 
 }
 
+.text-mk-gray-1 {
+  color:#565656;
+}
+
+.bg-mk-gray-1 {
+  background: #565656;
+}
+
 
 /* Item title */
 
@@ -204,10 +212,16 @@
   text-transform: uppercase;
 }
 
+.floating-label input:not(:placeholder-shown)~label svg,
+.floating-label textarea:not(:placeholder-shown)~label svg {
+  font-size: .9rem;
+}
+
 .floating-label button { /* help buttons in forms */
   position: relative;
   top: -2px;
   line-height:1;
+  padding: .25rem;
 }
 
 /* Fallback for Edge
