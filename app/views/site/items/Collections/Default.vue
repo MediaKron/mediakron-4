@@ -1,22 +1,12 @@
 <template>
-    <div class="w-full mx-auto px-6 mt-16 ">
-        <div class="flex">
-            <aside id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
-                <div class="lg:relative lg:sticky top-20 border-t-0 border-l-0 border-b-0 border-r-2 border-grey border-solid mr-10 ">
-                    <m-collection-sidebar class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-collection-sidebar>
-                </div>
-            </aside>
-            <article class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible "> 
-                
-                <m-title></m-title>
-                <m-caption></m-caption>
-                <m-list class="px-6 max-w-xl mx-auto"></m-list>
-                <m-description></m-description>
-                <m-metadata></m-metadata>
-                <m-tags></m-tags>
-            </article>
-         </div>
-    </div>
+    <article class="mx-auto max-w-2xl"> 
+        <m-title></m-title>
+        <m-caption></m-caption>
+        <m-list class="mt-10 mb-8"></m-list>
+        <m-description></m-description>
+        <m-metadata></m-metadata>
+        <m-tags></m-tags>
+    </article>
     
 </template>
 
@@ -30,7 +20,6 @@ import MCustomDate from '@/components/items-shared/CustomDate'
 import MImage from '@/components/items-shared/Image'
 
 import MList from '@/components/item-lists/List'
-import MCollectionSidebar from '@/components/collections/CollectionSidebar'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -44,8 +33,7 @@ export default {
         MMetadata,
         MTags,
         MCustomDate,
-        MList,
-        MCollectionSidebar
+        MList
     },
     data() {
         return {

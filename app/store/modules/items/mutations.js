@@ -97,12 +97,22 @@ export const mutations = {
      * @param {*} state
      */
     itemLoad(state, data){
-        console.log('item loaded')
-        state.first = new Item(data[0], state.site);
-        console.log(state.first)
-        console.log(state.first.zoom);
-        if(data[1]) state.second = new Item(data[1], state.site);
-        if(data[2]) state.third = new Item(data[2], state.site);
+        console.log(data);
+        console.log(data[1])
+        if(data[2]){
+            state.current = new Item(data[2], state.site);
+            state.parent = new Item(data[1], state.site);
+            state.grandparent = new Item(data[0], state.site);
+        }else if(data[1]){
+            state.current = new Item(data[1], state.site);
+            state.parent = new Item(data[0], state.site);
+            state.grandparent = false;
+        }else if(data[0]){
+            state.current = new Item(data[0], state.site);
+            state.parent = false;
+            state.grandparent = false;
+        }
+        console.log(state.current)
     },
 
     /**
@@ -115,7 +125,7 @@ export const mutations = {
 
     updateItem(state, data){
         state.editPending = true;
-        state.first = new Item(data, state.site);
+        state.current = new Item(data, state.site);
     },
 
     itemSaving(state){
@@ -156,7 +166,7 @@ export const mutations = {
         state.isEditing = true;
         state.isCreating = true;
         state.editItem = Object.assign({}, item)
-        state.first = item;
+        state.current = item;
         state.itemIsLoading = false;
         state.itemIsLoaded = true;
         state.itemIsFailed = false;

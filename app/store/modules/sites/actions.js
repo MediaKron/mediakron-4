@@ -55,6 +55,7 @@ const actions = {
 
         return api.get('site/'+id)
           .then((response) => {
+            console.log('siteLoaded');
             commit("siteLoad", response.data);
             commit("siteLoaded");
           })

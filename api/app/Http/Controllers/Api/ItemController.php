@@ -120,8 +120,24 @@ class ItemController extends Controller
     {
         //
         try{
-            $item = Item::with(Item::$select_with)->where('site_id', $site)->whereIn('uri', request()->all())->get();
-            //$item->canView();
+            $uris = request()->all();
+            $item[] = Item::with(Item::$select_with)
+                ->where('site_id', $site)
+                ->where('uri', $uris[0])
+                ->first()->toArray();
+            
+            if($uris[1]){
+                $item[] = Item::with(Item::$select_with)
+                    ->where('site_id', $site)
+                    ->where('uri', $uris[1])
+                    ->first()->toArray();
+            }    
+            if($uris[2]){
+                $item[] = Item::with(Item::$select_with)
+                    ->where('site_id', $site)
+                    ->where('uri', $uris[1])
+                    ->first()->toArray();
+            }  
             return $item;
         }catch(\Exception $e){
             // 

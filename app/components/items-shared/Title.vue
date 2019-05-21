@@ -1,17 +1,13 @@
 <template>
     <header class="item-element-title w-75" v-if="isEditing">
-            <b-input-group>
-                <b-input-group-text for="title" slot="prepend" tag="label" class="items-center align text-sm bg-white w-24 border-dashed">
-                <span class="font-bold">Item Title</span>
-            </b-input-group-text>
-             <b-form-textarea id="title" v-model="editItem.title" placeholder="Add a title" class="border-dashed text-black text-4xl" rows="1"
-                max-rows="100"></b-form-textarea>
-            
-        </b-input-group>
+            <b-form-group class="floating-label -mt-3">
+             <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" class="input-dashed"></b-form-input>
+             <label class="sr-only" for="title"> Item Title</label>
+            </b-form-group>
                
     </header>
     <header v-else>
-        <h1 class="item-title">{{ first.title }}</h1>
+        <h1 class="item-title">{{ current.title }}</h1>
     </header>
 </template>
 
@@ -23,7 +19,7 @@ export default {
         ...mapGetters('items', [
             'editItem',
             'isEditing',
-            'first'
+            'current'
         ])
     }
 }
@@ -31,9 +27,20 @@ export default {
 
 <style>
     .item-element-title #title {
-       font-size: 2rem; 
-       font-weight: 500;
+    font-size: 2.5rem; 
+    font-weight: 700;
+    border:none;
+    border-style: none !important;
+    border-bottom: 1px solid #565656 !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left:0;
     }
+
+    .input-dashed {
+        border-style:dashed !important 
+    }
+
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s;
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
+    <div class="content min-h-screen w-full lg:static lg:max-h-full max-w-6xl mx-auto lg:overflow-visible ">
 
         <header class="line-behind mb-4 mt-4">
             <h1>Export</h1>

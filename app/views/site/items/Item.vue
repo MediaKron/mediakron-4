@@ -3,7 +3,20 @@
          <Navigation class=""></Navigation>
         <main>
             <loader v-if="itemIsLoading" class="flex justify-center mt-8"></loader>
-            <component class="mt-12" v-if="itemIsLoaded" :is="component" :item="first" />
+            <div class="w-full mx-auto px-6 mt-16">
+                <div class="flex">
+                    <aside v-if="!isEditing" id="sidebar" class="hidden max-w-xs lg:block pb-12">      
+                            <m-collection-sidebar v-if="parentType && parentType != 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-collection-sidebar>
+                            <!-- <m-map-sidebar v-if="parentType && parentType == 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-map-sidebar> -->
+                    </aside>
+                    <component class="w-full" v-if="itemIsLoaded" :is="component" :item="current" />
+                   <div v-if="parentType && parentType == 'collection' && !isEditing" class="fixed flex bottom-0 left-0 bg-white w-full justify-center px-4 py-2">
+                       <previous class="mr-4"></previous>
+                       <b-link class="text-lg"> Title of current folder </b-link>
+                       <next class="ml-4"></next>
+                    </div> 
+                </div>
+            </div>
         </main>
     </div>
 </template>
@@ -21,6 +34,10 @@ import Maps from './Maps'
 import Navigation from '@/views/site/Navigation'
 import { circleMarker } from 'leaflet'
 import Loader from '@/components/Loader';
+import Next from '@/components/collections/Next';
+import Previous from '@/components/collections/Previous';
+
+import MCollectionSidebar from '@/components/collections/CollectionSidebar'
 export default {
     props:[
         'firstUri', 
@@ -29,7 +46,10 @@ export default {
     ],
     components: {
         Navigation,
-        Loader
+        Loader,
+        MCollectionSidebar, 
+        Next,
+        Previous
     },
     
     mounted(){
@@ -40,13 +60,14 @@ export default {
         ...mapGetters("items", [
             "itemIsLoading", 
             "itemIsLoaded",
-            "first", 
-            "second",
-            "third",
+            "current",
+            "parent", 
+            "grandparent",
+            "parentType",
             "isEditing"
         ]),
         component(){
-            switch(this.first.type){
+            switch(this.current.type){
                 case 'image':
                     return Images
                 case 'video':
@@ -68,6 +89,20 @@ export default {
              return this.$route.meta.siteNav;
             },
         
+    },
+    watch: {
+        '$route.params.first': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        },
+        '$route.params.second': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        },
+        '$route.params.third': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        },
+        '$route.query': function (page) {
+            this.itemsRouteLoad({ first: this.firstUri, second: this.secondUri, third: this.thirdUri });
+        }
     },
     methods: {
         ...mapActions("items", [

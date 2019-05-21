@@ -1,6 +1,6 @@
 <template>
-    <div class="appearance-layout w-full mx-auto max-w-60">
-        <main role="main" class="max-w-50"
+    <div class="appearance-layout w-full mx-auto max-w-5xl">
+        <main role="main" class="max-w-2xl">
             <b-form>
                 <header>
                     <h1 class="line-behind heading-nudge-up mb-4"><span class="mk-icon mk-settings"></span>Site

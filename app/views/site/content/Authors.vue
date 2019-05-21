@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
+    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-6xl mx-auto lg:overflow-visible ">
         <header class="line-behind mb-4">
             <h1> Authors</h1>
             <span> {{ }}</span>
@@ -25,7 +25,7 @@
                 {{ user.item.last_login }}
             </template>
         </b-table>
-        <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
+        <b-pagination-nav v-if="listIsLoaded" :link-gen="linkGen" :number-of-pages="lastPage" use-router />
     </div>
 </template>
 

@@ -34,25 +34,22 @@
                 </div>
             </div>
 
-            <div class="mb-4" v-for="(child, index) in children" :key="index">
-                <b-media>
-                    <!-- <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" /> -->
-                    <h2>
-                        <router-link :to="mLink(current.uri, child.uri)">{{ child.title }}</router-link>
-                    </h2>
-                </b-media>
-            </div>
+            <ul class="collection-grid mb-4">
+                <li v-for="(child, index) in children" :key="index" class="collection-grid-item">
+                    <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
+                    <router-link :to="mLink(current.uri, child.uri)">{{ child.title }}</router-link>
+                </li>
+            </ul>
 
         </div>
         <div v-else>
-            <article class="mb-4" v-for="(child, index) in children" :key="index">
-                <b-media>
-                    <!-- <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" /> -->
-                    <h2>
+        <ul class="collection-grid mb-4" >
+                    <li v-for="(child, index) in children" :key="index" class="collection-grid-item">
+                        <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
                         <router-link :to="mLink(current.uri, child.uri)">{{ child.title }}</router-link>
-                    </h2>
-                </b-media>
-            </article>
+                        <!-- <a :href="current.uri + '/' + child.uri">{{ child.title }}</a> -->
+                    </li>
+                </ul>
         </div>
 
     </div>
@@ -84,5 +81,49 @@
                 'current'
             ])
         },
+        methods: {
+            linkGen() {
+                return '/' + this.child.uri
+            },
+
+        }
     }
 </script>
+
+<style >
+
+.collection-grid {
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 992px;
+    display:flex;
+    justify-content: center;
+    align-items:stretch;
+    flex-wrap:wrap;
+    clear: both;
+    text-align: center;
+}
+
+.collection-grid-item {
+    transition: all 0.2s ease-in-out;
+    flex:1 1 150px;
+    align-self:flex-start;
+    display: block;
+    margin: 0.5em;
+    list-style:none;
+    max-width: 150px;
+    }
+    
+.collection-grid-item:hover {
+      opacity: .7;
+    }
+    
+.collection-grid-item img {
+     width: 100%;
+     height: auto;
+     box-shadow: 0 1px 3px rgba(0,0,0,.7);
+   }
+
+
+</style>

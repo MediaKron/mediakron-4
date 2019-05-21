@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="container mt-5">
+    <div class="container mx-auto mt-5">
         <h1>Site: {{ currentSite.title }}</h1>
         <b-card-group deck class="mb-3">
             <b-card header-tag="header"

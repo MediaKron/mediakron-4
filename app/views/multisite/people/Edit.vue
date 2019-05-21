@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="container mt-5">
+    <div class="container mx-auto mt-5">
         <b-card header-tag="header">
             <h6 slot="header" class="mb-0">Edit User Details</h6>
             <b-form>

@@ -1,6 +1,6 @@
 <template>
-    <div class="settings-general w-full mx-auto max-w-60 ">
-        <main role="main" class=" max-w-40 ">
+    <div class="settings-general w-full mx-auto max-w-5xl ">
+        <main role="main" class=" max-w-2xl ">
         <header>
              <h1 class="line-behind heading-nudge-up mb-4 " > General Site Settings</h1>
         </header>

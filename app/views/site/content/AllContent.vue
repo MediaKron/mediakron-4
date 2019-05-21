@@ -1,5 +1,5 @@
 <template>
-    <div class="content w-full max-w-70 mx-auto ">
+    <div class="content w-full max-w-6xl mx-auto ">
         <header class="line-behind mb-4 mt-4">
             <h1>Site Library</h1>
         </header>
@@ -26,15 +26,16 @@
                     <b-dropdown-item href="#">Publish</b-dropdown-item>
                     <b-dropdown-item href="#">Unpublish</b-dropdown-item>
                 </b-dropdown>
-
-                <b-form-checkbox v-model="selectAll" size="sm" class="mr-2 mb-2 text-sm text-black" button
-                                 button-variant="outline-dark" :tabindex="0">
-                    <span v-if="selectAll">
-                        <font-awesome-icon icon="times" class="pr-1" />Unselect all </span> <span v-else class="text-black">
-                        <font-awesome-icon icon="check" class="pr-1" />Select All</span>
+                <b-form-checkbox  v-if="!allSelected" size="sm" class="mr-2 mb-2 text-sm text-black"
+                                  button button-variant="outline-dark" :tabindex="0" v-on:change="selectAll">
+                    <span><font-awesome-icon icon="check" class="pr-1" />Select All</span>
                     <b-badge variant="light" class="top-0 ml-2"> {{ this.items.length }}</b-badge>
                 </b-form-checkbox>
-
+                <b-form-checkbox v-else size="sm" class="mr-2 mb-2 text-sm text-black"
+                                 button button-variant="outline-dark" :tabindex="0" v-on:change="clearAll">
+                    <span><font-awesome-icon icon="times" class="pr-1" />Unselect all </span>
+                    <b-badge variant="light" class="top-0 ml-2"> {{ this.items.length }}</b-badge>
+                </b-form-checkbox>
             </b-button-toolbar>
             <b-collapse id="types" class="mt-2 mb-2"  >
                 <b-button-group class="flex flex-wrap xl:flex-no-wrap">
@@ -46,7 +47,7 @@
         <b-table class="mt-1 border border-grey rounded-lg" v-if="listIsLoaded" :items="items" :busy="isBusy" :fields="fields" :filter="filter"
             sortBy="updated_at" sort-desc="true" stacked="md">
             <template slot="select" slot-scope="items">
-                <b-form-checkbox>
+                <b-form-checkbox v-model="selected" :value="items.item.id">
                 </b-form-checkbox>
             </template>
             <template slot="title" slot-scope="items">
@@ -68,10 +69,8 @@
                     <b-dropdown-text href="#">Created: {{ items.item.updated_at }}</b-dropdown-text>
                     <b-dropdown-text href="#">Another item</b-dropdown-text>
                 </b-dropdown>
-        
             </template>
             <template slot="status" slot-scope="items">
-        
             </template>
         </b-table>
 
@@ -137,15 +136,27 @@
             ...mapActions('items', [
                 'routeLoad'
             ]),
+            selectOne(id){
+                return selected.push(this.id)
+
+            },
+            selectAll(){
+                this.selected = [];
+                for (let i in this.items) {
+                    this.selected.push(this.items[i].id);
+                }
+                return this.allSelected='true';
+
+            },
+            clearAll(){
+                console.log('clear all');
+                this.selected = [];
+                return this.allSelected=false;
+            },
         },
         data() {
             return {
                 fields: {
-                    select: {
-                        label: "Select",
-                        sortable: false,
-                        class: 'text-center'
-                    },
                     title: {
                         label: "Title",
                         sortable: true
@@ -170,6 +181,11 @@
                         label: "Status",
                         sortable: false
                     },
+                    select: {
+                        label: "Select",
+                        sortable: false,
+                        class: 'text-center'
+                    },
                 },
                 sortOrder: '',
                 sortOptions: [
@@ -178,7 +194,8 @@
                 ],
                 filter: null,
                 isBusy: false,
-                selectAll: false
+                allSelected: false,
+                selected: [],
             }
 
         },

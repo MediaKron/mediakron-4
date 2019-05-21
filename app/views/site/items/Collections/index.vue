@@ -1,15 +1,13 @@
 <template>
     <div>
+        <transition name="fade">
+        <div v-if="isEditing" class="fixed top-0 left-0 w-full bg-light z-10 p-3" >You are now editing a Collection</div>
+        </transition>
         <component :is="component" :item="item"/>
-        <div class="right-0 top-0 fixed mr-4 mt-20">
-            <b-button v-if="!isEditing" class=" " variant="primary" @click="editClicked"> Edit</b-button>  
-            <b-button v-if="isEditing" class=" " variant="primary" @click="saveClicked"> Save </b-button>       
-            <b-alert class="right-0 fixed mt-4 mr-3" :show="editAlert" variant="success">
-                <p>You are now in editing mode.</p>
-            </b-alert> 
-            <b-alert class="right-0 fixed mt-4 mr-3" :show="saveAlert" variant="success">
-                <p>Changes Saved.</p>
-            </b-alert> 
+        <div class="right-0 top-0 fixed mr-4 mt-20 flex flex-column ">
+            <b-button v-if="!isEditing" class="uppercase mb-2 flex flex-column items-center bg-light border-none item-button " variant="outline-dark" size="sm" @click="editClicked"><font-awesome-icon icon="edit" class="text-lg mt-1"/> <span class="text-xs mt-1">Edit</span></b-button>  
+            <b-button v-if="isEditing" class="uppercase mb-2 flex flex-column items-center border-none item-button " variant="primary" size="lg" @click="saveClicked"> <font-awesome-icon icon="check" class="text-lg mt-1"/> <span class="text-xs mt-1">Save </span></b-button>       
+            <m-options></m-options>
         </div>
     </div>
 </template>
@@ -29,9 +27,13 @@ import Slideshow from './Slideshow'
 import Comparison from './Comparison'
 import Progression from './Progression'
 import editable from '~/components/mixins/editable'
+import MOptions from '@/components/items-shared/Options'
 export default {
     props: [ 'item' ],
     mixins: [ editable ],
+    components: {
+        MOptions
+    },
     computed: {
         component(){
             switch(this.item.template){
@@ -68,5 +70,16 @@ export default {
 </script>
 
 <style>
+.fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s;
+    }
 
+    .fade-enter,
+    .fade-leave-to
+
+    /* .fade-leave-active below version 2.1.8 */
+        {
+        opacity: 0;
+    }
 </style>

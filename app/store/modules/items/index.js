@@ -10,9 +10,9 @@ export const getInitialState = (checkLocalStorage = false) => {
     tags: [],
 
     itemList: [],
-    first: {},
-    second: {},
-    third: {},
+    current: {},
+    parent: {},
+    grandparent: {},
 
     isEditing: false,
     isCreating: false,

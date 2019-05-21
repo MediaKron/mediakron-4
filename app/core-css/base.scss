@@ -9,6 +9,9 @@
 @import "../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 
 /* MK Functional CSS  */
+@import "mk-utilities.scss";
+
+/* MK Custom and Overrides CSS  */
 @import "mk-custom.scss";
 
 /* Default Font */
