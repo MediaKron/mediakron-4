@@ -13,7 +13,7 @@
 
             <b-form-group class="mt-2 floating-label" label-for="groupid"
               description='For Boston College sites only. Use the format in this example for connecting a course roster to a site: APSY7419012016S. <strong>Important:</strong> for fall courses, use the year associated with the spring semester. For example, a fall 2015 course would be "2016F"'>
-              <b-form-input id="groupid-field" v-model="text" type="text" placeholder="Group ID">
+              <b-form-input id="groupid-field" v-model.trim="text" type="text" placeholder="Group ID">
               </b-form-input>
               <label for="groupid-field">Group ID</label>
             </b-form-group>
