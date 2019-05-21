@@ -124,6 +124,9 @@
   order: -1;
 }
 
+.text-xxs {
+  font-size: .6rem;
+}
 
 .heading-underlined {
   border-bottom: 2px solid #333;
@@ -168,7 +171,7 @@
   /* Override default `<label>` margin */
   line-height: 1.5;
   color: #616161;
-  pointer-events: none;
+  // pointer-events: none;
   cursor: text;
   /* Match the input under the label */
   border: 1px solid transparent;
@@ -191,14 +194,20 @@
 .floating-label input:not(:placeholder-shown)~label,
 .floating-label textarea:not(:placeholder-shown)~label {
   padding: 0 0.25rem;
-  font-size: .7rem;
+  font-size: .8rem;
   position: absolute;
   left: .5rem;
-  top: -.6rem;
+  top: -.8rem;
   width: auto;
   height: auto;
   background: #fff;
   text-transform: uppercase;
+}
+
+.floating-label button { /* help buttons in forms */
+  position: relative;
+  top: -2px;
+  line-height:1;
 }
 
 /* Fallback for Edge

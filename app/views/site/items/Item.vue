@@ -3,13 +3,11 @@
          <Navigation class=""></Navigation>
         <main>
             <loader v-if="itemIsLoading" class="flex justify-center mt-8"></loader>
-            <div class="w-full mx-auto px-6 mt-16 ">
+            <div class="w-full mx-auto px-6 mt-16">
                 <div class="flex">
-                    <aside v-if="!isEditing" id="sidebar" class="hidden min-w-64 max-w-xs lg:block pb-12">
-                        <div class="lg:relative lg:sticky top-20  mr-10 ">
+                    <aside v-if="!isEditing" id="sidebar" class="hidden max-w-xs lg:block pb-12">      
                             <m-collection-sidebar v-if="parentType && parentType != 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-collection-sidebar>
                             <!-- <m-map-sidebar v-if="parentType && parentType == 'map'" class="sticky?lg:h-(screen-32) overflow-y-auto pr-4"></m-map-sidebar> -->
-                        </div>
                     </aside>
                     <component class="w-full" v-if="itemIsLoaded" :is="component" :item="current" />
                    <div v-if="parentType && parentType == 'collection' && !isEditing" class="fixed flex bottom-0 left-0 bg-white w-full justify-center px-4 py-2">
