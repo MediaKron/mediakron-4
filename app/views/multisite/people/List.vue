@@ -2,13 +2,13 @@
     <div class="container mx-auto mt-5">
         <h1>People</h1>
           <loader v-if="listIsLoading"></loader>
-        <b-table v-if="listIsLoaded" striped hover :items="users" :fields="fields">
+        <b-table v-if="listIsLoaded" :items="users" :fields="fields" class="mt-4 mb-8 table-bordered">
             <template slot="username" slot-scope="user">
               <router-link :to="{ name: 'user', params: { id: user.item.id } }">{{ user.item.username }}</router-link>
             </template>
         </b-table>
 
-        <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router />
+        <b-pagination-nav v-if="listIsLoaded" :link-gen="linkGen" :number-of-pages="lastPage" use-router />
      
 
     </div>

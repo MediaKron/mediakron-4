@@ -30,8 +30,9 @@ export const editable = {
         // this.$bvToast.show('editing-message')
         this.$bvToast.toast(`You are now in editing mode`, {
           toaster: "b-toaster-top-right",
-          variant: "warning",
+          variant: "dark",
           solid: true,
+          autoHideDelay: 2500,
           noCloseButton: true,
           bodyClass: "text-center"
         }) 
@@ -42,7 +43,7 @@ export const editable = {
         this.saveAlert = this.dismissSecs
         // this.$bvToast.show('save-message')
         this.$bvToast.toast(`Changes Saved`, {
-          toaster: "b-toaster-top-right",
+          toaster: "b-toaster-top-center",
           variant: "success",
           solid: true,
           noCloseButton: true,

@@ -1,6 +1,6 @@
 <template>
-    <div class="menus w-full mx-auto max-w-60">
-        <main role="main" class="max-w-50">
+    <div class="menus w-full mx-auto max-w-5xl">
+        <main role="main" class="max-w-2xl">
             <header>
                 <h1 class="line-behind heading-nudge-up mb-4">Menus</h1>
             </header>
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <h2 class="mt-5">Visibility</h2>
+            <h2 class="mt-10">Visibility</h2>
             <p>Show or hide secondary menus items that appear alongside the main menu.</p>
             <b-form-checkbox v-model="content" name="check-button" switch class="mb-2">
                 Content (Visible to logged-in users except Members)

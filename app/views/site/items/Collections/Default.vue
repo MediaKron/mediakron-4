@@ -1,5 +1,5 @@
 <template>
-    <article class="mx-auto max-w-40"> 
+    <article class="mx-auto max-w-2xl"> 
         <m-title></m-title>
         <m-caption></m-caption>
         <m-list class="mt-10 mb-8"></m-list>

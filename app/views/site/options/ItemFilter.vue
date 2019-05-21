@@ -3,7 +3,7 @@
         <span></span>
         <b-button-group class="flex flex-wrap xl:flex-no-wrap">
             <span v-for="type in types" v-bind:key="type">
-                <b-button v-if="counts[type] > 0" variant="dark" size="sm" class="max-w-10 text-left mb-1 mr-1 flex items-center px-3"
+                <b-button v-if="counts[type] > 0" variant="dark" size="sm" class="max-w-xs text-left mb-1 mr-1 flex items-center px-3"
                         v-b-tooltip.hover :title="buttonAction + type_settings[type].name" :to="addFilter(type)">
                     <font-awesome-icon :icon="type_settings[type].icon" /><span class="mr-auto ml-1"> {{ type_settings[type].name }}</span>
                     <b-badge variant="light" class="ml-1 bg-white" > {{ counts[type] }}

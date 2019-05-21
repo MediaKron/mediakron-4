@@ -1,10 +1,10 @@
 <template>
-    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
+    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-6xl mx-auto lg:overflow-visible ">
         <div class="flex mt-4 mb-2">
             <b-button variation="dark" class="mr-auto">
                <font-awesome-icon icon="check" /> Add Selected
             </b-button>
-            <b-input-group class="w-20">
+            <b-input-group class="w-xs">
                 <b-form-input v-model="filter" placeholder="Type to Search" />
                 <b-input-group-append>
                     <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>

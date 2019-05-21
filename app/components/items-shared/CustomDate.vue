@@ -1,36 +1,47 @@
 <template>
-    <div class="item-element-source" v-if="isEditing">
-        <b-button v-b-toggle.dateCollapse variant="outline-dark" class="mb-3 text-black w-full border-dashed text-left">
-           <span class="when-opened"><span class="sr-only">Close</span><font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span class="sr-only">Open</span><font-awesome-icon icon="caret-down" /> </span> Custom Date
-        </b-button>
-        <b-collapse id="dateCollapse" >
-        <b-input-group prepend="Start">
-            <label for="source" class="sr-only">Start Year</label>
-            <b-form-input id="start_year" v-model="editItem.startDateYear" placeholder="Year(YYYY)"></b-form-input>
-            <label for="citation" class="sr-only">Start Month</label>
-            <b-form-select v-model="editItem.startDateMonth" :options="monthOptions"></b-form-select>
-            <label for="description" class="sr-only">Start Day</label>
-            <b-form-input id="start_day" v-model="editItem.startDateDay" placeholder="Day(DD)"></b-form-input>
-            <label for="customStartTime" class="sr-only">Start Time</label>
-            <flat-pickr v-model="customStartTime" :config="configTime" class="form-control bg-white" placeholder="Time"
-                name="customStartTime">
-            </flat-pickr>
-        </b-input-group>
+    <div class="item-element-source mb-5" v-if="isEditing">
+        <div class="flex">
+            <b-button v-b-toggle.dateCollapse variant="outline-dark"
+                class="b-3 text-black border-none text-left uppercase">
+                <span class="when-opened"><span class="sr-only">Close</span>
+                    <font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span
+                        class="sr-only">Open</span>
+                    <font-awesome-icon icon="caret-right" /> </span> Custom Date
+            </b-button>
+            <div class="items-center align text-sm pl-2">
+                <b-button v-b-modal.help-metadata variant="link" size="sm" class="-ml-3">
+                    <font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About
+                        Metadata</span></b-button>
+            </div>
+        </div>
+        <b-collapse id="dateCollapse" class="mt-4 mb-16">
+            <b-input-group prepend="Start">
+                <label for="source" class="sr-only">Start Year</label>
+                <b-form-input id="start_year" v-model="editItem.startDateYear" placeholder="Year(YYYY)"></b-form-input>
+                <label for="citation" class="sr-only">Start Month</label>
+                <b-form-select v-model="editItem.startDateMonth" :options="monthOptions"></b-form-select>
+                <label for="description" class="sr-only">Start Day</label>
+                <b-form-input id="start_day" v-model="editItem.startDateDay" placeholder="Day(DD)"></b-form-input>
+                <label for="customStartTime" class="sr-only">Start Time</label>
+                <flat-pickr v-model="customStartTime" :config="configTime" class="form-control bg-white"
+                    placeholder="Time" name="customStartTime">
+                </flat-pickr>
+            </b-input-group>
 
-        <b-input-group prepend="End" class="mt-3 mb-3">
-            <label for="published" class="sr-only">End Year</label>
-            <b-form-input id="end_year" v-model="editItem.endDateYear" placeholder="Year(YYYY)"></b-form-input>
-            <label for="creator" class="sr-only">End Month</label>
-            <b-form-select v-model="editItem.endDateMonth" :options="monthOptions"></b-form-select>
-            <label for="publisher" class="sr-only">End Day</label>
-            <b-form-input id="end_day" v-model="editItem.endDateDay" placeholder="Day(DD)"></b-form-input>
-            <label for="customEndTime" class="sr-only">End Time</label>
-            <flat-pickr v-model="editItem.customEndTime" :config="configTime" class="form-control bg-white"
-                placeholder="Time" name="customEndTime">
-            </flat-pickr>
-        </b-input-group>
+            <b-input-group prepend="End" class="mt-3 mb-3">
+                <label for="published" class="sr-only">End Year</label>
+                <b-form-input id="end_year" v-model="editItem.endDateYear" placeholder="Year(YYYY)"></b-form-input>
+                <label for="creator" class="sr-only">End Month</label>
+                <b-form-select v-model="editItem.endDateMonth" :options="monthOptions"></b-form-select>
+                <label for="publisher" class="sr-only">End Day</label>
+                <b-form-input id="end_day" v-model="editItem.endDateDay" placeholder="Day(DD)"></b-form-input>
+                <label for="customEndTime" class="sr-only">End Time</label>
+                <flat-pickr v-model="editItem.customEndTime" :config="configTime" class="form-control bg-white"
+                    placeholder="Time" name="customEndTime">
+                </flat-pickr>
+            </b-input-group>
         </b-collapse>
-
+       
         <!-- <b-button @click="isDateCalendar=!isDateCalendar" v-b-toggle.calendarCollapse class="mb-3"> {{ calendarButton }}
         </b-button>
         <b-form-group class="" id="calendarCollapse">
@@ -49,10 +60,10 @@
         </b-form-group> -->
 
     </div>
-    <div v-else>
-        <h1>Custom Date/Time</h1>
-        <h2>{{ customStartDate }}</h2>
-        <h2>{{ customStartTime }}</h2>
+    <div v-else class="my-4">
+        <h2 class="text-lg">Date</h2>
+        {{ customStartDate }}
+        {{ customStartTime }}
     </div>
 </template>
 

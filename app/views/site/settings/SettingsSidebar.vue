@@ -1,7 +1,7 @@
 <template>
     <div v-if="access('can change site siteadmin')">
     <b-navbar toggleable="lg" variant="dark" class="settings-nav w-full mb-4 pb-0 pt-16">
-        <b-nav variant="dark" class="w-full mx-auto max-w-60" tabs>
+        <b-nav variant="dark" class="w-full mx-auto max-w-5xl" tabs>
             <b-nav-item  :active="inSettings" v-if="canBrowse" :to="basePath + '/settings/general'">
                 <font-awesome-icon icon="sliders-h" />
                 <span class="pl-2 uppercase">General</span>
