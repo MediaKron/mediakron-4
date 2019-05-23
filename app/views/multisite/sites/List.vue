@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto mt-8">
+  <div class="sm:px-4 container mx-auto mt-8">
     <h1>Site List</h1>
     <loader v-if="listIsLoading"></loader>
 
