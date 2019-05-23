@@ -1,5 +1,5 @@
 <template>
-    <article class="min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible ">
+    <article id="grid-half" >
         <!-- <m-banner-full :style="items.item.imageUrl('double')"> -->
         <m-banner-half style="background-image: url('https://picsum.photos/1000/1000/?random')">
             <m-title></m-title>
@@ -62,5 +62,7 @@
 </script>
 
 <style>
-
+#grid-half #title {
+    border-color:#fff;
+}
 </style>
