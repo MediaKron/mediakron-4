@@ -9,12 +9,12 @@
                     <font-awesome-icon icon="caret-right" /> </span> Source
             </b-button>
             <div class="items-center align text-sm pl-2">
-                <b-button v-b-modal.help-source variant="link" size="sm" class="-ml-3">
-                    <font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About
+                <b-button v-b-modal.help-source variant="link" class="-ml-6">
+                    <font-awesome-icon icon="question-circle" class="text-mk-gray-1" /> <span class="sr-only"> About
                         Source Fields</span></b-button>
             </div>
         </div>
-        <b-collapse id="sourceCollapse" class="mt-4">
+        <b-collapse id="sourceCollapse" visible class="mt-2">
             <b-form-group class="floating-label">
                 <b-form-textarea class="input-dashed" id="reference" v-model="editItem.reference"
                     placeholder="Provide a refference/citation for this item" rows="2" max-rows="100"></b-form-textarea>

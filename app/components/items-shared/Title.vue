@@ -1,8 +1,8 @@
 <template>
     <header class="item-element-title w-75" v-if="isEditing">
-            <b-form-group class="floating-label">
+            <b-form-group class="floating-label -mt-3">
              <b-form-input id="title" v-model="editItem.title" placeholder="Add a title" class="input-dashed"></b-form-input>
-             <label for="title"> Item Title</label>
+             <label class="sr-only" for="title"> Item Title</label>
             </b-form-group>
                
     </header>

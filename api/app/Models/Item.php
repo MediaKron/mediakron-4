@@ -98,6 +98,33 @@ class Item extends BaseModel
         $this->attributes['options'] = json_encode($value);
     }
 
+
+    /**
+     * Build a basic list query with filerable and sortable arrays
+     *
+     * @param boolean $query
+     * @return \Illuminate\Database\Query\Builder
+     */
+    static function listQuery($query = false){
+        if(!$query) $query = static::query();
+        // Get an array of possible filters
+        $filters = request(static::$filterable, []); 
+        //Filter by everything we can filter by
+        foreach($filters as $key => $filter){
+            if(in_array($key, static::$filterable) && !empty($filter)){
+                $query->where($key, $filter);
+            }
+        }
+
+        // fetch a string of the column to sort on, assuming created_at if not specified
+        $sort = static::allowedSort(request('sort', static::$default_sort));
+        // Get the sort direction, assume ASC unless provided
+        $direction = static::allowedDirection(request('direction', static::$default_direction));
+
+        $query->orderBy($sort, $direction);
+        return $query;
+    }
+
     /**
      * Undocumented function
      *

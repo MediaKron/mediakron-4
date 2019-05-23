@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Item;
 use App\Models\Attributes\Metadata;
 use App\Models\Attributes\Tag;
+use App\Models\Relationship;
 
 trait Hydrate
 {
@@ -104,6 +105,66 @@ trait Hydrate
             $sync[] = $save->id;
         }
         $this->tags()->sync($sync);
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function attachChildren(){
+        //
+        $children = request(['children']);
+        $sync = [];
+        foreach($children['children'] as $child){
+            $save = false;
+            $save = Relationship::where('child_id', $child['id'])
+                ->where('parent_id', $this->id)
+                ->where('site_id', $this->site_id)
+                ->first();
+            if(!$save) $save = new Relationship();
+            $save->parent_id = $this->id;
+            $save->child_id = $child['id'];
+            $save->site_id = $this->site_id;
+            $save->attachment_id = 0; 
+            $save->user_id = 0;
+            $save->active = 1;
+            $save->type = 'topics';
+            $save->data = '';
+            $save->weight = 0;
+            $save->save();
+        }
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function attachParents(){
+        //
+        $children = request(['children']);
+        $sync = [];
+        foreach($children['children'] as $child){
+            $save = false;
+            $save = Relationship::where('child_id', $child['id'])
+                ->where('parent_id', $this->id)
+                ->where('site_id', $this->site_id)
+                ->first();
+            if(!$save) $save = new Relationship();
+            $save->parent_id = $this->id;
+            $save->child_id = $child['id'];
+            $save->site_id = $this->site_id;
+            $save->attachment_id = 0; 
+            $save->user_id = 0;
+            $save->active = 1;
+            $save->type = 'topics';
+            $save->data = '';
+            $save->weight = 0;
+            $save->save();
+        }
         return $this;
     }
 

@@ -1,5 +1,5 @@
 <template>
-  <article class="container">
+  <article class="">
         <m-title class="max-w-2xl mx-auto"></m-title>
         <m-caption class="py-2 max-w-2xl mx-auto" ></m-caption>
         <m-video class="mx-auto"></m-video>

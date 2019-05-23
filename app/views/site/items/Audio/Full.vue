@@ -1,9 +1,14 @@
 <template>
   <article class="container">
-        <m-title></m-title>
-        <m-caption></m-caption>
-        <item-video></item-video>
-        <m-description></m-description>
+       <m-title class="max-w-2xl mx-auto"></m-title>
+        <m-caption class="py-2 max-w-2xl mx-auto" ></m-caption>
+        <m-audio></m-audio>
+        <m-custom-date class="max-w-2xl mx-auto" ></m-custom-date>
+        <m-description class="max-w-2xl mx-auto text-xl pb-3"></m-description>
+        <m-source class="max-w-2xl mx-auto text-xl"></m-source>
+        <m-metadata class="max-w-2xl mx-auto"></m-metadata>
+        <m-tags class="max-w-2xl mx-auto"></m-tags>
+        <m-transcript class="max-w-2xl mx-auto text-xl"></m-transcript>
 
    </article>
 </template>

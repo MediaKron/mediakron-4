@@ -1,9 +1,6 @@
 <template>
-    <div>
-
-
+     <div class="lg:relative lg:sticky top-20  mr-10 ">
         <div class="mt-2 font-bold">
-
              <b-dropdown text="contexts" size="sm" variant="link" toggle-class="text-black p-0 uppercase mb-3">
                 <b-dropdown-text class="text-xs font-bold">
                     Contexts where this item appears
@@ -11,12 +8,8 @@
                 <b-dropdown-item v-for="(item_parent, index) in current.parents" :key="index" :href="item_parent.uri">
                     {{ item_parent.title }}
                 </b-dropdown-item>
-            </b-dropdown>
-            
-            <b-link :to="basePath + '/' + parent.uri" class="text-lg block">{{ parent.title }}</b-link>
-
-           
-            
+            </b-dropdown>     
+            <b-link :to="basePath + '/' + parent.uri" class="text-lg block">{{ parent.title }}</b-link>      
         </div>
         <ul class="pl-2 pt-3 list-none">
             <li v-for="(child, index) in parentChildren" :key="index" class="joined-list"

@@ -9,12 +9,12 @@
                     <font-awesome-icon icon="caret-right" /> </span> Tags
             </b-button>
             <div class="items-center align text-sm pl-2">
-                <b-button v-b-modal.help-tags variant="link" size="sm" class="-ml-3">
-                    <font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About
+                <b-button v-b-modal.help-tags variant="link" class="-ml-6">
+                    <font-awesome-icon icon="question-circle" class="text-mk-gray-1" /> <span class="sr-only"> About
                         Tags</span></b-button>
             </div>
         </div>
-        <b-collapse id="tagsCollapse" class="mt-4 mb-16">
+        <b-collapse id="tagsCollapse" visible class="mt-2 mb-16">
             <b-form-group class="">
                 <label class="sr-only" for="tag_names">Select or Create tags</label>
                 <multiselect v-model="editItem.tags" tag-placeholder="Add this as new tag"

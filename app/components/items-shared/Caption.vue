@@ -3,12 +3,9 @@
             <b-form-group class="floating-label flex-1">
               <b-form-textarea id="caption" v-model="editItem.caption" placeholder="Add a caption" rows="1"
                 max-rows="100" class="input-dashed text-black"></b-form-textarea>
-             <label for="caption"> Caption </label>
+             <label for="caption"> Caption <b-button v-b-modal.help-caption variant="link" class="pl-1">
+                    <font-awesome-icon icon="question-circle" class="text-mk-gray-1"/> <span class="sr-only"> About Captions</span></b-button></label>
             </b-form-group>
-             <div class="items-center align text-sm pl-2">
-                <b-button v-b-modal.help-caption variant="link" size="sm" class="text-black pl-1">
-                    <font-awesome-icon icon="question-circle"/> <span class="sr-only"> About Captions</span></b-button>
-             </div>
 
         <!-- Help Modal Window -->
         <b-modal id="help-caption" centered title="About Captions">

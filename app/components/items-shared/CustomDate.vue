@@ -9,8 +9,8 @@
                     <font-awesome-icon icon="caret-right" /> </span> Custom Date
             </b-button>
             <div class="items-center align text-sm pl-2">
-                <b-button v-b-modal.help-metadata variant="link" size="sm" class="-ml-3">
-                    <font-awesome-icon icon="question-circle" class="text-black" /> <span class="sr-only"> About
+                <b-button v-b-modal.help-metadata variant="link" class="-ml-6">
+                    <font-awesome-icon icon="question-circle" class="text-mk-gray-1" /> <span class="sr-only"> About
                         Metadata</span></b-button>
             </div>
         </div>

@@ -24,6 +24,7 @@ const actions = {
       }
       dispatch('loadSites', options);
     },
+
     
     /**
      * Load a list of sites
