@@ -56,7 +56,7 @@
         mapState,
         mapActions
     } from 'vuex';
-    import OptionsSavebar from '@/components/forms/OptionsSavebar';
+    import OptionsSavebar from '@/components/buttons/OptionsSavebar';
     // import ImageUpload from '@/components/controls/ImageUpload';
     export default Vue.extend({
         components: {

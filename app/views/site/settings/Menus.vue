@@ -90,7 +90,7 @@
 </template>
 
 <script>
-    import OptionsSavebar from '@/components/forms/OptionsSavebar';
+    import OptionsSavebar from '@/components/buttons/OptionsSavebar';
     import Primarynav from "./../navigation/PrimaryNav";
     import {
         mapGetters

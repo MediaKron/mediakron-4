@@ -1,10 +1,10 @@
 <template>
     <div class="folder-list mt-3">
-        <div class="flex" v-if="isEditing">
+        <div v-if="isEditing">
 
             <div class="flex mb-3 justify-center">
                 <b-button class="mr-2" variant="outline-dark" size="sm" v-b-modal.organize-modal>
-                    <font-awesome-icon icon="arrows-alt-v" /> Organize</b-button>
+                    <font-awesome-icon icon="arrows-alt-v" /> Order</b-button>
                 <!-- Modal Component -->
                 <b-modal size="lg" centered lazy id="organize-modal" ok-title="Save" title="Organize Items">
                     <Organize></Organize>
@@ -34,21 +34,15 @@
                 </b-modal>
             </div>
             <ul class="list-none pl-0">
-                <li lass="mb-4" v-for="(child, index) in children" :key="index">
-                    <b-media>
-                        <!-- <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" /> -->
-                        <h2><a :href="current.uri + '/' + child.uri">{{ child.title }}</a></h2>
-                    </b-media>
-                </li>
+                <li class="mb-4 flex items-start" v-for="(child, index) in children" :key="index">
+                    <h2 class="with-remove mr-auto"><a :href="current.uri + '/' + child.uri">{{ child.title }}</a> </h2> <m-remove class="ml-3"></m-remove>
+                 </li>
             </ul>
         </div>
         <div v-else>
             <ul class="list-none pl-0">
                 <li class="mb-4" v-for="(child, index) in children" :key="index">
-                    <b-media>
-                        <!-- <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" /> -->
-                        <h2><a :href="current.uri + '/' + child.uri">{{ child.title }}</a></h2>
-                    </b-media>
+                        <h2><a :href="current.uri + '/' + child.uri">{{ child.title }}</a> </h2>
                 </li>
             </ul>
         </div>
@@ -63,11 +57,13 @@
     import Organize from '@/components/item-lists/Organize';
     import AddExisting from '@/views/site/content/AddExisting';
     import AddNew from '@/components/item-lists/AddNew';
+    import MRemove from '@/components/buttons/Remove';
     export default {
         components: {
             Organize,
             AddExisting,
-            AddNew
+            AddNew,
+            MRemove
         },
         data() {
             return {
@@ -88,6 +84,10 @@
 </script>
 
 <style>
+
+.with-remove {
+    width: calc(100% - 5rem)
+}
     .modal-2xl {
         max-width: 1280px !important;
     }

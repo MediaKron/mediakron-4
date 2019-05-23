@@ -79,7 +79,7 @@
             </template>
         </b-table>
 
-        <!-- b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router / -->
+        <!-- <b-pagination-nav :link-gen="linkGen" :number-of-pages="lastPage" use-router /> -->
 
     </div>
 

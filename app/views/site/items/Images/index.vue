@@ -18,9 +18,9 @@
     import Default from './Default'
     import editable from '~/components/mixins/editable'
     import MOptions from '@/components/items-shared/Options'
-    import MSaveButton from '@/components/forms/SaveButton'
-    import MEditButton from '@/components/forms/EditButton'
-    import MCancelButton from '@/components/forms/CancelButton'
+    import MSaveButton from '@/components/buttons/SaveButton'
+    import MEditButton from '@/components/buttons/EditButton'
+    import MCancelButton from '@/components/buttons/CancelButton'
     import {
         mapGetters,
         mapActions

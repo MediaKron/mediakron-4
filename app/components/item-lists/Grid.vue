@@ -41,9 +41,9 @@
             </div>
 
             <ul class="collection-grid mb-4">
-                <li v-for="(child, index) in children" :key="index" class="collection-grid-item">
+                <li v-for="(child, index) in children" :key="index" class="collection-grid-item relative">
                     <b-img slot="aside" src="https://picsum.photos/75?image=342" fluid alt="Responsive image" />
-                    <router-link :to="mLink(current.uri, child.uri)">{{ child.title }}</router-link>
+                    <router-link :to="mLink(current.uri, child.uri)">{{ child.title }}</router-link> <m-remove class="absolute top-0 right-0"></m-remove>
                 </li>
             </ul>
 
@@ -68,11 +68,13 @@
     import Organize from '@/components/item-lists/Organize';
     import AddExisting from '@/views/site/content/AddExisting';
     import AddNew from '@/components/item-lists/AddNew';
+    import MRemove from '@/components/buttons/Remove';
     export default {
         components: {
             Organize,
             AddExisting,
-            AddNew
+            AddNew,
+            MRemove
         },
         data() {
             return {
