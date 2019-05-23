@@ -39,6 +39,26 @@ const actions = {
         dispatch('loadItems', options);
     },
 
+     /**
+     * Dispatch this action when you want to load a site list
+     * and make the site list sensitive to the query being
+     * passed in from the router
+     * @param {*} param0
+     * @param {*} param1
+     */
+    loadExceptChildren({ commit, dispatch, getters, rootGetters }, { page, search, sort, direction }){
+        //
+        var currentItem = rootGetters['items/current'];
+        var options = {
+          page: page || 0,
+          search: search || '',
+          sort: sort || 'id',
+          direction: direction || 'ASC',
+          except_parent_id: currentItem.id
+        }
+        dispatch('loadItems', options);
+      },
+
     /**
      * Dispatch this action when you want to load a site list
      * and make the site list sensitive to the query being
