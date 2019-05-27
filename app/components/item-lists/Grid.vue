@@ -35,7 +35,7 @@
                         <font-awesome-icon icon="paint-brush" /> Layout</b-button>
                     <!-- Modal Component -->
                     <b-modal size="lg" centered lazy id="layout-modal" title="Change Layout">
-                        [list of layout options]
+                       <m-collection-appearance></m-collection-appearance>
                     </b-modal>
                 </div>
             </div>
@@ -69,12 +69,15 @@
     import AddExisting from '@/views/site/content/AddExisting';
     import AddNew from '@/components/item-lists/AddNew';
     import MRemove from '@/components/buttons/Remove';
+    import MCollectionAppearance from '@/views/site/items/Collections/CollectionAppearance.vue';
+     
     export default {
         components: {
             Organize,
             AddExisting,
             AddNew,
-            MRemove
+            MRemove,
+            MCollectionAppearance 
         },
         data() {
             return {
