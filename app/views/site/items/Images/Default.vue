@@ -1,6 +1,6 @@
 <template>
     <article class="pb-4">
-        <m-title class="max-w-2xl mx-auto"></m-title>
+        <m-title class="max-w-2xl mx-auto title-underline"></m-title>
         <m-caption class="py-2 max-w-2xl mx-auto" ></m-caption>
         <m-image class="mx-auto"></m-image>
         <m-custom-date class="max-w-2xl mx-auto" ></m-custom-date>

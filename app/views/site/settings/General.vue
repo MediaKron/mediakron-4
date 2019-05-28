@@ -123,7 +123,7 @@
 import Vue from 'vue';
 import _ from 'underscore';
 import data from '@/components/mixins/data';
-import OptionsSavebar from '@/components/forms/OptionsSavebar';
+import OptionsSavebar from '@/components/buttons/OptionsSavebar';
 import { mapState, mapActions,mapGetters } from 'vuex';
 export default  Vue.extend({
     mixins: [ data ],

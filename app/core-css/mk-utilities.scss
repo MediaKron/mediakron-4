@@ -94,9 +94,9 @@
 
 /* Item title */
 
-.item-title {
+.title-underline {
   border-bottom: 1px solid #565656;
-  padding-bottom: .5rem;
+  line-height:1.5;
 }
 
 
@@ -154,12 +154,12 @@
   position: relative;
 }
 
-.floating-label>input,
-.floating-label div>input,
-.floating-label>textarea,
-.floating-label div>textarea {
-  color: #000;
-}
+// .floating-label>input,
+// .floating-label div>input,
+// .floating-label>textarea,
+// .floating-label div>textarea {
+//   color: #000;
+// }
 
 .floating-label>input,
 .floating-label div>input,
