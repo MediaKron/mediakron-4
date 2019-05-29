@@ -196,11 +196,6 @@ trait Hydrate
      * @return App\Models\User
      */
     public function setOwner(){
-        if(!Auth::user()){
-            $user = 1
-        }else{
-            $user = Auth::user();
-        }
         //$user = Auth::user();
         $this->user_id =  1;//$user->id; TODO: Bind to authenticated user
         return $this;
