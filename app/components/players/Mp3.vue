@@ -16,7 +16,7 @@ Vue.use(VuePlyr)
 export default {
     computed: {
         Mp3Url(){
-            var url = this.first.audio.url;
+            var url = this.current.audio.url;
             // TODO: Sanitize this
 
             return url;
@@ -28,7 +28,7 @@ export default {
             'editItem',
             'isEditing',
             'currentItem',
-            'first',
+            'current',
             'isUploading',
             'isUploaded',
 

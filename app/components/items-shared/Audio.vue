@@ -33,8 +33,7 @@
     <div v-else class="audio-player">
         {{ current.audio.type }}
         <vue-plyr>
-            <component :is="player"></component>
-
+            <component :is="player" :item="item"></component>
         </vue-plyr>
     </div>
 
@@ -56,11 +55,13 @@
 
     export default {
         mounted() {
+            //console.log(this.current.audio.type)
             const type = this.current.audio.type
             this.typeFormat = { "value": type, "text": type.charAt(0).toUpperCase() + type.slice(1) }
             const url = this.current.audio.url
-             console.log(this.current.audio)
+
         },
+        props: ['item'],
         data() {
             return {
                 typeFormat: [],

@@ -18,7 +18,7 @@ Vue.use(VuePlyr)
 export default {
     computed: {
         GoogleUrl(){
-            var url = this.first.video.url;
+            var url = this.current.video.url;
             // TODO: Sanitize this
             var google = 'https://docs.google.com/';
             if (url) {
@@ -60,13 +60,13 @@ export default {
             'editItem',
             'isEditing',
             'currentItem',
-            'first',
+            'current',
             'isUploading',
             'isUploaded',
 
         ]),
         mounted() {
-            consol.log(this.first.video.url)
+            //console.log(this.current.video.url)
         }
 
 
