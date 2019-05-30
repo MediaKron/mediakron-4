@@ -18,7 +18,7 @@ Vue.use(VuePlyr)
 export default {
     computed: {
         Mp4Url(){
-            var url = this.first.video.url;
+            var url = this.current.video.url;
             // TODO: Sanitize this
 
             return url;
@@ -30,7 +30,7 @@ export default {
             'editItem',
             'isEditing',
             'currentItem',
-            'first',
+            'current',
             'isUploading',
             'isUploaded',
 

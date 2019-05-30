@@ -197,7 +197,7 @@ trait Hydrate
      */
     public function setOwner(){
         //$user = Auth::user();
-        $this->user_id =  0;//$user->id; TODO: Bind to authenticated user
+        $this->user_id =  1;//$user->id; TODO: Bind to authenticated user
         return $this;
     }
 

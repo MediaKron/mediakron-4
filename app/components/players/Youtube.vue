@@ -21,7 +21,7 @@ export default {
             //var unsafeUrl = this.first.video.url;
             // TODO: Sanitize this
 
-            var url = this.first.video.url;
+            var url = this.current.video.url;
             var youtube = '//www.youtube.com/embed/';
 
                 if (url) {
@@ -58,7 +58,7 @@ export default {
             'editItem',
             'isEditing',
             'currentItem',
-            'first',
+            'current',
             'isUploading',
             'isUploaded',
 

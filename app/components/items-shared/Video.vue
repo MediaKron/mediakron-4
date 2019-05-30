@@ -32,7 +32,7 @@
     </div>
     <div v-else>
         {{ current.video.type }}
-        <component :is="player"></component>
+        <component :is="player" :item="item"></component>
     </div>
 </template>
 
@@ -45,6 +45,7 @@
     import VueMultiselect from "../../../node_modules/vue-multiselect/src/Multiselect";
     export default {
         components: {VueMultiselect},
+        props: [ 'item' ],
         name: 'Component',
         mounted() {
             const type = this.current.video.type
