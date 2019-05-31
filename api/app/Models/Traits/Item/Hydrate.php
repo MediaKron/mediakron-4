@@ -9,6 +9,8 @@ use App\Models\Item;
 use App\Models\Attributes\Metadata;
 use App\Models\Attributes\Tag;
 use App\Models\Relationship;
+use App\Models\Attributes\Audio;
+use App\Models\Attributes\Video;
 
 trait Hydrate
 {
@@ -74,6 +76,57 @@ trait Hydrate
             $metadata->fill($fill['metadata']);
             $metadata->item_id = $this->id;
             $metadata->save();
+        }
+        
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function updateAudio(){
+        //
+        if(!$this->audio){
+            $audio = new Audio();
+        }else{
+            $audio = $this->audio;
+        }
+
+        $fill = request(['audio']);
+        if(isset($fill['audio'])){
+            if($fill['audio']){
+                $audio->fill($fill['audio']);
+                $audio->item_id = $this->id;
+                $audio->save();
+            }
+            
+        }
+        
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function updateVideo(){
+        //
+        if(!$this->video){
+            $video = new Video();
+        }else{
+            $video = $this->video;
+        }
+
+        $fill = request(['video']);
+        if(isset($fill['video'])){
+            if($fill['video']){
+                $video->fill($fill['video']);
+                $video->item_id = $this->id;
+                $video->save();
+            }
         }
         
         return $this;
