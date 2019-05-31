@@ -51,6 +51,11 @@ export const editable = {
           bodyClass: "text-center"
         }) 
     },
+    cancelClicked() {
+        this.setEditItem = '';
+        isEditing = false;
+        console.log("canceled")
+    }
   },
   watch: {
   },
