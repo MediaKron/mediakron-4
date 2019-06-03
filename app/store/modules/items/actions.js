@@ -238,7 +238,7 @@ const actions = {
      * @param {*} item
      */
     discardEdits({ commit, state }) {
-        commit('discardEdit')
+        commit('editCancel')
     },
 
     /**

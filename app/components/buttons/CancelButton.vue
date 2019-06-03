@@ -8,11 +8,6 @@
     import editable from '~/components/mixins/editable';
     export default {
         mixins: [editable],
-        computed: {
-            cancel(){
-                return this.isEditing='false'
-            }
-        }
     }
 </script>
 

@@ -183,7 +183,7 @@ export const mutations = {
         state.editItem = Object.assign({}, item)
     },
 
-    editCancel(state, item) {
+    editCancel(state) {
         state.isEditing = false;
         state.editItem = {}
     },
