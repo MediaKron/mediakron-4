@@ -22,7 +22,8 @@ export const editable = {
     ...mapActions("items", [
         "update",
         "saveItem",
-        "setEditItem"
+        "setEditItem",
+        "discardEdits"
     ]),
     editClicked() {
         this.setEditItem(this.item);
@@ -52,9 +53,10 @@ export const editable = {
         }) 
     },
     cancelClicked() {
-        this.setEditItem = '';
-        isEditing = false;
-        console.log("canceled")
+        //this.setEditItem = '';
+        this.discardEdits() //in item store
+        this.isEditing = false;
+        //console.log("canceled")
     }
   },
   watch: {
