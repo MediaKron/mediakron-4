@@ -139,18 +139,18 @@ export const mutations = {
     // },
 
     itemUpdated(state){
-        state.siteIsSaving = false;
-        state.siteIsSaved = true;
-        state.siteSaveFailed = false;
+        state.itemIsSaving = false;
+        state.itemIsSaved = true;
+        state.itemSaveFailed = false;
         state.isEditing = false;
         state.isEditingTags = false;
         state.isCreating = false;
     },
 
     siteUpdateFailed(state, error){
-        state.siteIsSaving = false;
-        state.siteIsSaved = false;
-        state.siteSaveFailed = true;
+        state.itemIsSaving = false;
+        state.itemIsSaved = false;
+        state.itemSaveFailed = true;
 
     },
 
