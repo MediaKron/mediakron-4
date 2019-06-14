@@ -22,16 +22,18 @@ export const editable = {
     ...mapActions("items", [
         "update",
         "saveItem",
-        "setEditItem"
+        "setEditItem",
+        "discardEdits"
     ]),
     editClicked() {
         this.setEditItem(this.item);
         this.editAlert = this.dismissSecs 
         // this.$bvToast.show('editing-message')
         this.$bvToast.toast(`You are now in editing mode`, {
-          toaster: "b-toaster-top-right",
+          toaster: "b-toaster-top-center",
           variant: "warning",
           solid: true,
+          autoHideDelay: 2500,
           noCloseButton: true,
           bodyClass: "text-center"
         }) 
@@ -42,13 +44,20 @@ export const editable = {
         this.saveAlert = this.dismissSecs
         // this.$bvToast.show('save-message')
         this.$bvToast.toast(`Changes Saved`, {
-          toaster: "b-toaster-top-right",
+          toaster: "b-toaster-top-center",
           variant: "success",
           solid: true,
+          autoHideDelay: 2500,
           noCloseButton: true,
           bodyClass: "text-center"
         }) 
     },
+    cancelClicked() {
+        //this.setEditItem = '';
+        this.discardEdits() //in item store
+        this.isEditing = false;
+        //console.log("canceled")
+    }
   },
   watch: {
   },

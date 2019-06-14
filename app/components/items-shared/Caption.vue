@@ -1,15 +1,11 @@
 <template>
-    <div class="item-element-caption" v-if="isEditing">
-        <b-input-group>
-            <b-input-group-text for="caption" slot="prepend" tag="label" class="items-center align text-sm bg-white w-24 border-dashed">
-                <span class="font-bold">Caption</span>
-                <b-button v-b-modal.help-caption variant="link" size="sm" class="text-black pl-1">
-                    <font-awesome-icon icon="question-circle"/> <span class="sr-only"> About Captions</span></b-button>
-            </b-input-group-text>
-            <b-form-textarea id="caption" v-model="editItem.caption" placeholder="Add a caption" rows="2"
-                max-rows="100" class="border-dashed text-black"></b-form-textarea>
-            
-        </b-input-group>
+    <div class="item-element-caption flex" v-if="isEditing">
+            <b-form-group class="floating-label flex-1">
+              <b-form-textarea id="caption" v-model="editItem.caption" placeholder="Add a caption" rows="1"
+                max-rows="100" class="input-dashed text-black"></b-form-textarea>
+             <label for="caption"> Caption <b-button v-b-modal.help-caption variant="link" class="pl-1">
+                    <font-awesome-icon icon="question-circle" class="text-mk-gray-1"/> <span class="sr-only"> About Captions</span></b-button></label>
+            </b-form-group>
 
         <!-- Help Modal Window -->
         <b-modal id="help-caption" centered title="About Captions">

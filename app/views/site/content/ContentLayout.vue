@@ -5,7 +5,7 @@
                 <Navigation class="fixed top-0 w-full z-10"></Navigation>
                 <main role="main" id="content-wrapper" class=" min-h-screen w-full mx-auto mt-10">
                     <b-navbar variant="light" class="section-nav w-full mb-8 pb-0 pt-4">
-                        <b-nav tabs class="mt-2 max-w-70 mx-auto">
+                        <b-nav tabs class="mt-2 max-w-6xl mx-auto">
                             <b-nav-item active-class="active" :to="basePath + '/content/mycontent'" class="uppercase">My
                                 Content </b-nav-item>
                             <b-nav-item active-class="active" :to="basePath + '/content/all'" class="uppercase">Site
@@ -21,7 +21,7 @@
                             <b-nav-item active-class="active" :to="basePath + '/content/export'" class="mr-4 ">
                                 <font-awesome-icon icon="cloud-download-alt" /> Export</b-nav-item>
                             <b-nav-item active-class="active" class="-mt-2 -mr-2 p-0">
-                                <b-button variant="primary" size="sm" class="max-w-10" :to="basePath + '/content/add'">
+                                <b-button variant="primary" size="sm" class="max-w-xs" :to="basePath + '/content/add'">
                                     <font-awesome-icon icon="plus" />
                                     <span class="ml-2 uppercase">Add Content</span>
                                 </b-button>

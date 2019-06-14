@@ -23,12 +23,12 @@ export default {
     computed: {
         PanoptoUrl(){
             var embed =''
-            var url = this.first.video.url;
+            var url = this.current.video.url;
             // TODO: Sanitize this
             url = url.replace("http://", 'https://');
 
-            var start = this.first.video.start
-            var end = this.first.video.stop
+            var start = this.current.video.start
+            var end = this.current.video.stop
 
             if (start !== null && start !== undefined) {
                 /* if video has start/stop timecodes  */
@@ -55,7 +55,7 @@ export default {
             'editItem',
             'isEditing',
             'currentItem',
-            'first',
+            'current',
             'isUploading',
             'isUploaded',
 

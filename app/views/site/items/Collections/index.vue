@@ -1,15 +1,14 @@
 <template>
     <div>
         <component :is="component" :item="item"/>
-        <div class="right-0 top-0 fixed mr-4 mt-20">
-            <b-button v-if="!isEditing" class=" " variant="primary" @click="editClicked"> Edit</b-button>  
-            <b-button v-if="isEditing" class=" " variant="primary" @click="saveClicked"> Save </b-button>       
-            <b-alert class="right-0 fixed mt-4 mr-3" :show="editAlert" variant="success">
-                <p>You are now in editing mode.</p>
-            </b-alert> 
-            <b-alert class="right-0 fixed mt-4 mr-3" :show="saveAlert" variant="success">
-                <p>Changes Saved.</p>
-            </b-alert> 
+        <div class="right-0 top-0 fixed mr-6 mt-20 flex flex-column ">
+            <b-button v-if="!isEditing" class="uppercase mb-2 flex flex-column items-center bg-light border-none item-button" variant="outline-dark" size="sm" @click="editClicked">
+                <font-awesome-icon icon="edit" class="text-lg mt-1" /> <span class="text-xs mt-1">Edit</span>
+            </b-button>
+            <!-- <m-edit-button v-if="!isEditing" ></m-edit-button> -->
+            <m-options v-if="!isEditing"></m-options>
+            <m-save-button v-if="isEditing" ></m-save-button>
+            <m-cancel-button v-if="isEditing" ></m-cancel-button>
         </div>
     </div>
 </template>
@@ -29,9 +28,19 @@ import Slideshow from './Slideshow'
 import Comparison from './Comparison'
 import Progression from './Progression'
 import editable from '~/components/mixins/editable'
+import MOptions from '@/components/items-shared/Options'
+import MSaveButton from '@/components/buttons/SaveButton'
+import MEditButton from '@/components/buttons/EditButton'
+import MCancelButton from '@/components/buttons/CancelButton'
 export default {
     props: [ 'item' ],
     mixins: [ editable ],
+    components: {
+        MOptions,
+        MSaveButton,
+        MEditButton,
+        MCancelButton
+    },
     computed: {
         component(){
             switch(this.item.template){
@@ -68,5 +77,16 @@ export default {
 </script>
 
 <style>
+.fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s;
+    }
 
+    .fade-enter,
+    .fade-leave-to
+
+    /* .fade-leave-active below version 2.1.8 */
+        {
+        opacity: 0;
+    }
 </style>

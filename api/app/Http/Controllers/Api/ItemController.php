@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Http\Requests\Item as ItemRequest; 
 
 use Log;
+use DB;
 
 
 
@@ -26,6 +27,17 @@ class ItemController extends Controller
         //
         $query = Item::listQuery()->with(Item::$select_with)
             ->where('site_id', $site);
+
+        /*if(request()->has('except_parent_id')){
+            $parent_id = request()->get('except_parent_id'); 
+            $query->join('relationships', 'items.id', '=', 'relationships.child_id')->where('relationships.parent_id', '!=', $parent_id);
+        }
+
+        if(request()->has('parent_id')){
+            $parent_id = request()->get('parent_id'); 
+            $query->where('children.parent_id', $parent_id);
+        }*/
+        
         $data = $query->paginate(request('per_page', 50));
         $custom = collect([
             'collection' => Item::listQuery()->where('site_id', $site)->where('type', 'collection')->count(),
@@ -81,6 +93,8 @@ class ItemController extends Controller
             // TODO: Handle audio, video, images and text fields
             $item->save();
             $item->updateMetadata()
+                ->updateAudio()
+                ->updateVideo()
                 ->addTags($site_id);
             return Item::with(Item::$select_with)->findOrFail($item->id);
         }catch(\Exception $e){
@@ -179,7 +193,10 @@ class ItemController extends Controller
                 ->setEditor()
                 ->setSite($site)
                 ->updateMetadata()
+                ->attachChildren($request)
                 ->addTags($site_id)
+                ->updateAudio()
+                ->updateVideo()
                 ->upload();
             // TODO: Handle inbound relationship mapinog
             // TODO: Handle metadata fields

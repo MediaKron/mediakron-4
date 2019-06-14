@@ -1,14 +1,14 @@
 <template>
     <article class="pb-4">
-        <m-title class="max-w-40 mx-auto"></m-title>
-        <m-caption class="py-2 max-w-40 mx-auto" ></m-caption>
+        <m-title class="max-w-2xl mx-auto title-underline"></m-title>
+        <m-caption class="py-2 max-w-2xl mx-auto" ></m-caption>
         <m-image class="mx-auto"></m-image>
-        <m-custom-date class="max-w-40 mx-auto" ></m-custom-date>
-        <m-description class="max-w-40 mx-auto text-xl pb-3"></m-description>
-        <m-source class="max-w-40 mx-auto text-xl"></m-source>
-        <m-metadata class="max-w-40 mx-auto"></m-metadata>
-        <m-tags class="max-w-40 mx-auto"></m-tags>
-        <m-transcript class="max-w-40 mx-auto text-xl"></m-transcript>
+        <m-custom-date class="max-w-2xl mx-auto" ></m-custom-date>
+        <m-description class="max-w-2xl mx-auto text-xl pb-3"></m-description>
+        <m-source class="max-w-2xl mx-auto text-xl"></m-source>
+        <m-metadata class="max-w-2xl mx-auto"></m-metadata>
+        <m-tags class="max-w-2xl mx-auto"></m-tags>
+        <m-transcript class="max-w-2xl mx-auto text-xl"></m-transcript>
     </article>
 </template>
 

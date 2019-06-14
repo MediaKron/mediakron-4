@@ -1,13 +1,13 @@
 <template>
-    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-70 mx-auto lg:overflow-visible ">
+    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-6xl mx-auto lg:overflow-visible ">
         <div class="flex mt-4 mb-2">
             <b-button variation="dark" class="mr-auto">
                <font-awesome-icon icon="check" /> Add Selected
             </b-button>
-            <b-input-group class="w-20">
-                <b-form-input v-model="filter" placeholder="Type to Search" />
+            <b-input-group class="w-xs">
+                <b-form-input v-model="search" placeholder="Type to Search" />
                 <b-input-group-append>
-                    <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                    <b-button :disabled="!search" @click="search = ''">Clear</b-button>
                 </b-input-group-append>
             </b-input-group>
         </div>
@@ -16,19 +16,17 @@
             v-if="listIsLoaded" 
             :items="items" 
             :fields="fields" 
-            :filter="filter"
-            @filtered="onFiltered" 
             sortBy="updated_at" 
             sort-desc="true" 
             stacked="md"
             selectable
             select-mode="multi">
              <template slot="add" slot-scope="items">
-              <font-awesome-icon icon="plus-square" /> Add
+              <font-awesome-icon icon="plus-square" @click="add(items.item)" /> Add
             </template>
             <template slot="title" slot-scope="items">
                 <b-img v-bind="placeholderImage" blank-color="#777" alt="Placeholder Image" />
-                items.item.title
+                {{ items.item.title }}
             </template>
             <template slot="type" slot-scope="items">
                 {{ items.item.type}}
@@ -52,32 +50,14 @@
         components: {
             Loader
         },
-        computed: {
-            ...mapGetters('sites', [
-                'siteIsLoading',
-                'siteIsLoaded',
-                'basePath',
-                'currentSite'
-            ]),
-            ...mapGetters('items', [
-                'listIsLoading',
-                'listIsLoaded',
-                'items',
-                'currentPage',
-                'totalItems',
-                'lastPage'
-            ]),
-        },
-        methods: {
-            linkGen(pageNum) {
-                return '/' + this.currentSite.url + '/content/alltable/' + pageNum
-            },
-            ...mapActions('items', [
-                'routeLoad'
-            ]),
-        },
-        data() {
-            return {
+        data(){
+            return{
+                placeholderImage: {
+                    blank: true,
+                    width: 50,
+                    height: 50,
+                    class: 'mr-2'
+                },
                 fields: {
                     add: {
                         label: "Add",
@@ -92,28 +72,58 @@
                         sortable: true
                     },
                 },
-                filter: null,
-                placeholderImage: {
-                    blank: true,
-                    width: 50,
-                    height: 50,
-                    class: 'mr-2'
-                },
-                isBusy: false,
+                sort: 'updated_at',
+                direction: 'ASC',
+                search: '',
+                page: 0
             }
-
         },
-        watch: {
-            '$route.params.page': function (page) {
-                this.routeLoad({
-                    to: this.$route
+        computed: {
+            ...mapGetters('sites', [
+                'siteIsLoading',
+                'siteIsLoaded',
+                'basePath',
+                'currentSite'
+            ]),
+            ...mapGetters('items', [
+                'listIsLoading',
+                'listIsLoaded',
+                'items',
+                'currentPage',
+                'totalItems',
+                'lastPage',
+                'editItem'
+            ]),
+        },
+        methods: {
+            linkGen(pageNum) {
+                return '/' + this.currentSite.url + '/content/alltable/' + pageNum
+            },
+            ...mapActions('items', [
+                'loadExceptChildren'
+            ]),
+            search(){
+                this.query();
+            },
+            query(){
+                this.loadExceptChildren({
+                    sort: this.sort,
+                    search: this.search,
+                    direction: this.direction,
+                    page: 0
                 });
+            },
+            add(item){
+                this.editItem.children.push(item);
+                console.log(this.editItem);
             }
         },
         mounted() {
-            this.routeLoad({
-                to: this.$route,
-                site: this.currentSite
+            this.loadExceptChildren({
+                sort: this.sort,
+                search: this.search,
+                direction: this.direction,
+                page: 0
             });
         }
     });

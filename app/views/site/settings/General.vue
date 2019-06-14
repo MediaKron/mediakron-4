@@ -1,6 +1,6 @@
 <template>
-    <div class="settings-general w-full mx-auto max-w-60 ">
-        <main role="main" class=" max-w-40 ">
+    <div class="settings-general w-full mx-auto max-w-5xl ">
+        <main role="main" class=" max-w-2xl ">
         <header>
              <h1 class="line-behind heading-nudge-up mb-4 " > General Site Settings</h1>
         </header>
@@ -123,7 +123,7 @@
 import Vue from 'vue';
 import _ from 'underscore';
 import data from '@/components/mixins/data';
-import OptionsSavebar from '@/components/forms/OptionsSavebar';
+import OptionsSavebar from '@/components/buttons/OptionsSavebar';
 import { mapState, mapActions,mapGetters } from 'vuex';
 export default  Vue.extend({
     mixins: [ data ],

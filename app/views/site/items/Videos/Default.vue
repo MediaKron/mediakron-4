@@ -1,12 +1,12 @@
 <template>
-  <article class="container">
-        <m-title class="max-w-40 mx-auto"></m-title>
-        <m-caption class="py-2 max-w-40 mx-auto" ></m-caption>
+  <article class="">
+        <m-title class="max-w-2xl mx-auto"></m-title>
+        <m-caption class="py-2 max-w-2xl mx-auto" ></m-caption>
         <m-video class="mx-auto"></m-video>
-        <m-custom-date class="py-2 max-w-40 mx-auto" ></m-custom-date>
-        <m-description class="max-w-40 mx-auto text-xl py-3"></m-description>
-        <m-metadata class="max-w-40 mx-auto"></m-metadata>
-        <m-tags class="max-w-40 mx-auto"></m-tags>
+        <m-custom-date class="py-2 max-w-2xl mx-auto" ></m-custom-date>
+        <m-description class="max-w-2xl mx-auto text-xl py-3"></m-description>
+        <m-metadata class="max-w-2xl mx-auto"></m-metadata>
+        <m-tags class="max-w-2xl mx-auto"></m-tags>
 
    </article>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div class="content w-full max-w-70 mx-auto ">
+    <div class="content w-full max-w-6xl mx-auto ">
         <header class="line-behind mb-4 mt-4">
             <h1>Site Library</h1>
         </header>

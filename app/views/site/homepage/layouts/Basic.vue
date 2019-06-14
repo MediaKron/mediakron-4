@@ -37,7 +37,7 @@ export default {
     mixins: [ editable ],
     computed: {
         ...mapGetters('sites', [
-            'currentSite'
+            'currentSite', 'basePath'
         ]),
         ...mapGetters('items', [
             'isEditing'

@@ -8,6 +8,9 @@ use Illuminate\Support\Str;
 use App\Models\Item;
 use App\Models\Attributes\Metadata;
 use App\Models\Attributes\Tag;
+use App\Models\Relationship;
+use App\Models\Attributes\Audio;
+use App\Models\Attributes\Video;
 
 trait Hydrate
 {
@@ -83,6 +86,57 @@ trait Hydrate
      *
      * @return App\Models\User
      */
+    public function updateAudio(){
+        //
+        if(!$this->audio){
+            $audio = new Audio();
+        }else{
+            $audio = $this->audio;
+        }
+
+        $fill = request(['audio']);
+        if(isset($fill['audio'])){
+            if($fill['audio']){
+                $audio->fill($fill['audio']);
+                $audio->item_id = $this->id;
+                $audio->save();
+            }
+            
+        }
+        
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function updateVideo(){
+        //
+        if(!$this->video){
+            $video = new Video();
+        }else{
+            $video = $this->video;
+        }
+
+        $fill = request(['video']);
+        if(isset($fill['video'])){
+            if($fill['video']){
+                $video->fill($fill['video']);
+                $video->item_id = $this->id;
+                $video->save();
+            }
+        }
+        
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
     public function addTags($site){
         //
         $tags = request(['tags']);
@@ -104,6 +158,66 @@ trait Hydrate
             $sync[] = $save->id;
         }
         $this->tags()->sync($sync);
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function attachChildren(){
+        //
+        $children = request(['children']);
+        $sync = [];
+        foreach($children['children'] as $child){
+            $save = false;
+            $save = Relationship::where('child_id', $child['id'])
+                ->where('parent_id', $this->id)
+                ->where('site_id', $this->site_id)
+                ->first();
+            if(!$save) $save = new Relationship();
+            $save->parent_id = $this->id;
+            $save->child_id = $child['id'];
+            $save->site_id = $this->site_id;
+            $save->attachment_id = 0; 
+            $save->user_id = 0;
+            $save->active = 1;
+            $save->type = 'topics';
+            $save->data = '';
+            $save->weight = 0;
+            $save->save();
+        }
+        return $this;
+    }
+
+    /**
+     * Create Uri
+     *
+     * @return App\Models\User
+     */
+    public function attachParents(){
+        //
+        $children = request(['children']);
+        $sync = [];
+        foreach($children['children'] as $child){
+            $save = false;
+            $save = Relationship::where('child_id', $child['id'])
+                ->where('parent_id', $this->id)
+                ->where('site_id', $this->site_id)
+                ->first();
+            if(!$save) $save = new Relationship();
+            $save->parent_id = $this->id;
+            $save->child_id = $child['id'];
+            $save->site_id = $this->site_id;
+            $save->attachment_id = 0; 
+            $save->user_id = 0;
+            $save->active = 1;
+            $save->type = 'topics';
+            $save->data = '';
+            $save->weight = 0;
+            $save->save();
+        }
         return $this;
     }
 
@@ -136,7 +250,7 @@ trait Hydrate
      */
     public function setOwner(){
         //$user = Auth::user();
-        $this->user_id =  0;//$user->id; TODO: Bind to authenticated user
+        $this->user_id =  1;//$user->id; TODO: Bind to authenticated user
         return $this;
     }
 

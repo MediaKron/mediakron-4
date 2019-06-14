@@ -1,36 +1,51 @@
 <template>
-    <div>
-        <div class="item-element-source" v-if="isEditing">
-            <b-button v-b-toggle.sourceCollapse variant="outline-dark" class="mb-3 text-black w-full border-dashed text-left">
-                 <span class="when-opened"><span class="sr-only">Close</span><font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span class="sr-only">Open</span><font-awesome-icon icon="caret-down" /> </span> Source
-           </b-button>
-        <b-collapse id="sourceCollapse" >
-            <b-form-group class="">
-                <label for="reference">Reference</label>
-                <b-form-input id="reference" v-model="editItem.reference" placeholder="Provide a refference/citation for this item" ></b-form-input>
-                <label for="referenceUrl">Url</label>
-                <b-form-input id="referenceUrl" v-model="editItem.referenceUrl" placeholder="http://www..." ></b-form-input>
+    <div class="item-element-source mb-5" v-if="isEditing">
+        <div class="flex">
+            <b-button v-b-toggle.sourceCollapse variant="outline-dark"
+                class="text-black border-none text-left uppercase">
+                <span class="when-opened"><span class="sr-only">Close</span>
+                    <font-awesome-icon icon="caret-down" /> </span> <span class="when-closed"><span
+                        class="sr-only">Open</span>
+                    <font-awesome-icon icon="caret-right" /> </span> Source
+            </b-button>
+            <div class="items-center align text-sm pl-2">
+                <b-button v-b-modal.help-source variant="link" class="-ml-6">
+                    <font-awesome-icon icon="question-circle" class="text-mk-gray-1" /> <span class="sr-only"> About
+                        Source Fields</span></b-button>
+            </div>
+        </div>
+        <b-collapse id="sourceCollapse" visible class="mt-2">
+            <b-form-group class="floating-label">
+                <b-form-textarea class="input-dashed" id="reference" v-model="editItem.reference"
+                    placeholder="Provide a refference/citation for this item" rows="2" max-rows="100"></b-form-textarea>
+                <label class="text-base" for="reference">Reference</label>
+            </b-form-group>
+            <b-form-group class="floating-label">
+                <b-form-textarea class="input-dashed" id="referenceUrl" v-model="editItem.referenceUrl"
+                    placeholder="http://www..." rows="2" max-rows="100"></b-form-textarea>
+                <label class="text-base" for="referenceUrl">Url</label>
             </b-form-group>
         </b-collapse>
-        </div>
-        <div v-else>
-            <h1>Source</h1>
-            <h2>{{ current.title }}</h2>
-        </div>
+
+    </div>
+    <div v-else class="my-4">
+        <h2 class="text-lg">Source</h2>
+        {{ current.source }}
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+    import {
+        mapGetters
+    } from 'vuex'
 
-export default {
-    computed: {
-        ...mapGetters('items', [
-            'editItem',
-            'isEditing',
-            'current'
-        ])
+    export default {
+        computed: {
+            ...mapGetters('items', [
+                'editItem',
+                'isEditing',
+                'current'
+            ])
+        }
     }
-}
 </script>
-

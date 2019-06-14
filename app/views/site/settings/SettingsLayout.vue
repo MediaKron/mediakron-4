@@ -2,7 +2,7 @@
     <div class="options-layout">
         <Navigation class="w-full"></Navigation>
             <b-navbar class="section-nav bg-light w-full mb-8 pb-0 pt-4">
-                <b-nav class=" w-full mx-auto max-w-60" tabs>
+                <b-nav class=" w-full mx-auto max-w-5xl" tabs>
                     <b-nav-item active-class="active" v-if="canBrowse" :to="basePath + '/settings/general'">
                         <font-awesome-icon icon="sliders-h" />
                         <span class="pl-2 uppercase">General</span>

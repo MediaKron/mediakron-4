@@ -26,7 +26,7 @@
                 <template slot="button-content">
                     <font-awesome-icon icon="user"/><span class="item-text">Profile</span>
                 </template>
-                <b-dropdown-text>Logged in as: {{ user.name }}</b-dropdown-text>
+                <b-dropdown-text class="whitespace-no-wrap">Logged in as: {{ user.name }}</b-dropdown-text>
                 <b-dropdown-text>My Role: {{ user.role }}</b-dropdown-text>
                 <b-dropdown-item :to="basePath + '/logout'">Sign Out</b-dropdown-item>
             </b-dropdown>

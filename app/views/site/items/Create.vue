@@ -2,7 +2,7 @@
     <div>
         <main>
             <loader v-if="itemIsLoading"></loader>
-            <component class="mt-1" v-if="itemIsLoaded" :is="component" :item="first" />
+            <component class="mt-1" v-if="itemIsLoaded" :is="component" :item="current" />
         </main>
     </div>
 </template>
@@ -37,12 +37,12 @@ export default {
         ...mapGetters("items", [
             "itemIsLoading", 
             "itemIsLoaded",
-            "first", 
+            "current",
             "isEditing",
             "isCreating"
         ]),
         component(){
-            switch(this.first.type){
+            switch(this.current.type){
                 case 'image':
                     return Images
                 case 'video':

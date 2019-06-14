@@ -1,6 +1,6 @@
 <template>
-    <article class="mx-auto max-w-40"> 
-        <m-title></m-title>
+    <article class="mx-auto max-w-2xl mt-12"> 
+        <m-title class="title-underline mb-3"></m-title>
         <m-caption></m-caption>
         <m-list class="mt-10 mb-8"></m-list>
         <m-description></m-description>

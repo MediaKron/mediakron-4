@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-40 mx-auto lg:overflow-visible ">
+    <div class="min-h-screen w-full lg:static lg:max-h-full max-w-2xl mx-auto lg:overflow-visible ">
         <header class="line-behind mb-4">
             <h1>Add Content</h1>
         </header>

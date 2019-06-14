@@ -1,7 +1,7 @@
 <template>
 <div class="tags">
     <Navigation></Navigation>
-    <b-container class="mt-12 w-full max-w-70 mx-auto ">
+    <b-container class="mt-12 w-full max-w-6xl mx-auto ">
 
     <div class="row">
 
