@@ -47,20 +47,12 @@ export default {
             'current'
         ])
     },
-<<<<<<< HEAD
     mounted() {
 
 
     },
     updated(){
 
-=======
-    mounted(){
-        dragonDrop: new DragonDrop(this.dragon)
-    },
-    updated(){
-        dragonDrop.initElements(this.dragon);
->>>>>>> items
     },
 }
 </script>
