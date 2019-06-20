@@ -1,9 +1,9 @@
 <template>
     <div class="folder-list mt-3">
-        <h1>Child items to organize:</h1>
-        <draggable v-model="children">
+        <h1>Child items:</h1>
+        <draggable v-model="children" @start="drag=true" @end="drag=false" :sortable="true" :move="checkMove">
             <transition-group>
-                <div v-for="(child, index) in this.children">
+                <div v-for="(child, index) in this.children" :key="index"><font-awesome-icon icon="arrows-alt-v" class="text-2xl mr-2"/>
                     {{child.title}}
                 </div>
             </transition-group>
@@ -38,8 +38,16 @@ export default {
         }
     },
     computed: {
-        children() {
-            return this.current.children
+        children: {
+                get() {
+                return this.current.children
+            },
+                set(value) {
+                    console.log(value);
+                //this.$store.commit('updateList', value)
+            }
+
+
         },
         ...mapGetters('items', [
             'editItem',
@@ -54,5 +62,11 @@ export default {
     updated(){
 
     },
+    methods: {
+        checkMove: function(evt){
+            return (evt.draggedContext.element.name!=='apple');
+        }
+    },
+
 }
 </script>
