@@ -53,4 +53,4 @@ where stage is dev, staging or prod
 To deploy frontend app, `run npm mediakron:deploy:{stage}` w
 
 ---
-Copyright Trustees of Boston College [GNU General Public License v3.0 | Choose a License](https://choosealicense.com/licenses/gpl-3.0/)
+Copyright Trustees of Boston College [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
