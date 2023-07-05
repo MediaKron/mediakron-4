@@ -51,3 +51,6 @@ To deploy code to api, install Deployer.php and run `dep deploy {stage}`
 where stage is dev, staging or prod
 
 To deploy frontend app, `run npm mediakron:deploy:{stage}` w
+
+---
+Copyright Trustees of Boston College [GNU General Public License v3.0 | Choose a License](https://choosealicense.com/licenses/gpl-3.0/)
