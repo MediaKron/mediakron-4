@@ -29,7 +29,7 @@
      </b-navbar-nav>
 
     <b-navbar-nav class="ml-auto">
-       <b-nav-item href="http://www.bc.edu" id="bclogo"> <img class="bc-logo img-fluid" src="@/assets/images/BC-logo.png" /></b-nav-item>
+       <b-nav-item href="http://www.bu.edu" id="bclogo"> <img class="bc-logo img-fluid" src="@/assets/images/BC-logo.png" /></b-nav-item>
     </b-navbar-nav>
 
   </b-collapse>

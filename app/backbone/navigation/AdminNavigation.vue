@@ -15,13 +15,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul id="nav" class="nav navbar-nav">
                     <li>
-                        <a href="https://mediakron.bc.edu/help/mediakron-basics">About</a>
+                        <a href="https://mediakron.bu.edu/help/mediakron-basics">About</a>
                     </li>
                      <li>
-                        <a href="https://mediakron.bc.edu/help">Support</a>
+                        <a href="https://mediakron.bu.edu/help">Support</a>
                     </li>
                     <li>
-                        <a href="mailto:mediakron@bc.edu">Contact</a>
+                        <a href="mailto:mediakron@bu.edu">Contact</a>
                     </li>
                 
                     	                    <li>
@@ -41,7 +41,7 @@
                
                 </ul>
                 
-                <a href="http://www.bc.edu" id="bclogo"><img src="/bundles/mediakron/img/bclogo.png" alt="Boston College" /></a>
+                <a href="http://www.bu.edu" id="bclogo"><img src="/bundles/mediakron/img/bclogo.png" alt="Boston University" /></a>
                 
             </div>
             <!-- /.navbar-collapse -->

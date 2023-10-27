@@ -29,7 +29,7 @@ export default {
                 url = url.replace("/view", '');
                 url = url.replace("/edit", '');
                 url = url.replace('?usp=sharing', '');
-                url = url.replace('/a/bc.edu', '');
+                url = url.replace('/a/bu.edu', '');
                 url = url.replace("&authuser=0", '');
                 url = url.replace('open?id=', 'file/d/');
                 url = url.replace("docs.google.com/", '');

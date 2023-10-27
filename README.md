@@ -5,7 +5,7 @@ This repository contains the code as well as the build and deployment tooling to
 
 You can start development immediately by booting the application locally with Docker.
 
-General information about MediaKron: [http://mediakron.bc.edu](http://mediakron.bc.edu)
+General information about MediaKron: [http://mediakron.bu.edu](http://mediakron.bu.edu)
 
 ## Structure
 * **api**: Contains the root Larvel application for boot and api methods
@@ -53,4 +53,4 @@ where stage is dev, staging or prod
 To deploy frontend app, `run npm mediakron:deploy:{stage}` w
 
 ---
-Copyright Trustees of Boston College [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+Copyright Trustees of Boston University [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)

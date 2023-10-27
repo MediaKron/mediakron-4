@@ -116,7 +116,7 @@
                             </div>
                         </div>
 
-                        <span class="video-message-select <% if(video.type) { %> hide <% } %>">Please select a video type above <span class="supported-types">(Youtube, Vimeo, and BC streaming videos are currently supported for clipping)</span> </span>
+                        <span class="video-message-select <% if(video.type) { %> hide <% } %>">Please select a video type above <span class="supported-types">(Youtube, Vimeo, and BU streaming videos are currently supported for clipping)</span> </span>
 
                         <% var unsupported = ''; if(video.type == 'google' || video.type == 'RMTP' || video.type == 'url'){ unsupported  = 'unsupported-video'; }   %>
                             <div class="video-message-unsupported <%= unsupported %>">Video clips are not supported for this video type.

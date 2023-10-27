@@ -104,7 +104,7 @@
     },
     //https://drive.google.com/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/view?usp=sharing
     //https://drive.google.com/open?id=0B36LdKxiyL7fSW9FMkhNQ2JKQnc&authuser=0
-    //https://drive.google.com/a/bc.edu/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/edit
+    //https://drive.google.com/a/bu.edu/file/d/0B36LdKxiyL7fSW9FMkhNQ2JKQnc/edit
     getGoogleUrl: function() {
         var video = this.get('video'),
             url = video.url,
@@ -117,7 +117,7 @@
             url = url.replace("/view", '');
             url = url.replace("/edit", '');
             url = url.replace('?usp=sharing', '');
-            url = url.replace('/a/bc.edu', '');
+            url = url.replace('/a/bu.edu', '');
             url = url.replace("&authuser=0", '');
             url = url.replace('open?id=', 'file/d/');
             url = url.replace("docs.google.com/", '');
@@ -184,7 +184,7 @@
         var video = this.get('video'),
             url = video.url;
         url = url.replace("http://", 'https://');
-        url = url.replace("bc-kanopystreaming-com.proxy.bc.edu/playlist/", 'bc.kanopystreaming.com/embed/');
+        url = url.replace("bc-kanopystreaming-com.proxy.bu.edu/playlist/", 'bc.kanopystreaming.com/embed/');
         return url;
     },
     
@@ -225,7 +225,7 @@
             url = url.replace("/view", '');
             url = url.replace("/edit", '');
             url = url.replace('?usp=sharing', '');
-            url = url.replace('/a/bc.edu', '');
+            url = url.replace('/a/bu.edu', '');
             url = url.replace("&authuser=0", '');
             url = url.replace('open?id=', 'file/d/');
             url = url.replace("docs.google.com/", '');
