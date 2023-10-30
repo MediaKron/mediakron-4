@@ -33,7 +33,7 @@
 
           <div
             class="login-instructions"
-          >If you are a BC user, please use your basic BC ID as username. Otherwise, use your email address.</div>
+          >If you are a BU user, please use your basic BU ID as username. Otherwise, use your email address.</div>
         </div>
         <div class="form-item form-type-password form-item-pass">
           <label class="sr-only" for="password">Password

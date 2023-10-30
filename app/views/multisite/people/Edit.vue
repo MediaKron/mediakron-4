@@ -51,7 +51,7 @@
                 <b-form-group id="exampleGroup4">
                     <b-form-checkbox-group>
                         <b-form-checkbox value="enabled">Enabled</b-form-checkbox>
-                        <b-form-checkbox value="isBcUser">Is BC User</b-form-checkbox>
+                        <b-form-checkbox value="isBcUser">Is BU User</b-form-checkbox>
                    </b-form-checkbox-group>
              </b-form-group>
              <b-button type="submit" variant="primary">Submit</b-button>

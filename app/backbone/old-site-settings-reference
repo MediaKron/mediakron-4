@@ -11,7 +11,7 @@ var Mediakron={
         "pushState":    false,
         "cssURL":       "/mediakron/css/",
         "layout":       "default",
-        "institution":  "Boston College",
+        "institution":  "Boston University",
         "search":       "internal",
         "commenting":   {% if site.comment %}true{% else %}false{% endif %},
         "download":     {% if site.download %}true{% else %}false{% endif %},

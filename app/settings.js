@@ -57,7 +57,7 @@ var defaultSettings = {
         "pushState": false,
         "cssURL": "/mediakron/css/",
         "layout": "default",
-        "institution": "Boston College",
+        "institution": "Boston University",
         "search": "internal",
         "commenting": false,
         "download": true,

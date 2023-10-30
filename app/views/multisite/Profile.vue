@@ -45,7 +45,7 @@ export default {
         return {
             user: {
                 name: 'Austin Bailey',
-                email: 'baileyau@bc.edu'
+                email: 'baileyau@bu.edu'
             },
         }
     },

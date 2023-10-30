@@ -46,7 +46,7 @@
     groups: wheel
     append: yes
     create_home: yes
-    comment: "lindgret@bc.edu"
+    comment: "lindgret@bu.edu"
         
 # installing remote keys for ansible users
 - name: "Add ssh key for: tim"
@@ -64,7 +64,7 @@
     groups: wheel
     append: yes
     create_home: yes
-    comment: "walkerjj@bc.edu"
+    comment: "walkerjj@bu.edu"
         
 # installing remote keys for ansible users
 - name: "Add ssh key for: jamie"
@@ -82,7 +82,7 @@
     groups: wheel
     append: yes
     create_home: yes
-    comment: "baileyau@bc.edu"
+    comment: "baileyau@bu.edu"
         
 # installing remote keys for ansible users
 - name: "Add ssh key for: austin"

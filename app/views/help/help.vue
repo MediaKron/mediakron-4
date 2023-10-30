@@ -8,7 +8,7 @@
 
             <h2>MediaKron Support</h2>
             <b-list-group class="mb-5">
-                <b-list-group-item href="mailto:mediakron@bc.edu">Email mediakron@bc.edu</b-list-group-item>
+                <b-list-group-item href="mailto:mediakron@bu.edu">Email mediakron@bu.edu</b-list-group-item>
                 <b-list-group-item href="/help">Visit Support</b-list-group-item>
             </b-list-group>
 
